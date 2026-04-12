@@ -1,0 +1,13 @@
+# Obsidian local workspace state (specific to your machine/window)
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+
+# Obsidian cache
+.obsidian/cache
+
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Cowork / Claude internal
+outputs/

@@ -1,0 +1,43 @@
+{
+  "collapse-filter": false,
+  "search": "",
+  "showTags": true,
+  "showAttachments": false,
+  "hideUnresolved": false,
+  "showOrphans": true,
+  "collapse-color-groups": false,
+  "colorGroups": [
+    {
+      "query": "path:wiki/concepts/",
+      "color": { "a": 1, "rgb": 4494676 }
+    },
+    {
+      "query": "path:wiki/entities/",
+      "color": { "a": 1, "rgb": 14448234 }
+    },
+    {
+      "query": "path:wiki/sources/",
+      "color": { "a": 1, "rgb": 9109504 }
+    },
+    {
+      "query": "path:wiki/outputs/",
+      "color": { "a": 1, "rgb": 16737792 }
+    },
+    {
+      "query": "path:raw/",
+      "color": { "a": 1, "rgb": 8421504 }
+    }
+  ],
+  "collapse-display": false,
+  "showArrow": true,
+  "textFadeMultiplier": 0,
+  "nodeSizeMultiplier": 1,
+  "lineSizeMultiplier": 1,
+  "collapse-forces": false,
+  "centerStrength": 0.518713248970312,
+  "repelStrength": 10,
+  "linkStrength": 1,
+  "linkDistance": 30,
+  "scale": 1,
+  "close": false
+}
