@@ -45,3 +45,9 @@ Remplacement des 3 tones initiaux (Balanced/Warm/Formal) par 4 tones : **Auto** 
 ---
 
 *Les entrées suivantes seront ajoutées au fil du projet par le LLM lors des ingests, des décisions documentées, et des pivots.*
+
+## [2026-04-12] decision | Renommage entité principale : CV Forge → twoweeks
+
+**Type** : update
+**Impact** : [[archive/entities/cv-forge]] → [[entities/twoweeks]]
+Le produit s'appelle "twoweeks" (twoweeks.ai), pas "CV Forge". CVForge et ProposalForge sont des modules internes. La brand bible 2026 établit le tagline "Finish. Faster." et le positionnement "Anti-Work tool".

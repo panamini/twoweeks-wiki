@@ -1,37 +1,81 @@
 ---
 title: "Log — twoweeks Wiki"
 category: overview
-updated: 2026-04-09
+updated: 2026-04-12
 ---
 
 # Log du Wiki · twoweeks
 
-Journal chronologique append-only de toutes les opérations sur le wiki. Chaque entrée commence par `## [YYYY-MM-DD] type | description` pour permettre le parsing avec des outils unix.
+Journal chronologique append-only de toutes les opérations sur le wiki.
 
-Commandes utiles :
 ```bash
-# Dernières 5 entrées
-grep "^## \[" wiki/log.md | tail -5
-
-# Tous les ingests
-grep "^## \[" wiki/log.md | grep "ingest"
-
-# Toutes les passes de lint
-grep "^## \[" wiki/log.md | grep "lint"
+grep "^## \[" wiki/log.md | tail -5   # Dernières 5 entrées
+grep "^## \[" wiki/log.md | grep "ingest"  # Tous les ingests
 ```
+
+---
+
+## [2026-04-12] ingest | Brand Bible twoweeks.ai 2026
+
+**Agent** : Claude
+**Fichiers traités** : `rawinput/twoweeks-brand-bible.md`
+**Pages créées** :
+- `wiki/sources/2026-04-12-twoweeks-brand-bible.md`
+- `wiki/entities/twoweeks.md` — entité principale corrigée (nom réel du produit)
+- `wiki/concepts/brand-voice.md` — voix staccato, Corporate Noir, règles copie UI
+**Pages archivées** :
+- `wiki/entities/cv-forge.md` → `wiki/archive/entities/cv-forge.md` (supersédée par twoweeks)
+**Mises à jour** :
+- `CLAUDE.md` — description app mise à jour : twoweeks.ai, tagline, positionnement, modules
+- `wiki/timeline.md` — event Supersede cv-forge → twoweeks
+- `wiki/index.md` — section Archive ajoutée, stats mises à jour
+
+---
+
+## [2026-04-12] ingest | Runbook tunnel Cloudflare + note pipeline import OCR
+
+**Agent** : Claude
+**Fichiers traités** : `rawinput/howto_tunnel.md`, `rawinput/pipeline note.md`
+**Pages créées** :
+- `wiki/howto/cloudflare-zero-trust-tunnel.md`
+- `wiki/tech/import-ocr-pipeline.md`
+
+---
+
+## [2026-04-12] structure | Nouveaux répertoires tech/ howto/ kanban + récupération pages manquantes
+
+**Agent** : Claude
+**Pages créées** :
+- `wiki/to do list/kanban.md`
+- `wiki/concepts/parsing-poc-progress.md`
+- `wiki/sources/2026-04-11-cv-parsing-poc-state.md`
+- `wiki/sources/2026-04-11-todo-sprint.md`
+- `wiki/sources/2026-04-11-jessica-helen-poc-state.md`
+**Mises à jour** : `wiki/index.md`, `CLAUDE.md`
+
+---
+
+## [2026-04-11] decision | Finding stockage Convex — cvDocument est la source de vérité
+
+**Agent** : Claude
+**Pages mises à jour** : `wiki/entities/cv-forge.md` (archivé depuis) — architecture de stockage Convex documentée. `userProfiles.cvDocument` est la source de vérité. Les champs top-level `experience[]`, `education[]`, `skills[]` sont legacy et vides.
+
+---
+
+## [2026-04-11] ingest | CV Parsing POC State + Sprint Notes
+
+**Agent** : Claude
+**Fichiers traités** : `rawinput/2026-04-11-cv-parsing-poc-state.md`, `rawinput/to do.md`
+**Pages créées** : sources/2026-04-11-cv-parsing-poc-state.md, sources/2026-04-11-todo-sprint.md, concepts/parsing-poc-progress.md
+**Pages mises à jour** : concepts/cv-parsing-pipeline.md, entities/cv-forge.md (archivé depuis)
 
 ---
 
 ## [2026-04-10] decision | Refonte système de tones — 4 tones avec Auto
 
-**Agent** : Claude (décision utilisateur)
-**Pages mises à jour** :
-- `wiki/concepts/ai-product-model.md` — nouvelle section tones (Auto/Natural/Formal/Warm)
-- `wiki/concepts/product-roadmap.md` — décision mise à jour, description phase P2 corrigée
-- `wiki/concepts/gap-analysis.md` — keep list mise à jour
-- `wiki/timeline.md` — événement ajouté
-
-Remplacement Balanced → Auto + Natural. Auto analyse l'offre d'emploi et choisit le tone adapté.
+**Agent** : Claude
+**Décision** : Remplacer Balanced/Warm/Formal par Auto/Natural/Formal/Warm. Auto = mode recommandé par défaut, analyse l'offre d'emploi et choisit le tone automatiquement.
+**Pages mises à jour** : concepts/ai-product-model.md, entities/cv-forge.md (archivé depuis), concepts/product-vision.md, wiki/timeline.md
 
 ---
 
@@ -39,14 +83,7 @@ Remplacement Balanced → Auto + Natural. Auto analyse l'offre d'emploi et chois
 
 **Agent** : Claude
 **Fichiers traités** : `rawinput/3_gap_analysis.md`
-**Pages créées** :
-- `wiki/sources/2026-04-10-gap-analysis.md`
-- `wiki/concepts/gap-analysis.md`
-**Pages mises à jour** :
-- `wiki/concepts/product-roadmap.md` — 3 cycles d'exécution + liens gap-analysis
-- `wiki/overview.md` — diagnostic en une phrase, compteurs, lien gap-analysis
-- `wiki/index.md` — +2 pages, +1 source, statistiques
-**Pages archivées** : aucune
+**Pages créées** : concepts/gap-analysis.md, sources/2026-04-10-gap-analysis.md
 
 ---
 
@@ -54,17 +91,7 @@ Remplacement Balanced → Auto + Natural. Auto analyse l'offre d'emploi et chois
 
 **Agent** : Claude
 **Fichiers traités** : `rawinput/1_ideal_benchmark_matrix.md`, `rawinput/2_success_blueprint.md`
-**Pages créées** :
-- `wiki/sources/2026-04-10-benchmark-matrix.md`
-- `wiki/sources/2026-04-10-success-blueprint.md`
-- `wiki/concepts/benchmark-matrix.md`
-- `wiki/concepts/product-vision.md`
-- `wiki/concepts/ai-product-model.md`
-**Pages mises à jour** :
-- `wiki/entities/cv-forge.md` — positionnement, 5 objets produit, benchmark
-- `wiki/overview.md` — +3 thèmes, questions ouvertes enrichies, compteurs
-- `wiki/index.md` — +5 pages, +2 sources, statistiques
-**Pages archivées** : aucune
+**Pages créées** : concepts/benchmark-matrix.md, concepts/product-vision.md, concepts/ai-product-model.md, concepts/kpis.md, sources/2026-04-10-benchmark-matrix.md, sources/2026-04-10-success-blueprint.md
 
 ---
 
@@ -72,69 +99,24 @@ Remplacement Balanced → Auto + Natural. Auto analyse l'offre d'emploi et chois
 
 **Agent** : Claude
 **Fichiers traités** : `rawinput/6_NOTION_ROADMAP.MD`
-**Pages créées** :
-- `wiki/sources/2026-04-10-notion-roadmap-cvforge.md`
-- `wiki/concepts/product-roadmap.md`
-- `wiki/concepts/kpis.md`
-**Pages mises à jour** :
-- `wiki/entities/cv-forge.md` — enrichi avec roadmap phases, stratégie, décisions figées, KPIs
-- `wiki/overview.md` — stratégie produit, phase actuelle, questions ouvertes mises à jour
-- `wiki/index.md` — +3 pages, statistiques mises à jour
-**Pages archivées** : aucune
+**Pages créées** : concepts/product-roadmap.md, sources/2026-04-10-notion-roadmap-cvforge.md
 
 ---
 
 ## [2026-04-09] ingest | Décisions sprint CV Forge — parser, features, bugs
 
 **Agent** : Claude
-**Fichiers traités** : `rawinput/to do.md`
-**Pages créées** :
-- `wiki/sources/2026-04-09-decisions-cvforge-sprint.md`
-- `wiki/entities/cv-forge.md`
-- `wiki/concepts/cv-parsing-pipeline.md`
-- `wiki/concepts/cv-families.md`
-**Pages mises à jour** :
-- `wiki/overview.md` — projet décrit pour la première fois (CV Forge, parser de CVs)
-- `wiki/index.md` — statistiques et nouvelles entrées
-**Pages archivées** : aucune
-**Nettoyage** : suppression de `wiki/plan en attente.md` (doublon), `raw/to do.md` remplacé par la version de rawinput/
+**Fichiers traités** : `rawinput/`
+**Pages créées** : entities/cv-forge.md (archivé depuis), concepts/cv-parsing-pipeline.md, concepts/cv-families.md, sources/2026-04-09-decisions-cvforge-sprint.md, sources/2026-04-09-tweet-karpathy-llm-wiki.md, sources/2026-04-09-wiki-paste-llm-wiki.md
 
 ---
 
 ## [2026-04-09] init | Création du vault twoweeks
 
-**Agent** : Claude (Cowork)
-**Action** : Initialisation de la structure du wiki LLM pour le projet twoweeks.
-
-Fichiers créés :
-- `CLAUDE.md` — schema LLM et workflows
-- `wiki/index.md` — catalogue initial (vide)
-- `wiki/log.md` — ce fichier
-- `wiki/overview.md` — vue d'ensemble initiale
-- `wiki/concepts/llm-wiki-pattern.md` — concept fondateur
-- Structure de dossiers : `raw/`, `raw/assets/`, `wiki/entities/`, `wiki/concepts/`, `wiki/sources/`, `wiki/outputs/`
-
-**Prochaines étapes suggérées** :
-1. Décrire twoweeks dans `wiki/overview.md` (à compléter par l'utilisateur ou via conversation)
-2. Commencer à déposer des sources dans `rawinput/` et lancer un ingest
-3. Configurer Obsidian Web Clipper pour alimenter `rawinput/` facilement
+Initialisation du vault Obsidian + schema LLM wiki v1.
 
 ---
 
 ## [2026-04-09] architecture | Migration v1 → v2 : rawinput/ + gestion temporelle
 
-**Agent** : Claude (Cowork)
-**Action** : Amélioration de l'architecture suite à un commentaire utilisateur sur les limites de la v1.
-
-Deux problèmes identifiés et résolus :
-1. **Performance ingest** : `rawinput/` comme staging zone évite le scan de `raw/` (indépendant de la taille)
-2. **Cohérence temporelle** : frontmatter temporel, archive, timeline pour éviter les mélanges passé/présent/futur
-
-Fichiers créés/modifiés :
-- `CLAUDE.md` → v2 (workflows Supersede, Query temporelle, Lint v2)
-- `rawinput/README.md` — instructions du staging
-- `wiki/archive/` + sous-dossiers + README
-- `wiki/timeline.md` — chronologie des événements projet
-- `wiki/concepts/temporal-management.md` — concept documenté
-- `wiki/outputs/2026-04-09-architecture-v2.md` — tuto et rationale complet
-- `wiki/index.md` → v2
+Migration vers schema v2 : ajout rawinput/ (staging), gestion temporelle (status/horizon/version/superseded_by), wiki/archive/, wiki/timeline.md.

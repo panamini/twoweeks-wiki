@@ -6,7 +6,7 @@
 
 ## Projet : twoweeks
 
-**twoweeks** est une application [à compléter : description courte de l'app]. Ce wiki sert à accumuler et organiser les connaissances nécessaires à sa création et son entretien : décisions de design, recherches utilisateurs, patterns techniques, sources d'inspiration, compétiteurs, et tout autre contexte pertinent.
+**twoweeks** (twoweeks.ai) est un outil haute performance de gestion de candidatures. Tagline : "Finish. Faster." Positionnement : "Anti-Work tool for people who do great work." Modules internes : CVForge (génération CV) et ProposalForge (cover letters & proposals). Ce wiki sert à accumuler et organiser les connaissances nécessaires à sa création et son entretien : décisions de design, recherches utilisateurs, patterns techniques, sources d'inspiration, compétiteurs, et tout autre contexte pertinent.
 
 ---
 

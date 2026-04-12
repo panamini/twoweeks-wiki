@@ -1,10 +1,10 @@
 ---
-title: "Index du Wiki — twoweeks / CV Forge"
+title: "Index du Wiki — twoweeks"
 category: overview
 updated: 2026-04-12
 ---
 
-# Index du Wiki · twoweeks / CV Forge (v2)
+# Index du Wiki · twoweeks (v2)
 
 Catalogue complet de toutes les pages **actives** du wiki (status: current ou planned). Les pages archivées sont dans `wiki/archive/`.
 
@@ -14,7 +14,7 @@ Catalogue complet de toutes les pages **actives** du wiki (status: current ou pl
 
 | Fichier | Description | Status |
 |---------|-------------|--------|
-| [[overview]] | Synthèse générale — CV Forge, état du projet, décisions actives | current |
+| [[overview]] | Synthèse générale — twoweeks, état du projet, décisions actives | current |
 | [[log]] | Journal chronologique des opérations wiki | — |
 | [[timeline]] | Chronologie des événements du projet | — |
 
@@ -24,7 +24,7 @@ Catalogue complet de toutes les pages **actives** du wiki (status: current ou pl
 
 | Page | Résumé | Status | Version |
 |------|--------|--------|---------|
-| [[entities/cv-forge\|CV Forge]] | L'application — parser, normalisation et édition de CVs | current | v2 |
+| [[entities/twoweeks\|twoweeks]] | L'application — "Finish. Faster." Anti-Work tool for people who do great work. Modules : CVForge, ProposalForge | current | v2 |
 
 ---
 
@@ -32,6 +32,7 @@ Catalogue complet de toutes les pages **actives** du wiki (status: current ou pl
 
 | Page | Résumé | Status | Tags |
 |------|--------|--------|------|
+| [[concepts/brand-voice\|Brand Voice]] | Voix staccato, Corporate Noir, règles de copie UI, anti-AI prefix | current | brand, voice, copy |
 | [[concepts/cv-parsing-pipeline\|CV Parsing Pipeline]] | Stratégie d'évolution du parser : heuristiques vs JSON structuré, POC hybride | current | parser, architecture |
 | [[concepts/cv-families\|CV Families]] | Familles de sections CV, stabilité, contamination, fixtures synthétiques | current | parser, sections |
 | [[concepts/parsing-poc-progress\|Parsing POC Progress]] | État du POC parsing par famille (Experience/Education/Languages/Skills ✅, IDENTITY/CONTACT 🟡) | current | parsing, poc, familles |
@@ -50,16 +51,17 @@ Catalogue complet de toutes les pages **actives** du wiki (status: current ou pl
 
 | Page | Type | Date | Status |
 |------|------|------|--------|
-| [[sources/2026-04-09-decisions-cvforge-sprint\|Décisions sprint CV Forge]] | conversation | 2026-04-09 | current |
+| [[sources/2026-04-09-decisions-cvforge-sprint\|Décisions sprint — parsing & features]] | conversation | 2026-04-09 | current |
 | [[sources/2026-04-09-tweet-karpathy-llm-wiki\|Tweet Karpathy — LLM Knowledge Bases]] | tweet | 2026-04-09 | current |
 | [[sources/2026-04-09-wiki-paste-llm-wiki\|Wiki Paste — LLM Wiki]] | document | 2026-04-09 | current |
-| [[sources/2026-04-10-notion-roadmap-cvforge\|Notion Roadmap — CV Forge]] | document | 2026-04-10 | current |
+| [[sources/2026-04-10-notion-roadmap-cvforge\|Notion Roadmap — CVForge]] | document | 2026-04-10 | current |
 | [[sources/2026-04-10-benchmark-matrix\|Ideal Benchmark Matrix — Path A]] | document | 2026-04-10 | current |
 | [[sources/2026-04-10-success-blueprint\|Success Blueprint — Path B]] | document | 2026-04-10 | current |
 | [[sources/2026-04-10-gap-analysis\|Gap Analysis — Path C]] | document | 2026-04-10 | current |
 | [[sources/2026-04-11-cv-parsing-poc-state\|CV Parsing POC State — Checkpoint]] | spec | 2026-04-11 | current |
 | [[sources/2026-04-11-todo-sprint\|Sprint Notes — 2026-04-11]] | conversation | 2026-04-11 | current |
 | [[sources/2026-04-11-jessica-helen-poc-state\|Jessica/Helen POC State]] | document | 2026-04-11 | current |
+| [[sources/2026-04-12-twoweeks-brand-bible\|Brand Bible 2026 — twoweeks.ai]] | spec | 2026-04-12 | current |
 
 ---
 
@@ -83,7 +85,7 @@ Catalogue complet de toutes les pages **actives** du wiki (status: current ou pl
 
 | Page | Résumé |
 |------|--------|
-| [[to do list/kanban\|Kanban Sprint]] | Backlog / En cours / Bugs ouverts / Done — sprint actuel CV Forge |
+| [[to do list/kanban\|Kanban Sprint]] | Backlog / En cours / Bugs ouverts / Done — sprint actuel |
 
 ---
 
@@ -97,14 +99,16 @@ Catalogue complet de toutes les pages **actives** du wiki (status: current ou pl
 
 ## Archive
 
-*(vide — aucune page archivée pour l'instant)*
+| Page | Archivée le | Supersédée par |
+|------|-------------|----------------|
+| [[archive/entities/cv-forge\|CV Forge (ancienne entité)]] | 2026-04-12 | [[entities/twoweeks]] |
 
 ---
 
 ## Statistiques
 
-- **Pages actives** : 27 (3 overview, 1 entité, 11 concepts, 10 sources, 1 tech, 1 howto, 1 kanban, 1 output)
-- **Pages archivées** : 0
-- **Sources dans `raw/`** : 9
+- **Pages actives** : 28 (3 overview, 1 entité, 12 concepts, 11 sources, 1 tech, 1 howto, 1 kanban, 1 output)
+- **Pages archivées** : 1
+- **Sources dans `raw/`** : 10
 - **Sources en attente dans `rawinput/`** : 0
 - **Dernière mise à jour** : 2026-04-12

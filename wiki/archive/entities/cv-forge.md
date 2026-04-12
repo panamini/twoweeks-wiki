@@ -4,10 +4,10 @@ category: entity
 tags: [cvforge, app, product, parser, cv, roadmap, vision, benchmark]
 created: 2026-04-09
 updated: 2026-04-10
-status: current
+status: archived
 valid_from: 2026-04-09
-valid_until:
-superseded_by:
+valid_until: 2026-04-12
+superseded_by: [[twoweeks]]
 horizon: present
 version: v2
 sources: [2026-04-09-decisions-cvforge-sprint, 2026-04-10-notion-roadmap-cvforge, 2026-04-10-success-blueprint, 2026-04-10-benchmark-matrix]
