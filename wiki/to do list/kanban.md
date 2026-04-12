@@ -30,7 +30,7 @@ updated: 2026-04-12
 
 ## 🟡 En cours
 
-- [ ] **IDENTITY/CONTACT POC hybride** — schema-first. Fixes acceptés : Jessica address/location recovery, Anne title-as-location guard, Linda location pass-through, Helen name fix, Helen desired-position fix. **Ne pas rouvrir ces slices sans nouvelle contradiction live.**
+- [x] **IDENTITY/CONTACT POC hybride** — schema-first. Fixes acceptés : Jessica address/location recovery, Anne title-as-location guard, Linda location pass-through, Helen name fix, Helen desired-position fix. **Ne pas rouvrir ces slices sans nouvelle contradiction live.**
 
 ---
 
