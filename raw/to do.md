@@ -19,7 +19,10 @@ make the resume and cv ATS compliants, the resume is onoe page, add a mod e cv m
 
 pdf export react 
 ### ) The current export entrypoint is still preview-driven
+The biggest blocker is the PDF path:
 
+- current PDF = preview DOM → `html2canvas` → PNG slices → `jsPDF`
+- required PDF = canonical model → text-first PDF renderer
 `CvForge.tsx` currently exports by calling `printFirstMatchingNodeAsPdf(...)` against the preview container, which means the export source is the rendered preview, not a canonical export serializer built from `CvDocument.sections`.
 
 For your requirements, that should be inverted:
@@ -28,3 +31,44 @@ For your requirements, that should be inverted:
 - then **PDF / DOCX / Markdown / JSON renderers** from that model
 - never user-facing export directly from preview DOM
 - never user-facing export from raw parser JSON
+  
+  Assuming you want this branch truly clean and reviewable, the intentional scope should be roughly:
+
+- `my-app/package.json`
+- lockfile
+- one new canonical export serialization module
+- one PDF renderer from canonical export model
+- one DOCX renderer from canonical export model
+- one Markdown renderer from canonical export model
+- one normalized JSON exporter
+- `my-app/src/components/ProfileReviewCard.tsx`
+- `my-app/src/pages/CvForge.tsx`
+- focused export tests
+
+And **not** unrelated parser/import behavior or unrelated toolbar/UI cleanups.
+
+---
+
+## ATS rules I would enforce in code/templates
+
+These should be hardcoded in the export layer, not left to preview styling:
+
+- single-column only
+- no tables
+- no sidebars
+- no icons, graphics, charts, skill bars, timelines, decorative widgets
+- no essential info in headers/footers
+- standard section headings only
+- deterministic section/text order
+- simple bullets only
+- no duplicate bullets / repeated sentences
+- ATS-safe date formatting like `MMM YYYY – MMM YYYY` and `Present`
+- DOCX default font: **Arial**
+- PDF default font: **Helvetica** or equivalent sans-serif
+- body: **11 pt**
+- contact line: **10.5–11 pt**
+- section headings: **15–16 pt bold**
+- candidate name: **24–28 pt bold**
+- restrained spacing, black/dark neutral text only
+- recruiter-safe filenames
+- no preview palette / accent inheritance in ATS export mode
