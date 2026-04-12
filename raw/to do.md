@@ -4,19 +4,13 @@ pour l'instant il a une legacy section nested , verifier que les autrees section
 **asking Codex to make synthetic CVs**
 
 
-### Robert
 
-Le contenu est encore imparfait métier :
-
-- `education` contient une adresse
-- il reste une section texte boilerplate copyright Qwikresume
 
 
 - `contact.linkedin` contient en fait un lien Instagram
 - `contact.website` pointe vers `enhancv.com`
 - `languagesText` dit `English, French, German, Arabic`  
     alors que `languages` contient `English, Dutch, French`
-
 
 
 

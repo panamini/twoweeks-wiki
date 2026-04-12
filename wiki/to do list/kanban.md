@@ -15,9 +15,9 @@ updated: 2026-04-12
 ## 🔵 Backlog
 
 ### Parsing — familles restantes
-- [ ] **EDUCATION enrichissement** — enrichir les champs parsés (dates, diplômes, institutions)
-- [ ] **SUMMARY family** — schema-first ou heuristique selon résultat IDENTITY POC
-- [ ] **ACHIEVEMENTS family** — extraction des accomplissements chiffrés
+- [x] **EDUCATION enrichissement** — enrichir les champs parsés (dates, diplômes, institutions)
+- [x] **SUMMARY family** — schema-first ou heuristique selon résultat IDENTITY POC
+- [x] **ACHIEVEMENTS family** — extraction des accomplissements chiffrés
 
 ### Features produit
 - [ ] **Warning navigation pendant import** — quand l'utilisateur tente de changer de page pendant l'import, warning ou import background. Décision : friction minimale vs background (best practice UX 2026)
