@@ -4,5 +4,5 @@
   "newLinkFormat": "shortest",
   "useMarkdownLinks": false,
   "alwaysUpdateLinks": true,
-  "promptDelete": true
+  "promptDelete": false
 }
