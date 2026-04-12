@@ -4,36 +4,8 @@ pour l'instant il a une legacy section nested , verifier que les autrees section
 **asking Codex to make synthetic CVs**
 
 
-
-
-
-- `contact.linkedin` contient en fait un lien Instagram
-- `contact.website` pointe vers `enhancv.com`
-- `languagesText` dit `English, French, German, Arabic`  
-    alors que `languages` contient `English, Dutch, French`
-
+bouton import pdf txt qui branche depuis structureupload, est ce qu'on en fait un fallback si mistral marche pas ? ou on le surprpime ? en tout cas je veux le supprimer de l'ui
 
 
 —  
 Ajoutez **Download raw** **.md** et **Download normalized** **.json**.  
-
-Continuez encore un peu votre approche actuelle pour finir les plus gros bugs visibles.
-
-En parallèle, faites un **POC sur une seule famille** en extraction structurée JSON, par exemple:
-
-- identité/contact
-  
-
-
-
-- ou education
-- ou experience
-
-Comparez:
-
-- coût d’implémentation
-- stabilité
-- taux de duplication
-- facilité à supporter le multilingue
-
-  
