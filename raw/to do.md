@@ -12,3 +12,19 @@ bouton import pdf txt qui branche depuis structureupload, est ce qu'on en fait u
 —  
 Ajoutez **Download raw** **.md** et **Download normalized** **.json**.  
 make the resume and cv ATS compliants, the resume is onoe page, add a mod e cv multipage, or froce one page. 
+
+
+
+
+
+pdf export react 
+### ) The current export entrypoint is still preview-driven
+
+`CvForge.tsx` currently exports by calling `printFirstMatchingNodeAsPdf(...)` against the preview container, which means the export source is the rendered preview, not a canonical export serializer built from `CvDocument.sections`.
+
+For your requirements, that should be inverted:
+
+- **canonical structured CV model first**
+- then **PDF / DOCX / Markdown / JSON renderers** from that model
+- never user-facing export directly from preview DOM
+- never user-facing export from raw parser JSON
