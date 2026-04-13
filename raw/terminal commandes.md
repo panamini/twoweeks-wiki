@@ -1,3 +1,10 @@
+Use `./run.sh up --ui` when you are doing UI work or reproducing the shared-cloud path intentionally.
+
+  
+
+Use `./run.sh up --ui --local-origin --local-convex` when you are debugging parser selection, local OCR behavior, or any end-to-end resume import issue where local parser changes must be exercised.
+
+
 
 kill les ports actifs convex
 
