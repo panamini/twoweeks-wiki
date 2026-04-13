@@ -1,3 +1,21 @@
+
+Do not write a brand new modular replacement for `ProfileReviewCard.tsx`.
+
+First implement the feature as small safe patches in the existing file.
+
+Only extract tiny isolated pieces if clearly safe, such as:
+- Issues button / badge
+- Issues drawer section rendering
+- Export controls group
+- Small pure helpers for issue derivation
+
+Do not rewrite the full component or reorganize major state/prop wiring in this pass.
+
+If modularization is still desirable after the feature lands, do it in a separate follow-up refactor branch.
+
+
+
+the page im in is name weirdly this instead of adapting to the new parsing cv name when i import a cv name shoudl change not keep the same old one
 -modifier le add ur own section pour qu'il fasse partie du vrai blockrenderer comme summary ou EXPERIENCE, d'ailleur le add ur own permettra de choisir d'ajouter un section type skill , experience, summary. 
 pour l'instant il a une legacy section nested , verifier que les autrees sections n'ont pas le meme probleme, hobbies should be like skill section remove exsitaning and replce,projects(become experience sections tye) ,additional information(become section summary style) ,hobbies(become skill style)
 
