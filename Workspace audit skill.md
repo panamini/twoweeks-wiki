@@ -4,7 +4,7 @@ This is the ECC-native answer to setup-audit plugins. It does not modify files u
 
 ## When to Use
 
-- User says "set up Claude Code", "recommend automations", "what plugins or MCPs should I use?", or "what am I missing?"
+- User says "set up Codex", "recommend automations", "what plugins or MCPs should I use?", or "what am I missing?"
 - Auditing a machine or repo before installing more skills, hooks, or connectors
 - Comparing official marketplace plugins against ECC-native coverage
 - Reviewing .env, .mcp.json, plugin settings, or connected-app surfaces to find missing workflow layers
