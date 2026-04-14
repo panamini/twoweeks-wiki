@@ -22,7 +22,8 @@ related: [[concepts/cv-parsing-pipeline]], [[concepts/cv-families]], [[overview]
 
 ## Brand
 
-**Tagline** : Finish. Faster.
+**Tagline**s : Finish. Faster. Just quit. One click. Two weeks. Done. 
+Grab your exit plan, just quit.// Job done. Just quit. 
 
 **Positionnement** : outil "Anti-Work" pour les gens qui font un excellent travail et veulent aller plus vite sans subir la friction des outils RH mous.
 
