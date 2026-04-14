@@ -10,8 +10,8 @@ valid_until:
 superseded_by:
 horizon: present
 version: v1
-sources: [pipeline-note-2026-04-12, 2026-04-14-structured-parsing-canonical-truth, 2026-04-14-local-dev-vs-remote-parser-architecture, 2026-04-14-run-sh-modes, 2026-04-14-run-sh-quick-note]
-related: [[concepts/cv-parsing-pipeline]], [[concepts/parsing-poc-progress]], [[entities/twoweeks]], [[tech/local-vs-remote-parser-architecture]]
+sources: [pipeline-note-2026-04-12, 2026-04-14-structured-parsing-canonical-truth, 2026-04-14-local-dev-vs-remote-parser-architecture, 2026-04-14-run-sh-modes, 2026-04-14-run-sh-quick-note, 2026-04-14-export-pipeline-brief-ocr-to-ats-styled-output]
+related: [[concepts/cv-parsing-pipeline]], [[concepts/parsing-poc-progress]], [[entities/twoweeks]], [[tech/local-vs-remote-parser-architecture]], [[tech/export-pipeline]]
 ---
 
 # Import OCR Pipeline — Call Path
@@ -38,6 +38,8 @@ StructuredUploadButton.tsx
 ## Vérité canonique active
 
 Quand les sections structurées existent et sont valides, elles sont la vérité canonique du produit. Les tableaux top-level sont des vues dérivées ou des fallbacks de transition.
+
+Cette même donnée normalisée alimente ensuite le pipeline d'export. Le call path OCR/import ne doit pas bifurquer vers le preview DOM pour fabriquer les fichiers finaux.
 
 ---
 
@@ -71,5 +73,6 @@ Le langage opérateur de référence passe désormais par `run.sh local`, `run.s
 - [[concepts/cv-parsing-pipeline]] — stratégie d'évolution du parser
 - [[concepts/parsing-poc-progress]] — état par famille
 - [[tech/local-vs-remote-parser-architecture]] — séparation local/cloud
+- [[tech/export-pipeline]] — pipeline document final
 - [[APP-launcher-command]] — commandes de debug local
 - [[howto/cloudflare-zero-trust-tunnel]] — runbook tunnel parser.dasti.ai

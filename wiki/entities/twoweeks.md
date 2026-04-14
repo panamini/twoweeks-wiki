@@ -10,7 +10,7 @@ valid_until:
 superseded_by:
 horizon: present
 version: v2
-sources: [2026-04-09-decisions-cvforge-sprint, 2026-04-10-notion-roadmap-cvforge, 2026-04-10-success-blueprint, 2026-04-10-benchmark-matrix, 2026-04-12-twoweeks-brand-bible, 2026-04-14-structured-parsing-canonical-truth, 2026-04-14-clerk-chrome-extension-addon, 2026-04-14-ats-compliant-score, 2026-04-14-run-sh-quick-note]
+sources: [2026-04-09-decisions-cvforge-sprint, 2026-04-10-notion-roadmap-cvforge, 2026-04-10-success-blueprint, 2026-04-10-benchmark-matrix, 2026-04-12-twoweeks-brand-bible, 2026-04-14-structured-parsing-canonical-truth, 2026-04-14-clerk-chrome-extension-addon, 2026-04-14-ats-compliant-score, 2026-04-14-run-sh-quick-note, 2026-04-14-export-pipeline-brief-ocr-to-ats-styled-output]
 related: [[concepts/cv-parsing-pipeline]], [[concepts/cv-families]], [[overview]], [[concepts/product-roadmap]], [[concepts/kpis]], [[concepts/product-vision]], [[concepts/benchmark-matrix]], [[concepts/ai-product-model]], [[concepts/brand-voice]], [[concepts/ats-safety]]
 ---
 
@@ -49,6 +49,10 @@ Le cap actif est désormais :
 `OCR -> extraction structurée par famille -> normalisation -> cvDocument.sections[*].structuredContent -> vues dérivées`
 
 Les champs top-level legacy sont des vues de compatibilité ou des fallbacks, pas la vérité durable.
+
+### Vérité export
+
+Les exports finaux CV/proposal dérivent des données normalisées via des builders et renderers d'export dédiés. Le preview DOM n'est pas la source d'export finale.
 
 ### Architecture de stockage Convex
 

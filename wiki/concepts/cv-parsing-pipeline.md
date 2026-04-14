@@ -10,8 +10,8 @@ valid_until:
 superseded_by:
 horizon: present
 version: v1
-sources: [2026-04-09-decisions-cvforge-sprint, 2026-04-11-cv-parsing-poc-state, 2026-04-14-structured-parsing-canonical-truth]
-related: [[concepts/cv-families]], [[concepts/parsing-poc-progress]], [[tech/import-ocr-pipeline]], [[entities/twoweeks]]
+sources: [2026-04-09-decisions-cvforge-sprint, 2026-04-11-cv-parsing-poc-state, 2026-04-14-structured-parsing-canonical-truth, 2026-04-14-export-pipeline-brief-ocr-to-ats-styled-output]
+related: [[concepts/cv-families]], [[concepts/parsing-poc-progress]], [[tech/import-ocr-pipeline]], [[tech/export-pipeline]], [[entities/twoweeks]]
 ---
 
 # CV Parsing Pipeline
@@ -29,6 +29,8 @@ Stratégie active d'évolution du parser CV. Le cap n'est ni un retour à un pip
 5. Vues dérivées pour exports, compatibilité et affichages secondaires
 
 Quand les sections structurées existent et sont valides, elles constituent la vérité canonique produit.
+
+Les exports finaux doivent donc dériver de cette donnée normalisée via des builders d'export, et non du preview DOM monté.
 
 ---
 

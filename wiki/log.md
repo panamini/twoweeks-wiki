@@ -166,3 +166,19 @@ Migration vers schema v2 : ajout rawinput/ (staging), gestion temporelle (status
 - `wiki/timeline.md`
 - `wiki/index.md`
 **Pages archivées** : aucune
+
+## [2026-04-14] ingest | export pipeline brief — OCR to ATS / styled output
+
+**Agent** : Codex
+**Fichiers traités** : `rawinput/Export Pipeline Brief  OCR to ATS Styled Output.md`
+**Pages créées** :
+- `wiki/sources/2026-04-14-export-pipeline-brief-ocr-to-ats-styled-output.md`
+- `wiki/tech/export-pipeline.md`
+**Pages mises à jour** :
+- `wiki/tech/import-ocr-pipeline.md`
+- `wiki/concepts/cv-parsing-pipeline.md`
+- `wiki/concepts/ats-safety.md`
+- `wiki/entities/twoweeks.md`
+- `wiki/overview.md`
+- `wiki/index.md`
+**Pages archivées** : aucune
