@@ -29,6 +29,7 @@ related: [[entities/twoweeks]], [[concepts/cv-parsing-pipeline]], [[concepts/cv-
 - [ ] **Mapper les sections legacy** — `projects` -> experience style, `additional information` -> summary style, `hobbies` -> skill style.
 - [ ] **Observabilité + régression parser** — métriques, vrais CVs, derniers durcissements bruit template/liens/contact.
 - [ ] **Paddle cleanup** — supprimer les références Paddle sans toucher au workflow actif parser/Convex.
+- [ ] 
 
 ---
 
@@ -46,6 +47,13 @@ related: [[entities/twoweeks]], [[concepts/cv-parsing-pipeline]], [[concepts/cv-
 - [ ] verify if proposal are saved in the library. and persistent. in convex. make autosave default for generated proposal. 
 - [ ] export ats and exportpd  style and docx should be accesible from the library proposal
 - [ ] ./run.sh local-convex  is not working fix it
+- [ ] Structured upload routing consistency
+- Investigate why CV import in `run.sh local` still routes through cloud Convex → parser.dasti.ai
+- Decide the intended behavior:
+  - either `local` should support fully local structured upload
+  - or `local` should clearly not support import until `local-convex` is fixed
+- Fix `local-convex` bootstrap or add a direct local parser path for structured upload
+	- Goal: import CV, OCR parse, and export should all behave consistently in local mode
 ---
 
 ## Déférés
