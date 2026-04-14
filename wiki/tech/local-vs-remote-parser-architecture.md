@@ -10,7 +10,7 @@ valid_until:
 superseded_by:
 horizon: present
 version: v1
-sources: [2026-04-14-local-dev-vs-remote-parser-architecture, 2026-04-14-run-sh-modes]
+sources: [2026-04-14-local-dev-vs-remote-parser-architecture, 2026-04-14-run-sh-modes, 2026-04-14-run-sh-quick-note]
 related: [[tech/import-ocr-pipeline]], [[howto/local-parser-operations]], [[entities/twoweeks]]
 ---
 
@@ -20,16 +20,29 @@ Référence technique pour distinguer le chemin local de debug du chemin cloud/p
 
 ---
 
+## Mode local quotidien
+
+**Stack** : frontend local + Convex cloud/default + parser local
+
+**Usage** :
+- travail local normal
+- vérification rapide du parser/export sans tunnel
+- boucle courte côté app + parser
+
+**Commande de référence** : `./run.sh local`
+
+---
+
 ## Mode local complet
 
 **Stack** : frontend local + Convex local + parser local
 
 **Usage** :
-- debug parser/OCR
-- vérification du comportement Mistral sans bruit tunnel
-- reproduction end-to-end locale
+- debug parser/OCR end-to-end
+- debug backend Convex local
+- reproduction locale complète d'un flux structuré
 
-**Commande de référence** : `./run.sh up --ui --local-origin --local-convex`
+**Commande de référence** : `./run.sh local-convex`
 
 ---
 
@@ -43,6 +56,8 @@ Référence technique pour distinguer le chemin local de debug du chemin cloud/p
 - actions Convex cloud parlant à un serveur parser accessible publiquement
 
 **Variable clé** : `CONVEX_PARSER_URL=https://your-parser.example.com`
+
+**Commande de référence côté dev** : `./run.sh tunnel`
 
 ---
 

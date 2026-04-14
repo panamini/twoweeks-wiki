@@ -62,3 +62,10 @@ Le pipeline parsing est désormais documenté comme architecture structurée par
 **Impact** : [[tech/local-vs-remote-parser-architecture]], [[APP-launcher-command]], [[tech/import-ocr-pipeline]]
 
 Le debug parser/OCR doit passer par la boucle locale complète `frontend local + Convex local + parser local`. En preview/prod, le parser doit rester une URL publique configurée par env ; le localhost ne doit jamais fuiter hors du mode dev.
+
+## [2026-04-14] decision | `run.sh` devient l'entrée opérateur de référence
+**Type** : decision
+**Version** : v1
+**Impact** : [[APP-launcher-command]], [[tech/local-vs-remote-parser-architecture]], [[tech/import-ocr-pipeline]], [[entities/twoweeks]]
+
+`run.sh` devient la source de vérité opérationnelle pour lancer le stack. La documentation active privilégie désormais `./run.sh local`, `./run.sh local-convex` et `./run.sh tunnel`, et non les longues variantes `up --ui --local-origin --local-convex`.

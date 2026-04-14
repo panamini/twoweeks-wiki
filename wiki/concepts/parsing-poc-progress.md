@@ -3,20 +3,20 @@ title: "Parsing POC Progress — État par famille"
 category: concept
 tags: [parsing, poc, familles, fixtures, experience, education, languages, skills, identity, contact]
 created: 2026-04-11
-updated: 2026-04-12
+updated: 2026-04-14
 status: current
 valid_from: 2026-04-11
 valid_until:
 superseded_by:
 horizon: present
 version: v1
-sources: [2026-04-11-cv-parsing-poc-state]
+sources: [2026-04-11-cv-parsing-poc-state, 2026-04-14-run-sh-quick-note]
 related: [[cv-parsing-pipeline]], [[cv-families]], [[cv-forge]]
 ---
 
 # Parsing POC Progress — État par famille
 
-État du POC parsing hybride sur le live path : `./run.sh up --ui` + Convex `cloud/default` + `https://parser.dasti.ai` + route `/mistral-ocr/parse`.
+État du POC parsing hybride sur le live path : `./run.sh tunnel` + Convex `cloud/default` + `https://parser.dasti.ai` + route `/mistral-ocr/parse`.
 
 **Règle absolue : ne pas rouvrir un slice accepté sans nouvelle contradiction live.**
 

@@ -1,98 +1,123 @@
 
-  
-## `./run.sh local`  
-- starts the app in true local mode  
-- frontend points to `http://127.0.0.1:8001`  
-- starts the parser locally in the validated image-runtime mode  
-- does **not** use the workspace bind mount by default  
-- should boot in the mode where PDF/DOCX export actually works  
-- cloud Convex by default unless there is a clearly separate advanced mode  
-  
-## `./run.sh tunnel`  
-- starts the app in the old tunnel/edge mode like before  
-- frontend points to `https://parser.dasti.ai`  
-- should not force me into the long flag version  
-- should behave like the previous normal remote/dev workflow  
-  
-## ./run.sh down`
+---
+title: "Local Parser Operations"
+category: howto
+tags: [run.sh, parser, local, convex, tunnel, devops]
+created: 2026-04-14
+updated: 2026-04-14
+status: current
+valid_from: 2026-04-14
+valid_until:
+superseded_by:
+horizon: present
+version: v1
+sources: [2026-04-14-run-sh-modes, 2026-04-14-run-sh-quick-note, 2026-04-14-docker-commands]
+related: [[tech/local-vs-remote-parser-architecture]], [[tech/import-ocr-pipeline]], [[entities/twoweeks]]
+---
 
-Normal close/stop command.  
-It should:
+# Local Parser Operations
 
-- stop Vite
-- stop local Convex if started by `run.sh`
-- stop parser container started by `run.sh`
-- stop cloudflared if `run.sh tunnel` started it
-- keep images, caches, and repo state intact
-  
-## `./run.sh reset`  
-- cleans up stale local dev state safely  
-- stop/remove stale parser container if needed  
-- stop stale cloudflared if needed  
-- clear stale vite/convex processes if needed  
-- this should make the next `local` or `tunnel` boot clean
+`run.sh` est le point d'entrée opérateur du stack de dev. Les commandes courtes `local`, `local-convex` et `tunnel` sont la référence documentaire ; les variantes longues `up --ui ...` restent des détails d'implémentation du script.
 
+## Commandes de référence
 
-`./run.sh help
+```bash
+./run.sh local
+./run.sh local-convex
+./run.sh tunnel
+./run.sh down
+./run.sh reset
+./run.sh status
+./run.sh logs
+./run.sh build-parser
+```
 
-
-`local-convex` just means:
-
-- instead of talking to your usual remote Convex deployment,
-- the app starts a **local Convex dev backend** on your machine.
-
-## In simple terms
+## Signification des modes
 
 ### `./run.sh local`
 
-- local parser
-- app points to local parser
-- **Convex stays on the normal online/default deployment**
+- workflow quotidien recommandé
+- démarre Vite
+- démarre le parser local en runtime image export-capable
+- pointe le frontend sur `http://127.0.0.1:8001`
+- garde Convex sur le déploiement online/default
+- ne doit pas utiliser le workspace mount parser par défaut
 
 ### `./run.sh local-convex`
 
-- local parser
-- app points to local parser
-- **Convex also runs locally on your machine**
+- même base que `local`
+- démarre aussi Convex local
+- mode avancé réservé au debug backend Convex
 
 ### `./run.sh tunnel`
 
-- app uses the tunnel/edge parser flow like before
-- Convex stays on the normal online/default deployment unless explicitly changed
+- workflow edge/tunnel historique
+- démarre Vite
+- pointe le frontend sur `PARSER_ORIGIN` (`https://parser.dasti.ai` par défaut)
+- démarre `cloudflared` si nécessaire
+- garde Convex sur le déploiement online/default sauf changement explicite
 
-## So do you need `local-convex`?
+## Commandes de cycle de vie
 
-Probably **no**, unless you are actively developing/debugging Convex backend functions locally.
+### `./run.sh down`
 
-For your normal use, the right command is likely:
+- arrêt normal
+- stoppe Vite
+- stoppe Convex local si `run.sh` l'a lancé
+- stoppe le parser si `run.sh` l'a lancé
+- stoppe `cloudflared` si le mode tunnel l'a lancé
+- conserve images, caches et état du repo
 
-./run.sh local
+### `./run.sh reset`
 
-or
+- cleanup de reprise, non destructif
+- fait ce que `down` fait déjà
+- supprime les conteneurs parser/cloudflared obsolètes
+- tue les processus Vite/Convex résiduels
+- nettoie `tmp/dev-stack` et les logs temporaires
+- ne supprime ni images Docker, ni `node_modules`
 
-./run.sh tunnel
+### `./run.sh status`
 
-## Good mental model
+Affiche rapidement :
+
+- statut parser
+- origine parser active
+- statut Vite
+- mode Convex
+- statut tunnel si pertinent
+
+### `./run.sh logs`
+
+Affiche rapidement les logs parser.
+
+### `./run.sh build-parser`
+
+Chemin de rebuild explicite. `local` et `tunnel` ne doivent pas rebuild l'image parser à chaque lancement.
+
+## Modèle mental
 
 - **parser** = OCR / export / file-processing service
-- **Convex** = app backend/database/actions
-- `local-convex` is only for backend dev work on Convex itself
+- **Convex** = backend applicatif / database / actions
+- `local-convex` = besoin ponctuel de debug backend local, pas le workflow quotidien
 
-- `./run.sh local` → fast start, no rebuild by default
-- `./run.sh local-convex` → same, plus local Convex
-- `./run.sh tunnel` → fast start, no rebuild by default
-- `./run.sh build-parser` → explicit rebuild
-- `./run.sh down` → normal stop
-- `./run.sh reset` → stronger cleanup, non-destructive
-- `./run.sh status` → quick state
-- `./run.sh logs` → parser logs
+## Règles runtime importantes
 
-### Runtime behavior
+- Le boot normal doit rester rapide.
+- `local` et `tunnel` utilisent le runtime image export-capable par défaut.
+- Le workspace mount parser doit rester explicite uniquement.
+- La source de vérité export reste la donnée normalisée, pas le preview DOM.
 
-- `local` and `tunnel` should use the **validated export-capable image**
-- if the image is missing, build once
-- if the image looks stale, show a clear warning:
-    - “parser image may be stale, run `./run.sh build-parser`”
-- optional:
-    - `./run.sh local --rebuild`
-    - `./run.sh tunnel --rebuild`
+## Vérification rapide
+
+Le script source de vérité actuel supporte bien :
+
+- `./run.sh local`
+- `./run.sh local-convex`
+- `./run.sh tunnel`
+- `./run.sh down`
+- `./run.sh reset`
+- `./run.sh status`
+- `./run.sh logs`
+
+Voir aussi : [[tech/local-vs-remote-parser-architecture]], [[tech/import-ocr-pipeline]]

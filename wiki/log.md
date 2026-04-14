@@ -147,3 +147,22 @@ Migration vers schema v2 : ajout rawinput/ (staging), gestion temporelle (status
 - `wiki/index.md`
 **Pages archivées** :
 - aucune
+
+## [2026-04-14] ingest | run.sh quick note — main dev entrypoint
+
+**Agent** : Codex
+**Fichiers traités** : `rawinput/RUN.SH QUICK NOTE.md`
+**Pages créées** :
+- `wiki/sources/2026-04-14-run-sh-quick-note.md`
+**Pages mises à jour** :
+- `wiki/howto/APP-launcher-command.md`
+- `wiki/tech/local-vs-remote-parser-architecture.md`
+- `wiki/tech/import-ocr-pipeline.md`
+- `wiki/entities/twoweeks.md`
+- `wiki/concepts/parsing-poc-progress.md`
+- `wiki/to do list/kanban.md`
+- `wiki/howto/cloudflare-zero-trust-tunnel.md`
+- `wiki/overview.md`
+- `wiki/timeline.md`
+- `wiki/index.md`
+**Pages archivées** : aucune

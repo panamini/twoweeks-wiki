@@ -3,15 +3,15 @@ title: "Cloudflare Zero Trust + Tunnel — Runbook parser.dasti.ai"
 category: howto
 tags: [cloudflare, zero-trust, tunnel, parser, devops, infrastructure, dasti]
 created: 2026-04-12
-updated: 2026-04-12
+updated: 2026-04-14
 status: current
 valid_from: 2026-04-12
 valid_until:
 superseded_by:
 horizon: present
 version: v1
-sources: [howto-tunnel-2026-04-12]
-related: [[tech/import-ocr-pipeline]], [[entities/cv-forge]]
+sources: [howto-tunnel-2026-04-12, 2026-04-14-run-sh-quick-note]
+related: [[tech/import-ocr-pipeline]], [[entities/twoweeks]], [[APP-launcher-command]]
 ---
 
 # Cloudflare Zero Trust + Tunnel — Runbook `parser.dasti.ai`
@@ -24,7 +24,7 @@ Runbook opérationnel pour configurer et maintenir la protection Cloudflare Zero
 
 ```bash
 cp .env.local.example .env.local   # remplir les valeurs
-./run.sh up --ui
+./run.sh tunnel
 cd my-app && CONVEX_DEPLOYMENT=dev:neat-starfish-33 npx --yes convex run --push actions/_probeMistral:probe
 ./scripts/convex-logs-last-rid.sh
 ./scripts/convex-logs-rid.sh <RID>
@@ -126,7 +126,8 @@ npx convex env set CONVEX_PARSER_URL https://parser.dasti.ai
 npx convex env set CF_ACCESS_CLIENT_ID  <CLIENT_ID>.access
 npx convex env set CF_ACCESS_CLIENT_SECRET <CLIENT_SECRET>
 
-./run.sh down || true && OPEN_BROWSER=0 ./run.sh up --ui
+./run.sh down || true
+OPEN_BROWSER=0 ./run.sh tunnel
 ```
 
 ---

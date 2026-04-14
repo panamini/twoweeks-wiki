@@ -10,7 +10,7 @@ valid_until:
 superseded_by:
 horizon: present
 version: v1
-sources: [pipeline-note-2026-04-12, 2026-04-14-structured-parsing-canonical-truth, 2026-04-14-local-dev-vs-remote-parser-architecture, 2026-04-14-run-sh-modes]
+sources: [pipeline-note-2026-04-12, 2026-04-14-structured-parsing-canonical-truth, 2026-04-14-local-dev-vs-remote-parser-architecture, 2026-04-14-run-sh-modes, 2026-04-14-run-sh-quick-note]
 related: [[concepts/cv-parsing-pipeline]], [[concepts/parsing-poc-progress]], [[entities/twoweeks]], [[tech/local-vs-remote-parser-architecture]]
 ---
 
@@ -45,10 +45,11 @@ Quand les sections structurées existent et sont valides, elles sont la vérité
 
 | Mode | Stack | Usage |
 |------|-------|-------|
-| Local complet | frontend local + Convex local + parser local | debug parser/OCR end-to-end |
-| Cloud/default | frontend local ou hébergé + Convex cloud + parser public | comportement app réel |
+| `./run.sh local` | frontend local + Convex cloud/default + parser local | travail local normal |
+| `./run.sh local-convex` | frontend local + Convex local + parser local | debug parser/OCR end-to-end |
+| `./run.sh tunnel` | frontend local + Convex cloud/default + parser public via `PARSER_ORIGIN` | comportement edge/tunnel réel |
 
-Le mode local complet se lance avec `./run.sh up --ui --local-origin --local-convex`.
+Le langage opérateur de référence passe désormais par `run.sh local`, `run.sh local-convex` et `run.sh tunnel`, pas par les longues variantes `up --ui ...`.
 
 ---
 

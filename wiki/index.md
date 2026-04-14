@@ -66,6 +66,7 @@ Catalogue complet de toutes les pages **actives** du wiki (status: current ou pl
 | [[sources/2026-04-14-ats-compliant-score\|ATS Compliant Score — Resume Audit Rubric]] | spec | 2026-04-14 | current |
 | [[sources/2026-04-14-local-dev-vs-remote-parser-architecture\|Local Dev vs Remote Parser Architecture]] | spec | 2026-04-14 | current |
 | [[sources/2026-04-14-run-sh-modes\|run.sh — Local/Cloud Modes]] | runbook | 2026-04-14 | current |
+| [[sources/2026-04-14-run-sh-quick-note\|run.sh Quick Note — Main Dev Entrypoint]] | runbook | 2026-04-14 | current |
 | [[sources/2026-04-14-clerk-chrome-extension-addon\|Clerk Chrome Extension Addon — Save to twoweeks]] | spec | 2026-04-14 | current |
 | [[sources/2026-04-14-structured-parsing-canonical-truth\|Structured Parsing Canonical Truth]] | spec | 2026-04-14 | current |
 | [[sources/2026-04-14-docker-commands\|Docker Commands — Local Parser]] | runbook | 2026-04-14 | current |
@@ -118,8 +119,8 @@ Catalogue complet de toutes les pages **actives** du wiki (status: current ou pl
 
 ## Statistiques
 
-- **Pages actives** : 43 (4 overview, 1 entité, 13 concepts, 18 sources, 2 tech, 2 howto, 2 to do, 1 output)
+- **Pages actives** : 44 (4 overview, 1 entité, 13 concepts, 19 sources, 2 tech, 2 howto, 2 to do, 1 output)
 - **Pages archivées** : 1
-- **Sources dans `raw/`** : 16
+- **Sources dans `raw/`** : 17
 - **Sources en attente dans `rawinput/`** : 0
 - **Dernière mise à jour** : 2026-04-14
