@@ -3,7 +3,7 @@ title: "Timeline — twoweeks"
 category: overview
 tags: [timeline, chronologie, projet]
 created: 2026-04-09
-updated: 2026-04-09
+updated: 2026-04-14
 ---
 
 # Timeline du projet twoweeks
@@ -16,7 +16,7 @@ Utilisé par le LLM pour répondre à des questions temporelles : "qu'avions-nou
 
 ## Format d'une entrée
 
-```
+```text
 ## [YYYY-MM-DD] type | Titre de l'événement
 **Type** : decision | pivot | release | discovery | deprecation | milestone
 **Version** : v1 | v2 | ...
@@ -38,16 +38,27 @@ Création de l'espace Obsidian LLM Wiki pour le projet twoweeks. Architecture v2
 ## [2026-04-10] decision | Refonte du système de tones : 4 tones avec Auto
 **Type** : decision
 **Version** : v1
-**Impact** : [[ai-product-model]], [[product-roadmap]], [[gap-analysis]]
+**Impact** : [[concepts/ai-product-model]], [[concepts/product-roadmap]], [[concepts/gap-analysis]]
 
-Remplacement des 3 tones initiaux (Balanced/Warm/Formal) par 4 tones : **Auto** (analyse l'offre et choisit automatiquement), **Natural**, **Formal**, **Warm**. Le mode Auto devient le point d'entrée recommandé — il réduit la charge de choix et personnalise selon la lecture de l'offre d'emploi.
+Remplacement des 3 tones initiaux par 4 tones : **Auto**, **Natural**, **Formal**, **Warm**. Le mode Auto devient le point d'entrée recommandé.
 
----
-
-*Les entrées suivantes seront ajoutées au fil du projet par le LLM lors des ingests, des décisions documentées, et des pivots.*
-
-## [2026-04-12] decision | Renommage entité principale : CV Forge → twoweeks
-
+## [2026-04-12] decision | Renommage entité principale : CV Forge -> twoweeks
 **Type** : update
-**Impact** : [[archive/entities/cv-forge]] → [[entities/twoweeks]]
-Le produit s'appelle "twoweeks" (twoweeks.ai), pas "CV Forge". CVForge et ProposalForge sont des modules internes. La brand bible 2026 établit le tagline "Finish. Faster." et le positionnement "Anti-Work tool".
+**Version** : v1
+**Impact** : [[archive/entities/cv-forge]] -> [[entities/twoweeks]]
+
+Le produit s'appelle **twoweeks** (twoweeks.ai), pas **CV Forge**. CVForge et ProposalForge restent des modules internes. La brand bible 2026 fixe le tagline "Finish. Faster." et le positionnement Anti-Work tool.
+
+## [2026-04-14] decision | `sections[*].structuredContent` devient la vérité canonique produit
+**Type** : decision
+**Version** : v1
+**Impact** : [[concepts/cv-parsing-pipeline]], [[concepts/cv-families]], [[tech/import-ocr-pipeline]], [[entities/twoweeks]]
+
+Le pipeline parsing est désormais documenté comme architecture structurée par familles. Quand elles existent et sont valides, les sections structurées priment sur les tableaux top-level de compatibilité ou d'export.
+
+## [2026-04-14] discovery | Clarification des modes local vs cloud pour le parser
+**Type** : discovery
+**Version** : v1
+**Impact** : [[tech/local-vs-remote-parser-architecture]], [[howto/local-parser-operations]], [[tech/import-ocr-pipeline]]
+
+Le debug parser/OCR doit passer par la boucle locale complète `frontend local + Convex local + parser local`. En preview/prod, le parser doit rester une URL publique configurée par env ; le localhost ne doit jamais fuiter hors du mode dev.

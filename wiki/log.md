@@ -120,3 +120,30 @@ Initialisation du vault Obsidian + schema LLM wiki v1.
 ## [2026-04-09] architecture | Migration v1 → v2 : rawinput/ + gestion temporelle
 
 Migration vers schema v2 : ajout rawinput/ (staging), gestion temporelle (status/horizon/version/superseded_by), wiki/archive/, wiki/timeline.md.
+
+## [2026-04-14] ingest | ATS, parser canonical truth, local/cloud modes, extension, kanban
+
+**Agent** : Codex
+**Fichiers traités** : `rawinput/ATS COMPLIANT SCORE.md`, `rawinput/Local dev server vs Remote dev server Architecture.md`, `rawinput/run.sh launching commands for the app.md`, `rawinput/clerk chrome extension specs addon.md`, `rawinput/ARCHITECTURE PARSIN MISTRAL.md`, `rawinput/Docker commands.md`, `rawinput/kanban.md`
+**Pages créées** :
+- `wiki/sources/2026-04-14-ats-compliant-score.md`
+- `wiki/sources/2026-04-14-local-dev-vs-remote-parser-architecture.md`
+- `wiki/sources/2026-04-14-run-sh-modes.md`
+- `wiki/sources/2026-04-14-clerk-chrome-extension-addon.md`
+- `wiki/sources/2026-04-14-structured-parsing-canonical-truth.md`
+- `wiki/sources/2026-04-14-docker-commands.md`
+- `wiki/sources/2026-04-14-kanban-sprint-notes.md`
+- `wiki/concepts/ats-safety.md`
+- `wiki/concepts/cv-parsing-pipeline.md`
+- `wiki/concepts/cv-families.md`
+- `wiki/tech/local-vs-remote-parser-architecture.md`
+- `wiki/howto/local-parser-operations.md`
+**Pages mises à jour** :
+- `wiki/overview.md`
+- `wiki/entities/twoweeks.md`
+- `wiki/tech/import-ocr-pipeline.md`
+- `wiki/to do list/kanban.md`
+- `wiki/timeline.md`
+- `wiki/index.md`
+**Pages archivées** :
+- aucune

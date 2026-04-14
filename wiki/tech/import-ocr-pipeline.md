@@ -1,66 +1,74 @@
 ---
 title: "Import OCR Pipeline — Call Path"
 category: tech
-tags: [import, ocr, pipeline, convex, parser, canonicalize, architecture]
+tags: [import, ocr, pipeline, convex, parser, canonicalize, architecture, sections]
 created: 2026-04-12
-updated: 2026-04-12
+updated: 2026-04-14
 status: current
 valid_from: 2026-04-12
 valid_until:
 superseded_by:
 horizon: present
 version: v1
-sources: [pipeline-note-2026-04-12]
-related: [[concepts/cv-parsing-pipeline]], [[concepts/parsing-poc-progress]], [[entities/cv-forge]]
+sources: [pipeline-note-2026-04-12, 2026-04-14-structured-parsing-canonical-truth, 2026-04-14-local-dev-vs-remote-parser-architecture, 2026-04-14-run-sh-modes]
+related: [[concepts/cv-parsing-pipeline]], [[concepts/parsing-poc-progress]], [[entities/twoweeks]], [[tech/local-vs-remote-parser-architecture]]
 ---
 
 # Import OCR Pipeline — Call Path
 
-Référence exacte du chemin de code emprunté quand l'utilisateur clique le bouton **"Mistral OCR"** pour importer un CV.
+Référence du chemin de code emprunté quand l'utilisateur clique **Mistral OCR** pour importer un CV.
 
 ---
 
-## Chemin complet (de l'UI au parser)
+## Chemin complet
 
-```
+```text
 StructuredUploadButton.tsx
-  → api.actions.structuredUpload.structuredUpload
-  → my-app/convex/actions/structuredUpload.ts
-  → canonicalizeParserResult(...)
-  → my-app/convex/lib/parsing/canonicalize.ts
-  → canonicalizeExperience(...)      ← frontière de diagnostic active
-  → POST https://parser.dasti.ai/mistral-ocr/parse
+  -> api.actions.structuredUpload.structuredUpload
+  -> my-app/convex/actions/structuredUpload.ts
+  -> parser service
+  -> canonicalizeParserResult(...)
+  -> my-app/convex/lib/parsing/canonicalize.ts
+  -> cvDocument.sections[*].structuredContent
+  -> vues dérivées / exports / UI secondaires
 ```
 
-## Stack live de référence
+---
 
-| Variable | Valeur |
-|----------|--------|
-| Frontend | local (`./run.sh up --ui`) |
-| Convex deployment | `cloud/default` |
-| Parser base URL | `https://parser.dasti.ai` |
-| Route parser | `/mistral-ocr/parse` |
-| Bouton UI | "Mistral OCR" (= `StructuredUploadButton`) |
+## Vérité canonique active
 
-## Points d'attention
+Quand les sections structurées existent et sont valides, elles sont la vérité canonique du produit. Les tableaux top-level sont des vues dérivées ou des fallbacks de transition.
 
-- **`structuredUpload.ts`** est le wrapper/action Convex — point d'entrée, pas de décision de sélection de source.
-- **`canonicalizeExperience(...)`** dans `canonicalize.ts` est la **frontière de diagnostic active**.
-- `canonicalize.ts` orchestre toutes les familles — chaque famille a sa propre fonction `canonicalize[Family](...)`.
+---
+
+## Modes d'environnement
+
+| Mode | Stack | Usage |
+|------|-------|-------|
+| Local complet | frontend local + Convex local + parser local | debug parser/OCR end-to-end |
+| Cloud/default | frontend local ou hébergé + Convex cloud + parser public | comportement app réel |
+
+Le mode local complet se lance avec `./run.sh up --ui --local-origin --local-convex`.
+
+---
 
 ## Fichiers clés
 
 | Fichier | Rôle |
 |---------|------|
-| `my-app/src/components/StructuredUploadButton.tsx` | Bouton UI qui déclenche l'import |
-| `my-app/convex/actions/structuredUpload.ts` | Action Convex — wrapper d'appel au parser |
-| `my-app/convex/lib/parsing/canonicalize.ts` | Normalisation résultat parser → sections structurées |
-| `my-app/convex/lib/parsing/__tests__/canonicalize.test.ts` | Tests unitaires |
-| `cv_parser_service/mistral_ocr.py` | Service parser Python |
-| `cv_parser_service/tests/test_mistral_layout_sections.py` | Tests layout parser |
+| `my-app/src/components/StructuredUploadButton.tsx` | point d'entrée UI |
+| `my-app/convex/actions/structuredUpload.ts` | action Convex |
+| `my-app/convex/lib/parsing/canonicalize.ts` | normalisation parser -> sections |
+| `my-app/convex/lib/parsing/__tests__/canonicalize.test.ts` | tests unitaires |
+| `cv_parser_service/mistral_ocr.py` | service parser Python |
+| `cv_parser_service/tests/test_mistral_layout_sections.py` | tests layout parser |
+
+---
 
 ## Voir aussi
 
 - [[concepts/cv-parsing-pipeline]] — stratégie d'évolution du parser
 - [[concepts/parsing-poc-progress]] — état par famille
+- [[tech/local-vs-remote-parser-architecture]] — séparation local/cloud
+- [[howto/local-parser-operations]] — commandes de debug local
 - [[howto/cloudflare-zero-trust-tunnel]] — runbook tunnel parser.dasti.ai
