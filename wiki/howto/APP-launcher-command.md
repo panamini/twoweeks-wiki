@@ -31,3 +31,8 @@ It should:
 - stop stale cloudflared if needed  
 - clear stale vite/convex processes if needed  
 - this should make the next `local` or `tunnel` boot clean
+
+
+`./run.sh help
+
+
