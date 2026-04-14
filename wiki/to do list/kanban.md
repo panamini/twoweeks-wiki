@@ -43,12 +43,25 @@ related: [[entities/twoweeks]], [[concepts/cv-parsing-pipeline]], [[concepts/cv-
 
 - [ ] **Scroll/zoom preview CV** — scroll bloqué en mode zoom, pas de pan à 100% fit.
 - [ ] **Achievements encore visible dans Manage Section** — incohérence alors que la section est déjà chargée.
-
+- [ ] verify if proposal are saved in the library. and persistent. in convex. make autosave default for generated proposal. 
+- [ ] export ats and exportpd  style and docx should be accesible from the library proposal
+- [ ] ./run.sh local-convex  is not working fix it
 ---
 
 ## Déférés
 
 - [ ] **CVs synthétiques** — à relancer seulement après les durcissements qualité live et les tests de régression utiles.
+- [ ] Export UX feedback
+- Add loading state to export actions for Resume ATS PDF, Resume Styled PDF, Proposal ATS PDF, Proposal Styled PDF, and Proposal DOCX
+- On click:
+  - disable the clicked action
+  - show spinner or subtle indeterminate fill animation
+  - change label to “Generating PDF…” / “Generating DOCX…”
+- Do not use fake determinate progress unless real progress events exist
+- Re-enable on success/failure
+- Show error toast/message on failure
+Reason:
+PDF export can take ~5–10s through the current backend render pipeline, so users need immediate visual feedback that the action is processing.
 
 ---
 
