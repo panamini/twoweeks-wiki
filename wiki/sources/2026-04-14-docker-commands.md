@@ -36,4 +36,4 @@ Rappel minimal : pour redémarrer le conteneur parser de dev, utiliser `docker r
 
 ## Pages wiki mises à jour
 
-- [[howto/local-parser-operations]] — commande ajoutée
+- [[APP-launcher-command]] — commande ajoutée

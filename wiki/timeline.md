@@ -59,6 +59,6 @@ Le pipeline parsing est désormais documenté comme architecture structurée par
 ## [2026-04-14] discovery | Clarification des modes local vs cloud pour le parser
 **Type** : discovery
 **Version** : v1
-**Impact** : [[tech/local-vs-remote-parser-architecture]], [[howto/local-parser-operations]], [[tech/import-ocr-pipeline]]
+**Impact** : [[tech/local-vs-remote-parser-architecture]], [[APP-launcher-command]], [[tech/import-ocr-pipeline]]
 
 Le debug parser/OCR doit passer par la boucle locale complète `frontend local + Convex local + parser local`. En preview/prod, le parser doit rester une URL publique configurée par env ; le localhost ne doit jamais fuiter hors du mode dev.

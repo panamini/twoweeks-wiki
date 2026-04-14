@@ -70,5 +70,5 @@ Le mode local complet se lance avec `./run.sh up --ui --local-origin --local-con
 - [[concepts/cv-parsing-pipeline]] — stratégie d'évolution du parser
 - [[concepts/parsing-poc-progress]] — état par famille
 - [[tech/local-vs-remote-parser-architecture]] — séparation local/cloud
-- [[howto/local-parser-operations]] — commandes de debug local
+- [[APP-launcher-command]] — commandes de debug local
 - [[howto/cloudflare-zero-trust-tunnel]] — runbook tunnel parser.dasti.ai
