@@ -67,7 +67,8 @@ Le langage opérateur de référence passe désormais par `run.sh local`, `run.s
 | `cv_parser_service/tests/test_mistral_layout_sections.py` | tests layout parser |
 
 ---
-
+ import path pinned now: StructuredUploadButton → Convex actions/structuredUpload → parser /mistral-ocr/parse → cv_parser_service.mistral_ocr → mistral_resume_v3.pipeline → parse_document_annotation → normalize_extraction → canonical payload.
+ 
 ## Voir aussi
 
 - [[concepts/cv-parsing-pipeline]] — stratégie d'évolution du parser
