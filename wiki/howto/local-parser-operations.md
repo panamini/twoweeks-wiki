@@ -70,6 +70,11 @@ docker restart cv-parser-service-dev
 ```
 
 ---
+kill and relaunch container
+
+docker rm -f cv-parser-service-dev cloudflared 2>/dev/null || true  
+pkill -f 'cloudflared.*tunnel.*run' 2>/dev/null || true
+
 
 ## Important
 
