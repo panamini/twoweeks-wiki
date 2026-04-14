@@ -30,3 +30,4 @@ Si `rawinput/` contient des fichiers, c'est qu'une ingestion est en attente. Apr
 ## Images
 
 Les images sont déplacées vers `raw/assets/` lors de l'ingest.
+

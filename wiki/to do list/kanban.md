@@ -1,53 +1,65 @@
 ---
-title: "Kanban — CV Forge Sprint"
+title: "Kanban — twoweeks Sprint"
 category: todo
-tags: [kanban, sprint, todo, bugs, parsing, cleanup]
+tags: [kanban, sprint, todo, bugs, parsing, cleanup, extension, sections]
 created: 2026-04-12
-updated: 2026-04-12
+updated: 2026-04-14
+status: current
+valid_from: 2026-04-12
+valid_until:
+superseded_by:
+horizon: present
+version: v1
+sources: [2026-04-11-todo-sprint, 2026-04-14-kanban-sprint-notes, 2026-04-14-clerk-chrome-extension-addon]
+related: [[entities/twoweeks]], [[concepts/cv-parsing-pipeline]], [[concepts/cv-families]]
 ---
 
-# Kanban · CV Forge
+# Kanban · twoweeks
 
-> Mise à jour via conversation. Déplacer les tâches de colonne en colonne au fil du sprint.
-
----
-
-## 🔵 Backlog
-
-### Parsing — familles restantes
-- [x] **EDUCATION enrichissement** — enrichir les champs parsés (dates, diplômes, institutions)
-- [x] **SUMMARY family** — schema-first ou heuristique selon résultat IDENTITY POC
-- [x] **ACHIEVEMENTS family** — extraction des accomplissements chiffrés
-
-### Features produit
-- [ ] **Warning navigation pendant import** — quand l'utilisateur tente de changer de page pendant l'import, warning ou import background. Décision : friction minimale vs background (best practice UX 2026)
-- [ ] **AI rewrite suggestions** — 2–3 suggestions par section (Suggestion AI mode)
-
-### Cleanup technique
-- [ ] **Paddle cleanup** — supprimer les références Paddle (runtime/build/test, Docker, env/config). Ne pas toucher : `./run.sh up --ui`, Mistral OCR, Convex `cloud/default`, `https://parser.dasti.ai`, parser behavior, entrypoints runtime.
+> Sprint actif : fiabilité parser live, vérité canonique sections, normalisation des sections custom, polish du path extension.
 
 ---
 
-## 🟡 En cours
+## Backlog
 
-- [x] **IDENTITY/CONTACT POC hybride** — schema-first. Fixes acceptés : Jessica address/location recovery, Anne title-as-location guard, Linda location pass-through, Helen name fix, Helen desired-position fix. **Ne pas rouvrir ces slices sans nouvelle contradiction live.**
+- [ ] **Warning navigation pendant import** — friction minimale ou import background, décision UX à trancher.
+- [ ] **AI rewrite suggestions** — 2 à 3 suggestions par section.
+- [ ] **Save to twoweeks dans l'extension** — capsule hover sur offre d'emploi ouvrant le modal `send to twoweeks`.
+- [ ] **Add your own section -> vrai block renderer** — choix explicite `skill`, `experience`, `summary`.
+- [ ] **Mapper les sections legacy** — `projects` -> experience style, `additional information` -> summary style, `hobbies` -> skill style.
+- [ ] **Observabilité + régression parser** — métriques, vrais CVs, derniers durcissements bruit template/liens/contact.
+- [ ] **Paddle cleanup** — supprimer les références Paddle sans toucher au workflow actif parser/Convex.
 
 ---
 
-## 🔴 Bugs ouverts
+## En cours
 
-- [ ] **Scroll/zoom dans la preview CV** — scroll bloqué en mode zoom, pas de pan à 100% fit. À vérifier manuellement sur `./run.sh up --ui`.
+- [ ] **Stabiliser la vérité canonique** — aligner rendus, JSON copiés/exports et vues dérivées sur `sections[*].structuredContent`.
+- [x] **IDENTITY/CONTACT POC hybride** — fixs acceptés déjà documentés, ne pas rouvrir sans contradiction live.
 
 ---
 
-## ✅ Done
+## Bugs ouverts
+
+- [ ] **Scroll/zoom preview CV** — scroll bloqué en mode zoom, pas de pan à 100% fit.
+- [ ] **Achievements encore visible dans Manage Section** — incohérence alors que la section est déjà chargée.
+
+---
+
+## Déférés
+
+- [ ] **CVs synthétiques** — à relancer seulement après les durcissements qualité live et les tests de régression utiles.
+
+---
+
+## Done
 
 | Tâche | Complété |
 |-------|----------|
 | POC EXPERIENCE — Jessica 3 entries, pas de faux row, pas de blob | 2026-04-11 |
 | POC EDUCATION — Jessica 2 entrées cohérentes | 2026-04-11 |
 | POC LANGUAGES — Robert languagesRaw collapse | 2026-04-11 |
-| POC SKILLS — Anne markdown-table cleanup, Jake grouped technical-skills | 2026-04-11 |
+| POC SKILLS — Anne markdown-table cleanup, Jake grouped technical-skills recovery | 2026-04-11 |
 | Convex investigation — CVs dans `userProfiles.cvDocument` confirmé | 2026-04-11 |
 | Tones — Auto / Natural / Formal / Warm | 2026-04-10 |
 
@@ -56,4 +68,5 @@ updated: 2026-04-12
 ## Notes
 
 - Live path : `./run.sh up --ui` + Convex `cloud/default` + `https://parser.dasti.ai`
-- Règle parsing : ne jamais rouvrir un slice accepté sans contradiction live
+- Debug parser local : `./run.sh up --ui --local-origin --local-convex`
+- Règle parsing : ne jamais rouvrir un slice accepté sans contradiction live nouvelle

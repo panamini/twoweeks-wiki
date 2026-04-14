@@ -79,3 +79,5 @@ Voir [[concepts/ai-product-model]] pour le détail du système de tones IA.
 
 - [[entities/twoweeks]] — entité principale et positionnement produit
 - [[concepts/ai-product-model]] — système de tones pour la génération de contenu CV
+  
+**Acts 27:27, 33** — Paul and the others are in the storm at sea for **fourteen nights/days**.
