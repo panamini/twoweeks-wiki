@@ -3,14 +3,14 @@ title: "Kanban — twoweeks Sprint"
 category: todo
 tags: [kanban, sprint, todo, bugs, parsing, cleanup, extension, sections]
 created: 2026-04-12
-updated: 2026-04-14
+updated: 2026-04-15
 status: current
 valid_from: 2026-04-12
 valid_until:
 superseded_by:
 horizon: present
 version: v1
-sources: [2026-04-11-todo-sprint, 2026-04-14-kanban-sprint-notes, 2026-04-14-clerk-chrome-extension-addon, 2026-04-14-run-sh-quick-note]
+sources: [2026-04-11-todo-sprint, 2026-04-14-kanban-sprint-notes, 2026-04-14-clerk-chrome-extension-addon, 2026-04-14-run-sh-quick-note, 2026-04-15-run-sh-workspace-modes, 2026-04-15-mistral-resume-v3-section-recovery-scratchpad]
 related: [[entities/twoweeks]], [[concepts/cv-parsing-pipeline]], [[concepts/cv-families]]
 ---
 
@@ -46,7 +46,7 @@ related: [[entities/twoweeks]], [[concepts/cv-parsing-pipeline]], [[concepts/cv-
 - [ ] **Achievements encore visible dans Manage Section** — incohérence alors que la section est déjà chargée.
 - [ ] verify if proposal are saved in the library. and persistent. in convex. make autosave default for generated proposal. 
 - [ ] export ats and exportpd  style and docx should be accesible from the library proposal
-- [ ] ./run.sh local-convex  is not working fix it
+- [ ] align `./run.sh local-convex` alias behavior with `local-fast`, or deprecate the alias explicitly in code and docs
 - [ ] Structured upload routing consistency
 - Investigate why CV import in `run.sh local` still routes through cloud Convex → parser.dasti.ai
 - Decide the intended behavior:
@@ -83,11 +83,13 @@ PDF export can take ~5–10s through the current backend render pipeline, so use
 | POC SKILLS — Anne markdown-table cleanup, Jake grouped technical-skills recovery | 2026-04-11 |
 | Convex investigation — CVs dans `userProfiles.cvDocument` confirmé | 2026-04-11 |
 | Tones — Auto / Natural / Formal / Warm | 2026-04-10 |
+| Parsing stabilization POC — gates + section-local recovery + retry + telemetry documentés | 2026-04-15 |
 
 ---
 
 ## Notes
 
 - Live path : `./run.sh tunnel`
-- Debug parser local : `./run.sh local-convex`
+- Debug parser local recommandé : `./run.sh local-fast`
+- Alias legacy encore mentionné : `./run.sh local-convex`
 - Règle parsing : ne jamais rouvrir un slice accepté sans contradiction live nouvelle

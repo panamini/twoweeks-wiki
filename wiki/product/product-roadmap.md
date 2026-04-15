@@ -1,6 +1,6 @@
 ---
 title: "Product Roadmap — CV Forge"
-category: concept
+category: product
 tags: [roadmap, product, initiatives, phases, stratégie]
 created: 2026-04-10
 updated: 2026-04-10
@@ -11,7 +11,7 @@ superseded_by:
 horizon: present
 version: v1
 sources: [2026-04-10-notion-roadmap-cvforge, 2026-04-10-gap-analysis]
-related: [[cv-forge]], [[kpis]], [[gap-analysis]], [[product-vision]]
+related: [[archive/entities/cv-forge]], [[product/kpis]], [[strategy/gap-analysis]], [[product/product-vision]]
 ---
 
 # Product Roadmap — CV Forge
@@ -123,7 +123,7 @@ Catalogue étendu et curé, groupé par usage. Après résolution des problèmes
 
 ## Plan d'exécution en 3 cycles (gap analysis)
 
-Croisement entre les phases P0→P3 et les priorités de la gap analysis. Voir [[gap-analysis]] pour le détail complet.
+Croisement entre les phases P0→P3 et les priorités de la gap analysis. Voir [[strategy/gap-analysis]] pour le détail complet.
 
 **Cycle 1** : parser cleanup + import review layer · quick-start guided path · first-run checklist · stronger preview/editor linking
 → *Mappe directement sur les 4 initiatives P0*
@@ -136,8 +136,8 @@ Croisement entre les phases P0→P3 et les priorités de la gap analysis. Voir [
 
 ## Voir aussi
 
-- [[kpis]] — métriques associées à chaque phase
+- [[product/kpis]] — métriques associées à chaque phase
 - [[cv-forge]] — entité produit
 - [[cv-parsing-pipeline]] — architecture technique du parsing
-- [[gap-analysis]] — diagnostic complet et priority order vs ResumeLab
-- [[product-vision]] — blueprint du produit idéal
+- [[strategy/gap-analysis]] — diagnostic complet et priority order vs ResumeLab
+- [[product/product-vision]] — blueprint du produit idéal

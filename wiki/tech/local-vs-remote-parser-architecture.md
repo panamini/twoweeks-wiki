@@ -3,14 +3,14 @@ title: "Local vs Remote Parser Architecture"
 category: tech
 tags: [parser, local, remote, convex, run.sh, environment, production]
 created: 2026-04-14
-updated: 2026-04-14
+updated: 2026-04-15
 status: current
 valid_from: 2026-04-14
 valid_until:
 superseded_by:
 horizon: present
 version: v1
-sources: [2026-04-14-local-dev-vs-remote-parser-architecture, 2026-04-14-run-sh-modes, 2026-04-14-run-sh-quick-note]
+sources: [2026-04-14-local-dev-vs-remote-parser-architecture, 2026-04-14-run-sh-modes, 2026-04-14-run-sh-quick-note, 2026-04-15-run-sh-workspace-modes]
 related: [[tech/import-ocr-pipeline]], [[howto/local-parser-operations]], [[entities/twoweeks]]
 ---
 
@@ -20,29 +20,37 @@ Référence technique pour distinguer le chemin local de debug du chemin cloud/p
 
 ---
 
-## Mode local quotidien
+## Mode local full-stack recommandé
 
-**Stack** : frontend local + Convex cloud/default + parser local
+**Stack** : frontend local + Convex local + parser local workspace
 
 **Usage** :
-- travail local normal
-- vérification rapide du parser/export sans tunnel
-- boucle courte côté app + parser
+- travail local quotidien sur le parser
+- import structuré end-to-end réellement local
+- export avec runtime image préservé
 
-**Commande de référence** : `./run.sh local`
+**Commande de référence** : `./run.sh local-fast`
 
 ---
 
-## Mode local complet
+## Alias legacy
 
-**Stack** : frontend local + Convex local + parser local
+**Commande** : `./run.sh local-convex`
+
+Doit être lu comme alias documentaire/transitoire de `local-fast`, pas comme un quatrième modèle mental distinct.
+
+---
+
+## Mode local partiel
+
+**Stack** : frontend local + parser local, sans garantie d'alignement backend local complet
 
 **Usage** :
-- debug parser/OCR end-to-end
-- debug backend Convex local
-- reproduction locale complète d'un flux structuré
+- cas simples
+- tests partiels UI/parser
+- pas recommandé pour valider le structured upload complet
 
-**Commande de référence** : `./run.sh local-convex`
+**Commande de référence** : `./run.sh local`
 
 ---
 
@@ -75,5 +83,5 @@ Le passage du mode local au mode prod doit rester un changement d'environnement,
 
 ## Voir aussi
 
-- [[run.sh` LLM Scratchpad]] — commandes à lancer
+- [[howto/local-parser-operations]] — commandes à lancer
 - [[tech/import-ocr-pipeline]] — call path actif

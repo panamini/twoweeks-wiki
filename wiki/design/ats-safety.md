@@ -1,17 +1,17 @@
 ---
 title: "ATS Safety — Parser-safe output rules"
-category: concept
+category: design
 tags: [ats, parsing, quality, templates, typography, layout, audit]
 created: 2026-04-14
-updated: 2026-04-14
+updated: 2026-04-15
 status: current
 valid_from: 2026-04-14
 valid_until:
 superseded_by:
 horizon: present
 version: v1
-sources: [2026-04-14-ats-compliant-score, 2026-04-14-export-pipeline-brief-ocr-to-ats-styled-output]
-related: [[concepts/benchmark-matrix]], [[concepts/ai-product-model]], [[entities/twoweeks]], [[tech/export-pipeline]]
+sources: [2026-04-14-ats-compliant-score, 2026-04-14-export-pipeline-brief-ocr-to-ats-styled-output, 2026-04-15-a4-grid-canon-spec-writer]
+related: [[strategy/benchmark-matrix]], [[product/ai-product-model]], [[entities/twoweeks]], [[tech/export-pipeline]], [[design/a4-layout-systems]]
 ---
 
 # ATS Safety — Parser-safe output rules
@@ -55,6 +55,12 @@ Si l'un de ces défauts est présent, le document ne doit pas être considéré 
 5. Une future document health layer peut exposer ce rubric comme score ATS interne.
 6. Le pipeline final doit produire un téléchargement direct depuis des payloads normalisés, pas une capture du preview DOM.
 
+## Conséquence pour les grilles A4
+
+- `Canon 12` est la meilleure base classique compatible avec un résumé dense et une hiérarchie simple.
+- `Canon 9` est plus éditorial mais doit être utilisé avec prudence si le contenu devient serré.
+- Une grille Robial `17/18` peut rester acceptable pour un template premium tant qu'elle ne dérive pas vers de vraies sidebars informatives, tables ou blocs porteurs de sens difficilement extractibles.
+
 ---
 
 ## Ce que cela change dans le benchmark
@@ -71,6 +77,7 @@ Le benchmark produit mesure déjà la confiance et la sécurité professionnelle
 
 ## Voir aussi
 
-- [[concepts/benchmark-matrix]] — scorecard produit globale
-- [[concepts/ai-product-model]] — réécritures IA et alignement ATS
+- [[strategy/benchmark-matrix]] — scorecard produit globale
+- [[product/ai-product-model]] — réécritures IA et alignement ATS
+- [[design/a4-layout-systems]] — systèmes de grilles A4 recommandés
 - [[entities/twoweeks]] — produit principal

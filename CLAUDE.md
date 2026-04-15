@@ -32,6 +32,7 @@ twoweeks/
     ├── entities/              ← personnes, organisations, produits, outils (actifs)
     ├── concepts/              ← idées, patterns, techniques, décisions (actifs)
     ├── sources/               ← résumés des sources ingérées
+    ├── design/                ← systèmes visuels durables : layout, grilles, brand system, typographie
     ├── tech/                  ← référence technique : call paths, architecture code, infra
     ├── howto/                 ← runbooks opérationnels (procédures step-by-step)
     ├── to do list/            ← kanban de sprint et backlog de tâches
@@ -87,6 +88,7 @@ Par défaut, lire en priorité :
 ### Règles de nommage des fichiers
 - **Entités** : `wiki/entities/nom-entite.md` (kebab-case)
 - **Concepts** : `wiki/concepts/nom-concept.md`
+- **Design** : `wiki/design/nom-systeme.md`
 - **Sources** : `wiki/sources/YYYY-MM-DD-titre-source.md`
 - **Outputs** : `wiki/outputs/YYYY-MM-DD-titre-output.md`
 - **Archivés** : même nom, déplacé dans `wiki/archive/[catégorie]/`

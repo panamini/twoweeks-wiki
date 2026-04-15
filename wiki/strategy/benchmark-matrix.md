@@ -1,6 +1,6 @@
 ---
 title: "Benchmark Matrix — Évaluation produit"
-category: concept
+category: strategy
 tags: [benchmark, scoring, compétiteurs, resumelab, stratégie, qualité]
 created: 2026-04-10
 updated: 2026-04-10
@@ -11,7 +11,7 @@ superseded_by:
 horizon: present
 version: v1
 sources: [2026-04-10-benchmark-matrix]
-related: [[cv-forge]], [[product-roadmap]], [[product-vision]]
+related: [[archive/entities/cv-forge]], [[product/product-roadmap]], [[product/product-vision]]
 ---
 
 # Benchmark Matrix — Évaluation produit
@@ -160,6 +160,6 @@ Pour le marché de TwoWeeks : **< 70 = not ready to dominate · 75+ = strong con
 
 ## Voir aussi
 
-- [[product-vision]] — le blueprint du produit idéal
-- [[product-roadmap]] — les initiatives pour combler les gaps
-- [[kpis]] — métriques liées aux catégories du benchmark
+- [[product/product-vision]] — le blueprint du produit idéal
+- [[product/product-roadmap]] — les initiatives pour combler les gaps
+- [[product/kpis]] — métriques liées aux catégories du benchmark

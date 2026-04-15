@@ -1,6 +1,6 @@
 ---
 title: "Product Vision — TwoWeeks / CV Forge"
-category: concept
+category: product
 tags: [vision, positioning, architecture, funnel, éditeur, objets, ia, import, onboarding]
 created: 2026-04-10
 updated: 2026-04-10
@@ -11,7 +11,7 @@ superseded_by:
 horizon: present
 version: v1
 sources: [2026-04-10-success-blueprint]
-related: [[cv-forge]], [[product-roadmap]], [[benchmark-matrix]], [[ai-product-model]]
+related: [[archive/entities/cv-forge]], [[product/product-roadmap]], [[strategy/benchmark-matrix]], [[product/ai-product-model]]
 ---
 
 # Product Vision — TwoWeeks / CV Forge
@@ -245,7 +245,7 @@ Submessage : **"Import your job, reuse your experience, and let AI help where it
 
 ## Voir aussi
 
-- [[benchmark-matrix]] — système de scoring pour évaluer le produit
-- [[ai-product-model]] — architecture IA détaillée (3 modes, 5 règles)
-- [[product-roadmap]] — initiatives priorisées pour atteindre cette vision
+- [[strategy/benchmark-matrix]] — système de scoring pour évaluer le produit
+- [[product/ai-product-model]] — architecture IA détaillée (3 modes, 5 règles)
+- [[product/product-roadmap]] — initiatives priorisées pour atteindre cette vision
 - [[cv-forge]] — entité produit

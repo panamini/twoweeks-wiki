@@ -1,6 +1,6 @@
 ---
 title: "Gestion temporelle du wiki"
-category: concept
+category: meta
 tags: [temporal, architecture, workflow, meta, versioning]
 created: 2026-04-09
 updated: 2026-04-09
@@ -9,7 +9,7 @@ valid_from: 2026-04-09
 horizon: present
 version: v0
 sources: [commentaire-utilisateur, architecture-v2]
-related: [[llm-wiki-pattern]], [[architecture-v2]]
+related: [[meta/llm-wiki-pattern]], [[outputs/2026-04-09-architecture-v2]]
 ---
 
 # Gestion temporelle du wiki
@@ -92,7 +92,7 @@ Ce mécanisme est fondamental pour un projet applicatif sur plusieurs versions. 
 
 ## Voir aussi
 
-- [[llm-wiki-pattern]] — pattern général du wiki
-- [[architecture-v2]] — document de référence sur la v2
+- [[meta/llm-wiki-pattern]] — pattern général du wiki
+- [[outputs/2026-04-09-architecture-v2]] — document de référence sur la v2
 - `wiki/archive/` — pages supersédées
 - `wiki/timeline.md` — chronologie du projet

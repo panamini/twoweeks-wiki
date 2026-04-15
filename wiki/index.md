@@ -1,7 +1,7 @@
 ---
 title: "Index du Wiki — twoweeks"
 category: overview
-updated: 2026-04-14
+updated: 2026-04-15
 ---
 
 # Index du Wiki · twoweeks (v2)
@@ -41,7 +41,6 @@ Catalogue complet de toutes les pages **actives** du wiki (status: current ou pl
 | [[concepts/gap-analysis\|Gap Analysis]] | Diagnostic concurrentiel et cycles de correction | current | gap, diagnostic |
 | [[concepts/kpis\|KPIs]] | Métriques de succès produit | current | kpi, métriques |
 | [[concepts/llm-wiki-pattern\|LLM Wiki Pattern]] | Pattern de base de connaissance persistante | current | meta, workflow |
-| [[concepts/parsing-poc-progress\|Parsing POC Progress]] | État slice par slice du POC parsing | current | parsing, poc |
 | [[concepts/product-roadmap\|Product Roadmap]] | Initiatives par phase et priorités | current | roadmap, product |
 | [[concepts/product-vision\|Product Vision]] | Blueprint produit complet | current | vision, architecture |
 | [[concepts/temporal-management\|Gestion temporelle]] | Distinction passé/présent/futur dans le wiki | current | temporal, architecture |
@@ -72,6 +71,18 @@ Catalogue complet de toutes les pages **actives** du wiki (status: current ou pl
 | [[sources/2026-04-14-structured-parsing-canonical-truth\|Structured Parsing Canonical Truth]] | spec | 2026-04-14 | current |
 | [[sources/2026-04-14-docker-commands\|Docker Commands — Local Parser]] | runbook | 2026-04-14 | current |
 | [[sources/2026-04-14-kanban-sprint-notes\|Kanban Sprint Notes — 2026-04-14]] | conversation | 2026-04-14 | current |
+| [[sources/2026-04-15-mistral-resume-v3-section-recovery-scratchpad\|Mistral Resume V3 — Section Recovery Scratchpad]] | spec | 2026-04-15 | current |
+| [[sources/2026-04-15-run-sh-workspace-modes\|run.sh Workspace Modes — Local Fast and Parser Dev]] | runbook | 2026-04-15 | current |
+| [[sources/2026-04-15-section-detection-future-note\|Section Detection Future Note — Narrow Recovery Scope]] | spec | 2026-04-15 | current |
+| [[sources/2026-04-15-a4-grid-canon-spec-writer\|A4 Grid Canon Spec Writer]] | spec | 2026-04-15 | current |
+
+---
+
+## Design
+
+| Page | Résumé | Status | Tags |
+|------|--------|--------|------|
+| [[design/a4-layout-systems\|A4 Layout Systems]] | Canons A4 et grille Robial pour templates résumé/export | current | layout, a4 |
 
 ---
 
@@ -90,7 +101,7 @@ Catalogue complet de toutes les pages **actives** du wiki (status: current ou pl
 | Page | Résumé | Tags |
 |------|--------|------|
 | [[howto/cloudflare-zero-trust-tunnel\|Cloudflare Zero Trust + Tunnel]] | Runbook parser.dasti.ai, CF Access, tunnel, DNS, token, WAF | cloudflare, devops |
-| [[run.sh` LLM Scratchpad\|Local Parser Operations]] | Lancer, arrêter et redémarrer la stack parser locale | parser, local, docker |
+| [[howto/local-parser-operations\|Local Parser Operations]] | Lancer, diagnostiquer et réaligner la stack parser locale | parser, local, run.sh |
 
 ---
 
@@ -115,14 +126,15 @@ Catalogue complet de toutes les pages **actives** du wiki (status: current ou pl
 
 | Page | Archivée le | Supersédée par |
 |------|-------------|----------------|
+| [[archive/concepts/parsing-poc-progress\|Parsing POC Progress]] | 2026-04-15 | [[concepts/cv-parsing-pipeline]] |
 | [[archive/entities/cv-forge\|CV Forge (ancienne entité)]] | 2026-04-12 | [[entities/twoweeks]] |
 
 ---
 
 ## Statistiques
 
-- **Pages actives** : 46 (4 overview, 1 entité, 13 concepts, 20 sources, 3 tech, 2 howto, 2 to do, 1 output)
-- **Pages archivées** : 1
-- **Sources dans `raw/`** : 18
+- **Pages actives** : 50 (4 overview, 1 entité, 12 concepts, 24 sources, 1 design, 3 tech, 2 howto, 2 to do, 1 output)
+- **Pages archivées** : 2
+- **Sources dans `raw/`** : 23
 - **Sources en attente dans `rawinput/`** : 0
-- **Dernière mise à jour** : 2026-04-14
+- **Dernière mise à jour** : 2026-04-15

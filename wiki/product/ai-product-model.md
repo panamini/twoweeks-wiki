@@ -1,6 +1,6 @@
 ---
 title: "AI Product Model — Modes, règles et qualité"
-category: concept
+category: product
 tags: [ai, ux, modes, toolbar, rulebook, qualité, writing, suggestion]
 created: 2026-04-10
 updated: 2026-04-10
@@ -11,7 +11,7 @@ superseded_by:
 horizon: present
 version: v1
 sources: [2026-04-10-success-blueprint, 2026-04-10-notion-roadmap-cvforge]
-related: [[product-vision]], [[product-roadmap]], [[cv-forge]]
+related: [[product/product-vision]], [[product/product-roadmap]], [[archive/entities/cv-forge]]
 ---
 
 # AI Product Model — Modes, règles et qualité
@@ -172,6 +172,6 @@ En ordre d'importance pour l'impact utilisateur :
 
 ## Voir aussi
 
-- [[product-vision]] — architecture produit complète (5 objets, parcours utilisateur, éditeur)
-- [[product-roadmap]] — AI interaction rulebook (P0) et advanced tone modifiers (P2)
-- [[kpis]] — AI Accept Rate et AI Undo Rate comme métriques de succès
+- [[product/product-vision]] — architecture produit complète (5 objets, parcours utilisateur, éditeur)
+- [[product/product-roadmap]] — AI interaction rulebook (P0) et advanced tone modifiers (P2)
+- [[product/kpis]] — AI Accept Rate et AI Undo Rate comme métriques de succès

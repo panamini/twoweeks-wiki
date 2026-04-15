@@ -1,6 +1,6 @@
 ---
 title: "Gap Analysis — TwoWeeks vs ResumeLab"
-category: concept
+category: strategy
 tags: [gap, compétiteurs, resumelab, diagnostic, priorités, forces, faiblesses]
 created: 2026-04-10
 updated: 2026-04-10
@@ -11,7 +11,7 @@ superseded_by:
 horizon: present
 version: v1
 sources: [2026-04-10-gap-analysis]
-related: [[benchmark-matrix]], [[product-vision]], [[product-roadmap]], [[ai-product-model]]
+related: [[strategy/benchmark-matrix]], [[product/product-vision]], [[product/product-roadmap]], [[product/ai-product-model]]
 ---
 
 # Gap Analysis — TwoWeeks vs ResumeLab
@@ -168,7 +168,7 @@ ResumeLab's activation discipline
 
 ## Voir aussi
 
-- [[benchmark-matrix]] — scoring et seuils non-négociables
-- [[product-vision]] — blueprint complet du produit idéal
-- [[product-roadmap]] — roadmap priorisée (P0→P3)
-- [[ai-product-model]] — 3 modes IA et rulebook
+- [[strategy/benchmark-matrix]] — scoring et seuils non-négociables
+- [[product/product-vision]] — blueprint complet du produit idéal
+- [[product/product-roadmap]] — roadmap priorisée (P0→P3)
+- [[product/ai-product-model]] — 3 modes IA et rulebook

@@ -1,6 +1,6 @@
 ---
 title: "LLM Wiki Pattern"
-category: concept
+category: meta
 tags: [meta, workflow, knowledge-management, llm]
 created: 2026-04-09
 updated: 2026-04-09

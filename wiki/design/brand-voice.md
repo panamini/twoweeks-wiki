@@ -1,6 +1,6 @@
 ---
 title: "Brand Voice — twoweeks"
-category: concept
+category: design
 tags: [brand, voice, tone, copy, marketing, staccato, corporate-noir, twoweeks]
 created: 2026-04-12
 updated: 2026-04-12
@@ -11,7 +11,7 @@ superseded_by:
 horizon: present
 version: v1
 sources: [2026-04-12-twoweeks-brand-bible]
-related: [[entities/twoweeks]], [[concepts/ai-product-model]]
+related: [[entities/twoweeks]], [[product/ai-product-model]]
 ---
 
 # Brand Voice — twoweeks
@@ -71,13 +71,13 @@ Guidelines de voix, tone et copie pour twoweeks.ai. À appliquer sur : copie UI,
 
 Le système de tones (Auto/Natural/Formal/Warm) dans le module CVForge s'applique au **contenu généré pour le CV** — pas à la voix de l'interface. La voix de l'interface reste toujours staccato/corporate-noir.
 
-Voir [[concepts/ai-product-model]] pour le détail du système de tones IA.
+Voir [[product/ai-product-model]] pour le détail du système de tones IA.
 
 ---
 
 ## Voir aussi
 
 - [[entities/twoweeks]] — entité principale et positionnement produit
-- [[concepts/ai-product-model]] — système de tones pour la génération de contenu CV
+- [[product/ai-product-model]] — système de tones pour la génération de contenu CV
   
 **Acts 27:27, 33** — Paul and the others are in the storm at sea for **fourteen nights/days**.

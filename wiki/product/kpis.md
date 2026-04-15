@@ -1,6 +1,6 @@
 ---
 title: "KPIs — CV Forge"
-category: concept
+category: product
 tags: [kpi, métriques, activation, rétention, conversion, import, ai]
 created: 2026-04-10
 updated: 2026-04-10
@@ -11,7 +11,7 @@ superseded_by:
 horizon: present
 version: v1
 sources: [2026-04-10-notion-roadmap-cvforge]
-related: [[cv-forge]], [[product-roadmap]]
+related: [[archive/entities/cv-forge]], [[product/product-roadmap]]
 ---
 
 # KPIs — CV Forge
@@ -102,5 +102,5 @@ related: [[cv-forge]], [[product-roadmap]]
 
 ## Voir aussi
 
-- [[product-roadmap]] — initiatives liées à chaque KPI
+- [[product/product-roadmap]] — initiatives liées à chaque KPI
 - [[cv-forge]] — entité produit

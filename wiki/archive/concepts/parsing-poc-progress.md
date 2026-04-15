@@ -3,18 +3,20 @@ title: "Parsing POC Progress — État par famille"
 category: concept
 tags: [parsing, poc, familles, fixtures, experience, education, languages, skills, identity, contact]
 created: 2026-04-11
-updated: 2026-04-14
-status: current
+updated: 2026-04-15
+status: archived
 valid_from: 2026-04-11
-valid_until:
-superseded_by:
+valid_until: 2026-04-15
+superseded_by: [[concepts/cv-parsing-pipeline]]
 horizon: present
 version: v1
-sources: [2026-04-11-cv-parsing-poc-state, 2026-04-14-run-sh-quick-note]
-related: [[cv-parsing-pipeline]], [[cv-families]], [[cv-forge]]
+sources: [2026-04-11-cv-parsing-poc-state, 2026-04-14-run-sh-quick-note, 2026-04-15-mistral-resume-v3-section-recovery-scratchpad, 2026-04-15-section-detection-future-note]
+related: [[concepts/cv-parsing-pipeline]], [[concepts/cv-families]], [[entities/twoweeks]]
 ---
 
-# Parsing POC Progress — État par famille
+# Parsing POC Progress — Snapshot archivé
+
+> Cette page est conservée comme snapshot d'une phase POC terminée. L'état courant du parser est désormais porté par [[concepts/cv-parsing-pipeline]] et par les pages tech/howto actives autour de `run.sh`.
 
 État du POC parsing hybride sur le live path : `./run.sh tunnel` + Convex `cloud/default` + `https://parser.dasti.ai` + route `/mistral-ocr/parse`.
 
@@ -36,7 +38,7 @@ related: [[cv-parsing-pipeline]], [[cv-families]], [[cv-forge]]
 
 ---
 
-## Roadmap (ordre validé)
+## Roadmap POC (historique)
 
 1. ✅ Finir Experience
 2. 🟡 POC hybride IDENTITY/CONTACT (schema-first) — en cours
@@ -60,7 +62,11 @@ Jessica contact-location normalized-contract, Helen `New York` location recovery
 
 ---
 
+## Clôture
+
+Au 2026-04-15, ce POC de stabilisation est considéré comme terminé sur son périmètre initial. Les suites relèvent de la stabilisation continue, de l'observabilité et des choix de modes locaux/cloud, pas d'un backlog POC séparé.
+
 ## Voir aussi
 
-- [[cv-parsing-pipeline]] — stratégie et décision hybride
+- [[concepts/cv-parsing-pipeline]] — stratégie et état courant
 - [[tech/import-ocr-pipeline]] — chemin de code complet
