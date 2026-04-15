@@ -39,12 +39,10 @@
   "deleteFileOption": "trash",
   "expandedSpaces": [
     "/",
-    "//wiki",
     "//wiki/wiki/product",
     "//wiki/wiki/meta",
     "//wiki/wiki/archive/wiki/archive/concepts",
     "//wiki/wiki/concepts",
-    "//wiki/wiki/design",
     "//rawinput"
   ],
   "expandFolderOnClick": true,
