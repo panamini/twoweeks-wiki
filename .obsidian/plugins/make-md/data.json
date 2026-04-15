@@ -43,7 +43,9 @@
     "//wiki/wiki/meta",
     "//wiki/wiki/archive/wiki/archive/concepts",
     "//wiki/wiki/concepts",
-    "//rawinput"
+    "//rawinput",
+    "//wiki",
+    "//wiki/wiki/strategy"
   ],
   "expandFolderOnClick": true,
   "spacesFolder": "Tags",
