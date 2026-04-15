@@ -10,8 +10,8 @@ valid_until:
 superseded_by:
 horizon: present
 version: v1
-sources: [2026-04-14-export-pipeline-brief-ocr-to-ats-styled-output, 2026-04-15-a4-grid-canon-spec-writer]
-related: [[tech/import-ocr-pipeline]], [[concepts/cv-parsing-pipeline]], [[design/ats-safety]], [[design/a4-layout-systems]], [[entities/twoweeks]]
+sources: [2026-04-14-export-pipeline-brief-ocr-to-ats-styled-output, 2026-04-15-a4-grid-canon-spec-writer, 2026-04-15-typography-mode, 2026-04-15-french-typography-scratch-pad, 2026-04-15-english-typography-scratch-pad, 2026-04-15-conversation-locale-typography-rules]
+related: [[tech/import-ocr-pipeline]], [[concepts/cv-parsing-pipeline]], [[design/ats-safety]], [[design/a4-layout-systems]], [[design/locale-typography-rules]], [[entities/twoweeks]]
 ---
 
 # Export Pipeline — OCR to ATS / Styled Output
@@ -86,6 +86,14 @@ Pour les templates résumé A4, le wiki distingue désormais explicitement :
 - `Canon 9` comme option éditoriale plus généreuse
 - `Robial 17/18` comme système modulaire moderne recommandé
 
+La typographie locale forme une couche distincte :
+
+- conventions FR/EN de ponctuation et citations
+- dates, décimales, nombre-unité
+- normalisation textuelle dépendante de la locale
+
+Elle ne doit pas modifier implicitement la géométrie ou les flow tokens.
+
 ## Couches principales
 
 ### Frontend trigger layer
@@ -153,6 +161,7 @@ Renderers principaux :
 - Le PDF doit rester text-based, searchable et selectable.
 - Le téléchargement final doit être direct-download.
 - L'ancien helper raster `my-app/src/lib/document-export.ts` est legacy.
+- La normalisation typographique locale doit être validée contre wrap et page-break tests.
 
 ## Voir aussi
 
@@ -160,3 +169,4 @@ Renderers principaux :
 - [[concepts/cv-parsing-pipeline]] — stratégie parser et vérité canonique
 - [[design/ats-safety]] — contraintes ATS sur les outputs
 - [[design/a4-layout-systems]] — géométries A4 recommandées
+- [[design/locale-typography-rules]] — règles FR/EN de typographie locale

@@ -44,6 +44,7 @@ Catalogue complet de toutes les pages **actives** du wiki (status: current ou pl
 | [[design/a4-layout-systems\|A4 Layout Systems]] | Canons A4 et grille Robial pour templates résumé/export | current | layout, a4 |
 | [[design/ats-safety\|ATS Safety]] | Règles parser-safe pour layouts, headings, exports et audits | current | ats, quality |
 | [[design/brand-voice\|Brand Voice]] | Voix staccato, Corporate Noir, règles de copie | current | brand, voice |
+| [[design/locale-typography-rules\|Locale Typography Rules]] | Règles FR/EN de ponctuation, citations, dates et wrap-safe export | current | typography, locale |
 
 ---
 
@@ -104,6 +105,10 @@ Catalogue complet de toutes les pages **actives** du wiki (status: current ou pl
 | [[sources/2026-04-15-run-sh-workspace-modes\|run.sh Workspace Modes — Local Fast and Parser Dev]] | runbook | 2026-04-15 | current |
 | [[sources/2026-04-15-section-detection-future-note\|Section Detection Future Note — Narrow Recovery Scope]] | spec | 2026-04-15 | current |
 | [[sources/2026-04-15-a4-grid-canon-spec-writer\|A4 Grid Canon Spec Writer]] | spec | 2026-04-15 | current |
+| [[sources/2026-04-15-typography-mode\|Typography Mode]] | spec | 2026-04-15 | current |
+| [[sources/2026-04-15-french-typography-scratch-pad\|French Typography Scratch Pad]] | spec | 2026-04-15 | current |
+| [[sources/2026-04-15-english-typography-scratch-pad\|English Typography Scratch Pad]] | spec | 2026-04-15 | current |
+| [[sources/2026-04-15-conversation-locale-typography-rules\|Conversation — Locale Typography Rules]] | conversation | 2026-04-15 | current |
 
 ---
 
@@ -154,8 +159,8 @@ Catalogue complet de toutes les pages **actives** du wiki (status: current ou pl
 
 ## Statistiques
 
-- **Pages actives** : 50 (4 overview, 1 entité, 2 concepts, 3 design, 4 product, 2 strategy, 2 meta, 24 sources, 3 tech, 2 howto, 2 to do, 1 output)
+- **Pages actives** : 55 (4 overview, 1 entité, 2 concepts, 4 design, 4 product, 2 strategy, 2 meta, 28 sources, 3 tech, 2 howto, 2 to do, 1 output)
 - **Pages archivées** : 2
-- **Sources dans `raw/`** : 23
+- **Sources dans `raw/`** : 26
 - **Sources en attente dans `rawinput/`** : 0
 - **Dernière mise à jour** : 2026-04-15
