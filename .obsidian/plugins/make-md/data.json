@@ -40,7 +40,11 @@
   "expandedSpaces": [
     "/",
     "//wiki",
-    "//wiki/wiki/design"
+    "//wiki/wiki/product",
+    "//wiki/wiki/meta",
+    "//wiki/wiki/archive/wiki/archive/concepts",
+    "//wiki/wiki/entities",
+    "//wiki/wiki/concepts"
   ],
   "expandFolderOnClick": true,
   "spacesFolder": "Tags",

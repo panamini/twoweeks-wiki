@@ -11,7 +11,7 @@ superseded_by:
 horizon: present
 version: v1
 sources: [2026-04-14-export-pipeline-brief-ocr-to-ats-styled-output, 2026-04-15-a4-grid-canon-spec-writer]
-related: [[tech/import-ocr-pipeline]], [[concepts/cv-parsing-pipeline]], [[concepts/ats-safety]], [[design/a4-layout-systems]], [[entities/twoweeks]]
+related: [[tech/import-ocr-pipeline]], [[concepts/cv-parsing-pipeline]], [[design/ats-safety]], [[design/a4-layout-systems]], [[entities/twoweeks]]
 ---
 
 # Export Pipeline — OCR to ATS / Styled Output
@@ -158,5 +158,5 @@ Renderers principaux :
 
 - [[tech/import-ocr-pipeline]] — chemin OCR/import jusqu'à la donnée normalisée
 - [[concepts/cv-parsing-pipeline]] — stratégie parser et vérité canonique
-- [[concepts/ats-safety]] — contraintes ATS sur les outputs
+- [[design/ats-safety]] — contraintes ATS sur les outputs
 - [[design/a4-layout-systems]] — géométries A4 recommandées

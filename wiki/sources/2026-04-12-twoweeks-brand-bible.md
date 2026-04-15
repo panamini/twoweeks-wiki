@@ -12,7 +12,7 @@ horizon: present
 version: v1
 type: spec
 sources: []
-related: [[entities/twoweeks]], [[concepts/brand-voice]]
+related: [[entities/twoweeks]], [[design/brand-voice]]
 ---
 
 # Twoweeks.ai — Brand Bible 2026
@@ -52,5 +52,5 @@ Document fondateur de la marque twoweeks.ai. Définit le positionnement "Anti-Wo
 ## Pages wiki mises à jour
 
 - [[entities/twoweeks]] — entité principale créée (supersède [[entities/cv-forge]])
-- [[concepts/brand-voice]] — page concept créée
+- [[design/brand-voice]] — page design créée
 - `CLAUDE.md` — description de l'app mise à jour

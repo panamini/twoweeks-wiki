@@ -12,7 +12,7 @@ horizon: present
 version: v1
 type: spec
 sources: []
-related: [[tech/export-pipeline]], [[tech/import-ocr-pipeline]], [[concepts/cv-parsing-pipeline]], [[concepts/ats-safety]], [[entities/twoweeks]]
+related: [[tech/export-pipeline]], [[tech/import-ocr-pipeline]], [[concepts/cv-parsing-pipeline]], [[design/ats-safety]], [[entities/twoweeks]]
 ---
 
 # Export Pipeline Brief — OCR to ATS / Styled Output
@@ -49,5 +49,5 @@ Cette note documente le pipeline document de bout en bout : OCR/parsing, normali
 - [[tech/export-pipeline]]
 - [[tech/import-ocr-pipeline]]
 - [[concepts/cv-parsing-pipeline]]
-- [[concepts/ats-safety]]
+- [[design/ats-safety]]
 - [[entities/twoweeks]]

@@ -11,7 +11,7 @@ superseded_by:
 horizon: present
 version: v1
 sources: [2026-04-15-a4-grid-canon-spec-writer]
-related: [[concepts/ats-safety]], [[tech/export-pipeline]], [[entities/twoweeks]]
+related: [[design/ats-safety]], [[tech/export-pipeline]], [[entities/twoweeks]]
 ---
 
 # A4 Layout Systems
@@ -77,6 +77,6 @@ Le choix dépend du template, mais la géométrie doit rester explicite, mesuré
 
 ## Voir aussi
 
-- [[concepts/ats-safety]]
+- [[design/ats-safety]]
 - [[tech/export-pipeline]]
 - [[entities/twoweeks]]

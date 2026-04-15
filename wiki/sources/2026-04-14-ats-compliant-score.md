@@ -12,7 +12,7 @@ horizon: present
 version: v1
 type: spec
 sources: []
-related: [[concepts/ats-safety]], [[concepts/benchmark-matrix]], [[entities/twoweeks]]
+related: [[design/ats-safety]], [[strategy/benchmark-matrix]], [[entities/twoweeks]]
 ---
 
 # ATS Compliant Score — Resume Audit Rubric
@@ -47,6 +47,6 @@ Rubric détaillé pour auditer un CV au prisme ATS. Le document fixe des blocker
 
 ## Pages wiki mises à jour
 
-- [[concepts/ats-safety]] — nouveau concept qualité produit
+- [[design/ats-safety]] — nouvelle page design qualité produit
 - [[overview]] — synthèse projet enrichie avec l'axe ATS
 - [[index]] — source ajoutée

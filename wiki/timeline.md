@@ -38,7 +38,7 @@ Création de l'espace Obsidian LLM Wiki pour le projet twoweeks. Architecture v2
 ## [2026-04-10] decision | Refonte du système de tones : 4 tones avec Auto
 **Type** : decision
 **Version** : v1
-**Impact** : [[concepts/ai-product-model]], [[concepts/product-roadmap]], [[concepts/gap-analysis]]
+**Impact** : [[product/ai-product-model]], [[product/product-roadmap]], [[strategy/gap-analysis]]
 
 Remplacement des 3 tones initiaux par 4 tones : **Auto**, **Natural**, **Formal**, **Warm**. Le mode Auto devient le point d'entrée recommandé.
 

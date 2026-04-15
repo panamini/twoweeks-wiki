@@ -11,7 +11,7 @@ superseded_by:
 horizon: present
 version: v1
 sources: [2026-04-09-decisions-cvforge-sprint, 2026-04-10-notion-roadmap-cvforge, 2026-04-10-success-blueprint, 2026-04-10-benchmark-matrix, 2026-04-10-gap-analysis, 2026-04-14-structured-parsing-canonical-truth, 2026-04-14-ats-compliant-score, 2026-04-14-kanban-sprint-notes, 2026-04-14-run-sh-quick-note, 2026-04-14-export-pipeline-brief-ocr-to-ats-styled-output, 2026-04-15-mistral-resume-v3-section-recovery-scratchpad, 2026-04-15-run-sh-workspace-modes]
-related: [[entities/twoweeks]], [[concepts/product-roadmap]], [[concepts/cv-parsing-pipeline]], [[concepts/ats-safety]], [[howto/local-parser-operations]]
+related: [[entities/twoweeks]], [[product/product-roadmap]], [[concepts/cv-parsing-pipeline]], [[design/ats-safety]], [[howto/local-parser-operations]]
 ---
 
 # twoweeks — Vue d'ensemble

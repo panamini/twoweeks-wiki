@@ -105,8 +105,8 @@ Voir [[to do list/kanban]] pour le détail.
 
 - [[concepts/cv-parsing-pipeline]] — stratégie d'évolution du parser
 - [[concepts/cv-families]] — familles first-class vs secondaires
-- [[concepts/ats-safety]] — règles parser-safe
-- [[concepts/product-roadmap]] — roadmap complète
-- [[concepts/product-vision]] — blueprint complet
+- [[design/ats-safety]] — règles parser-safe
+- [[product/product-roadmap]] — roadmap complète
+- [[product/product-vision]] — blueprint complet
 - [[tech/import-ocr-pipeline]] — chemin de code import OCR
 - [[tech/local-vs-remote-parser-architecture]] — séparation local/cloud

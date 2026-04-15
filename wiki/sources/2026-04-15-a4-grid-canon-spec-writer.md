@@ -12,7 +12,7 @@ horizon: present
 version: v1
 type: spec
 sources: []
-related: [[design/a4-layout-systems]], [[concepts/ats-safety]], [[tech/export-pipeline]]
+related: [[design/a4-layout-systems]], [[design/ats-safety]], [[tech/export-pipeline]]
 ---
 
 # A4 Grid Canon Spec Writer
@@ -47,5 +47,5 @@ Spec de référence pour formaliser des systèmes de page A4 applicables aux ré
 ## Pages wiki mises à jour
 
 - [[design/a4-layout-systems]]
-- [[concepts/ats-safety]]
+- [[design/ats-safety]]
 - [[tech/export-pipeline]]
