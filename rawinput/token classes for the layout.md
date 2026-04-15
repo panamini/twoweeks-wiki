@@ -1,128 +1,35 @@
-es — the three token classes were:
+# ADR: Canonical Document Token Contract
 
-## 1. Geometry tokens
+## Decision
 
-These define the **hard page/frame math**.
+Adopt a single internal token contract with four ownership classes:
 
-They cover things like:
+- geometry
+- flow
+- appearance
+- runtime
 
-- page size
-- page margins
-- printable area
-- sidebar width
-- gutter width
-- main column width
-- Robial step units like `17mm`, `18mm`, `8.5mm`
+## Reasoning
 
-Think:
+- Preview, export CSS, and DOCX need one source of truth without breaking existing output surfaces.
+- Runtime fit and measurement helpers must remain local to preview.
+- Proposal voice overlays affect layout behavior and therefore belong to flow, not appearance.
 
-**the fixed grid and page skeleton**
+## Locked Shapes
 
----
+- geometry.page.liveArea.widthMm
+- geometry.page.liveArea.heightMm
+- flow.type.<role>.resolvedTrackingEm
 
-## 2. Flow tokens
+## Additional Rules
 
-These define **how content moves inside the frame**.
+- appearance.decor is non-structural. It may hold renderer-safe visual recipes such as borders, radii, gradients, and shadows, but it may not own spacing, sizing, reading measure, or anything intended to change pagination.
+- style.ts delegates to the canonical appearance resolver. It remains a style selection/input module, not an independent theme authority.
+- Primary font choice comes from canonical appearance.font.*. Serializer-level fallback stacks are allowed only as platform literals and may not override canonical font selection.
+- Serializer-required platform literals such as transparent, currentColor, DOCX-safe keywords, and generic font-family tails remain allowed when they serve platform compatibility rather than design authorship.
 
-They cover things like:
+## Consequences
 
-- font sizes
-- line heights
-- paragraph spacing
-- section spacing
-- entry-head spacing
-- list spacing
-- metadata gaps
-- chip/tag metrics
-- keep-with-next / break behavior
-- block cadence
-- column/content rhythm
-
-Think:
-
-**content rhythm, wrapping, spacing, and pagination behavior**
-
----
-
-## 3. Appearance tokens
-
-These define **how it looks without changing layout behavior**.
-
-They cover things like:
-
-- heading/body font family choice
-- ink color
-- accent color
-- rule color
-- background / paper tone
-- sidebar / rail tint
-- border color
-- emphasis tone
-- restrained tracking
-- tag fill / surface styling
-
-Think:
-
-**visual identity only**
-
----
-
-## The important rule
-
-### Geometry
-
-should control the **grid/frame**
-
-### Flow
-
-should control the **content rhythm and structure inside the frame**
-
-### Appearance
-
-should control the **style/look**
-
----
-
-## In your export case
-
-### Geometry tokens
-
-for:
-
-- Robial page math
-- export-safe grid
-- allowed column families
-
-### Flow tokens
-
-for:
-
-- one-column ATS rhythm
-- styled spacing cadence
-- hierarchy spacing
-- wrap/page-break behavior
-
-### Appearance tokens
-
-for:
-
-- selected font feel
-- palette
-- rule/rail treatment
-- layout/template identity cues
-
----
-
-## The key invariant
-
-What I told you before was basically:
-
-- **Geometry = where things can live**
-- **Flow = how text/content behaves there**
-- **Appearance = how it visually reads**
-
-And the classic safety rule was:
-
-> appearance should never secretly change geometry or flow
-
-That was the clean model.
+- Existing output var names stay stable.
+- DOCX moves from fixed constants to canonical token resolution.
+- Runtime vars remain excluded from persisted/exported canonical snapshots.
