@@ -90,7 +90,7 @@ Catalogue complet de toutes les pages **actives** du wiki (status: current ou pl
 | Page | Résumé | Tags |
 |------|--------|------|
 | [[howto/cloudflare-zero-trust-tunnel\|Cloudflare Zero Trust + Tunnel]] | Runbook parser.dasti.ai, CF Access, tunnel, DNS, token, WAF | cloudflare, devops |
-| [[APP-launcher-command\|Local Parser Operations]] | Lancer, arrêter et redémarrer la stack parser locale | parser, local, docker |
+| [[run.sh` LLM Scratchpad\|Local Parser Operations]] | Lancer, arrêter et redémarrer la stack parser locale | parser, local, docker |
 
 ---
 

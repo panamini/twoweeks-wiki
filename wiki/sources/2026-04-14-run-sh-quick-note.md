@@ -46,7 +46,7 @@ Cette note fixe `run.sh` comme point d'entrée principal du stack de dev. Elle r
 
 ## Pages wiki mises à jour
 
-- [[APP-launcher-command]]
+- [[run.sh` LLM Scratchpad]]
 - [[tech/local-vs-remote-parser-architecture]]
 - [[tech/import-ocr-pipeline]]
 - [[entities/twoweeks]]

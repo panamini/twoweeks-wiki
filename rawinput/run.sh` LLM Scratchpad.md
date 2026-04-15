@@ -1,6 +1,3 @@
-# `run.sh` LLM Scratchpad
-
-  
 
 ## What `run.sh` is
 

@@ -75,5 +75,5 @@ Le passage du mode local au mode prod doit rester un changement d'environnement,
 
 ## Voir aussi
 
-- [[APP-launcher-command]] — commandes à lancer
+- [[run.sh` LLM Scratchpad]] — commandes à lancer
 - [[tech/import-ocr-pipeline]] — call path actif

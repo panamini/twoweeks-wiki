@@ -75,5 +75,5 @@ Le langage opérateur de référence passe désormais par `run.sh local`, `run.s
 - [[concepts/parsing-poc-progress]] — état par famille
 - [[tech/local-vs-remote-parser-architecture]] — séparation local/cloud
 - [[tech/export-pipeline]] — pipeline document final
-- [[APP-launcher-command]] — commandes de debug local
+- [[run.sh` LLM Scratchpad]] — commandes de debug local
 - [[howto/cloudflare-zero-trust-tunnel]] — runbook tunnel parser.dasti.ai
