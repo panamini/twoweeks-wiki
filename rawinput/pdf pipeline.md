@@ -1,0 +1,1 @@
+the real PDF path: client -> FastAPI endpoint -> Node worker -> export-renderers HTML -> Playwright PDF
