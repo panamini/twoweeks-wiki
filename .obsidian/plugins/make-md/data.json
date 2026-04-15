@@ -45,7 +45,8 @@
     "//wiki/wiki/archive/wiki/archive/concepts",
     "//wiki/wiki/entities",
     "//wiki/wiki/concepts",
-    "//wiki/wiki/design"
+    "//wiki/wiki/design",
+    "//rawinput"
   ],
   "expandFolderOnClick": true,
   "spacesFolder": "Tags",
