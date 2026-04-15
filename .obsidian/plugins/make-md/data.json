@@ -46,7 +46,8 @@
     "//rawinput",
     "//wiki",
     "//wiki/wiki/strategy",
-    "//wiki/wiki/to do list"
+    "//wiki/wiki/to do list",
+    "//wiki/wiki/entities"
   ],
   "expandFolderOnClick": true,
   "spacesFolder": "Tags",
