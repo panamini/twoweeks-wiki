@@ -30,7 +30,11 @@ twoweeks/
     ├── overview.md            ← synthèse générale
     │
     ├── entities/              ← personnes, organisations, produits, outils (actifs)
-    ├── concepts/              ← idées, patterns, techniques, décisions (actifs)
+    ├── concepts/              ← concepts métier/architecture durables (actifs)
+    ├── design/                ← systèmes visuels durables : layout, brand, ATS/template rules
+    ├── product/               ← vision produit, roadmap, IA produit, KPIs
+    ├── strategy/              ← benchmark, gap analysis, cadrage concurrentiel
+    ├── meta/                  ← fonctionnement du wiki lui-même
     ├── sources/               ← résumés des sources ingérées
     ├── tech/                  ← référence technique : call paths, architecture code, infra
     ├── howto/                 ← runbooks opérationnels (procédures step-by-step)
@@ -52,7 +56,7 @@ twoweeks/
 ```yaml
 ---
 title: "Titre de la page"
-category: entity | concept | source | output | overview
+category: entity | concept | design | product | strategy | meta | source | output | overview
 tags: [tag1, tag2]
 created: YYYY-MM-DD
 updated: YYYY-MM-DD
@@ -87,6 +91,10 @@ Par défaut, lire en priorité :
 ### Règles de nommage des fichiers
 - **Entités** : `wiki/entities/nom-entite.md` (kebab-case)
 - **Concepts** : `wiki/concepts/nom-concept.md`
+- **Design** : `wiki/design/nom-systeme.md`
+- **Product** : `wiki/product/nom-page.md`
+- **Strategy** : `wiki/strategy/nom-page.md`
+- **Meta** : `wiki/meta/nom-page.md`
 - **Sources** : `wiki/sources/YYYY-MM-DD-titre-source.md`
 - **Outputs** : `wiki/outputs/YYYY-MM-DD-titre-output.md`
 - **Archivés** : même nom, déplacé dans `wiki/archive/[catégorie]/`

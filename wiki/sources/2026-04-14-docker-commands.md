@@ -36,4 +36,4 @@ Rappel minimal : pour redémarrer le conteneur parser de dev, utiliser `docker r
 
 ## Pages wiki mises à jour
 
-- [[APP-launcher-command]] — commande ajoutée
+- [[run.sh` LLM Scratchpad]] — commande ajoutée

@@ -12,7 +12,7 @@ horizon: present
 version: v1
 type: spec
 sources: []
-related: [[entities/twoweeks]], [[to do list/kanban]], [[concepts/product-roadmap]]
+related: [[entities/twoweeks]], [[to do list/kanban]], [[product/product-roadmap]]
 ---
 
 # Clerk Chrome Extension Addon — Save to twoweeks

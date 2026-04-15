@@ -182,3 +182,77 @@ Migration vers schema v2 : ajout rawinput/ (staging), gestion temporelle (status
 - `wiki/overview.md`
 - `wiki/index.md`
 **Pages archivées** : aucune
+
+## [2026-04-15] ingest | parser recovery scratchpad + run.sh workspace modes + section detection note
+
+**Agent** : Codex
+**Fichiers traités** : `rawinput/Mistral Resume V3 Section-Recovery Scratchpad.md`, `rawinput/run.sh\` LLM Scratchpad.md`, `rawinput/section detection.md`
+**Pages créées** :
+- `wiki/sources/2026-04-15-mistral-resume-v3-section-recovery-scratchpad.md`
+- `wiki/sources/2026-04-15-run-sh-workspace-modes.md`
+- `wiki/sources/2026-04-15-section-detection-future-note.md`
+- `wiki/howto/local-parser-operations.md`
+**Pages mises à jour** :
+- `wiki/concepts/cv-parsing-pipeline.md`
+- `wiki/tech/import-ocr-pipeline.md`
+- `wiki/tech/local-vs-remote-parser-architecture.md`
+- `wiki/entities/twoweeks.md`
+- `wiki/overview.md`
+- `wiki/to do list/kanban.md`
+- `wiki/sources/2026-04-14-run-sh-quick-note.md`
+- `wiki/timeline.md`
+- `wiki/index.md`
+- `wiki/log.md`
+**Pages archivées** :
+- `wiki/archive/concepts/parsing-poc-progress.md`
+
+## [2026-04-15] ingest | A4 grid canon spec writer
+
+**Agent** : Codex
+**Fichiers traités** : `rawinput/A4 Grid Canon Spec Writer.md`
+**Pages créées** :
+- `wiki/sources/2026-04-15-a4-grid-canon-spec-writer.md`
+- `wiki/design/a4-layout-systems.md`
+**Pages mises à jour** :
+- `wiki/concepts/ats-safety.md`
+- `wiki/tech/export-pipeline.md`
+- `wiki/index.md`
+- `wiki/log.md`
+**Pages archivées** :
+- aucune
+
+## [2026-04-15] doc-update | design bucket pour specs visuelles durables
+
+**Agent** : Codex
+**Source** : explicit user instruction
+**Pages créées** : aucune
+**Pages mises à jour** :
+- `CLAUDE.md`
+- `wiki/design/a4-layout-systems.md` (déplacée depuis `wiki/concepts/`)
+- `wiki/sources/2026-04-15-a4-grid-canon-spec-writer.md`
+- `wiki/concepts/ats-safety.md`
+- `wiki/tech/export-pipeline.md`
+- `wiki/index.md`
+- `wiki/log.md`
+**Pages archivées** : aucune
+
+## [2026-04-15] doc-update | buckets product strategy meta et rangement des concepts
+
+**Agent** : Codex
+**Source** : explicit user instruction
+**Pages créées** : aucune
+**Pages mises à jour** :
+- `CLAUDE.md`
+- `wiki/index.md`
+- `wiki/entities/twoweeks.md`
+- `wiki/overview.md`
+- `wiki/tech/export-pipeline.md`
+- `wiki/design/a4-layout-systems.md`
+- `wiki/sources/2026-04-12-twoweeks-brand-bible.md`
+- `wiki/sources/2026-04-14-ats-compliant-score.md`
+- `wiki/sources/2026-04-14-export-pipeline-brief-ocr-to-ats-styled-output.md`
+- `wiki/sources/2026-04-14-clerk-chrome-extension-addon.md`
+- `wiki/sources/2026-04-15-a4-grid-canon-spec-writer.md`
+- `wiki/timeline.md`
+- `wiki/log.md`
+**Pages archivées** : aucune

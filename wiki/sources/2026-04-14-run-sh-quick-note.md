@@ -12,7 +12,7 @@ horizon: present
 version: v1
 type: runbook
 sources: []
-related: [[APP-launcher-command]], [[tech/local-vs-remote-parser-architecture]], [[tech/import-ocr-pipeline]], [[entities/twoweeks]]
+related: [[howto/local-parser-operations]], [[tech/local-vs-remote-parser-architecture]], [[tech/import-ocr-pipeline]], [[entities/twoweeks]]
 ---
 
 # run.sh Quick Note — Main Dev Entrypoint
@@ -46,7 +46,7 @@ Cette note fixe `run.sh` comme point d'entrée principal du stack de dev. Elle r
 
 ## Pages wiki mises à jour
 
-- [[APP-launcher-command]]
+- [[howto/local-parser-operations]]
 - [[tech/local-vs-remote-parser-architecture]]
 - [[tech/import-ocr-pipeline]]
 - [[entities/twoweeks]]

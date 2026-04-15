@@ -3,15 +3,15 @@ title: "Vue d'ensemble — twoweeks"
 category: overview
 tags: [project, overview, twoweeks, roadmap, parser, ats]
 created: 2026-04-09
-updated: 2026-04-14
+updated: 2026-04-15
 status: current
 valid_from: 2026-04-09
 valid_until:
 superseded_by:
 horizon: present
 version: v1
-sources: [2026-04-09-decisions-cvforge-sprint, 2026-04-10-notion-roadmap-cvforge, 2026-04-10-success-blueprint, 2026-04-10-benchmark-matrix, 2026-04-10-gap-analysis, 2026-04-14-structured-parsing-canonical-truth, 2026-04-14-ats-compliant-score, 2026-04-14-kanban-sprint-notes, 2026-04-14-run-sh-quick-note, 2026-04-14-export-pipeline-brief-ocr-to-ats-styled-output]
-related: [[entities/twoweeks]], [[concepts/product-roadmap]], [[concepts/cv-parsing-pipeline]], [[concepts/ats-safety]]
+sources: [2026-04-09-decisions-cvforge-sprint, 2026-04-10-notion-roadmap-cvforge, 2026-04-10-success-blueprint, 2026-04-10-benchmark-matrix, 2026-04-10-gap-analysis, 2026-04-14-structured-parsing-canonical-truth, 2026-04-14-ats-compliant-score, 2026-04-14-kanban-sprint-notes, 2026-04-14-run-sh-quick-note, 2026-04-14-export-pipeline-brief-ocr-to-ats-styled-output, 2026-04-15-mistral-resume-v3-section-recovery-scratchpad, 2026-04-15-run-sh-workspace-modes]
+related: [[entities/twoweeks]], [[product/product-roadmap]], [[concepts/cv-parsing-pipeline]], [[design/ats-safety]], [[howto/local-parser-operations]]
 ---
 
 # twoweeks — Vue d'ensemble
@@ -41,11 +41,12 @@ La vérité d'export suit la même logique : fichiers PDF/DOCX finaux dérivés 
 
 ### Environnements
 
-- **Workflow local quotidien** : `./run.sh local`
-- **Debug local complet** : `./run.sh local-convex`
+- **Workflow local quotidien** : `./run.sh local-fast`
+- **Alias legacy** : `./run.sh local-convex`
+- **Usage local partiel** : `./run.sh local`
 - **Usage cloud/tunnel** : `./run.sh tunnel`
 
-`run.sh` est la source de vérité opératoire pour ces modes. La préférence localhost doit rester strictement dev-only.
+`run.sh` est la source de vérité opératoire pour ces modes. `local-fast` est désormais la boucle locale complète recommandée pour le parser; `local` ne suffit pas à garantir le même call path que le structured upload backend. La préférence localhost doit rester strictement dev-only.
 
 ---
 
@@ -76,14 +77,14 @@ La vérité d'export suit la même logique : fichiers PDF/DOCX finaux dérivés 
 
 - [[concepts/cv-parsing-pipeline]] — stratégie d'évolution du parser
 - [[concepts/cv-families]] — familles first-class vs secondaires
-- [[concepts/parsing-poc-progress]] — progression slice par slice
-- [[concepts/ats-safety]] — règles parser-safe pour les outputs
-- [[concepts/product-roadmap]] — initiatives par phase
-- [[concepts/product-vision]] — blueprint produit complet
-- [[concepts/benchmark-matrix]] — scorecard concurrentielle globale
+- [[design/ats-safety]] — règles parser-safe pour les outputs
+- [[product/product-roadmap]] — initiatives par phase
+- [[product/product-vision]] — blueprint produit complet
+- [[strategy/benchmark-matrix]] — scorecard concurrentielle globale
 - [[tech/import-ocr-pipeline]] — call path OCR/import actuel
 - [[tech/export-pipeline]] — pipeline document final
 - [[tech/local-vs-remote-parser-architecture]] — séparation local/cloud
+- [[howto/local-parser-operations]] — modes run.sh et debug local
 - [[to do list/kanban]] — backlog sprint actif
 
 ---

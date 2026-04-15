@@ -39,5 +39,5 @@ Documente les différents modes de `./run.sh up --ui` selon que l'on veut rester
 
 ## Pages wiki mises à jour
 
-- [[APP-launcher-command]] — nouvelle page howto
+- [[run.sh` LLM Scratchpad]] — nouvelle page howto
 - [[tech/local-vs-remote-parser-architecture]] — lien entre modes de lancement et architecture cible

@@ -3,15 +3,15 @@ title: "Export Pipeline — OCR to ATS / Styled Output"
 category: tech
 tags: [export, pdf, docx, ats, renderer, worker, preview, stylePreset]
 created: 2026-04-14
-updated: 2026-04-14
+updated: 2026-04-15
 status: current
 valid_from: 2026-04-14
 valid_until:
 superseded_by:
 horizon: present
 version: v1
-sources: [2026-04-14-export-pipeline-brief-ocr-to-ats-styled-output]
-related: [[tech/import-ocr-pipeline]], [[concepts/cv-parsing-pipeline]], [[concepts/ats-safety]], [[entities/twoweeks]]
+sources: [2026-04-14-export-pipeline-brief-ocr-to-ats-styled-output, 2026-04-15-a4-grid-canon-spec-writer]
+related: [[tech/import-ocr-pipeline]], [[concepts/cv-parsing-pipeline]], [[design/ats-safety]], [[design/a4-layout-systems]], [[entities/twoweeks]]
 ---
 
 # Export Pipeline — OCR to ATS / Styled Output
@@ -79,6 +79,12 @@ La source visuelle est gouvernée par :
 - `stylePreset`
 - les style/layout tokens partagés
 - le contrat de géométrie Robial grid
+
+Pour les templates résumé A4, le wiki distingue désormais explicitement :
+
+- `Canon 12` comme option classique dense et pratique
+- `Canon 9` comme option éditoriale plus généreuse
+- `Robial 17/18` comme système modulaire moderne recommandé
 
 ## Couches principales
 
@@ -152,4 +158,5 @@ Renderers principaux :
 
 - [[tech/import-ocr-pipeline]] — chemin OCR/import jusqu'à la donnée normalisée
 - [[concepts/cv-parsing-pipeline]] — stratégie parser et vérité canonique
-- [[concepts/ats-safety]] — contraintes ATS sur les outputs
+- [[design/ats-safety]] — contraintes ATS sur les outputs
+- [[design/a4-layout-systems]] — géométries A4 recommandées

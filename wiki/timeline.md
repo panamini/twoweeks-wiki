@@ -3,7 +3,7 @@ title: "Timeline — twoweeks"
 category: overview
 tags: [timeline, chronologie, projet]
 created: 2026-04-09
-updated: 2026-04-14
+updated: 2026-04-15
 ---
 
 # Timeline du projet twoweeks
@@ -38,7 +38,7 @@ Création de l'espace Obsidian LLM Wiki pour le projet twoweeks. Architecture v2
 ## [2026-04-10] decision | Refonte du système de tones : 4 tones avec Auto
 **Type** : decision
 **Version** : v1
-**Impact** : [[concepts/ai-product-model]], [[concepts/product-roadmap]], [[concepts/gap-analysis]]
+**Impact** : [[product/ai-product-model]], [[product/product-roadmap]], [[strategy/gap-analysis]]
 
 Remplacement des 3 tones initiaux par 4 tones : **Auto**, **Natural**, **Formal**, **Warm**. Le mode Auto devient le point d'entrée recommandé.
 
@@ -59,13 +59,27 @@ Le pipeline parsing est désormais documenté comme architecture structurée par
 ## [2026-04-14] discovery | Clarification des modes local vs cloud pour le parser
 **Type** : discovery
 **Version** : v1
-**Impact** : [[tech/local-vs-remote-parser-architecture]], [[APP-launcher-command]], [[tech/import-ocr-pipeline]]
+**Impact** : [[tech/local-vs-remote-parser-architecture]], [[howto/local-parser-operations]], [[tech/import-ocr-pipeline]]
 
 Le debug parser/OCR doit passer par la boucle locale complète `frontend local + Convex local + parser local`. En preview/prod, le parser doit rester une URL publique configurée par env ; le localhost ne doit jamais fuiter hors du mode dev.
 
 ## [2026-04-14] decision | `run.sh` devient l'entrée opérateur de référence
 **Type** : decision
 **Version** : v1
-**Impact** : [[APP-launcher-command]], [[tech/local-vs-remote-parser-architecture]], [[tech/import-ocr-pipeline]], [[entities/twoweeks]]
+**Impact** : [[howto/local-parser-operations]], [[tech/local-vs-remote-parser-architecture]], [[tech/import-ocr-pipeline]], [[entities/twoweeks]]
 
 `run.sh` devient la source de vérité opérationnelle pour lancer le stack. La documentation active privilégie désormais `./run.sh local`, `./run.sh local-convex` et `./run.sh tunnel`, et non les longues variantes `up --ui --local-origin --local-convex`.
+
+## [2026-04-15] milestone | Clôture du parsing stabilization POC initial
+**Type** : milestone
+**Version** : v1
+**Impact** : [[archive/concepts/parsing-poc-progress]], [[concepts/cv-parsing-pipeline]], [[tech/import-ocr-pipeline]]
+
+Le POC initial de stabilisation parser est considéré comme terminé sur son périmètre étroit. La doc active bascule d'un suivi slice-by-slice vers une description d'état courant : gates d'évidence OCR, recovery déterministe bornée, second validation pass, retry OCR unique et télémétrie légère.
+
+## [2026-04-15] decision | `local-fast` devient la boucle locale parser recommandée
+**Type** : decision
+**Version** : v1
+**Impact** : [[howto/local-parser-operations]], [[tech/local-vs-remote-parser-architecture]], [[tech/import-ocr-pipeline]], [[entities/twoweeks]]
+
+La doc opératoire active privilégie désormais `./run.sh local-fast` pour le développement parser full-stack. `local-convex` reste un alias legacy et `local` un mode partiel qui ne garantit pas un structured upload entièrement local.
