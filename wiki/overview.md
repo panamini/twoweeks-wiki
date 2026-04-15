@@ -10,7 +10,7 @@ valid_until:
 superseded_by:
 horizon: present
 version: v1
-sources: [2026-04-09-decisions-cvforge-sprint, 2026-04-10-notion-roadmap-cvforge, 2026-04-10-success-blueprint, 2026-04-10-benchmark-matrix, 2026-04-10-gap-analysis, 2026-04-14-structured-parsing-canonical-truth, 2026-04-14-ats-compliant-score, 2026-04-14-kanban-sprint-notes]
+sources: [2026-04-09-decisions-cvforge-sprint, 2026-04-10-notion-roadmap-cvforge, 2026-04-10-success-blueprint, 2026-04-10-benchmark-matrix, 2026-04-10-gap-analysis, 2026-04-14-structured-parsing-canonical-truth, 2026-04-14-ats-compliant-score, 2026-04-14-kanban-sprint-notes, 2026-04-14-run-sh-quick-note, 2026-04-14-export-pipeline-brief-ocr-to-ats-styled-output]
 related: [[entities/twoweeks]], [[concepts/product-roadmap]], [[concepts/cv-parsing-pipeline]], [[concepts/ats-safety]]
 ---
 
@@ -37,12 +37,15 @@ La vérité canonique visée pour le CV est :
 
 Les top-level arrays legacy (`experience[]`, `education[]`, `skills[]`, etc.) ne doivent plus être traités comme la vérité produit quand les sections structurées sont disponibles.
 
+La vérité d'export suit la même logique : fichiers PDF/DOCX finaux dérivés des données normalisées, pas du preview DOM.
+
 ### Environnements
 
-- **Debug local** : frontend local + Convex local + parser local
-- **Usage cloud/prod** : frontend hébergé + Convex cloud + parser public via `CONVEX_PARSER_URL`
+- **Workflow local quotidien** : `./run.sh local`
+- **Debug local complet** : `./run.sh local-convex`
+- **Usage cloud/tunnel** : `./run.sh tunnel`
 
-La préférence localhost doit rester strictement dev-only.
+`run.sh` est la source de vérité opératoire pour ces modes. La préférence localhost doit rester strictement dev-only.
 
 ---
 
@@ -79,6 +82,7 @@ La préférence localhost doit rester strictement dev-only.
 - [[concepts/product-vision]] — blueprint produit complet
 - [[concepts/benchmark-matrix]] — scorecard concurrentielle globale
 - [[tech/import-ocr-pipeline]] — call path OCR/import actuel
+- [[tech/export-pipeline]] — pipeline document final
 - [[tech/local-vs-remote-parser-architecture]] — séparation local/cloud
 - [[to do list/kanban]] — backlog sprint actif
 

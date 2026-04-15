@@ -10,7 +10,7 @@ valid_until:
 superseded_by:
 horizon: present
 version: v2
-sources: [2026-04-09-decisions-cvforge-sprint, 2026-04-10-notion-roadmap-cvforge, 2026-04-10-success-blueprint, 2026-04-10-benchmark-matrix, 2026-04-12-twoweeks-brand-bible, 2026-04-14-structured-parsing-canonical-truth, 2026-04-14-clerk-chrome-extension-addon, 2026-04-14-ats-compliant-score]
+sources: [2026-04-09-decisions-cvforge-sprint, 2026-04-10-notion-roadmap-cvforge, 2026-04-10-success-blueprint, 2026-04-10-benchmark-matrix, 2026-04-12-twoweeks-brand-bible, 2026-04-14-structured-parsing-canonical-truth, 2026-04-14-clerk-chrome-extension-addon, 2026-04-14-ats-compliant-score, 2026-04-14-run-sh-quick-note, 2026-04-14-export-pipeline-brief-ocr-to-ats-styled-output]
 related: [[concepts/cv-parsing-pipeline]], [[concepts/cv-families]], [[overview]], [[concepts/product-roadmap]], [[concepts/kpis]], [[concepts/product-vision]], [[concepts/benchmark-matrix]], [[concepts/ai-product-model]], [[concepts/brand-voice]], [[concepts/ats-safety]]
 ---
 
@@ -22,7 +22,8 @@ related: [[concepts/cv-parsing-pipeline]], [[concepts/cv-families]], [[overview]
 
 ## Brand
 
-**Tagline** : Finish. Faster.
+**Tagline**s : Finish. Faster. Just quit. One click. Two weeks. Done. 
+Grab your exit plan, just quit.// Job done. Just quit. 
 
 **Positionnement** : outil "Anti-Work" pour les gens qui font un excellent travail et veulent aller plus vite sans subir la friction des outils RH mous.
 
@@ -50,6 +51,10 @@ Le cap actif est désormais :
 
 Les champs top-level legacy sont des vues de compatibilité ou des fallbacks, pas la vérité durable.
 
+### Vérité export
+
+Les exports finaux CV/proposal dérivent des données normalisées via des builders et renderers d'export dédiés. Le preview DOM n'est pas la source d'export finale.
+
 ### Architecture de stockage Convex
 
 | Champ Convex | Rôle | Note |
@@ -65,10 +70,11 @@ Les champs top-level legacy sont des vues de compatibilité ou des fallbacks, pa
 
 ## Environnements parser
 
-- **Debug local** : `./run.sh up --ui --local-origin --local-convex`
-- **Dev cloud / preview / prod** : frontend hébergé ou local + Convex cloud + parser public configuré par env
+- **Workflow local quotidien** : `./run.sh local`
+- **Debug local complet** : `./run.sh local-convex`
+- **Dev cloud / preview / tunnel** : `./run.sh tunnel`
 
-Le localhost doit rester derrière une condition dev-only. Voir [[tech/local-vs-remote-parser-architecture]].
+`run.sh` est la source de vérité opératoire pour ces modes. Les longues variantes `up --ui ...` ne sont plus la doc de premier niveau. Le localhost doit rester derrière une condition dev-only. Voir [[tech/local-vs-remote-parser-architecture]].
 
 ---
 

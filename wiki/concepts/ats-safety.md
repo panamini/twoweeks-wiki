@@ -10,8 +10,8 @@ valid_until:
 superseded_by:
 horizon: present
 version: v1
-sources: [2026-04-14-ats-compliant-score]
-related: [[concepts/benchmark-matrix]], [[concepts/ai-product-model]], [[entities/twoweeks]]
+sources: [2026-04-14-ats-compliant-score, 2026-04-14-export-pipeline-brief-ocr-to-ats-styled-output]
+related: [[concepts/benchmark-matrix]], [[concepts/ai-product-model]], [[entities/twoweeks]], [[tech/export-pipeline]]
 ---
 
 # ATS Safety — Parser-safe output rules
@@ -53,6 +53,7 @@ Si l'un de ces défauts est présent, le document ne doit pas être considéré 
 3. Les exports doivent privilégier DOCX ou PDF text-based et éviter toute mise en page ambigüe.
 4. Les réécritures IA ne doivent pas sacrifier la structure pour "faire plus design".
 5. Une future document health layer peut exposer ce rubric comme score ATS interne.
+6. Le pipeline final doit produire un téléchargement direct depuis des payloads normalisés, pas une capture du preview DOM.
 
 ---
 

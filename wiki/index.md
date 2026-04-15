@@ -66,6 +66,8 @@ Catalogue complet de toutes les pages **actives** du wiki (status: current ou pl
 | [[sources/2026-04-14-ats-compliant-score\|ATS Compliant Score — Resume Audit Rubric]] | spec | 2026-04-14 | current |
 | [[sources/2026-04-14-local-dev-vs-remote-parser-architecture\|Local Dev vs Remote Parser Architecture]] | spec | 2026-04-14 | current |
 | [[sources/2026-04-14-run-sh-modes\|run.sh — Local/Cloud Modes]] | runbook | 2026-04-14 | current |
+| [[sources/2026-04-14-run-sh-quick-note\|run.sh Quick Note — Main Dev Entrypoint]] | runbook | 2026-04-14 | current |
+| [[sources/2026-04-14-export-pipeline-brief-ocr-to-ats-styled-output\|Export Pipeline Brief — OCR to ATS / Styled Output]] | spec | 2026-04-14 | current |
 | [[sources/2026-04-14-clerk-chrome-extension-addon\|Clerk Chrome Extension Addon — Save to twoweeks]] | spec | 2026-04-14 | current |
 | [[sources/2026-04-14-structured-parsing-canonical-truth\|Structured Parsing Canonical Truth]] | spec | 2026-04-14 | current |
 | [[sources/2026-04-14-docker-commands\|Docker Commands — Local Parser]] | runbook | 2026-04-14 | current |
@@ -78,6 +80,7 @@ Catalogue complet de toutes les pages **actives** du wiki (status: current ou pl
 | Page | Résumé | Tags |
 |------|--------|------|
 | [[tech/import-ocr-pipeline\|Import OCR Pipeline]] | Call path OCR/import et vérité canonique par sections | import, ocr, convex |
+| [[tech/export-pipeline\|Export Pipeline]] | Pipeline document final PDF/DOCX séparé du preview DOM | export, pdf, docx |
 | [[tech/local-vs-remote-parser-architecture\|Local vs Remote Parser Architecture]] | Séparation debug local / cloud / prod pour le parser | parser, env, production |
 
 ---
@@ -87,7 +90,7 @@ Catalogue complet de toutes les pages **actives** du wiki (status: current ou pl
 | Page | Résumé | Tags |
 |------|--------|------|
 | [[howto/cloudflare-zero-trust-tunnel\|Cloudflare Zero Trust + Tunnel]] | Runbook parser.dasti.ai, CF Access, tunnel, DNS, token, WAF | cloudflare, devops |
-| [[howto/local-parser-operations\|Local Parser Operations]] | Lancer, arrêter et redémarrer la stack parser locale | parser, local, docker |
+| [[APP-launcher-command\|Local Parser Operations]] | Lancer, arrêter et redémarrer la stack parser locale | parser, local, docker |
 
 ---
 
@@ -118,8 +121,8 @@ Catalogue complet de toutes les pages **actives** du wiki (status: current ou pl
 
 ## Statistiques
 
-- **Pages actives** : 43 (4 overview, 1 entité, 13 concepts, 18 sources, 2 tech, 2 howto, 2 to do, 1 output)
+- **Pages actives** : 46 (4 overview, 1 entité, 13 concepts, 20 sources, 3 tech, 2 howto, 2 to do, 1 output)
 - **Pages archivées** : 1
-- **Sources dans `raw/`** : 16
+- **Sources dans `raw/`** : 18
 - **Sources en attente dans `rawinput/`** : 0
 - **Dernière mise à jour** : 2026-04-14

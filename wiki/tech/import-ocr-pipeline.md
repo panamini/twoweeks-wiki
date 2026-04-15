@@ -10,8 +10,8 @@ valid_until:
 superseded_by:
 horizon: present
 version: v1
-sources: [pipeline-note-2026-04-12, 2026-04-14-structured-parsing-canonical-truth, 2026-04-14-local-dev-vs-remote-parser-architecture, 2026-04-14-run-sh-modes]
-related: [[concepts/cv-parsing-pipeline]], [[concepts/parsing-poc-progress]], [[entities/twoweeks]], [[tech/local-vs-remote-parser-architecture]]
+sources: [pipeline-note-2026-04-12, 2026-04-14-structured-parsing-canonical-truth, 2026-04-14-local-dev-vs-remote-parser-architecture, 2026-04-14-run-sh-modes, 2026-04-14-run-sh-quick-note, 2026-04-14-export-pipeline-brief-ocr-to-ats-styled-output]
+related: [[concepts/cv-parsing-pipeline]], [[concepts/parsing-poc-progress]], [[entities/twoweeks]], [[tech/local-vs-remote-parser-architecture]], [[tech/export-pipeline]]
 ---
 
 # Import OCR Pipeline — Call Path
@@ -39,16 +39,19 @@ StructuredUploadButton.tsx
 
 Quand les sections structurées existent et sont valides, elles sont la vérité canonique du produit. Les tableaux top-level sont des vues dérivées ou des fallbacks de transition.
 
+Cette même donnée normalisée alimente ensuite le pipeline d'export. Le call path OCR/import ne doit pas bifurquer vers le preview DOM pour fabriquer les fichiers finaux.
+
 ---
 
 ## Modes d'environnement
 
 | Mode | Stack | Usage |
 |------|-------|-------|
-| Local complet | frontend local + Convex local + parser local | debug parser/OCR end-to-end |
-| Cloud/default | frontend local ou hébergé + Convex cloud + parser public | comportement app réel |
+| `./run.sh local` | frontend local + Convex cloud/default + parser local | travail local normal |
+| `./run.sh local-convex` | frontend local + Convex local + parser local | debug parser/OCR end-to-end |
+| `./run.sh tunnel` | frontend local + Convex cloud/default + parser public via `PARSER_ORIGIN` | comportement edge/tunnel réel |
 
-Le mode local complet se lance avec `./run.sh up --ui --local-origin --local-convex`.
+Le langage opérateur de référence passe désormais par `run.sh local`, `run.sh local-convex` et `run.sh tunnel`, pas par les longues variantes `up --ui ...`.
 
 ---
 
@@ -70,5 +73,6 @@ Le mode local complet se lance avec `./run.sh up --ui --local-origin --local-con
 - [[concepts/cv-parsing-pipeline]] — stratégie d'évolution du parser
 - [[concepts/parsing-poc-progress]] — état par famille
 - [[tech/local-vs-remote-parser-architecture]] — séparation local/cloud
-- [[howto/local-parser-operations]] — commandes de debug local
+- [[tech/export-pipeline]] — pipeline document final
+- [[APP-launcher-command]] — commandes de debug local
 - [[howto/cloudflare-zero-trust-tunnel]] — runbook tunnel parser.dasti.ai

@@ -10,7 +10,7 @@ valid_until:
 superseded_by:
 horizon: present
 version: v1
-sources: [2026-04-11-todo-sprint, 2026-04-14-kanban-sprint-notes, 2026-04-14-clerk-chrome-extension-addon]
+sources: [2026-04-11-todo-sprint, 2026-04-14-kanban-sprint-notes, 2026-04-14-clerk-chrome-extension-addon, 2026-04-14-run-sh-quick-note]
 related: [[entities/twoweeks]], [[concepts/cv-parsing-pipeline]], [[concepts/cv-families]]
 ---
 
@@ -67,6 +67,6 @@ related: [[entities/twoweeks]], [[concepts/cv-parsing-pipeline]], [[concepts/cv-
 
 ## Notes
 
-- Live path : `./run.sh up --ui` + Convex `cloud/default` + `https://parser.dasti.ai`
-- Debug parser local : `./run.sh up --ui --local-origin --local-convex`
+- Live path : `./run.sh tunnel`
+- Debug parser local : `./run.sh local-convex`
 - Règle parsing : ne jamais rouvrir un slice accepté sans contradiction live nouvelle
