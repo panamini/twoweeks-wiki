@@ -77,10 +77,10 @@ La vérité d'export suit la même logique : fichiers PDF/DOCX finaux dérivés 
 
 - [[concepts/cv-parsing-pipeline]] — stratégie d'évolution du parser
 - [[concepts/cv-families]] — familles first-class vs secondaires
-- [[concepts/ats-safety]] — règles parser-safe pour les outputs
-- [[concepts/product-roadmap]] — initiatives par phase
-- [[concepts/product-vision]] — blueprint produit complet
-- [[concepts/benchmark-matrix]] — scorecard concurrentielle globale
+- [[design/ats-safety]] — règles parser-safe pour les outputs
+- [[product/product-roadmap]] — initiatives par phase
+- [[product/product-vision]] — blueprint produit complet
+- [[strategy/benchmark-matrix]] — scorecard concurrentielle globale
 - [[tech/import-ocr-pipeline]] — call path OCR/import actuel
 - [[tech/export-pipeline]] — pipeline document final
 - [[tech/local-vs-remote-parser-architecture]] — séparation local/cloud

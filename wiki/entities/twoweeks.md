@@ -11,7 +11,7 @@ superseded_by:
 horizon: present
 version: v2
 sources: [2026-04-09-decisions-cvforge-sprint, 2026-04-10-notion-roadmap-cvforge, 2026-04-10-success-blueprint, 2026-04-10-benchmark-matrix, 2026-04-12-twoweeks-brand-bible, 2026-04-14-structured-parsing-canonical-truth, 2026-04-14-clerk-chrome-extension-addon, 2026-04-14-ats-compliant-score, 2026-04-14-run-sh-quick-note, 2026-04-14-export-pipeline-brief-ocr-to-ats-styled-output, 2026-04-15-run-sh-workspace-modes, 2026-04-15-mistral-resume-v3-section-recovery-scratchpad]
-related: [[concepts/cv-parsing-pipeline]], [[concepts/cv-families]], [[overview]], [[concepts/product-roadmap]], [[concepts/kpis]], [[concepts/product-vision]], [[concepts/benchmark-matrix]], [[concepts/ai-product-model]], [[concepts/brand-voice]], [[concepts/ats-safety]]
+related: [[concepts/cv-parsing-pipeline]], [[concepts/cv-families]], [[overview]], [[product/product-roadmap]], [[product/kpis]], [[product/product-vision]], [[strategy/benchmark-matrix]], [[product/ai-product-model]], [[design/brand-voice]], [[design/ats-safety]]
 ---
 
 # twoweeks
@@ -27,7 +27,7 @@ Grab your exit plan, just quit.// Job done. Just quit.
 
 **Positionnement** : outil "Anti-Work" pour les gens qui font un excellent travail et veulent aller plus vite sans subir la friction des outils RH mous.
 
-Voir [[concepts/brand-voice]] pour la voix et les règles de copie.
+Voir [[design/brand-voice]] pour la voix et les règles de copie.
 
 ---
 

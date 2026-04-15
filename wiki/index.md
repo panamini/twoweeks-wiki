@@ -32,18 +32,47 @@ Catalogue complet de toutes les pages **actives** du wiki (status: current ou pl
 
 | Page | Résumé | Status | Tags |
 |------|--------|--------|------|
-| [[concepts/ai-product-model\|AI Product Model]] | 3 modes IA, rulebook et qualité writing | current | ai, ux, modes |
-| [[concepts/ats-safety\|ATS Safety]] | Règles parser-safe pour layouts, headings, exports et audits | current | ats, quality |
-| [[concepts/benchmark-matrix\|Benchmark Matrix]] | Scorecard concurrentielle pondérée | current | benchmark, scoring |
-| [[concepts/brand-voice\|Brand Voice]] | Voix staccato, Corporate Noir, règles de copie | current | brand, voice |
 | [[concepts/cv-families\|CV Families]] | Familles first-class, familles secondaires, mappings de sections | current | parser, sections |
 | [[concepts/cv-parsing-pipeline\|CV Parsing Pipeline]] | Architecture structurée par familles et vérité canonique par sections | current | parser, architecture |
-| [[concepts/gap-analysis\|Gap Analysis]] | Diagnostic concurrentiel et cycles de correction | current | gap, diagnostic |
-| [[concepts/kpis\|KPIs]] | Métriques de succès produit | current | kpi, métriques |
-| [[concepts/llm-wiki-pattern\|LLM Wiki Pattern]] | Pattern de base de connaissance persistante | current | meta, workflow |
-| [[concepts/product-roadmap\|Product Roadmap]] | Initiatives par phase et priorités | current | roadmap, product |
-| [[concepts/product-vision\|Product Vision]] | Blueprint produit complet | current | vision, architecture |
-| [[concepts/temporal-management\|Gestion temporelle]] | Distinction passé/présent/futur dans le wiki | current | temporal, architecture |
+
+---
+
+## Design
+
+| Page | Résumé | Status | Tags |
+|------|--------|--------|------|
+| [[design/a4-layout-systems\|A4 Layout Systems]] | Canons A4 et grille Robial pour templates résumé/export | current | layout, a4 |
+| [[design/ats-safety\|ATS Safety]] | Règles parser-safe pour layouts, headings, exports et audits | current | ats, quality |
+| [[design/brand-voice\|Brand Voice]] | Voix staccato, Corporate Noir, règles de copie | current | brand, voice |
+
+---
+
+## Product
+
+| Page | Résumé | Status | Tags |
+|------|--------|--------|------|
+| [[product/ai-product-model\|AI Product Model]] | 3 modes IA, rulebook et qualité writing | current | ai, ux, modes |
+| [[product/kpis\|KPIs]] | Métriques de succès produit | current | kpi, métriques |
+| [[product/product-roadmap\|Product Roadmap]] | Initiatives par phase et priorités | current | roadmap, product |
+| [[product/product-vision\|Product Vision]] | Blueprint produit complet | current | vision, architecture |
+
+---
+
+## Strategy
+
+| Page | Résumé | Status | Tags |
+|------|--------|--------|------|
+| [[strategy/benchmark-matrix\|Benchmark Matrix]] | Scorecard concurrentielle pondérée | current | benchmark, scoring |
+| [[strategy/gap-analysis\|Gap Analysis]] | Diagnostic concurrentiel et cycles de correction | current | gap, diagnostic |
+
+---
+
+## Meta
+
+| Page | Résumé | Status | Tags |
+|------|--------|--------|------|
+| [[meta/llm-wiki-pattern\|LLM Wiki Pattern]] | Pattern de base de connaissance persistante | current | meta, workflow |
+| [[meta/temporal-management\|Gestion temporelle]] | Distinction passé/présent/futur dans le wiki | current | temporal, architecture |
 
 ---
 
@@ -75,14 +104,6 @@ Catalogue complet de toutes les pages **actives** du wiki (status: current ou pl
 | [[sources/2026-04-15-run-sh-workspace-modes\|run.sh Workspace Modes — Local Fast and Parser Dev]] | runbook | 2026-04-15 | current |
 | [[sources/2026-04-15-section-detection-future-note\|Section Detection Future Note — Narrow Recovery Scope]] | spec | 2026-04-15 | current |
 | [[sources/2026-04-15-a4-grid-canon-spec-writer\|A4 Grid Canon Spec Writer]] | spec | 2026-04-15 | current |
-
----
-
-## Design
-
-| Page | Résumé | Status | Tags |
-|------|--------|--------|------|
-| [[design/a4-layout-systems\|A4 Layout Systems]] | Canons A4 et grille Robial pour templates résumé/export | current | layout, a4 |
 
 ---
 
@@ -133,7 +154,7 @@ Catalogue complet de toutes les pages **actives** du wiki (status: current ou pl
 
 ## Statistiques
 
-- **Pages actives** : 50 (4 overview, 1 entité, 12 concepts, 24 sources, 1 design, 3 tech, 2 howto, 2 to do, 1 output)
+- **Pages actives** : 50 (4 overview, 1 entité, 2 concepts, 3 design, 4 product, 2 strategy, 2 meta, 24 sources, 3 tech, 2 howto, 2 to do, 1 output)
 - **Pages archivées** : 2
 - **Sources dans `raw/`** : 23
 - **Sources en attente dans `rawinput/`** : 0
