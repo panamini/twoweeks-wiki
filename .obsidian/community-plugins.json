@@ -4,5 +4,8 @@
   "dataview",
   "obsidian-kanban",
   "templater-obsidian",
-  "various-complements"
+  "various-complements",
+  "make-md",
+  "obsidian-tasks-plugin",
+  "obsidian-style-settings"
 ]

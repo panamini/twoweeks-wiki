@@ -24,15 +24,15 @@ related: [[cv-parsing-pipeline]], [[cv-families]], [[cv-forge]]
 
 ## État par famille
 
-| Famille | État | Fixtures acceptées |
-|---------|------|-------------------|
-| **EXPERIENCE** | ✅ Complète | Jessica WORK HISTORY (3 entries, pas de faux row "Spring Education Group", pas de blob merged responsibilities, `desiredPosition` non pollué) |
-| **EDUCATION** | ✅ Complète | Jessica (2 entrées cohérentes, plus de fragmentation institution-only/degree-only) |
-| **LANGUAGES** | ✅ Complète | Robert : `languagesRaw` collapse → `["English","Spanish","Italian"]` |
-| **SKILLS** | ✅ Complète | Anne markdown-table cleanup, Jake grouped technical-skills recovery |
-| **IDENTITY/CONTACT** | 🟡 En cours | Jessica address/location, Anne title-as-location guard, Linda location pass-through, Helen name fix, Helen desired-position fix |
-| **SUMMARY** | ⬜ Pas démarré | — |
-| **ACHIEVEMENTS** | ⬜ Pas démarré | — |
+| Famille              | État          | Fixtures acceptées                                                                                                                            |
+| -------------------- | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| **EXPERIENCE**       | ✅ Complète    | Jessica WORK HISTORY (3 entries, pas de faux row "Spring Education Group", pas de blob merged responsibilities, `desiredPosition` non pollué) |
+| **EDUCATION**        | ✅ Complète    | Jessica (2 entrées cohérentes, plus de fragmentation institution-only/degree-only)                                                            |
+| **LANGUAGES**        | ✅ Complète    | Robert : `languagesRaw` collapse → `["English","Spanish","Italian"]`                                                                          |
+| **SKILLS**           | ✅ Complète    | Anne markdown-table cleanup, Jake grouped technical-skills recovery                                                                           |
+| **IDENTITY/CONTACT** | 🟡 En cours   | Jessica address/location, Anne title-as-location guard, Linda location pass-through, Helen name fix, Helen desired-position fix               |
+| **SUMMARY**          | ⬜ Pas démarré | —                                                                                                                                             |
+| **ACHIEVEMENTS**     | ⬜ Pas démarré | —                                                                                                                                             |
 
 ---
 
