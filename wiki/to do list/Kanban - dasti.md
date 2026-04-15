@@ -6,6 +6,7 @@ kanban-plugin: board
 
 ## To do
 
+- [ ] [[Faire des choses]]
 
 
 ## In dev
