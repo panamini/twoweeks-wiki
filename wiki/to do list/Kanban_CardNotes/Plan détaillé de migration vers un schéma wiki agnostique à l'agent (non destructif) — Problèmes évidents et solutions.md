@@ -1,4 +1,4 @@
-# Plan détaillé de migration vers un schéma wiki agnostique à l'agent (non destructif) — Problèmes évidents et solutions
+#
 
 
 1. Outil qui lit exclusivement `CLAUDE.md`.

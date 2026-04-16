@@ -1,4 +1,4 @@
-# Plan détaillé de migration vers un schéma wiki agnostique à l'agent (non destructif) — Étape 1 — Ajouter une spec neutre sans supprimer l'existant
+
 
 
 Créer une copie de travail agnostique.

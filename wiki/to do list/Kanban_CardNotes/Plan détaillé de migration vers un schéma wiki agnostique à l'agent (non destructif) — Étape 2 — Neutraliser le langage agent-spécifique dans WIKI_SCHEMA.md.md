@@ -1,4 +1,4 @@
-# Plan détaillé de migration vers un schéma wiki agnostique à l'agent (non destructif) — Étape 2 — Neutraliser le langage agent-spécifique dans `WIKI_SCHEMA.md`
+
 
 
 ### 2.1 Intention (important pour lecteur novice)
