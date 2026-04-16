@@ -44,10 +44,12 @@
     "//wiki/wiki/archive/wiki/archive/concepts",
     "//wiki/wiki/concepts",
     "//rawinput",
-    "//wiki",
     "//wiki/wiki/strategy",
     "//wiki/wiki/to do list",
-    "//wiki/wiki/entities"
+    "//wiki/wiki/entities",
+    "//Tags",
+    "//wiki",
+    "//wiki/wiki/design"
   ],
   "expandFolderOnClick": true,
   "spacesFolder": "Tags",
