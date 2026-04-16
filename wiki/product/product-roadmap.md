@@ -3,15 +3,15 @@ title: "Product Roadmap — CV Forge"
 category: product
 tags: [roadmap, product, initiatives, phases, stratégie]
 created: 2026-04-10
-updated: 2026-04-10
+updated: 2026-04-16
 status: current
 valid_from: 2026-04-10
 valid_until:
 superseded_by:
 horizon: present
 version: v1
-sources: [2026-04-10-notion-roadmap-cvforge, 2026-04-10-gap-analysis]
-related: [[archive/entities/cv-forge]], [[product/kpis]], [[strategy/gap-analysis]], [[product/product-vision]]
+sources: [2026-04-10-notion-roadmap-cvforge, 2026-04-10-gap-analysis, 2026-04-16-plan-onboarding-activation-interactive-preview]
+related: [[archive/entities/cv-forge]], [[product/kpis]], [[strategy/gap-analysis]], [[product/product-vision]], [[design/brand-voice]]
 ---
 
 # Product Roadmap — CV Forge
@@ -49,6 +49,8 @@ Quatre axes séquencés :
 **Solution** : Cliquer dans le preview → focus section dans l'éditeur. Hover section → highlight preview. Sync active section. Pas de pivot vers preview-first — renforcement du lien émotionnel.
 **KPIs** : Edit Completion ↑, Session Depth ↑
 
+**Priorité d'exécution actuelle** : à faire avant le quick-start et avant la couche d'onboarding, car c'est le signal premium le plus fort à l'intérieur de l'éditeur et le meilleur payoff perceptible du produit.
+
 ---
 
 ## Phase 2 — P1 : Confiance + Conversion
@@ -56,6 +58,8 @@ Quatre axes séquencés :
 ### First-run onboarding system
 Remplacer les longs tutoriaux par un onboarding progressif : checklist première session, nudges contextuels, empty-state helpers, 1-2 spotlight moments. Pas de tooltip tour géant.
 **Dépendance** : Quick-start path
+
+**Clarification actuelle** : cette couche vient après `Editor ↔ Preview linking` puis `Quick-start guided path`. La brand voice est jugée suffisamment mature pour être appliquée directement aux microcopies, sans chantier préalable.
 
 ### Document health / readiness layer
 Système de readiness pour CV + proposition : checklist avec infos manquantes, sections faibles, blocs d'import non résolus, placeholders, alignement keywords, export readiness.
@@ -128,6 +132,11 @@ Croisement entre les phases P0→P3 et les priorités de la gap analysis. Voir [
 **Cycle 1** : parser cleanup + import review layer · quick-start guided path · first-run checklist · stronger preview/editor linking
 → *Mappe directement sur les 4 initiatives P0*
 
+**Ordre d'exécution actuellement recommandé** :
+1. interactive preview ↔ editor linking
+2. quick-start guided path
+3. first-run onboarding layer
+
 **Cycle 2** : AI rulebook implementation · improved toolbar rewrite quality · template switcher · document health system
 → *Mappe sur les initiatives P1 prioritaires*
 
@@ -141,3 +150,4 @@ Croisement entre les phases P0→P3 et les priorités de la gap analysis. Voir [
 - [[cv-parsing-pipeline]] — architecture technique du parsing
 - [[strategy/gap-analysis]] — diagnostic complet et priority order vs ResumeLab
 - [[product/product-vision]] — blueprint du produit idéal
+- [[design/brand-voice]] — microcopy à appliquer directement pendant l'implémentation

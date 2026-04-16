@@ -3,15 +3,15 @@ title: "Export Pipeline — OCR to ATS / Styled Output"
 category: tech
 tags: [export, pdf, docx, ats, renderer, worker, preview, stylePreset]
 created: 2026-04-14
-updated: 2026-04-15
+updated: 2026-04-16
 status: current
 valid_from: 2026-04-14
 valid_until:
 superseded_by:
 horizon: present
 version: v1
-sources: [2026-04-14-export-pipeline-brief-ocr-to-ats-styled-output, 2026-04-15-a4-grid-canon-spec-writer, 2026-04-15-typography-mode, 2026-04-15-french-typography-scratch-pad, 2026-04-15-english-typography-scratch-pad, 2026-04-15-conversation-locale-typography-rules]
-related: [[tech/import-ocr-pipeline]], [[concepts/cv-parsing-pipeline]], [[design/ats-safety]], [[design/a4-layout-systems]], [[design/locale-typography-rules]], [[entities/twoweeks]]
+sources: [2026-04-14-export-pipeline-brief-ocr-to-ats-styled-output, 2026-04-15-a4-grid-canon-spec-writer, 2026-04-15-typography-mode, 2026-04-15-french-typography-scratch-pad, 2026-04-15-english-typography-scratch-pad, 2026-04-15-conversation-locale-typography-rules, 2026-04-16-live-proposal-preview-to-print-pipeline-scratchpad, 2026-04-16-live-resume-preview-to-print-pipeline-scratchpad, 2026-04-16-pdf-pipeline, 2026-04-16-token-classes-for-the-layout]
+related: [[tech/import-ocr-pipeline]], [[concepts/cv-parsing-pipeline]], [[design/ats-safety]], [[design/a4-layout-systems]], [[design/locale-typography-rules]], [[design/document-token-contract]], [[tech/preview-to-print-pipeline]], [[entities/twoweeks]]
 ---
 
 # Export Pipeline — OCR to ATS / Styled Output
@@ -73,6 +73,8 @@ Les exports sont construits depuis des objets normalisés :
 
 - `ResumePrintSource`
 - `ProposalPrintSource`
+
+Pour le styled export preview-driven, la chaîne active passe ensuite par des payloads print-route (`ResumePreviewPrintSource`, `ProposalPreviewPrintSource`) avant la route print Playwright.
 
 La source visuelle est gouvernée par :
 
@@ -162,6 +164,8 @@ Renderers principaux :
 - Le téléchargement final doit être direct-download.
 - L'ancien helper raster `my-app/src/lib/document-export.ts` est legacy.
 - La normalisation typographique locale doit être validée contre wrap et page-break tests.
+- Preview et styled PDF doivent rester des jumeaux à travers la route print, pas deux systèmes concurrents.
+- Le contrat canonique des tokens document doit séparer `geometry`, `flow`, `appearance` et `runtime`.
 
 ## Voir aussi
 
@@ -170,3 +174,5 @@ Renderers principaux :
 - [[design/ats-safety]] — contraintes ATS sur les outputs
 - [[design/a4-layout-systems]] — géométries A4 recommandées
 - [[design/locale-typography-rules]] — règles FR/EN de typographie locale
+- [[design/document-token-contract]] — classes de tokens et ownership
+- [[tech/preview-to-print-pipeline]] — parité preview -> print -> PDF
