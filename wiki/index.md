@@ -1,7 +1,7 @@
 ---
 title: "Index du Wiki — twoweeks"
 category: overview
-updated: 2026-04-15
+updated: 2026-04-16
 ---
 
 # Index du Wiki · twoweeks (v2)
@@ -115,6 +115,8 @@ Catalogue complet de toutes les pages **actives** du wiki (status: current ou pl
 | [[sources/2026-04-16-plan-onboarding-activation-interactive-preview\|Plan Onboarding, Activation & Interactive Preview — twoweeks.ai]] | spec | 2026-04-16 | current |
 | [[sources/2026-04-16-pdf-pipeline\|PDF Pipeline]] | note | 2026-04-16 | current |
 | [[sources/2026-04-16-token-classes-for-the-layout\|Token Classes for the Layout]] | spec | 2026-04-16 | current |
+| [[sources/2026-04-16-proposal-style-persistence-quickmap-scratchpad\|Proposal Style Persistence Quickmap Scratchpad]] | spec | 2026-04-16 | current |
+| [[sources/2026-04-16-verbati-style-pipeline-scratchpad\|Verbati Style Pipeline Scratchpad]] | spec | 2026-04-16 | current |
 
 ---
 
@@ -166,8 +168,8 @@ Catalogue complet de toutes les pages **actives** du wiki (status: current ou pl
 
 ## Statistiques
 
-- **Pages actives** : 62 (4 overview, 1 entité, 2 concepts, 5 design, 4 product, 2 strategy, 2 meta, 33 sources, 4 tech, 2 howto, 2 to do, 1 output)
+- **Pages actives** : 64 (4 overview, 1 entité, 2 concepts, 5 design, 4 product, 2 strategy, 2 meta, 35 sources, 4 tech, 2 howto, 2 to do, 1 output)
 - **Pages archivées** : 2
-- **Sources dans `raw/`** : 31
+- **Sources dans `raw/`** : 33
 - **Sources en attente dans `rawinput/`** : 0
 - **Dernière mise à jour** : 2026-04-16

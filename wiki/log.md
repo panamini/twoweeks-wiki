@@ -218,6 +218,22 @@ Migration vers schema v2 : ajout rawinput/ (staging), gestion temporelle (status
 - `wiki/entities/twoweeks.md`
 - `wiki/overview.md`
 - `wiki/to do list/kanban.md`
+
+## [2026-04-16] ingest | proposal style persistence + verbati style pipeline
+
+**Agent** : Codex
+**Fichiers traités** : `rawinput/Proposal Style Persistence Quickmap Scratchpad.md`, `rawinput/Verbati Style Pipeline Scratchpad.md`
+**Pages créées** :
+- `wiki/sources/2026-04-16-proposal-style-persistence-quickmap-scratchpad.md`
+- `wiki/sources/2026-04-16-verbati-style-pipeline-scratchpad.md`
+**Pages mises à jour** :
+- `wiki/design/document-token-contract.md`
+- `wiki/tech/preview-to-print-pipeline.md`
+- `wiki/tech/export-pipeline.md`
+- `wiki/index.md`
+- `wiki/log.md`
+**Pages archivées** :
+- aucune
 - `wiki/sources/2026-04-14-run-sh-quick-note.md`
 - `wiki/timeline.md`
 - `wiki/index.md`

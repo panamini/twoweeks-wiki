@@ -10,7 +10,7 @@ valid_until:
 superseded_by:
 horizon: present
 version: v1
-sources: [2026-04-16-token-classes-for-the-layout]
+sources: [2026-04-16-token-classes-for-the-layout, 2026-04-16-verbati-style-pipeline-scratchpad, 2026-04-16-proposal-style-persistence-quickmap-scratchpad]
 related: [[design/a4-layout-systems]], [[design/locale-typography-rules]], [[tech/export-pipeline]], [[tech/preview-to-print-pipeline]]
 ---
 
@@ -39,10 +39,23 @@ Contrat canonique des classes de tokens document pour aligner preview, export CS
 - le choix primaire de police vient de `appearance.font.*`
 - les littéraux fallback plateforme sont tolérés uniquement pour compatibilité sérialiseur
 - les helpers `runtime` ne doivent pas fuiter dans les snapshots exportés
+- `metadata.verbatiStyle` est l'autorité visuelle persistée pour proposal
+- `templateId` décrit d'abord la structure et la géométrie, pas l'identité visuelle complète
+- le renderer reçoit un snapshot d'apparence résolu; il ne doit pas reconstruire le style depuis des defaults de liste ou de shell
 
 ## Pourquoi ça compte
 
 Sans ce contrat, preview, export HTML/CSS et DOCX dérivent facilement vers plusieurs systèmes concurrents. Avec lui, chaque classe sait ce qu'elle a le droit d'influencer.
+
+## Cas proposal
+
+Pour les proposals, la séparation critique est :
+
+- `geometry` : page, template, disposition, zones structurelles
+- `appearance` : `verbatiStyle` résolu, familles de police, contraste, accents et décor
+- `runtime` : état local de preview, fit, instrumentation et merge temporaire
+
+Le saved-view ne doit pas écraser `appearance` avec un bundle par défaut simplement parce qu'un `templateId` a été retrouvé. Si `metadata.verbatiStyle` existe, c'est lui qui doit survivre à la sauvegarde, à la réouverture et au print payload.
 
 ## Voir aussi
 

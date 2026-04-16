@@ -10,7 +10,7 @@ valid_until:
 superseded_by:
 horizon: present
 version: v1
-sources: [2026-04-16-live-proposal-preview-to-print-pipeline-scratchpad, 2026-04-16-live-resume-preview-to-print-pipeline-scratchpad, 2026-04-16-pdf-pipeline]
+sources: [2026-04-16-live-proposal-preview-to-print-pipeline-scratchpad, 2026-04-16-live-resume-preview-to-print-pipeline-scratchpad, 2026-04-16-pdf-pipeline, 2026-04-16-proposal-style-persistence-quickmap-scratchpad, 2026-04-16-verbati-style-pipeline-scratchpad]
 related: [[tech/export-pipeline]], [[design/document-token-contract]], [[entities/twoweeks]]
 ---
 
@@ -37,25 +37,39 @@ Preview et styled PDF doivent être des jumeaux. Le pipeline actif n'est pas un 
 Les invariants critiques sont :
 
 - même contenu/document state
-- même `stylePreset`
-- même `templateId` ou `rendererVariantId`
+- même snapshot visuel résolu (`stylePreset` ou `metadata.verbatiStyle`)
+- même `templateId` ou `rendererVariantId` quand la structure le requiert
 - même renderer de page
 - mêmes vars/theme document
 - mêmes fonts réellement matérialisées
 - aucune seconde logique de layout export-only
+
+Pour proposal, il faut distinguer explicitement :
+
+- `templateId` : structure, disposition, géométrie
+- `verbatiStyle` : identité visuelle persistée
+
+Si le payload print ne transporte que le template et laisse le style être reconstruit depuis un default de liste, la parité preview -> print est déjà perdue avant `page.pdf()`.
 
 ## Boundaries de debug
 
 Quand preview et PDF divergent, inspecter dans cet ordre :
 
 1. état sélectionné dans l'UI
-2. payload export envoyé
-3. bootstrap worker
-4. route print prête
-5. screenshot pre-`page.pdf()`
-6. PDF final
+2. merge saved proposal / draft local / hydratation saved-view
+3. payload export envoyé
+4. bootstrap worker
+5. route print prête
+6. screenshot pre-`page.pdf()`
+7. PDF final
 
 Les écarts de typography fidelity peuvent venir du chargement réel des fonts, de wrappers différents, du timing print ou de la génération PDF elle-même.
+
+Les écarts de style proposal peuvent aussi venir plus tôt :
+
+- override optimiste sur le même id
+- bundle par défaut réinjecté côté `ProposalsList`
+- héritage CV rejoué au lieu d'un snapshot proposal détaché
 
 ## Conséquence
 

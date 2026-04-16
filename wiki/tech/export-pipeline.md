@@ -10,7 +10,7 @@ valid_until:
 superseded_by:
 horizon: present
 version: v1
-sources: [2026-04-14-export-pipeline-brief-ocr-to-ats-styled-output, 2026-04-15-a4-grid-canon-spec-writer, 2026-04-15-typography-mode, 2026-04-15-french-typography-scratch-pad, 2026-04-15-english-typography-scratch-pad, 2026-04-15-conversation-locale-typography-rules, 2026-04-16-live-proposal-preview-to-print-pipeline-scratchpad, 2026-04-16-live-resume-preview-to-print-pipeline-scratchpad, 2026-04-16-pdf-pipeline, 2026-04-16-token-classes-for-the-layout]
+sources: [2026-04-14-export-pipeline-brief-ocr-to-ats-styled-output, 2026-04-15-a4-grid-canon-spec-writer, 2026-04-15-typography-mode, 2026-04-15-french-typography-scratch-pad, 2026-04-15-english-typography-scratch-pad, 2026-04-15-conversation-locale-typography-rules, 2026-04-16-live-proposal-preview-to-print-pipeline-scratchpad, 2026-04-16-live-resume-preview-to-print-pipeline-scratchpad, 2026-04-16-pdf-pipeline, 2026-04-16-token-classes-for-the-layout, 2026-04-16-proposal-style-persistence-quickmap-scratchpad, 2026-04-16-verbati-style-pipeline-scratchpad]
 related: [[tech/import-ocr-pipeline]], [[concepts/cv-parsing-pipeline]], [[design/ats-safety]], [[design/a4-layout-systems]], [[design/locale-typography-rules]], [[design/document-token-contract]], [[tech/preview-to-print-pipeline]], [[entities/twoweeks]]
 ---
 
@@ -81,6 +81,13 @@ La source visuelle est gouvernée par :
 - `stylePreset`
 - les style/layout tokens partagés
 - le contrat de géométrie Robial grid
+
+Pour proposal, le wiki ajoute désormais une séparation plus stricte :
+
+- `metadata.verbatiStyle` = vérité visuelle persistée
+- `templateId` = structure/template/géométrie
+
+Un export styled correct doit transporter les deux sans laisser l'un reconstruire implicitement l'autre.
 
 Pour les templates résumé A4, le wiki distingue désormais explicitement :
 
@@ -166,6 +173,8 @@ Renderers principaux :
 - La normalisation typographique locale doit être validée contre wrap et page-break tests.
 - Preview et styled PDF doivent rester des jumeaux à travers la route print, pas deux systèmes concurrents.
 - Le contrat canonique des tokens document doit séparer `geometry`, `flow`, `appearance` et `runtime`.
+- Les payloads proposal doivent embarquer le snapshot visuel résolu, pas seulement un `templateId`.
+- Un bug de persistance saved-view peut casser l'export styled avant même l'étape worker ou Playwright.
 
 ## Voir aussi
 

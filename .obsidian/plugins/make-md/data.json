@@ -40,16 +40,15 @@
   "expandedSpaces": [
     "/",
     "//wiki/wiki/product",
-    "//wiki/wiki/meta",
     "//wiki/wiki/archive/wiki/archive/concepts",
-    "//wiki/wiki/concepts",
     "//rawinput",
-    "//wiki/wiki/strategy",
     "//wiki/wiki/to do list",
     "//wiki/wiki/entities",
     "//Tags",
     "//wiki",
-    "//wiki/wiki/design"
+    "//wiki/wiki/design",
+    "//wiki/wiki/strategy",
+    "//wiki/wiki/skills"
   ],
   "expandFolderOnClick": true,
   "spacesFolder": "Tags",
