@@ -167,6 +167,25 @@ Migration vers schema v2 : ajout rawinput/ (staging), gestion temporelle (status
 - `wiki/index.md`
 **Pages archivées** : aucune
 
+## [2026-04-15] ingest | locale typography rules + French/English scratch pads
+
+**Agent** : Codex
+**Fichiers traités** : `rawinput/TYPOGRAPHY MODE.md`, `rawinput/FRENCH TYPOGRAPHY SCRATCH PAD.md`, `rawinput/ENGLISH TYPOGRAPHY SCRATCH PAD.md`
+**Pages créées** :
+- `wiki/sources/2026-04-15-typography-mode.md`
+- `wiki/sources/2026-04-15-french-typography-scratch-pad.md`
+- `wiki/sources/2026-04-15-english-typography-scratch-pad.md`
+- `wiki/sources/2026-04-15-conversation-locale-typography-rules.md`
+- `wiki/design/locale-typography-rules.md`
+**Pages mises à jour** :
+- `wiki/design/a4-layout-systems.md`
+- `wiki/design/brand-voice.md`
+- `wiki/tech/export-pipeline.md`
+- `wiki/index.md`
+- `wiki/log.md`
+**Pages archivées** :
+- aucune
+
 ## [2026-04-14] ingest | export pipeline brief — OCR to ATS / styled output
 
 **Agent** : Codex
@@ -256,3 +275,23 @@ Migration vers schema v2 : ajout rawinput/ (staging), gestion temporelle (status
 - `wiki/timeline.md`
 - `wiki/log.md`
 **Pages archivées** : aucune
+
+## [2026-04-16] ingest | preview-print pipelines, token contract, onboarding plan
+
+**Agent** : Codex
+**Fichiers traités** : `rawinput/Live Proposal Preview-to-Print Pipeline Scratchpad.md`, `rawinput/Live Resume Preview-to-Print Pipeline Scratchpad.md`, `rawinput/Plan Onboarding, Activation & Interactive Preview — twoweeks.ai.md`, `rawinput/pdf pipeline.md`, `rawinput/token classes for the layout.md`
+**Pages créées** :
+- `wiki/sources/2026-04-16-live-proposal-preview-to-print-pipeline-scratchpad.md`
+- `wiki/sources/2026-04-16-live-resume-preview-to-print-pipeline-scratchpad.md`
+- `wiki/sources/2026-04-16-plan-onboarding-activation-interactive-preview.md`
+- `wiki/sources/2026-04-16-pdf-pipeline.md`
+- `wiki/sources/2026-04-16-token-classes-for-the-layout.md`
+- `wiki/tech/preview-to-print-pipeline.md`
+- `wiki/design/document-token-contract.md`
+**Pages mises à jour** :
+- `wiki/tech/export-pipeline.md`
+- `wiki/product/product-roadmap.md`
+- `wiki/index.md`
+- `wiki/log.md`
+**Pages archivées** :
+- aucune

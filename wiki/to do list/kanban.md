@@ -37,6 +37,20 @@ related: [[entities/twoweeks]], [[concepts/cv-parsing-pipeline]], [[concepts/cv-
 
 - [x] **Stabiliser la vérité canonique** — aligner rendus, JSON copiés/exports et vues dérivées sur `sections[*].structuredContent`.
 - [x] **IDENTITY/CONTACT POC hybride** — fixs acceptés déjà documentés, ne pas rouvrir sans contradiction live.
+- [ ] ##add paper color
+
+Use the existing token as the base and extend it instead of replacing it:
+
+- `--paper` = current default sheet color
+- later add optional named paper variants such as:
+    - `--paper-frost`
+    - `--paper-ivory`
+    - `--paper-recycled`
+
+Then:
+
+- preview page background can use `var(--paper)`
+- export can either keep `var(--paper)` for digital simulation or override page background to white while still keeping colored rails/cards
 
 ---
 

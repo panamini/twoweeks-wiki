@@ -44,6 +44,8 @@ Catalogue complet de toutes les pages **actives** du wiki (status: current ou pl
 | [[design/a4-layout-systems\|A4 Layout Systems]] | Canons A4 et grille Robial pour templates résumé/export | current | layout, a4 |
 | [[design/ats-safety\|ATS Safety]] | Règles parser-safe pour layouts, headings, exports et audits | current | ats, quality |
 | [[design/brand-voice\|Brand Voice]] | Voix staccato, Corporate Noir, règles de copie | current | brand, voice |
+| [[design/document-token-contract\|Document Token Contract]] | Classes geometry/flow/appearance/runtime pour preview/export/DOCX | current | tokens, layout |
+| [[design/locale-typography-rules\|Locale Typography Rules]] | Règles FR/EN de ponctuation, citations, dates et wrap-safe export | current | typography, locale |
 
 ---
 
@@ -104,6 +106,15 @@ Catalogue complet de toutes les pages **actives** du wiki (status: current ou pl
 | [[sources/2026-04-15-run-sh-workspace-modes\|run.sh Workspace Modes — Local Fast and Parser Dev]] | runbook | 2026-04-15 | current |
 | [[sources/2026-04-15-section-detection-future-note\|Section Detection Future Note — Narrow Recovery Scope]] | spec | 2026-04-15 | current |
 | [[sources/2026-04-15-a4-grid-canon-spec-writer\|A4 Grid Canon Spec Writer]] | spec | 2026-04-15 | current |
+| [[sources/2026-04-15-typography-mode\|Typography Mode]] | spec | 2026-04-15 | current |
+| [[sources/2026-04-15-french-typography-scratch-pad\|French Typography Scratch Pad]] | spec | 2026-04-15 | current |
+| [[sources/2026-04-15-english-typography-scratch-pad\|English Typography Scratch Pad]] | spec | 2026-04-15 | current |
+| [[sources/2026-04-15-conversation-locale-typography-rules\|Conversation — Locale Typography Rules]] | conversation | 2026-04-15 | current |
+| [[sources/2026-04-16-live-proposal-preview-to-print-pipeline-scratchpad\|Live Proposal Preview-to-Print Pipeline Scratchpad]] | spec | 2026-04-16 | current |
+| [[sources/2026-04-16-live-resume-preview-to-print-pipeline-scratchpad\|Live Resume Preview-to-Print Pipeline Scratchpad]] | spec | 2026-04-16 | current |
+| [[sources/2026-04-16-plan-onboarding-activation-interactive-preview\|Plan Onboarding, Activation & Interactive Preview — twoweeks.ai]] | spec | 2026-04-16 | current |
+| [[sources/2026-04-16-pdf-pipeline\|PDF Pipeline]] | note | 2026-04-16 | current |
+| [[sources/2026-04-16-token-classes-for-the-layout\|Token Classes for the Layout]] | spec | 2026-04-16 | current |
 
 ---
 
@@ -114,6 +125,7 @@ Catalogue complet de toutes les pages **actives** du wiki (status: current ou pl
 | [[tech/import-ocr-pipeline\|Import OCR Pipeline]] | Call path OCR/import et vérité canonique par sections | import, ocr, convex |
 | [[tech/export-pipeline\|Export Pipeline]] | Pipeline document final PDF/DOCX séparé du preview DOM | export, pdf, docx |
 | [[tech/local-vs-remote-parser-architecture\|Local vs Remote Parser Architecture]] | Séparation debug local / cloud / prod pour le parser | parser, env, production |
+| [[tech/preview-to-print-pipeline\|Preview-to-Print Pipeline]] | Parité preview -> print route -> PDF pour resume et proposal | preview, print, pdf |
 
 ---
 
@@ -154,8 +166,8 @@ Catalogue complet de toutes les pages **actives** du wiki (status: current ou pl
 
 ## Statistiques
 
-- **Pages actives** : 50 (4 overview, 1 entité, 2 concepts, 3 design, 4 product, 2 strategy, 2 meta, 24 sources, 3 tech, 2 howto, 2 to do, 1 output)
+- **Pages actives** : 62 (4 overview, 1 entité, 2 concepts, 5 design, 4 product, 2 strategy, 2 meta, 33 sources, 4 tech, 2 howto, 2 to do, 1 output)
 - **Pages archivées** : 2
-- **Sources dans `raw/`** : 23
+- **Sources dans `raw/`** : 31
 - **Sources en attente dans `rawinput/`** : 0
-- **Dernière mise à jour** : 2026-04-15
+- **Dernière mise à jour** : 2026-04-16

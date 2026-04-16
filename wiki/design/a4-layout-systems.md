@@ -10,8 +10,8 @@ valid_until:
 superseded_by:
 horizon: present
 version: v1
-sources: [2026-04-15-a4-grid-canon-spec-writer]
-related: [[design/ats-safety]], [[tech/export-pipeline]], [[entities/twoweeks]]
+sources: [2026-04-15-a4-grid-canon-spec-writer, 2026-04-15-conversation-locale-typography-rules]
+related: [[design/ats-safety]], [[tech/export-pipeline]], [[design/locale-typography-rules]], [[entities/twoweeks]]
 ---
 
 # A4 Layout Systems
@@ -75,8 +75,13 @@ Usage recommandé :
 
 Le choix dépend du template, mais la géométrie doit rester explicite, mesurée en mm, et compatible avec les contraintes de lisibilité/export du pipeline document final.
 
+## Limite explicite
+
+Les règles de typographie locale (ponctuation, espaces insécables, dates, nombres, citations) ne doivent pas être confondues avec la géométrie A4. Elles forment une couche séparée, appliquée au texte, qui doit être validée contre le wrap et la pagination d'export.
+
 ## Voir aussi
 
 - [[design/ats-safety]]
+- [[design/locale-typography-rules]]
 - [[tech/export-pipeline]]
 - [[entities/twoweeks]]
