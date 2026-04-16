@@ -29,7 +29,10 @@ related: [[entities/twoweeks]], [[concepts/cv-parsing-pipeline]], [[concepts/cv-
 - [ ] **Mapper les sections legacy** — `projects` -> experience style, `additional information` -> summary style, `hobbies` -> skill style.
 - [ ] **Observabilité + régression parser** — métriques, vrais CVs, derniers durcissements bruit template/liens/contact.
 - [ ] **Paddle cleanup** — supprimer les références Paddle sans toucher au workflow actif parser/Convex.
-- [ ] 
+- [ ] check if propsoal is autosaved and resume is autosaved
+- [ ] remove the modal name ur resume at start
+- [ ] see how we deall withs save and autosave 
+- [ ] remove the all cap namee in proposal 
 
 ---
 
