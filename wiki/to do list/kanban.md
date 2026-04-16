@@ -33,6 +33,7 @@ related: [[entities/twoweeks]], [[concepts/cv-parsing-pipeline]], [[concepts/cv-
 - [ ] remove the modal name ur resume at start
 - [ ] see how we deall withs save and autosave 
 - [ ] remove the all cap namee in proposal 
+- [ ] weakness in ⏫  clerkchrome extien open in proposal forge parfois l'offre n'est pas load.
 
 ---
 
