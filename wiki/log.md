@@ -349,3 +349,17 @@ Migration vers schema v2 : ajout rawinput/ (staging), gestion temporelle (status
 - `AGENTS.md` devient un shim de compatibilité pour éviter une deuxième rulebook
 - la skill ingest gagne un préflight explicite et des contrats de vérification
 - les scripts d'audit ignorent les surfaces Obsidian/wiki/raw pour ne pas confondre outillage local et vrai code applicatif
+
+## [2026-04-17] doc-update | skills howto
+
+**Agent** : Codex
+**Source** : explicit user instruction
+**Pages créées** : aucune
+**Pages mises à jour** :
+- `README.md`
+- `wiki/log.md`
+**Fichiers ajoutés** :
+- `SKILLS_HOWTO.md`
+**Pages archivées** : aucune
+**Migrations** :
+- ajout d'un howto repo-level qui explique le rôle de `ingest-wiki` vs `apply-hybrid-code-layer`

@@ -20,6 +20,7 @@ This repository is knowledge-plane-first today:
 - `wiki/`, `rawinput/`, and `raw/` hold durable knowledge and ingest state.
 - `WIKI_SCHEMA.md`, `AGENTS.md`, and `CLAUDE.md` define discovery and write-time behavior.
 - `SKILL.md` and `skills/` expose the reusable wiki and code-layer workflows.
+- `SKILLS_HOWTO.md` explains what each shipped skill is for.
 
 The hybrid overlay also includes code-plane rules so the same discipline applies if application code is added here or mounted into the same workspace later.
 
@@ -77,5 +78,6 @@ Optional code plane:
 
 - Drop new sources in `rawinput/` and use the ingest workflow to merge them into the wiki.
 - Use `skills/apply-hybrid-code-layer/SKILL.md` and `IMPLEMENTATION_RULES.md` when the task touches real source code.
+- Read `SKILLS_HOWTO.md` if you want the quick “which skill should I use?” version.
 - Run `python3 scripts/validate_overlay.py` to validate the overlay files.
 - Run the audit and score scripts when you want a repo-quality snapshot of the current instruction layer and any mounted code plane.
