@@ -52,7 +52,8 @@
     "//wiki/wiki/archive/wiki/archive/entities",
     "//wiki/wiki/archive/wiki/archive/product",
     "//wiki/wiki/concepts",
-    "//wiki/wiki/product"
+    "//wiki/wiki/product",
+    "//wiki/wiki/strategy"
   ],
   "expandFolderOnClick": true,
   "spacesFolder": "Tags",
