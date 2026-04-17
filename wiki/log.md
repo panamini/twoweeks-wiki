@@ -320,3 +320,32 @@ Migration vers schema v2 : ajout rawinput/ (staging), gestion temporelle (status
 **Pages mises à jour** : `wiki/index.md`, `wiki/meta/llm-wiki-pattern.md`, `wiki/overview.md`, `wiki/entities/twoweeks.md`, `wiki/concepts/cv-families.md`, `wiki/sources/2026-04-14-kanban-sprint-notes.md`, `wiki/sources/2026-04-14-clerk-chrome-extension-addon.md`
 **Pages archivées** : aucune
 **Migrations** : `wiki/to do list/` → `wiki/tasks/`, archive directories backfilled, bootstrap contract aligned on `WIKI_SCHEMA.md` + `CLAUDE.md`
+
+## [2026-04-17] migration | twoweeks-pagecraft hybrid repo overlay
+
+**Agent** : Codex
+**Source** : explicit user instruction
+**Pages créées** : aucune
+**Pages mises à jour** :
+- `README.md`
+- `WIKI_SCHEMA.md`
+- `CLAUDE.md`
+- `AGENTS.md`
+- `SKILL.md`
+- `wiki/index.md`
+- `wiki/log.md`
+**Fichiers ajoutés** :
+- `IMPLEMENTATION_RULES.md`
+- `EXAMPLES.md`
+- `skills/ingest-wiki/SKILL.md`
+- `skills/apply-hybrid-code-layer/SKILL.md`
+- `scripts/audit_code_repo.py`
+- `scripts/score_code_repo.py`
+- `scripts/validate_overlay.py`
+- `audit/code-benchmark-criteria.csv`
+**Pages archivées** : aucune
+**Migrations** :
+- `CLAUDE.md` devient le contrat canonique hybride wiki + code
+- `AGENTS.md` devient un shim de compatibilité pour éviter une deuxième rulebook
+- la skill ingest gagne un préflight explicite et des contrats de vérification
+- les scripts d'audit ignorent les surfaces Obsidian/wiki/raw pour ne pas confondre outillage local et vrai code applicatif

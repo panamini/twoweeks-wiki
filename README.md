@@ -1,50 +1,81 @@
 # twoweeks-wiki
 
-Knowledge base for the [twoweeks](https://twoweeks.ai) project — maintained by LLM + human collaboration.
+Knowledge base and hybrid operating overlay for the [twoweeks](https://twoweeks.ai) project.
 
-## For LLMs and AI agents
+## Start here
 
-**Start here, in this order:**
+1. Read `WIKI_SCHEMA.md` for neutral discovery.
+2. Read `AGENTS.md` or `CLAUDE.md` for write-time mutation and verification rules.
+3. For wiki work, read `wiki/overview.md`, `wiki/index.md`, and recent `wiki/log.md` entries.
+4. For code work, start from the nearest manifest, tests, CI/lint config, and owning module.
+5. Check `rawinput/` when ingest or repo-health work is relevant.
 
-1. Read `WIKI_SCHEMA.md` if present — neutral discovery contract
-2. Read `CLAUDE.md` — operational write contract for the current workflow
-3. Read `wiki/overview.md` — current project summary
-4. Read `wiki/index.md` — the active page catalogue
-5. Read recent entries from `wiki/log.md`
-6. Check `rawinput/` when ingest or repo-health work is relevant
+Do not read the entire repository blindly.
+Start from the owning path.
 
-Bootstrap is not `CLAUDE.md`-only.
-During the current transition, `WIKI_SCHEMA.md` is the neutral schema entrypoint and `CLAUDE.md` remains the operational contract for mutations.
+## Repository shape
 
-Do not read the entire wiki blindly. The index is designed to let you find the right pages without loading everything.
+This repository is knowledge-plane-first today:
+
+- `wiki/`, `rawinput/`, and `raw/` hold durable knowledge and ingest state.
+- `WIKI_SCHEMA.md`, `AGENTS.md`, and `CLAUDE.md` define discovery and write-time behavior.
+- `SKILL.md` and `skills/` expose the reusable wiki and code-layer workflows.
+
+The hybrid overlay also includes code-plane rules so the same discipline applies if application code is added here or mounted into the same workspace later.
 
 ## Structure
 
 ```text
 twoweeks-wiki/
-├── WIKI_SCHEMA.md      ← neutral schema entrypoint
-├── CLAUDE.md           ← operational contract for writes
-├── rawinput/           ← staging: new sources to ingest
-├── raw/                ← immutable source library
+├── WIKI_SCHEMA.md
+├── CLAUDE.md
+├── AGENTS.md
+├── IMPLEMENTATION_RULES.md
+├── README.md
+├── SKILL.md
+├── skills/
+│   ├── ingest-wiki/
+│   │   └── SKILL.md
+│   └── apply-hybrid-code-layer/
+│       └── SKILL.md
+├── scripts/
+│   ├── audit_code_repo.py
+│   ├── score_code_repo.py
+│   └── validate_overlay.py
+├── audit/
+│   └── code-benchmark-criteria.csv
+├── rawinput/
+├── raw/
+│   └── assets/
 └── wiki/
-    ├── overview.md     ← current project summary
-    ├── index.md        ← active/planned page catalogue
-    ├── log.md          ← append-only operation log
-    ├── timeline.md     ← project event timeline
-    ├── entities/       ← products, orgs, people
-    ├── concepts/       ← patterns, policies, technical concepts
-    ├── design/         ← visual systems and layout rules
-    ├── product/        ← roadmap, KPIs, user-facing capabilities
-    ├── strategy/       ← market, positioning, prioritization
-    ├── tech/           ← call paths, architecture, infra reference
-    ├── howto/          ← operational runbooks
-    ├── meta/           ← schema and wiki-maintenance docs
-    ├── sources/        ← ingested source summaries
-    ├── outputs/        ← saved analyses and reports
-    ├── tasks/          ← operational backlog, excluded from default retrieval
-    └── archive/        ← superseded pages (never deleted)
+    ├── overview.md
+    ├── index.md
+    ├── log.md
+    ├── timeline.md
+    ├── entities/
+    ├── concepts/
+    ├── design/
+    ├── product/
+    ├── strategy/
+    ├── tech/
+    ├── howto/
+    ├── meta/
+    ├── sources/
+    ├── outputs/
+    ├── tasks/
+    └── archive/
 ```
+
+Optional code plane:
+
+- source roots such as `src/`, `app/`, `lib/`, `packages/`, `services/`
+- test roots such as `tests/` or `__tests__/`
+- manifests such as `package.json`, `pyproject.toml`, `Cargo.toml`, `go.mod`
+- CI config such as `.github/workflows/`
 
 ## For humans
 
-Drop new sources in `rawinput/` and run `/ingest-wiki` in Cowork to process them into the wiki.
+- Drop new sources in `rawinput/` and use the ingest workflow to merge them into the wiki.
+- Use `skills/apply-hybrid-code-layer/SKILL.md` and `IMPLEMENTATION_RULES.md` when the task touches real source code.
+- Run `python3 scripts/validate_overlay.py` to validate the overlay files.
+- Run the audit and score scripts when you want a repo-quality snapshot of the current instruction layer and any mounted code plane.

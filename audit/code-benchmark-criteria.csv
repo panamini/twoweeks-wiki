@@ -1,0 +1,13 @@
+criterion,weight,dimension,description
+ambiguity_preflight,12,instruction,Goal/Assumptions/Smallest safe change/Verification discipline exists and is explicit
+simplicity_guardrail,10,instruction,Repo rules explicitly reject speculative abstractions and future-proofing
+surgical_diff_discipline,10,instruction,Rules explicitly constrain scope and forbid drive-by edits
+verification_contract,12,instruction,Rules define concrete completion checks by task type
+repo_discovery_order,8,instruction,"Read order identifies manifests, tests, CI, and smallest owner path"
+examples_and_onboarding,4,instruction,Examples teach good vs bad behavior
+portability_and_skills,4,instruction,Reusable skills exist for the main flows
+actual_source_structure,12,repo,Real source roots and ownership are discoverable in the repo
+tests_near_behavior,12,repo,Tests exist near the behavior and can verify bug fixes/features
+ci_lint_build,8,repo,CI/lint/build surfaces exist and can be used as verification
+benchmark_repeatability,4,repo,Scripts or commands make before/after verification repeatable
+artifact_reporting,4,repo,Audit/report artifacts can be generated and saved consistently

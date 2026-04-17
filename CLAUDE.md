@@ -1,16 +1,35 @@
-# CLAUDE.md — twoweeks operational wiki contract
+# CLAUDE.md — twoweeks hybrid operating contract (wiki + code)
 
-This file is the operational source of truth for mutations in this vault.
-
-If `WIKI_SCHEMA.md` exists, read it first for neutral vocabulary.
-Then read this file for the live write contract.
+This file is the canonical write-time source of truth for mutations in this repository.
+`AGENTS.md` may exist as a compatibility adapter for tools that bootstrap from it.
+Read `WIKI_SCHEMA.md` first for neutral discovery.
+Read this file second for operational rules, behavior constraints, and verification.
 Do not create a second competing rulebook.
 
-## Project
+## Project intent
 
 twoweeks is a high-performance job application product.
 Use `wiki/overview.md` for current business and product state.
-This file defines how the wiki is structured and maintained.
+
+This repository combines:
+
+- the twoweeks wiki operating model for durable knowledge, retrieval, ingest, linting, and audit trails
+- the twoweeks-pagecraft behavior layer for ambiguity control, simplicity, surgical edits, and goal-driven verification
+- an optional code-plane execution layer for repository audits, tests, implementation work, and benchmarkable reporting
+
+If the repository currently has no application code, keep the code-plane rules dormant and apply the knowledge-plane contract only.
+
+## Two planes, one contract
+
+- **Knowledge plane** — `wiki/`, `rawinput/`, `raw/`, summaries, durable pages, index/log discipline
+- **Code plane** — manifests, source roots, tests, CI, lint, build, and implementation rules
+
+Use the same behavior standards on both planes:
+
+- think before mutating
+- choose the smallest safe change
+- keep diffs surgical
+- verify outcomes instead of declaring completion early
 
 ## Operating principles
 
@@ -18,16 +37,178 @@ This file defines how the wiki is structured and maintained.
 - Prefer updating an existing page over creating a near-duplicate.
 - Optimize for retrieval first. Clean structure beats clever prose.
 - Keep raw sources immutable after ingest.
-- `wiki/index.md` and `wiki/log.md` are mandatory after every mutation.
+- `wiki/index.md` and `wiki/log.md` are mandatory after every persistent wiki mutation.
 - Treat source pages as evidence and output pages as snapshots, not as the primary knowledge surface.
 - Older historical references generally should not be rewritten unless they are actively misleading.
+- On non-trivial work, define the goal and verify it instead of just making changes.
+- Do not silently guess when multiple interpretations exist.
+
+## Mandatory preflight for non-trivial work
+
+Before any non-trivial mutation, state:
+
+```text
+Goal:
+Assumptions:
+Smallest safe change:
+Verification:
+```
+
+Rules:
+
+- do not silently guess when multiple interpretations exist
+- prefer the narrowest correct change over a broad rewrite
+- if a simpler path exists, say so
+- if the source of truth is unclear, identify it before editing
+
+## Behavioral execution overlay
+
+### 1. Think before coding or mutating
+
+Do not assume. Do not hide confusion. Surface tradeoffs.
+
+Before non-trivial work:
+
+- identify the owning module, page, or workflow
+- name any ambiguity or competing interpretation
+- prefer asking or explicitly choosing the safer interpretation over guessing
+- push back on approaches that are broader or riskier than necessary
+- explain when a simpler path is enough
+
+### 2. Simplicity first
+
+Choose the minimum change that solves the current problem.
+
+- no speculative abstractions
+- no extra categories, layers, services, or configs unless the current task requires them
+- no future-proofing code or docs for hypothetical needs
+- no abstraction for a single call site
+- if 200 lines can be 50 without losing clarity, simplify it
+
+The test:
+Would a senior engineer say this adds avoidable complexity?
+If yes, simplify.
+
+### 3. Surgical changes
+
+Touch only what the request requires.
+
+- do not refactor adjacent code just because you noticed it
+- do not rewrite comments, formatting, or docs outside the task scope
+- match existing style unless the task explicitly includes a style migration
+- remove only dead material created by your own change
+- preserve existing user-authored context unless it became misleading
+
+The test:
+Every changed line should trace back to the task.
+
+### 4. Goal-driven execution
+
+Turn vague requests into verifiable outcomes.
+
+Completion means a checked outcome, not a hopeful edit.
+
+## Repository discovery order for code work
+
+When the task touches code, read in this order:
+
+1. `WIKI_SCHEMA.md`
+2. `CLAUDE.md`
+3. root `README.md`
+4. manifest files (`package.json`, `pyproject.toml`, `Cargo.toml`, `go.mod`, etc.)
+5. test files and test config closest to the target behavior
+6. CI / lint / build configuration
+7. the smallest source module that owns the behavior
+8. nearby callers only if needed
+9. `wiki/tech/`, `wiki/howto/`, or `wiki/product/` pages when they clarify expected behavior
+
+Do not front-load the whole repository.
+Start from the owning path.
+
+## Code-specific rules
+
+Apply this section only when a real code plane exists in the repository.
+
+### Bug fixes
+
+- reproduce the bug first with the smallest reliable test or harness
+- prefer adding or updating the nearest existing test
+- do not widen scope unless the bug crosses a clear boundary
+- verify the repro fails before the fix and passes after the fix
+
+### Features
+
+- define acceptance behavior before implementation
+- add the smallest relevant test coverage
+- reuse existing patterns before creating new ones
+- do not add optional config or extension points unless explicitly required
+
+### Refactors
+
+- preserve external behavior
+- verify existing tests pass before and after when possible
+- if tests are missing, add behavior locks for the touched surface first
+- avoid cleanup refactors bundled with unrelated functional changes
+
+### Performance work
+
+- define the metric before optimizing
+- capture a baseline before changing code
+- optimize the hottest proven path, not the most visible path
+- remeasure after the change and report before/after values
+- never claim a performance win without evidence
+
+### Comments and documentation
+
+- preserve existing comments unless they become wrong because of your change
+- do not remove useful context you do not fully understand
+- if a public behavior changed, update the nearest relevant docs and examples
+
+## Verification matrix
+
+| Task type | Minimum verification |
+| --- | --- |
+| bug fix | failing repro before, passing repro after, nearby tests still green |
+| feature | acceptance test or behavior check added, relevant tests green |
+| refactor | tests green before and after, no behavior drift reported |
+| performance | baseline metric, after metric, environment / command recorded |
+| wiki mutation | target page changed, links repaired, index/log updated when persistent |
+| lint / audit | findings grouped by severity, each maps to a smallest safe fix |
+| save-output | artifact exists, index/log updated when a wiki exists |
+
+## Reporting contract
+
+For non-trivial changes, report:
+
+- files changed
+- why each file changed
+- verification commands or checks run
+- result of each verification
+- known risks, open questions, or intentionally deferred work
+
+Do not present unverified claims as facts.
 
 ## Vault layout
 
 ```text
 twoweeks/
-├── WIKI_SCHEMA.md            # optional neutral discovery file
-├── CLAUDE.md                 # operational write contract
+├── WIKI_SCHEMA.md            # neutral discovery contract
+├── CLAUDE.md                 # canonical write contract
+├── AGENTS.md                 # compatibility shim
+├── IMPLEMENTATION_RULES.md   # code-plane checklist
+├── README.md
+├── SKILL.md                  # compatibility skill entrypoint
+├── skills/
+│   ├── ingest-wiki/
+│   │   └── SKILL.md
+│   └── apply-hybrid-code-layer/
+│       └── SKILL.md
+├── scripts/
+│   ├── audit_code_repo.py
+│   ├── score_code_repo.py
+│   └── validate_overlay.py
+├── audit/
+│   └── code-benchmark-criteria.csv
 ├── rawinput/                 # staging area for new files
 ├── raw/                      # immutable ingested source library
 │   └── assets/               # local images and binary assets
@@ -58,6 +239,13 @@ twoweeks/
     │   └── sources/
     └── tasks/                # optional, excluded from default retrieval
 ```
+
+Optional code plane:
+
+- source roots such as `src/`, `app/`, `lib/`, `packages/`, `services/`
+- test roots such as `tests/` or `__tests__/`
+- manifests such as `package.json`, `pyproject.toml`, `Cargo.toml`, `go.mod`
+- CI config such as `.github/workflows/`
 
 `index.md`, `log.md`, `overview.md`, and `timeline.md` are system files.
 They are not normal category pages.
@@ -157,10 +345,12 @@ One-paragraph summary.
 ```
 
 Rules:
+
 - one durable subject per page
 - split pages that become bags of unrelated facts
 - keep current state near the top
 - prefer stable subheadings and small sections
+- do not over-abstract by inventing extra headings unless the content needs them
 
 ### Source pages
 
@@ -181,13 +371,14 @@ Rules:
 ## Context
 ## Result
 ## Recommendations
+## Verification
 ```
 
 Do not pad pages with quotes, screenshots, or history unless they change decisions or retrieval value.
 
 ## Retrieval order
 
-For normal questions, read in this order:
+### For normal wiki questions
 
 1. durable pages with `status: current`
 2. durable pages with `status: planned` only when the question is about future state
@@ -202,6 +393,14 @@ Default answer behavior:
 - ignore archive unless the question is historical
 - never treat `wiki/tasks/` as canonical knowledge
 
+### For normal code questions
+
+1. existing tests nearest to the behavior
+2. owner module or entrypoint
+3. manifests / config that define runtime expectations
+4. CI / lint / build rules that define success
+5. wiki tech or product pages when they clarify intent
+
 ## Mutation rules
 
 ### Create vs update
@@ -209,6 +408,7 @@ Default answer behavior:
 - Update an existing durable page when the same page is still the best canonical home for the new information.
 - Create a new durable page only when the subject is genuinely new or the current page is overloaded and should be split.
 - Do not create multiple active pages for the same subject with slightly different wording.
+- When in doubt between create and update, prefer update and explain the tradeoff.
 
 ### Supersede
 
@@ -257,7 +457,7 @@ Use ingest when processing staged files in `rawinput/`.
    - same normalized title
    - same day plus same conversation/topic
    - same staged file moved earlier
-9. Give the user a short preview of intended changes, then proceed unless they redirect.
+9. Give the user a short preview of intended changes and how you will verify them, then proceed unless they redirect.
 10. Create or reuse the source page.
 11. Update existing durable pages or create new ones through the category router.
 12. Supersede only when truth changed.
@@ -303,6 +503,49 @@ Use save output when the user wants the current answer, audit, or analysis prese
 4. Update `wiki/index.md`.
 5. Append a `query-save` entry to `wiki/log.md`.
 
+## Mode-specific verification contracts
+
+### Ingest
+
+Verification checklist:
+
+- staged file(s) read fully
+- source page created or reused
+- affected durable page(s) updated or new page created only if necessary
+- supersede used only if truth changed
+- raw file moved to `raw/` or `raw/assets/`
+- `wiki/index.md` updated
+- `wiki/log.md` updated
+- `wiki/overview.md` or `wiki/timeline.md` updated only if project state changed
+
+### Direct update
+
+Verification checklist:
+
+- requested page(s) updated with the smallest safe diff
+- no adjacent unrelated cleanup
+- links repaired if paths changed
+- `wiki/index.md` and `wiki/log.md` updated when persistent state changed
+
+### Lint
+
+Verification checklist:
+
+- findings grouped by severity
+- each finding ties to an observable file/path
+- each finding suggests a smallest safe fix
+- report distinguishes correctness vs retrieval quality vs hygiene
+
+### Save output
+
+Verification checklist:
+
+- output file created under `wiki/outputs/`
+- concise summary present
+- `related` links added when useful
+- `wiki/index.md` updated
+- `wiki/log.md` appended with a save entry
+
 ## Index and log rules
 
 ### `wiki/index.md`
@@ -323,14 +566,15 @@ Use save output when the user wants the current answer, audit, or analysis prese
 
 ## Session bootstrap
 
-Default read sequence:
+Default read sequence for wiki work:
 
 1. `WIKI_SCHEMA.md` if present
-2. `CLAUDE.md`
-3. `wiki/overview.md`
-4. `wiki/index.md`
-5. recent entries from `wiki/log.md`
-6. check whether `rawinput/` contains staged files
+2. `AGENTS.md` or `CLAUDE.md`
+3. root `README.md` if present
+4. `wiki/overview.md`
+5. `wiki/index.md`
+6. recent entries from `wiki/log.md`
+7. check whether `rawinput/` contains staged files when ingest or repo-health work is relevant
 
 Do not front-load unnecessary files for a narrow query.
 

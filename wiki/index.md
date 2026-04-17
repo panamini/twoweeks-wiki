@@ -7,6 +7,7 @@ updated: 2026-04-17
 # Index du Wiki · twoweeks (v2)
 
 Catalogue complet de toutes les pages **actives** du wiki (status: current ou planned). Les pages archivées sont dans `wiki/archive/`.
+Le contrôle opératoire du repo reste défini par `WIKI_SCHEMA.md` puis `CLAUDE.md` / `AGENTS.md`; ce catalogue demeure la surface active des pages wiki.
 
 ---
 
