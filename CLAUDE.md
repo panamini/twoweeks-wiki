@@ -1,211 +1,328 @@
-# CLAUDE.md — Schema LLM Wiki · twoweeks (v2)
+# CLAUDE.md — twoweeks operational wiki contract
 
-> Ce fichier est la configuration principale du wiki. L'agent LLM le lit en premier à chaque session pour comprendre la structure, les conventions et les workflows à suivre. Ne pas modifier sans intention claire.
+This file is the operational source of truth for mutations in this vault.
 
----
+If `WIKI_SCHEMA.md` exists, read it first for neutral vocabulary.
+Then read this file for the live write contract.
+Do not create a second competing rulebook.
 
-## Projet : twoweeks
+## Project
 
-**twoweeks** (twoweeks.ai) est un outil haute performance de gestion de candidatures. Tagline : "Finish. Faster." Positionnement : "Anti-Work tool for people who do great work." Modules internes : CVForge (génération CV) et ProposalForge (cover letters & proposals). Ce wiki sert à accumuler et organiser les connaissances nécessaires à sa création et son entretien : décisions de design, recherches utilisateurs, patterns techniques, sources d'inspiration, compétiteurs, et tout autre contexte pertinent.
+twoweeks is a high-performance job application product.
+Use `wiki/overview.md` for current business and product state.
+This file defines how the wiki is structured and maintained.
 
----
+## Operating principles
 
-## Structure du vault (v2)
+- Keep one canonical durable page per subject.
+- Prefer updating an existing page over creating a near-duplicate.
+- Optimize for retrieval first. Clean structure beats clever prose.
+- Keep raw sources immutable after ingest.
+- `wiki/index.md` and `wiki/log.md` are mandatory after every mutation.
+- Treat source pages as evidence and output pages as snapshots, not as the primary knowledge surface.
 
-```
+## Vault layout
+
+```text
 twoweeks/
-├── CLAUDE.md                  ← ce fichier (schema LLM v2)
-├── PLUGINS.md                 ← guide d'installation des plugins Obsidian
-│
-├── rawinput/                  ← STAGING : nouvelles sources à ingérer
-│   └── README.md
-│
-├── raw/                       ← BIBLIOTHÈQUE : sources ingérées, IMMUABLES
-│   └── assets/                ← images téléchargées localement
-│
-└── wiki/                      ← wiki maintenu par le LLM
-    ├── index.md               ← catalogue de toutes les pages actives
-    ├── log.md                 ← journal chronologique des opérations wiki
-    ├── timeline.md            ← chronologie des événements du PROJET
-    ├── overview.md            ← synthèse générale
-    │
-    ├── entities/              ← personnes, organisations, produits, outils (actifs)
-    ├── concepts/              ← concepts métier/architecture durables (actifs)
-    ├── design/                ← systèmes visuels durables : layout, brand, ATS/template rules
-    ├── product/               ← vision produit, roadmap, IA produit, KPIs
-    ├── strategy/              ← benchmark, gap analysis, cadrage concurrentiel
-    ├── meta/                  ← fonctionnement du wiki lui-même
-    ├── sources/               ← résumés des sources ingérées
-    ├── tech/                  ← référence technique : call paths, architecture code, infra
-    ├── howto/                 ← runbooks opérationnels (procédures step-by-step)
-    ├── to do list/            ← kanban de sprint et backlog de tâches
-    ├── outputs/               ← analyses, Q&A, slides filés en retour
-    │
-    └── archive/               ← pages supersédées (historique)
-        ├── entities/
-        ├── concepts/
-        └── sources/
+├── WIKI_SCHEMA.md            # optional neutral discovery file
+├── CLAUDE.md                 # operational write contract
+├── rawinput/                 # staging area for new files
+├── raw/                      # immutable ingested source library
+│   └── assets/               # local images and binary assets
+└── wiki/
+    ├── index.md              # catalog of active and planned pages
+    ├── log.md                # chronological mutation log
+    ├── overview.md           # short current-state summary
+    ├── timeline.md           # optional project timeline
+    ├── entities/
+    ├── concepts/
+    ├── design/
+    ├── product/
+    ├── strategy/
+    ├── tech/
+    ├── howto/
+    ├── meta/
+    ├── sources/
+    ├── outputs/
+    ├── archive/
+    │   ├── entities/
+    │   ├── concepts/
+    │   ├── design/
+    │   ├── product/
+    │   ├── strategy/
+    │   ├── tech/
+    │   ├── howto/
+    │   ├── meta/
+    │   └── sources/
+    └── tasks/                # optional, excluded from default retrieval
 ```
 
----
+`index.md`, `log.md`, `overview.md`, and `timeline.md` are system files.
+They are not normal category pages.
 
-## Conventions de pages wiki
+## Page contract
 
-### Frontmatter YAML (obligatoire sur chaque page wiki)
+### Required frontmatter
+
+Use this frontmatter on every wiki page:
 
 ```yaml
 ---
-title: "Titre de la page"
-category: entity | concept | design | product | strategy | meta | source | output | overview
-tags: [tag1, tag2]
+title: "Page title"
+category: entity | concept | design | product | strategy | tech | howto | meta | source | output
+status: current | planned | archived | deprecated
 created: YYYY-MM-DD
 updated: YYYY-MM-DD
+valid_from: YYYY-MM-DD
+sources: []
+related: []
 
-# Champs temporels (v2 — obligatoires)
-status: current           # current | archived | planned | deprecated
-valid_from: YYYY-MM-DD    # date depuis laquelle cette info est valide
-valid_until:              # vide si encore valide ; sinon YYYY-MM-DD
-superseded_by:            # [[nom-nouvelle-page]] si remplacée
-horizon: present          # past | present | future
-version: v1               # version du projet concernée
-
-sources: [nom-source-1]   # sources qui ont alimenté cette page
-related: [[Page liée]]
+# Optional
+tags: []
+valid_until:
+superseded_by:
+version:
+type:
 ---
 ```
 
-### Valeurs de `status`
-- `current` — information valide et active aujourd'hui → **priorité maximale pour les réponses**
-- `archived` — valide en son temps, plus applicable → dans `wiki/archive/`
-- `planned` — décision ou spec pour une version/date future
-- `deprecated` — abandonné
+### Field rules
 
-### Règle de priorité LLM pour les réponses
+- `status`
+  - `current` — the active page to use by default
+  - `planned` — future intended state
+  - `archived` — historically valid but no longer active
+  - `deprecated` — explicitly rejected or obsolete
+- `valid_from` — when this page became the right representation of the subject
+- `valid_until` — only set for `archived` or `deprecated`
+- `superseded_by` — only set when a page is replaced by another page
+- `version` — optional; use only when the page is tied to a specific product or project version
+- `type` — optional; useful for source and output pages
+- `tags` — optional; do not add tags that duplicate category or obvious folder context
 
-Par défaut, lire en priorité :
-1. Pages `status: current` + `horizon: present`
-2. Pages `status: current` + `horizon: future`
-3. Pages `status: planned`
-4. **Ignorer** : pages `status: archived` ou `deprecated` — sauf query explicitement historique
+Do not use `horizon`.
+It duplicates `status` and creates maintenance noise.
 
-### Règles de nommage des fichiers
-- **Entités** : `wiki/entities/nom-entite.md` (kebab-case)
-- **Concepts** : `wiki/concepts/nom-concept.md`
-- **Design** : `wiki/design/nom-systeme.md`
-- **Product** : `wiki/product/nom-page.md`
-- **Strategy** : `wiki/strategy/nom-page.md`
-- **Meta** : `wiki/meta/nom-page.md`
-- **Sources** : `wiki/sources/YYYY-MM-DD-titre-source.md`
-- **Outputs** : `wiki/outputs/YYYY-MM-DD-titre-output.md`
-- **Archivés** : même nom, déplacé dans `wiki/archive/[catégorie]/`
+## Category routing
 
----
+Use the smallest stable page type that matches the subject.
+
+| Category | Directory | Use when |
+| --- | --- | --- |
+| `entity` | `wiki/entities/` | person, company, product, tool, competitor |
+| `concept` | `wiki/concepts/` | durable idea, principle, pattern, policy, architecture concept |
+| `design` | `wiki/design/` | UI system, visual rules, template system, ATS/layout guidance |
+| `product` | `wiki/product/` | problem framing, feature definition, roadmap, KPI, user-facing capability |
+| `strategy` | `wiki/strategy/` | market analysis, competition, positioning, GTM, prioritization rationale |
+| `tech` | `wiki/tech/` | code architecture, infra, interfaces, call paths, implementation constraints |
+| `howto` | `wiki/howto/` | repeatable operational procedure or runbook |
+| `meta` | `wiki/meta/` | wiki rules, schema, conventions, maintenance docs |
+| `source` | `wiki/sources/` | summary of an ingested source |
+| `output` | `wiki/outputs/` | saved answer, audit, analysis, or deck |
+
+## File naming
+
+- Durable pages use a stable kebab-case slug.
+- Source pages use `YYYY-MM-DD-<slug>.md`.
+- Output pages use `YYYY-MM-DD-<slug>.md`.
+- Archived pages keep the same slug under `wiki/archive/<directory>/`.
+- Do not use spaces in directory names or filenames.
+
+## Page body shape
+
+Keep headings shallow and predictable.
+One page should cover one subject.
+
+### Durable pages
+
+Use this default shape unless the page genuinely needs less:
+
+```markdown
+# Title
+
+One-paragraph summary.
+
+## Current state
+## Details
+## Sources
+## Related
+```
+
+### Source pages
+
+```markdown
+# Title
+
+## Summary
+## Key points
+## Implications
+## Touched pages
+```
+
+### Output pages
+
+```markdown
+# Title
+
+## Context
+## Result
+## Recommendations
+```
+
+Do not pad pages with quotes, screenshots, or history unless they change decisions or retrieval value.
+
+## Retrieval order
+
+For normal questions, read in this order:
+
+1. durable pages with `status: current`
+2. durable pages with `status: planned` only when the question is about future state
+3. relevant source pages for evidence or newly ingested details not yet merged
+4. output pages only when the user asks for a previous analysis, audit, or saved answer
+5. archived or deprecated pages only for historical queries
+
+Default answer behavior:
+
+- prefer durable pages over sources
+- prefer sources over outputs
+- ignore archive unless the question is historical
+- never treat `wiki/tasks/` as canonical knowledge
+
+## Mutation rules
+
+### Create vs update
+
+- Update an existing durable page when the same page is still the best canonical home for the new information.
+- Create a new durable page only when the subject is genuinely new or the current page is overloaded and should be split.
+- Do not create multiple active pages for the same subject with slightly different wording.
+
+### Supersede
+
+Use supersede only when the active truth changes.
+
+1. Create or promote the replacement page with `status: current` and a fresh `valid_from`
+2. Mark the old page `status: archived`
+3. Set `valid_until` on the old page
+4. Set `superseded_by` on the old page
+5. Move the old page to the matching archive directory
+6. Repair active references that should now point to the new page
+7. Update `timeline.md` only if the project state or decision history changed materially
+
+Do not supersede a page just because you added detail.
+Most updates should stay in place.
+
+### Reference repair
+
+After any move, reclassification, or rename-like change:
+
+- update active wikilinks in live pages
+- update `wiki/index.md`
+- update current-path references in `wiki/log.md` only when they are meant to track the active location
+- preserve historical log text that intentionally describes an old path or old state
 
 ## Workflows
 
-### Workflow : Ingest v2
+### Ingest
 
-Quand l'utilisateur dit "ingère les nouvelles sources" ou "traite rawinput/" :
+Use ingest when processing staged files in `rawinput/`.
 
-1. **Scanner `rawinput/`** (pas `raw/`) pour trouver les nouveaux fichiers
-2. Pour chaque fichier trouvé :
-   a. **Lire** le fichier
-   b. **Discuter** brièvement des points clés avec l'utilisateur
-   c. **Créer** une page résumé dans `wiki/sources/YYYY-MM-DD-titre.md`
-   d. **Mettre à jour** les pages d'entités et concepts existantes affectées
-   e. **Créer** de nouvelles pages entité/concept si nécessaire
-   f. **Appliquer le workflow Supersede** si la source contredit des pages existantes
-   g. **Déplacer** le fichier de `rawinput/` vers `raw/` (ou `raw/assets/` pour les images)
-3. **Mettre à jour** `wiki/index.md`
-4. **Ajouter** une entrée dans `wiki/log.md` : `## [YYYY-MM-DD] ingest | Titre`
-5. **Signaler** à l'utilisateur quelles pages ont été touchées
+1. Read `WIKI_SCHEMA.md` if present, then `CLAUDE.md`, `wiki/index.md`, recent `wiki/log.md`, and `wiki/overview.md` if needed.
+2. Scan `rawinput/` and ignore `README.md`.
+3. For each file, read it fully and identify:
+   - source type
+   - key facts
+   - affected durable pages
+   - contradictions or supersessions
+   - new pages, if any
+4. Check whether the same source already exists:
+   - same URL
+   - same normalized title
+   - same day plus same conversation/topic
+   - same staged file moved earlier
+5. Give the user a short preview of intended changes, then proceed unless they redirect.
+6. Create or reuse the source page.
+7. Update existing durable pages or create new ones through the category router.
+8. Supersede only when truth changed.
+9. Move the raw file to `raw/` or `raw/assets/`.
+10. Repair references.
+11. Update `wiki/index.md` and `wiki/log.md`.
+12. Update `wiki/overview.md` or `wiki/timeline.md` only when the project-level summary actually changed.
 
-### Workflow : Supersede
+### Direct update
 
-Quand une information contredit ou remplace une page existante :
+Use direct update when the user asks to create, edit, move, reclassify, or merge wiki pages without ingesting new raw files.
 
-1. **Identifier** la page à superseder dans `wiki/[catégorie]/`
-2. **Créer** la nouvelle page : `status: current`, `valid_from: aujourd'hui`
-3. **Mettre à jour** l'ancienne page :
-   - `status: archived`
-   - `valid_until: aujourd'hui`
-   - `superseded_by: [[nom-nouvelle-page]]`
-4. **Déplacer** l'ancienne page vers `wiki/archive/[catégorie]/`
-5. **Ajouter** un événement dans `wiki/timeline.md`
-6. **Mettre à jour** `wiki/index.md` et `wiki/log.md`
+Apply the same category, dedupe, supersede, and reference-repair rules.
+Do not touch `raw/` unless the task is ingest.
 
-### Workflow : Query
+### Lint
 
-Quand l'utilisateur pose une question sur le wiki :
+Lint is a repo health check.
+By default it reports in chat.
+Save the report to `wiki/outputs/` only when the user explicitly asks to preserve it.
 
-1. **Lire** `wiki/index.md` pour identifier les pages pertinentes
-2. **Appliquer la règle de priorité** (current > planned > archived)
-3. **Lire** les pages pertinentes (actives en priorité)
-4. **Synthétiser** une réponse avec citations vers les pages wiki
-5. **Proposer** de filer la réponse dans `wiki/outputs/` si elle mérite d'être conservée
-6. **Si oui** : créer `wiki/outputs/YYYY-MM-DD-titre.md`, mettre à jour index et log
+Lint checks should include:
 
-**Queries temporelles** :
-- "état actuel" → `status: current` uniquement
-- "avant [date]" → consulter `timeline.md` + `archive/` + `valid_from`
-- "planifié pour v3" → `status: planned` + `horizon: future` + `version: v3`
-- "évolution de [concept]" → page actuelle + chaîne `superseded_by` dans archive
+- missing or partial frontmatter
+- invalid category or status values
+- broken Obsidian links
+- orphan current durable pages
+- duplicate or overlapping current durable pages
+- stale planned pages whose `valid_from` is in the past
+- archived pages still referenced as current
+- filesystem vs `wiki/index.md` drift
+- leftover files in `rawinput/`
+- source pages that were created but never linked into durable knowledge
+- output pages being used as if they were canonical source of truth
 
-### Workflow : Lint v2
+### Save output
 
-Quand l'utilisateur demande un health check :
+Use save output when the user wants the current answer, audit, or analysis preserved.
 
-1. **Lire** toutes les pages listées dans `wiki/index.md`
-2. **Détecter** :
-   - Contradictions entre pages `status: current`
-   - Pages `status: current` qui mentionnent des données `archived`
-   - Pages sans champ `status` (frontmatter incomplet)
-   - Pages `planned` dont la `valid_from` est dépassée (à activer)
-   - Pages orphelines (aucun lien entrant)
-   - Concepts mentionnés mais sans leur propre page
-   - Liens cassés ou manquants
-   - Fichiers oubliés dans `rawinput/` (ingestion en attente)
-3. **Produire** un rapport dans `wiki/outputs/YYYY-MM-DD-lint-report.md`
-4. **Proposer** des questions à investiguer et des sources à chercher
-5. **Mettre à jour** index et log
+1. Create `wiki/outputs/YYYY-MM-DD-<slug>.md`
+2. Use the output page contract
+3. Link the relevant durable pages or sources in `related`
+4. Update `wiki/index.md`
+5. Append a log entry in `wiki/log.md`
 
-### Workflow : Nouvelle session
+## Index and log rules
 
-Au début de chaque session :
-1. Lire ce fichier `CLAUDE.md`
-2. Lire `wiki/index.md` (catalogue complet)
-3. Lire les 10 dernières entrées de `wiki/log.md`
-4. Lire `wiki/overview.md`
-5. Vérifier si `rawinput/` contient des fichiers (ingestion en attente ?)
-6. Annoncer à l'utilisateur : nb de pages, dernière activité, sources en attente
+### `wiki/index.md`
 
----
+- list active and planned pages
+- group by category
+- keep archived pages out of the active catalog
+- include outputs in a separate section
+- keep the stats block consistent with the filesystem
 
-## Règles de maintenance
+### `wiki/log.md`
 
-- **Le LLM est l'unique auteur du wiki.** L'utilisateur lit, dirige, questionne.
-- **Jamais modifier les fichiers dans `raw/`.** Source de vérité immuable.
-- **`rawinput/` doit être vide après chaque ingest.** Les fichiers migrent vers `raw/`.
-- **Toujours mettre à jour `index.md` et `log.md`** après toute modification.
-- **Maintenir la cohérence temporelle** : propager les supersessions dans `timeline.md`.
-- **Liens Obsidian** : utiliser `[[Nom de la page]]` pour les liens internes.
-- **Images** : référencer les images locales depuis `raw/assets/`.
-- **Archive** : une page archivée n'est jamais supprimée, seulement déplacée.
+- record every mutation session
+- one entry per session is the default
+- include created, updated, archived, moved, and output pages
+- do not log pure read/query sessions unless the user asked for a saved output
 
----
+## Session bootstrap
 
-## Formats de sortie disponibles
+Default read sequence:
 
-| Format | Usage | Stockage |
-|--------|-------|----------|
-| Page markdown | Réponses, analyses, synthèses | `wiki/outputs/` |
-| Marp slide deck | Présentations | `wiki/outputs/` |
-| Tableau comparatif | Comparaisons de features, compétiteurs | dans une page wiki |
-| Image matplotlib | Visualisations de données | `wiki/outputs/` |
+1. `WIKI_SCHEMA.md` if present
+2. `CLAUDE.md`
+3. `wiki/index.md`
+4. recent entries from `wiki/log.md`
 
----
+Read `wiki/overview.md` when the task needs project context.
+Check `rawinput/` when the task is ingest, lint, or repo health.
 
-## Historique du schema
+Do not front-load unnecessary files for a narrow query.
 
-- `2026-04-09` : Création initiale du schema (v1)
-- `2026-04-09` : **Migration vers v2** — ajout de `rawinput/` (staging), gestion temporelle (status/horizon/version/superseded_by), `wiki/archive/`, `wiki/timeline.md`. Voir `wiki/outputs/2026-04-09-architecture-v2.md` pour la documentation complète.
+## Maintenance rules
+
+- `raw/` is immutable
+- `rawinput/` should be empty after a successful ingest
+- every mutation updates `wiki/index.md` and `wiki/log.md`
+- use `[[Wiki Links]]` for internal references
+- keep archive pages; do not delete them
+- keep `WIKI_SCHEMA.md` short and neutral
+- keep this file authoritative for write behavior until a real migration is completed
