@@ -1,0 +1,30 @@
+{
+  "name": "twoweeks-karpathy-hybrid",
+  "id": "twoweeks-karpathy-hybrid",
+  "owner": {
+    "name": "OpenAI for user"
+  },
+  "metadata": {
+    "description": "Hybrid wiki mutation and coding-agent behavior layer",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "twoweeks-karpathy-hybrid",
+      "source": "./",
+      "description": "twoweeks governance + Karpathy behavior overlay for ingest, direct-update, lint, and save-output workflows",
+      "version": "1.0.0",
+      "author": {
+        "name": "OpenAI for user"
+      },
+      "keywords": [
+        "wiki",
+        "workflow",
+        "guidelines",
+        "karpathy",
+        "knowledge-base"
+      ],
+      "category": "workflow"
+    }
+  ]
+}

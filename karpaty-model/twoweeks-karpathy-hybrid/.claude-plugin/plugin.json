@@ -1,0 +1,20 @@
+{
+  "name": "twoweeks-karpathy-hybrid",
+  "description": "Hybrid wiki mutation and coding-agent behavior layer: twoweeks governance + Karpathy execution discipline",
+  "version": "1.0.0",
+  "author": {
+    "name": "OpenAI for user"
+  },
+  "license": "MIT",
+  "keywords": [
+    "wiki",
+    "knowledge-base",
+    "guidelines",
+    "karpathy",
+    "twoweeks",
+    "workflow"
+  ],
+  "skills": [
+    "./skills/ingest-wiki"
+  ]
+}

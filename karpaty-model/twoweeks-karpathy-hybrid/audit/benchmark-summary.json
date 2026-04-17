@@ -1,0 +1,9 @@
+{
+  "weights_total": 100,
+  "totals": {
+    "twoweeks_baseline": 62.4,
+    "karpathy_baseline": 76.4,
+    "hybrid_target": 100.0
+  },
+  "scale": "0-100 weighted score, each criterion scored 1-5 and normalized by weight"
+}
