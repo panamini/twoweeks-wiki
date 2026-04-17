@@ -43,7 +43,6 @@
     "//rawinput",
     "//wiki/wiki/entities",
     "//Tags",
-    "//wiki",
     "//wiki/wiki/skills",
     "//wiki/wiki/to do list/wiki/to do list/Kanban_CardNotes",
     "//wiki/wiki/tasks",
@@ -53,7 +52,9 @@
     "//wiki/wiki/archive/wiki/archive/product",
     "//wiki/wiki/concepts",
     "//wiki/wiki/product",
-    "//wiki/wiki/strategy"
+    "//wiki/wiki/strategy",
+    "//skills",
+    "//skills/skills/apply-hybrid-code-layer"
   ],
   "expandFolderOnClick": true,
   "spacesFolder": "Tags",
