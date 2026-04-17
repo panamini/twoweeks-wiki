@@ -51,7 +51,8 @@
     "//wiki/wiki/archive/wiki/archive/tech",
     "//wiki/wiki/archive/wiki/archive/entities",
     "//wiki/wiki/archive/wiki/archive/product",
-    "//wiki/wiki/concepts"
+    "//wiki/wiki/concepts",
+    "//wiki/wiki/product"
   ],
   "expandFolderOnClick": true,
   "spacesFolder": "Tags",
