@@ -1,6 +1,9 @@
 # Obsidian local workspace state (specific to your machine/window)
 .obsidian/workspace.json
 .obsidian/workspace-mobile.json
+.obsidian/workspaces.json
+.obsidian/plugins/*/data.json
+.obsidian/plugins/*/histories.json
 
 # Obsidian cache
 .obsidian/cache
