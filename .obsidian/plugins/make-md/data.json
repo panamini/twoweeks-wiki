@@ -45,7 +45,13 @@
     "//Tags",
     "//wiki",
     "//wiki/wiki/skills",
-    "//wiki/wiki/to do list/wiki/to do list/Kanban_CardNotes"
+    "//wiki/wiki/to do list/wiki/to do list/Kanban_CardNotes",
+    "//wiki/wiki/tasks",
+    "//wiki/wiki/archive/wiki/archive/strategy",
+    "//wiki/wiki/archive/wiki/archive/tech",
+    "//wiki/wiki/archive/wiki/archive/entities",
+    "//wiki/wiki/archive/wiki/archive/product",
+    "//wiki/wiki/concepts"
   ],
   "expandFolderOnClick": true,
   "spacesFolder": "Tags",
