@@ -5,6 +5,11 @@
 # Obsidian cache
 .obsidian/cache
 
+# Local app state
+.makemd/
+.space/
+.claude/worktrees/
+
 # macOS
 .DS_Store
 **/.DS_Store
