@@ -311,3 +311,12 @@ Migration vers schema v2 : ajout rawinput/ (staging), gestion temporelle (status
 - `wiki/log.md`
 **Pages archivées** :
 - aucune
+
+## [2026-04-17] migration | hybrid control plane + tasks taxonomy
+
+**Agent** : Codex
+**Fichiers traités** : `WIKI_SCHEMA.md`, `CLAUDE.md`, `README.md`, `SKILL.md`, `wiki/index.md`, `wiki/meta/llm-wiki-pattern.md`, `wiki/overview.md`, `wiki/entities/twoweeks.md`, `wiki/concepts/cv-families.md`, `wiki/sources/2026-04-14-kanban-sprint-notes.md`, `wiki/sources/2026-04-14-clerk-chrome-extension-addon.md`, `/Users/pana/.codex/skills/ingest-wiki/SKILL.md`
+**Pages créées** : aucune
+**Pages mises à jour** : `wiki/index.md`, `wiki/meta/llm-wiki-pattern.md`, `wiki/overview.md`, `wiki/entities/twoweeks.md`, `wiki/concepts/cv-families.md`, `wiki/sources/2026-04-14-kanban-sprint-notes.md`, `wiki/sources/2026-04-14-clerk-chrome-extension-addon.md`
+**Pages archivées** : aucune
+**Migrations** : `wiki/to do list/` → `wiki/tasks/`, archive directories backfilled, bootstrap contract aligned on `WIKI_SCHEMA.md` + `CLAUDE.md`

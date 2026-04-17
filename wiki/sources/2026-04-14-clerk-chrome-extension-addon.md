@@ -3,7 +3,7 @@ title: "Clerk Chrome Extension Addon — Save to twoweeks"
 category: source
 tags: [extension, chrome, jobs, save, modal, ux, twoweeks]
 created: 2026-04-14
-updated: 2026-04-14
+updated: 2026-04-17
 status: current
 valid_from: 2026-04-14
 valid_until:
@@ -12,7 +12,7 @@ horizon: present
 version: v1
 type: spec
 sources: []
-related: [[entities/twoweeks]], [[to do list/kanban]], [[product/product-roadmap]]
+related: [[entities/twoweeks]], [[tasks/kanban]], [[product/product-roadmap]]
 ---
 
 # Clerk Chrome Extension Addon — Save to twoweeks
@@ -39,5 +39,5 @@ Ajout UX pour l'extension Chrome : au hover d'une offre d'emploi, afficher une c
 
 ## Pages wiki mises à jour
 
-- [[to do list/kanban]] — backlog enrichi côté extension
+- [[tasks/kanban]] — backlog enrichi côté extension
 - [[entities/twoweeks]] — rappel du rôle de l'extension dans le produit

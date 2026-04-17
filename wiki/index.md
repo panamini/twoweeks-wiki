@@ -1,7 +1,7 @@
 ---
 title: "Index du Wiki — twoweeks"
 category: overview
-updated: 2026-04-16
+updated: 2026-04-17
 ---
 
 # Index du Wiki · twoweeks (v2)
@@ -140,12 +140,12 @@ Catalogue complet de toutes les pages **actives** du wiki (status: current ou pl
 
 ---
 
-## Todo List
+## Tasks
 
 | Page | Résumé |
 |------|--------|
-| [[to do list/kanban\|Kanban Sprint]] | Backlog, en cours, bugs ouverts, déférés, done |
-| [[to do list/Audit Workspace — Bonnes Pratiques, Sécurité, RGPD\|Audit Workspace — Bonnes Pratiques, Sécurité, RGPD]] | Audit sauvegardé du workspace |
+| [[tasks/kanban\|Kanban Sprint]] | Backlog, en cours, bugs ouverts, déférés, done |
+| [[tasks/Audit Workspace — Bonnes Pratiques, Sécurité, RGPD\|Audit Workspace — Bonnes Pratiques, Sécurité, RGPD]] | Audit sauvegardé du workspace |
 
 ---
 
@@ -168,8 +168,8 @@ Catalogue complet de toutes les pages **actives** du wiki (status: current ou pl
 
 ## Statistiques
 
-- **Pages actives** : 64 (4 overview, 1 entité, 2 concepts, 5 design, 4 product, 2 strategy, 2 meta, 35 sources, 4 tech, 2 howto, 2 to do, 1 output)
+- **Pages actives** : 64 (4 overview, 1 entité, 2 concepts, 5 design, 4 product, 2 strategy, 2 meta, 35 sources, 4 tech, 2 howto, 2 tasks, 1 output)
 - **Pages archivées** : 2
 - **Sources dans `raw/`** : 33
 - **Sources en attente dans `rawinput/`** : 0
-- **Dernière mise à jour** : 2026-04-16
+- **Dernière mise à jour** : 2026-04-17

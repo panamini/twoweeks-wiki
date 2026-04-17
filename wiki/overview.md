@@ -3,7 +3,7 @@ title: "Vue d'ensemble — twoweeks"
 category: overview
 tags: [project, overview, twoweeks, roadmap, parser, ats]
 created: 2026-04-09
-updated: 2026-04-15
+updated: 2026-04-17
 status: current
 valid_from: 2026-04-09
 valid_until:
@@ -85,7 +85,7 @@ La vérité d'export suit la même logique : fichiers PDF/DOCX finaux dérivés 
 - [[tech/export-pipeline]] — pipeline document final
 - [[tech/local-vs-remote-parser-architecture]] — séparation local/cloud
 - [[howto/local-parser-operations]] — modes run.sh et debug local
-- [[to do list/kanban]] — backlog sprint actif
+- [[tasks/kanban]] — backlog sprint actif
 
 ---
 

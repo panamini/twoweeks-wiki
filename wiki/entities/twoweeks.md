@@ -97,7 +97,7 @@ Les exports finaux CV/proposal dérivent des données normalisées via des build
 
 **Backlog important** : Paddle cleanup, warning navigation pendant import, AI rewrite suggestions, mapping propre hobbies/projects/additional information.
 
-Voir [[to do list/kanban]] pour le détail.
+Voir [[tasks/kanban]] pour le détail.
 
 ---
 

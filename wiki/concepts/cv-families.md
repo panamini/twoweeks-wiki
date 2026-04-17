@@ -3,7 +3,7 @@ title: "CV Families"
 category: concept
 tags: [cv, sections, families, renderer, parsing, schema]
 created: 2026-04-09
-updated: 2026-04-14
+updated: 2026-04-17
 status: current
 valid_from: 2026-04-09
 valid_until:
@@ -67,4 +67,4 @@ Une famille peut rester générique temporairement, mais pas incohérente. Si un
 
 - [[concepts/cv-parsing-pipeline]] — stratégie d'ensemble
 - [[concepts/parsing-poc-progress]] — slices déjà stabilisés
-- [[to do list/kanban]] — tâches ouvertes sur les sections custom
+- [[tasks/kanban]] — tâches ouvertes sur les sections custom

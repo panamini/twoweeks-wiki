@@ -48,9 +48,10 @@ Read order:
 
 1. `WIKI_SCHEMA.md` if present
 2. `CLAUDE.md` if present
-3. `wiki/index.md`
-4. recent entries from `wiki/log.md`
-5. `wiki/overview.md` if the task needs project context
+3. `wiki/overview.md`
+4. `wiki/index.md`
+5. recent entries from `wiki/log.md`
+6. check `rawinput/` for staged files when the task is ingest, lint, or repo health
 
 Transition behavior:
 
@@ -135,7 +136,7 @@ Then proceed unless the user redirects.
    - set `valid_until` and `superseded_by`
    - move it into `wiki/archive/...`
 5. Move the staged file into `raw/` or `raw/assets/`.
-6. Repair live references.
+6. Repair references.
 7. Update `wiki/index.md` and `wiki/log.md`.
 8. Update `wiki/overview.md` or `wiki/timeline.md` only when the project-level summary changed.
 
@@ -216,9 +217,6 @@ category: output
 status: current
 created: YYYY-MM-DD
 updated: YYYY-MM-DD
-valid_from: YYYY-MM-DD
-sources: []
-related: []
 type: analysis
 ---
 ```

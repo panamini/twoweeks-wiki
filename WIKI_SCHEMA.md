@@ -27,9 +27,10 @@ Optional:
 
 1. `WIKI_SCHEMA.md` if present
 2. `CLAUDE.md` if present
-3. `wiki/index.md`
-4. recent entries from `wiki/log.md`
-5. `wiki/overview.md`
+3. `wiki/overview.md`
+4. `wiki/index.md`
+5. recent entries from `wiki/log.md`
+6. check `rawinput/` for staged files
 
 ## Write rule during transition
 
@@ -69,10 +70,8 @@ Canonical knowledge pages:
 | --- | --- | --- |
 | `source` | `wiki/sources/` | summary of an ingested source |
 | `output` | `wiki/outputs/` | saved answer, audit, analysis, or deck |
-
-### Non-canonical operational pages
-
-- `wiki/tasks/` if used. Exclude it from default knowledge retrieval.
+| `task` | `wiki/tasks/` | operational backlog and execution tracking |
+| `overview` | system files | control-plane and navigation pages |
 
 ## Path rules
 

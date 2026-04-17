@@ -3,7 +3,7 @@ title: "Kanban Sprint Notes — 2026-04-14"
 category: source
 tags: [kanban, sprint, backlog, sections, extension, parser, tests]
 created: 2026-04-14
-updated: 2026-04-14
+updated: 2026-04-17
 status: current
 valid_from: 2026-04-14
 valid_until:
@@ -12,7 +12,7 @@ horizon: present
 version: v1
 type: conversation
 sources: []
-related: [[to do list/kanban]], [[concepts/cv-parsing-pipeline]], [[entities/twoweeks]]
+related: [[tasks/kanban]], [[concepts/cv-parsing-pipeline]], [[entities/twoweeks]]
 ---
 
 # Kanban Sprint Notes — 2026-04-14
@@ -40,5 +40,5 @@ Lot de priorités sprint : durcissement qualité sur de vrais CVs, observabilit�
 
 ## Pages wiki mises à jour
 
-- [[to do list/kanban]] — backlog enrichi
+- [[tasks/kanban]] — backlog enrichi
 - [[concepts/cv-families]] — familles custom et mappings documentés

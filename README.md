@@ -6,31 +6,43 @@ Knowledge base for the [twoweeks](https://twoweeks.ai) project — maintained by
 
 **Start here, in this order:**
 
-1. Read `CLAUDE.md` — the wiki schema, conventions, and workflows (what each folder means, how to ingest sources, how to query, how to handle temporal status)
-2. Read `wiki/index.md` — the full catalogue of active pages (entities, concepts, sources, tech, howto, kanban)
-3. Read only the pages relevant to your task
+1. Read `WIKI_SCHEMA.md` if present — neutral discovery contract
+2. Read `CLAUDE.md` — operational write contract for the current workflow
+3. Read `wiki/overview.md` — current project summary
+4. Read `wiki/index.md` — the active page catalogue
+5. Read recent entries from `wiki/log.md`
+6. Check `rawinput/` when ingest or repo-health work is relevant
 
-Do not read the entire wiki blindly. The index is designed to let you find the right 2–3 pages without loading everything.
+Bootstrap is not `CLAUDE.md`-only.
+During the current transition, `WIKI_SCHEMA.md` is the neutral schema entrypoint and `CLAUDE.md` remains the operational contract for mutations.
+
+Do not read the entire wiki blindly. The index is designed to let you find the right pages without loading everything.
 
 ## Structure
 
-```
+```text
 twoweeks-wiki/
-├── CLAUDE.md          ← schema, workflows, conventions — READ FIRST
-├── rawinput/          ← staging: new sources to ingest
-├── raw/               ← immutable source library
+├── WIKI_SCHEMA.md      ← neutral schema entrypoint
+├── CLAUDE.md           ← operational contract for writes
+├── rawinput/           ← staging: new sources to ingest
+├── raw/                ← immutable source library
 └── wiki/
-    ├── index.md       ← full page catalogue — READ SECOND
-    ├── log.md         ← append-only operation log
-    ├── timeline.md    ← project event timeline
-    ├── entities/      ← products, orgs, people
-    ├── concepts/      ← patterns, decisions, technical concepts
-    ├── sources/       ← ingested source summaries
-    ├── tech/          ← call paths, architecture, infra reference
-    ├── howto/         ← operational runbooks
-    ├── to do list/    ← sprint kanban
-    ├── outputs/       ← analyses, Q&A outputs
-    └── archive/       ← superseded pages (never deleted)
+    ├── overview.md     ← current project summary
+    ├── index.md        ← active/planned page catalogue
+    ├── log.md          ← append-only operation log
+    ├── timeline.md     ← project event timeline
+    ├── entities/       ← products, orgs, people
+    ├── concepts/       ← patterns, policies, technical concepts
+    ├── design/         ← visual systems and layout rules
+    ├── product/        ← roadmap, KPIs, user-facing capabilities
+    ├── strategy/       ← market, positioning, prioritization
+    ├── tech/           ← call paths, architecture, infra reference
+    ├── howto/          ← operational runbooks
+    ├── meta/           ← schema and wiki-maintenance docs
+    ├── sources/        ← ingested source summaries
+    ├── outputs/        ← saved analyses and reports
+    ├── tasks/          ← operational backlog, excluded from default retrieval
+    └── archive/        ← superseded pages (never deleted)
 ```
 
 ## For humans

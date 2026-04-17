@@ -20,6 +20,7 @@ This file defines how the wiki is structured and maintained.
 - Keep raw sources immutable after ingest.
 - `wiki/index.md` and `wiki/log.md` are mandatory after every mutation.
 - Treat source pages as evidence and output pages as snapshots, not as the primary knowledge surface.
+- Older historical references generally should not be rewritten unless they are actively misleading.
 
 ## Vault layout
 
@@ -70,21 +71,26 @@ Use this frontmatter on every wiki page:
 ```yaml
 ---
 title: "Page title"
-category: entity | concept | design | product | strategy | tech | howto | meta | source | output
+category: entity | concept | design | product | strategy | tech | howto | meta | source | output | task | overview
 status: current | planned | archived | deprecated
 created: YYYY-MM-DD
 updated: YYYY-MM-DD
-valid_from: YYYY-MM-DD
+---
+```
+
+### Optional frontmatter
+
+Use only when relevant:
+
+```yaml
+tags: []
 sources: []
 related: []
-
-# Optional
-tags: []
-valid_until:
-superseded_by:
-version:
-type:
----
+valid_from: YYYY-MM-DD
+valid_until: YYYY-MM-DD
+superseded_by: "[[replacement-page]]"
+version: v2
+type: spec | conversation | runbook | analysis | other
 ```
 
 ### Field rules
@@ -94,15 +100,14 @@ type:
   - `planned` — future intended state
   - `archived` — historically valid but no longer active
   - `deprecated` — explicitly rejected or obsolete
-- `valid_from` — when this page became the right representation of the subject
-- `valid_until` — only set for `archived` or `deprecated`
-- `superseded_by` — only set when a page is replaced by another page
-- `version` — optional; use only when the page is tied to a specific product or project version
-- `type` — optional; useful for source and output pages
-- `tags` — optional; do not add tags that duplicate category or obvious folder context
-
-Do not use `horizon`.
-It duplicates `status` and creates maintenance noise.
+- `tags`, `sources`, `related` are optional.
+- `valid_from` is conditional; use it when the page is time-bound, planned, or when the start of validity matters.
+- `valid_until` is conditional; set it only for `archived` or `deprecated` pages.
+- `superseded_by` is conditional; set it only when a page is replaced by another page.
+- `version` is optional; use it only when the page is tied to a specific project or product version.
+- `type` is optional; it is mainly useful on source and output pages.
+- Do not emit empty optional or temporal fields.
+- Do not use `horizon` on new or edited pages. Legacy pages may still contain it until they are touched.
 
 ## Category routing
 
@@ -120,6 +125,8 @@ Use the smallest stable page type that matches the subject.
 | `meta` | `wiki/meta/` | wiki rules, schema, conventions, maintenance docs |
 | `source` | `wiki/sources/` | summary of an ingested source |
 | `output` | `wiki/outputs/` | saved answer, audit, analysis, or deck |
+| `task` | `wiki/tasks/` | operational backlog, sprint notes, migration notes |
+| `overview` | system files | control pages such as index, log, overview, timeline |
 
 ## File naming
 
@@ -148,6 +155,12 @@ One-paragraph summary.
 ## Sources
 ## Related
 ```
+
+Rules:
+- one durable subject per page
+- split pages that become bags of unrelated facts
+- keep current state near the top
+- prefer stable subheadings and small sections
 
 ### Source pages
 
@@ -201,13 +214,13 @@ Default answer behavior:
 
 Use supersede only when the active truth changes.
 
-1. Create or promote the replacement page with `status: current` and a fresh `valid_from`
-2. Mark the old page `status: archived`
-3. Set `valid_until` on the old page
-4. Set `superseded_by` on the old page
-5. Move the old page to the matching archive directory
-6. Repair active references that should now point to the new page
-7. Update `timeline.md` only if the project state or decision history changed materially
+1. Create or promote the replacement page with `status: current` and a fresh `valid_from` when relevant.
+2. Mark the old page `status: archived`.
+3. Set `valid_until` on the old page.
+4. Set `superseded_by` on the old page.
+5. Move the old page to the matching archive directory.
+6. Repair active references that should now point to the new page.
+7. Update `timeline.md` only if the project state or decision history changed materially.
 
 Do not supersede a page just because you added detail.
 Most updates should stay in place.
@@ -227,27 +240,31 @@ After any move, reclassification, or rename-like change:
 
 Use ingest when processing staged files in `rawinput/`.
 
-1. Read `WIKI_SCHEMA.md` if present, then `CLAUDE.md`, `wiki/index.md`, recent `wiki/log.md`, and `wiki/overview.md` if needed.
-2. Scan `rawinput/` and ignore `README.md`.
-3. For each file, read it fully and identify:
+1. Read `WIKI_SCHEMA.md` if present.
+2. Read `CLAUDE.md`.
+3. Read `wiki/overview.md`.
+4. Read `wiki/index.md`.
+5. Read recent entries from `wiki/log.md`.
+6. Check `rawinput/` and ignore `README.md`.
+7. For each file, read it fully and identify:
    - source type
    - key facts
    - affected durable pages
    - contradictions or supersessions
    - new pages, if any
-4. Check whether the same source already exists:
+8. Check whether the same source already exists:
    - same URL
    - same normalized title
    - same day plus same conversation/topic
    - same staged file moved earlier
-5. Give the user a short preview of intended changes, then proceed unless they redirect.
-6. Create or reuse the source page.
-7. Update existing durable pages or create new ones through the category router.
-8. Supersede only when truth changed.
-9. Move the raw file to `raw/` or `raw/assets/`.
-10. Repair references.
-11. Update `wiki/index.md` and `wiki/log.md`.
-12. Update `wiki/overview.md` or `wiki/timeline.md` only when the project-level summary actually changed.
+9. Give the user a short preview of intended changes, then proceed unless they redirect.
+10. Create or reuse the source page.
+11. Update existing durable pages or create new ones through the category router.
+12. Supersede only when truth changed.
+13. Move the raw file to `raw/` or `raw/assets/`.
+14. Repair references.
+15. Update `wiki/index.md` and `wiki/log.md`.
+16. Update `wiki/overview.md` or `wiki/timeline.md` only when the project-level summary actually changed.
 
 ### Direct update
 
@@ -268,7 +285,7 @@ Lint checks should include:
 - invalid category or status values
 - broken Obsidian links
 - orphan current durable pages
-- duplicate or overlapping current durable pages
+- duplicate or overlapping current durable pages that should merge or supersede
 - stale planned pages whose `valid_from` is in the past
 - archived pages still referenced as current
 - filesystem vs `wiki/index.md` drift
@@ -280,11 +297,11 @@ Lint checks should include:
 
 Use save output when the user wants the current answer, audit, or analysis preserved.
 
-1. Create `wiki/outputs/YYYY-MM-DD-<slug>.md`
-2. Use the output page contract
-3. Link the relevant durable pages or sources in `related`
-4. Update `wiki/index.md`
-5. Append a log entry in `wiki/log.md`
+1. Create `wiki/outputs/YYYY-MM-DD-<slug>.md`.
+2. Start with a concise summary.
+3. Link the relevant durable pages or sources in `related`.
+4. Update `wiki/index.md`.
+5. Append a `query-save` entry to `wiki/log.md`.
 
 ## Index and log rules
 
@@ -294,6 +311,7 @@ Use save output when the user wants the current answer, audit, or analysis prese
 - group by category
 - keep archived pages out of the active catalog
 - include outputs in a separate section
+- include tasks in a separate section without treating them as default durable retrieval targets
 - keep the stats block consistent with the filesystem
 
 ### `wiki/log.md`
@@ -309,20 +327,21 @@ Default read sequence:
 
 1. `WIKI_SCHEMA.md` if present
 2. `CLAUDE.md`
-3. `wiki/index.md`
-4. recent entries from `wiki/log.md`
-
-Read `wiki/overview.md` when the task needs project context.
-Check `rawinput/` when the task is ingest, lint, or repo health.
+3. `wiki/overview.md`
+4. `wiki/index.md`
+5. recent entries from `wiki/log.md`
+6. check whether `rawinput/` contains staged files
 
 Do not front-load unnecessary files for a narrow query.
 
 ## Maintenance rules
 
-- `raw/` is immutable
-- `rawinput/` should be empty after a successful ingest
-- every mutation updates `wiki/index.md` and `wiki/log.md`
-- use `[[Wiki Links]]` for internal references
-- keep archive pages; do not delete them
-- keep `WIKI_SCHEMA.md` short and neutral
-- keep this file authoritative for write behavior until a real migration is completed
+- `raw/` is immutable.
+- `rawinput/` should be empty after ingest.
+- always update `wiki/index.md` and `wiki/log.md` after persistent changes.
+- prefer updating or superseding over duplicating.
+- keep `overview.md` high level.
+- keep `timeline.md` for project history, not general note accumulation.
+- use Obsidian links for internal references.
+- keep the control plane simple.
+- do not add tooling layers unless there is a clear operational gain.
