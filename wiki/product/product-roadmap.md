@@ -3,7 +3,7 @@ title: "Product Roadmap — CV Forge"
 category: product
 tags: [roadmap, product, initiatives, phases, stratégie]
 created: 2026-04-10
-updated: 2026-04-16
+updated: 2026-04-17
 status: current
 valid_from: 2026-04-10
 valid_until:
@@ -30,8 +30,10 @@ Quatre axes séquencés :
 ## Phase 1 — P0 : Confiance et fondations (priorité maximale)
 
 ### Import recovery layer
+**Statut** : implémenté, avec besoin restant de raffinement UI sur le styling CSS et l'harmonisation des tokens visuels.
 **Problème** : Les utilisateurs perdent confiance quand l'import PDF place du contenu au mauvais endroit ou affiche des glyphes incorrects.
 **Solution** : UX de recovery autour du parsing — confidence scoring, interface de review des blocs incertains, nettoyage des glyphes, normalisation des bullets, flow de réassignation de sections.
+**Reste à durcir** : cohérence visuelle des surfaces d'import recovery, polish CSS, et alignement des tokens de design entre les états parser/review.
 **KPIs** : Import Completion Rate ↑, drop-off après import ↓, parse errors non résolus ↓
 
 ### Quick-start guided path
@@ -45,11 +47,13 @@ Quatre axes séquencés :
 **KPIs** : AI Accept Rate ↑, Undo Rate ↓
 
 ### Editor ↔ Preview linking
+**Statut** : implémenté, avec un reste de raffinement UI frontend sur le polish des interactions et de la présentation visuelle.
 **Problème** : L'édition en skeleton peut sembler abstraite sans mapping fort vers l'output final.
 **Solution** : Cliquer dans le preview → focus section dans l'éditeur. Hover section → highlight preview. Sync active section. Pas de pivot vers preview-first — renforcement du lien émotionnel.
+**Reste à durcir** : harmonisation des états hover/active, polish du feedback visuel, et finition des détails frontend autour du linking.
 **KPIs** : Edit Completion ↑, Session Depth ↑
 
-**Priorité d'exécution actuelle** : à faire avant le quick-start et avant la couche d'onboarding, car c'est le signal premium le plus fort à l'intérieur de l'éditeur et le meilleur payoff perceptible du produit.
+**Statut d'exécution actuel** : la fonctionnalité de base est en place; le travail restant relève surtout du raffinement UI, pas d'un gap fonctionnel majeur.
 
 ---
 
@@ -62,7 +66,9 @@ Remplacer les longs tutoriaux par un onboarding progressif : checklist première
 **Clarification actuelle** : cette couche vient après `Editor ↔ Preview linking` puis `Quick-start guided path`. La brand voice est jugée suffisamment mature pour être appliquée directement aux microcopies, sans chantier préalable.
 
 ### Document health / readiness layer
+**Statut** : implémenté, avec besoin restant de validation et de tests plus systématiques.
 Système de readiness pour CV + proposition : checklist avec infos manquantes, sections faibles, blocs d'import non résolus, placeholders, alignement keywords, export readiness.
+**Reste à durcir** : couverture de tests, vérification des heuristiques et validation sur davantage de cas réels.
 **Dépendances** : Import recovery, AI rulebook
 
 ### Focused template switcher
@@ -132,13 +138,16 @@ Croisement entre les phases P0→P3 et les priorités de la gap analysis. Voir [
 **Cycle 1** : parser cleanup + import review layer · quick-start guided path · first-run checklist · stronger preview/editor linking
 → *Mappe directement sur les 4 initiatives P0*
 
-**Ordre d'exécution actuellement recommandé** :
-1. interactive preview ↔ editor linking
-2. quick-start guided path
-3. first-run onboarding layer
+**État actuel** : import recovery et editor ↔ preview linking sont implémentés; le reliquat principal porte sur le raffinement UI et la cohérence visuelle.
+
+**Ordre d'exécution restant recommandé** :
+1. quick-start guided path
+2. first-run onboarding layer
 
 **Cycle 2** : AI rulebook implementation · improved toolbar rewrite quality · template switcher · document health system
 → *Mappe sur les initiatives P1 prioritaires*
+
+**État actuel** : document health est implémenté, mais doit encore être durci par plus de tests et de validation comportementale.
 
 **Cycle 3** : stronger jobs object · better premium packaging · landing/value communication · clearer "proposal" framing
 → *Mappe sur P1 (packaging, proposal framing) + P2 (jobs object)*

@@ -363,3 +363,32 @@ Migration vers schema v2 : ajout rawinput/ (staging), gestion temporelle (status
 **Pages archivées** : aucune
 **Migrations** :
 - ajout d'un howto repo-level qui explique le rôle de `ingest-wiki` vs `apply-hybrid-code-layer`
+
+## [2026-04-17] ingest | live resume preview runtime handoff
+
+**Agent** : Codex
+**Fichiers traites** : `rawinput/CVForge Live Resume Render  Interactive Preview Handoff.md`
+**Pages creees** :
+- `wiki/sources/2026-04-17-cvforge-live-resume-render-interactive-preview-handoff.md`
+- `wiki/tech/live-resume-preview-runtime.md`
+**Pages mises a jour** :
+- `wiki/index.md`
+- `wiki/log.md`
+**Pages archivees** :
+- aucune
+
+## [2026-04-17] doc-update | roadmap and gap status refresh
+
+**Agent** : Codex
+**Source** : explicit user instruction
+**Pages créées** : aucune
+**Pages mises à jour** :
+- `wiki/product/product-roadmap.md`
+- `wiki/strategy/gap-analysis.md`
+- `wiki/index.md`
+- `wiki/log.md`
+**Pages archivées** : aucune
+**Migrations** :
+- `Editor ↔ Preview linking` marqué comme implémenté avec reliquat UI/frontend
+- `Import recovery layer` marqué comme implémenté avec reliquat de styling CSS et harmonisation des tokens
+- `Document health / readiness layer` marqué comme implémenté avec reliquat de tests et validation

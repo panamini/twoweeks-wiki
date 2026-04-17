@@ -1,9 +1,10 @@
 ---
-title: "Index du Wiki — twoweeks"
+title: Index du Wiki — twoweeks
 category: overview
 updated: 2026-04-17
+sticker: emoji//1f9c6
 ---
-
+	
 # Index du Wiki · twoweeks (v2)
 
 Catalogue complet de toutes les pages **actives** du wiki (status: current ou planned). Les pages archivées sont dans `wiki/archive/`.
@@ -56,7 +57,7 @@ Le contrôle opératoire du repo reste défini par `WIKI_SCHEMA.md` puis `CLAUDE
 |------|--------|--------|------|
 | [[product/ai-product-model\|AI Product Model]] | 3 modes IA, rulebook et qualité writing | current | ai, ux, modes |
 | [[product/kpis\|KPIs]] | Métriques de succès produit | current | kpi, métriques |
-| [[product/product-roadmap\|Product Roadmap]] | Initiatives par phase et priorités | current | roadmap, product |
+| [[product/product-roadmap\|Product Roadmap]] | Initiatives par phase, items implémentés et reliquat de raffinement | current | roadmap, product |
 | [[product/product-vision\|Product Vision]] | Blueprint produit complet | current | vision, architecture |
 
 ---
@@ -66,7 +67,7 @@ Le contrôle opératoire du repo reste défini par `WIKI_SCHEMA.md` puis `CLAUDE
 | Page | Résumé | Status | Tags |
 |------|--------|--------|------|
 | [[strategy/benchmark-matrix\|Benchmark Matrix]] | Scorecard concurrentielle pondérée | current | benchmark, scoring |
-| [[strategy/gap-analysis\|Gap Analysis]] | Diagnostic concurrentiel et cycles de correction | current | gap, diagnostic |
+| [[strategy/gap-analysis\|Gap Analysis]] | Diagnostic concurrentiel avec gaps restants vs items déjà implémentés | current | gap, diagnostic |
 
 ---
 
@@ -119,6 +120,7 @@ Le contrôle opératoire du repo reste défini par `WIKI_SCHEMA.md` puis `CLAUDE
 | [[sources/2026-04-16-proposal-style-persistence-quickmap-scratchpad\|Proposal Style Persistence Quickmap Scratchpad]] | spec | 2026-04-16 | current |
 | [[sources/2026-04-16-verbati-style-pipeline-scratchpad\|Verbati Style Pipeline Scratchpad]] | spec | 2026-04-16 | current |
 
+| [[sources/2026-04-17-cvforge-live-resume-render-interactive-preview-handoff|CVForge Live Resume Render / Interactive Preview Handoff]] | spec | 2026-04-17 | current |
 ---
 
 ## Tech
@@ -129,6 +131,7 @@ Le contrôle opératoire du repo reste défini par `WIKI_SCHEMA.md` puis `CLAUDE
 | [[tech/export-pipeline\|Export Pipeline]] | Pipeline document final PDF/DOCX séparé du preview DOM | export, pdf, docx |
 | [[tech/local-vs-remote-parser-architecture\|Local vs Remote Parser Architecture]] | Séparation debug local / cloud / prod pour le parser | parser, env, production |
 | [[tech/preview-to-print-pipeline\|Preview-to-Print Pipeline]] | Parité preview -> print route -> PDF pour resume et proposal | preview, print, pdf |
+| [[tech/live-resume-preview-runtime|Live Resume Preview Runtime]] | Runtime du preview resume vivant, mapping canonique et linking preview -> editor | preview, renderer, editor |
 
 ---
 
@@ -169,8 +172,8 @@ Le contrôle opératoire du repo reste défini par `WIKI_SCHEMA.md` puis `CLAUDE
 
 ## Statistiques
 
-- **Pages actives** : 64 (4 overview, 1 entité, 2 concepts, 5 design, 4 product, 2 strategy, 2 meta, 35 sources, 4 tech, 2 howto, 2 tasks, 1 output)
+- **Pages actives** : 66 (4 overview, 1 entité, 2 concepts, 5 design, 4 product, 2 strategy, 2 meta, 36 sources, 5 tech, 2 howto, 2 tasks, 1 output)
 - **Pages archivées** : 2
-- **Sources dans `raw/`** : 33
+- **Sources dans `raw/`** : 34
 - **Sources en attente dans `rawinput/`** : 0
 - **Dernière mise à jour** : 2026-04-17
