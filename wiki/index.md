@@ -1,7 +1,7 @@
 ---
 title: "Index du Wiki — twoweeks"
 category: overview
-updated: 2026-04-17
+updated: 2026-04-18
 ---
 
 # Index du Wiki · twoweeks (v2)
@@ -173,4 +173,4 @@ Le contrôle opératoire du repo reste défini par `WIKI_SCHEMA.md` puis `CLAUDE
 - **Pages archivées** : 2
 - **Sources dans `raw/`** : 33
 - **Sources en attente dans `rawinput/`** : 0
-- **Dernière mise à jour** : 2026-04-17
+- **Dernière mise à jour** : 2026-04-18

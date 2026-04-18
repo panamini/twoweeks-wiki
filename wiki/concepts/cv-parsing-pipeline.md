@@ -3,7 +3,7 @@ title: "CV Parsing Pipeline"
 category: concept
 tags: [parser, cv, mistral, structured, canonical, sections, architecture]
 created: 2026-04-09
-updated: 2026-04-15
+updated: 2026-04-18
 status: current
 valid_from: 2026-04-09
 valid_until:
@@ -40,6 +40,7 @@ Les exports finaux doivent donc dériver de cette donnée normalisée via des bu
 - **Vérité canonique** : `sections[*].structuredContent` > tableaux top-level recalculés.
 - **Fallbacks** : utiles pour la transition et la robustesse, jamais comme vérité durable.
 - **Recovery bornée** : la reconstruction déterministe depuis le markdown OCR reste limitée aux sections locales et peu ambiguës (`languages`, `skills`, path `achievements` existant).
+- **Mistral V3 section support** : les headings `experience` sont reconnus via une liste exacte multilingue, et les headings composés ne sont acceptés que si tous les segments retombent dans la même famille.
 - **Retry unique** : un seul refetch OCR est autorisé quand le pipeline échoue sur une contradiction d'évidence de section.
 - **Debug path** : reproduire d'abord sur la boucle locale complète quand il faut diagnostiquer un problème parser.
 
@@ -65,6 +66,8 @@ Le parser actif s'appuie désormais explicitement sur :
 3. recovery déterministe locale à la section quand elle est autorisée
 4. seconde validation post-recovery
 5. retry OCR unique si contradiction persistante
+
+Le support Mistral V3 a précisé la surface effective des headings: alias exacts pour les variantes `work history`, `career history`, `professional background`, `relevant experience`, `career experience`, `industry experience` et équivalents ES/PT/FR/DE/IT, plus un split composé strict sur les séparateurs sûrs seulement.
 
 ---
 

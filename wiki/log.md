@@ -1,7 +1,7 @@
 ---
 title: "Log — twoweeks Wiki"
 category: overview
-updated: 2026-04-12
+updated: 2026-04-18
 ---
 
 # Log du Wiki · twoweeks
@@ -185,6 +185,21 @@ Migration vers schema v2 : ajout rawinput/ (staging), gestion temporelle (status
 - `wiki/log.md`
 **Pages archivées** :
 - aucune
+
+## [2026-04-18] direct-update | Mistral Resume V3 section recovery refresh
+
+**Agent** : Codex
+**Références revues** : `cv_parser_service/mistral_resume_v3/section_headings.py`, `cv_parser_service/mistral_resume_v3/pipeline.py`, `cv_parser_service/mistral_resume_v3/post_validation.py`, `cv_parser_service/tests/test_mistral_resume_v3_pipeline.py`
+**Pages mises à jour** :
+- `wiki/sources/2026-04-15-mistral-resume-v3-section-recovery-scratchpad.md`
+- `wiki/tech/import-ocr-pipeline.md`
+- `wiki/concepts/cv-parsing-pipeline.md`
+- `wiki/index.md`
+- `wiki/log.md`
+**Points notables** :
+- alias `experience` multilingues maintenus explicitement
+- split des headings composés borné aux séparateurs sûrs
+- validation post-recovery et retry unique conservés via `section_evidence_contradiction`
 
 ## [2026-04-14] ingest | export pipeline brief — OCR to ATS / styled output
 
