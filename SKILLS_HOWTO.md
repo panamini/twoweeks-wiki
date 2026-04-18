@@ -30,6 +30,20 @@ Use this skill when the request is mainly about:
 - `wiki/index.md`
 - `wiki/log.md`
 
+### Prompt templates
+
+French template (Kanban update from a source markdown):
+
+```text
+Utilise $ingest-wiki pour mettre à jour le Kanban dans "<KANBAN_PATH>" à partir du fichier "<SOURCE_MD_PATH>", le contenu des paragraphes devant être le contenu des notes associées aux Cards. Contraintes: ajoute uniquement de nouvelles cards, ne supprime rien, ne modifie pas les cards existantes, conserve la structure des colonnes actuelle, déduplique par titre exact. Sortie attendue: 1) fichier Kanban mis à jour, 2) liste des cards ajoutées, 3) sections touchées. Les titres des Cards devront être formés à partir du titre du document et du titre du paragraphe. Le contenu de la note de la Card doit aller dans le répertoire "<CARD_NOTES_DIR>".
+```
+
+English template (same intent):
+
+```text
+Use $ingest-wiki to update the Kanban at "<KANBAN_PATH>" using the file "<SOURCE_MD_PATH>", with paragraph contents becoming the note contents linked to each Card. Constraints: add new cards only, do not delete anything, do not modify existing cards, preserve the current column structure, deduplicate by exact title match. Expected output: 1) updated Kanban file, 2) list of added cards, 3) touched sections. Card titles must be built from the document title and paragraph title. Card note content must be written to "<CARD_NOTES_DIR>".
+```
+
 ## [$apply-hybrid-code-layer](/Users/pana/.codex/skills/apply-hybrid-code-layer/SKILL.md)
 
 File:
