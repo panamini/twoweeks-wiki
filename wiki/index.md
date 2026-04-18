@@ -1,10 +1,10 @@
 ---
 title: Index du Wiki — twoweeks
 category: overview
-updated: 2026-04-17
 sticker: emoji//1f9c6
+updated: 2026-04-18
 ---
-	
+
 # Index du Wiki · twoweeks (v2)
 
 Catalogue complet de toutes les pages **actives** du wiki (status: current ou planned). Les pages archivées sont dans `wiki/archive/`.
@@ -176,4 +176,4 @@ Le contrôle opératoire du repo reste défini par `WIKI_SCHEMA.md` puis `CLAUDE
 - **Pages archivées** : 2
 - **Sources dans `raw/`** : 34
 - **Sources en attente dans `rawinput/`** : 0
-- **Dernière mise à jour** : 2026-04-17
+- **Dernière mise à jour** : 2026-04-18

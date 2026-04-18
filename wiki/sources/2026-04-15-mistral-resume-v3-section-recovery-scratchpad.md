@@ -3,7 +3,7 @@ title: "Mistral Resume V3 — Section Recovery Scratchpad"
 category: source
 tags: [parser, mistral, recovery, sections, telemetry, retry]
 created: 2026-04-15
-updated: 2026-04-15
+updated: 2026-04-18
 status: current
 valid_from: 2026-04-15
 valid_until:
@@ -31,6 +31,22 @@ Note technique sur le comportement actuel du pipeline Mistral Resume V3 pour la 
 3. La recovery est locale à la section détectée; il n'y a pas de mining document-wide pour reconstruire `skills` ou `languages`.
 4. Une seconde passe de validation après recovery empêche d'accepter silencieusement des valeurs polluées ou non préservées.
 5. La télémétrie `diagnostics.parsingQuality` et le marker de logs `[mistral-quality]` servent de boundary de debug prioritaire avant toute investigation UI.
+
+## Références code revues
+
+- `cv_parser_service/mistral_resume_v3/section_headings.py`
+- `cv_parser_service/mistral_resume_v3/pipeline.py`
+- `cv_parser_service/mistral_resume_v3/post_validation.py`
+- `cv_parser_service/tests/test_mistral_resume_v3_pipeline.py`
+
+## Détails de support de section
+
+- Les alias `experience` sont maintenant explicites et exacts, avec `work history`, `career history`, `professional background`, `relevant experience`, `career experience`, `industry experience`, plus les variantes multilingues en ES/PT/FR/DE/IT.
+- Le split des headings composés reste borné aux séparateurs sûrs `&`, `/`, `|`, `,`, ` y `, ` et `, ` und `, ` e `.
+- Un heading composé n'est accepté que si tous les segments reconnus retombent dans la même famille.
+- Exemples acceptés : `Experience / Work History`, `Experiência / Histórico Profissional`, `Expérience / Expérience Professionnelle`.
+- Exemples rejetés comme mélange de familles : `Experience & Skills`, `Expérience & Compétences`, `Experiencia Profesional y Logros`.
+- La gate de contradiction reste la même : `section_evidence_contradiction` autorise un seul retry OCR, puis la pipeline accepte ou échoue.
 
 ## Implications pour twoweeks
 
