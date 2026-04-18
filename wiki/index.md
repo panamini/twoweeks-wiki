@@ -121,6 +121,7 @@ Le contrôle opératoire du repo reste défini par `WIKI_SCHEMA.md` puis `CLAUDE
 | [[sources/2026-04-16-verbati-style-pipeline-scratchpad\|Verbati Style Pipeline Scratchpad]] | spec | 2026-04-16 | current |
 
 | [[sources/2026-04-17-cvforge-live-resume-render-interactive-preview-handoff|CVForge Live Resume Render / Interactive Preview Handoff]] | spec | 2026-04-17 | current |
+| [[sources/2026-04-18-quick-start-module-hierarchy|Quick Start Module Hierarchy]] | spec | 2026-04-18 | current |
 ---
 
 ## Tech
@@ -132,6 +133,7 @@ Le contrôle opératoire du repo reste défini par `WIKI_SCHEMA.md` puis `CLAUDE
 | [[tech/local-vs-remote-parser-architecture\|Local vs Remote Parser Architecture]] | Séparation debug local / cloud / prod pour le parser | parser, env, production |
 | [[tech/preview-to-print-pipeline\|Preview-to-Print Pipeline]] | Parité preview -> print route -> PDF pour resume et proposal | preview, print, pdf |
 | [[tech/live-resume-preview-runtime|Live Resume Preview Runtime]] | Runtime du preview resume vivant, mapping canonique et linking preview -> editor | preview, renderer, editor |
+| [[tech/quick-start-module-hierarchy|Quick Start Module Hierarchy]] | Shell Quick Start app-shell, route-state transitoire et cold start cover-letter | quick-start, onboarding, ui |
 
 ---
 
@@ -172,8 +174,8 @@ Le contrôle opératoire du repo reste défini par `WIKI_SCHEMA.md` puis `CLAUDE
 
 ## Statistiques
 
-- **Pages actives** : 66 (4 overview, 1 entité, 2 concepts, 5 design, 4 product, 2 strategy, 2 meta, 36 sources, 5 tech, 2 howto, 2 tasks, 1 output)
+- **Pages actives** : 68 (4 overview, 1 entité, 2 concepts, 5 design, 4 product, 2 strategy, 2 meta, 37 sources, 6 tech, 2 howto, 2 tasks, 1 output)
 - **Pages archivées** : 2
-- **Sources dans `raw/`** : 34
+- **Sources dans `raw/`** : 35
 - **Sources en attente dans `rawinput/`** : 0
 - **Dernière mise à jour** : 2026-04-18

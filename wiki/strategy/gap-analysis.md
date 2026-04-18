@@ -3,14 +3,14 @@ title: "Gap Analysis — TwoWeeks vs ResumeLab"
 category: strategy
 tags: [gap, compétiteurs, resumelab, diagnostic, priorités, forces, faiblesses]
 created: 2026-04-10
-updated: 2026-04-10
+updated: 2026-04-18
 status: current
 valid_from: 2026-04-10
 valid_until:
 superseded_by:
 horizon: present
 version: v1
-sources: [2026-04-10-gap-analysis]
+sources: [2026-04-10-gap-analysis, 2026-04-18-quick-start-module-hierarchy]
 related: [[strategy/benchmark-matrix]], [[product/product-vision]], [[product/product-roadmap]], [[product/ai-product-model]]
 ---
 
@@ -82,7 +82,7 @@ Le risque n'est pas que le design soit trop bon. C'est que le design signale sop
 
 ## Gaps manquants (pour battre ResumeLab)
 
-**1. Quick-start funnel** — Le plus urgent. Pas un wizard géant. Un short, smart activation funnel : what to create → import resume/job → calibrate → generate → editor avec quelque chose de réel.
+**1. First-run onboarding system** — Le shell Quick Start est en place; le gap restant est l'onboarding progressif de première session : checklist, nudges contextuels, empty-state helpers et guidage juste à temps.
 
 **2. Import recovery layer** — Implémenté côté fonctionnalité. Le besoin restant porte surtout sur le raffinement UI : parser UX plus harmonisée, meilleur styling CSS, et convergence des design tokens sur les surfaces d'import/review.
 
@@ -108,13 +108,12 @@ Le risque n'est pas que le design soit trop bon. C'est que le design signale sop
 
 | Priorité | Workstream |
 |----------|-----------|
-| 1 — Import trust | Fonctionnalité principale implémentée; reste UI refinement, harmonisation CSS/tokens, et polish des surfaces de review |
-| 2 — Quick-start path | "Create quickly" path, one-shot onboarding, import job+resume, fast first draft, guided refinement, export/pay point |
-| 3 — AI quality unification | AI action taxonomy, standardize rewrite behaviors, improve toolbar outputs, undo/diff/replace patterns consistent |
-| 4 — Editor-preview linking | Fonctionnalité principale implémentée; reste hover/active polish, feedback visuel et raffinements frontend |
-| 5 — First-use coaching | Progressive checklist, contextual nudges, empty-state guidance, first-run spotlight |
-| 6 — Document health/readiness | Fonctionnalité implémentée; reste tests, validation heuristique et durcissement sur cas réels |
-| 7 — Premium value/offer | Only after trust issues above are improved — pricing logic, free vs premium boundary, why upgrade |
+| 1 — First-run onboarding | Shell Quick Start en place; focus sur guidance progressive, checklist, nudges et empty states |
+| 2 — AI quality unification | AI action taxonomy, standardize rewrite behaviors, improve toolbar outputs, undo/diff/replace patterns consistent |
+| 3 — Focused template switching | Small curated set + purpose labels + quick compare + easy swap |
+| 4 — Commercial packaging | Free vs premium, why upgrade, clearer value story |
+| 5 — Jobs as first-class object | Job entity réel avec contexte, keywords et liens |
+| 6 — Proposal framing clarity | Cover letter / Proposal naming plus lisible |
 
 ---
 
@@ -122,8 +121,7 @@ Le risque n'est pas que le design soit trop bon. C'est que le design signale sop
 
 ### Cycle 1 (priorité absolue)
 - Parser cleanup + import review layer
-- Quick-start guided path
-- First-run checklist
+- First-run onboarding system
 - Stronger preview/editor linking
 
 ### Cycle 2

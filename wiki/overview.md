@@ -3,14 +3,14 @@ title: "Vue d'ensemble — twoweeks"
 category: overview
 tags: [project, overview, twoweeks, roadmap, parser, ats]
 created: 2026-04-09
-updated: 2026-04-17
+updated: 2026-04-18
 status: current
 valid_from: 2026-04-09
 valid_until:
 superseded_by:
 horizon: present
 version: v1
-sources: [2026-04-09-decisions-cvforge-sprint, 2026-04-10-notion-roadmap-cvforge, 2026-04-10-success-blueprint, 2026-04-10-benchmark-matrix, 2026-04-10-gap-analysis, 2026-04-14-structured-parsing-canonical-truth, 2026-04-14-ats-compliant-score, 2026-04-14-kanban-sprint-notes, 2026-04-14-run-sh-quick-note, 2026-04-14-export-pipeline-brief-ocr-to-ats-styled-output, 2026-04-15-mistral-resume-v3-section-recovery-scratchpad, 2026-04-15-run-sh-workspace-modes]
+sources: [2026-04-09-decisions-cvforge-sprint, 2026-04-10-notion-roadmap-cvforge, 2026-04-10-success-blueprint, 2026-04-10-benchmark-matrix, 2026-04-10-gap-analysis, 2026-04-14-structured-parsing-canonical-truth, 2026-04-14-ats-compliant-score, 2026-04-14-kanban-sprint-notes, 2026-04-14-run-sh-quick-note, 2026-04-14-export-pipeline-brief-ocr-to-ats-styled-output, 2026-04-15-mistral-resume-v3-section-recovery-scratchpad, 2026-04-15-run-sh-workspace-modes, 2026-04-18-quick-start-module-hierarchy]
 related: [[entities/twoweeks]], [[product/product-roadmap]], [[concepts/cv-parsing-pipeline]], [[design/ats-safety]], [[howto/local-parser-operations]]
 ---
 
@@ -58,8 +58,8 @@ La vérité d'export suit la même logique : fichiers PDF/DOCX finaux dérivés 
 | Phase produit | P0-P1 : confiance import, vérité canonique, stabilité éditeur |
 | Priorité parser | stabiliser `sections[*].structuredContent` comme source de vérité |
 | Priorité qualité | fiabilité sur vrais CVs, observabilité, régression |
-| Priorité UX | extension save-to-twoweeks, sections custom alignées sur le block renderer |
-| Dernière activité | 2026-04-14 |
+| Priorité UX | quick-start onboarding, extension save-to-twoweeks, sections custom alignées sur le block renderer |
+| Dernière activité | 2026-04-18 |
 
 ---
 
@@ -69,6 +69,7 @@ La vérité d'export suit la même logique : fichiers PDF/DOCX finaux dérivés 
 - **Source de vérité** : quand elles sont valides, les sections structurées deviennent la vérité canonique produit.
 - **ATS safety** : nouvel axe qualité explicite pour les templates, exports et headings.
 - **Extension path** : le chemin browser -> save-to-twoweeks reste un moat UX fort à polir.
+- **Quick Start shell** : l'activation vit dans l'app-shell via `App.tsx`; `/proposal` ne sert le cold start cover-letter que comme état d'entrée intentionnel, et la primitive de choix partagée reste commune.
 - **Sections custom** : `add your own section` doit rejoindre le vrai block renderer et non un legacy nested model.
 
 ---
@@ -98,4 +99,4 @@ La vérité d'export suit la même logique : fichiers PDF/DOCX finaux dérivés 
 
 ---
 
-*Mise à jour automatique par le LLM · 2026-04-14*
+*Mise à jour automatique par le LLM · 2026-04-18*

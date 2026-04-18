@@ -201,6 +201,27 @@ Migration vers schema v2 : ajout rawinput/ (staging), gestion temporelle (status
 - split des headings composés borné aux séparateurs sûrs
 - validation post-recovery et retry unique conservés via `section_evidence_contradiction`
 
+## [2026-04-18] ingest | Quick Start module hierarchy
+
+**Agent** : Codex
+**Fichiers traités** : `rawinput/Quick Start Module Hierarchy.md`
+**Pages créées** :
+- `wiki/sources/2026-04-18-quick-start-module-hierarchy.md`
+- `wiki/tech/quick-start-module-hierarchy.md`
+**Pages mises à jour** :
+- `wiki/product/product-roadmap.md`
+- `wiki/strategy/gap-analysis.md`
+- `wiki/overview.md`
+- `wiki/index.md`
+- `wiki/log.md`
+**Pages archivées** :
+- aucune
+**Points notables** :
+- Quick Start est un état d'app-shell content-pane, pas une modale
+- le cold start cover-letter reste un état d'entrée intentionnel dans `/proposal`
+- la primitive de carte partagée reste commune aux chemins resume et cover-letter
+- l'onboarding de première session demeure le reliquat principal
+
 ## [2026-04-14] ingest | export pipeline brief — OCR to ATS / styled output
 
 **Agent** : Codex

@@ -3,14 +3,14 @@ title: "Product Roadmap — CV Forge"
 category: product
 tags: [roadmap, product, initiatives, phases, stratégie]
 created: 2026-04-10
-updated: 2026-04-17
+updated: 2026-04-18
 status: current
 valid_from: 2026-04-10
 valid_until:
 superseded_by:
 horizon: present
 version: v1
-sources: [2026-04-10-notion-roadmap-cvforge, 2026-04-10-gap-analysis, 2026-04-16-plan-onboarding-activation-interactive-preview]
+sources: [2026-04-10-notion-roadmap-cvforge, 2026-04-10-gap-analysis, 2026-04-16-plan-onboarding-activation-interactive-preview, 2026-04-18-quick-start-module-hierarchy]
 related: [[archive/entities/cv-forge]], [[product/kpis]], [[strategy/gap-analysis]], [[product/product-vision]], [[design/brand-voice]]
 ---
 
@@ -37,8 +37,10 @@ Quatre axes séquencés :
 **KPIs** : Import Completion Rate ↑, drop-off après import ↓, parse errors non résolus ↓
 
 ### Quick-start guided path
+**Statut** : shell Quick Start + cold start cover-letter en place; le reliquat porte surtout sur l'onboarding de première session.
 **Problème** : L'entrée directe dans l'éditeur peut sous-convertir les nouveaux utilisateurs froids.
-**Solution** : Flow guidé court avant l'éditeur — "que veux-tu créer ?", import CV/job, choix de tone, génération du premier draft, puis ouverture de l'éditeur.
+**Solution** : Shell Quick Start dans l'app-shell — état transitoire, `QuickStartFlow` en place, `QuickStartChoiceCard` partagé, retour vers `/proposal` pour le cold start cover-letter; le reste de l'activation passe ensuite par l'onboarding de première session.
+**Reste à durcir** : checklist première session, nudges contextuels, empty-state helpers, microcopy et cohérence visuelle.
 **KPIs** : Time to First Draft ↓, Paywall Conversion ↑
 
 ### AI interaction rulebook
@@ -53,15 +55,16 @@ Quatre axes séquencés :
 **Reste à durcir** : harmonisation des états hover/active, polish du feedback visuel, et finition des détails frontend autour du linking.
 **KPIs** : Edit Completion ↑, Session Depth ↑
 
-**Statut d'exécution actuel** : la fonctionnalité de base est en place; le travail restant relève surtout du raffinement UI, pas d'un gap fonctionnel majeur.
+**Statut d'exécution actuel** : la fonctionnalité de base est en place; import recovery, editor ↔ preview linking et le shell Quick Start sont implémentés; le reliquat principal porte sur l'onboarding de première session et le raffinement UI, pas sur un gap fonctionnel majeur.
 
 ---
 
 ## Phase 2 — P1 : Confiance + Conversion
 
 ### First-run onboarding system
+**Statut** : à faire; c'est le reliquat principal après la mise en place du shell Quick Start.
 Remplacer les longs tutoriaux par un onboarding progressif : checklist première session, nudges contextuels, empty-state helpers, 1-2 spotlight moments. Pas de tooltip tour géant.
-**Dépendance** : Quick-start path
+**Dépendance** : Quick-start shell
 
 **Clarification actuelle** : cette couche vient après `Editor ↔ Preview linking` puis `Quick-start guided path`. La brand voice est jugée suffisamment mature pour être appliquée directement aux microcopies, sans chantier préalable.
 
@@ -135,14 +138,13 @@ Catalogue étendu et curé, groupé par usage. Après résolution des problèmes
 
 Croisement entre les phases P0→P3 et les priorités de la gap analysis. Voir [[strategy/gap-analysis]] pour le détail complet.
 
-**Cycle 1** : parser cleanup + import review layer · quick-start guided path · first-run checklist · stronger preview/editor linking
-→ *Mappe directement sur les 4 initiatives P0*
+**Cycle 1** : parser cleanup + import review layer · first-run onboarding · stronger preview/editor linking
+→ *Mappe directement sur les 4 initiatives P0, avec le shell Quick Start déjà posé*
 
-**État actuel** : import recovery et editor ↔ preview linking sont implémentés; le reliquat principal porte sur le raffinement UI et la cohérence visuelle.
+**État actuel** : import recovery et editor ↔ preview linking sont implémentés; le shell Quick Start est en place; le reliquat principal porte sur l'onboarding de première session et la cohérence visuelle.
 
 **Ordre d'exécution restant recommandé** :
-1. quick-start guided path
-2. first-run onboarding layer
+1. first-run onboarding layer
 
 **Cycle 2** : AI rulebook implementation · improved toolbar rewrite quality · template switcher · document health system
 → *Mappe sur les initiatives P1 prioritaires*
