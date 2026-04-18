@@ -60,13 +60,15 @@ Then:
 
 ## Bugs ouverts
 
-- [ ] **Scroll/zoom preview CV** — scroll bloqué en mode zoom, pas de pan à 100% fit.
+- [x] **Scroll/zoom preview CV** — scroll bloqué en mode zoom, pas de pan à 100% fit. ✅ 2026-04-18
 - [ ] replace teh plus add icon in skill section in cv forge with a pen
 - [x] **Achievements encore visible dans Manage Section** — incohérence alors que la section est déjà chargée. ✅ 2026-04-18
+- [ ] quickstart jump of one line between start and cover letter slides, button is wider in start,cv than in covver letter
 - [ ] assign 3default style for new users it should never be empty
 - [ ] verify if proposal are saved in the library. and persistent. in convex. make autosave default for generated proposal. 
 - [ ] export ats and exportpd  style and docx should be accesible from the library proposal
 - [ ] align `./run.sh local-convex` alias behavior with `local-fast`, or deprecate the alias explicitly in code and docs
+- [ ] update title in the toolbar browser title when cv is imported/uploaded, or manual cv when u enter name is profile
 - [ ] Structured upload routing consistency
 - Investigate why CV import in `run.sh local` still routes through cloud Convex → parser.dasti.ai
 - Decide the intended behavior:
