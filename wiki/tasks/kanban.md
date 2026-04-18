@@ -61,7 +61,9 @@ Then:
 ## Bugs ouverts
 
 - [ ] **Scroll/zoom preview CV** — scroll bloqué en mode zoom, pas de pan à 100% fit.
-- [ ] **Achievements encore visible dans Manage Section** — incohérence alors que la section est déjà chargée.
+- [ ] replace teh plus add icon in skill section in cv forge with a pen
+- [x] **Achievements encore visible dans Manage Section** — incohérence alors que la section est déjà chargée. ✅ 2026-04-18
+- [ ] assign 3default style for new users it should never be empty
 - [ ] verify if proposal are saved in the library. and persistent. in convex. make autosave default for generated proposal. 
 - [ ] export ats and exportpd  style and docx should be accesible from the library proposal
 - [ ] align `./run.sh local-convex` alias behavior with `local-fast`, or deprecate the alias explicitly in code and docs

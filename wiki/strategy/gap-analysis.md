@@ -84,15 +84,15 @@ Le risque n'est pas que le design soit trop bon. C'est que le design signale sop
 
 **1. Quick-start funnel** — Le plus urgent. Pas un wizard géant. Un short, smart activation funnel : what to create → import resume/job → calibrate → generate → editor avec quelque chose de réel.
 
-**2. Import recovery layer** — Pas juste un meilleur parser, une meilleure **parser UX** : confidence scoring, review queue, "3 uncertain blocks found", fix-this-first interface, encoding cleanup. "The product must never pretend messy imports are fine."
+**2. Import recovery layer** — Implémenté côté fonctionnalité. Le besoin restant porte surtout sur le raffinement UI : parser UX plus harmonisée, meilleur styling CSS, et convergence des design tokens sur les surfaces d'import/review.
 
 **3. AI interaction rulebook** — Règles explicites pour : quand 1 réponse vs variants, quand rewrite inline vs modal, quand silencieux vs proactif, quand preserve job tone, quand deterministic. "This is not polish. This is product coherence."
 
-**4. Better editor-preview linking** — Click preview → jump to structured section. Hover section → highlight preview block. Stronger live status. "Better you-are-editing-this feeling."
+**4. Better editor-preview linking** — Implémenté côté fonctionnalité. Le besoin restant porte surtout sur le raffinement UI/frontend : hover states, feedback visuel, et polish du sentiment de liaison live entre preview et édition.
 
 **5. Focused template switching** — Small curated set + purpose labels + quick compare + easy swap. Pas une gallery géante, pas invisible non plus.
 
-**6. Document health / quality layer** — Missing info, weak summary, unverified import blocks, low keyword alignment, export readiness. "Not just AI wrote it, but the system helps me know if it's ready." Opportunité de battre ResumeLab clairement.
+**6. Document health / quality layer** — Implémenté. Le reliquat principal est la phase de tests, validation heuristique et durcissement sur plus de cas réels avant de le considérer comme totalement stabilisé.
 
 **7. Better commercial packaging** — Clarifier free vs premium + pourquoi vs ChatGPT + Canva + Docs. Messaging : faster tailoring, premium layouts sans design skills, better letters from real job context, reusable workspace.
 
@@ -108,12 +108,12 @@ Le risque n'est pas que le design soit trop bon. C'est que le design signale sop
 
 | Priorité | Workstream |
 |----------|-----------|
-| 1 — Import trust | Parser cleanup, glyph normalization, confidence scoring, uncertain-block review UI, section placement review |
+| 1 — Import trust | Fonctionnalité principale implémentée; reste UI refinement, harmonisation CSS/tokens, et polish des surfaces de review |
 | 2 — Quick-start path | "Create quickly" path, one-shot onboarding, import job+resume, fast first draft, guided refinement, export/pay point |
 | 3 — AI quality unification | AI action taxonomy, standardize rewrite behaviors, improve toolbar outputs, undo/diff/replace patterns consistent |
-| 4 — Editor-preview linking | Click preview → focus section, hover link states, section highlighting, active edit mapping |
+| 4 — Editor-preview linking | Fonctionnalité principale implémentée; reste hover/active polish, feedback visuel et raffinements frontend |
 | 5 — First-use coaching | Progressive checklist, contextual nudges, empty-state guidance, first-run spotlight |
-| 6 — Document health/readiness | Quality checklist, missing info warnings, keyword alignment, proposal completeness, ready-to-export status |
+| 6 — Document health/readiness | Fonctionnalité implémentée; reste tests, validation heuristique et durcissement sur cas réels |
 | 7 — Premium value/offer | Only after trust issues above are improved — pricing logic, free vs premium boundary, why upgrade |
 
 ---

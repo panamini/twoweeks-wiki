@@ -41,3 +41,32 @@ These should be hardcoded in the export layer, not left to preview styling:
 - restrained spacing, black/dark neutral text only
 - recruiter-safe filenames
 - no preview palette / accent inheritance in ATS export mode
+  
+  
+  
+  
+  ### 1. This sentence is too speculative
+
+> “User's observation ‘QuickStart doesn't launch for new user’ is likely a stale flag in their browser”
+
+That is **not strong enough as an audit conclusion** unless he verified the full path.
+
+He can say:
+
+- code suggests Quick Start **should** auto-launch when localStorage is absent and the CV has no meaningful content
+
+But he should **not** confidently conclude the observed behavior is just stale localStorage unless he also checked:
+
+- the actual new-user routing path
+- whether a document is precreated with content/title/state that bypasses the gate
+- whether `quickStartDismissed` is derived anywhere else
+- whether auth/sign-in hydration timing affects the gate
+- whether the localStorage key is ever set too early
+
+So that line should be softened.
+
+### Better wording
+
+Something like:
+
+> The current code suggests Quick Start should auto-launch on a fresh local session, but this needs runtime verification because the observed behavior conflicts with that expectation.
