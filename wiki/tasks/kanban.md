@@ -43,6 +43,7 @@ related: [[entities/twoweeks]], [[concepts/cv-parsing-pipeline]], [[concepts/cv-
 - [x] **IDENTITY/CONTACT POC hybride** — fixs acceptés déjà documentés, ne pas rouvrir sans contradiction live.
 - [ ] ##add paper color
 - [ ] add @TYPOGRAPHY MODE dans les instruction FIX du menu ai de reecriture, ajouter aussi a workspace si c'est possible
+- [ ] replace all resume, all proposal par show more, ou show all. 
 
 Use the existing token as the base and extend it instead of replacing it:
 
