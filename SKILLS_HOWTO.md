@@ -1,5 +1,3 @@
-# Skills Howto
-
 This repository ships two reusable skills.
 
 Use them as workflow overlays, not as business logic by themselves.

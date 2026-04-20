@@ -330,6 +330,8 @@ If you underplay them too much, you weaken desire.
 
 ## 6. A document health / quality layer
 
+**//done/verifier s'il sactive bien avec mistral ocr**
+
 This is a huge opportunity.
 
 ResumeLab has some score-like signaling.

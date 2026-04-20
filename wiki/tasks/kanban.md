@@ -25,9 +25,9 @@ related: [[entities/twoweeks]], [[concepts/cv-parsing-pipeline]], [[concepts/cv-
 - [ ] **Warning navigation pendant import** — friction minimale ou import background, décision UX à trancher.
 - [ ] **AI rewrite suggestions** — 2 à 3 suggestions par section.
 - [ ] **Save to twoweeks dans l'extension** — capsule hover sur offre d'emploi ouvrant le modal `send to twoweeks`.
-- [ ] **Add your own section -> vrai block renderer** — choix explicite `skill`, `experience`, `summary`.
-- [ ] **Mapper les sections legacy** — `projects` -> experience style, `additional information` -> summary style, `hobbies` -> skill style.
-- [ ] **Observabilité + régression parser** — métriques, vrais CVs, derniers durcissements bruit template/liens/contact.
+- [x] **Add your own section -> vrai block renderer** — choix explicite `skill`, `experience`, `summary`. ✅ 2026-04-19
+- [x] **Mapper les sections legacy** — `projects` -> experience style, `additional information` -> summary style, `hobbies` -> skill style. ✅ 2026-04-19
+- [x] **Observabilité + régression parser** — métriques, vrais CVs, derniers durcissements bruit template/liens/contact. ✅ 2026-04-19
 - [ ] **Paddle cleanup** — supprimer les références Paddle sans toucher au workflow actif parser/Convex.
 - [ ] check if propsoal is autosaved and resume is autosaved
 - [ ] remove the modal name ur resume at start
@@ -42,6 +42,7 @@ related: [[entities/twoweeks]], [[concepts/cv-parsing-pipeline]], [[concepts/cv-
 - [x] **Stabiliser la vérité canonique** — aligner rendus, JSON copiés/exports et vues dérivées sur `sections[*].structuredContent`.
 - [x] **IDENTITY/CONTACT POC hybride** — fixs acceptés déjà documentés, ne pas rouvrir sans contradiction live.
 - [ ] ##add paper color
+- [ ] add @TYPOGRAPHY MODE dans les instruction FIX du menu ai de reecriture, ajouter aussi a workspace si c'est possible
 
 Use the existing token as the base and extend it instead of replacing it:
 
@@ -61,6 +62,8 @@ Then:
 ## Bugs ouverts
 
 - [x] **Scroll/zoom preview CV** — scroll bloqué en mode zoom, pas de pan à 100% fit. ✅ 2026-04-18
+- [ ] desired position is not being parsed correctly is pretty much all the time absent
+- [ ] when website is loaded i get a pop up card renam this cv imported cv, this modal is a symptom of a bug taht shoud be fixed its loading everytime import cv is refreshed or somthing
 - [ ] replace teh plus add icon in skill section in cv forge with a pen
 - [x] **Achievements encore visible dans Manage Section** — incohérence alors que la section est déjà chargée. ✅ 2026-04-18
 - [ ] quickstart jump of one line between start and cover letter slides, button is wider in start,cv than in covver letter
@@ -69,6 +72,8 @@ Then:
 - [ ] export ats and exportpd  style and docx should be accesible from the library proposal
 - [ ] align `./run.sh local-convex` alias behavior with `local-fast`, or deprecate the alias explicitly in code and docs
 - [ ] update title in the toolbar browser title when cv is imported/uploaded, or manual cv when u enter name is profile
+- [ ] on refresh cv prview the mock up cv iappear flikcering with the real imported cv , when u hit refresh page
+- [ ] les gros texte dans les section type experience des entry ne sont pas affiché apres un certain seuil(hardcodé?) le saut de la page a section suivante laisse enorme marge bottom, valbale pour autre section too..
 - [ ] Structured upload routing consistency
 - Investigate why CV import in `run.sh local` still routes through cloud Convex → parser.dasti.ai
 - Decide the intended behavior:
@@ -89,7 +94,9 @@ Then:
   - change label to “Generating PDF…” / “Generating DOCX…”
 - Do not use fake determinate progress unless real progress events exist
 - Re-enable on success/failure
-- Show error toast/message on failure
+
+- revoir le copywrite, changer le nom de quickstart, ameliorer brandvoice, relire quickstart rubrique, creer landing page
+- - Show error toast/message on failure
 Reason:
 PDF export can take ~5–10s through the current backend render pipeline, so users need immediate visual feedback that the action is processing.
 
