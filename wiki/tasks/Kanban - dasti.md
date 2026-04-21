@@ -8,6 +8,17 @@ kanban-plugin: board
 
 
 
+- [ ] [[Kanban_CardNotes/Audit Workspace — Bonnes Pratiques, Sécurité, Protection des Données (RGPD) — C1 — Secrets en clair commités (compromission potentielle immédiate).md|Audit Workspace — Bonnes Pratiques, Sécurité, Protection des Données (RGPD) — C1 — Secrets en clair commités (compromission potentielle immédiate)]]
+- [ ] [[Kanban_CardNotes/Audit Workspace — Bonnes Pratiques, Sécurité, Protection des Données (RGPD) — C2 — Endpoints Convex sensibles sans contrôle d’identité explicite.md|Audit Workspace — Bonnes Pratiques, Sécurité, Protection des Données (RGPD) — C2 — Endpoints Convex sensibles sans contrôle d’identité explicite]]
+- [ ] [[Kanban_CardNotes/Audit Workspace — Bonnes Pratiques, Sécurité, Protection des Données (RGPD) — H1 — Stockage étendu de données CV-PII (backend + navigateur).md|Audit Workspace — Bonnes Pratiques, Sécurité, Protection des Données (RGPD) — H1 — Stockage étendu de données CV/PII (backend + navigateur)]]
+- [ ] [[Kanban_CardNotes/Audit Workspace — Bonnes Pratiques, Sécurité, Protection des Données (RGPD) — H2 — Droit à l’effacement incomplet (suppression non transverse).md|Audit Workspace — Bonnes Pratiques, Sécurité, Protection des Données (RGPD) — H2 — Droit à l’effacement incomplet (suppression non transverse)]]
+- [ ] [[Kanban_CardNotes/Audit Workspace — Bonnes Pratiques, Sécurité, Protection des Données (RGPD) — H3 — Journalisation potentielle de données sensibles.md|Audit Workspace — Bonnes Pratiques, Sécurité, Protection des Données (RGPD) — H3 — Journalisation potentielle de données sensibles]]
+- [ ] [[Kanban_CardNotes/Audit Workspace — Bonnes Pratiques, Sécurité, Protection des Données (RGPD) — M1 — Configuration sensible hardcodée.md|Audit Workspace — Bonnes Pratiques, Sécurité, Protection des Données (RGPD) — M1 — Configuration sensible hardcodée]]
+- [ ] [[Kanban_CardNotes/Audit Workspace — Bonnes Pratiques, Sécurité, Protection des Données (RGPD) — M2 — Gouvernance Git: règles pouvant masquer des audits.md|Audit Workspace — Bonnes Pratiques, Sécurité, Protection des Données (RGPD) — M2 — Gouvernance Git: règles pouvant masquer des audits]]
+- [ ] [[Kanban_CardNotes/Audit Workspace — Bonnes Pratiques, Sécurité, Protection des Données (RGPD) — Phase 0 — Immédiat (aujourd’hui).md|Audit Workspace — Bonnes Pratiques, Sécurité, Protection des Données (RGPD) — Phase 0 — Immédiat (aujourd’hui)]]
+- [ ] [[Kanban_CardNotes/Audit Workspace — Bonnes Pratiques, Sécurité, Protection des Données (RGPD) — Phase 1 — 24-48h.md|Audit Workspace — Bonnes Pratiques, Sécurité, Protection des Données (RGPD) — Phase 1 — 24/48h]]
+- [ ] [[Kanban_CardNotes/Audit Workspace — Bonnes Pratiques, Sécurité, Protection des Données (RGPD) — Phase 2 — Semaine.md|Audit Workspace — Bonnes Pratiques, Sécurité, Protection des Données (RGPD) — Phase 2 — Semaine]]
+- [ ] [[Kanban_CardNotes/Audit Workspace — Bonnes Pratiques, Sécurité, Protection des Données (RGPD) — Phase 3 — Industrialisation.md|Audit Workspace — Bonnes Pratiques, Sécurité, Protection des Données (RGPD) — Phase 3 — Industrialisation]]
 ## In dev
 
 - [ ] [[Kanban_CardNotes/Plan détaillé de migration vers un schéma wiki agnostique à l'agent (non destructif) — Pré-requis|Plan détaillé de migration vers un schéma wiki agnostique à l'agent (non destructif) — Pré-requis]]
