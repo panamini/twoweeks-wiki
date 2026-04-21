@@ -65,7 +65,12 @@ Then:
 - [x] **Scroll/zoom preview CV** — scroll bloqué en mode zoom, pas de pan à 100% fit. ✅ 2026-04-18
 - [ ] desired position is not being parsed correctly is pretty much all the time absent
 - [ ] when website is loaded i get a pop up card renam this cv imported cv, this modal is a symptom of a bug taht shoud be fixed its loading everytime import cv is refreshed or somthing
+- [ ] HOBBBIE SHOWING ONLY 2 ENTRIES, EVEN WHE THERE IS MORE
+- [ ] HIGHLIGHT SELECTED TEXT HAS NO STYLE ITS INVISIBLE IN LIGHT AND DARK MODE
 - [ ] replace teh plus add icon in skill section in cv forge with a pen
+- [ ] WHEN ENTERING NO DESIRED POSITION, saving keep. last sate entry
+      jessica claire still show in desired position 
+- [ ] 
 - [x] **Achievements encore visible dans Manage Section** — incohérence alors que la section est déjà chargée. ✅ 2026-04-18
 - [ ] quickstart jump of one line between start and cover letter slides, button is wider in start,cv than in covver letter
 - [ ] assign 3default style for new users it should never be empty
