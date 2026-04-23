@@ -33,8 +33,20 @@ related: [[entities/twoweeks]], [[concepts/cv-parsing-pipeline]], [[concepts/cv-
 - [ ] remove the modal name ur resume at start
 - [ ] see how we deall withs save and autosave 
 - [ ] remove the all cap namee in proposal 
-- [ ] weakness in ⏫  clerkchrome extien open in proposal forge parfois l'offre n'est pas load.
+- [ ] 
 
+( ) 
+
+
+() le edit responsabilites n'est pas update, ni edit skill dans la page jobs
+concevoir la page job comme une colonne obsidienne
+que fait tailor cv ? dans job?rediger le summary, chosir les skills a partir du job ? faut il creer un profil utilisateur de base pour le comparer au cv ingeres? et l'adapter en fonction , l'ia peut aller piocher dans la database de l'user et en fonction sortir les bons mots pour compelter les cv 
+que fait do both?
+dans quick start ajouter pull a job from library
+pour l'instant les job c des gros paves de texte degueu lasse. soit on a un truc qui les resume  pour que l'user comprenen tres vite ce que, avec des info standart, salaire demande nombre de mois disponibilité enfin tous les trucs classique , et comme le tableau de bord il peut naviguer dans les offre
+le parsing est degueu il cool e trois fois le meme texte full de l''offre dans lse trois sectin responsabilities skill keywords.
+je ne vois pas de button qui selectionne le job dans la rubrique neda attention je ne vois aps comment ni pourquoi un doc job peut etre dans need attention. 
+j'ai besoin d'un audit sur le potentiel de cet page tout en respectant les kpi e. le benchmark matrix et mes observation , rien n'est une regle immuable mais je veux comrend la direction je supervis c qui est impletent je teste je critique tu dois faire pareil 
 ---
 
 ## En cours
@@ -65,7 +77,7 @@ Then:
 - [x] **Scroll/zoom preview CV** — scroll bloqué en mode zoom, pas de pan à 100% fit. ✅ 2026-04-18
 - [ ] desired position is not being parsed correctly is pretty much all the time absent
 - [ ] when website is loaded i get a pop up card renam this cv imported cv, this modal is a symptom of a bug taht shoud be fixed its loading everytime import cv is refreshed or somthing
-- [ ] HOBBBIE SHOWING ONLY 2 ENTRIES, EVEN WHE THERE IS MORE
+- [x] HOBBBIE SHOWING ONLY 2 ENTRIES, EVEN WHE THERE IS MORE ✅ 2026-04-22
 - [ ] HIGHLIGHT SELECTED TEXT HAS NO STYLE ITS INVISIBLE IN LIGHT AND DARK MODE
 - [ ] replace teh plus add icon in skill section in cv forge with a pen
 - [ ] WHEN ENTERING NO DESIRED POSITION, saving keep. last sate entry
@@ -79,7 +91,7 @@ Then:
 - [ ] align `./run.sh local-convex` alias behavior with `local-fast`, or deprecate the alias explicitly in code and docs
 - [ ] update title in the toolbar browser title when cv is imported/uploaded, or manual cv when u enter name is profile
 - [ ] on refresh cv prview the mock up cv iappear flikcering with the real imported cv , when u hit refresh page
-- [ ] les gros texte dans les section type experience des entry ne sont pas affiché apres un certain seuil(hardcodé?) le saut de la page a section suivante laisse enorme marge bottom, valbale pour autre section too..
+- [x] les gros texte dans les section type experience des entry ne sont pas affiché apres un certain seuil(hardcodé?) le saut de la page a section suivante laisse enorme marge bottom, valbale pour autre section too.. ✅ 2026-04-22
 - [ ] Structured upload routing consistency
 - Investigate why CV import in `run.sh local` still routes through cloud Convex → parser.dasti.ai
 - Decide the intended behavior:

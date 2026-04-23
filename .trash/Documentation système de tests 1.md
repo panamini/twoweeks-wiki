@@ -1,0 +1,19 @@
+---
+title: "Documentation système de tests"
+source: "https://chatgpt.com/c/69e928ac-46ac-8397-9731-2cce0b8cf16a"
+author:
+published:
+created: 2026-04-22
+description: "ChatGPT is your AI chatbot for everyday use. Chat with the most advanced AI to explore ideas, solve problems, and learn faster."
+tags:
+  - "clippings"
+---
+**You said**
+
+Context You have access to a full GitHub repository (current branch only,main). The project is a production-grade web application. The goal is to analyze ONLY the existing test system implemented in this repository. Goal Produce a comprehensive, professional, and human-level documentation (in French) explaining the testing system of the project, as if onboarding a senior developer who is unfamiliar with this codebase but experienced in real-world testing practices. Scope Analyze ONLY what exists in the repository: - Test files - Test utilities - Config files (jest, vitest, testing-library, playwright, etc.) - CI/test scripts if present - Folder structure related to testing - Any implicit testing patterns used across the codebase Do NOT assume anything that is not present in the repo. Do NOT change - Do not suggest rewriting the test system - Do not introduce new tools or frameworks - Do not give generic explanations of testing theory - Do not explain “how AI writes tests” - Do not hallucinate missing parts Required work 1. Test Architecture Overview - Identify the testing stack (frameworks, libraries, runners) - Explain how tests are executed (commands, scripts, CI if present) - Describe the global testing philosophy inferred from the repo 2. Folder & File Organization - Map precisely where tests live - Explain naming conventions - Explain co-location vs centralized tests - Highlight any inconsistencies 3. Test Types Identification - Unit tests - Integration tests - UI/component tests - E2E tests (if any) For each: - Where they are located - How they are written - What they cover concretely in THIS repo 4. Test Implementation Patterns - Common patterns used (mocks, fixtures, helpers, wrappers) - Reusable utilities - State management mocking (if any) - API mocking strategy (if any) 5. Test Execution Flow - Step-by-step: from command → runner → execution → output - How failures are reported - Any watch mode / dev workflow 6. Quality & Coverage Analysis (based only on repo) - What is well tested - What is weak or missing - Consistency of test patterns - Risk areas 7. Test Writing Standards (inferred) - What rules developers seem to follow - Implicit conventions (naming, structure, assertions) - Level of strictness / rigor 8. Onboarding Guide (critical) Write a clear onboarding section for a senior developer: - How to run tests - How to add a new test correctly in THIS repo - Where to put it - How to follow existing patterns - What to avoid Constraints - Language: French only - Tone: professional, senior-level, no fluff - No generic explanations of testing (focus on THIS repo) - No speculation - No unnecessary verbosity - Prefer concrete examples from the repo when possible Acceptance criteria - The document is structured, readable, and can be handed directly to a new senior developer - Every claim is backed by something observable in the repo - No hallucination - No generic textbook content - Clear, actionable onboarding section Required output format # Documentation du système de tests ## 1. ==Vue== d’ensemble... ## 2. Organisation des tests... ## 3. Typologie des tests... ## 4. Patterns d’implémentation... ## 5. Exécution des tests... ## 6. Analyse de la qualité... ## 7. Standards implicites... ## 8. Guide d’onboarding développeur...
+
+---
+
+**ChatGPT said**
+
+Je vais inspecter le dépôt GitHub connecté pour recenser la stack de test, les fichiers de config, les scripts, puis les patterns dominants dans les tests avant de rédiger la doc en français.
