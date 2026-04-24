@@ -29,4 +29,3 @@ Il existe aussi une infra **Playwright** à la racine avec `pw:test` et une conf
 
 En résumé : le repo a une **bonne base de tests front et métier**, surtout sur la logique CV, les hooks, les providers et les flows UI critiques. Le point le plus faible visible aujourd’hui n’est pas la qualité des tests existants, mais plutôt la **faible couverture E2E produit** et une **organisation un peu hétérogène** des fichiers de test.
 
-Si tu veux, je peux te faire maintenant la même note en **style encore plus brut / scratchpad personnel**, presque comme une note de coin de doc.

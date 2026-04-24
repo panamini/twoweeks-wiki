@@ -33,7 +33,8 @@ related: [[entities/twoweeks]], [[concepts/cv-parsing-pipeline]], [[concepts/cv-
 - [ ] remove the modal name ur resume at start
 - [ ] see how we deall withs save and autosave 
 - [ ] remove the all cap namee in proposal 
-- [ ] 
+- [ ] ne pas ecrire match 0% qd il nya pas de cv, juste ecrire il manque un cv, je peux pas ecrire de note match
+- [ ] dans library cv,  les cartess prenen le nom des metaa profil un peu au hasard en fonction de ce qui est rempli au lieu d'afficher untitled, ou no job 
 
 ( ) 
 
