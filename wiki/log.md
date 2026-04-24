@@ -1,7 +1,7 @@
 ---
 title: "Log — twoweeks Wiki"
 category: overview
-updated: 2026-04-18
+updated: 2026-04-24
 ---
 
 # Log du Wiki · twoweeks
@@ -428,3 +428,19 @@ Migration vers schema v2 : ajout rawinput/ (staging), gestion temporelle (status
 - `Editor ↔ Preview linking` marqué comme implémenté avec reliquat UI/frontend
 - `Import recovery layer` marqué comme implémenté avec reliquat de styling CSS et harmonisation des tokens
 - `Document health / readiness layer` marqué comme implémenté avec reliquat de tests et validation
+
+## [2026-04-24] ingest | Pass 3B Structured Scoring Decisions
+
+**Agent** : Codex
+**Fichiers traités** : `rawinput/Pass 3B Structured Scoring Decisions.md`
+**Pages créées** :
+- `wiki/sources/2026-04-24-pass-3b-structured-scoring-decisions.md`
+**Pages mises à jour** :
+- `wiki/index.md`
+- `wiki/log.md`
+**Pages archivées** :
+- aucune
+**Points notables** :
+- contrat de beta review interne pour structured shadow output
+- production score laissé inchangé
+- rawinput déplacé vers `raw/` après ingest

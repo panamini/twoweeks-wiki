@@ -2,7 +2,7 @@
 title: Index du Wiki — twoweeks
 category: overview
 sticker: emoji//1f9c6
-updated: 2026-04-18
+updated: 2026-04-24
 ---
 
 # Index du Wiki · twoweeks (v2)
@@ -122,6 +122,7 @@ Le contrôle opératoire du repo reste défini par `WIKI_SCHEMA.md` puis `CLAUDE
 
 | [[sources/2026-04-17-cvforge-live-resume-render-interactive-preview-handoff|CVForge Live Resume Render / Interactive Preview Handoff]] | spec | 2026-04-17 | current |
 | [[sources/2026-04-18-quick-start-module-hierarchy|Quick Start Module Hierarchy]] | spec | 2026-04-18 | current |
+| [[sources/2026-04-24-pass-3b-structured-scoring-decisions|Pass 3B Structured Scoring Decisions]] | analysis | 2026-04-24 | current |
 ---
 
 ## Tech
@@ -174,8 +175,8 @@ Le contrôle opératoire du repo reste défini par `WIKI_SCHEMA.md` puis `CLAUDE
 
 ## Statistiques
 
-- **Pages actives** : 68 (4 overview, 1 entité, 2 concepts, 5 design, 4 product, 2 strategy, 2 meta, 37 sources, 6 tech, 2 howto, 2 tasks, 1 output)
+- **Pages actives** : 69 (4 overview, 1 entité, 2 concepts, 5 design, 4 product, 2 strategy, 2 meta, 38 sources, 6 tech, 2 howto, 2 tasks, 1 output)
 - **Pages archivées** : 2
-- **Sources dans `raw/`** : 35
+- **Sources dans `raw/`** : 36
 - **Sources en attente dans `rawinput/`** : 0
-- **Dernière mise à jour** : 2026-04-18
+- **Dernière mise à jour** : 2026-04-24
