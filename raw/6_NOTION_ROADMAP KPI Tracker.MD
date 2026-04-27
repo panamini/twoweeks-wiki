@@ -1,3 +1,10 @@
+---
+aliases:
+  - |-
+    6_NOTION_ROADMAP 
+
+    KPI Tracker
+---
 Absolutely. Below is a **Notion-ready roadmap board** for TwoWeeks, organized so you can paste it into Notion and turn it into a working execution system.
 
 I’m giving you:

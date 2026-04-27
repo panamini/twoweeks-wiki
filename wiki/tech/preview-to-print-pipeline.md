@@ -3,15 +3,12 @@ title: "Preview-to-Print Pipeline"
 category: tech
 tags: [preview, print, pdf, export, resume, proposal, playwright]
 created: 2026-04-16
-updated: 2026-04-16
+updated: 2026-04-27
 status: current
 valid_from: 2026-04-16
-valid_until:
-superseded_by:
-horizon: present
 version: v1
-sources: [2026-04-16-live-proposal-preview-to-print-pipeline-scratchpad, 2026-04-16-live-resume-preview-to-print-pipeline-scratchpad, 2026-04-16-pdf-pipeline, 2026-04-16-proposal-style-persistence-quickmap-scratchpad, 2026-04-16-verbati-style-pipeline-scratchpad]
-related: [[tech/export-pipeline]], [[design/document-token-contract]], [[entities/twoweeks]]
+sources: [2026-04-16-live-proposal-preview-to-print-pipeline-scratchpad, 2026-04-16-live-resume-preview-to-print-pipeline-scratchpad, 2026-04-16-pdf-pipeline, 2026-04-16-proposal-style-persistence-quickmap-scratchpad, 2026-04-16-verbati-style-pipeline-scratchpad, 2026-04-27-workshop-pagination]
+related: [[tech/export-pipeline]], [[design/document-token-contract]], [[entities/twoweeks]], [[tech/workshop-pagination]]
 ---
 
 # Preview-to-Print Pipeline
@@ -71,6 +68,12 @@ Les écarts de style proposal peuvent aussi venir plus tôt :
 - bundle par défaut réinjecté côté `ProposalsList`
 - héritage CV rejoué au lieu d'un snapshot proposal détaché
 
+## Workshop resume path
+
+Pour `workshop_resume_onecol_ats`, la parité preview -> print -> export passe par `committedPages`.
+
+Le planner calcule les frontières; le preview, la print route et l'export doivent lire ces pages engagées sans refaire une pagination locale. Si les surfaces divergent, vérifier d'abord qu'elles reçoivent le même payload `committedPages`, puis seulement ensuite inspecter les tokens, fonts et wrappers.
+
 ## Conséquence
 
 Le bon diagnostic ne consiste pas à comparer seulement des types ou des snapshots JSON. Il faut comparer un même run de preview, route print et PDF final.
@@ -80,3 +83,4 @@ Le bon diagnostic ne consiste pas à comparer seulement des types ou des snapsho
 - [[tech/export-pipeline]]
 - [[design/document-token-contract]]
 - [[entities/twoweeks]]
+- [[tech/workshop-pagination]]

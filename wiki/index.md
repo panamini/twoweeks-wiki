@@ -2,7 +2,7 @@
 title: Index du Wiki — twoweeks
 category: overview
 sticker: emoji//1f9c6
-updated: 2026-04-24
+updated: 2026-04-27
 ---
 
 # Index du Wiki · twoweeks (v2)
@@ -47,7 +47,10 @@ Le contrôle opératoire du repo reste défini par `WIKI_SCHEMA.md` puis `CLAUDE
 | [[design/ats-safety\|ATS Safety]] | Règles parser-safe pour layouts, headings, exports et audits | current | ats, quality |
 | [[design/brand-voice\|Brand Voice]] | Voix staccato, Corporate Noir, règles de copie | current | brand, voice |
 | [[design/document-token-contract\|Document Token Contract]] | Classes geometry/flow/appearance/runtime pour preview/export/DOCX | current | tokens, layout |
+| [[design/elite-design-system\|Elite Design System]] | Boundary chrome/document, tokens UI, exports et risques design-system | current | design-system, tokens |
 | [[design/locale-typography-rules\|Locale Typography Rules]] | Règles FR/EN de ponctuation, citations, dates et wrap-safe export | current | typography, locale |
+| [[design/logo-system\|Logo System]] | Wordmark `two weeks.`, compact `tw.` et période terracotta | current | logo, brand |
+| [[design/motion-system\|Motion System]] | Motion causal, breathing period, stages IA et settle | current | motion, ai |
 
 ---
 
@@ -56,6 +59,8 @@ Le contrôle opératoire du repo reste défini par `WIKI_SCHEMA.md` puis `CLAUDE
 | Page | Résumé | Status | Tags |
 |------|--------|--------|------|
 | [[product/ai-product-model\|AI Product Model]] | 3 modes IA, rulebook et qualité writing | current | ai, ux, modes |
+| [[product/job-library\|Job Library]] | Jobs sauvegardés, Job Brief editable et documents liés | current | jobs, library |
+| [[product/job-match-review\|Job Match Review]] | Match comme indicateur d'attention utilisateur et dogfood interne | current | jobs, match |
 | [[product/kpis\|KPIs]] | Métriques de succès produit | current | kpi, métriques |
 | [[product/product-roadmap\|Product Roadmap]] | Initiatives par phase, items implémentés et reliquat de raffinement | current | roadmap, product |
 | [[product/product-vision\|Product Vision]] | Blueprint produit complet | current | vision, architecture |
@@ -76,6 +81,7 @@ Le contrôle opératoire du repo reste défini par `WIKI_SCHEMA.md` puis `CLAUDE
 | Page | Résumé | Status | Tags |
 |------|--------|--------|------|
 | [[meta/llm-wiki-pattern\|LLM Wiki Pattern]] | Pattern de base de connaissance persistante | current | meta, workflow |
+| [[meta/codex-prompting-standards\|Codex Prompting Standards]] | Prompts d'exécution stricts, locaux, testables et bornés | current | codex, prompts |
 | [[meta/temporal-management\|Gestion temporelle]] | Distinction passé/présent/futur dans le wiki | current | temporal, architecture |
 
 ---
@@ -84,6 +90,7 @@ Le contrôle opératoire du repo reste défini par `WIKI_SCHEMA.md` puis `CLAUDE
 
 | Page | Type | Date | Status |
 |------|------|------|--------|
+| [[sources/2026-04-03-workspace-security-rgpd-audit\|Workspace Security / RGPD Audit]] | analysis | 2026-04-03 | current |
 | [[sources/2026-04-09-decisions-cvforge-sprint\|Décisions sprint — parsing & features]] | conversation | 2026-04-09 | current |
 | [[sources/2026-04-09-tweet-karpathy-llm-wiki\|Tweet Karpathy — LLM Knowledge Bases]] | tweet | 2026-04-09 | current |
 | [[sources/2026-04-09-wiki-paste-llm-wiki\|Wiki Paste — LLM Wiki]] | document | 2026-04-09 | current |
@@ -123,6 +130,29 @@ Le contrôle opératoire du repo reste défini par `WIKI_SCHEMA.md` puis `CLAUDE
 | [[sources/2026-04-17-cvforge-live-resume-render-interactive-preview-handoff|CVForge Live Resume Render / Interactive Preview Handoff]] | spec | 2026-04-17 | current |
 | [[sources/2026-04-18-quick-start-module-hierarchy|Quick Start Module Hierarchy]] | spec | 2026-04-18 | current |
 | [[sources/2026-04-24-pass-3b-structured-scoring-decisions|Pass 3B Structured Scoring Decisions]] | analysis | 2026-04-24 | current |
+| [[sources/2026-04-21-2026-elite-design-system-implementation-handoff|2026 Elite Design System Implementation Handoff]] | other | 2026-04-21 | current |
+| [[sources/2026-04-27-brand-logo-system|Brand Logo System]] | other | 2026-04-27 | current |
+| [[sources/2026-04-27-brand-twoweeks-ai|Brand — Twoweeks.ai]] | other | 2026-04-27 | current |
+| [[sources/2026-04-27-brand-voice-review-twoweeks|Brand Voice Review — Twoweeks.ai]] | analysis | 2026-04-27 | current |
+| [[sources/2026-04-27-claude-light-mode-palette|Claude Light Mode Palette]] | other | 2026-04-27 | current |
+| [[sources/2026-04-27-codex-prompt-master|Meta-prompt maître]] | other | 2026-04-27 | current |
+| [[sources/2026-04-27-dev-only-advisory-beta-access|Dev-only Advisory Beta Access]] | spec | 2026-04-27 | current |
+| [[sources/2026-04-27-empty-staged-md|Empty Staged Markdown File]] | other | 2026-04-27 | current |
+| [[sources/2026-04-27-git-good-habit-skill|Git Good Habit Skill]] | runbook | 2026-04-27 | current |
+| [[sources/2026-04-27-job-library-prd|Job Library PRD]] | spec | 2026-04-27 | current |
+| [[sources/2026-04-27-job-match-validation-contract|Job Match Validation Contract]] | spec | 2026-04-27 | current |
+| [[sources/2026-04-27-match-review-v1-dogfood-tool|Match Review V1 Dogfood Tool]] | runbook | 2026-04-27 | current |
+| [[sources/2026-04-27-motion-system-implementation-hardening|Motion System Implementation Hardening]] | spec | 2026-04-27 | current |
+| [[sources/2026-04-27-repo-test-system-note|Repo Test System Note]] | other | 2026-04-27 | current |
+| [[sources/2026-04-27-test-headless-browser-setup-workshop-preview-probe|Headless Browser Setup for Workshop Preview Probe]] | runbook | 2026-04-27 | current |
+| [[sources/2026-04-27-twoweeks-brand-voice-card|Twoweeks.ai Brand Voice Card]] | spec | 2026-04-27 | current |
+| [[sources/2026-04-27-twoweeks-brand-voice-copy-refactor-prompt|Prompt for Twoweeks Brand-Voice Copy Refactor]] | other | 2026-04-27 | current |
+| [[sources/2026-04-27-twoweeks-motion-system|Twoweeks.ai Motion System]] | spec | 2026-04-27 | current |
+| [[sources/2026-04-27-typography-token-audit-table|Typography Token Audit Table]] | analysis | 2026-04-27 | current |
+| [[sources/2026-04-27-ui-design-audit-prompt|UI Design Audit Prompt]] | other | 2026-04-27 | current |
+| [[sources/2026-04-27-voice-card-ui-copy-audits|Voice Card and UI Copy Audits]] | analysis | 2026-04-27 | current |
+| [[sources/2026-04-27-workshop-pagination|Workshop Pagination]] | spec | 2026-04-27 | current |
+| [[sources/2026-04-27-workshop-token-audit|Workshop Token Audit]] | analysis | 2026-04-27 | current |
 ---
 
 ## Tech
@@ -135,6 +165,9 @@ Le contrôle opératoire du repo reste défini par `WIKI_SCHEMA.md` puis `CLAUDE
 | [[tech/preview-to-print-pipeline\|Preview-to-Print Pipeline]] | Parité preview -> print route -> PDF pour resume et proposal | preview, print, pdf |
 | [[tech/live-resume-preview-runtime|Live Resume Preview Runtime]] | Runtime du preview resume vivant, mapping canonique et linking preview -> editor | preview, renderer, editor |
 | [[tech/quick-start-module-hierarchy|Quick Start Module Hierarchy]] | Shell Quick Start app-shell, route-state transitoire et cold start cover-letter | quick-start, onboarding, ui |
+| [[tech/repo-testing-system|Repo Testing System]] | Vitest/JSDOM/Testing Library, mocks et gap E2E produit | tests, qa |
+| [[tech/workshop-pagination|Workshop Pagination]] | `committedPages` comme vérité preview/print/export workshop | workshop, pagination |
+| [[tech/workshop-token-parity|Workshop Token Parity]] | Drift preview/planner sur tokens, typo et constantes workshop | workshop, tokens |
 
 ---
 
@@ -143,6 +176,8 @@ Le contrôle opératoire du repo reste défini par `WIKI_SCHEMA.md` puis `CLAUDE
 | Page | Résumé | Tags |
 |------|--------|------|
 | [[howto/cloudflare-zero-trust-tunnel\|Cloudflare Zero Trust + Tunnel]] | Runbook parser.dasti.ai, CF Access, tunnel, DNS, token, WAF | cloudflare, devops |
+| [[howto/git-branch-hygiene|Git Branch Hygiene]] | Démarrer une tâche depuis `main` à jour avant branche courte | git, workflow |
+| [[howto/headless-workshop-preview-probe|Headless Workshop Preview Probe]] | Probe Playwright headless pour `/cv` workshop preview | playwright, workshop |
 | [[howto/local-parser-operations\|Local Parser Operations]] | Lancer, diagnostiquer et réaligner la stack parser locale | parser, local, run.sh |
 
 ---
@@ -160,7 +195,7 @@ Le contrôle opératoire du repo reste défini par `WIKI_SCHEMA.md` puis `CLAUDE
 
 | Page | Type | Date | Sujet |
 |------|------|------|-------|
-| [[outputs/2026-04-09-architecture-v2\|Architecture v2]] | decision | 2026-04-09 | rawinput/ + gestion temporelle |
+| — | — | — | Aucun output actif sur disque |
 
 ---
 
@@ -175,8 +210,8 @@ Le contrôle opératoire du repo reste défini par `WIKI_SCHEMA.md` puis `CLAUDE
 
 ## Statistiques
 
-- **Pages actives** : 69 (4 overview, 1 entité, 2 concepts, 5 design, 4 product, 2 strategy, 2 meta, 38 sources, 6 tech, 2 howto, 2 tasks, 1 output)
+- **Pages actives** : 103 (4 overview, 1 entité, 2 concepts, 8 design, 6 product, 2 strategy, 3 meta, 62 sources, 9 tech, 4 howto, 2 tasks, 0 output)
 - **Pages archivées** : 2
-- **Sources dans `raw/`** : 36
+- **Sources dans `raw/`** : 64
 - **Sources en attente dans `rawinput/`** : 0
-- **Dernière mise à jour** : 2026-04-24
+- **Dernière mise à jour** : 2026-04-27

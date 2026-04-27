@@ -106,14 +106,14 @@ Le risque n'est pas que le design soit trop bon. C'est que le design signale sop
 
 ## Priority order
 
-| Priorité | Workstream |
-|----------|-----------|
-| 1 — First-run onboarding | Shell Quick Start en place; focus sur guidance progressive, checklist, nudges et empty states |
-| 2 — AI quality unification | AI action taxonomy, standardize rewrite behaviors, improve toolbar outputs, undo/diff/replace patterns consistent |
-| 3 — Focused template switching | Small curated set + purpose labels + quick compare + easy swap |
-| 4 — Commercial packaging | Free vs premium, why upgrade, clearer value story |
-| 5 — Jobs as first-class object | Job entity réel avec contexte, keywords et liens |
-| 6 — Proposal framing clarity | Cover letter / Proposal naming plus lisible |
+| Priorité                       | Workstream                                                                                                        |
+| ------------------------------ | ----------------------------------------------------------------------------------------------------------------- |
+| 1 — First-run onboarding       | Shell Quick Start en place; focus sur guidance progressive, checklist, nudges et empty states                     |
+| 2 — AI quality unification     | AI action taxonomy, standardize rewrite behaviors, improve toolbar outputs, undo/diff/replace patterns consistent |
+| 3 — Focused template switching | Small curated set + purpose labels + quick compare + easy swap                                                    |
+| 4 — Commercial packaging       | Free vs premium, why upgrade, clearer value story                                                                 |
+| 5 — Jobs as first-class object | Job entity réel avec contexte, keywords et liens                                                                  |
+| 6 — Proposal framing clarity   | Cover letter / Proposal naming plus lisible                                                                       |
 
 ---
 

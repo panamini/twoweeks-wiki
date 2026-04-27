@@ -35,6 +35,12 @@ related: [[entities/twoweeks]], [[concepts/cv-parsing-pipeline]], [[concepts/cv-
 - [ ] remove the all cap namee in proposal 
 - [ ] ne pas ecrire match 0% qd il nya pas de cv, juste ecrire il manque un cv, je peux pas ecrire de note match
 - [ ] dans library cv,  les cartess prenen le nom des metaa profil un peu au hasard en fonction de ce qui est rempli au lieu d'afficher untitled, ou no job 
+- [ ] ajouter des spinner loader faits avec claude design
+- [ ] ajouter un generateur d'avatar fait avec claude code
+- [ ] ajouter un generateur de logo
+- [ ] cree plusierus templates de cv, one ocl double col, avec ou sans logo
+- [ ] ui check polish le drpo shadow pour header et bottom bar ds proosal generator two shells
+- [ ] enorme blanc bas d apge en bas de janice ou un atrue cv absoluemnt a corrger
 
 ( ) 
 

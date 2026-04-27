@@ -444,3 +444,61 @@ Migration vers schema v2 : ajout rawinput/ (staging), gestion temporelle (status
 - contrat de beta review interne pour structured shadow output
 - production score laissé inchangé
 - rawinput déplacé vers `raw/` après ingest
+
+## [2026-04-27] ingest | jobs, match review, brand voice, motion, workshop pagination
+
+**Agent** : Codex
+**Fichiers traités** :
+- `rawinput/.md`
+- `rawinput/ Prompt for ChatGPT — Twoweeks brand-voice copy refactor.md`
+- `rawinput/Brand Voice Review — Twoweeks.ai.md`
+- `rawinput/Contrat complet de validation  Job match kpi benchmark.md`
+- `rawinput/Dev-only advisory beta access for everyone.md`
+- `rawinput/GIT - GOOD HABIT -SKILL.md`
+- `rawinput/Implementation Handoff — 2026 Elite Design System (Phases 1–4) (DONE VERIFIER SI VRAIMENT PLEINEMENT IMPLEMENTÉ SANS DRIFT).md`
+- `rawinput/Job Library PRD.md`
+- `rawinput/Match Review V1 Dogfood Tool — Developer  LLM Note.md`
+- `rawinput/Meta-prompt maître.md`
+- `rawinput/Note — système de tests du repo.md`
+- `rawinput/TEST Headless browser setup for workshop preview probe.md`
+- `rawinput/Twoweeks.ai Motion System — Implementation Hardening Pass -PR1 ,PR2,PR3.md`
+- `rawinput/Twoweeks.ai — Brand Voice Card.md`
+- `rawinput/Twoweeks.ai — Motion System.md`
+- `rawinput/Typography Token Audit Table.md`
+- `rawinput/UI design audit - prompt.md`
+- `rawinput/VOICE CARD.md`
+- `rawinput/Workshop Pagination.md`
+- `rawinput/audit token workspace -en cours.md`
+- `rawinput/brand Twoweeks.ai.md`
+- `rawinput/brand logo system.md`
+- `rawinput/claude light mode .md`
+**Pages créées** :
+- `wiki/product/job-library.md`
+- `wiki/product/job-match-review.md`
+- `wiki/design/motion-system.md`
+- `wiki/design/logo-system.md`
+- `wiki/design/elite-design-system.md`
+- `wiki/tech/workshop-pagination.md`
+- `wiki/tech/workshop-token-parity.md`
+- `wiki/tech/repo-testing-system.md`
+- `wiki/howto/headless-workshop-preview-probe.md`
+- `wiki/howto/git-branch-hygiene.md`
+- `wiki/meta/codex-prompting-standards.md`
+- 23 pages source dans `wiki/sources/`
+**Pages mises à jour** :
+- `wiki/overview.md`
+- `wiki/index.md`
+- `wiki/log.md`
+- `wiki/design/brand-voice.md`
+- `wiki/design/document-token-contract.md`
+- `wiki/product/kpis.md`
+- `wiki/product/product-roadmap.md`
+- `wiki/tech/export-pipeline.md`
+- `wiki/tech/preview-to-print-pipeline.md`
+**Pages archivées** :
+- aucune
+**Points notables** :
+- `rawinput/` vidé sauf `README.md`
+- fichiers source déplacés vers `raw/`
+- les sources brand voice ont été dédupliquées vers une seule page durable `wiki/design/brand-voice.md`
+- le fichier vide `rawinput/.md` a été conservé comme source vide sans page durable

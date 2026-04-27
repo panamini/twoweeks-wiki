@@ -1,5 +1,4 @@
 
-
 ## Identity
 - Archetype: anti-corporate productivity coach
 - Lineage: Linear × 37signals × anti-work movement
@@ -104,3 +103,5 @@ Jobs, Brief, Match, Resume, Draft, Saved, Done, Open, Close, Attach, Detach, Imp
 - aria-labels describing non-visual behavior (screen-reader convention wins over voice)
 - Analytics event names
 - Keyboard shortcut hints
+  
+  

@@ -1,20 +1,17 @@
 ---
-title: "KPIs — CV Forge"
+title: "KPIs — twoweeks"
 category: product
-tags: [kpi, métriques, activation, rétention, conversion, import, ai]
+tags: [kpi, métriques, activation, rétention, conversion, import, ai, jobs, match]
 created: 2026-04-10
-updated: 2026-04-10
+updated: 2026-04-27
 status: current
 valid_from: 2026-04-10
-valid_until:
-superseded_by:
-horizon: present
 version: v1
-sources: [2026-04-10-notion-roadmap-cvforge]
-related: [[archive/entities/cv-forge]], [[product/product-roadmap]]
+sources: [2026-04-10-notion-roadmap-cvforge, 2026-04-27-job-library-prd, 2026-04-27-job-match-validation-contract]
+related: [[entities/twoweeks]], [[product/product-roadmap]], [[product/job-library]], [[product/job-match-review]]
 ---
 
-# KPIs — CV Forge
+# KPIs — twoweeks
 
 16 métriques clés organisées par catégorie. Toutes sans valeurs cibles définies pour l'instant (à remplir après mise en place de l'analytics).
 
@@ -78,6 +75,21 @@ related: [[archive/entities/cv-forge]], [[product/product-roadmap]]
 
 ---
 
+## Jobs et Match Review
+
+| KPI | Direction | Cadence | Contexte |
+|-----|-----------|---------|----------|
+| Job Saved Rate | ↑ | Weekly | Mesure la capacité extension/app à créer une bibliothèque utile |
+| Job to First Document Time | ↓ | Weekly | Temps entre job sauvegardé et premier document lié |
+| Cover Letter from Saved Job Rate | ↑ | Weekly | Conversion de Job Library vers génération de cover letter |
+| Linked Documents per Job | ↑ | Monthly | Signal de réutilisation par opportunité |
+| Match False-zero Rate | ↓ | Per dogfood batch | 0 sur les évidences positives obvious en beta interne |
+| Match Contradiction Rate | ↓ | Per dogfood batch | 0 contradiction critique verdict/raisons |
+| Match Copy Safety Incidents | ↓ | Per dogfood batch | 0 PII/raw evidence/debug phrase visible |
+| Time to Match Decision | ↓ | Per dogfood batch | Comprendre pertinence, raison et next step en moins de 5 secondes |
+
+---
+
 ## Sources de données
 
 - Product analytics (activation, export, proposals)
@@ -89,6 +101,8 @@ related: [[archive/entities/cv-forge]], [[product/product-roadmap]]
 - Workspace analytics (documents/user)
 - Document actions (duplicate/retarget)
 - User analytics (D7/D30)
+- Job Library events
+- Match Review dogfood exports and labels
 
 ---
 
@@ -103,4 +117,5 @@ related: [[archive/entities/cv-forge]], [[product/product-roadmap]]
 ## Voir aussi
 
 - [[product/product-roadmap]] — initiatives liées à chaque KPI
-- [[cv-forge]] — entité produit
+- [[product/job-library]] — couche jobs first-class
+- [[product/job-match-review]] — review match user-facing

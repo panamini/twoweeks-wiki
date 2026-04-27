@@ -1,20 +1,17 @@
 ---
-title: "Product Roadmap — CV Forge"
+title: "Product Roadmap — twoweeks"
 category: product
 tags: [roadmap, product, initiatives, phases, stratégie]
 created: 2026-04-10
-updated: 2026-04-18
+updated: 2026-04-27
 status: current
 valid_from: 2026-04-10
-valid_until:
-superseded_by:
-horizon: present
 version: v1
-sources: [2026-04-10-notion-roadmap-cvforge, 2026-04-10-gap-analysis, 2026-04-16-plan-onboarding-activation-interactive-preview, 2026-04-18-quick-start-module-hierarchy]
-related: [[archive/entities/cv-forge]], [[product/kpis]], [[strategy/gap-analysis]], [[product/product-vision]], [[design/brand-voice]]
+sources: [2026-04-10-notion-roadmap-cvforge, 2026-04-10-gap-analysis, 2026-04-16-plan-onboarding-activation-interactive-preview, 2026-04-18-quick-start-module-hierarchy, 2026-04-27-job-library-prd, 2026-04-27-job-match-validation-contract]
+related: [[entities/twoweeks]], [[product/kpis]], [[strategy/gap-analysis]], [[product/product-vision]], [[design/brand-voice]], [[product/job-library]], [[product/job-match-review]]
 ---
 
-# Product Roadmap — CV Forge
+# Product Roadmap — twoweeks
 
 ## Stratégie générale
 
@@ -93,8 +90,16 @@ Utiliser "Cover letter / Proposal" ou "Application letter" dans les points d'ent
 ## Phase 3 — P2 : Rétention et profondeur
 
 ### Jobs as first-class object
-Construire une couche Jobs liée aux CVs/propositions : record avec titre, entreprise, URL source, responsabilités parsées, keywords, docs liés. **Moat builder** selon la stratégie.
+**Statut** : PRD V1 posé.
+Construire une couche Jobs liée aux resumes / cover letters : record avec titre, entreprise, URL source, responsabilités parsées, keywords, docs liés. **Moat builder** selon la stratégie.
+**V1** : Job Library, Job Brief editable, extension save-to-library, handoff vers cover letter / resume tailoring, documents liés.
+**Non-V1** : notes, timeline, batch apply, batch generation, CRM/ATS avancé, status system complexe.
 **KPIs** : Documents/User ↑, Jobs/User ↑
+
+### Job Match Review
+**Statut** : dogfood-ready en V1 interne.
+Le match review est un indicateur d'intérêt utilisateur, pas un ATS ni une décision de recrutement. Le production score reste autoritaire; le structured read reste shadow/advisory jusqu'à validation dogfood.
+**À valider** : false-zero 0 sur obvious positives, contradiction critique 0, PII/raw evidence leak 0, credentials honnêtes, décision compréhensible en moins de 5 secondes.
 
 ### Duplicate / retarget workflow
 Duplication et retargeting de CV/proposition pour un nouveau rôle — préserver la structure en mettant à jour le contexte. Fort levier de rétention.
@@ -157,8 +162,10 @@ Croisement entre les phases P0→P3 et les priorités de la gap analysis. Voir [
 ## Voir aussi
 
 - [[product/kpis]] — métriques associées à chaque phase
-- [[cv-forge]] — entité produit
+- [[entities/twoweeks]] — entité produit
 - [[cv-parsing-pipeline]] — architecture technique du parsing
 - [[strategy/gap-analysis]] — diagnostic complet et priority order vs ResumeLab
 - [[product/product-vision]] — blueprint du produit idéal
 - [[design/brand-voice]] — microcopy à appliquer directement pendant l'implémentation
+- [[product/job-library]] — PRD Jobs V1
+- [[product/job-match-review]] — contrat dogfood du match

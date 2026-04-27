@@ -3,15 +3,12 @@ title: "Document Token Contract"
 category: design
 tags: [tokens, geometry, flow, appearance, runtime, layout, export]
 created: 2026-04-16
-updated: 2026-04-16
+updated: 2026-04-27
 status: current
 valid_from: 2026-04-16
-valid_until:
-superseded_by:
-horizon: present
 version: v1
-sources: [2026-04-16-token-classes-for-the-layout, 2026-04-16-verbati-style-pipeline-scratchpad, 2026-04-16-proposal-style-persistence-quickmap-scratchpad]
-related: [[design/a4-layout-systems]], [[design/locale-typography-rules]], [[tech/export-pipeline]], [[tech/preview-to-print-pipeline]]
+sources: [2026-04-16-token-classes-for-the-layout, 2026-04-16-verbati-style-pipeline-scratchpad, 2026-04-16-proposal-style-persistence-quickmap-scratchpad, 2026-04-21-2026-elite-design-system-implementation-handoff, 2026-04-27-workshop-token-audit, 2026-04-27-typography-token-audit-table]
+related: [[design/a4-layout-systems]], [[design/locale-typography-rules]], [[tech/export-pipeline]], [[tech/preview-to-print-pipeline]], [[tech/workshop-token-parity]]
 ---
 
 # Document Token Contract
@@ -42,6 +39,8 @@ Contrat canonique des classes de tokens document pour aligner preview, export CS
 - `metadata.verbatiStyle` est l'autorité visuelle persistée pour proposal
 - `templateId` décrit d'abord la structure et la géométrie, pas l'identité visuelle complète
 - le renderer reçoit un snapshot d'apparence résolu; il ne doit pas reconstruire le style depuis des defaults de liste ou de shell
+- `foundation.css` est la source de vérité des tokens chrome; les overrides document doivent être scopés à un conteneur document, jamais à un `:root` global hors fondation
+- les variables preview/planner workshop qui influencent pagination doivent être partagées explicitement, pas dupliquées en littéraux invisibles
 
 ## Pourquoi ça compte
 
@@ -63,3 +62,4 @@ Le saved-view ne doit pas écraser `appearance` avec un bundle par défaut simpl
 - [[design/locale-typography-rules]]
 - [[tech/export-pipeline]]
 - [[tech/preview-to-print-pipeline]]
+- [[tech/workshop-token-parity]]

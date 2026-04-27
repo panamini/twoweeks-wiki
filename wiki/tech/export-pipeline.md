@@ -3,15 +3,12 @@ title: "Export Pipeline — OCR to ATS / Styled Output"
 category: tech
 tags: [export, pdf, docx, ats, renderer, worker, preview, stylePreset]
 created: 2026-04-14
-updated: 2026-04-16
+updated: 2026-04-27
 status: current
 valid_from: 2026-04-14
-valid_until:
-superseded_by:
-horizon: present
 version: v1
-sources: [2026-04-14-export-pipeline-brief-ocr-to-ats-styled-output, 2026-04-15-a4-grid-canon-spec-writer, 2026-04-15-typography-mode, 2026-04-15-french-typography-scratch-pad, 2026-04-15-english-typography-scratch-pad, 2026-04-15-conversation-locale-typography-rules, 2026-04-16-live-proposal-preview-to-print-pipeline-scratchpad, 2026-04-16-live-resume-preview-to-print-pipeline-scratchpad, 2026-04-16-pdf-pipeline, 2026-04-16-token-classes-for-the-layout, 2026-04-16-proposal-style-persistence-quickmap-scratchpad, 2026-04-16-verbati-style-pipeline-scratchpad]
-related: [[tech/import-ocr-pipeline]], [[concepts/cv-parsing-pipeline]], [[design/ats-safety]], [[design/a4-layout-systems]], [[design/locale-typography-rules]], [[design/document-token-contract]], [[tech/preview-to-print-pipeline]], [[entities/twoweeks]]
+sources: [2026-04-14-export-pipeline-brief-ocr-to-ats-styled-output, 2026-04-15-a4-grid-canon-spec-writer, 2026-04-15-typography-mode, 2026-04-15-french-typography-scratch-pad, 2026-04-15-english-typography-scratch-pad, 2026-04-15-conversation-locale-typography-rules, 2026-04-16-live-proposal-preview-to-print-pipeline-scratchpad, 2026-04-16-live-resume-preview-to-print-pipeline-scratchpad, 2026-04-16-pdf-pipeline, 2026-04-16-token-classes-for-the-layout, 2026-04-16-proposal-style-persistence-quickmap-scratchpad, 2026-04-16-verbati-style-pipeline-scratchpad, 2026-04-21-2026-elite-design-system-implementation-handoff, 2026-04-27-workshop-pagination]
+related: [[tech/import-ocr-pipeline]], [[concepts/cv-parsing-pipeline]], [[design/ats-safety]], [[design/a4-layout-systems]], [[design/locale-typography-rules]], [[design/document-token-contract]], [[tech/preview-to-print-pipeline]], [[tech/workshop-pagination]], [[entities/twoweeks]]
 ---
 
 # Export Pipeline — OCR to ATS / Styled Output
@@ -175,6 +172,8 @@ Renderers principaux :
 - Le contrat canonique des tokens document doit séparer `geometry`, `flow`, `appearance` et `runtime`.
 - Les payloads proposal doivent embarquer le snapshot visuel résolu, pas seulement un `templateId`.
 - Un bug de persistance saved-view peut casser l'export styled avant même l'étape worker ou Playwright.
+- Pour le workshop resume path, l'export doit lire les `committedPages`; il ne doit pas replanifier les pages.
+- Les body classes protégées de l'export resume doivent préserver la baseline normalisée; toute réintroduction de classes style-family doit être testée contre `export-renderers.test.ts`.
 
 ## Voir aussi
 
@@ -185,3 +184,4 @@ Renderers principaux :
 - [[design/locale-typography-rules]] — règles FR/EN de typographie locale
 - [[design/document-token-contract]] — classes de tokens et ownership
 - [[tech/preview-to-print-pipeline]] — parité preview -> print -> PDF
+- [[tech/workshop-pagination]] — committed pages pour workshop resume
