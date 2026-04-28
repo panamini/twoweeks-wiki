@@ -1,5 +1,5 @@
 ---
-title: "AI Consistency P0 — Editor AI Baseline"
+title: "AI Consistency P0 — Closure Audit"
 category: product
 tags: [ai, editor, rulebook, telemetry, job-context, baseline]
 created: 2026-04-28
@@ -13,13 +13,14 @@ version: v1
 related: [[product/product-roadmap]], [[product/ai-product-model]], [[product/kpis]]
 ---
 
-# AI Consistency P0 — Editor AI Baseline
+# AI Consistency P0 — Closure Audit
 
 ## Status
 
-- P0 implementation is merged.
-- Closure audit is still pending.
-- This document is a merged-baseline snapshot, not a full audit.
+- P0 is functionally complete for the canonical inline editor AI path.
+- Closure audit is implemented.
+- Follow-up hardening is pending.
+- This document is the merged closure-audit snapshot.
 
 ## Problem
 
@@ -137,6 +138,12 @@ Interpretation:
 - PR #45 was merged with a documented waiver because the required Playwright check failed on an unrelated roundtrip timeout.
 - The failing spec was `e2e/proposal-workspace-roundtrip.spec.ts`.
 - The timeout was waiting for `Switch CV. Attached CV: Operations Associate — Alex Martin`.
+
+## Dev Docs
+
+- The root README and dev docs remain useful for future handoff.
+- They confirm run modes such as `./run.sh local-fast`, `./run.sh tunnel`, and `./run.sh reload-env`.
+- That context helps when revisiting closure hardening or CI stabilization.
 
 ## Design Principle
 

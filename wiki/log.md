@@ -15,7 +15,7 @@ grep "^## \[" wiki/log.md | grep "ingest"  # Tous les ingests
 
 ---
 
-## [2026-04-28] direct-update | AI Consistency P0 editor AI baseline note
+## [2026-04-28] direct-update | AI Consistency P0 closure audit note
 
 **Agent** : Codex
 **Pages créées** :
@@ -24,9 +24,9 @@ grep "^## \[" wiki/log.md | grep "ingest"  # Tous les ingests
 - `wiki/index.md`
 - `wiki/log.md`
 **Points notables** :
-- baseline merged snapshot for PRs #42 to #45
-- closure audit still pending
-- note keeps deferred work and known caveats explicit
+- closure audit snapshot for PRs #42 to #45
+- status updated to implemented / audited / follow-up hardening pending
+- dev docs mention added for `./run.sh local-fast`, `./run.sh tunnel`, and `./run.sh reload-env`
 
 ## [2026-04-12] ingest | Brand Bible twoweeks.ai 2026
 
