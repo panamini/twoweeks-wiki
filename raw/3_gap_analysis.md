@@ -85,7 +85,7 @@ This is the hard part.
 These are not just “nice to improve.”
 These are things that can make a better product still lose.
 
-## A. Weak first-run activation
+~~## A. Weak first-run activation~~
 
 This is probably your biggest market risk.
 
@@ -110,7 +110,7 @@ This is a real weakness.
 
 ---
 
-## B. Import / parser trust gap
+## B~~. Import / parser trust gap
 
 This is serious.
 
@@ -130,7 +130,7 @@ That is devastating because import is the first moment where your app proves int
 
 ResumeLab may not actually parse perfectly, but it feels more reliable because the cleanup burden appears lower or better hidden.
 
-Right now this is one of your biggest weaknesses.
+Right now this is one of your biggest weaknesses.~~
 
 ---
 
@@ -224,7 +224,7 @@ Now the real gap list.
 
 These are the missing product layers that would let you beat them.
 
-## 1. A true quick-start funnel
+## 1. A true quick-start funnel /rework with new ui
 
 You need a distinct path for fast users.
 
@@ -246,7 +246,8 @@ Without it, you are asking the editor to do too much conversion work.
 
 ---
 
-## 2. An import recovery layer
+## 2~~. An import recovery layer~~ done 
+mais il ne s'affiche plus car le parsing est devenu trop bon
 
 You don’t just need a better parser.
 You need a better **parser UX**.
@@ -269,7 +270,7 @@ That is missing.
 
 ---
 
-## 3. A unified AI interaction rulebook
+~~## 3. A unified AI interaction rulebook~~ done
 
 Right now the AI feels like a set of features.
 It needs to become a coherent system.
@@ -293,7 +294,7 @@ Without this, the app will feel smart in places and random in others.
 
 ---
 
-## 4. Better editor-preview linking
+~~## 4. Better editor-preview linking~~ en cours partly done
 
 Your architecture is right, but the emotional bridge is still incomplete.
 

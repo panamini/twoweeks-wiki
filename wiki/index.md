@@ -59,6 +59,7 @@ Le contrôle opératoire du repo reste défini par `WIKI_SCHEMA.md` puis `CLAUDE
 | Page | Résumé | Status | Tags |
 |------|--------|--------|------|
 | [[product/ai-product-model\|AI Product Model]] | 3 modes IA, rulebook et qualité writing | current | ai, ux, modes |
+| [[product/ai-consistency-p0-editor-ai\|AI Consistency P0 — Editor AI Baseline]] | Baseline merged du rulebook AI editor, preview, telemetry et tailoring | current | ai, editor, rulebook |
 | [[product/job-library\|Job Library]] | Jobs sauvegardés, Job Brief editable et documents liés | current | jobs, library |
 | [[product/job-match-review\|Job Match Review]] | Match comme indicateur d'attention utilisateur et dogfood interne | current | jobs, match |
 | [[product/kpis\|KPIs]] | Métriques de succès produit | current | kpi, métriques |
@@ -210,8 +211,8 @@ Le contrôle opératoire du repo reste défini par `WIKI_SCHEMA.md` puis `CLAUDE
 
 ## Statistiques
 
-- **Pages actives** : 103 (4 overview, 1 entité, 2 concepts, 8 design, 6 product, 2 strategy, 3 meta, 62 sources, 9 tech, 4 howto, 2 tasks, 0 output)
+- **Pages actives** : 104 (4 overview, 1 entité, 2 concepts, 8 design, 7 product, 2 strategy, 3 meta, 62 sources, 9 tech, 4 howto, 2 tasks, 0 output)
 - **Pages archivées** : 2
 - **Sources dans `raw/`** : 64
 - **Sources en attente dans `rawinput/`** : 0
-- **Dernière mise à jour** : 2026-04-27
+- **Dernière mise à jour** : 2026-04-28

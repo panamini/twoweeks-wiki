@@ -15,6 +15,19 @@ grep "^## \[" wiki/log.md | grep "ingest"  # Tous les ingests
 
 ---
 
+## [2026-04-28] direct-update | AI Consistency P0 editor AI baseline note
+
+**Agent** : Codex
+**Pages créées** :
+- `wiki/product/ai-consistency-p0-editor-ai.md`
+**Pages mises à jour** :
+- `wiki/index.md`
+- `wiki/log.md`
+**Points notables** :
+- baseline merged snapshot for PRs #42 to #45
+- closure audit still pending
+- note keeps deferred work and known caveats explicit
+
 ## [2026-04-12] ingest | Brand Bible twoweeks.ai 2026
 
 **Agent** : Claude
