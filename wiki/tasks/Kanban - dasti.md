@@ -6,9 +6,6 @@ kanban-plugin: board
 
 ## To do
 
-
-
-- [ ] [[Kanban_CardNotes/Audit Workspace — Bonnes Pratiques, Sécurité, Protection des Données (RGPD) — C1 — Secrets en clair commités (compromission potentielle immédiate).md|Audit Workspace — Bonnes Pratiques, Sécurité, Protection des Données (RGPD) — C1 — Secrets en clair commités (compromission potentielle immédiate)]]
 - [ ] [[Kanban_CardNotes/Audit Workspace — Bonnes Pratiques, Sécurité, Protection des Données (RGPD) — C2 — Endpoints Convex sensibles sans contrôle d’identité explicite.md|Audit Workspace — Bonnes Pratiques, Sécurité, Protection des Données (RGPD) — C2 — Endpoints Convex sensibles sans contrôle d’identité explicite]]
 - [ ] [[Kanban_CardNotes/Audit Workspace — Bonnes Pratiques, Sécurité, Protection des Données (RGPD) — H1 — Stockage étendu de données CV-PII (backend + navigateur).md|Audit Workspace — Bonnes Pratiques, Sécurité, Protection des Données (RGPD) — H1 — Stockage étendu de données CV/PII (backend + navigateur)]]
 - [ ] [[Kanban_CardNotes/Audit Workspace — Bonnes Pratiques, Sécurité, Protection des Données (RGPD) — H2 — Droit à l’effacement incomplet (suppression non transverse).md|Audit Workspace — Bonnes Pratiques, Sécurité, Protection des Données (RGPD) — H2 — Droit à l’effacement incomplet (suppression non transverse)]]
@@ -19,8 +16,11 @@ kanban-plugin: board
 - [ ] [[Kanban_CardNotes/Audit Workspace — Bonnes Pratiques, Sécurité, Protection des Données (RGPD) — Phase 1 — 24-48h.md|Audit Workspace — Bonnes Pratiques, Sécurité, Protection des Données (RGPD) — Phase 1 — 24/48h]]
 - [ ] [[Kanban_CardNotes/Audit Workspace — Bonnes Pratiques, Sécurité, Protection des Données (RGPD) — Phase 2 — Semaine.md|Audit Workspace — Bonnes Pratiques, Sécurité, Protection des Données (RGPD) — Phase 2 — Semaine]]
 - [ ] [[Kanban_CardNotes/Audit Workspace — Bonnes Pratiques, Sécurité, Protection des Données (RGPD) — Phase 3 — Industrialisation.md|Audit Workspace — Bonnes Pratiques, Sécurité, Protection des Données (RGPD) — Phase 3 — Industrialisation]]
+
+
 ## In dev
 
+- [ ] [[Kanban_CardNotes/Audit Workspace — Bonnes Pratiques, Sécurité, Protection des Données (RGPD) — C1 — Secrets en clair commités (compromission potentielle immédiate).md|Audit Workspace — Bonnes Pratiques, Sécurité, Protection des Données (RGPD) — C1 — Secrets en clair commités (compromission potentielle immédiate)]]
 - [ ] [[Kanban_CardNotes/Plan détaillé de migration vers un schéma wiki agnostique à l'agent (non destructif) — Pré-requis|Plan détaillé de migration vers un schéma wiki agnostique à l'agent (non destructif) — Pré-requis]]
 - [ ] [[Kanban_CardNotes/Plan détaillé de migration vers un schéma wiki agnostique à l'agent (non destructif) — Étape 2 — Neutraliser le langage agent-spécifique dans WIKI_SCHEMA.md|Plan détaillé de migration vers un schéma wiki agnostique à l'agent (non destructif) — Étape 2 — Neutraliser le langage agent-spécifique dans `WIKI_SCHEMA.md`]]
 - [ ] [[Kanban_CardNotes/Plan détaillé de migration vers un schéma wiki agnostique à l'agent (non destructif) — Étape 1 — Ajouter une spec neutre sans supprimer l'existant|Plan détaillé de migration vers un schéma wiki agnostique à l'agent (non destructif) — Étape 1 — Ajouter une spec neutre sans supprimer l'existant]]
