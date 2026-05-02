@@ -1,7 +1,7 @@
 ---
 title: "Log — twoweeks Wiki"
 category: overview
-updated: 2026-04-24
+updated: 2026-05-02
 ---
 
 # Log du Wiki · twoweeks
@@ -14,6 +14,33 @@ grep "^## \[" wiki/log.md | grep "ingest"  # Tous les ingests
 ```
 
 ---
+
+## [2026-05-02] direct-update | active memory gateway for LLM retrieval
+
+**Agent** : Codex
+**Pages créées** :
+- `wiki/hot.md`
+- `wiki/howto/wiki-commands-and-llm-export.md`
+**Pages mises à jour** :
+- `AGENTS.md`
+- `WIKI_SCHEMA.md`
+- `CLAUDE.md`
+- `README.md`
+- `SKILL.md`
+- `skills/ingest-wiki/SKILL.md`
+- `/Users/pana/.codex/skills/ingest-wiki/SKILL.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+- `wiki/tasks/coffee talk.md`
+**Points notables** :
+- `wiki/hot.md` devient le cache actif non canonique pour retrieval LLM rapide
+- `wiki/index.md` garde la carte canonique et reçoit une Retrieval Map courte
+- les workflows doivent lire `hot.md` avant d'élargir vers `index.md` et pages durables
+- `AGENTS.md`, `README.md` et le howto donnent un prompt court pour les agents futurs
+- `README.md` pointe maintenant vers `hot.md` dans le démarrage wiki
+- `coffee talk.md` contient la commande courte pour synchroniser la skill Codex collaborateur
+- `wiki/howto/wiki-commands-and-llm-export.md` sauvegarde les commandes wiki et le plan `wiki/llms.txt`
 
 ## [2026-04-28] direct-update | AI Consistency P0 closure audit note
 

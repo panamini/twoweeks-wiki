@@ -2,7 +2,7 @@
 title: Index du Wiki — twoweeks
 category: overview
 sticker: emoji//1f9c6
-updated: 2026-04-27
+updated: 2026-05-02
 ---
 
 # Index du Wiki · twoweeks (v2)
@@ -12,10 +12,28 @@ Le contrôle opératoire du repo reste défini par `WIKI_SCHEMA.md` puis `CLAUDE
 
 ---
 
+## Retrieval Map
+
+| Sujet | Page canonique | Lire aussi |
+|-------|----------------|------------|
+| Mémoire active LLM | [[hot]] | [[overview]], [[meta/llm-wiki-pattern]] |
+| État produit | [[overview]] | [[entities/twoweeks]], [[product/product-roadmap]], [[product/product-vision]] |
+| Parser / vérité CV | [[concepts/cv-parsing-pipeline]] | [[concepts/cv-families]], [[tech/import-ocr-pipeline]] |
+| Jobs / match | [[product/job-library]] | [[product/job-match-review]] |
+| Export / pagination | [[tech/export-pipeline]] | [[tech/preview-to-print-pipeline]], [[tech/workshop-pagination]] |
+| Design / ATS / motion | [[design/ats-safety]] | [[design/document-token-contract]], [[design/motion-system]], [[design/brand-voice]] |
+| Opérations locales | [[howto/local-parser-operations]] | [[tech/local-vs-remote-parser-architecture]] |
+| Règles wiki | [[meta/llm-wiki-pattern]] | [[meta/temporal-management]], [[meta/codex-prompting-standards]] |
+
+Cette carte est un routeur de lecture pour agents LLM. Elle ne remplace pas les pages durables.
+
+---
+
 ## Vue d'ensemble
 
 | Fichier | Description | Status |
 |---------|-------------|--------|
+| [[hot]] | Cache actif non canonique pour retrieval LLM rapide | current |
 | [[overview]] | Synthèse générale — produit, architecture active, priorités | current |
 | [[log]] | Journal chronologique des opérations wiki | — |
 | [[timeline]] | Chronologie des décisions et pivots projet | — |
@@ -180,6 +198,7 @@ Le contrôle opératoire du repo reste défini par `WIKI_SCHEMA.md` puis `CLAUDE
 | [[howto/git-branch-hygiene|Git Branch Hygiene]] | Démarrer une tâche depuis `main` à jour avant branche courte | git, workflow |
 | [[howto/headless-workshop-preview-probe|Headless Workshop Preview Probe]] | Probe Playwright headless pour `/cv` workshop preview | playwright, workshop |
 | [[howto/local-parser-operations\|Local Parser Operations]] | Lancer, diagnostiquer et réaligner la stack parser locale | parser, local, run.sh |
+| [[howto/wiki-commands-and-llm-export|Wiki Commands and LLM Export]] | Commandes wiki, modes de retrieval et plan `wiki/llms.txt` | wiki, codex, retrieval |
 
 ---
 
@@ -188,6 +207,7 @@ Le contrôle opératoire du repo reste défini par `WIKI_SCHEMA.md` puis `CLAUDE
 | Page | Résumé |
 |------|--------|
 | [[tasks/kanban\|Kanban Sprint]] | Backlog, en cours, bugs ouverts, déférés, done |
+| [[tasks/coffee talk\|Coffee Talk]] | Note courte pour synchroniser la skill Codex collaborateur |
 | [[tasks/Audit Workspace — Bonnes Pratiques, Sécurité, RGPD\|Audit Workspace — Bonnes Pratiques, Sécurité, RGPD]] | Audit sauvegardé du workspace |
 
 ---
@@ -211,8 +231,8 @@ Le contrôle opératoire du repo reste défini par `WIKI_SCHEMA.md` puis `CLAUDE
 
 ## Statistiques
 
-- **Pages actives** : 104 (4 overview, 1 entité, 2 concepts, 8 design, 7 product, 2 strategy, 3 meta, 62 sources, 9 tech, 4 howto, 2 tasks, 0 output)
+- **Pages actives** : 107 (5 overview, 1 entité, 2 concepts, 8 design, 7 product, 2 strategy, 3 meta, 62 sources, 9 tech, 5 howto, 3 tasks, 0 output)
 - **Pages archivées** : 2
 - **Sources dans `raw/`** : 64
-- **Sources en attente dans `rawinput/`** : 0
-- **Dernière mise à jour** : 2026-04-28
+- **Sources en attente dans `rawinput/`** : 6
+- **Dernière mise à jour** : 2026-05-02

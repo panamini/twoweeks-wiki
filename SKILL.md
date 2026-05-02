@@ -36,10 +36,11 @@ Read in this order:
 
 1. `WIKI_SCHEMA.md` if present
 2. `AGENTS.md` and/or `CLAUDE.md`
-3. `wiki/overview.md`
-4. `wiki/index.md`
-5. recent entries from `wiki/log.md`
-6. inspect `rawinput/` when the task is ingest, lint, or repo-health work
+3. `wiki/hot.md` if present
+4. `wiki/overview.md`
+5. `wiki/index.md`
+6. recent entries from `wiki/log.md`
+7. inspect `rawinput/` when the task is ingest, lint, or repo-health work
 
 Transition behavior:
 
@@ -49,6 +50,26 @@ Transition behavior:
 - if neither exists, stop and explain that the vault contract is missing
 
 When reading `wiki/log.md`, read recent entries, not just the last physical lines.
+
+## 2.1 Active memory retrieval
+
+Treat `wiki/hot.md` as the cheap LLM memory gateway, not as a heavy wiki lookup.
+Keep it under 500 words whenever you update it. It is a cache, not a journal.
+
+Read `wiki/hot.md` first when the request touches the project, product, parser, design,
+tech architecture, jobs, brand, wiki operations, or local workflow.
+
+Use these query modes when the user asks a knowledge question or when you need context:
+
+| Mode | Reads | Use when |
+| --- | --- | --- |
+| `quick` | `wiki/hot.md` and the retrieval map / top section of `wiki/index.md` | simple lookup, active context, or finding the owning page |
+| `standard` | `wiki/hot.md`, `wiki/index.md`, and 1-3 targeted pages | normal product, tech, design, or wiki questions |
+| `deep` | `wiki/hot.md`, `wiki/index.md`, recent `wiki/log.md`, and every relevant page | audits, synthesis, duplicate review, or migration planning |
+
+If `wiki/hot.md` answers the question or points to the canonical page, do not broaden the read set.
+If it is stale or missing, fall back to `wiki/overview.md` and `wiki/index.md`.
+Never treat `wiki/hot.md` as canonical truth when it conflicts with a current durable page.
 
 ## 3. Mandatory preflight
 
@@ -72,7 +93,7 @@ Rules:
 
 - never edit files under `raw/`
 - ignore `rawinput/README.md`
-- after every mutation, update `wiki/index.md` and `wiki/log.md`
+- after every mutation, update `wiki/index.md`, `wiki/log.md`, and `wiki/hot.md`
 - keep one active durable page per subject
 - check for an existing page before creating a new one
 - repair live references after any move, merge, split, or reclassification
@@ -147,7 +168,7 @@ Then proceed unless the user redirects.
    - move it into `wiki/archive/...`
 5. Move the staged file into `raw/` or `raw/assets/`.
 6. Repair references.
-7. Update `wiki/index.md` and `wiki/log.md`.
+7. Update `wiki/index.md`, `wiki/log.md`, and `wiki/hot.md`.
 8. Update `wiki/overview.md` or `wiki/timeline.md` only when the project-level summary changed.
 
 ### 5.6 Verify and report
@@ -159,6 +180,7 @@ Verify:
 - rawinput item moved
 - index updated
 - log updated
+- hot cache updated
 
 Report:
 
@@ -190,6 +212,7 @@ Verification:
 - no unrelated cleanup happened
 - links repaired if paths changed
 - index/log updated when persistent state changed
+- hot cache updated when active context or likely retrieval routes changed
 
 When the user asks to save analysis from the current conversation into durable knowledge, decide first:
 
@@ -260,6 +283,7 @@ Then verify:
 1. output file exists
 2. it is added to the outputs section in `wiki/index.md`
 3. a session entry was appended to `wiki/log.md`
+4. `wiki/hot.md` was updated if the output should shape near-term retrieval
 
 ## 9. Quality bar
 

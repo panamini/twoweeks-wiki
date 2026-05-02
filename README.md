@@ -6,9 +6,15 @@ Knowledge base and hybrid operating overlay for the [twoweeks](https://twoweeks.
 
 1. Read `WIKI_SCHEMA.md` for neutral discovery.
 2. Read `AGENTS.md` or `CLAUDE.md` for write-time mutation and verification rules.
-3. For wiki work, read `wiki/overview.md`, `wiki/index.md`, and recent `wiki/log.md` entries.
+3. For wiki work, read `wiki/hot.md` first, then `wiki/overview.md`, `wiki/index.md`, and recent `wiki/log.md` entries only as needed. Keep `wiki/hot.md` under 500 words.
 4. For code work, start from the nearest manifest, tests, CI/lint config, and owning module.
 5. Check `rawinput/` when ingest or repo-health work is relevant.
+
+Agent prompt:
+
+```text
+Use the wiki as memory. For project context, check wiki/hot.md first, then wiki/index.md, then only the relevant canonical pages.
+```
 
 Do not read the entire repository blindly.
 Start from the owning path.
@@ -49,6 +55,7 @@ twoweeks-wiki/
 ├── raw/
 │   └── assets/
 └── wiki/
+    ├── hot.md
     ├── overview.md
     ├── index.md
     ├── log.md
@@ -77,6 +84,7 @@ Optional code plane:
 ## For humans
 
 - Drop new sources in `rawinput/` and use the ingest workflow to merge them into the wiki.
+- Read `wiki/howto/wiki-commands-and-llm-export.md` for the current wiki commands and the `wiki/llms.txt` proposal.
 - Use `skills/apply-hybrid-code-layer/SKILL.md` and `IMPLEMENTATION_RULES.md` when the task touches real source code.
 - Read `SKILLS_HOWTO.md` if you want the quick “which skill should I use?” version.
 - Run `python3 scripts/validate_overlay.py` to validate the overlay files.

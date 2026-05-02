@@ -11,6 +11,7 @@ Use `CLAUDE.md` as the canonical write-time contract, with `AGENTS.md` as a comp
 A valid twoweeks repository may contain two cooperating planes:
 
 - **knowledge plane**
+  - `wiki/hot.md`
   - `wiki/index.md`
   - `wiki/log.md`
   - `wiki/overview.md`
@@ -32,7 +33,7 @@ A repo may contain only the knowledge plane, only the code plane, or both.
 4. repository manifests and dependency files when code work is relevant
 5. existing tests and CI / lint / build config when code work is relevant
 6. relevant source files and entrypoints when code work is relevant
-7. `wiki/overview.md`, `wiki/index.md`, and recent `wiki/log.md` entries when the knowledge plane exists
+7. `wiki/hot.md`, `wiki/overview.md`, `wiki/index.md`, and recent `wiki/log.md` entries when the knowledge plane exists
 8. inspect `rawinput/` when ingest or repo-health work is relevant
 
 ## Write rule
@@ -43,6 +44,7 @@ A repo may contain only the knowledge plane, only the code plane, or both.
 
 ## System files
 
+- `wiki/hot.md` — short active memory cache for LLM retrieval; non-canonical and overwrite-only
 - `wiki/index.md` — catalog of active and planned pages
 - `wiki/log.md` — chronological mutation log
 - `wiki/overview.md` — current project summary
@@ -85,6 +87,7 @@ A repo may contain only the knowledge plane, only the code plane, or both.
 
 ### For knowledge questions
 
+0. `wiki/hot.md` for active context and candidate canonical pages
 1. Durable pages with `status: current`
 2. Durable pages with `status: planned` when the question is about future state
 3. Source pages for corroboration or newly ingested details not yet merged
@@ -97,6 +100,6 @@ A repo may contain only the knowledge plane, only the code plane, or both.
 2. Existing tests closest to the target behavior
 3. The smallest source module that actually owns the behavior
 4. CI / lint / build rules that define success
-5. Wiki `tech/`, `howto/`, or `product/` pages when they clarify intent or policy
+5. `wiki/hot.md`, then wiki `tech/`, `howto/`, or `product/` pages when they clarify intent or policy
 
 Do not duplicate workflows, templates, or agent-specific behavior here.

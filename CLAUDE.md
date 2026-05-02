@@ -213,6 +213,7 @@ twoweeks/
 ├── raw/                      # immutable ingested source library
 │   └── assets/               # local images and binary assets
 └── wiki/
+    ├── hot.md                # short active-memory cache for LLM retrieval
     ├── index.md              # catalog of active and planned pages
     ├── log.md                # chronological mutation log
     ├── overview.md           # short current-state summary
@@ -247,7 +248,7 @@ Optional code plane:
 - manifests such as `package.json`, `pyproject.toml`, `Cargo.toml`, `go.mod`
 - CI config such as `.github/workflows/`
 
-`index.md`, `log.md`, `overview.md`, and `timeline.md` are system files.
+`hot.md`, `index.md`, `log.md`, `overview.md`, and `timeline.md` are system files.
 They are not normal category pages.
 
 ## Page contract
@@ -378,8 +379,28 @@ Do not pad pages with quotes, screenshots, or history unless they change decisio
 
 ## Retrieval order
 
+### Active memory gateway
+
+`wiki/hot.md` is the low-cost active memory cache for LLM sessions.
+It is non-canonical, overwrite-only, and exists to make wiki retrieval cheap enough to use by default.
+
+Read `wiki/hot.md` first when a request touches twoweeks product, tech, design, parser, jobs, brand, roadmap, wiki operations, or local workflow.
+
+Use these query modes:
+
+| Mode | Reads | Use when |
+| --- | --- | --- |
+| `quick` | `wiki/hot.md` and the retrieval map / top section of `wiki/index.md` | simple lookup, active context, deciding which page owns a topic |
+| `standard` | `wiki/hot.md`, `wiki/index.md`, and 1-3 targeted pages | normal product, tech, design, or wiki questions |
+| `deep` | `wiki/hot.md`, `wiki/index.md`, recent `wiki/log.md`, and every relevant page | audits, synthesis, duplicate review, migration planning |
+
+If `wiki/hot.md` answers the question or names the correct canonical page, do not widen the read set.
+If it is stale or missing, fall back to `wiki/overview.md` and `wiki/index.md`.
+Never treat `wiki/hot.md` as durable truth when it conflicts with a current durable page.
+
 ### For normal wiki questions
 
+0. `wiki/hot.md` for active context and likely canonical owners
 1. durable pages with `status: current`
 2. durable pages with `status: planned` only when the question is about future state
 3. relevant source pages for evidence or newly ingested details not yet merged
@@ -442,29 +463,30 @@ Use ingest when processing staged files in `rawinput/`.
 
 1. Read `WIKI_SCHEMA.md` if present.
 2. Read `CLAUDE.md`.
-3. Read `wiki/overview.md`.
-4. Read `wiki/index.md`.
-5. Read recent entries from `wiki/log.md`.
-6. Check `rawinput/` and ignore `README.md`.
-7. For each file, read it fully and identify:
+3. Read `wiki/hot.md` if present.
+4. Read `wiki/overview.md`.
+5. Read `wiki/index.md`.
+6. Read recent entries from `wiki/log.md`.
+7. Check `rawinput/` and ignore `README.md`.
+8. For each file, read it fully and identify:
    - source type
    - key facts
    - affected durable pages
    - contradictions or supersessions
    - new pages, if any
-8. Check whether the same source already exists:
+9. Check whether the same source already exists:
    - same URL
    - same normalized title
    - same day plus same conversation/topic
    - same staged file moved earlier
-9. Give the user a short preview of intended changes and how you will verify them, then proceed unless they redirect.
-10. Create or reuse the source page.
-11. Update existing durable pages or create new ones through the category router.
-12. Supersede only when truth changed.
-13. Move the raw file to `raw/` or `raw/assets/`.
-14. Repair references.
-15. Update `wiki/index.md` and `wiki/log.md`.
-16. Update `wiki/overview.md` or `wiki/timeline.md` only when the project-level summary actually changed.
+10. Give the user a short preview of intended changes and how you will verify them, then proceed unless they redirect.
+11. Create or reuse the source page.
+12. Update existing durable pages or create new ones through the category router.
+13. Supersede only when truth changed.
+14. Move the raw file to `raw/` or `raw/assets/`.
+15. Repair references.
+16. Update `wiki/index.md`, `wiki/log.md`, and `wiki/hot.md`.
+17. Update `wiki/overview.md` or `wiki/timeline.md` only when the project-level summary actually changed.
 
 ### Direct update
 
@@ -472,6 +494,7 @@ Use direct update when the user asks to create, edit, move, reclassify, or merge
 
 Apply the same category, dedupe, supersede, and reference-repair rules.
 Do not touch `raw/` unless the task is ingest.
+Update `wiki/hot.md` when the change affects active context, current focus, or likely retrieval routes.
 
 ### Lint
 
@@ -502,6 +525,7 @@ Use save output when the user wants the current answer, audit, or analysis prese
 3. Link the relevant durable pages or sources in `related`.
 4. Update `wiki/index.md`.
 5. Append a `query-save` entry to `wiki/log.md`.
+6. Update `wiki/hot.md` if the saved output should shape near-term retrieval.
 
 ## Mode-specific verification contracts
 
@@ -516,6 +540,7 @@ Verification checklist:
 - raw file moved to `raw/` or `raw/assets/`
 - `wiki/index.md` updated
 - `wiki/log.md` updated
+- `wiki/hot.md` updated
 - `wiki/overview.md` or `wiki/timeline.md` updated only if project state changed
 
 ### Direct update
@@ -526,6 +551,7 @@ Verification checklist:
 - no adjacent unrelated cleanup
 - links repaired if paths changed
 - `wiki/index.md` and `wiki/log.md` updated when persistent state changed
+- `wiki/hot.md` updated when active context changed
 
 ### Lint
 
@@ -551,6 +577,7 @@ Verification checklist:
 ### `wiki/index.md`
 
 - list active and planned pages
+- include a short retrieval map near the top when it helps agents route common topics
 - group by category
 - keep archived pages out of the active catalog
 - include outputs in a separate section
@@ -564,6 +591,15 @@ Verification checklist:
 - include created, updated, archived, moved, and output pages
 - do not log pure read/query sessions unless the user asked for a saved output
 
+### `wiki/hot.md`
+
+- keep under 500 words
+- overwrite completely rather than appending
+- link the few canonical pages most likely to matter next
+- include only active retrieval context, not a full journal
+- remove stale facts instead of preserving them
+- never use it to override current durable pages
+
 ## Session bootstrap
 
 Default read sequence for wiki work:
@@ -571,10 +607,11 @@ Default read sequence for wiki work:
 1. `WIKI_SCHEMA.md` if present
 2. `AGENTS.md` or `CLAUDE.md`
 3. root `README.md` if present
-4. `wiki/overview.md`
-5. `wiki/index.md`
-6. recent entries from `wiki/log.md`
-7. check whether `rawinput/` contains staged files when ingest or repo-health work is relevant
+4. `wiki/hot.md` if present
+5. `wiki/overview.md`
+6. `wiki/index.md`
+7. recent entries from `wiki/log.md`
+8. check whether `rawinput/` contains staged files when ingest or repo-health work is relevant
 
 Do not front-load unnecessary files for a narrow query.
 
@@ -582,8 +619,9 @@ Do not front-load unnecessary files for a narrow query.
 
 - `raw/` is immutable.
 - `rawinput/` should be empty after ingest.
-- always update `wiki/index.md` and `wiki/log.md` after persistent changes.
+- always update `wiki/index.md`, `wiki/log.md`, and `wiki/hot.md` after persistent wiki changes.
 - prefer updating or superseding over duplicating.
+- treat `wiki/hot.md` as an access cache, not as a second canonical truth.
 - keep `overview.md` high level.
 - keep `timeline.md` for project history, not general note accumulation.
 - use Obsidian links for internal references.

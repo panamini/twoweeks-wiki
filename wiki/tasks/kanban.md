@@ -46,15 +46,9 @@ related: [[entities/twoweeks]], [[concepts/cv-parsing-pipeline]], [[concepts/cv-
 ( ) 
 
 
-() le edit responsabilites n'est pas update, ni edit skill dans la page jobs
-concevoir la page job comme une colonne obsidienne
-que fait tailor cv ? dans job?rediger le summary, chosir les skills a partir du job ? faut il creer un profil utilisateur de base pour le comparer au cv ingeres? et l'adapter en fonction , l'ia peut aller piocher dans la database de l'user et en fonction sortir les bons mots pour compelter les cv 
-que fait do both?
+() 
 dans quick start ajouter pull a job from library
-pour l'instant les job c des gros paves de texte degueu lasse. soit on a un truc qui les resume  pour que l'user comprenen tres vite ce que, avec des info standart, salaire demande nombre de mois disponibilité enfin tous les trucs classique , et comme le tableau de bord il peut naviguer dans les offre
-le parsing est degueu il cool e trois fois le meme texte full de l''offre dans lse trois sectin responsabilities skill keywords.
-je ne vois pas de button qui selectionne le job dans la rubrique neda attention je ne vois aps comment ni pourquoi un doc job peut etre dans need attention. 
-j'ai besoin d'un audit sur le potentiel de cet page tout en respectant les kpi e. le benchmark matrix et mes observation , rien n'est une regle immuable mais je veux comrend la direction je supervis c qui est impletent je teste je critique tu dois faire pareil 
+
 ---
 
 ## En cours
@@ -64,6 +58,7 @@ j'ai besoin d'un audit sur le potentiel de cet page tout en respectant les kpi e
 - [ ] ##add paper color
 - [ ] add @TYPOGRAPHY MODE dans les instruction FIX du menu ai de reecriture, ajouter aussi a workspace si c'est possible
 - [ ] replace all resume, all proposal par show more, ou show all. 
+- [ ] a faire suggest hobbies, langugae in page in edit mode. aussi toutes les section in page in edit mode. cv forge
 
 Use the existing token as the base and extend it instead of replacing it:
 
@@ -83,6 +78,7 @@ Then:
 ## Bugs ouverts
 
 - [x] **Scroll/zoom preview CV** — scroll bloqué en mode zoom, pas de pan à 100% fit. ✅ 2026-04-18
+- [ ] the cv menu pick resume is not loading cv in window
 - [ ] desired position is not being parsed correctly is pretty much all the time absent
 - [ ] when website is loaded i get a pop up card renam this cv imported cv, this modal is a symptom of a bug taht shoud be fixed its loading everytime import cv is refreshed or somthing
 - [x] HOBBBIE SHOWING ONLY 2 ENTRIES, EVEN WHE THERE IS MORE ✅ 2026-04-22
