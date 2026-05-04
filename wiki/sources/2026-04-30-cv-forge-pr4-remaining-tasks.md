@@ -28,7 +28,7 @@ This source captures the current PR4 continuation notes and implementation risks
 
 ## Current priority order
 
-1. Fix CV save-size / Convex payload bug (critical behavior risk for autosave and style-only saves).
+1. Run browser verification for desktop, narrow desktop, and mobile style preview + autosave path.
 2. Run narrow browser smoke after payload fix (`desktop`, `narrow`, paper edit/rail/Ask-AI section behaviors).
 3. Audit Proposal Forge and Jobs against the active app skeleton before final merge.
 4. Final parity/polish pass (CV, Proposal, Jobs, Dashboard/Shell).
@@ -42,7 +42,7 @@ This source captures the current PR4 continuation notes and implementation risks
    - `generate_language_suggestions`
    - achievements line-level improve action
    - `improve_experience_responsibilities`
-3. Harden save-size path and add regression guardrail test.
+3. Hardened: metadata-only style persistence now uses a metadata patch path; regression guardrail exists (convex + adapter tests). ✅ 2026-05-04
 4. Finish import review behavior (pending/weak block filtering, Accept/Edit/Delete, unresolved parser warning).
 5. Complete section operations (reorder persistence, hide/show stability, delete undo).
 6. Verify direct paper editing path shares typed section update flow.

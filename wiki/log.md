@@ -15,6 +15,26 @@ grep "^## \[" wiki/log.md | grep "ingest"  # Tous les ingests
 
 ---
 
+## [2026-05-04] direct-update | CV style persistence hardening and guardrail documentation
+
+**Agent** : Codex
+**Mode** : direct-update
+**Pages mises à jour** :
+- `wiki/tasks/kanban.md`
+- `wiki/sources/2026-04-30-cv-forge-pr4-remaining-tasks.md`
+- `wiki/hot.md`
+**Mise à jour technique associée (repo)** :
+- `docs/audits/2026-05-04-verbati-style-metadata-persistence-hardening.md` (repo)
+**Points notables** :
+- Les sauvegardes style-only CV sont désormais routées vers une mutation Convex de métadonnées (`metadata.verbatiStyle`) sans `cvDocument`.
+- Un garde-fou backend évite la création de ligne `userProfiles` quand le patch style est `metadata` only.
+- Les tests de vérification incluent :
+  - `my-app/convex/__tests__/profiles.patch.test.ts`
+  - `my-app/src/adapters/__tests__/StorageAdapter.test.ts`
+  - `src/features/verbati/__tests__/useBoundVerbatiCvStyle.test.tsx`
+  - `src/features/verbati/__tests__/VerbatiCvPreviewPanel.test.tsx`
+  - `src/features/verbati/__tests__/VerbatiCvPreviewPanel.workspace-style-cycle.test.tsx`
+
 ## [2026-05-04] ingest | rawinput ingest + task sync
 
 **Agent** : Codex
