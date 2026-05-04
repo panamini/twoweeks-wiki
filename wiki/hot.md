@@ -25,6 +25,7 @@ The active knowledge model favors retrieval speed for LLM agents: read this cach
 - The wiki write path remains `rawinput/ -> raw/`, with `raw/` immutable after ingest.
 - One active durable page per subject is mandatory. Update or supersede before creating anything new.
 - CV style persistence now uses a metadata-only Convex patch path for style edits; style-only saves no longer send full `cvDocument` and no longer create orphan rows.
+- `cvforge-preview-linking` e2e assertions were stabilized around dialog heading contracts and close panel semantics to avoid brittle name matching.
 - `wiki/index.md` and `wiki/log.md` remain mandatory for every persistent wiki mutation.
 
 ## Canonical Pages To Read
@@ -43,6 +44,7 @@ The active knowledge model favors retrieval speed for LLM agents: read this cach
 - 2026-05-02: Added [[howto/wiki-commands-and-llm-export]] for wiki commands and the `wiki/llms.txt` export proposal.
 - 2026-05-02: Added an agent memory prompt to README, AGENTS.md, and the wiki commands howto.
 - 2026-05-04: Updated PR4 notes: style-only save now routes through Convex metadata-only persistence path; added regression tests on profile patch and adapter behavior.
+- 2026-05-04: Reworked `e2e/cvforge-preview-linking.spec.ts` to use runtime-true modal heading assertions and shared close action; added localStorage preview-mode seeding (`dasti:cv-forge-workspace-mode:v1`).
 
 ## Open Threads
 

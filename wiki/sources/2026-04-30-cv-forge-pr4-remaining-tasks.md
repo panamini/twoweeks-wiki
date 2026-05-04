@@ -25,6 +25,11 @@ This source captures the current PR4 continuation notes and implementation risks
 - Rail Ask AI is close to structured section actions.
 - Summary tone was folded into default tone; only the default-tone pass needs verification.
 - Import UI is mostly complete; remaining risk is parser/import correctness and smoke polish.
+- `e2e/cvforge-preview-linking.spec.ts` now uses stable, runtime-aligned dialog selectors and close-button handling for preview-linking assertions.
+
+## Verification notes
+
+- Cross-browser run status: Chromium passing; Firefox/WebKit checks are blocked locally by missing browser executables.
 
 ## Current priority order
 
@@ -47,6 +52,7 @@ This source captures the current PR4 continuation notes and implementation risks
 5. Complete section operations (reorder persistence, hide/show stability, delete undo).
 6. Verify direct paper editing path shares typed section update flow.
 7. Run browser verification for desktop, narrow desktop, mobile, Ask AI behavior, import state, and style labels.
+8. Validate preview-linking sheet flow in `cvforge-preview-linking` (`/cv`) with stable section/modal assertions (dialog heading + close panel locator).
 
 ## Source
 

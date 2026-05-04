@@ -15,6 +15,23 @@ grep "^## \[" wiki/log.md | grep "ingest"  # Tous les ingests
 
 ---
 
+## [2026-05-04] direct-update | e2e modal selector hardening for cvforge preview linking
+
+**Agent** : Codex
+**Mode** : direct-update
+**Pages mises à jour** :
+- `wiki/hot.md`
+- `wiki/tasks/kanban.md`
+- `wiki/sources/2026-04-30-cv-forge-pr4-remaining-tasks.md`
+**Mise à jour technique associée (repo)** :
+- `e2e/cvforge-preview-linking.spec.ts`
+- `docs/plans/2026-03-21-ui-next-steps-todo.md`
+- `docs/audits/2026-05-04-verbati-style-metadata-persistence-hardening.md`
+**Points notables** :
+- Résolution de fragilité Playwright: remplacement des assertions de nom exact de dialogue par assertions sur le heading (`Profile`, `Projects`, `Experience`, etc.) + fermeture via `button[aria-label="Close panel."]`.
+- Fixe du seed test en forçant explicitement le mode preview via `dasti:cv-forge-workspace-mode:v1=preview`.
+- Vérification: `rtk npx playwright test e2e/cvforge-preview-linking.spec.ts --project=chromium --grep "keeps modal targets in preview mode and routes aliases correctly"`.
+
 ## [2026-05-04] direct-update | CV style persistence hardening and guardrail documentation
 
 **Agent** : Codex

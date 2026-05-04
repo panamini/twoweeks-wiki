@@ -25,6 +25,7 @@ related: [[entities/twoweeks]], [[concepts/cv-parsing-pipeline]], [[concepts/cv-
 - [ ] Direct paper editing deferred (current PR4 target keeps section-sheet editing model).
 - [ ] Type-specific section sheets near completion, verify before closing.
 - [x] Harden `CvLibraryContext.tsx`/Convex save-size path to fix 1 MiB payload failures and avoid orphan rows on style-only saves. ✅ 2026-05-04
+- [x] Reworked `e2e/cvforge-preview-linking.spec.ts` to stabilize modal heading/close assertions under live preview linking behavior. ✅ 2026-05-04
 - [ ] Complete section operations hardening (delete undo, stable reorder, hide/show focus stability).
 - [ ] Finish import review UX polish (pending blocks only, Accept/Edit/Delete against active CV state).
 - [x] Add guardrail tests for metadata-only/style persistence and browser smoke plan for desktop, narrow desktop, mobile (check pending).
