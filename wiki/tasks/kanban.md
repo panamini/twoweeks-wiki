@@ -3,14 +3,14 @@ title: "Kanban — twoweeks Sprint"
 category: todo
 tags: [kanban, sprint, todo, bugs, parsing, cleanup, extension, sections]
 created: 2026-04-12
-updated: 2026-04-15
+updated: 2026-05-04
 status: current
 valid_from: 2026-04-12
 valid_until:
 superseded_by:
 horizon: present
 version: v1
-sources: [2026-04-11-todo-sprint, 2026-04-14-kanban-sprint-notes, 2026-04-14-clerk-chrome-extension-addon, 2026-04-14-run-sh-quick-note, 2026-04-15-run-sh-workspace-modes, 2026-04-15-mistral-resume-v3-section-recovery-scratchpad]
+sources: [2026-04-11-todo-sprint, 2026-04-14-kanban-sprint-notes, 2026-04-14-clerk-chrome-extension-addon, 2026-04-14-run-sh-quick-note, 2026-04-15-run-sh-workspace-modes, 2026-04-15-mistral-resume-v3-section-recovery-scratchpad, 2026-04-30-cv-forge-pr4-remaining-tasks, 2026-04-30-jobs-language-localization-scratchpad, 2026-04-30-refonte-wiki-claude-obsidian, 2026-04-30-two-weeks-app-skeleton-skill]
 related: [[entities/twoweeks]], [[concepts/cv-parsing-pipeline]], [[concepts/cv-families]]
 ---
 
@@ -19,6 +19,16 @@ related: [[entities/twoweeks]], [[concepts/cv-parsing-pipeline]], [[concepts/cv-
 > Sprint actif : fiabilité parser live, vérité canonique sections, normalisation des sections custom, polish du path extension.
 
 ---
+
+## PR4 follow-up (snapshot)
+
+- [ ] Direct paper editing deferred (current PR4 target keeps section-sheet editing model).
+- [ ] Type-specific section sheets near completion, verify before closing.
+- [ ] Harden `CvLibraryContext.tsx`/Convex save-size path to fix 1 MiB payload failures.
+- [ ] Complete section operations hardening (delete undo, stable reorder, hide/show focus stability).
+- [ ] Finish import review UX polish (pending blocks only, Accept/Edit/Delete against active CV state).
+- [ ] Add guardrail tests for style-only saves and browser smoke for desktop, narrow desktop, mobile.
+- [ ] Add jobs output-language support while preserving source language metadata.
 
 ## Backlog
 

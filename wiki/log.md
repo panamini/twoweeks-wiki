@@ -1,7 +1,7 @@
 ---
 title: "Log — twoweeks Wiki"
 category: overview
-updated: 2026-05-02
+updated: 2026-05-04
 ---
 
 # Log du Wiki · twoweeks
@@ -14,6 +14,30 @@ grep "^## \[" wiki/log.md | grep "ingest"  # Tous les ingests
 ```
 
 ---
+
+## [2026-05-04] ingest | rawinput ingest + task sync
+
+**Agent** : Codex
+**Fichiers traités** :
+- `rawinput/2026-04-30-cv-forge-pr4-remaining-tasks 1.md`
+- `rawinput/2026-04-30-cv-forge-pr4-remaining-tasks.md`
+- `rawinput/2026-04-30-jobs-language-localization-scratchpad.md`
+- `rawinput/refonte wiki claude-obsidian.md`
+- `rawinput/two-weeks app skeleton -skill.md`
+**Pages créées** :
+- `wiki/sources/2026-04-30-cv-forge-pr4-remaining-tasks.md`
+- `wiki/sources/2026-04-30-jobs-language-localization-scratchpad.md`
+- `wiki/sources/2026-04-30-refonte-wiki-claude-obsidian.md`
+- `wiki/sources/2026-04-30-two-weeks-app-skeleton-skill.md`
+**Pages mises à jour** :
+- `wiki/tasks/kanban.md`
+- `wiki/index.md`
+- `wiki/log.md`
+**Points notables** :
+- Toutes les entrées de `rawinput/` ont été ingérées et déplacées vers `raw/`.
+- Dédoublonnage `cv-forge-pr4-remaining-tasks` : la version `... 1.md` (plus récente) a été conservée comme source principale.
+- `wiki/tasks/kanban.md` a reçu un suivi PR4 plus explicite (actions en cours de confirmation).
+- `wiki/index.md` mis à jour avec 4 nouvelles sources `2026-04-30-*`.
 
 ## [2026-05-02] direct-update | active memory gateway for LLM retrieval
 

@@ -2,7 +2,7 @@
 title: Index du Wiki — twoweeks
 category: overview
 sticker: emoji//1f9c6
-updated: 2026-05-02
+updated: 2026-05-04
 ---
 
 # Index du Wiki · twoweeks (v2)
@@ -172,6 +172,10 @@ Cette carte est un routeur de lecture pour agents LLM. Elle ne remplace pas les 
 | [[sources/2026-04-27-voice-card-ui-copy-audits|Voice Card and UI Copy Audits]] | analysis | 2026-04-27 | current |
 | [[sources/2026-04-27-workshop-pagination|Workshop Pagination]] | spec | 2026-04-27 | current |
 | [[sources/2026-04-27-workshop-token-audit|Workshop Token Audit]] | analysis | 2026-04-27 | current |
+| [[sources/2026-04-30-cv-forge-pr4-remaining-tasks|CV Forge PR4 Remaining Tasks]] | scratchpad | 2026-04-30 | current |
+| [[sources/2026-04-30-jobs-language-localization-scratchpad|Jobs Language Localization Scratchpad]] | scratchpad | 2026-04-30 | current |
+| [[sources/2026-04-30-refonte-wiki-claude-obsidian|Revue: refonte wiki claude-obsidian]] | decision | 2026-04-30 | current |
+| [[sources/2026-04-30-two-weeks-app-skeleton-skill|Twoweeks App Skeleton Skill Source]] | skill | 2026-04-30 | current |
 ---
 
 ## Tech
@@ -231,8 +235,8 @@ Cette carte est un routeur de lecture pour agents LLM. Elle ne remplace pas les 
 
 ## Statistiques
 
-- **Pages actives** : 107 (5 overview, 1 entité, 2 concepts, 8 design, 7 product, 2 strategy, 3 meta, 62 sources, 9 tech, 5 howto, 3 tasks, 0 output)
+- **Pages actives** : 111 (5 overview, 1 entité, 2 concepts, 8 design, 7 product, 2 strategy, 3 meta, 66 sources, 9 tech, 5 howto, 3 tasks, 0 output)
 - **Pages archivées** : 2
-- **Sources dans `raw/`** : 64
-- **Sources en attente dans `rawinput/`** : 6
-- **Dernière mise à jour** : 2026-05-02
+- **Sources dans `raw/`** : 68
+- **Sources en attente dans `rawinput/`** : 0
+- **Dernière mise à jour** : 2026-05-04
