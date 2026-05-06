@@ -48,6 +48,12 @@ Provider credentials:
 - DeepSeek: `DEEPSEEK_API_KEY` plus `DEEPSEEK_CHAT_COMPLETIONS_URL` or `DEEPSEEK_BASE_URL`
 - Mistral: `MISTRAL_API_KEY`
 
+Match-read synthesis:
+
+- Job summary and keyword match synthesis uses the Ministral/Mistral family.
+- The current default model is `ministral-3-3b-instruct-2512`.
+- This is separate from proposal generation and editor helper actions.
+
 ## Inline Diff Overlay
 
 `ProposalDisplay` now renders inline suggestion state inside the active document area instead of using a detached suggestion card for text edits.
@@ -78,4 +84,5 @@ This means the user reviews the edit in the same place where the selection was m
 
 - `fix_grammar` is not using `qwen-3.6-plus`.
 - `fix_grammar` uses `qwen-3.6-flash` first, then Mistral, then DeepSeek.
+- Job summary and keyword matching stay on the Ministral/Mistral match-read path.
 - Proposal writing still resolves to `gpt-5.5` by default.

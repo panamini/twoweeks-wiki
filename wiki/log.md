@@ -39,6 +39,7 @@ grep "^## \[" wiki/log.md | grep "ingest"  # Tous les ingests
 - Proposal generation remains on OpenAI `gpt-5.5`; the proposal form now honors env-driven default model overrides.
 - Helper toolbar actions now route through Qwen first, with `fix_grammar` on `qwen-3.6-flash` and Mistral/DeepSeek fallbacks.
 - Proposal text suggestions now render inline as an overlay diff rather than a detached suggestion card.
+- Job summary and keyword match synthesis is on the Ministral/Mistral path, currently defaulting to `ministral-3-3b-instruct-2512`.
 
 ## [2026-05-06] direct-update | proposal style layer scratchpad
 

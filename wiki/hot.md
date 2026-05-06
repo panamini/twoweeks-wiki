@@ -31,6 +31,7 @@ The active knowledge model favors retrieval speed for LLM agents: read this cach
 - `cvforge-preview-linking` e2e assertions were stabilized around dialog heading contracts and close panel semantics to avoid brittle name matching.
 - Proposal style selection now treats Style 1/2/3 as durable base styles; manual color/font/layout edits show a custom state and use named palette ids (`terre`, `cobalt`, `ink`, `sauge`, `plum`, `ochre`), with legacy palette ids read-only.
 - Proposal AI routing now uses OpenAI `gpt-5.5` for generation, Qwen 3.6 Plus for most visible toolbar actions, Qwen 3.6 Flash for `fix_grammar`, with Mistral then DeepSeek fallbacks; proposal text review now renders as an inline diff overlay in `ProposalDisplay`.
+- Job summary/keyword match synthesis uses the Ministral/Mistral family, currently defaulting to `ministral-3-3b-instruct-2512`.
 - `wiki/index.md` and `wiki/log.md` remain mandatory for every persistent wiki mutation.
 
 ## Canonical Pages To Read
