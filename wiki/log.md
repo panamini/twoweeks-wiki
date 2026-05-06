@@ -1,7 +1,7 @@
 ---
 title: "Log — twoweeks Wiki"
 category: overview
-updated: 2026-05-04
+updated: 2026-05-06
 ---
 
 # Log du Wiki · twoweeks
@@ -14,6 +14,65 @@ grep "^## \[" wiki/log.md | grep "ingest"  # Tous les ingests
 ```
 
 ---
+
+## [2026-05-06] direct-update | proposal AI routing and inline diff overlay
+
+**Agent** : Codex
+**Mode** : direct-update
+**Pages créées** :
+- `wiki/tech/proposal-ai-routing-and-inline-diff.md`
+**Pages mises à jour** :
+- `wiki/index.md`
+- `wiki/log.md`
+- `wiki/hot.md`
+**Mise à jour technique associée (repo)** :
+- `docs/decisions/2026-05-06-proposal-ai-selector-and-inline-diff-overlay.md`
+- `my-app/config/llmConfig.ts`
+- `my-app/convex/lib/editorAi.ts`
+- `my-app/convex/generateProposalMutation.ts`
+- `my-app/convex/langchain/models/openai_responses_adapter.ts`
+- `my-app/convex/lib/proposals/premiumCoverLetter.ts`
+- `my-app/src/components/ProposalInputForm.tsx`
+- `my-app/src/components/ProposalDisplay.tsx`
+- `my-app/src/styles/product-proposal.css`
+**Points notables** :
+- Proposal generation remains on OpenAI `gpt-5.5`; the proposal form now honors env-driven default model overrides.
+- Helper toolbar actions now route through Qwen first, with `fix_grammar` on `qwen-3.6-flash` and Mistral/DeepSeek fallbacks.
+- Proposal text suggestions now render inline as an overlay diff rather than a detached suggestion card.
+
+## [2026-05-06] direct-update | proposal style layer scratchpad
+
+**Agent** : Codex
+**Mode** : direct-update
+**Pages créées** :
+- `wiki/tech/proposal-style-layer.md`
+**Pages mises à jour** :
+- `wiki/index.md`
+- `wiki/log.md`
+- `wiki/hot.md`
+**Mise à jour technique associée (repo)** :
+- Commit app `ccbc4280 fix: stabilize proposal style customization`
+**Points notables** :
+- Documente le modèle Style 1/2/3 comme base durable avec état `Custom` pour les changements couleur/police/layout.
+- Définit les palettes actives nommées `terre`, `cobalt`, `ink`, `sauge`, `plum`, `ochre`; les ids legacy restent lisibles seulement.
+- Note les commandes de vérification Vitest/TypeScript à relancer pour cette couche.
+
+## [2026-05-04] direct-update | CV Forge docs sync for paper width and AI routing
+
+**Agent** : Codex
+**Mode** : direct-update
+**Pages mises à jour** :
+- `wiki/sources/2026-04-30-cv-forge-pr4-remaining-tasks.md`
+- `wiki/tasks/kanban.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+**Mise à jour technique associée (repo)** :
+- `docs/plans/2026-03-21-ui-next-steps-todo.md`
+- `docs/audits/2026-05-04-cv-forge-paper-width-and-ai-routing.md`
+**Points notables** :
+- Synchronisation de la doc active avec l’état live du CV Forge: edit et preview partagent maintenant le même paper width canonique (860px), sans stage compact.
+- Alignement du helper AI CV Forge sur `mistral-small-latest` pour summary/custom et suggestion actions.
+- Parité rich-summary conservée dans le renderer partagé; la paper editing complète reste partiellement différée.
 
 ## [2026-05-04] direct-update | e2e modal selector hardening for cvforge preview linking
 

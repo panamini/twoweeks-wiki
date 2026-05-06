@@ -2,7 +2,7 @@
 title: Index du Wiki — twoweeks
 category: overview
 sticker: emoji//1f9c6
-updated: 2026-05-04
+updated: 2026-05-06
 ---
 
 # Index du Wiki · twoweeks (v2)
@@ -107,6 +107,8 @@ Cette carte est un routeur de lecture pour agents LLM. Elle ne remplace pas les 
 
 ## Sources
 
+CV Forge PR4 Remaining Tasks now reflects the 860px paper-width sync, rich summary parity, and `mistral-small-latest` helper routing.
+
 | Page | Type | Date | Status |
 |------|------|------|--------|
 | [[sources/2026-04-03-workspace-security-rgpd-audit\|Workspace Security / RGPD Audit]] | analysis | 2026-04-03 | current |
@@ -186,6 +188,8 @@ Cette carte est un routeur de lecture pour agents LLM. Elle ne remplace pas les 
 | [[tech/export-pipeline\|Export Pipeline]] | Pipeline document final PDF/DOCX séparé du preview DOM | export, pdf, docx |
 | [[tech/local-vs-remote-parser-architecture\|Local vs Remote Parser Architecture]] | Séparation debug local / cloud / prod pour le parser | parser, env, production |
 | [[tech/preview-to-print-pipeline\|Preview-to-Print Pipeline]] | Parité preview -> print route -> PDF pour resume et proposal | preview, print, pdf |
+| [[tech/proposal-ai-routing-and-inline-diff\|Proposal AI Routing and Inline Diff]] | Routing proposal AI, selector models, and inline proofing overlay | proposal, ai, routing |
+| [[tech/proposal-style-layer|Proposal Style Layer]] | Base Style 1/2/3, palettes tokenisées et reset des personnalisations proposal | proposal, style, tokens |
 | [[tech/live-resume-preview-runtime|Live Resume Preview Runtime]] | Runtime du preview resume vivant, mapping canonique et linking preview -> editor | preview, renderer, editor |
 | [[tech/quick-start-module-hierarchy|Quick Start Module Hierarchy]] | Shell Quick Start app-shell, route-state transitoire et cold start cover-letter | quick-start, onboarding, ui |
 | [[tech/repo-testing-system|Repo Testing System]] | Vitest/JSDOM/Testing Library, mocks et gap E2E produit | tests, qa |
@@ -235,8 +239,8 @@ Cette carte est un routeur de lecture pour agents LLM. Elle ne remplace pas les 
 
 ## Statistiques
 
-- **Pages actives** : 111 (5 overview, 1 entité, 2 concepts, 8 design, 7 product, 2 strategy, 3 meta, 66 sources, 9 tech, 5 howto, 3 tasks, 0 output)
+- **Pages actives** : 113 (5 overview, 1 entité, 2 concepts, 8 design, 7 product, 2 strategy, 3 meta, 66 sources, 11 tech, 5 howto, 3 tasks, 0 output)
 - **Pages archivées** : 2
 - **Sources dans `raw/`** : 68
 - **Sources en attente dans `rawinput/`** : 0
-- **Dernière mise à jour** : 2026-05-04
+- **Dernière mise à jour** : 2026-05-06
