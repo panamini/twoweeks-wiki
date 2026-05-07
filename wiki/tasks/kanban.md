@@ -22,7 +22,10 @@ related: [[entities/twoweeks]], [[concepts/cv-parsing-pipeline]], [[concepts/cv-
 
 ## PR4 follow-up (snapshot)
 
-- [ ] Direct paper editing deferred (current PR4 target keeps section-sheet editing model).
+- [x] CV Forge paper width synced to the canonical 860px paper in edit and preview; mobile stays at 100%. ✅ 2026-05-04
+- [x] CV Forge helper AI routing aligned to `mistral-small-latest` for summary/custom and suggestion actions. ✅ 2026-05-04
+- [x] Rich summary paper-edit parity landed in the shared preview renderer. ✅ 2026-05-04
+- [ ] Full direct paper editing remains deferred (current PR4 target still keeps the section-sheet editing model for most structured sections).
 - [ ] Type-specific section sheets near completion, verify before closing.
 - [x] Harden `CvLibraryContext.tsx`/Convex save-size path to fix 1 MiB payload failures and avoid orphan rows on style-only saves. ✅ 2026-05-04
 - [x] Reworked `e2e/cvforge-preview-linking.spec.ts` to stabilize modal heading/close assertions under live preview linking behavior. ✅ 2026-05-04

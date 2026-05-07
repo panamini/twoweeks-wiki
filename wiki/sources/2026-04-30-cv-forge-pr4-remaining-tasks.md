@@ -20,7 +20,9 @@ This source captures the current PR4 continuation notes and implementation risks
 
 ## Confirmed implemented state
 
-- Direct paper editing is implemented.
+- Summary-rich paper editing parity is implemented in the shared preview renderer; full direct paper editing for every structured section remains a follow-up.
+- CV Forge edit and preview now share the same 860px paper width; the compact edit-only stage was removed and mobile collapses to 100%.
+- CV Forge helper AI routing now defaults to `mistral-small-latest` for summary/custom and suggestion actions.
 - Type-specific section sheets are near completion.
 - Rail Ask AI is close to structured section actions.
 - Summary tone was folded into default tone; only the default-tone pass needs verification.
@@ -33,10 +35,10 @@ This source captures the current PR4 continuation notes and implementation risks
 
 ## Current priority order
 
-1. Run browser verification for desktop, narrow desktop, and mobile style preview + autosave path.
-2. Run narrow browser smoke after payload fix (`desktop`, `narrow`, paper edit/rail/Ask-AI section behaviors).
+1. Reconfirm cross-breakpoint Proposal visual QA (`desktop`, `tablet`, `mobile`) in both themes, then freeze styles.
+2. Run narrow browser smoke only if the Proposal pass exposes a regression.
 3. Audit Proposal Forge and Jobs against the active app skeleton before final merge.
-4. Final parity/polish pass (CV, Proposal, Jobs, Dashboard/Shell).
+4. Final parity/polish pass (Proposal, Jobs, Dashboard/Shell, and any residual CV drift).
 
 ## Remaining PR4 tasks
 
@@ -50,8 +52,8 @@ This source captures the current PR4 continuation notes and implementation risks
 3. Hardened: metadata-only style persistence now uses a metadata patch path; regression guardrail exists (convex + adapter tests). ✅ 2026-05-04
 4. Finish import review behavior (pending/weak block filtering, Accept/Edit/Delete, unresolved parser warning).
 5. Complete section operations (reorder persistence, hide/show stability, delete undo).
-6. Verify direct paper editing path shares typed section update flow.
-7. Run browser verification for desktop, narrow desktop, mobile, Ask AI behavior, import state, and style labels.
+6. Verify the remaining full direct paper editing path (beyond summary-rich parity) shares typed section update flow.
+7. Run browser verification for desktop, narrow desktop, mobile, Ask AI behavior, import state, and style labels if any drift remains.
 8. Validate preview-linking sheet flow in `cvforge-preview-linking` (`/cv`) with stable section/modal assertions (dialog heading + close panel locator).
 
 ## Source

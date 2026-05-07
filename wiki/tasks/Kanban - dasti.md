@@ -16,6 +16,11 @@ kanban-plugin: board
 - [ ] [[Kanban_CardNotes/Audit Workspace — Bonnes Pratiques, Sécurité, Protection des Données (RGPD) — Phase 1 — 24-48h.md|Audit Workspace — Bonnes Pratiques, Sécurité, Protection des Données (RGPD) — Phase 1 — 24/48h]]
 - [ ] [[Kanban_CardNotes/Audit Workspace — Bonnes Pratiques, Sécurité, Protection des Données (RGPD) — Phase 2 — Semaine.md|Audit Workspace — Bonnes Pratiques, Sécurité, Protection des Données (RGPD) — Phase 2 — Semaine]]
 - [ ] [[Kanban_CardNotes/Audit Workspace — Bonnes Pratiques, Sécurité, Protection des Données (RGPD) — Phase 3 — Industrialisation.md|Audit Workspace — Bonnes Pratiques, Sécurité, Protection des Données (RGPD) — Phase 3 — Industrialisation]]
+- [ ] Compte-linkedin-api-linkedin
+- [ ] compte-mail-api-gpt,mistral, clean
+- [ ] Stripe , ou penser le module paiement
+- [ ] Faire une entreprise, estonoie ? us?  avec un compte en banque
+- [ ] Choix serveur, Heztner, systeme deploiement, routine bash de déploiement
 
 
 ## In dev
@@ -47,10 +52,14 @@ kanban-plugin: board
 
 
 
+## 
+
+
+
 
 
 %% kanban:settings
 ```
-{"kanban-plugin":"board","list-collapse":[false,false,false,false,false]}
+{"kanban-plugin":"board","list-collapse":[false,false,false,false,false,false]}
 ```
 %%
