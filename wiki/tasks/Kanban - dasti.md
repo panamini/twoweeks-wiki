@@ -21,6 +21,7 @@ kanban-plugin: board
 - [ ] Stripe , ou penser le module paiement
 - [ ] Faire une entreprise, estonoie ? us?  avec un compte en banque
 - [ ] Choix serveur, Heztner, systeme deploiement, routine bash de déploiement
+- [ ] aurelien fais un test sur l'ui, voir les choses evidentes urgentes a corriger pour MVP
 
 
 ## In dev
