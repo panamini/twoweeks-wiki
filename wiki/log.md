@@ -1,7 +1,7 @@
 ---
 title: "Log — twoweeks Wiki"
 category: overview
-updated: 2026-05-06
+updated: 2026-05-07
 ---
 
 # Log du Wiki · twoweeks
@@ -14,6 +14,25 @@ grep "^## \[" wiki/log.md | grep "ingest"  # Tous les ingests
 ```
 
 ---
+
+## [2026-05-07] direct-update | proposal forge document geometry canon
+
+**Agent** : Codex
+**Mode** : direct-update
+**Pages créées** :
+- `wiki/tech/proposal-forge-document-geometry.md`
+**Pages mises à jour** :
+- `wiki/index.md`
+- `wiki/log.md`
+- `wiki/hot.md`
+**Mise à jour technique associée (repo)** :
+- Commit app `f0e9208e fix(proposal): canonicalize workspace paper width`
+- Commit app `93c093ae fix(proposal): align edit scrollbar with page edge`
+**Points notables** :
+- Documente le canon page-first Proposal Forge: `--proposal-paper-visual-inline-size` comme autorité de largeur visible.
+- Clarifie l'alignement toolbar/panel/shell/stage/viewport autour du breakpoint 1420px.
+- Définit la séparation page width vs reading measure et le placement des scrollbars preview/edit au bord de page.
+- Ajoute un prompt guardrail réutilisable pour agents LLM travaillant sur cette surface.
 
 ## [2026-05-06] direct-update | proposal AI routing and inline diff overlay
 

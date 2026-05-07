@@ -3,7 +3,7 @@ title: "Hot Cache — twoweeks"
 category: overview
 status: current
 created: 2026-05-02
-updated: 2026-05-06
+updated: 2026-05-07
 ---
 
 # Hot Cache
@@ -14,7 +14,7 @@ Use it to choose the next pages to read, then trust current durable pages when d
 ## Current Focus
 
 twoweeks is an active job application operating system centered on CV ingestion/parsing, canonical editable resume data, and contextual generation of resumes, cover letters, and proposals.
-The active knowledge model favors retrieval speed for LLM agents: read this cache first, then `wiki/index.md`, then only the few canonical pages that own the topic. Proposal cross-breakpoint QA is now the next visual check; CV Forge width and helper routing are synced.
+The active knowledge model favors retrieval speed for LLM agents: read this cache first, then `wiki/index.md`, then only the few canonical pages that own the topic. Proposal Forge document geometry now has a page-first canonical contract for paper width, toolbar/panel alignment, breakpoint stability, and preview/edit scrollbar ownership.
 
 ## Key Active Facts
 
@@ -30,6 +30,7 @@ The active knowledge model favors retrieval speed for LLM agents: read this cach
 - Rich summary paper-edit parity is implemented in the shared preview renderer; full direct paper editing remains partially deferred.
 - `cvforge-preview-linking` e2e assertions were stabilized around dialog heading contracts and close panel semantics to avoid brittle name matching.
 - Proposal style selection now treats Style 1/2/3 as durable base styles; manual color/font/layout edits show a custom state and use named palette ids (`terre`, `cobalt`, `ink`, `sauge`, `plum`, `ochre`), with legacy palette ids read-only.
+- Proposal Forge document geometry is page-first: `--proposal-paper-visual-inline-size` is the active page width authority; toolbar, compact panel, output shell, preview viewport, and edit body derive from it; preview/edit scrollbars sit at the page edge while edit text keeps a centered reading measure.
 - Proposal AI routing now uses OpenAI `gpt-5.5` for generation, Qwen 3.6 Plus for most visible toolbar actions, Qwen 3.6 Flash for `fix_grammar`, with Mistral then DeepSeek fallbacks; proposal text review now renders as an inline diff overlay in `ProposalDisplay`.
 - Job summary/keyword match synthesis uses the Ministral/Mistral family, currently defaulting to `ministral-3-3b-instruct-2512`.
 - `wiki/index.md` and `wiki/log.md` remain mandatory for every persistent wiki mutation.
@@ -40,7 +41,7 @@ The active knowledge model favors retrieval speed for LLM agents: read this cach
 - Parser and import truth: [[concepts/cv-parsing-pipeline]], [[concepts/cv-families]], [[tech/import-ocr-pipeline]]
 - Jobs: [[product/job-library]], [[product/job-match-review]]
 - Export and layout: [[tech/export-pipeline]], [[tech/preview-to-print-pipeline]], [[tech/workshop-pagination]]
-- Proposal style: [[tech/proposal-style-layer]], [[design/document-token-contract]]
+- Proposal geometry and style: [[tech/proposal-forge-document-geometry]], [[tech/proposal-style-layer]], [[design/document-token-contract]]
 - Design system and safety: [[design/ats-safety]], [[design/document-token-contract]], [[design/motion-system]], [[design/brand-voice]]
 - Local operations: [[howto/local-parser-operations]], [[tech/local-vs-remote-parser-architecture]]
 - Wiki operations: [[meta/llm-wiki-pattern]], [[meta/temporal-management]], [[meta/codex-prompting-standards]]
@@ -54,6 +55,7 @@ The active knowledge model favors retrieval speed for LLM agents: read this cach
 - 2026-05-04: Synced CV Forge edit/preview paper width to the canonical 860px paper, removed the compact edit-only stage, and aligned helper AI routing to `mistral-small-latest`.
 - 2026-05-04: Reworked `e2e/cvforge-preview-linking.spec.ts` to use runtime-true modal heading assertions and shared close action; added localStorage preview-mode seeding (`dasti:cv-forge-workspace-mode:v1`).
 - 2026-05-06: Added [[tech/proposal-style-layer]] for the proposal Style 1/2/3 custom-state and named palette contract.
+- 2026-05-07: Added [[tech/proposal-forge-document-geometry]] for Proposal Forge page-first width, toolbar/panel geometry, preview/edit scroll ownership, and LLM implementation guardrails.
 
 ## Open Threads
 
