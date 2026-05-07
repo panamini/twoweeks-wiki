@@ -12,7 +12,7 @@ related: [[tech/preview-to-print-pipeline]], [[tech/export-pipeline]], [[design/
 
 # Workshop Pagination
 
-Workshop pagination is the planner-driven page-boundary system for `workshop_resume_onecol_ats`. `committedPages` is the authoritative source of page breaks for preview, print, and export.
+Workshop pagination is the planner-driven page-boundary system for planner-backed Workshop resume templates, currently `workshop_resume_onecol_ats` and `workshop_resume_twocol_ats`. `committedPages` is the authoritative source of page breaks for preview, print, and export.
 
 ## Current state
 
@@ -22,8 +22,9 @@ The active path is:
 - `ResumeTemplateRenderer.tsx`
 - `resumePagination.ts`
 - `ResumeOneColAtsPage.tsx`
+- `ResumeTwoColAtsPage.tsx`
 
-The planner computes internal `pages` and serialized `committedPages`. The renderer and export layers should consume committed pages rather than inventing new boundaries.
+The planner computes internal `pages` and serialized `committedPages`. The renderer and export layers should consume committed pages rather than inventing new boundaries. Column placement for two-column Workshop remains renderer-local unless measured browser validation proves that the committed page payload must carry column metadata.
 
 ## Section rules
 
@@ -34,12 +35,17 @@ The planner computes internal `pages` and serialized `committedPages`. The rende
 
 ## Geometry
 
-The active workshop template uses:
+The shared Workshop base uses:
 
 - top: 17mm
 - right: 35mm
 - bottom: 18mm
 - left: 18mm
+
+The two-column variant adds:
+
+- gutter: 12mm
+- sidebar/main widths owned by Workshop template tokens
 
 The 18mm bottom inset is the current workshop state, not the older 35mm legacy margin.
 

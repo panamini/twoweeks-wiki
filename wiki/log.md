@@ -15,6 +15,21 @@ grep "^## \[" wiki/log.md | grep "ingest"  # Tous les ingests
 
 ---
 
+## [2026-05-07] direct-update | workshop two-column resume pagination
+
+**Agent** : Codex
+**Mode** : direct-update
+**Pages mises à jour** :
+- `wiki/tech/workshop-pagination.md`
+- `wiki/hot.md`
+- `wiki/log.md`
+**Mise à jour technique associée (repo)** :
+- Branch app `new-layout`
+**Points notables** :
+- Étend la vérité Workshop pagination aux templates planner-backed `workshop_resume_onecol_ats` et `workshop_resume_twocol_ats`.
+- Préserve `committedPages` comme autorité des page breaks preview/print/export.
+- Documente que le placement des colonnes two-column reste local au renderer sauf preuve browser mesurée.
+
 ## [2026-05-07] direct-update | proposal forge document geometry canon
 
 **Agent** : Codex
