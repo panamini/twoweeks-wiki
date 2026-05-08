@@ -3,7 +3,7 @@ title: "Hot Cache — twoweeks"
 category: overview
 status: current
 created: 2026-05-02
-updated: 2026-05-07
+updated: 2026-05-08
 ---
 
 # Hot Cache
@@ -30,6 +30,8 @@ The active knowledge model favors retrieval speed for LLM agents: read this cach
 - Rich summary paper-edit parity is implemented in the shared preview renderer; full direct paper editing remains partially deferred.
 - `cvforge-preview-linking` e2e assertions were stabilized around dialog heading contracts and close panel semantics to avoid brittle name matching.
 - Proposal style selection now treats Style 1/2/3 as durable base styles; manual color/font/layout edits show a custom state and use named palette ids (`terre`, `cobalt`, `ink`, `sauge`, `plum`, `ochre`), with legacy palette ids read-only.
+- Document Style 1/2/3 has multiple live boundaries: factory slots are in `document-style-slots.ts`, Settings/CV Forge read `proposalSettings.getPresets`, and Proposal Forge reads mirrored current fields from `proposalSettings.getCurrent`. Persisted Convex preset/current fields can override new factory defaults.
+- The live save blocker was `proposalSettings.savePreset` collecting and replacing every `userProfiles` row for a Clerk identity. The fix is to read/write the latest indexed profile row only; if Style 2 looks wrong, inspect persisted `proposalPreset2` / `proposalFontPairId` first.
 - Proposal Forge document geometry is page-first: `--proposal-paper-visual-inline-size` is the active page width authority; toolbar, compact panel, output shell, preview viewport, and edit body derive from it; preview/edit scrollbars sit at the page edge while edit text keeps a centered reading measure.
 - Planner-backed Workshop resume templates now include `workshop_resume_onecol_ats` and `workshop_resume_twocol_ats`; preview, print route, and export consume `committedPages` instead of re-planning independently.
 - Proposal AI routing now uses OpenAI `gpt-5.5` for generation, Qwen 3.6 Plus for most visible toolbar actions, Qwen 3.6 Flash for `fix_grammar`, with Mistral then DeepSeek fallbacks; proposal text review now renders as an inline diff overlay in `ProposalDisplay`.
@@ -57,6 +59,7 @@ The active knowledge model favors retrieval speed for LLM agents: read this cach
 - 2026-05-04: Reworked `e2e/cvforge-preview-linking.spec.ts` to use runtime-true modal heading assertions and shared close action; added localStorage preview-mode seeding (`dasti:cv-forge-workspace-mode:v1`).
 - 2026-05-06: Added [[tech/proposal-style-layer]] for the proposal Style 1/2/3 custom-state and named palette contract.
 - 2026-05-07: Added [[tech/proposal-forge-document-geometry]] for Proposal Forge page-first width, toolbar/panel geometry, preview/edit scroll ownership, and LLM implementation guardrails.
+- 2026-05-08: Updated [[tech/proposal-style-layer]] with the real Style 1/2/3 factory, Settings/CV Forge, and Proposal Forge winning-source pipeline.
 
 ## Open Threads
 

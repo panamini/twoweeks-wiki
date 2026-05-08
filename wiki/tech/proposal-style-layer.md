@@ -3,7 +3,7 @@ title: "Proposal Style Layer"
 category: tech
 tags: [proposal, style, tokens, palette, llm-note]
 created: 2026-05-06
-updated: 2026-05-06
+updated: 2026-05-08
 status: current
 valid_from: 2026-05-06
 version: v1
@@ -41,7 +41,37 @@ Do not expose those legacy ids as new palette choices.
 
 ## Base Style Mapping
 
-Proposal bundle defaults:
+There are three different Style 1/2/3 surfaces. They share the user-facing identity, but they do not all read the same field.
+
+### Factory/native document slots
+
+Factory slots live in `my-app/src/lib/document-style-slots.ts`.
+
+- Style 1: `geist-baskervville`, `ink`, `workshop_resume_onecol_ats`
+- Style 2: `quiet-editorial`, `ink`, `workshop_resume_twocol_ats`
+- Style 3: `ledger-sans`, `ink`, `workshop_resume_twocol_ats`
+
+These are defaults only. If Convex returns a persisted `proposalPresetN`, Settings and CV Forge hydrate from that saved slot first and only use the factory slot for missing fields.
+
+### Settings and CV Forge winner
+
+Settings reads `proposalSettings.getPresets`.
+
+- `presetN === null`: slot source is factory/native.
+- `presetN !== null`: slot source is settings/persisted.
+- Saved `fontPairId`, `paletteOverride`, `accentHex`, `verbatiStyle`, and signature fields win over factory values.
+
+CV Forge reads the same preset query. Selecting Style N applies the hydrated slot and records metadata with `verbatiStyleSlotSource: "settings"` only when the server returned a persisted preset for that slot. Otherwise it records `factory`.
+
+If the live UI shows an old font such as `studio-grotesk` / Parisienne-Cormorant for Style 2, the first boundary to inspect is the persisted Convex preset/current settings, not the factory slot file.
+
+### Proposal Forge winner
+
+Proposal Forge primarily reads `proposalSettings.getCurrent`, not the three preset slots. `savePreset` and `setActivePreset` mirror the active slot into legacy current fields such as `proposalFontPairId` and `proposalVerbatiStyle` so older proposal flows keep working.
+
+That means Proposal Forge can still show an old active style even after factory defaults change if `proposalFontPairId` or `proposalVerbatiStyle.typography` is persisted with an old value.
+
+Proposal bundle defaults remain proposal-safe:
 
 - Style 1 / `swiss_serif` -> `terre`
 - Style 2 / `magazine_editorial` -> `cobalt`
@@ -49,6 +79,16 @@ Proposal bundle defaults:
 
 Reverse-matching a visual style back to a bundle is only a legacy fallback when no stored `templateBundleId` exists.
 Once a proposal has a stored bundle id, that id is the selected base style.
+
+## Live Boundary Note
+
+Problem cause, goal, and fix path for the live Style 1/2/3 bug:
+
+- Goal: keep the shared factory Style 1/2/3 defaults visible in Settings/CV Forge, while still letting saved Convex presets win.
+- Cause: `proposalSettings.savePreset` was collecting every `userProfiles` row for a Clerk identity and replacing all of them, which hit Convex's 16 MB read limit and blocked the save. That made Settings look unsaved even when the UI patch was correct.
+- What changed: the active profile read/write path now uses the latest indexed `userProfiles` row only, so Settings can persist the slot payload and mirror the active slot without fan-out reads.
+- What to inspect if Style 2 still looks wrong: persisted `proposalPreset2`, `proposalFontPairId`, `proposalVerbatiStyle.typography`, or other current fields, not the factory slot file.
+- Native Style 2 default remains `quiet-editorial` with the Workshop two-column CV template; Parisienne/Cormorant is a persisted value, not the factory default.
 
 ## User Flow
 
@@ -79,4 +119,3 @@ Minimum checks after changing this layer:
 - `rtk npx vitest run src/lib/__tests__/proposal-output-draft.test.ts src/lib/__tests__/proposal-template-bundles.test.ts`
 - `rtk npx vitest run src/lib/__tests__/proposal-style-choice.test.ts src/lib/__tests__/proposal-render-state.test.ts`
 - `rtk npx tsc --noEmit`
-

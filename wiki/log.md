@@ -1,7 +1,7 @@
 ---
 title: "Log — twoweeks Wiki"
 category: overview
-updated: 2026-05-07
+updated: 2026-05-08
 ---
 
 # Log du Wiki · twoweeks
@@ -14,6 +14,37 @@ grep "^## \[" wiki/log.md | grep "ingest"  # Tous les ingests
 ```
 
 ---
+
+## [2026-05-08] direct-update | proposal style layer live-boundary scratchpad
+
+**Agent** : Codex
+**Mode** : direct-update
+**Pages mises à jour** :
+- `wiki/tech/proposal-style-layer.md`
+- `wiki/index.md`
+- `wiki/hot.md`
+- `wiki/log.md`
+**Mise à jour technique associée (repo)** :
+- `my-app/convex/proposalSettings.ts`
+- `my-app/convex/schema.ts`
+**Points notables** :
+- Enregistre le vrai cause/résolution du bug live: `savePreset` faisait un fan-out sur tous les `userProfiles` du même Clerk, ce qui dépassait la limite de lecture Convex et empêchait la sauvegarde.
+- Clarifie que le Style 2 natif reste `quiet-editorial` avec le template CV Workshop deux colonnes.
+- Oriente le diagnostic vers les champs persistés `proposalPreset2`, `proposalFontPairId`, et `proposalVerbatiStyle.typography` si l'UI affiche encore Parisienne/Cormorant.
+
+## [2026-05-08] direct-update | document style slot live-boundary trace
+
+**Agent** : Codex
+**Mode** : direct-update
+**Pages mises à jour** :
+- `wiki/tech/proposal-style-layer.md`
+- `wiki/hot.md`
+- `wiki/log.md`
+**Mise à jour technique associée (repo)** :
+- Style slot debugging in app worktree, uncommitted
+**Points notables** :
+- Documente que Style 1/2/3 traverse trois frontières gagnantes: factory slots, Settings/CV Forge presets, et Proposal Forge current settings.
+- Note que `studio-grotesk` / Parisienne-Cormorant ne vient pas des factory slots actuels et pointe plutôt vers un preset Convex ou un champ current settings persisté.
 
 ## [2026-05-07] direct-update | workshop two-column resume pagination
 
