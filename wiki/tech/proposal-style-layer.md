@@ -65,6 +65,25 @@ CV Forge reads the same preset query. Selecting Style N applies the hydrated slo
 
 If the live UI shows an old font such as `studio-grotesk` / Parisienne-Cormorant for Style 2, the first boundary to inspect is the persisted Convex preset/current settings, not the factory slot file.
 
+## Default Model
+
+There is one explicit default action in the Settings UI: `Set as default`.
+
+- Clicking a style card edits that slot's contents.
+- Clicking `Set as default` marks that slot as the active default slot.
+- The active default is what new documents should start from when no more specific document style exists.
+- The active badge should stay attached to the chosen default slot; it should not move just because another slot was edited.
+
+Current live code stores that choice as `proposalActivePresetSlot` and mirrors the active slot into legacy current proposal fields for Proposal Forge compatibility.
+
+The design intent is:
+
+- Settings slot content = font, color, layout, signature, and related defaults for Style 1/2/3.
+- Active default slot = the selected default bucket for new documents.
+- Existing CV/proposal documents keep their own captured style until the user explicitly re-applies or resets style.
+
+If the badge appears to jump between slots while editing, that is a UI/state bug. The intended model is not “the last edited slot becomes default”; it is “the user chooses a slot, then optionally marks it as default.”
+
 ### Proposal Forge winner
 
 Proposal Forge primarily reads `proposalSettings.getCurrent`, not the three preset slots. `savePreset` and `setActivePreset` mirror the active slot into legacy current fields such as `proposalFontPairId` and `proposalVerbatiStyle` so older proposal flows keep working.

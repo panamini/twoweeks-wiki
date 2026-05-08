@@ -191,7 +191,7 @@ CV Forge PR4 Remaining Tasks now reflects the 860px paper-width sync, rich summa
 | [[tech/preview-to-print-pipeline\|Preview-to-Print Pipeline]] | Parité preview -> print route -> PDF pour resume et proposal | preview, print, pdf |
 | [[tech/proposal-ai-routing-and-inline-diff\|Proposal AI Routing and Inline Diff]] | Routing proposal AI, selector models, and inline proofing overlay | proposal, ai, routing |
 | [[tech/proposal-forge-document-geometry|Proposal Forge Document Geometry]] | Canon page-first: paper width, toolbar/panel alignment, breakpoint stability, preview/edit scrollbars | proposal, forge, geometry |
-| [[tech/proposal-style-layer|Proposal Style Layer]] | Base Style 1/2/3, palettes tokenisées, live boundary note, et reset des personnalisations proposal | proposal, style, tokens |
+| [[tech/proposal-style-layer|Proposal Style Layer]] | Base Style 1/2/3, default-slot model, live boundary note, et reset des personnalisations proposal | proposal, style, tokens |
 | [[tech/live-resume-preview-runtime|Live Resume Preview Runtime]] | Runtime du preview resume vivant, mapping canonique et linking preview -> editor | preview, renderer, editor |
 | [[tech/quick-start-module-hierarchy|Quick Start Module Hierarchy]] | Shell Quick Start app-shell, route-state transitoire et cold start cover-letter | quick-start, onboarding, ui |
 | [[tech/repo-testing-system|Repo Testing System]] | Vitest/JSDOM/Testing Library, mocks et gap E2E produit | tests, qa |

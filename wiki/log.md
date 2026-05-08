@@ -15,6 +15,23 @@ grep "^## \[" wiki/log.md | grep "ingest"  # Tous les ingests
 
 ---
 
+## [2026-05-08] direct-update | proposal style default-slot semantics note
+
+**Agent** : Codex
+**Mode** : direct-update
+**Pages mises à jour** :
+- `wiki/tech/proposal-style-layer.md`
+- `wiki/index.md`
+- `wiki/hot.md`
+- `wiki/log.md`
+**Mise à jour technique associée (repo)** :
+- `my-app/src/pages/SettingsPage.tsx`
+- `my-app/convex/proposalSettings.ts`
+**Points notables** :
+- Clarifie la différence entre slot content and active default: editing a style slot does not make it default.
+- Records the explicit `Set as default` control as the only action that should move the active default badge.
+- States the intended rule for new docs: start from the active default slot when no more specific document style exists.
+
 ## [2026-05-08] direct-update | proposal style layer live-boundary scratchpad
 
 **Agent** : Codex
