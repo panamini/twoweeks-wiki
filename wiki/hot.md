@@ -30,12 +30,15 @@ The active knowledge model favors retrieval speed for LLM agents: read this cach
 - Rich summary paper-edit parity is implemented in the shared preview renderer; full direct paper editing remains partially deferred.
 - `cvforge-preview-linking` e2e assertions were stabilized around dialog heading contracts and close panel semantics to avoid brittle name matching.
 - Proposal style selection now treats Style 1/2/3 as durable base styles; manual color/font/layout edits show a custom state and use named palette ids (`terre`, `cobalt`, `ink`, `sauge`, `plum`, `ochre`), with legacy palette ids read-only.
+- Settings, CV Forge, and Proposal Forge expose Custom as the seventh accent option. It persists as `palette: "custom"` plus `accentHex`; `paletteOverride` remains only for named palette tokens.
 - Settings has one explicit default action: `Set as default`. Clicking a style card edits that slot; clicking the button marks the active default slot. If the default badge jumps, that is a UI/state bug, not the intended model.
 - Document Style 1/2/3 has multiple live boundaries: factory slots are in `document-style-slots.ts`, Settings/CV Forge read `proposalSettings.getPresets`, and Proposal Forge reads mirrored current fields from `proposalSettings.getCurrent`. Persisted Convex preset/current fields can override new factory defaults.
 - The live save blocker was `proposalSettings.savePreset` collecting and replacing every `userProfiles` row for a Clerk identity. The fix is to read/write the latest indexed profile row only; if Style 2 looks wrong, inspect persisted `proposalPreset2` / `proposalFontPairId` first.
 - Proposal Forge document geometry is page-first: `--proposal-paper-visual-inline-size` is the active page width authority; toolbar, compact panel, output shell, preview viewport, and edit body derive from it; preview/edit scrollbars sit at the page edge while edit text keeps a centered reading measure.
 - Planner-backed Workshop resume templates now include `workshop_resume_onecol_ats` and `workshop_resume_twocol_ats`; preview, print route, and export consume `committedPages` instead of re-planning independently.
 - Proposal AI routing now uses OpenAI `gpt-5.5` for generation, Qwen 3.6 Plus for most visible toolbar actions, Qwen 3.6 Flash for `fix_grammar`, with Mistral then DeepSeek fallbacks; proposal text review now renders as an inline diff overlay in `ProposalDisplay`.
+- Proposal signature/closing is now resolved as structured proposal metadata (`closing`): Settings/metadata fallback > legacy parsed closing > generated defaults. The UI/print/export path consumes this structured state; the current implementation is Code-only TypeScript/Convex (no Python signature path).
+- Legacy proposal drafts can still contain residual closing text artifacts; planned cleanup is needed so old saved signatures do not force edit/preview oscillation.
 - Job summary/keyword match synthesis uses the Ministral/Mistral family, currently defaulting to `ministral-3-3b-instruct-2512`.
 - `wiki/index.md` and `wiki/log.md` remain mandatory for every persistent wiki mutation.
 
@@ -45,7 +48,7 @@ The active knowledge model favors retrieval speed for LLM agents: read this cach
 - Parser and import truth: [[concepts/cv-parsing-pipeline]], [[concepts/cv-families]], [[tech/import-ocr-pipeline]]
 - Jobs: [[product/job-library]], [[product/job-match-review]]
 - Export and layout: [[tech/export-pipeline]], [[tech/preview-to-print-pipeline]], [[tech/workshop-pagination]]
-- Proposal geometry and style: [[tech/proposal-forge-document-geometry]], [[tech/proposal-style-layer]], [[design/document-token-contract]]
+- Proposal geometry and style: [[tech/proposal-forge-document-geometry]], [[tech/proposal-style-layer]], [[tech/proposal-signature-closing-layer]], [[design/document-token-contract]]
 - Design system and safety: [[design/ats-safety]], [[design/document-token-contract]], [[design/motion-system]], [[design/brand-voice]]
 - Local operations: [[howto/local-parser-operations]], [[tech/local-vs-remote-parser-architecture]]
 - Wiki operations: [[meta/llm-wiki-pattern]], [[meta/temporal-management]], [[meta/codex-prompting-standards]]
@@ -61,10 +64,13 @@ The active knowledge model favors retrieval speed for LLM agents: read this cach
 - 2026-05-06: Added [[tech/proposal-style-layer]] for the proposal Style 1/2/3 custom-state and named palette contract.
 - 2026-05-07: Added [[tech/proposal-forge-document-geometry]] for Proposal Forge page-first width, toolbar/panel geometry, preview/edit scroll ownership, and LLM implementation guardrails.
 - 2026-05-08: Updated [[tech/proposal-style-layer]] with the real Style 1/2/3 factory, Settings/CV Forge, and Proposal Forge winning-source pipeline.
+- 2026-05-08: Updated [[tech/proposal-style-layer]] with the shared Custom color pipeline for Settings, CV Forge, and Proposal Forge.
+- 2026-05-08: Added [[tech/proposal-signature-closing-layer]] and started the structured signature pipeline (draft/output metadata + renderer + export propagation); UI controls remain phased.
 
 ## Open Threads
 
 - Keep the memory gateway lightweight; do not add local `_index.md` files unless `wiki/index.md` becomes too expensive.
 - Consider a future ingest manifest outside `raw/` for source hash dedupe.
 - Consider read-only lint support for duplicate durable pages and stale retrieval routes.
+- Close loop on `wiki/tech/proposal-signature-closing-layer.md` legacy artifact cleanup and edit-mode lock case before declaring signature migration complete.
 - Test daily use of `hot.md` before building `wiki/llms.txt`.

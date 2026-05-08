@@ -22,6 +22,7 @@ Le contrôle opératoire du repo reste défini par `WIKI_SCHEMA.md` puis `CLAUDE
 | Jobs / match | [[product/job-library]] | [[product/job-match-review]] |
 | Export / pagination | [[tech/export-pipeline]] | [[tech/preview-to-print-pipeline]], [[tech/workshop-pagination]] |
 | Proposal Forge geometry | [[tech/proposal-forge-document-geometry]] | [[tech/proposal-style-layer]], [[design/document-token-contract]] |
+| Proposal signature/closing | [[tech/proposal-signature-closing-layer]] | [[tech/proposal-style-layer]], [[tech/proposal-forge-document-geometry]], [[tech/export-pipeline]] |
 | Design / ATS / motion | [[design/ats-safety]] | [[design/document-token-contract]], [[design/motion-system]], [[design/brand-voice]] |
 | Opérations locales | [[howto/local-parser-operations]] | [[tech/local-vs-remote-parser-architecture]] |
 | Règles wiki | [[meta/llm-wiki-pattern]] | [[meta/temporal-management]], [[meta/codex-prompting-standards]] |
@@ -191,7 +192,8 @@ CV Forge PR4 Remaining Tasks now reflects the 860px paper-width sync, rich summa
 | [[tech/preview-to-print-pipeline\|Preview-to-Print Pipeline]] | Parité preview -> print route -> PDF pour resume et proposal | preview, print, pdf |
 | [[tech/proposal-ai-routing-and-inline-diff\|Proposal AI Routing and Inline Diff]] | Routing proposal AI, selector models, and inline proofing overlay | proposal, ai, routing |
 | [[tech/proposal-forge-document-geometry|Proposal Forge Document Geometry]] | Canon page-first: paper width, toolbar/panel alignment, breakpoint stability, preview/edit scrollbars | proposal, forge, geometry |
-| [[tech/proposal-style-layer|Proposal Style Layer]] | Base Style 1/2/3, default-slot model, live boundary note, et reset des personnalisations proposal | proposal, style, tokens |
+| [[tech/proposal-signature-closing-layer\|Proposal Signature & Closing Layer]] | Signature/closing comme état structuré + fallback legacy + propagation preview/print/export | proposal, signature |
+| [[tech/proposal-style-layer|Proposal Style Layer]] | Base Style 1/2/3, default-slot model, Custom color token path, live boundary note, et reset des personnalisations proposal | proposal, style, tokens |
 | [[tech/live-resume-preview-runtime|Live Resume Preview Runtime]] | Runtime du preview resume vivant, mapping canonique et linking preview -> editor | preview, renderer, editor |
 | [[tech/quick-start-module-hierarchy|Quick Start Module Hierarchy]] | Shell Quick Start app-shell, route-state transitoire et cold start cover-letter | quick-start, onboarding, ui |
 | [[tech/repo-testing-system|Repo Testing System]] | Vitest/JSDOM/Testing Library, mocks et gap E2E produit | tests, qa |
@@ -241,8 +243,8 @@ CV Forge PR4 Remaining Tasks now reflects the 860px paper-width sync, rich summa
 
 ## Statistiques
 
-- **Pages actives** : 113 (5 overview, 1 entité, 2 concepts, 8 design, 7 product, 2 strategy, 3 meta, 66 sources, 11 tech, 5 howto, 3 tasks, 0 output)
+- **Pages actives** : 114 (5 overview, 1 entité, 2 concepts, 8 design, 7 product, 2 strategy, 3 meta, 66 sources, 12 tech, 5 howto, 3 tasks, 0 output)
 - **Pages archivées** : 2
 - **Sources dans `raw/`** : 68
 - **Sources en attente dans `rawinput/`** : 0
-- **Dernière mise à jour** : 2026-05-06
+- **Dernière mise à jour** : 2026-05-08

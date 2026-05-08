@@ -15,6 +15,42 @@ grep "^## \[" wiki/log.md | grep "ingest"  # Tous les ingests
 
 ---
 
+## [2026-05-08] direct-update | proposal signature legacy artefact note
+
+**Agent** : Codex
+**Mode** : direct-update
+**Pages mises à jour** :
+- `wiki/tech/proposal-signature-closing-layer.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+**Mise à jour technique associée (repo)** :
+- `commit 9ed81aa9`
+**Points notables** :
+- Documente le comportement cible en edit/preview pour la signature structurée (edit = corps texte uniquement, signature = métadonnée/rendu).
+- Ajoute la liste des artefacts legacy encore observés (`Warm regards`, nom en signature textuel) et leurs impacts connus.
+- Ajoute des recommandations de migration: nettoyage legacy au chargement, sanitization du draft chargé, et test e2e ciblé sur ancienne proposition.
+- Note que le flux manuscrit/image doit rester une couche de rendu (preview/print/export), jamais éditable dans le texte.
+
+## [2026-05-08] direct-update | shared custom style color pipeline
+
+**Agent** : Codex
+**Mode** : direct-update
+**Pages mises à jour** :
+- `wiki/tech/proposal-style-layer.md`
+- `wiki/index.md`
+- `wiki/hot.md`
+- `wiki/log.md`
+**Mise à jour technique associée (repo)** :
+- `my-app/src/pages/SettingsPage.tsx`
+- `my-app/src/components/cv/CvRail.tsx`
+- `my-app/src/pages/CvForge.tsx`
+**Points notables** :
+- Documente Custom comme septième option d'accent dans Settings, CV Forge, et Proposal Forge.
+- Clarifie que Custom n'est pas un `paletteOverride` nommé: il persiste via `palette: "custom"` et `accentHex`.
+- Note que sélectionner une couleur nommée doit effacer l'accent custom, tandis que sélectionner Custom conserve le slot de style courant en état personnalisé.
+- Ajoute la règle de reset: Settings restaure le slot aux defaults factory sans déplacer le default actif; CV Forge reset vers le slot Settings utilisateur quand il existe.
+
 ## [2026-05-08] direct-update | proposal style default-slot semantics note
 
 **Agent** : Codex
@@ -29,6 +65,34 @@ grep "^## \[" wiki/log.md | grep "ingest"  # Tous les ingests
 - `my-app/convex/proposalSettings.ts`
 **Points notables** :
 - Clarifie la différence entre slot content and active default: editing a style slot does not make it default.
+
+## [2026-05-08] direct-update | proposal signature closing structured pipeline note
+
+**Agent** : Codex
+**Mode** : direct-update
+**Pages créées** :
+- `wiki/tech/proposal-signature-closing-layer.md`
+**Pages mises à jour** :
+- `wiki/index.md`
+- `wiki/hot.md`
+- `wiki/log.md`
+**Mise à jour technique associée (repo)** :
+- `my-app/src/lib/proposal-closing.ts`
+- `my-app/src/lib/proposal-output-draft.ts`
+- `my-app/src/lib/document-export-models.ts`
+- `my-app/src/components/proposal-render/ProposalDocumentRenderer.tsx`
+- `my-app/src/pages/ProposalForge.tsx`
+- `my-app/src/pages/ProposalPrintPage.tsx`
+- `my-app/src/components/ProposalDisplay.tsx`
+- `my-app/src/components/ProposalsList.tsx`
+- `my-app/convex/schema.ts`
+- `my-app/convex/createProposalPublic.ts`
+- `my-app/convex/updateProposalPublic.ts`
+- `my-app/convex/proposalsPublic.ts`
+**Points notables** :
+- Note de plan ajoutée dans le wiki sur la frontière Signature/Closing (pas de pipeline Python dédié; le flux actif est TypeScript + Convex + renderers).
+- Résumé du plan `plans/proposal-structured-closing.md` intégré en mode "started": métadonnée close structurée, fallback legacy, et propagation preview/print/export.
+- Le contrôle UI avancé (toggle/override dédié) reste planifié après stabilisation de la persistance et des tests de parité.
 - Records the explicit `Set as default` control as the only action that should move the active default badge.
 - States the intended rule for new docs: start from the active default slot when no more specific document style exists.
 
