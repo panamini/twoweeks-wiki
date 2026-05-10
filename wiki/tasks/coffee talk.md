@@ -21,6 +21,12 @@ cp skills/ingest-wiki/SKILL.md ~/.codex/skills/ingest-wiki/SKILL.md
 Pourquoi: la skill doit lire `wiki/hot.md` comme mémoire légère avant `wiki/index.md`, avec les modes `quick`, `standard` et `deep`.
 
 
+--gros chantier nouveau effectué
+-passage a une petite sidebar, avec affichage dynamique template dans proposal et cv
+-page today avec choix des derniers chantiers
+-page documents avec preview des de la librairie
+-page settings (manque paiement et ingest profile linkedin)
+-selecteur temporaire de llm dans proposal, gpt/mistral, (soit a creer dans preference soit a supprimer) en fonction du resultat des test
 
 ----------------
 renommer styles : BRAND KIT, comme ca l'user peut appliquer sa marque pour creer video ou lettres/cv
