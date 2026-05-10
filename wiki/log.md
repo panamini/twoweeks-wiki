@@ -15,6 +15,21 @@ grep "^## \[" wiki/log.md | grep "ingest"  # Tous les ingests
 
 ---
 
+## [2026-05-08] direct-update | ui audit proposal-polish snapshot
+
+**Agent** : Codex
+**Mode** : direct-update
+**Pages créées** :
+- `wiki/outputs/2026-05-08-ui-audit-proposal-polish.md`
+**Pages mises à jour** :
+- `wiki/index.md`
+- `wiki/hot.md`
+- `wiki/log.md`
+**Points notables** :
+- Ingest du recap UI audit en output snapshot non canonique.
+- Conserve les valeurs CSS vérifiées séparément et marque le reste comme subjectif / screenshots only.
+- Classe le diagnostic comme utile pour la direction design, mais pas comme source de vérité absolue.
+
 ## [2026-05-08] direct-update | proposal signature legacy artefact note
 
 **Agent** : Codex

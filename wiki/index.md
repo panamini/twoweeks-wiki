@@ -228,7 +228,7 @@ CV Forge PR4 Remaining Tasks now reflects the 860px paper-width sync, rich summa
 
 | Page | Type | Date | Sujet |
 |------|------|------|-------|
-| — | — | — | Aucun output actif sur disque |
+| [[outputs/2026-05-08-ui-audit-proposal-polish|UI Audit — proposal-polish]] | analysis | 2026-05-08 | Screenshot-only audit of Proposal Forge polish |
 
 ---
 
@@ -243,8 +243,11 @@ CV Forge PR4 Remaining Tasks now reflects the 860px paper-width sync, rich summa
 
 ## Statistiques
 
-- **Pages actives** : 114 (5 overview, 1 entité, 2 concepts, 8 design, 7 product, 2 strategy, 3 meta, 66 sources, 12 tech, 5 howto, 3 tasks, 0 output)
+- **Pages actives** : 115 (5 overview, 1 entité, 2 concepts, 8 design, 7 product, 2 strategy, 3 meta, 66 sources, 12 tech, 5 howto, 3 tasks, 1 output)
 - **Pages archivées** : 2
 - **Sources dans `raw/`** : 68
+- **Sources en attente dans `rawinput/`** : 0
+- **Dernière mise à jour** : 2026-05-08
+`raw/`** : 68
 - **Sources en attente dans `rawinput/`** : 0
 - **Dernière mise à jour** : 2026-05-08

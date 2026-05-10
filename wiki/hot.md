@@ -66,6 +66,7 @@ The active knowledge model favors retrieval speed for LLM agents: read this cach
 - 2026-05-08: Updated [[tech/proposal-style-layer]] with the real Style 1/2/3 factory, Settings/CV Forge, and Proposal Forge winning-source pipeline.
 - 2026-05-08: Updated [[tech/proposal-style-layer]] with the shared Custom color pipeline for Settings, CV Forge, and Proposal Forge.
 - 2026-05-08: Added [[tech/proposal-signature-closing-layer]] and started the structured signature pipeline (draft/output metadata + renderer + export propagation); UI controls remain phased.
+- 2026-05-08: Added [[outputs/2026-05-08-ui-audit-proposal-polish]] as a screenshot-only audit snapshot with verified tokens and subjective polish notes.
 
 ## Open Threads
 

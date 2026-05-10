@@ -35,9 +35,16 @@ Active palette ids are named product tokens:
 | Sage | `sauge` | alternate calm accent |
 | Plum | `plum` | alternate expressive accent |
 | Ochre | `ochre` | alternate warm accent |
+| Custom | `custom` + `accentHex` | user-picked custom accent color |
 
 Legacy ids remain readable for old saved proposals and resumes: `ocre`, `pierre`, `bordeaux`, `encre`.
 Do not expose those legacy ids as new palette choices.
+
+Custom is not a seventh named palette id in `paletteOverride`. It is stored as
+`palette: "custom"` with a valid `accentHex` on the document style payload, while
+top-level preset/current `paletteOverride` remains `null`. Settings, CV Forge,
+and Proposal Forge should all expose the same custom color picker behavior and
+persist through this shared token path.
 
 ## Base Style Mapping
 
@@ -81,6 +88,8 @@ The design intent is:
 - Settings slot content = font, color, layout, signature, and related defaults for Style 1/2/3.
 - Active default slot = the selected default bucket for new documents.
 - Existing CV/proposal documents keep their own captured style until the user explicitly re-applies or resets style.
+- A custom color selected in Settings becomes the saved slot color. New CV/proposal uses of that slot should hydrate `palette: "custom"` and the saved `accentHex`; named `paletteOverride` stays empty.
+- `Reset Style N` in Settings restores that slot to its factory/native defaults without changing which slot is marked as the active default.
 
 If the badge appears to jump between slots while editing, that is a UI/state bug. The intended model is not “the last edited slot becomes default”; it is “the user chooses a slot, then optionally marks it as default.”
 
@@ -115,9 +124,11 @@ Use this behavior in proposal style UIs:
 
 - Selecting a style applies that bundle's original color, font, and layout.
 - Editing color/font/layout preserves the selected base bundle id.
+- Picking Custom opens the color picker and writes `palette: "custom"` plus `accentHex`; picking a named color clears the custom accent and writes that named palette.
 - If the current style differs from the selected bundle defaults, show `Style N · Custom`.
 - Show a small reset action next to the style selector only while customized.
 - Reset restores the selected bundle defaults and clears the custom state.
+- In CV Forge, reset restores the selected Style N to the user's Settings slot when that slot exists; otherwise it restores the factory/native Style N.
 
 ## Implementation Pointers
 
