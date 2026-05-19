@@ -3,7 +3,7 @@ title: "Proposal Forge Document Geometry"
 category: tech
 tags: [proposal, forge, geometry, layout, document, toolbar, scrollbar, llm-note]
 created: 2026-05-07
-updated: 2026-05-07
+updated: 2026-05-20
 status: current
 valid_from: 2026-05-07
 version: v1
@@ -135,6 +135,7 @@ Rules:
 - It should not use the rail width, full grid width, or legacy 860px shell when the page is ~793.7px.
 - In collapsed mode, the toolbar and panel should read as the same document column width.
 - Toolbar controls may remain compact/intrinsic internally; only the toolbar shell aligns to paper width.
+- Control metrics (height, spacing, and padding) are driven by shared app-topbar tokens from the design token contract, not local hard-coded literals.
 
 Mental model:
 

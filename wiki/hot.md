@@ -3,7 +3,7 @@ title: "Hot Cache — twoweeks"
 category: overview
 status: current
 created: 2026-05-02
-updated: 2026-05-08
+updated: 2026-05-20
 ---
 
 # Hot Cache
@@ -15,6 +15,8 @@ Use it to choose the next pages to read, then trust current durable pages when d
 
 twoweeks is an active job application operating system centered on CV ingestion/parsing, canonical editable resume data, and contextual generation of resumes, cover letters, and proposals.
 The active knowledge model favors retrieval speed for LLM agents: read this cache first, then `wiki/index.md`, then only the few canonical pages that own the topic. Proposal Forge document geometry now has a page-first canonical contract for paper width, toolbar/panel alignment, breakpoint stability, and preview/edit scrollbar ownership.
+
+- V1 CV ATS Audit Heuristic is implemented in `my-app/src/lib/ats-audit/*` and returns a score/verdict/issue bundle for CV health; it is explicitly a heuristic layer, not a parser compatibility guarantee.
 
 ## Key Active Facts
 
@@ -36,11 +38,18 @@ The active knowledge model favors retrieval speed for LLM agents: read this cach
 - The live save blocker was `proposalSettings.savePreset` collecting and replacing every `userProfiles` row for a Clerk identity. The fix is to read/write the latest indexed profile row only; if Style 2 looks wrong, inspect persisted `proposalPreset2` / `proposalFontPairId` first.
 - Proposal Forge document geometry is page-first: `--proposal-paper-visual-inline-size` is the active page width authority; toolbar, compact panel, output shell, preview viewport, and edit body derive from it; preview/edit scrollbars sit at the page edge while edit text keeps a centered reading measure.
 - Planner-backed Workshop resume templates now include `workshop_resume_onecol_ats` and `workshop_resume_twocol_ats`; preview, print route, and export consume `committedPages` instead of re-planning independently.
+- CV ATS Audit V1 now includes fallback scoring from editable `cv.sections` when authoritative normalized export is missing, so content scoring is less brittle and less likely to produce false section/data misses.
 - Proposal AI routing now uses OpenAI `gpt-5.5` for generation, Qwen 3.6 Plus for most visible toolbar actions, Qwen 3.6 Flash for `fix_grammar`, with Mistral then DeepSeek fallbacks; proposal text review now renders as an inline diff overlay in `ProposalDisplay`.
 - Proposal signature/closing is now resolved as structured proposal metadata (`closing`): Settings/metadata fallback > legacy parsed closing > generated defaults. The UI/print/export path consumes this structured state; the current implementation is Code-only TypeScript/Convex (no Python signature path).
 - Legacy proposal drafts can still contain residual closing text artifacts; planned cleanup is needed so old saved signatures do not force edit/preview oscillation.
 - Job summary/keyword match synthesis uses the Ministral/Mistral family, currently defaulting to `ministral-3-3b-instruct-2512`.
+- Topbar controls (new, picker, identity, share, search, profile) are now tokenized in a shared app-topbar token set so CV and Proposal keep consistent pill height/spacing and collapse behavior.
 - `wiki/index.md` and `wiki/log.md` remain mandatory for every persistent wiki mutation.
+
+- ATS status model now tracks a separate CV health signal:
+  - `blocked` when `missing-cv` or unresolved import review is present.
+  - `excellent` / `good` for strong/healthy documents.
+  - `needs_review` when residual scoring risk remains.
 
 ## Canonical Pages To Read
 
@@ -67,6 +76,7 @@ The active knowledge model favors retrieval speed for LLM agents: read this cach
 - 2026-05-08: Updated [[tech/proposal-style-layer]] with the shared Custom color pipeline for Settings, CV Forge, and Proposal Forge.
 - 2026-05-08: Added [[tech/proposal-signature-closing-layer]] and started the structured signature pipeline (draft/output metadata + renderer + export propagation); UI controls remain phased.
 - 2026-05-08: Added [[outputs/2026-05-08-ui-audit-proposal-polish]] as a screenshot-only audit snapshot with verified tokens and subjective polish notes.
+- 2026-05-20: Added shared topbar tokenization in `foundation.css`, updated [[design/document-token-contract]] and [[tech/proposal-forge-document-geometry]] to lock cross-surface toolbar control sizing/spacing (CV + Proposal) to the same model.
 
 ## Open Threads
 

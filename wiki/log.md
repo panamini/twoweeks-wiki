@@ -1,7 +1,7 @@
 ---
 title: "Log — twoweeks Wiki"
 category: overview
-updated: 2026-05-08
+updated: 2026-05-20
 ---
 
 # Log du Wiki · twoweeks
@@ -14,6 +14,41 @@ grep "^## \[" wiki/log.md | grep "ingest"  # Tous les ingests
 ```
 
 ---
+
+## [2026-05-20] direct-update | topbar tokenized chrome alignment
+
+**Agent** : Codex
+**Mode** : direct-update
+**Pages créées** :
+- Aucune
+**Pages mises à jour** :
+- `my-app/src/styles/foundation.css`
+- `my-app/src/styles/product.css`
+- `my-app/src/components/__tests__/SidebarVisual.css.test.ts`
+- `my-app/src/components/__tests__/ProposalDisplay.css.test.ts`
+- `wiki/design/document-token-contract.md`
+- `wiki/tech/proposal-forge-document-geometry.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+**Points notables** :
+- Définition explicite de la tokenisation topbar dans le contrat design pour stabiliser les métriques des contrôles (hauteur, gap, padding, alignement).
+- Ajout de la règle “topbar commune” dans `proposal-forge-document-geometry` : les contrôles de toolbar sont gouvernés par les tokens app-topbar de `foundation.css`, pas des literals locaux.
+- Mise à jour de la page de focus/chaleur (`hot.md`) avec la règle d’alignement CV/Proposal des contrôles, pour mémoire opérationnelle partagée.
+
+## [2026-05-11] direct-update | CV ATS audit heuristic note ingested
+
+**Agent** : Codex
+**Mode** : direct-update
+**Pages créées** :
+- `wiki/tech/cv-ats-audit-heuristic.md`
+**Pages mises à jour** :
+- `wiki/index.md`
+- `wiki/hot.md`
+- `wiki/log.md`
+**Points notables** :
+- Ajoute la note technique V1 sur l'évaluation ATS heuristique CV (`evaluateCvAtsAudit`) et ses contraintes (heuristique, non parser-compatible ATS réel).
+- Documente : seuils (excellent/good/needs_review/blocked), catégories, poids, fallback sur `cv.sections` quand le modèle export normalisé de confiance manque, et cas bloquants (`missing-cv`, `unresolved-import-review`).
 
 ## [2026-05-08] direct-update | ui audit proposal-polish snapshot
 

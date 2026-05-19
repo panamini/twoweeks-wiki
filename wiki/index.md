@@ -2,7 +2,7 @@
 title: Index du Wiki — twoweeks
 category: overview
 sticker: emoji//1f9c6
-updated: 2026-05-08
+updated: 2026-05-20
 ---
 
 # Index du Wiki · twoweeks (v2)
@@ -24,6 +24,7 @@ Le contrôle opératoire du repo reste défini par `WIKI_SCHEMA.md` puis `CLAUDE
 | Proposal Forge geometry | [[tech/proposal-forge-document-geometry]] | [[tech/proposal-style-layer]], [[design/document-token-contract]] |
 | Proposal signature/closing | [[tech/proposal-signature-closing-layer]] | [[tech/proposal-style-layer]], [[tech/proposal-forge-document-geometry]], [[tech/export-pipeline]] |
 | Design / ATS / motion | [[design/ats-safety]] | [[design/document-token-contract]], [[design/motion-system]], [[design/brand-voice]] |
+| ATS scoring / health | [[tech/cv-ats-audit-heuristic]] | [[design/ats-safety]], [[concepts/cv-parsing-pipeline]] |
 | Opérations locales | [[howto/local-parser-operations]] | [[tech/local-vs-remote-parser-architecture]] |
 | Règles wiki | [[meta/llm-wiki-pattern]] | [[meta/temporal-management]], [[meta/codex-prompting-standards]] |
 
@@ -191,6 +192,7 @@ CV Forge PR4 Remaining Tasks now reflects the 860px paper-width sync, rich summa
 | [[tech/local-vs-remote-parser-architecture\|Local vs Remote Parser Architecture]] | Séparation debug local / cloud / prod pour le parser | parser, env, production |
 | [[tech/preview-to-print-pipeline\|Preview-to-Print Pipeline]] | Parité preview -> print route -> PDF pour resume et proposal | preview, print, pdf |
 | [[tech/proposal-ai-routing-and-inline-diff\|Proposal AI Routing and Inline Diff]] | Routing proposal AI, selector models, and inline proofing overlay | proposal, ai, routing |
+| [[tech/cv-ats-audit-heuristic\|CV ATS Audit Heuristic]] | Heuristique de santé CV (score/verdict/issue bundle) pour signalements document-level | ats, scoring, quality |
 | [[tech/proposal-forge-document-geometry|Proposal Forge Document Geometry]] | Canon page-first: paper width, toolbar/panel alignment, breakpoint stability, preview/edit scrollbars | proposal, forge, geometry |
 | [[tech/proposal-signature-closing-layer\|Proposal Signature & Closing Layer]] | Signature/closing comme état structuré + fallback legacy + propagation preview/print/export | proposal, signature |
 | [[tech/proposal-style-layer|Proposal Style Layer]] | Base Style 1/2/3, default-slot model, Custom color token path, live boundary note, et reset des personnalisations proposal | proposal, style, tokens |

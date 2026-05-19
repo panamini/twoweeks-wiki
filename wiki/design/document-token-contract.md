@@ -3,7 +3,7 @@ title: "Document Token Contract"
 category: design
 tags: [tokens, geometry, flow, appearance, runtime, layout, export]
 created: 2026-04-16
-updated: 2026-04-27
+updated: 2026-05-20
 status: current
 valid_from: 2026-04-16
 version: v1
@@ -45,6 +45,21 @@ Contrat canonique des classes de tokens document pour aligner preview, export CS
 ## Pourquoi ça compte
 
 Sans ce contrat, preview, export HTML/CSS et DOCX dérivent facilement vers plusieurs systèmes concurrents. Avec lui, chaque classe sait ce qu'elle a le droit d'influencer.
+
+## Contrat Topbar (chrome commune)
+
+La topbar d'application partage un contrat unique `app-topbar` pour la forme visuelle des contrôles (taille, gap, padding, alignement global).  
+
+Règles de gouvernance:
+
+- `foundation.css` détient la vérité des tokens topbar (épaisseur, espacements, dimensions de contrôle) ; les CSS de page ne doivent pas réinventer leurs propres valeurs.
+- La topbar ne change pas de colonne logique entre CV et Proposal ; seule l'étiquette interne du contenu peut varier.
+- Les hauteurs minimales, largeurs de base et arrondis des contrôles sont des valeurs tokenisées, pas des literals locaux.
+- Les contrôles sont alignés sur une seule unité tactile/interactive (`control-sm`) avec des gaps/paddings dédiés topbar (`app-topbar-*`) afin d'éviter les écarts visuels entre modules.
+- En collapsed/mobile, la largeur visuelle doit se réduire par la mécanique topbar (wrapper + actions compactées), pas par des hacks de largeur par surface.
+- La variation de largeur sémantique (identity/title/picker/new/share/search) doit rester dérivée de la géométrie topbar, pas des tailles de page document.
+
+Quand on ajoute ou retouche un écran, la première question doit être: ce style existe déjà dans `foundation.css` / contrat topbar, ou on crée un nouveau token de chrome.
 
 ## Cas proposal
 
