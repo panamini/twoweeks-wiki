@@ -3,14 +3,14 @@ title: "AI Product Model — Modes, règles et qualité"
 category: product
 tags: [ai, ux, modes, toolbar, rulebook, qualité, writing, suggestion]
 created: 2026-04-10
-updated: 2026-04-10
+updated: 2026-05-26
 status: current
 valid_from: 2026-04-10
 valid_until:
 superseded_by:
 horizon: present
 version: v1
-sources: [2026-04-10-success-blueprint, 2026-04-10-notion-roadmap-cvforge]
+sources: [2026-04-10-success-blueprint, 2026-04-10-notion-roadmap-cvforge, 2026-05-25-proposal-generation-truth-planner]
 related: [[product/product-vision]], [[product/product-roadmap]], [[archive/entities/cv-forge]]
 ---
 
@@ -94,6 +94,21 @@ rewrite · shorten · strengthen · humanize · formalize · fix grammar · alig
 **Règle 4** : L'IA se souvient du contexte automatiquement : job · tone · user profile · target role · section type
 
 **Règle 5** : L'IA est la plus forte sur : summary · experience bullets · cover letter opening · call to action · ATS keyword adaptation. Tout n'a pas besoin d'une égale intensité IA.
+
+---
+
+## Planner Agent Chain of Thought
+
+The Planner's Chain of Thought:
+
+- Define the Target: What does the job strictly require?
+- Audit the Truth: What does the candidate actually have, and where are the hard boundaries?
+- Apply the Seasoning: Which of these truthful facts best serves this specific company's context?
+- Wrap the Output: Apply ATS vocabulary and peer-to-peer tone.
+
+We never let the seasoning (Company Context) dictate the audit (CV Evidence).
+
+You nailed it. Stick to this 8-step order for the shadow planner's reasoning chain. It is the safest, most sophisticated way to build this engine.
 
 ---
 

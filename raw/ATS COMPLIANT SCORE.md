@@ -316,4 +316,4 @@ A CV/résumé should be considered **“ATS excellent”** only if it is:
 - **Clean enough for a human recruiter to scan in seconds** ([Indeed](https://www.indeed.com/career-advice/resumes-cover-letters/ats-resume-template "How To Write an ATS Resume (With Template and Tips) | Indeed.com"))
     
 
-I can also turn this into a **JSON schema** or a **fillable audit checklist**.
+I can also turn this into a **JSON schema** or a **fillable audit checklist** 

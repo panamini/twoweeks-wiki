@@ -61,6 +61,17 @@ Règles de gouvernance:
 
 Quand on ajoute ou retouche un écran, la première question doit être: ce style existe déjà dans `foundation.css` / contrat topbar, ou on crée un nouveau token de chrome.
 
+## Button Geometry and Action Hierarchy
+
+La forme des boutons suit la sémantique d'action, pas le goût visuel local.
+
+- Les contrôles toolbar icon-only utilisent le bouton icône squircle canonique (`radius-control` / `radius-toolbar-control`).
+- Les actions workflow primaires utilisent un pill (`radius-pill`), même en densité compacte quand le label se raccourcit.
+- Les handles assistant utilisent le squircle quand ils sont icon-only et un pill doux quand un label est visible.
+- Les actions globales header utilisent les pills neutres du header sauf lorsqu'elles sont l'action primaire courante.
+- Les cercles sont réservés aux avatars, status dots, knobs ou contrôles explicitement circulaires.
+- Ne pas mélanger cercle, squircle et pill selon l'impression visuelle; la forme découle du niveau d'action.
+
 ## Cas proposal
 
 Pour les proposals, la séparation critique est :

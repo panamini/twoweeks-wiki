@@ -56,6 +56,7 @@ related: [[entities/twoweeks]], [[concepts/cv-parsing-pipeline]], [[concepts/cv-
 - [ ] ui check polish le drpo shadow pour header et bottom bar ds proosal generator two shells
 - [ ] enorme blanc bas d apge en bas de janice ou un atrue cv absoluemnt a corrger
 - [ ] ajouter une font https://anrt-nancy.fr/en gothique pour signature lettre
+- [ ] ajouter la certification [[ATS COMPLIANT SCORE]]
 
 ( ) 
 

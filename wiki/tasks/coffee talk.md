@@ -35,8 +35,9 @@ ajouter un module de creation d'avatar ia.
 
 --trucs a affiner
 
--un point de bullet list en trop dans le cv , a supprimer
+
 -les generation de proposal font plus d'une page , inclure une limite de longueur.
--passer le bouton share dans le header, ansin que undo redo 
+
 -mettre en dynamique affichage une toolbar de style qd le texte est sleectionné
--arriver a moyen terme a avoir a simplifier le panneau de droite, dans cv forge, pour qu'il soit plus que dédier a des taches ai . et passer les choses obligatoire a gauche dans la sidebar.
+-ajouter un profil user(avec import linkedin/upwork/indeed profile), context carreer, avec toutes les experiences achivments de l'user, puis un job/cv match engine, qui fait que l'ia va creer un cv sur mesure en fonction de l'offre d'emploi. avec aussi une creation de cartes/sections dynamiques a chocher/decocher pour créer le cv. 
+-ajouter un module pour les tests, avec etoiles et champs texte,apres des actions significatives dans l'app, et relier ça au module autoresearch de karpathy sur git, pour que l'ia reprogramme l'app automatiquement en fonction des notes . 
