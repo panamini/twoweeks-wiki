@@ -2,7 +2,7 @@
 title: Index du Wiki — twoweeks
 category: overview
 sticker: emoji//1f9c6
-updated: 2026-05-20
+updated: 2026-05-26
 ---
 
 # Index du Wiki · twoweeks (v2)
@@ -18,6 +18,7 @@ Le contrôle opératoire du repo reste défini par `WIKI_SCHEMA.md` puis `CLAUDE
 |-------|----------------|------------|
 | Mémoire active LLM | [[hot]] | [[overview]], [[meta/llm-wiki-pattern]] |
 | État produit | [[overview]] | [[entities/twoweeks]], [[product/product-roadmap]], [[product/product-vision]] |
+| Planning IA shadow | [[product/ai-product-model]] | [[tech/proposal-ai-routing-and-inline-diff]], [[sources/2026-05-25-proposal-generation-truth-planner]] |
 | Parser / vérité CV | [[concepts/cv-parsing-pipeline]] | [[concepts/cv-families]], [[tech/import-ocr-pipeline]] |
 | Jobs / match | [[product/job-library]] | [[product/job-match-review]] |
 | Export / pagination | [[tech/export-pipeline]] | [[tech/preview-to-print-pipeline]], [[tech/workshop-pagination]] |
@@ -25,6 +26,7 @@ Le contrôle opératoire du repo reste défini par `WIKI_SCHEMA.md` puis `CLAUDE
 | Proposal signature/closing | [[tech/proposal-signature-closing-layer]] | [[tech/proposal-style-layer]], [[tech/proposal-forge-document-geometry]], [[tech/export-pipeline]] |
 | Design / ATS / motion | [[design/ats-safety]] | [[design/document-token-contract]], [[design/motion-system]], [[design/brand-voice]] |
 | ATS scoring / health | [[tech/cv-ats-audit-heuristic]] | [[design/ats-safety]], [[concepts/cv-parsing-pipeline]] |
+| Langue / localisation | [[strategy/language-localization]] | [[design/locale-typography-rules]], [[product/product-roadmap]] |
 | Opérations locales | [[howto/local-parser-operations]] | [[tech/local-vs-remote-parser-architecture]] |
 | Règles wiki | [[meta/llm-wiki-pattern]] | [[meta/temporal-management]], [[meta/codex-prompting-standards]] |
 
@@ -79,7 +81,7 @@ Cette carte est un routeur de lecture pour agents LLM. Elle ne remplace pas les 
 
 | Page | Résumé | Status | Tags |
 |------|--------|--------|------|
-| [[product/ai-product-model\|AI Product Model]] | 3 modes IA, rulebook et qualité writing | current | ai, ux, modes |
+| [[product/ai-product-model\|AI Product Model]] | 3 modes IA, rulebook, qualité writing, and Planner Agent shadow chain | current | ai, ux, modes |
 | [[product/ai-consistency-p0-editor-ai\|AI Consistency P0 — Closure Audit]] | Closure audit snapshot du rulebook AI editor, preview, telemetry et tailoring | current | ai, editor, rulebook |
 | [[product/job-library\|Job Library]] | Jobs sauvegardés, Job Brief editable et documents liés | current | jobs, library |
 | [[product/job-match-review\|Job Match Review]] | Match comme indicateur d'attention utilisateur et dogfood interne | current | jobs, match |
@@ -95,6 +97,7 @@ Cette carte est un routeur de lecture pour agents LLM. Elle ne remplace pas les 
 |------|--------|--------|------|
 | [[strategy/benchmark-matrix\|Benchmark Matrix]] | Scorecard concurrentielle pondérée | current | benchmark, scoring |
 | [[strategy/gap-analysis\|Gap Analysis]] | Diagnostic concurrentiel avec gaps restants vs items déjà implémentés | current | gap, diagnostic |
+| [[strategy/language-localization\|Language Localization]] | Rollout language strategy: UI vs document vs market, promotion gates, RTL and release rules | current | i18n, localization |
 
 ---
 
@@ -181,6 +184,10 @@ CV Forge PR4 Remaining Tasks now reflects the 860px paper-width sync, rich summa
 | [[sources/2026-04-30-jobs-language-localization-scratchpad|Jobs Language Localization Scratchpad]] | scratchpad | 2026-04-30 | current |
 | [[sources/2026-04-30-refonte-wiki-claude-obsidian|Revue: refonte wiki claude-obsidian]] | decision | 2026-04-30 | current |
 | [[sources/2026-04-30-two-weeks-app-skeleton-skill|Twoweeks App Skeleton Skill Source]] | skill | 2026-04-30 | current |
+| [[sources/2026-05-25-proposal-generation-truth-planner\|Proposal Generation Truth Planner]] | source | 2026-05-25 | current |
+| [[sources/2026-05-25-two-weeks-theme-palette\|Two Weeks Theme Palette]] | source | 2026-05-25 | current |
+| [[sources/2026-05-21-cv-proposal-command-layer-unification-note|Command Layer Unification Note — CV & Proposal Toolbars]] | source | 2026-05-21 | current |
+| [[sources/2026-05-26-two-weeks-language-map-reference-note\|Two Weeks Language Map Reference Note]] | source | 2026-05-26 | current |
 ---
 
 ## Tech
@@ -231,6 +238,7 @@ CV Forge PR4 Remaining Tasks now reflects the 860px paper-width sync, rich summa
 | Page | Type | Date | Sujet |
 |------|------|------|-------|
 | [[outputs/2026-05-08-ui-audit-proposal-polish|UI Audit — proposal-polish]] | analysis | 2026-05-08 | Screenshot-only audit of Proposal Forge polish |
+| [[outputs/2026-05-26-proposal-language-generation-hardening|Language Pipeline Hardening Checkpoint]] | analysis | 2026-05-26 | Document-language hardening status, smoke checks, and expansion plan |
 
 ---
 
@@ -245,11 +253,8 @@ CV Forge PR4 Remaining Tasks now reflects the 860px paper-width sync, rich summa
 
 ## Statistiques
 
-- **Pages actives** : 115 (5 overview, 1 entité, 2 concepts, 8 design, 7 product, 2 strategy, 3 meta, 66 sources, 12 tech, 5 howto, 3 tasks, 1 output)
+- **Pages actives** : 119 (5 overview, 1 entité, 2 concepts, 8 design, 7 product, 3 strategy, 3 meta, 70 sources, 12 tech, 5 howto, 3 tasks, 1 output)
 - **Pages archivées** : 2
-- **Sources dans `raw/`** : 68
-- **Sources en attente dans `rawinput/`** : 0
-- **Dernière mise à jour** : 2026-05-08
-`raw/`** : 68
-- **Sources en attente dans `rawinput/`** : 0
-- **Dernière mise à jour** : 2026-05-08
+- **Sources dans `raw/`** : 73
+- **Sources en attente dans `rawinput/`** : 1
+- **Dernière mise à jour** : 2026-05-26

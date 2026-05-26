@@ -3,7 +3,7 @@ title: "Hot Cache — twoweeks"
 category: overview
 status: current
 created: 2026-05-02
-updated: 2026-05-20
+updated: 2026-05-26
 ---
 
 # Hot Cache
@@ -17,10 +17,13 @@ twoweeks is an active job application operating system centered on CV ingestion/
 The active knowledge model favors retrieval speed for LLM agents: read this cache first, then `wiki/index.md`, then only the few canonical pages that own the topic. Proposal Forge document geometry now has a page-first canonical contract for paper width, toolbar/panel alignment, breakpoint stability, and preview/edit scrollbar ownership.
 
 - V1 CV ATS Audit Heuristic is implemented in `my-app/src/lib/ats-audit/*` and returns a score/verdict/issue bundle for CV health; it is explicitly a heuristic layer, not a parser compatibility guarantee.
+- Planner Agent for shadow proposal truth planning now uses a defined chain in [[product/ai-product-model]].
 
 ## Key Active Facts
 
 - Product truth is `twoweeks`; CVForge and ProposalForge are internal module names, not the current product identity.
+- Language rollout now distinguishes three independent layers: **UI language**, **document language**, and **market language**; language support should be managed per-layer, not as a single boolean.
+- Proposal language hardening is active for generated documents (`de`, `ru`, `ar`, `pl`) with deterministic English fallback copy explicitly blocked when document language is not `en`/`fr`.
 - Parser truth should flow through structured sections, especially `currentCv.sections[*].structuredContent`, rather than legacy top-level arrays when structured sections are valid.
 - Export truth is generated final PDF/DOCX output from normalized data, not the preview DOM alone.
 - Local parser work should prefer `./run.sh local-fast`; `local` is not equivalent for full structured upload backend behavior.
@@ -44,7 +47,12 @@ The active knowledge model favors retrieval speed for LLM agents: read this cach
 - Legacy proposal drafts can still contain residual closing text artifacts; planned cleanup is needed so old saved signatures do not force edit/preview oscillation.
 - Job summary/keyword match synthesis uses the Ministral/Mistral family, currently defaulting to `ministral-3-3b-instruct-2512`.
 - Topbar controls (new, picker, identity, share, search, profile) are now tokenized in a shared app-topbar token set so CV and Proposal keep consistent pill height/spacing and collapse behavior.
+- Button geometry follows action hierarchy: icon-only toolbar controls use the canonical squircle, primary workflow actions use pills, and assistant handles use squircle when icon-only or a soft pill when labeled.
 - `wiki/index.md` and `wiki/log.md` remain mandatory for every persistent wiki mutation.
+- CV and Proposal toolbar density/placement + Ask anchor behavior are now driven by shared command-layer primitives to avoid drift; CV/Proposal only differ by action list.
+- Proposal generation now has a confirmed shadow truth-layer contract in planning (`ProposalTruthPlanV1`) before live writer integration.
+- A consolidated Two Weeks light/dark token set has been ingested as a source candidate for mapping into current theme token files.
+- Planner Agent shadow reasoning is now explicitly constrained to: define strict target, audit truth evidence/boundaries, apply company context only as seasoning, and wrap output with ATS vocabulary + peer-to-peer tone.
 
 - ATS status model now tracks a separate CV health signal:
   - `blocked` when `missing-cv` or unresolved import review is present.
@@ -54,8 +62,10 @@ The active knowledge model favors retrieval speed for LLM agents: read this cach
 ## Canonical Pages To Read
 
 - Product state: [[overview]], [[entities/twoweeks]], [[product/product-roadmap]], [[product/product-vision]]
+- Proposal truth planning: [[product/ai-product-model]]
 - Parser and import truth: [[concepts/cv-parsing-pipeline]], [[concepts/cv-families]], [[tech/import-ocr-pipeline]]
 - Jobs: [[product/job-library]], [[product/job-match-review]]
+- Language strategy: [[strategy/language-localization]]
 - Export and layout: [[tech/export-pipeline]], [[tech/preview-to-print-pipeline]], [[tech/workshop-pagination]]
 - Proposal geometry and style: [[tech/proposal-forge-document-geometry]], [[tech/proposal-style-layer]], [[tech/proposal-signature-closing-layer]], [[design/document-token-contract]]
 - Design system and safety: [[design/ats-safety]], [[design/document-token-contract]], [[design/motion-system]], [[design/brand-voice]]
@@ -77,6 +87,9 @@ The active knowledge model favors retrieval speed for LLM agents: read this cach
 - 2026-05-08: Added [[tech/proposal-signature-closing-layer]] and started the structured signature pipeline (draft/output metadata + renderer + export propagation); UI controls remain phased.
 - 2026-05-08: Added [[outputs/2026-05-08-ui-audit-proposal-polish]] as a screenshot-only audit snapshot with verified tokens and subjective polish notes.
 - 2026-05-20: Added shared topbar tokenization in `foundation.css`, updated [[design/document-token-contract]] and [[tech/proposal-forge-document-geometry]] to lock cross-surface toolbar control sizing/spacing (CV + Proposal) to the same model.
+- 2026-05-20: Updated [[design/document-token-contract]] with the button geometry/action hierarchy canon for toolbar controls, Draft workflow actions, assistant handles, and global header actions.
+- 2026-05-21: Added [[sources/2026-05-21-cv-proposal-command-layer-unification-note]] on shared command-layer behavior: toolbar density parity, commandLayerY, and Ask anchor quality bar.
+- 2026-05-25: Ingested [[sources/2026-05-25-proposal-generation-truth-planner]] and [[sources/2026-05-25-two-weeks-theme-palette]]; staged files moved to `raw/`.
 
 ## Open Threads
 
@@ -85,3 +98,4 @@ The active knowledge model favors retrieval speed for LLM agents: read this cach
 - Consider read-only lint support for duplicate durable pages and stale retrieval routes.
 - Close loop on `wiki/tech/proposal-signature-closing-layer.md` legacy artifact cleanup and edit-mode lock case before declaring signature migration complete.
 - Test daily use of `hot.md` before building `wiki/llms.txt`.
+- Add watchlist candidates `zh` and `ta` only after stable proposal safety in production-like runs across non-English document output and metadata traceability.

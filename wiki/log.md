@@ -1,7 +1,7 @@
 ---
 title: "Log — twoweeks Wiki"
 category: overview
-updated: 2026-05-20
+updated: 2026-05-26
 ---
 
 # Log du Wiki · twoweeks
@@ -12,6 +12,117 @@ Journal chronologique append-only de toutes les opérations sur le wiki.
 grep "^## \[" wiki/log.md | tail -5   # Dernières 5 entrées
 grep "^## \[" wiki/log.md | grep "ingest"  # Tous les ingests
 ```
+
+---
+
+## [2026-05-26] direct-update | proposal language pipeline hardening checkpoint
+
+**Agent** : Codex
+**Mode** : direct-update
+**Pages créées** :
+- `wiki/outputs/2026-05-26-proposal-language-generation-hardening.md`
+**Pages mises à jour** :
+- `wiki/index.md`
+- `wiki/hot.md`
+- `wiki/strategy/language-localization.md`
+- `wiki/log.md`
+**Points notables** :
+- Captured the current language-generation state: UI layer still `en`/`fr`/`es`; document languages broader and independent (`de`, `ru`, `ar`, `pl`).
+- Recorded that deterministic English fallback prose is blocked for non-`en`/`fr` document languages in proposal helper paths under the hardening pass.
+- Added a forward-looking note for optional future document candidates (`zh`, `ta`) after QA evidence threshold is met.
+- Confirmed hot/index/log consistency after this mutation.
+
+---
+
+## [2026-05-26] direct-update | proposal planner chain-of-thought documentation
+
+**Agent** : Codex
+**Mode** : direct-update
+**Pages mises à jour** :
+- `wiki/product/ai-product-model.md`
+- `wiki/index.md`
+- `wiki/hot.md`
+**Points notables** :
+- Added the Planner Agent chain-of-thought text verbatim to product documentation as the canonical shadow planner reasoning order.
+- Added cross-references in wiki hot cache and retrieval index so the Planner Agent chain is discoverable.
+- Linked [[product/ai-product-model]] to the existing source evidence: `sources/2026-05-25-proposal-generation-truth-planner`.
+
+---
+
+## [2026-05-26] ingest | language localization strategy reference
+
+**Agent** : Codex
+**Mode** : ingest
+**Fichiers traités** :
+- `rawinput/Two Weeks Language Map — Reference Note.md`
+**Fichiers non traités** :
+- `rawinput/emojis library .md` (intentionnellement ignoré)
+**Pages créées** :
+- `wiki/sources/2026-05-26-two-weeks-language-map-reference-note.md`
+- `wiki/strategy/language-localization.md`
+**Pages mises à jour** :
+- `wiki/index.md`
+- `wiki/hot.md`
+- `wiki/log.md`
+**Pages archivées** :
+- aucune
+**Points notables** :
+- La note de langage est ingérée comme source de stratégie et déployée dans `wiki/strategy/language-localization.md`.
+- Le fichier traité a été déplacé vers `raw/2026-05-26-two-weeks-language-map-reference-note.md` pour immutabilité `raw/`.
+- La bibliothèque d’emojis n’a pas été ingérée par demande.
+
+---
+
+## [2026-05-25] ingest | proposal truth and theme palette ingest
+
+**Agent** : Codex
+**Mode** : ingest
+**Fichiers traités** :
+- `rawinput/Proposal Generation Truth Planner.md`
+- `rawinput/light and dark theme two weeks .md`
+**Pages créées** :
+- `wiki/sources/2026-05-25-proposal-generation-truth-planner.md`
+- `wiki/sources/2026-05-25-two-weeks-theme-palette.md`
+**Mise à jour des pages** :
+- `wiki/index.md`
+- `wiki/hot.md`
+- `wiki/log.md`
+**Points notables** :
+- Les nouvelles entrées de `rawinput/` ont été ingérées en tant que sources.
+- Dédoublonnage vérifié : aucun duplicate exact n’a été trouvé dans `wiki/sources/`.
+- Les fichiers ont été déplacés vers `raw/` avec conservation de l’original.
+- `rawinput/` repasse à vide (hors `README.md`).
+**Référence ingest** : `raw/` immuable.
+
+---
+
+## [2026-05-21] direct-update | shared command-layer parity for CV/Proposal toolbar + Ask
+
+**Agent** : Codex
+**Mode** : direct-update
+**Pages créées** :
+- `wiki/sources/2026-05-21-cv-proposal-command-layer-unification-note.md`
+**Pages mises à jour** :
+- `my-app/src/hooks/use-document-command-layer-position.ts`
+- `my-app/src/lib/document-command-layer-layout.ts`
+- `my-app/src/pages/CvForge.tsx`
+- `my-app/src/pages/ProposalForge.tsx`
+- `my-app/src/styles/product-cv.css`
+- `my-app/src/styles/product-proposal.css`
+- `my-app/src/styles/foundation.css`
+- `my-app/src/styles/product.css`
+- `my-app/src/components/__tests__/CvForgeToolbar.css.test.ts`
+- `my-app/src/components/__tests__/ProposalDisplay.css.test.ts`
+- `my-app/src/hooks/__tests__/use-document-command-layer-position.test.tsx`
+- `my-app/src/lib/__tests__/document-command-layer-layout.test.ts`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+**Points notables** :
+- Unifie la logique de positionnement/densité du command-layer (toolbar + Ask) entre CV Forge et Proposal Forge via logique partagée (`use-document-command-layer-position` / `document-command-layer-layout`).
+- Supprime les déviations CV-only qui causaient labels persistants à faible zoom, offsets Ask séparés et sauts de handle.
+- Préserve les garde-fous de qualité: même comportement de mode compact/ultra et de sticky `commandLayerY` pour les deux surfaces.
+- Garde la sémantique zoom CV intouchée (valeur utilisateur inchangée), en appliquant le rétrécissement uniquement par tokens de densité partagée.
 
 ---
 
