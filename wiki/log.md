@@ -15,6 +15,27 @@ grep "^## \[" wiki/log.md | grep "ingest"  # Tous les ingests
 
 ---
 
+## [2026-05-26] direct-update | proposal language hardening final state
+
+**Agent** : Codex
+**Mode** : direct-update
+**Pages créées** :
+- aucune
+**Pages mises à jour** :
+- `wiki/strategy/language-localization.md`
+- `wiki/tech/proposal-ai-routing-and-inline-diff.md`
+- `wiki/outputs/2026-05-26-proposal-language-generation-hardening.md`
+- `wiki/hot.md`
+- `wiki/log.md`
+**Points notables** :
+- Recorded final merged status for PR #58/#59/#60 in the proposal language hardening chain.
+- Added explicit policy: unsupported exact numeric/duration/credential/ownership/operational claims remain hard-blocks in production, while vague timeline claims stay repair-first.
+- Recorded that job title/job description are not candidate-proof sources for numeric/duration authorization.
+- Preserved the `en`/`fr`/`es` UI scope and document-first rollout for additional language support (`de`, `ru`, `pl`, `ar`).
+- Confirmed no page creation and no index reclassification was required in this pass.
+
+---
+
 ## [2026-05-26] direct-update | proposal language pipeline hardening checkpoint
 
 **Agent** : Codex

@@ -21,15 +21,18 @@ This avoids false assumptions that UI localization and document output support m
 ## Current status (2026-05-26)
 
 - `en`, `fr`, `es` are active for UI, document generation, and marketing.
-- `de`, `ru`, `pl`, `ar` are available in document generation and included in safe preview/fallback logic; they are not surfaced as UI locales yet.
-- `ar` is doc-ready only: document export uses `lang="ar"` and right-to-left direction, while app UI direction is still driven by UI locale only.
+- `de`, `ru`, `pl`, `ar` are active in document generation and included in safe preview/fallback logic; they are not surfaced as UI locales yet.
+- `ar` is document-ready only: export uses `lang="ar"` and right-to-left `dir`, while app UI direction stays driven by UI locale only.
 - Proposal generation metadata is now threaded through the pipeline as:
   - `requestedLanguage`
   - `resolvedLanguage`
   - `languageSource`
   - `jobDetectedLanguage`
+- Proposal output and enforcement hardening is complete in three PR steps: #58 (premium cover-letter Mistral safety), #59 (benchmark/eval-only quality gates), #60 (production enforcement severity split).
 - Deterministic helper copy in proposal output/signature/enforcement no longer applies English fallback text to non-`en`/`fr` document languages.
-- A dedicated smoke pass has confirmed behavior for `en`, `fr`, `de`, `ru`, `ar`, `pl` with explicit checks against English salutation/signoff leakage.
+- The latest enforcement change keeps exact unsupported numbers/durations/metrics hard-blocked while moving vague timeline phrases (e.g. `in recent years`) to repair-first behavior.
+- Job title and job-description text is intentionally excluded from candidate proof authorization for numeric/duration checks; only allowed concrete candidate facts can authorize unsupported-proof checks.
+- A dedicated smoke+regression pass has confirmed behavior for `en`, `fr`, `de`, `ru`, `ar`, `pl` with explicit checks against English salutation/signoff leakage and unsupported duration transfer.
 
 ## Language layers
 

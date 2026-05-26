@@ -22,6 +22,7 @@ This page records the active routing contract for ProposalForge AI and the inlin
 - The default proposal writer model is `gpt-5.5`.
 - The writer request uses low reasoning effort and medium text verbosity.
 - The proposal form can still be overridden through environment variables, but the visible default remains `chatgpt` when no override is present.
+- The request path includes `outputLanguage` from the proposal payload and does not force English-then-translate behavior.
 
 ### Editor helper actions
 
@@ -53,6 +54,15 @@ Match-read synthesis:
 - Job summary and keyword match synthesis uses the Ministral/Mistral family.
 - The current default model is `ministral-3-3b-instruct-2512`.
 - This is separate from proposal generation and editor helper actions.
+
+### Language hardening on proposal output
+
+- Proposal language quality is enforced in two layers:
+  - benchmark/eval hardening validates language-specific leakage and unsupported claim patterns in synthetic test runs.
+  - production enforcement enforces unsupported exact numeric, duration, credential, ownership, and operational-history claims at runtime.
+- The production layer keeps vague timeline language as repair-first (`vague_timeline_claim`) so strong writing is not flattened.
+- Source-authorized proof checks use candidate facts only; job-description requirements do not authorize unsupported numeric proof in generated copy.
+- This split preserves production behavior while keeping QA coverage for `de`, `ru`, `ar`, and `pl`.
 
 ## Inline Diff Overlay
 

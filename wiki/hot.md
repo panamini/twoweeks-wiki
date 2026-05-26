@@ -18,6 +18,7 @@ The active knowledge model favors retrieval speed for LLM agents: read this cach
 
 - V1 CV ATS Audit Heuristic is implemented in `my-app/src/lib/ats-audit/*` and returns a score/verdict/issue bundle for CV health; it is explicitly a heuristic layer, not a parser compatibility guarantee.
 - Planner Agent for shadow proposal truth planning now uses a defined chain in [[product/ai-product-model]].
+- Proposal generation language hardening is merged in PR #60 after PR #58 and #59; production strictness now blocks unsupported exact numeric/duration/credential/operational claims while routing vague timeline language to repair-first handling.
 
 ## Key Active Facts
 
@@ -74,6 +75,7 @@ The active knowledge model favors retrieval speed for LLM agents: read this cach
 
 ## Recent Changes
 
+- 2026-05-26: Proposal language hardening is complete across PR #58 (premium cover-letter safety), PR #59 (benchmark/eval gates), and PR #60 (production timeline/unsupported-proof enforcement split).
 - 2026-05-02: Added this active-memory cache, README startup guidance, and [[tasks/coffee talk]] for syncing collaborator Codex skills.
 - 2026-05-02: Added [[howto/wiki-commands-and-llm-export]] for wiki commands and the `wiki/llms.txt` export proposal.
 - 2026-05-02: Added an agent memory prompt to README, AGENTS.md, and the wiki commands howto.
