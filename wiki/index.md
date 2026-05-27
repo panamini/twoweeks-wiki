@@ -228,6 +228,7 @@ CV Forge PR4 Remaining Tasks now reflects the 860px paper-width sync, rich summa
 | Page | Résumé |
 |------|--------|
 | [[tasks/kanban\|Kanban Sprint]] | Backlog, en cours, bugs ouverts, déférés, done |
+| [[tasks/docx-layout-parity-follow-up\|DOCX Layout Parity Follow-up]] | Deferred DOCX RTL layout, bullets, tables, and font strategy follow-up |
 | [[tasks/coffee talk\|Coffee Talk]] | Note courte pour synchroniser la skill Codex collaborateur |
 | [[tasks/Audit Workspace — Bonnes Pratiques, Sécurité, RGPD\|Audit Workspace — Bonnes Pratiques, Sécurité, RGPD]] | Audit sauvegardé du workspace |
 
@@ -253,8 +254,8 @@ CV Forge PR4 Remaining Tasks now reflects the 860px paper-width sync, rich summa
 
 ## Statistiques
 
-- **Pages actives** : 119 (5 overview, 1 entité, 2 concepts, 8 design, 7 product, 3 strategy, 3 meta, 70 sources, 12 tech, 5 howto, 3 tasks, 1 output)
+- **Pages actives** : 120 (5 overview, 1 entité, 2 concepts, 8 design, 7 product, 3 strategy, 3 meta, 70 sources, 12 tech, 5 howto, 4 tasks, 1 output)
 - **Pages archivées** : 2
 - **Sources dans `raw/`** : 73
 - **Sources en attente dans `rawinput/`** : 1
-- **Dernière mise à jour** : 2026-05-26
+- **Dernière mise à jour** : 2026-05-27

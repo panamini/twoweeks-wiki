@@ -38,6 +38,7 @@ related: [[entities/twoweeks]], [[concepts/cv-parsing-pipeline]], [[concepts/cv-
 
 - [ ] **Warning navigation pendant import** — friction minimale ou import background, décision UX à trancher.
 - [ ] **AI rewrite suggestions** — 2 à 3 suggestions par section.
+- [ ] **DOCX layout parity follow-up** — Arabic RTL layout, bullets, tables, and font strategy remain deferred; document-scoped DOCX language metadata is already merged. See [[tasks/docx-layout-parity-follow-up]].
 - [ ] **Save to twoweeks dans l'extension** — capsule hover sur offre d'emploi ouvrant le modal `send to twoweeks`.
 - [x] **Add your own section -> vrai block renderer** — choix explicite `skill`, `experience`, `summary`. ✅ 2026-04-19
 - [x] **Mapper les sections legacy** — `projects` -> experience style, `additional information` -> summary style, `hobbies` -> skill style. ✅ 2026-04-19

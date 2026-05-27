@@ -1,7 +1,7 @@
 ---
 title: "Log — twoweeks Wiki"
 category: overview
-updated: 2026-05-26
+updated: 2026-05-27
 ---
 
 # Log du Wiki · twoweeks
@@ -14,6 +14,22 @@ grep "^## \[" wiki/log.md | grep "ingest"  # Tous les ingests
 ```
 
 ---
+
+## [2026-05-27] direct-update | docx layout parity follow-up backlog entry
+
+**Agent** : Codex
+**Mode** : direct-update
+**Pages créées** :
+- `wiki/tasks/docx-layout-parity-follow-up.md`
+**Pages mises à jour** :
+- `wiki/tasks/kanban.md`
+- `wiki/index.md`
+- `wiki/hot.md`
+- `wiki/log.md`
+**Points notables** :
+- Recorded the merged DOCX document-language metadata work as complete.
+- Added a deferred follow-up page for Arabic RTL layout parity, bullets, tables, and font strategy so the next work item is discoverable without reopening the completed metadata slice.
+- Updated the hot cache and index/task catalog to point at the deferred follow-up rather than the merged metadata work.
 
 ## [2026-05-26] direct-update | proposal language hardening final state
 

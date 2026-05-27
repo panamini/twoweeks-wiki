@@ -3,7 +3,7 @@ title: "Hot Cache — twoweeks"
 category: overview
 status: current
 created: 2026-05-02
-updated: 2026-05-26
+updated: 2026-05-27
 ---
 
 # Hot Cache
@@ -19,6 +19,7 @@ The active knowledge model favors retrieval speed for LLM agents: read this cach
 - V1 CV ATS Audit Heuristic is implemented in `my-app/src/lib/ats-audit/*` and returns a score/verdict/issue bundle for CV health; it is explicitly a heuristic layer, not a parser compatibility guarantee.
 - Planner Agent for shadow proposal truth planning now uses a defined chain in [[product/ai-product-model]].
 - Proposal generation language hardening is merged in PR #60 after PR #58 and #59; production strictness now blocks unsupported exact numeric/duration/credential/operational claims while routing vague timeline language to repair-first handling.
+- DOCX document-language metadata is merged; Arabic RTL layout, bullets, tables, and font strategy are intentionally deferred as a separate follow-up.
 
 ## Key Active Facts
 
@@ -101,3 +102,4 @@ The active knowledge model favors retrieval speed for LLM agents: read this cach
 - Close loop on `wiki/tech/proposal-signature-closing-layer.md` legacy artifact cleanup and edit-mode lock case before declaring signature migration complete.
 - Test daily use of `hot.md` before building `wiki/llms.txt`.
 - Add watchlist candidates `zh` and `ta` only after stable proposal safety in production-like runs across non-English document output and metadata traceability.
+- Track DOCX RTL layout parity as deferred follow-up only; the merged metadata slice is the current endpoint, not the start of a broader Arabic typography rollout.
