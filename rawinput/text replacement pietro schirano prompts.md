@@ -74,6 +74,9 @@ Write a cold-start handoff: current state, goal, files touched, decisions, comma
 cleanup
 The feature/fix works. Now clean only the touched area. Extract repeated mechanics into small service-layer helpers. Keep domain policy in callers. Do not change user-facing behavior.
 ```
+---
+handoff
+Write a concise cold-start handoff document so a fresh agent can continue the current work without rereading the full conversation. Save it as Markdown in the temporary directory of the user’s OS, not the current workspace/repo, and do not modify project files. If arguments are provided, treat them as the next-session focus. Redact secrets and unnecessary personal data. Do not duplicate content already captured in PRDs, plans, ADRs, issues, commits, diffs, branches, uploads, or prior handoffs; reference them by path, URL, branch, commit, issue, PR, or filename. Use only known facts; write Unknown instead of guessing. Include: current state, goal, constraints/do-not-change, relevant artifacts, files touched, decisions made, commands run, validation pass/fail/unknown, remaining risks, suggested skills to invoke, next smallest step, and rollback notes. End by printing the absolute handoff file path and a 3-bullet summary.
 
 ----
 
