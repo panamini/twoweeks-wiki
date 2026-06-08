@@ -20,6 +20,11 @@ related: [[entities/twoweeks]], [[concepts/cv-parsing-pipeline]], [[concepts/cv-
 
 ---
 
+
+
+appuyer sur tab, complete automatiquement la phrase, mettre des () complete l'interieur des parentheses 
+
+
 ## PR4 follow-up (snapshot)
 
 - [x] CV Forge paper width synced to the canonical 860px paper in edit and preview; mobile stays at 100%. ✅ 2026-05-04

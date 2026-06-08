@@ -10,6 +10,23 @@ updated: 2026-05-02
 
 ## Note collaborateur — Codex skill
 
+
+Pour charger un repo :
+Fetch source code for npm packages to give AI coding agents deeper context
+
+[opensrc.sh](https://opensrc.sh/ "https://opensrc.sh")
+
+https://github.com/michaelshimeles/skills/tree/main/code-structure
+
+greptile /greploop
+
+svelte over react 
+-convex
+
+
+
+
+----
 À faire côté collaborateur: mettre à jour sa skill Codex `ingest-wiki` avec la version actuelle du repo.
 
 Étape la plus courte:
