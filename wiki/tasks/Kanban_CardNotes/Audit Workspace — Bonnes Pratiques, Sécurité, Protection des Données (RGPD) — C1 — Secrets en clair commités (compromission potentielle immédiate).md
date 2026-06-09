@@ -40,3 +40,4 @@ git filter-repo --path my-app/env.md --invert-paths
 ```
 
 ---
+RETEX --> Voir [[Procédure Safe de Réécriture d'Historique Git (Secrets)]]

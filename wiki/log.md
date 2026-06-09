@@ -15,6 +15,55 @@ grep "^## \[" wiki/log.md | grep "ingest"  # Tous les ingests
 
 ---
 
+## [2026-06-09] direct-update | Kanban dasti — run.sh exploitation improvements
+
+**Agent** : Codex
+**Pages mises à jour** :
+- `wiki/tasks/Kanban - dasti.md`
+- `wiki/log.md`
+**Notes de cards créées** :
+- `wiki/tasks/Kanban_CardNotes/Documentation et audit de run.sh — 13.1 Priorité haute — Charger explicitement my-app-.env.local au démarrage..md`
+- `wiki/tasks/Kanban_CardNotes/Documentation et audit de run.sh — 13.1 Priorité haute — Remplacer kill -9 par une stratégie progressive..md`
+- `wiki/tasks/Kanban_CardNotes/Documentation et audit de run.sh — 13.1 Priorité haute — Ajouter une commande logs-all..md`
+- `wiki/tasks/Kanban_CardNotes/Documentation et audit de run.sh — 13.1 Priorité haute — Ajouter des fonctions standardisées de log..md`
+- `wiki/tasks/Kanban_CardNotes/Documentation et audit de run.sh — 13.1 Priorité haute — Pinner l'image cloudflare-cloudflared..md`
+- `wiki/tasks/Kanban_CardNotes/Documentation et audit de run.sh — 13.1 Priorité haute — Séparer clairement les modes développement et production..md`
+- `wiki/tasks/Kanban_CardNotes/Documentation et audit de run.sh — 13.1 Priorité haute — Ajouter des préchecks bloquants pour la production..md`
+- `wiki/tasks/Kanban_CardNotes/Documentation et audit de run.sh — 13.2 Priorité moyenne — Extraire les blocs Node inline dans des scripts dédiés..md`
+- `wiki/tasks/Kanban_CardNotes/Documentation et audit de run.sh — 13.2 Priorité moyenne — Ajouter une option --dry-run..md`
+- `wiki/tasks/Kanban_CardNotes/Documentation et audit de run.sh — 13.2 Priorité moyenne — Renforcer le parsing .env..md`
+- `wiki/tasks/Kanban_CardNotes/Documentation et audit de run.sh — 13.2 Priorité moyenne — Rendre le nettoyage Vite plus ciblé..md`
+- `wiki/tasks/Kanban_CardNotes/Documentation et audit de run.sh — 13.2 Priorité moyenne — Ajouter une commande doctor..md`
+- `wiki/tasks/Kanban_CardNotes/Documentation et audit de run.sh — 13.2 Priorité moyenne — Modulariser le script..md`
+- `wiki/tasks/Kanban_CardNotes/Documentation et audit de run.sh — 13.2 Priorité moyenne — Mettre certaines variables dans un fichier de properties..md`
+- `wiki/tasks/Kanban_CardNotes/Documentation et audit de run.sh — 13.3 Priorité basse — Ajouter une table de compatibilité des modes..md`
+- `wiki/tasks/Kanban_CardNotes/Documentation et audit de run.sh — 13.3 Priorité basse — Ajouter des codes de sortie documentés..md`
+- `wiki/tasks/Kanban_CardNotes/Documentation et audit de run.sh — 13.3 Priorité basse — Ajouter une section help plus compacte et une option help commande..md`
+- `wiki/tasks/Kanban_CardNotes/Documentation et audit de run.sh — 14.2 Améliorations d'idempotence proposées — Formaliser une fonction ensure_- par ressource..md`
+- `wiki/tasks/Kanban_CardNotes/Documentation et audit de run.sh — 14.2 Améliorations d'idempotence proposées — Rendre down totalement idempotent..md`
+- `wiki/tasks/Kanban_CardNotes/Documentation et audit de run.sh — 14.2 Améliorations d'idempotence proposées — Rendre reset plus controlé..md`
+- `wiki/tasks/Kanban_CardNotes/Documentation et audit de run.sh — 14.2 Améliorations d'idempotence proposées — Ajouter des postchecks après chaque démarrage..md`
+- `wiki/tasks/Kanban_CardNotes/Documentation et audit de run.sh — 14.2 Améliorations d'idempotence proposées — Ajouter des tests automatisés d'idempotence..md`
+- `wiki/tasks/Kanban_CardNotes/Documentation et audit de run.sh — 14.2 Améliorations d'idempotence proposées — Ajouter un mode de comparaison d'état avant-après..md`
+- `wiki/tasks/Kanban_CardNotes/Documentation et audit de run.sh — 14.2 Améliorations d'idempotence proposées — Distinguer les commandes read-only des commandes mutantes..md`
+- `wiki/tasks/Kanban_CardNotes/Documentation et audit de run.sh — 15.2 Recommandations concrètes — Centraliser les fonctions de logs..md`
+- `wiki/tasks/Kanban_CardNotes/Documentation et audit de run.sh — 15.2 Recommandations concrètes — Ajouter des timestamps..md`
+- `wiki/tasks/Kanban_CardNotes/Documentation et audit de run.sh — 15.2 Recommandations concrètes — Ajouter un fichier de log principal..md`
+- `wiki/tasks/Kanban_CardNotes/Documentation et audit de run.sh — 15.2 Recommandations concrètes — Conserver les logs des sous-services..md`
+- `wiki/tasks/Kanban_CardNotes/Documentation et audit de run.sh — 15.2 Recommandations concrètes — Ajouter une variable LOG_LEVEL..md`
+- `wiki/tasks/Kanban_CardNotes/Documentation et audit de run.sh — 15.2 Recommandations concrètes — Masquer les secrets..md`
+- `wiki/tasks/Kanban_CardNotes/Documentation et audit de run.sh — 15.2 Recommandations concrètes — Ajouter un résumé d'échec..md`
+- `wiki/tasks/Kanban_CardNotes/Documentation et audit de run.sh — 15.2 Recommandations concrètes — Ajouter une commande logs service..md`
+- `wiki/tasks/Kanban_CardNotes/Documentation et audit de run.sh — 16.1 Règles recommandées — Commenter l'intention, pas la syntaxe..md`
+- `wiki/tasks/Kanban_CardNotes/Documentation et audit de run.sh — 16.1 Règles recommandées — Commenter les décisions dangereuses..md`
+- `wiki/tasks/Kanban_CardNotes/Documentation et audit de run.sh — 16.1 Règles recommandées — Ajouter un commentaire d'en-tête par grande fonction complexe..md`
+- `wiki/tasks/Kanban_CardNotes/Documentation et audit de run.sh — 16.1 Règles recommandées — Documenter les effets de bord..md`
+- `wiki/tasks/Kanban_CardNotes/Documentation et audit de run.sh — 16.1 Règles recommandées — Ajouter un bloc contrat en haut du script..md`
+**Points notables** :
+- ajout uniquement de nouvelles cards dans la colonne `To do`
+- déduplication effectuée par titre exact de card
+- aucune card existante supprimée ou modifiée
+
 ## [2026-05-27] direct-update | docx layout parity follow-up backlog entry
 
 **Agent** : Codex
@@ -1007,3 +1056,5 @@ Migration vers schema v2 : ajout rawinput/ (staging), gestion temporelle (status
 - fichiers source déplacés vers `raw/`
 - les sources brand voice ont été dédupliquées vers une seule page durable `wiki/design/brand-voice.md`
 - le fichier vide `rawinput/.md` a été conservé comme source vide sans page durable
+
+
