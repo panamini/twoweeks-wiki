@@ -79,6 +79,23 @@ handoff
 Write a concise cold-start handoff document so a fresh agent can continue the current work without rereading the full conversation. Save it as Markdown in the temporary directory of the user’s OS, not the current workspace/repo, and do not modify project files. If arguments are provided, treat them as the next-session focus. Redact secrets and unnecessary personal data. Do not duplicate content already captured in PRDs, plans, ADRs, issues, commits, diffs, branches, uploads, or prior handoffs; reference them by path, URL, branch, commit, issue, PR, or filename. Use only known facts; write Unknown instead of guessing. Include: current state, goal, constraints/do-not-change, relevant artifacts, files touched, decisions made, commands run, validation pass/fail/unknown, remaining risks, suggested skills to invoke, next smallest step, and rollback notes. End by printing the absolute handoff file path and a 3-bullet summary.
 
 ----
+Audit Technique Universel /analyse
+Analyse les fichiers fournis comme un expert senior prudent. Identifie le type de fichier, son rôle, les fichiers à lire, les fichiers à modifier ou réparer, les risques, les cas limites et les vérifications. Écris en français simple, précis et professionnel pour guider un développeur junior. Si l’objectif n’est pas donné, infère-le prudemment et indique ce qui est certain, probable ou à vérifier. Ne modifie aucun fichier sauf ceux explicitement autorisés. Ne propose pas de refactor large ni de changement hors scope.
+
+------
+commente
+Écris des commentaires techniques en français clair pour guider un développeur junior.  
+Chaque commentaire doit expliquer le but du changement, les fichiers à regarder, les fichiers à modifier ou réparer, pourquoi ils sont concernés, les risques/cas limites, et comment vérifier le résultat.  
+Sois précis, professionnel, actionnable. N’invente pas. Ne propose pas de refactor ou changement hors scope.
+
+----
+audite
+Audite le fichier ciblé comme un senior engineer et rédige un plan d’action clair pour un développeur junior. Explique le rôle du fichier, les fichiers à lire, les fichiers à modifier/réparer, pourquoi ils sont concernés, les étapes exactes à suivre, les risques, les cas limites et les vérifications à faire. Écris en français simple, précis et professionnel. Ne code pas sauf demande explicite. N’invente pas: marque “à vérifier” si le contexte manque. Ne propose aucun refactor large ni changement hors scope.
+
+
+
+----
+
+
 
 look for my text replacement s in the keyboard and add suggests a few new ones
-
