@@ -1973,3 +1973,22 @@ If unsafe, produce a fix-forward prompt.
 # Shortest strategy sentence
 
 Build the **application harness** first, prove idempotent replay and provenance in shadow mode, then add candidate evidence and artifacts; only after that should skills, MCP, Scout, or distribution call Twoweeks tools.
+
+
+# Remaining roadmap
+
+|Next|PR|Layer|Goal|
+|---|---|---|---|
+|✅ next|**PR4**|Proof|Candidate source/fact kernel|
+|5|PR5|Proof|CareerKnowledge static rules + resolver|
+|6|PR6|Proof|Candidate evidence persistence|
+|7|PR7|Proof|EvidenceGraph shadow|
+|8|PR8|Product value|ResumeVariantPlan artifact|
+|9|PR9|Product value|Minimal review cockpit|
+|10|PR10|Product value|Resume variant artifact|
+|11|PR11|Product value|Cover-letter artifact adapter|
+|12|PR12|Product value|ApplicationPackageV1|
+|13|PR13|Distribution|Internal tool contracts|
+|14|PR14|Distribution|Controlled ATS Scout adapters|
+|15|PR15|Distribution|Local MCP beta|
+|16|PR16|Distribution|Remote MCP / ChatGPT App exploration|
