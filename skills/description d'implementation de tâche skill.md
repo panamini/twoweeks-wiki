@@ -1,0 +1,1 @@
+Prompt (mettre en contexte le script concerné et le fichier d’audit général) : Audite le fichier <fichier_Card_Kanban>. Détaille étape par étape les actions/modifications à effectuer pour la réalisation. La rédaction doit être précise, accessible à un novice et de qualité professionnelle.
