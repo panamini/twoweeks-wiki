@@ -4,7 +4,7 @@ category: overview
 status: current
 created: 2026-05-02
 updated: 2026-06-11
-updated: 2026-06-12
+updated: 2026-06-22
 ---
 
 # Hot Cache
@@ -54,6 +54,7 @@ The active knowledge model favors retrieval speed for LLM agents: read this cach
 - `wiki/index.md` and `wiki/log.md` remain mandatory for every persistent wiki mutation.
 - CV and Proposal toolbar density/placement + Ask anchor behavior are now driven by shared command-layer primitives to avoid drift; CV/Proposal only differ by action list.
 - Proposal generation now has a confirmed shadow truth-layer contract in planning (`ProposalTruthPlanV1`) before live writer integration.
+- Cover-letter quality PR1 is open as <https://github.com/panamini/neyssan/pull/230>; PR2 should now target only the legacy cover-letter prompt path and avoid PR3 premium prompt V2 / PR4 qualityShadow repair work.
 - A consolidated Two Weeks light/dark token set has been ingested as a source candidate for mapping into current theme token files.
 - PR28 and PR29 ingest keeps ChatGPT App work in docs-only, review-first, non-runnable form with remote execution explicitly blocked.
 - PR35 formalizes the next Apps SDK planning sequence (PR33+) while keeping all runtime surfaces blocked.
@@ -68,6 +69,7 @@ The active knowledge model favors retrieval speed for LLM agents: read this cach
 
 - Product state: [[overview]], [[entities/twoweeks]], [[product/product-roadmap]], [[product/product-vision]]
 - Proposal truth planning: [[product/ai-product-model]]
+- Cover-letter quality production pass: [[tasks/2026-06-22-cover-letter-quality-production-roadmap]]
 - Parser and import truth: [[concepts/cv-parsing-pipeline]], [[concepts/cv-families]], [[tech/import-ocr-pipeline]]
 - Jobs: [[product/job-library]], [[product/job-match-review]]
 - Language strategy: [[strategy/language-localization]]
@@ -80,6 +82,7 @@ The active knowledge model favors retrieval speed for LLM agents: read this cach
 
 ## Recent Changes
 
+- 2026-06-22: Added [[tasks/2026-06-22-cover-letter-quality-production-roadmap]] for the cover-letter quality production PR sequence, tracked as a task page and anchored on premium provenance finalization first.
 - 2026-05-26: Proposal language hardening is complete across PR #58 (premium cover-letter safety), PR #59 (benchmark/eval gates), and PR #60 (production timeline/unsupported-proof enforcement split).
 - 2026-05-02: Added this active-memory cache, README startup guidance, and [[tasks/coffee talk]] for syncing collaborator Codex skills.
 - 2026-05-02: Added [[howto/wiki-commands-and-llm-export]] for wiki commands and the `wiki/llms.txt` export proposal.

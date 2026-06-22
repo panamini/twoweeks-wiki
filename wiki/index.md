@@ -2,7 +2,7 @@
 title: Index du Wiki — twoweeks
 category: overview
 sticker: emoji//1f9c6
-updated: 2026-06-12
+updated: 2026-06-22
 ---
 
 # Index du Wiki · twoweeks (v2)
@@ -244,6 +244,7 @@ CV Forge PR4 Remaining Tasks now reflects the 860px paper-width sync, rich summa
 | [[tasks/docx-layout-parity-follow-up\|DOCX Layout Parity Follow-up]] | Deferred DOCX RTL layout, bullets, tables, and font strategy follow-up |
 | [[tasks/coffee talk\|Coffee Talk]] | Note courte pour synchroniser la skill Codex collaborateur |
 | [[tasks/Audit Workspace — Bonnes Pratiques, Sécurité, RGPD\|Audit Workspace — Bonnes Pratiques, Sécurité, RGPD]] | Audit sauvegardé du workspace |
+| [[tasks/2026-06-22-cover-letter-quality-production-roadmap|Cover Letter Quality Production Roadmap]] | PR sequence for premium provenance, legacy prompt, prompt V2, and quality repair |
 
 ---
 
@@ -267,8 +268,8 @@ CV Forge PR4 Remaining Tasks now reflects the 860px paper-width sync, rich summa
 
 ## Statistiques
 
-- **Pages actives** : 130 (5 overview, 1 entité, 2 concepts, 8 design, 7 product, 3 strategy, 3 meta, 80 sources, 12 tech, 5 howto, 4 tasks, 1 output)
+- **Pages actives** : 141 (5 overview, 1 entité, 2 concepts, 8 design, 7 product, 3 strategy, 3 meta, 83 sources, 14 tech, 7 howto, 6 tasks, 2 outputs)
 - **Pages archivées** : 2
 - **Sources dans `raw/`** : 86
-- **Sources en attente dans `rawinput/`** : 0
-- **Dernière mise à jour** : 2026-06-12
+- **Sources en attente dans `rawinput/`** : 2
+- **Dernière mise à jour** : 2026-06-22

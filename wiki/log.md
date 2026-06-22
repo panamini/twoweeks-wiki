@@ -2,7 +2,7 @@
 title: "Log — twoweeks Wiki"
 category: overview
 updated: 2026-06-11
-updated: 2026-06-12
+updated: 2026-06-22
 ---
 
 # Log du Wiki · twoweeks
@@ -15,6 +15,27 @@ grep "^## \[" wiki/log.md | grep "ingest"  # Tous les ingests
 ```
 
 ---
+
+## [2026-06-22] direct-update | cover letter quality production roadmap
+
+**Agent** : Codex
+**Mode** : direct-update
+**Source** : explicit user instruction from neyssan-new code review
+
+**Pages créées** :
+- wiki/tasks/2026-06-22-cover-letter-quality-production-roadmap.md
+
+**Pages mises à jour** :
+- wiki/index.md
+- wiki/log.md
+- wiki/hot.md
+
+**Points notables** :
+- Tracked roadmap PR 1 -> PR 4 for cover-letter quality and production readiness.
+- PR 1 is constrained to premium provenance finalization with no naive candidateFactIds bypass.
+- Local implementation mirror: neyssan-new/docs/plans/2026-06-22-cover-letter-quality-production-roadmap.md.
+
+**Open items** : execute PR 1 on branch codex/premium-provenance-finalization.
 
 ## [2026-06-12] ingest | chatgpt apps sdk exploration and roadmap staging
 
@@ -1173,3 +1194,14 @@ Migration vers schema v2 : ajout rawinput/ (staging), gestion temporelle (status
 - fichiers source déplacés vers `raw/`
 - les sources brand voice ont été dédupliquées vers une seule page durable `wiki/design/brand-voice.md`
 - le fichier vide `rawinput/.md` a été conservé comme source vide sans page durable
+
+## 2026-06-22 — Cover-letter quality roadmap PR1 published
+
+**Pages mises à jour** :
+- `wiki/tasks/2026-06-22-cover-letter-quality-production-roadmap.md`
+- `wiki/hot.md`
+- `wiki/log.md`
+
+**Points notables** :
+- PR1 `codex/premium-provenance-finalization` a été implémentée, relue en session indépendante, poussée, puis ouverte comme <https://github.com/panamini/neyssan/pull/230>.
+- PR2 `legacy cover-letter prompt` est le prochain travail séquentiel recommandé.
