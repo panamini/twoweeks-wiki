@@ -1,1 +1,0 @@
-appuyer sur tab, complete automatiquement la phrase, mettre des () complete l'interieur des parentheses 

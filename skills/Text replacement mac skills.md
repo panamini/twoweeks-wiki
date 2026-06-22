@@ -95,7 +95,16 @@ Audite le fichier ciblé comme un senior engineer et rédige un plan d’action 
 
 
 ----
+fiche
+Tu es senior engineer prudent. Pour l’amélioration cible : <amélioration>, dans le fichier : <chemin>, lis le fichier réel avant toute proposition. Ne modifie rien sauf si je dis “exécute”. Ne fais pas d’audit général, pas de refactor, pas de hors scope, une amélioration à la fois. Donne une fiche PR concrète : scope exact, branche recommandée, fichiers à toucher/ne pas toucher, état actuel avec lignes/ancres, patch logique, grep avant/après, tests, critères d’acceptation, risques, rollback, body de PR, statut READY_TO_IMPLEMENT/BLOCKED. Marque “à vérifier” si non vérifiable. 
 
+----
+
+execution
+
+Exécute uniquement la fiche validée ci-dessus. Crée ou utilise une branche dédiée. Applique seulement les changements listés. Lance les vérifications prévues. Montre le diff, les commandes exécutées, les résultats et les preuves grep. Ne traite pas l’amélioration suivante. Ne crée la PR que si les vérifications locales passent.
+
+-----
 
 
 look for my text replacement s in the keyboard and add suggests a few new ones

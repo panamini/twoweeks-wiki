@@ -1,7 +1,8 @@
 ---
 title: "Log — twoweeks Wiki"
 category: overview
-updated: 2026-05-27
+updated: 2026-06-11
+updated: 2026-06-12
 ---
 
 # Log du Wiki · twoweeks
@@ -12,6 +13,122 @@ Journal chronologique append-only de toutes les opérations sur le wiki.
 grep "^## \[" wiki/log.md | tail -5   # Dernières 5 entrées
 grep "^## \[" wiki/log.md | grep "ingest"  # Tous les ingests
 ```
+
+---
+
+## [2026-06-12] ingest | chatgpt apps sdk exploration and roadmap staging
+
+**Agent** : Codex
+**Mode** : ingest
+**Fichiers traités** :
+- `rawinput/PR35 - Non-production Apps SDK Exploration Plan.md`
+- `rawinput/Roadmap.md`
+
+**Pages créées** :
+- `wiki/sources/2026-06-12-chatgpt-apps-sdk-roadmap-pr35.md`
+- `wiki/sources/2026-06-12-non-production-apps-sdk-exploration-plan.md`
+
+**Pages mises à jour** :
+- `wiki/index.md`
+- `wiki/log.md`
+- `wiki/hot.md`
+
+**Points notables** :
+- Les deux sources staged ont été ingérées en tant que documentation de planning Apps SDK.
+- PR35 a confirmé le mode "docs-only + bounded constraints" et a défini un prochain ordre de PR conservateur.
+- Les fichiers source ont été déplacés vers `raw/` pour l'immutabilité.
+
+**Open items** : none
+
+## [2026-06-12] ingest | chatgpt app end-to-end safety audit
+
+**Agent** : Codex
+**Mode** : ingest
+**Fichiers traités** :
+- `rawinput/PR30 - ChatGPT App End-to-end Safety Audit.md`
+
+**Pages créées** :
+- `wiki/sources/2026-06-11-chatgpt-app-end-to-end-safety-audit.md`
+
+**Pages mises à jour** :
+- `wiki/index.md`
+- `wiki/log.md`
+- `wiki/hot.md`
+
+**Points notables** :
+- PR30 a été ingéré comme source d'audit docs-only de sécurité de chaîne PR18–PR29 pour la phase non-production.
+- Source locale `rawinput/PR30 - ChatGPT App End-to-end Safety Audit.md` déplacée vers `raw/` pour immutabilité.
+- `wiki/index.md` et `wiki/hot.md` ont été alignés avec la chaîne `readiness -> safety audit -> non-production -> manifest`.
+
+**Open items** : none
+
+## [2026-06-12] ingest | chatgpt-app non-production prototype and manifest draft
+
+**Agent** : Codex
+**Mode** : ingest
+**Fichiers traités** :
+- `rawinput/PR28 - Non-production ChatGPT App Prototype Plan.md`
+- `rawinput/PR29 - Local-only ChatGPT App Manifest Draft.md`
+
+**Pages créées** :
+- `wiki/sources/2026-06-11-chatgpt-app-non-production-prototype-plan.md`
+- `wiki/sources/2026-06-11-chatgpt-app-local-only-manifest-draft.md`
+
+**Pages mises à jour** :
+- `wiki/index.md`
+- `wiki/log.md`
+- `wiki/hot.md`
+
+**Points notables** :
+- Les deux notes staging ont été ingérées comme sources pour plan/manifest ChatGPT App non-production.
+- Les fichiers sources ont été déplacés vers `raw/` pour immutabilité.
+- `wiki/index.md` mis à jour avec les nouvelles sources et date de mise à jour.
+- `wiki/log.md` consigne les fichiers traités et les artefacts créés.
+
+---
+
+## [2026-06-11] ingest | application-os execution notes and readiness inputs
+
+**Agent** : Codex
+**Mode** : ingest
+**Fichiers traités** :
+- `rawinput/Audit architecture — Application OS PR1 à PR17.md`
+- `rawinput/CV Forge Save  Restore Pipeline Fix.md`
+- `rawinput/FUTURE TWO WEEKS AGENTS READY.md`
+- `rawinput/MCP  ChatGPT App Readiness Spec.md`
+- `rawinput/cv persistence .md`
+- `rawinput/emojis library .md`
+- `rawinput/master architecture decision doc v1.md`
+- `rawinput/oddyseo pietro schirano writing tool.md`
+- `rawinput/.md` (empty placeholder)
+
+**Pages créées** :
+- `wiki/sources/2026-06-11-audit-architecture-application-os-pr1-pr17.md`
+- `wiki/sources/2026-06-11-cv-forge-save-restore-pipeline-fix.md`
+- `wiki/sources/2026-06-11-future-two-weeks-agents-ready.md`
+- `wiki/sources/2026-06-11-mcp-chatgpt-app-readiness-spec.md`
+- `wiki/sources/2026-06-11-cv-hydration-and-style-system.md`
+- `wiki/sources/2026-06-11-emojis-library.md`
+- `wiki/sources/2026-06-11-master-architecture-decision-doc-v1.md`
+- `wiki/sources/2026-06-11-oddyseo-pietro-schirano-writing-tool.md`
+
+**Pages mises à jour** :
+- `wiki/index.md`
+- `wiki/log.md`
+- `wiki/hot.md`
+- `wiki/sources/2026-06-11-audit-architecture-application-os-pr1-pr17.md`
+- `wiki/sources/2026-06-11-cv-forge-save-restore-pipeline-fix.md`
+- `wiki/sources/2026-06-11-future-two-weeks-agents-ready.md`
+- `wiki/sources/2026-06-11-mcp-chatgpt-app-readiness-spec.md`
+- `wiki/sources/2026-06-11-cv-hydration-and-style-system.md`
+- `wiki/sources/2026-06-11-emojis-library.md`
+- `wiki/sources/2026-06-11-master-architecture-decision-doc-v1.md`
+- `wiki/sources/2026-06-11-oddyseo-pietro-schirano-writing-tool.md`
+
+**Points notables** :
+- `rawinput/README.md` n’est pas traité.
+- Les 9 fichiers de stage restants ont été déplacés vers `raw/` (incluant le fichier vide `rawinput/.md`).
+- `wiki/index.md` et `wiki/hot.md` ont été mis à jour avec les nouvelles entrées sources.
 
 ---
 
@@ -1056,5 +1173,3 @@ Migration vers schema v2 : ajout rawinput/ (staging), gestion temporelle (status
 - fichiers source déplacés vers `raw/`
 - les sources brand voice ont été dédupliquées vers une seule page durable `wiki/design/brand-voice.md`
 - le fichier vide `rawinput/.md` a été conservé comme source vide sans page durable
-
-

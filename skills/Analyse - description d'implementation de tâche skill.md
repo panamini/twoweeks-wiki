@@ -1,10 +1,18 @@
+---
+aliases:
+  - Analyse/description d'implementation de tâche skill
+---
 
-```
-
-Et le **prompt d’utilisation universel** serait :
-
-```
+```**prompt d’utilisation universel**
+ 
 Audite le fichier <fichier_à_auditer> avec le contexte <fichier_de_contexte_ou_audit>.  Objectif: <objectif_du_changement>.  Produis un plan d’action étape par étape, clair pour un développeur junior, avec les fichiers à lire, les fichiers à modifier/réparer, les risques et les vérifications.  Ne code pas sauf si je te le demande.
+
+```
+
+
+
+
+
 ```
 
 RÔLE  

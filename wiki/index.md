@@ -2,7 +2,7 @@
 title: Index du Wiki — twoweeks
 category: overview
 sticker: emoji//1f9c6
-updated: 2026-05-26
+updated: 2026-06-12
 ---
 
 # Index du Wiki · twoweeks (v2)
@@ -188,6 +188,19 @@ CV Forge PR4 Remaining Tasks now reflects the 860px paper-width sync, rich summa
 | [[sources/2026-05-25-two-weeks-theme-palette\|Two Weeks Theme Palette]] | source | 2026-05-25 | current |
 | [[sources/2026-05-21-cv-proposal-command-layer-unification-note|Command Layer Unification Note — CV & Proposal Toolbars]] | source | 2026-05-21 | current |
 | [[sources/2026-05-26-two-weeks-language-map-reference-note\|Two Weeks Language Map Reference Note]] | source | 2026-05-26 | current |
+| [[sources/2026-06-11-audit-architecture-application-os-pr1-pr17\|Audit architecture — Application OS PR1 à PR17]] | analysis | 2026-06-11 | current |
+| [[sources/2026-06-11-cv-forge-save-restore-pipeline-fix\|CV Forge Save / Restore Pipeline Fix]] | scratchpad | 2026-06-11 | current |
+| [[sources/2026-06-11-future-two-weeks-agents-ready\|Future Two Weeks Agents Ready]] | analysis | 2026-06-11 | current |
+| [[sources/2026-06-11-mcp-chatgpt-app-readiness-spec\|MCP and ChatGPT App Readiness Spec]] | analysis | 2026-06-11 | current |
+| [[sources/2026-06-11-chatgpt-app-end-to-end-safety-audit\|ChatGPT App End-to-end Safety Audit]] | analysis | 2026-06-11 | current |
+| [[sources/2026-06-11-chatgpt-app-local-only-manifest-draft\|Local-only ChatGPT App Manifest Draft]] | analysis | 2026-06-11 | current |
+| [[sources/2026-06-11-chatgpt-app-non-production-prototype-plan\|Non-production ChatGPT App Prototype Plan]] | analysis | 2026-06-11 | current |
+| [[sources/2026-06-12-chatgpt-apps-sdk-roadmap-pr35\|ChatGPT Apps SDK Roadmap PR33-PR40]] | analysis | 2026-06-12 | current |
+| [[sources/2026-06-12-non-production-apps-sdk-exploration-plan\|Non-production Apps SDK Exploration Plan]] | analysis | 2026-06-12 | current |
+| [[sources/2026-06-11-cv-hydration-and-style-system\|CV Hydration And Style System]] | analysis | 2026-06-11 | current |
+| [[sources/2026-06-11-emojis-library\|Emojis Library References]] | other | 2026-06-11 | current |
+| [[sources/2026-06-11-master-architecture-decision-doc-v1\|Twoweeks Application OS Execution Starter Pack]] | draft | 2026-06-11 | current |
+| [[sources/2026-06-11-oddyseo-pietro-schirano-writing-tool\|Oddyseo Writing Tool Note]] | other | 2026-06-11 | current |
 ---
 
 ## Tech
@@ -254,8 +267,8 @@ CV Forge PR4 Remaining Tasks now reflects the 860px paper-width sync, rich summa
 
 ## Statistiques
 
-- **Pages actives** : 120 (5 overview, 1 entité, 2 concepts, 8 design, 7 product, 3 strategy, 3 meta, 70 sources, 12 tech, 5 howto, 4 tasks, 1 output)
+- **Pages actives** : 130 (5 overview, 1 entité, 2 concepts, 8 design, 7 product, 3 strategy, 3 meta, 80 sources, 12 tech, 5 howto, 4 tasks, 1 output)
 - **Pages archivées** : 2
-- **Sources dans `raw/`** : 73
-- **Sources en attente dans `rawinput/`** : 1
-- **Dernière mise à jour** : 2026-05-27
+- **Sources dans `raw/`** : 86
+- **Sources en attente dans `rawinput/`** : 0
+- **Dernière mise à jour** : 2026-06-12

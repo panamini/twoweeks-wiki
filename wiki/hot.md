@@ -3,7 +3,8 @@ title: "Hot Cache — twoweeks"
 category: overview
 status: current
 created: 2026-05-02
-updated: 2026-05-27
+updated: 2026-06-11
+updated: 2026-06-12
 ---
 
 # Hot Cache
@@ -54,6 +55,8 @@ The active knowledge model favors retrieval speed for LLM agents: read this cach
 - CV and Proposal toolbar density/placement + Ask anchor behavior are now driven by shared command-layer primitives to avoid drift; CV/Proposal only differ by action list.
 - Proposal generation now has a confirmed shadow truth-layer contract in planning (`ProposalTruthPlanV1`) before live writer integration.
 - A consolidated Two Weeks light/dark token set has been ingested as a source candidate for mapping into current theme token files.
+- PR28 and PR29 ingest keeps ChatGPT App work in docs-only, review-first, non-runnable form with remote execution explicitly blocked.
+- PR35 formalizes the next Apps SDK planning sequence (PR33+) while keeping all runtime surfaces blocked.
 - Planner Agent shadow reasoning is now explicitly constrained to: define strict target, audit truth evidence/boundaries, apply company context only as seasoning, and wrap output with ATS vocabulary + peer-to-peer tone.
 
 - ATS status model now tracks a separate CV health signal:
@@ -70,6 +73,7 @@ The active knowledge model favors retrieval speed for LLM agents: read this cach
 - Language strategy: [[strategy/language-localization]]
 - Export and layout: [[tech/export-pipeline]], [[tech/preview-to-print-pipeline]], [[tech/workshop-pagination]]
 - Proposal geometry and style: [[tech/proposal-forge-document-geometry]], [[tech/proposal-style-layer]], [[tech/proposal-signature-closing-layer]], [[design/document-token-contract]]
+- ChatGPT App readiness chain: [[sources/2026-06-11-mcp-chatgpt-app-readiness-spec]], [[sources/2026-06-11-chatgpt-app-end-to-end-safety-audit]], [[sources/2026-06-11-chatgpt-app-non-production-prototype-plan]], [[sources/2026-06-11-chatgpt-app-local-only-manifest-draft]], [[sources/2026-06-12-non-production-apps-sdk-exploration-plan]], [[sources/2026-06-12-chatgpt-apps-sdk-roadmap-pr35]]
 - Design system and safety: [[design/ats-safety]], [[design/document-token-contract]], [[design/motion-system]], [[design/brand-voice]]
 - Local operations: [[howto/local-parser-operations]], [[tech/local-vs-remote-parser-architecture]]
 - Wiki operations: [[meta/llm-wiki-pattern]], [[meta/temporal-management]], [[meta/codex-prompting-standards]]
@@ -93,6 +97,9 @@ The active knowledge model favors retrieval speed for LLM agents: read this cach
 - 2026-05-20: Updated [[design/document-token-contract]] with the button geometry/action hierarchy canon for toolbar controls, Draft workflow actions, assistant handles, and global header actions.
 - 2026-05-21: Added [[sources/2026-05-21-cv-proposal-command-layer-unification-note]] on shared command-layer behavior: toolbar density parity, commandLayerY, and Ask anchor quality bar.
 - 2026-05-25: Ingested [[sources/2026-05-25-proposal-generation-truth-planner]] and [[sources/2026-05-25-two-weeks-theme-palette]]; staged files moved to `raw/`.
+- 2026-06-11: Ingested staged source notes for `Application OS` audit, CV persistence/save-flow, MCP readiness, and agent-native roadmap; `rawinput/` now holds only `README.md` and moved files are in `raw/`.
+- 2026-06-12: Ingested PR35 staging docs for a docs-only Apps SDK exploration and planning roadmap (PR33+), while keeping runtime gates blocked.
+- 2026-06-12: Ingested `PR28` non-production prototype plan, `PR29` local-only manifest draft, and `PR30` end-to-end safety audit as `wiki/sources` entries; staged files moved to `raw/` and indexing/logging updated.
 
 ## Open Threads
 
