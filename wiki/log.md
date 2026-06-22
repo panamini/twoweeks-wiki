@@ -1205,3 +1205,15 @@ Migration vers schema v2 : ajout rawinput/ (staging), gestion temporelle (status
 **Points notables** :
 - PR1 `codex/premium-provenance-finalization` a été implémentée, relue en session indépendante, poussée, puis ouverte comme <https://github.com/panamini/neyssan/pull/230>.
 - PR2 `legacy cover-letter prompt` est le prochain travail séquentiel recommandé.
+
+## 2026-06-22 — Cover-letter quality roadmap PR2 published
+
+**Pages mises à jour** :
+- `wiki/tasks/2026-06-22-cover-letter-quality-production-roadmap.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**Points notables** :
+- PR2 `codex/legacy-cover-letter-prompt` a été implémentée, relue en session indépendante, poussée, puis ouverte comme <https://github.com/panamini/neyssan/pull/231>.
+- Le statut roadmap note que PR3 doit rester bornée au prompt premium V2, Mistral first, avec flag et baseline.

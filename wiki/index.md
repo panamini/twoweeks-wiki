@@ -244,7 +244,7 @@ CV Forge PR4 Remaining Tasks now reflects the 860px paper-width sync, rich summa
 | [[tasks/docx-layout-parity-follow-up\|DOCX Layout Parity Follow-up]] | Deferred DOCX RTL layout, bullets, tables, and font strategy follow-up |
 | [[tasks/coffee talk\|Coffee Talk]] | Note courte pour synchroniser la skill Codex collaborateur |
 | [[tasks/Audit Workspace — Bonnes Pratiques, Sécurité, RGPD\|Audit Workspace — Bonnes Pratiques, Sécurité, RGPD]] | Audit sauvegardé du workspace |
-| [[tasks/2026-06-22-cover-letter-quality-production-roadmap|Cover Letter Quality Production Roadmap]] | PR sequence for premium provenance, legacy prompt, prompt V2, and quality repair |
+| [[tasks/2026-06-22-cover-letter-quality-production-roadmap|Cover Letter Quality Production Roadmap]] | PR sequence for premium provenance, legacy prompt, prompt V2, and quality repair; PR1 and PR2 are open |
 
 ---
 

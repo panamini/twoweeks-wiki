@@ -34,8 +34,8 @@ Parallel work is allowed only for read-only review or disjoint verification. Do 
 ## Execution Status
 
 - PR 1: implemented, independently reviewed, pushed, PR opened: <https://github.com/panamini/neyssan/pull/230>.
-- PR 2: ready to start from PR 1.
-- PR 3: blocked until PR 2 lands or is explicitly stacked.
+- PR 2: implemented, independently reviewed, pushed, PR opened stacked on PR 1: <https://github.com/panamini/neyssan/pull/231>.
+- PR 3: next implementation slice after PR 2 review/merge, or explicit stack from PR 2 if continuing before merge.
 - PR 4: blocked until PR 3/prompt behavior is stable.
 
 ## PR 1 Contract
@@ -116,7 +116,7 @@ Broaden to `proposalProviderBusy.test.ts` only if the implementation touches act
 
 ## PR Sequence Notes
 
-PR 2 should remove the generic `generateCreativeProposal` cover-letter fallback only after PR 1 is stable.
+PR 2 removed the generic `generateCreativeProposal` cover-letter fallback from the legacy `cover_letter` path and now routes that path through the cover-letter prompt via `generateTextWithFallbacks`.
 
 PR 3 should version and flag prompt V2, starting with Mistral only.
 
