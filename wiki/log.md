@@ -1217,3 +1217,15 @@ Migration vers schema v2 : ajout rawinput/ (staging), gestion temporelle (status
 **Points notables** :
 - PR2 `codex/legacy-cover-letter-prompt` a été implémentée, relue en session indépendante, poussée, puis ouverte comme <https://github.com/panamini/neyssan/pull/231>.
 - Le statut roadmap note que PR3 doit rester bornée au prompt premium V2, Mistral first, avec flag et baseline.
+
+## 2026-06-22 — Cover-letter quality roadmap PR3 published
+
+**Pages mises à jour** :
+- `wiki/tasks/2026-06-22-cover-letter-quality-production-roadmap.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**Points notables** :
+- PR3 `codex/premium-cover-letter-prompt-v2-mistral` a été implémentée, relue en session indépendante, poussée, puis ouverte comme <https://github.com/panamini/neyssan/pull/232>.
+- Le statut roadmap note que PR4 doit rester bornée à une réparation `qualityShadow` unique et réversible.
