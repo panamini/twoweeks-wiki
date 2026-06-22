@@ -36,7 +36,7 @@ Parallel work is allowed only for read-only review or disjoint verification. Do 
 - PR 1: implemented, independently reviewed, pushed, PR opened: <https://github.com/panamini/neyssan/pull/230>.
 - PR 2: implemented, independently reviewed, pushed, PR opened stacked on PR 1: <https://github.com/panamini/neyssan/pull/231>.
 - PR 3: implemented, independently reviewed, pushed, PR opened stacked on PR 2: <https://github.com/panamini/neyssan/pull/232>.
-- PR 4: blocked until PR 3 prompt behavior is reviewed as stable enough for a repair-layer change, or explicitly continued as a stack from PR 3.
+- PR 4: implemented, pushed, PR opened stacked on PR 3: <https://github.com/panamini/neyssan/pull/233>.
 
 ## PR 1 Contract
 
@@ -120,7 +120,7 @@ PR 2 removed the generic `generateCreativeProposal` cover-letter fallback from t
 
 PR 3 versions and flags premium prompt V2 for Mistral only. Default V1 remains unchanged when the flag is absent/off, and non-Mistral providers stay on V1 even if the flag is on.
 
-PR 4 should introduce at most one `qualityShadow` repair attempt and preserve the original safe output if repair fails.
+PR 4 adds one bounded `qualityShadow` repair attempt for premium structured outputs and preserves the original safe output when repair is unavailable, invalid, non-improving, validation-breaking, or provenance-breaking.
 
 ## Local Alignment
 

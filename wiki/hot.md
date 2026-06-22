@@ -54,7 +54,7 @@ The active knowledge model favors retrieval speed for LLM agents: read this cach
 - `wiki/index.md` and `wiki/log.md` remain mandatory for every persistent wiki mutation.
 - CV and Proposal toolbar density/placement + Ask anchor behavior are now driven by shared command-layer primitives to avoid drift; CV/Proposal only differ by action list.
 - Proposal generation now has a confirmed shadow truth-layer contract in planning (`ProposalTruthPlanV1`) before live writer integration.
-- Cover-letter quality PR1 is open as <https://github.com/panamini/neyssan/pull/230>; PR2 is open as <https://github.com/panamini/neyssan/pull/231>; PR3 is open as <https://github.com/panamini/neyssan/pull/232> and targets only premium prompt V2 for Mistral behind an explicit flag. PR4 should stay scoped to one bounded `qualityShadow` repair layer.
+- Cover-letter quality PR1 is open as <https://github.com/panamini/neyssan/pull/230>; PR2 is open as <https://github.com/panamini/neyssan/pull/231>; PR3 is open as <https://github.com/panamini/neyssan/pull/232>; PR4 is open as <https://github.com/panamini/neyssan/pull/233> and adds one bounded `qualityShadow` repair layer.
 - A consolidated Two Weeks light/dark token set has been ingested as a source candidate for mapping into current theme token files.
 - PR28 and PR29 ingest keeps ChatGPT App work in docs-only, review-first, non-runnable form with remote execution explicitly blocked.
 - PR35 formalizes the next Apps SDK planning sequence (PR33+) while keeping all runtime surfaces blocked.
@@ -85,6 +85,7 @@ The active knowledge model favors retrieval speed for LLM agents: read this cach
 - 2026-06-22: Added [[tasks/2026-06-22-cover-letter-quality-production-roadmap]] for the cover-letter quality production PR sequence, tracked as a task page and anchored on premium provenance finalization first.
 - 2026-06-22: Updated [[tasks/2026-06-22-cover-letter-quality-production-roadmap]] after PR2 `codex/legacy-cover-letter-prompt` was opened as <https://github.com/panamini/neyssan/pull/231>.
 - 2026-06-22: Updated [[tasks/2026-06-22-cover-letter-quality-production-roadmap]] after PR3 `codex/premium-cover-letter-prompt-v2-mistral` was opened as <https://github.com/panamini/neyssan/pull/232>.
+- 2026-06-22: Updated [[tasks/2026-06-22-cover-letter-quality-production-roadmap]] after PR4 `codex/quality-shadow-repair` was opened as <https://github.com/panamini/neyssan/pull/233>.
 - 2026-05-26: Proposal language hardening is complete across PR #58 (premium cover-letter safety), PR #59 (benchmark/eval gates), and PR #60 (production timeline/unsupported-proof enforcement split).
 - 2026-05-02: Added this active-memory cache, README startup guidance, and [[tasks/coffee talk]] for syncing collaborator Codex skills.
 - 2026-05-02: Added [[howto/wiki-commands-and-llm-export]] for wiki commands and the `wiki/llms.txt` export proposal.

@@ -1229,3 +1229,15 @@ Migration vers schema v2 : ajout rawinput/ (staging), gestion temporelle (status
 **Points notables** :
 - PR3 `codex/premium-cover-letter-prompt-v2-mistral` a été implémentée, relue en session indépendante, poussée, puis ouverte comme <https://github.com/panamini/neyssan/pull/232>.
 - Le statut roadmap note que PR4 doit rester bornée à une réparation `qualityShadow` unique et réversible.
+
+## 2026-06-22 — Cover-letter quality roadmap PR4 published
+
+**Pages mises à jour** :
+- `wiki/tasks/2026-06-22-cover-letter-quality-production-roadmap.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**Points notables** :
+- PR4 `codex/quality-shadow-repair` a été implémentée, vérifiée, poussée, puis ouverte comme <https://github.com/panamini/neyssan/pull/233>.
+- La réparation `qualityShadow` reste une tentative unique et bornée; si elle casse validation, JSON, amélioration ou provenance finale, la sortie originale sûre est conservée.
