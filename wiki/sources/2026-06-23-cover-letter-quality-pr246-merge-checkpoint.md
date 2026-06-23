@@ -18,7 +18,7 @@ PR246 is now merged into `application-os-foundation`. The cleanup pass removed t
 ## Key points
 
 - Cleanup commit: `dbb992c98050a525ecde59f961ec39f886fdab79`.
-- Merge commit: `8375257fea4799fef29a97db76e8b90b276cf`.
+- Merge commit: `8375257fea4799fef29a97db76b58e0b90b276cf`.
 - The PR diff before merge contained exactly `premiumCoverLetter.ts` and `premiumCoverLetter.test.ts`.
 - The roadmap doc stayed local-only and did not remain in the PR diff.
 - Post-merge Mistral medium direct V2 ON: premium structured saved, validation passed, repair disabled.

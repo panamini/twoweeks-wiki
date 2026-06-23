@@ -15,6 +15,23 @@ grep "^## \[" wiki/log.md | grep "ingest"  # Tous les ingests
 
 ---
 
+## [2026-06-23] direct-update | PR246 merge SHA correction
+
+**Agent** : Codex
+**Mode** : direct-update
+**Source** : local git verification in `neyssan-new`
+
+**Pages mises à jour** :
+- `wiki/tasks/2026-06-22-cover-letter-quality-production-roadmap.md`
+- `wiki/sources/2026-06-23-cover-letter-quality-pr246-merge-checkpoint.md`
+- `wiki/log.md`
+
+**Points notables** :
+- Corrected the PR246 merge commit from invalid `8375257fea4799fef29a97db76e8b90b276cf` to verified `8375257fea4799fef29a97db76b58e0b90b276cf`.
+- The roadmap decision did not change: internal Mistral V2 canary expansion remains GO; quality repair and production remain NO-GO.
+
+**Open items** : run the limited internal Mistral V2 expansion from the verified merge baseline.
+
 ## [2026-06-23] direct-update | cover-letter PR246 merge and post-merge canary
 
 **Agent** : Codex
