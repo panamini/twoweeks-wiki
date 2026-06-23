@@ -2,7 +2,7 @@
 title: Index du Wiki — twoweeks
 category: overview
 sticker: emoji//1f9c6
-updated: 2026-06-23
+updated: 2026-06-24
 ---
 
 # Index du Wiki · twoweeks (v2)
@@ -19,7 +19,7 @@ Le contrôle opératoire du repo reste défini par `WIKI_SCHEMA.md` puis `CLAUDE
 | Mémoire active LLM | [[hot]] | [[overview]], [[meta/llm-wiki-pattern]] |
 | État produit | [[overview]] | [[entities/twoweeks]], [[product/product-roadmap]], [[product/product-vision]] |
 | Planning IA shadow | [[product/ai-product-model]] | [[tech/proposal-ai-routing-and-inline-diff]], [[sources/2026-05-25-proposal-generation-truth-planner]] |
-| Cover-letter quality | [[tasks/2026-06-22-cover-letter-quality-production-roadmap]] | [[sources/2026-06-23-release-orchestration-staging-pr87-8-checkpoint]], [[sources/2026-06-23-cover-letter-quality-pr249-staged-internal-gate]], [[sources/2026-06-23-cover-letter-quality-pr248-merge-checkpoint]], [[sources/2026-06-23-cover-letter-quality-pr246-merge-checkpoint]] |
+| Cover-letter quality | [[tasks/2026-06-22-cover-letter-quality-production-roadmap]] | [[sources/2026-06-24-cover-letter-mistral-v2-staging-green]], [[sources/2026-06-23-cover-letter-quality-pr249-staged-internal-gate]], [[sources/2026-06-23-release-orchestration-staging-pr87-8-checkpoint]], [[sources/2026-06-23-cover-letter-quality-pr248-merge-checkpoint]], [[sources/2026-06-23-cover-letter-quality-pr246-merge-checkpoint]] |
 | ChatGPT App roadmap | [[product/chatgpt-app-sdk-roadmap]] | [[product/manual-application-handoff]], [[sources/2026-06-23-release-orchestration-staging-pr87-8-checkpoint]], [[sources/2026-06-23-twoweeks-mcp-chatgpt-app-sdk-roadmap-checkpoint]], [[sources/2026-06-19-pr80b-safe-application-handoff-while-ats-access-pending]] |
 | Manual application handoff | [[product/manual-application-handoff]] | [[product/chatgpt-app-sdk-roadmap]], [[sources/2026-06-23-twoweeks-mcp-chatgpt-app-sdk-roadmap-checkpoint]] |
 | Parser / vérité CV | [[concepts/cv-parsing-pipeline]] | [[concepts/cv-families]], [[tech/import-ocr-pipeline]] |
@@ -118,7 +118,7 @@ Cette carte est un routeur de lecture pour agents LLM. Elle ne remplace pas les 
 
 ## Sources
 
-Cover-letter quality has a merged PR249 staged internal Mistral V2 gate checkpoint, but deployed staging rollout was rolled back because the staging function surface appears stale. Production full GO and quality repair remain separate/not approved. The MCP/App SDK track reconciled PR87.8 as still blocked with PR80B implemented and PR88/PR89 blocked.
+Cover-letter quality has a merged PR249 staged internal Mistral V2 gate and a green Convex staging checkpoint on `dev:neat-starfish-33`; production full GO and quality repair remain separate/not approved. The MCP/App SDK track reconciled PR87.8 as still blocked with PR80B implemented and PR88/PR89 blocked.
 
 | Page | Type | Date | Status |
 |------|------|------|--------|
@@ -212,6 +212,7 @@ Cover-letter quality has a merged PR249 staged internal Mistral V2 gate checkpoi
 | [[sources/2026-06-23-cover-letter-quality-pr246-merge-checkpoint\|Cover Letter Quality PR246 Merge Checkpoint]] | analysis | 2026-06-23 | current |
 | [[sources/2026-06-23-cover-letter-quality-pr249-staged-internal-gate\|Cover Letter Quality PR249 Staged Internal Gate]] | analysis | 2026-06-23 | current |
 | [[sources/2026-06-23-release-orchestration-staging-pr87-8-checkpoint\|Release Orchestration Checkpoint - Staging and PR87.8]] | analysis | 2026-06-23 | current |
+| [[sources/2026-06-24-cover-letter-mistral-v2-staging-green\|Cover Letter Mistral V2 Staging Green Checkpoint]] | analysis | 2026-06-24 | current |
 | [[sources/2026-06-23-twoweeks-mcp-chatgpt-app-sdk-roadmap-checkpoint\|Twoweeks MCP / ChatGPT App SDK Roadmap Checkpoint]] | analysis | 2026-06-23 | current |
 ---
 
@@ -256,7 +257,7 @@ Cover-letter quality has a merged PR249 staged internal Mistral V2 gate checkpoi
 | [[tasks/docx-layout-parity-follow-up\|DOCX Layout Parity Follow-up]] | Deferred DOCX RTL layout, bullets, tables, and font strategy follow-up |
 | [[tasks/coffee talk\|Coffee Talk]] | Note courte pour synchroniser la skill Codex collaborateur |
 | [[tasks/Audit Workspace — Bonnes Pratiques, Sécurité, RGPD\|Audit Workspace — Bonnes Pratiques, Sécurité, RGPD]] | Audit sauvegardé du workspace |
-| [[tasks/2026-06-22-cover-letter-quality-production-roadmap|Cover Letter Quality Production Roadmap]] | Cover-letter generation quality only; PR249 merged and staged internal Mistral V2 gate is ready for internal/staging only; production and quality repair remain separate/not approved |
+| [[tasks/2026-06-22-cover-letter-quality-production-roadmap|Cover Letter Quality Production Roadmap]] | Cover-letter generation quality only; Mistral V2 is green on Convex staging `dev:neat-starfish-33`; production and quality repair remain separate/not approved |
 
 ---
 

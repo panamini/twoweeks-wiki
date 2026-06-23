@@ -1465,3 +1465,21 @@ Migration vers schema v2 : ajout rawinput/ (staging), gestion temporelle (status
 - Follow-up found the Convex auth issue was caused by using `convex env --env-file`; sourcing root `.env.local` allowed the CLI to combine deployment selection with the global Convex token.
 - Previous staging flag values were unset. `cover_letter_premium_prompt_v2=on` was applied to `dev:neat-starfish-33`, then rolled back after staging rejected `mistral-medium-latest` at `/test/generate` argument validation.
 - Rollback verification confirmed the three Mistral V2 flag names and `ENABLE_COVER_LETTER_QUALITY_REPAIR_V1` are unset again. Production remained untouched.
+
+## 2026-06-24 — Cover-letter Mistral V2 staging green checkpoint
+
+**Pages créées** :
+- `wiki/sources/2026-06-24-cover-letter-mistral-v2-staging-green.md`
+
+**Pages mises à jour** :
+- `wiki/tasks/2026-06-22-cover-letter-quality-production-roadmap.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**Points notables** :
+- Decision recorded: `COVER_LETTER_MISTRAL_V2_STAGING_GREEN`, superseding `COVER_LETTER_MISTRAL_V2_READY_FOR_INTERNAL_STAGING_ONLY`.
+- Convex staging `dev:neat-starfish-33` was synced after stale function spec and stale schema-data blockers were cleared; 28/28 old invalid `proposalHandoffs` missing `handoffToken` were removed, all older than 24h.
+- `npx convex dev --once` completed and the deployed function spec now includes `mistral-medium-latest` and `qwen3.7-max`.
+- Only canonical staging flag `cover_letter_premium_prompt_v2=1` was enabled; aliases remained unset, quality repair remained OFF, and path flags stayed unchanged.
+- Staging smoke returned `STAGING_GREEN`: 8/8 PASS, no PR246 forbidden terms, no PR248 no-CV leakage, GPT stayed on GPT, Qwen stayed legacy-only, production untouched, no app PR/MCP/source-code changes.

@@ -3,9 +3,9 @@ title: "Cover Letter Quality Production Roadmap"
 category: task
 status: current
 created: 2026-06-22
-updated: 2026-06-23
+updated: 2026-06-24
 type: implementation-roadmap
-sources: [2026-06-23-release-orchestration-staging-pr87-8-checkpoint, 2026-06-23-cover-letter-quality-pr249-staged-internal-gate, 2026-06-23-cover-letter-quality-pr248-merge-checkpoint, 2026-06-23-cover-letter-quality-pr246-merge-checkpoint, 2026-06-23-cover-letter-quality-production-roadmap-updated-checklist]
+sources: [2026-06-24-cover-letter-mistral-v2-staging-green, 2026-06-23-release-orchestration-staging-pr87-8-checkpoint, 2026-06-23-cover-letter-quality-pr249-staged-internal-gate, 2026-06-23-cover-letter-quality-pr248-merge-checkpoint, 2026-06-23-cover-letter-quality-pr246-merge-checkpoint, 2026-06-23-cover-letter-quality-production-roadmap-updated-checklist]
 related: [[product/ai-product-model]], [[tech/proposal-ai-routing-and-inline-diff]], [[outputs/2026-05-26-proposal-language-generation-hardening]]
 ---
 
@@ -25,7 +25,7 @@ It does not own the Twoweeks MCP / ChatGPT App SDK roadmap, manual application h
 
 Shared branch/base references such as `application-os-foundation` and PR245 are coordination anchors only. They do not mean the cover-letter quality checklist and the MCP/App SDK checklist should be executed in the same PR.
 
-## Current State - 2026-06-23
+## Current State - 2026-06-24
 
 Current branch line:
 
@@ -73,11 +73,11 @@ PR248 merged into application-os-foundation: YES
 PR248 decision marker: READY_FOR_STAGED_INTERNAL_MISTRAL_V2_EXPANSION
 PR249 merged into application-os-foundation: YES
 PR249 staged internal Mistral V2 gate: STAGED_INTERNAL_MISTRAL_V2_READY
-Decision to record: COVER_LETTER_MISTRAL_V2_READY_FOR_INTERNAL_STAGING_ONLY
+Previous checkpoint: COVER_LETTER_MISTRAL_V2_READY_FOR_INTERNAL_STAGING_ONLY
+Current staging decision: COVER_LETTER_MISTRAL_V2_STAGING_GREEN
 Quality repair: OFF / NO-GO
 Full production GO: NO-GO
-Next step: internal/staging-only Mistral V2 rollout readiness. Production full GO remains a separate later decision.
-Latest root orchestration checkpoint: ROLLED_BACK_AFTER_STAGING_FAILURE. Convex staging access worked when root `.env.local` was loaded into the shell environment, but staging rejected `mistral-medium-latest` even though the verified base accepts it. The attempted `cover_letter_premium_prompt_v2=on` flag was rolled back to unset.
+Latest staging checkpoint: STAGING_GREEN on Convex `dev:neat-starfish-33` after stale function-spec sync and stale `proposalHandoffs` cleanup. Canonical staging flag `cover_letter_premium_prompt_v2=1` is enabled only on staging. Production full GO remains a separate later decision.
 ```
 
 ## Completed PRs / Gates
@@ -262,6 +262,95 @@ Verified facts:
 
 Next staging work must first redeploy or otherwise prove the staging function surface is at `d628bed79c0063d2c06c836015e87d313385bbd2` or a verified descendant, then reapply the single staging flag and run the deployed smoke matrix.
 
+## Staging Green Checkpoint - 2026-06-24
+
+Decision:
+
+```text
+COVER_LETTER_MISTRAL_V2_STAGING_GREEN
+```
+
+Staging target:
+
+- Convex deployment: `dev:neat-starfish-33`
+- Team: `panamini`
+- Project: `banzai`
+- Production untouched:
+  - no `--prod`
+  - no `npx convex deploy`
+
+Staging sync prerequisite:
+
+- Deployed function spec was initially stale and missed `mistral-medium-latest` and `qwen3.7-max`.
+- Schema push was blocked by old `proposalHandoffs` rows missing `handoffToken`.
+- Invalid `proposalHandoffs`: 28.
+- Fresh invalid rows: 0.
+- Oldest invalid row: `2026-04-08T06:16:25.843Z`.
+- Newest invalid row: `2026-06-06T22:50:12.107Z`.
+- All invalid rows were older than 24h.
+- Table-scoped cleanup removed 28/28 invalid `proposalHandoffs`.
+- `npx convex dev --once` completed after cleanup.
+- Function spec after sync includes `chatgpt`, `mistral-agent`, `mistral-large-latest`, `mistral-medium-latest`, `mistral-small-latest`, and `qwen3.7-max`.
+
+Staging flag enabled:
+
+```text
+cover_letter_premium_prompt_v2=1
+```
+
+Aliases remained unset:
+
+```text
+COVER_LETTER_PREMIUM_PROMPT_V2=not found
+ENABLE_COVER_LETTER_PREMIUM_PROMPT_V2=not found
+```
+
+Quality repair remained unset/off:
+
+```text
+ENABLE_COVER_LETTER_QUALITY_REPAIR_V1=not found
+```
+
+Path flags remained unchanged:
+
+```text
+cover_letter_premium_path_v1=1
+COVER_LETTER_PREMIUM_PATH_V1=1
+ENABLE_COVER_LETTER_PREMIUM_PATH_V1=1
+```
+
+Staging smoke result:
+
+```text
+STAGING_GREEN
+```
+
+Smoke matrix:
+
+| Case | Result |
+|---|---:|
+| Mistral medium French no-CV | PASS |
+| Mistral large French no-CV | PASS |
+| English no-CV control | PASS |
+| CV-direct control | PASS |
+| Adjacent-fit control | PASS |
+| GPT isolation control | PASS |
+| Qwen legacy-only control | PASS |
+| Quality-repair-disabled control | PASS |
+
+Safety summary:
+
+- No PR246 forbidden extrapolation terms.
+- No PR248 no-CV leakage phrases.
+- No unsupported-claim pattern hits.
+- GPT stayed on GPT and did not receive Mistral V2 behavior.
+- Qwen stayed legacy-only in the control route.
+- Quality repair stayed OFF.
+- No source files changed.
+- No app PR opened.
+- No MCP work.
+- Production full GO remains NOT approved.
+
 ## Current Flags Policy
 
 Keep these OFF/unset outside a controlled internal test:
@@ -273,9 +362,9 @@ cover_letter_premium_prompt_v2=off
 ENABLE_COVER_LETTER_QUALITY_REPAIR_V1=off
 ```
 
-Allowed only for post-merge verification and staged internal expansion:
+Allowed only for post-merge verification and controlled internal/staging expansion:
 
-- Mistral V2 flags ON in internal/no-DB canary only
+- Mistral V2 canonical flag ON in internal/staging only
 - Quality repair OFF always
 - Qwen premium flags OFF
 - Production/public env OFF until a separate production decision
@@ -328,6 +417,13 @@ Allowed only for post-merge verification and staged internal expansion:
 - [x] Confirm Qwen legacy-only with `enteringPremiumAttempt=false`.
 - [x] Confirm quality repair OFF / not used.
 - [x] Record `COVER_LETTER_MISTRAL_V2_READY_FOR_INTERNAL_STAGING_ONLY`.
+- [x] Clean stale invalid staging `proposalHandoffs` rows missing `handoffToken`: 28/28 removed, all older than 24h.
+- [x] Sync Convex staging function surface with `npx convex dev --once`.
+- [x] Confirm deployed function spec includes `mistral-medium-latest` and `qwen3.7-max`.
+- [x] Enable only canonical staging Mistral V2 flag `cover_letter_premium_prompt_v2=1`.
+- [x] Run deployed staging smoke matrix: 8/8 PASS, `STAGING_GREEN`.
+- [x] Confirm GPT isolation, Qwen legacy-only control, quality repair OFF, PR246 forbidden terms absent, and PR248 no-CV leakage absent.
+- [x] Record `COVER_LETTER_MISTRAL_V2_STAGING_GREEN`.
 
 ## Checklist - Active / Next
 
@@ -336,8 +432,8 @@ Allowed only for post-merge verification and staged internal expansion:
 - [ ] Keep Mistral V2 internal/staging only.
 - [x] Restore authorized Convex access for `dev:neat-starfish-33` by sourcing root `.env.local` instead of passing `--env-file`.
 - [x] Record previous non-secret staging values before setting the selected Mistral V2 flag.
-- [ ] Redeploy or otherwise prove the staging function surface matches `d628bed79c0063d2c06c836015e87d313385bbd2` or a verified descendant.
-- [ ] Prove deployed staging revision before running deployed smoke.
+- [x] Redeploy or otherwise prove the staging function surface matches `d628bed79c0063d2c06c836015e87d313385bbd2` or a verified descendant.
+- [x] Prove deployed staging revision before running deployed smoke.
 - [ ] Do not enable production without a separate production release decision.
 - [ ] Do not enable quality repair.
 - [ ] Do not change Qwen premium behavior; keep Qwen legacy-only unless a separate Qwen PR is approved.
@@ -437,5 +533,5 @@ After PR248, the local mirror should be updated to reflect the merged no-CV boun
 ## Current Next Smallest Step
 
 ```text
-Redeploy or otherwise prove `dev:neat-starfish-33` is running `d628bed79c0063d2c06c836015e87d313385bbd2` or a verified descendant, then rerun the internal/staging-only Mistral V2 rollout gate. Do not enable production or quality repair.
+Keep `dev:neat-starfish-33` as the only enabled Mistral V2 environment and prepare a separate production release decision. Do not enable production or quality repair without a new explicit gate.
 ```
