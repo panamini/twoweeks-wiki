@@ -77,7 +77,7 @@ Decision to record: COVER_LETTER_MISTRAL_V2_READY_FOR_INTERNAL_STAGING_ONLY
 Quality repair: OFF / NO-GO
 Full production GO: NO-GO
 Next step: internal/staging-only Mistral V2 rollout readiness. Production full GO remains a separate later decision.
-Latest root orchestration checkpoint: STAGING_BLOCKED because authorized Convex access could not read or set internal/staging flag values on `dev:neat-starfish-33`; no flags were changed and no deployed smoke was run.
+Latest root orchestration checkpoint: ROLLED_BACK_AFTER_STAGING_FAILURE. Convex staging access worked when root `.env.local` was loaded into the shell environment, but staging rejected `mistral-medium-latest` even though the verified base accepts it. The attempted `cover_letter_premium_prompt_v2=on` flag was rolled back to unset.
 ```
 
 ## Completed PRs / Gates
@@ -243,23 +243,24 @@ Interpretation:
 
 Root spawned the internal/staging operator and MCP gate owner as isolated child lanes from `application-os-foundation` at `d628bed79c0063d2c06c836015e87d313385bbd2`.
 
-Internal/staging rollout terminal decision:
+Internal/staging rollout terminal decision after follow-up correction:
 
 ```text
-STAGING_BLOCKED
+ROLLED_BACK_AFTER_STAGING_FAILURE
 ```
 
 Verified facts:
 
 - Intended staging target: Convex `dev:neat-starfish-33` / `https://neat-starfish-33.convex.cloud`.
 - Production target remained separate: `prod:giddy-basilisk-88` / `https://giddy-basilisk-88.convex.cloud`.
-- Staging env reads failed with `401 Unauthorized: MissingAccessToken`.
-- Previous staging flag values were not recorded because authenticated Convex access was unavailable.
-- No Mistral V2 flag or alias was set.
-- No restart, redeploy, smoke, or rollback occurred.
+- Staging env reads work when root `.env.local` is sourced into the shell; using `convex env --env-file` was the wrong CLI path because it bypassed global-token fallback.
+- Previous staging values for the three Mistral V2 flag names and quality repair were all unset.
+- `cover_letter_premium_prompt_v2=on` was set as the single intended staging flag.
+- A deployed `/test/generate` smoke rejected `mistral-medium-latest` at argument validation, while the verified base accepts that model type. This means the running staging function surface could not be proven to contain `d628bed79c0063d2c06c836015e87d313385bbd2`.
+- The flag was rolled back to unset; rollback verification confirmed all three Mistral V2 flags and quality repair were unset.
 - Production was untouched.
 
-Next staging work must first restore authorized Convex access, then record previous non-secret flag values, apply only the intended internal/staging Mistral V2 flag, prove deployed revision, and run the deployed smoke matrix.
+Next staging work must first redeploy or otherwise prove the staging function surface is at `d628bed79c0063d2c06c836015e87d313385bbd2` or a verified descendant, then reapply the single staging flag and run the deployed smoke matrix.
 
 ## Current Flags Policy
 
@@ -333,8 +334,9 @@ Allowed only for post-merge verification and staged internal expansion:
 ### Internal/staging-only Mistral V2 readiness
 
 - [ ] Keep Mistral V2 internal/staging only.
-- [ ] Restore authorized Convex access for `dev:neat-starfish-33` before attempting rollout.
-- [ ] Record previous non-secret staging values before setting the selected Mistral V2 flag.
+- [x] Restore authorized Convex access for `dev:neat-starfish-33` by sourcing root `.env.local` instead of passing `--env-file`.
+- [x] Record previous non-secret staging values before setting the selected Mistral V2 flag.
+- [ ] Redeploy or otherwise prove the staging function surface matches `d628bed79c0063d2c06c836015e87d313385bbd2` or a verified descendant.
 - [ ] Prove deployed staging revision before running deployed smoke.
 - [ ] Do not enable production without a separate production release decision.
 - [ ] Do not enable quality repair.
@@ -435,5 +437,5 @@ After PR248, the local mirror should be updated to reflect the merged no-CV boun
 ## Current Next Smallest Step
 
 ```text
-Resolve authorized Convex access for `dev:neat-starfish-33`, then rerun the internal/staging-only Mistral V2 rollout gate from `d628bed79c0063d2c06c836015e87d313385bbd2` or a verified descendant. Do not enable production or quality repair.
+Redeploy or otherwise prove `dev:neat-starfish-33` is running `d628bed79c0063d2c06c836015e87d313385bbd2` or a verified descendant, then rerun the internal/staging-only Mistral V2 rollout gate. Do not enable production or quality repair.
 ```

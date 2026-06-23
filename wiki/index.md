@@ -118,7 +118,7 @@ Cette carte est un routeur de lecture pour agents LLM. Elle ne remplace pas les 
 
 ## Sources
 
-Cover-letter quality has a merged PR249 staged internal Mistral V2 gate checkpoint, but deployed staging rollout is blocked by Convex authorization. Production full GO and quality repair remain separate/not approved. The MCP/App SDK track reconciled PR87.8 as still blocked with PR80B implemented and PR88/PR89 blocked.
+Cover-letter quality has a merged PR249 staged internal Mistral V2 gate checkpoint, but deployed staging rollout was rolled back because the staging function surface appears stale. Production full GO and quality repair remain separate/not approved. The MCP/App SDK track reconciled PR87.8 as still blocked with PR80B implemented and PR88/PR89 blocked.
 
 | Page | Type | Date | Status |
 |------|------|------|--------|

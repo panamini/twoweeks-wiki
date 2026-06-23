@@ -1451,3 +1451,17 @@ Migration vers schema v2 : ajout rawinput/ (staging), gestion temporelle (status
 - Child A returned `STAGING_BLOCKED`: Convex staging target `dev:neat-starfish-33` was identified, but authenticated env access failed with `401 Unauthorized: MissingAccessToken`; no flags changed and no deployed smoke ran.
 - Child B returned `PR87_8_GATE_STILL_BLOCKED`: PR80B manual handoff remains implemented, while production MCP endpoints, tool calls, OAuth, live submit/apply, approved-answer copy, provider-verified submission, billing, PR88, and PR89 remain blocked.
 - No application code changed, no application PR opened, no production behavior enabled, and the local application roadmap mirror remained untouched.
+
+## 2026-06-23 — Release orchestration correction: staging flag rolled back
+
+**Pages mises à jour** :
+- `wiki/sources/2026-06-23-release-orchestration-staging-pr87-8-checkpoint.md`
+- `wiki/tasks/2026-06-22-cover-letter-quality-production-roadmap.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**Points notables** :
+- Follow-up found the Convex auth issue was caused by using `convex env --env-file`; sourcing root `.env.local` allowed the CLI to combine deployment selection with the global Convex token.
+- Previous staging flag values were unset. `cover_letter_premium_prompt_v2=on` was applied to `dev:neat-starfish-33`, then rolled back after staging rejected `mistral-medium-latest` at `/test/generate` argument validation.
+- Rollback verification confirmed the three Mistral V2 flag names and `ENABLE_COVER_LETTER_QUALITY_REPAIR_V1` are unset again. Production remained untouched.
