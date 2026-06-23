@@ -5,7 +5,7 @@ status: current
 created: 2026-06-22
 updated: 2026-06-23
 type: implementation-roadmap
-sources: [2026-06-23-cover-letter-quality-production-roadmap-updated-checklist]
+sources: [2026-06-23-cover-letter-quality-pr246-merge-checkpoint, 2026-06-23-cover-letter-quality-production-roadmap-updated-checklist]
 related: [[product/ai-product-model]], [[tech/proposal-ai-routing-and-inline-diff]], [[outputs/2026-05-26-proposal-language-generation-hardening]]
 ---
 
@@ -13,7 +13,7 @@ related: [[product/ai-product-model]], [[tech/proposal-ai-routing-and-inline-dif
 
 ## Purpose
 
-Track the current state of the cover-letter quality work after the PR230-PR245 sequence, the post-merge smoke tests, and the first Mistral V2 internal canary.
+Track the current state of the cover-letter quality work after the PR230-PR245 sequence, the PR246 merge, and the clean post-merge Mistral V2 internal canary.
 
 This document is an updated working checklist. It does not replace the PRs, commits, diffs, or prior handoffs. Use those as source of truth when implementing.
 
@@ -39,15 +39,28 @@ Known current head after PR245:
 2ceb98d071b51e87a368dc3d01f33d7ce147f724
 ```
 
+PR246 cleanup commit:
+
+```text
+dbb992c98050a525ecde59f961ec39f886fdab79
+```
+
+PR246 merge commit:
+
+```text
+8375257fea4799fef29a97db76e8b90b276cf
+```
+
 Overall decision:
 
 ```text
 Merged baseline with flags OFF: OK
-PR246 implementation: draft PR open / ready for real review, not merged
-Mistral V2 canary expansion: conditional internal GO after clean review, merge, and post-merge rerun
+PR246 merged into application-os-foundation: YES
+Post-merge Mistral V2 canary: CLEAN
+Internal Mistral V2 canary expansion: GO
 Quality repair: OFF / NO-GO
 Full production GO: NO-GO
-Next step: review PR246 diff, merge only if clean, rerun Mistral V2 canary post-merge
+Next step: run 3-5 additional internal generations and compare against V1
 ```
 
 ## Completed PRs / Gates
@@ -64,7 +77,8 @@ Next step: review PR246 diff, merge only if clean, rerun Mistral V2 canary post-
 | PR245 - GPT premium finalization hardening | Done | GPT premium flags-off smoke became clean after merge. |
 | Post-PR245 flags-OFF smoke | Done | GPT premium, Mistral medium/large V2 OFF, No-CV Mistral, Qwen legacy all passed. |
 | First Mistral V2 internal canary | Done, failed gate | Mistral-large direct V2 produced unsupported expansion. |
-| PR246 implementation draft | Draft open, not merged | Branch `codex/pr246-mistral-v2-factuality-tightening`; tests and internal/no-DB canary reported clean; review required before merge. |
+| PR246 - factuality tightening | Done, merged | Branch `codex/pr246-mistral-v2-factuality-tightening`; cleanup removed the roadmap doc from the PR diff; post-merge canary clean. |
+| Post-merge Mistral V2 internal canary | Done, clean | Medium/large direct V2 passed; forbiddenHits empty; internal expansion GO. |
 
 ## What Works Now With Flags OFF
 
@@ -75,7 +89,7 @@ Next step: review PR246 diff, merge only if clean, rerun Mistral V2 canary post-
 - Qwen with premium flags OFF: legacy-only path, PASS.
 - Quality repair remains disabled.
 
-## Current Canary Result - Mistral V2
+## Historical Canary Result - Mistral V2
 
 Internal/no-DB canary with Mistral V2 ON and quality repair OFF:
 
@@ -104,8 +118,26 @@ Decision:
 
 ```text
 Treat this as unsupported candidate-detail expansion.
-PR246 tightened Mistral V2 factuality guidance and reran the canary.
-Do not merge blindly: review the real diff first.
+PR246 fixed this blocker in the merged branch.
+```
+
+## Post-merge Canary - Mistral V2
+
+After PR246 merged into `application-os-foundation`, the internal/no-DB canary came back clean:
+
+- Mistral medium direct V2 ON: premium structured saved, validation passed, repair disabled.
+- Mistral large direct V2 ON: premium structured saved, validation passed, repair disabled.
+- Full-output direct scan: `forbiddenHits: []` for medium and large, including the previously blocked unsupported-detail terms.
+- GPT with V2 flags ON: premium structured saved; repair disabled.
+- Qwen with premium flags OFF: legacy-only path, `executedPath: legacy`, `saveOutcome: legacy_saved_parsed`, `enteringPremiumAttempt: false`.
+- Benchmark matrix across direct, adjacent, real-world adjacent, and no-CV: 8/8 premium validation passed.
+
+Decision:
+
+```text
+Internal Mistral V2 canary expansion: GO
+Quality repair: OFF / NO-GO
+Production full GO: separate later decision
 ```
 
 ## Current Flags Policy
@@ -119,7 +151,7 @@ cover_letter_premium_prompt_v2=off
 ENABLE_COVER_LETTER_QUALITY_REPAIR_V1=off
 ```
 
-Allowed only for PR246 internal validation and post-merge internal canary:
+Allowed only for post-merge internal canary expansion:
 
 - Mistral V2 flags ON in internal/no-DB canary only
 - Quality repair OFF always
@@ -151,22 +183,21 @@ Allowed only for PR246 internal validation and post-merge internal canary:
 - [x] Run targeted tests for PR246.
 - [x] Rerun internal/no-DB Mistral V2 canary for PR246.
 - [x] Return reported GO for internal Mistral V2 canary expansion, subject to review/merge and post-merge rerun.
+- [x] Remove the roadmap doc from the PR diff and keep it local-only.
+- [x] Merge PR246 into `application-os-foundation`.
+- [x] Rerun the post-merge internal/no-DB Mistral V2 canary.
+- [x] Confirm internal Mistral V2 canary expansion GO.
 
 ## Checklist - Active / Next
 
-### PR246 - Review and merge gate
+### Internal Mistral V2 expansion after PR246 merge
 
-- [ ] Run a real review of the PR246 diff before merge.
-- [ ] Confirm the diff touches cover-letter quality only.
-- [ ] Confirm the regression test covers the unsupported `standardizing component usage and versioning` expansion.
-- [ ] Confirm prompt-side tightening does not add broad post-generation rewriting.
-- [ ] Confirm provenance/finalization guards were not weakened.
-- [ ] Confirm GPT/Qwen behavior was not changed.
-- [ ] Confirm V2 and quality repair remain default-OFF in production.
-- [ ] Confirm MCP/App SDK, manual handoff, OAuth, launch gates, parser, UI, DB, and deployment were not touched.
-- [ ] If review is clean, merge PR246.
-- [ ] After merge, rerun the same targeted tests and internal/no-DB Mistral V2 canary matrix.
-- [ ] If post-merge canary is clean, proceed to limited internal Mistral V2 expansion.
+- [ ] Keep Mistral V2 internal/staging only.
+- [ ] Run 3-5 additional internal generations for `mistral-medium-latest`.
+- [ ] Run 3-5 additional internal generations for `mistral-large-latest`.
+- [ ] Compare against V1 baseline for specificity, unsupported claims, finalization, provenance, latency/cost.
+- [ ] Decide whether to expand internal canary or keep on hold.
+- [ ] Do not enable production without a separate release decision.
 
 Acceptance criteria for PR246:
 
@@ -179,17 +210,8 @@ Acceptance criteria for PR246:
 - [x] Quality repair remains disabled.
 - [x] Targeted tests reported pass.
 - [x] PR246 canary rerun table reported clean.
-- [ ] Independent review confirms the diff.
-- [ ] Post-merge rerun confirms the same result.
-
-### Internal Mistral V2 expansion after PR246 merge
-
-- [ ] Keep Mistral V2 internal/staging only.
-- [ ] Run 3-5 additional internal generations for `mistral-medium-latest`.
-- [ ] Run 3-5 additional internal generations for `mistral-large-latest`.
-- [ ] Compare against V1 baseline for specificity, unsupported claims, finalization, provenance, latency/cost.
-- [ ] Decide whether to expand internal canary or keep on hold.
-- [ ] Do not enable production without separate release decision.
+- [x] Independent review confirms the diff.
+- [x] Post-merge rerun confirms the same result.
 
 ### Quality Repair Later - Not Now
 
@@ -214,7 +236,7 @@ Acceptance criteria for PR246:
 - [ ] Keep rollback flags documented.
 - [ ] Monitor finalization failures, unsupported-claim reports, provider schema failures, latency/cost, and regeneration rates.
 
-## Do Not Change During PR246
+## Guardrails for Internal Expansion
 
 - Parser / CV ingest.
 - UI.
@@ -228,7 +250,6 @@ Acceptance criteria for PR246:
 - Qwen premium behavior.
 - GPT prompt/behavior unless a regression is proven.
 - Quality repair behavior.
-- `docs/plans/2026-06-22-cover-letter-quality-production-roadmap.md` unless explicitly asked to commit docs.
 
 ## Suggested Commands for PR246
 
@@ -269,5 +290,5 @@ As of 2026-06-23, the local mirror is aligned to this PR246-only cover-letter qu
 ## Current Next Smallest Step
 
 ```text
-Open a fresh PR246 branch from application-os-foundation and tighten Mistral V2 factuality guidance with tests.
+Run 3-5 additional internal generations for `mistral-medium-latest` and `mistral-large-latest`, then compare against V1.
 ```

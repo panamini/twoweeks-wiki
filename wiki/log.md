@@ -15,6 +15,28 @@ grep "^## \[" wiki/log.md | grep "ingest"  # Tous les ingests
 
 ---
 
+## [2026-06-23] direct-update | cover-letter PR246 merge and post-merge canary
+
+**Agent** : Codex
+**Mode** : direct-update
+**Source** : user checkpoint / attachment text
+
+**Pages créées** :
+- `wiki/sources/2026-06-23-cover-letter-quality-pr246-merge-checkpoint.md`
+
+**Pages mises à jour** :
+- `wiki/tasks/2026-06-22-cover-letter-quality-production-roadmap.md`
+- `wiki/index.md`
+- `wiki/hot.md`
+- `wiki/log.md`
+
+**Points notables** :
+- PR246 is now merged into `application-os-foundation` and the roadmap doc stayed out of the PR diff.
+- Post-merge Mistral V2 internal/no-DB canary is clean and internal canary expansion is GO.
+- Quality repair remains OFF / NO-GO and production full GO remains a separate later decision.
+
+**Open items** : keep using the merged PR246 checkpoint as the source of truth and treat the earlier draft/review state as historical.
+
 ## [2026-06-23] direct-update | PR246 draft review gate checkpoint
 
 **Agent** : Codex
