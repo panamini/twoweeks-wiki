@@ -5,7 +5,7 @@ status: current
 created: 2026-06-22
 updated: 2026-06-23
 type: implementation-roadmap
-sources: [2026-06-23-cover-letter-quality-pr246-merge-checkpoint, 2026-06-23-cover-letter-quality-production-roadmap-updated-checklist]
+sources: [2026-06-23-cover-letter-quality-pr248-merge-checkpoint, 2026-06-23-cover-letter-quality-pr246-merge-checkpoint, 2026-06-23-cover-letter-quality-production-roadmap-updated-checklist]
 related: [[product/ai-product-model]], [[tech/proposal-ai-routing-and-inline-diff]], [[outputs/2026-05-26-proposal-language-generation-hardening]]
 ---
 
@@ -13,7 +13,7 @@ related: [[product/ai-product-model]], [[tech/proposal-ai-routing-and-inline-dif
 
 ## Purpose
 
-Track the current state of the cover-letter quality work after the PR230-PR245 sequence, the PR246 merge, and the clean post-merge Mistral V2 internal canary.
+Track the current state of the cover-letter quality work after the PR230-PR245 sequence, PR246, and PR248.
 
 This document is an updated working checklist. It does not replace the PRs, commits, diffs, or prior handoffs. Use those as source of truth when implementing.
 
@@ -51,16 +51,23 @@ PR246 merge commit:
 8375257fea4799fef29a97db76b58e0b90b276cf
 ```
 
+PR248 merge commit:
+
+```text
+2fd7ebef142859fb089bf8e9d270bf6b5b590fa1
+```
+
 Overall decision:
 
 ```text
 Merged baseline with flags OFF: OK
 PR246 merged into application-os-foundation: YES
 Post-merge Mistral V2 canary: CLEAN
-Internal Mistral V2 canary expansion: GO
+PR248 merged into application-os-foundation: YES
+PR248 decision marker: READY_FOR_STAGED_INTERNAL_MISTRAL_V2_EXPANSION
 Quality repair: OFF / NO-GO
 Full production GO: NO-GO
-Next step: run 3-5 additional internal generations and compare against V1
+Next step: run post-merge verification from PR248, then staged internal Mistral V2 expansion/evidence gate if clean
 ```
 
 ## Completed PRs / Gates
@@ -79,6 +86,7 @@ Next step: run 3-5 additional internal generations and compare against V1
 | First Mistral V2 internal canary | Done, failed gate | Mistral-large direct V2 produced unsupported expansion. |
 | PR246 - factuality tightening | Done, merged | Branch `codex/pr246-mistral-v2-factuality-tightening`; cleanup removed the roadmap doc from the PR diff; post-merge canary clean. |
 | Post-merge Mistral V2 internal canary | Done, clean | Medium/large direct V2 passed; forbiddenHits empty; internal expansion GO. |
+| PR248 - no-CV candidate-history boundary | Done, merged | Squash merge `2fd7ebef142859fb089bf8e9d270bf6b5b590fa1`; expected head `fd478470525942caacbec12d01cdcb39d2688c22`; diff scope stayed in `premiumCoverLetter.ts` and `premiumCoverLetter.test.ts`; merge message reports `READY_FOR_STAGED_INTERNAL_MISTRAL_V2_EXPANSION`. |
 
 ## What Works Now With Flags OFF
 
@@ -140,6 +148,33 @@ Quality repair: OFF / NO-GO
 Production full GO: separate later decision
 ```
 
+## PR248 Merge Checkpoint - No-CV Candidate-History Boundary
+
+PR248 merged after the PR246 canary path. It tightened no-CV validation for Mistral V2, especially candidate-history leakage in English and French present-tense operational wording.
+
+Verified local merge facts:
+
+- PR: `https://github.com/panamini/neyssan/pull/248`
+- Merge commit: `2fd7ebef142859fb089bf8e9d270bf6b5b590fa1`
+- Expected head SHA matched: `fd478470525942caacbec12d01cdcb39d2688c22`
+- Merge method: squash merge
+- Changed files:
+  - `my-app/convex/lib/proposals/premiumCoverLetter.ts`
+  - `my-app/convex/lib/proposals/__tests__/premiumCoverLetter.test.ts`
+
+Reported decision marker:
+
+```text
+READY_FOR_STAGED_INTERNAL_MISTRAL_V2_EXPANSION
+```
+
+Interpretation:
+
+- PR248 is merged and the next stage can move forward internally.
+- It is still not a production release.
+- Quality repair remains OFF / NO-GO.
+- Production full GO remains a separate later decision.
+
 ## Current Flags Policy
 
 Keep these OFF/unset outside a controlled internal test:
@@ -151,7 +186,7 @@ cover_letter_premium_prompt_v2=off
 ENABLE_COVER_LETTER_QUALITY_REPAIR_V1=off
 ```
 
-Allowed only for post-merge internal canary expansion:
+Allowed only for post-merge verification and staged internal expansion:
 
 - Mistral V2 flags ON in internal/no-DB canary only
 - Quality repair OFF always
@@ -187,16 +222,26 @@ Allowed only for post-merge internal canary expansion:
 - [x] Merge PR246 into `application-os-foundation`.
 - [x] Rerun the post-merge internal/no-DB Mistral V2 canary.
 - [x] Confirm internal Mistral V2 canary expansion GO.
+- [x] Merge PR248 into `application-os-foundation`.
+- [x] Confirm PR248 expected head SHA matched before merge.
+- [x] Keep PR248 scoped to cover-letter quality no-CV candidate-history validation.
+- [x] Keep PR248 diff scoped to `premiumCoverLetter.ts` and `premiumCoverLetter.test.ts`.
+- [x] Keep quality repair and production flags OFF.
+- [x] Record `READY_FOR_STAGED_INTERNAL_MISTRAL_V2_EXPANSION` as the reported PR248 decision marker.
 
 ## Checklist - Active / Next
 
-### Internal Mistral V2 expansion after PR246 merge
+### Post-PR248 verification and staged internal Mistral V2 gate
 
 - [ ] Keep Mistral V2 internal/staging only.
-- [ ] Run 3-5 additional internal generations for `mistral-medium-latest`.
-- [ ] Run 3-5 additional internal generations for `mistral-large-latest`.
-- [ ] Compare against V1 baseline for specificity, unsupported claims, finalization, provenance, latency/cost.
-- [ ] Decide whether to expand internal canary or keep on hold.
+- [ ] Sync `application-os-foundation` to `2fd7ebef142859fb089bf8e9d270bf6b5b590fa1`.
+- [ ] Rerun targeted proposal tests from the PR248 merge commit.
+- [ ] Rerun internal/no-DB Mistral V2 verification after merge, including no-CV English and French candidate-history leakage cases.
+- [ ] Run GPT control check and confirm GPT does not receive Mistral V2 prompt behavior.
+- [ ] Run Qwen control check with premium flags OFF and confirm legacy-only path.
+- [ ] Compare against V1 baseline for specificity, unsupported claims, finalization, provenance, latency/cost where available.
+- [ ] If clean, proceed to staged internal Mistral V2 expansion/evidence gate.
+- [ ] If a new failure appears, hold and open only a narrow follow-up PR for that exact failure class.
 - [ ] Do not enable production without a separate release decision.
 
 Acceptance criteria for PR246:
@@ -251,7 +296,7 @@ Acceptance criteria for PR246:
 - GPT prompt/behavior unless a regression is proven.
 - Quality repair behavior.
 
-## Suggested Commands for PR246
+## Suggested Commands for Post-PR248 Verification
 
 Run from `my-app` unless repo instructions say otherwise:
 
@@ -286,9 +331,10 @@ Code-adjacent mirror:
 ```
 
 As of 2026-06-23, the local mirror is aligned to this PR246-only cover-letter quality plan and explicitly excludes MCP/App SDK and manual handoff work.
+After PR248, the local mirror should be updated to reflect the merged no-CV boundary checkpoint while keeping the same workstream boundary.
 
 ## Current Next Smallest Step
 
 ```text
-Run 3-5 additional internal generations for `mistral-medium-latest` and `mistral-large-latest`, then compare against V1.
+Run post-merge verification from `2fd7ebef142859fb089bf8e9d270bf6b5b590fa1`. If clean, proceed to staged internal Mistral V2 expansion/evidence gate. Do not enable production or quality repair.
 ```

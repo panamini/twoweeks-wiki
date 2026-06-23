@@ -15,6 +15,30 @@ grep "^## \[" wiki/log.md | grep "ingest"  # Tous les ingests
 
 ---
 
+## [2026-06-23] direct-update | cover-letter PR248 merge checkpoint
+
+**Agent** : Codex
+**Mode** : direct-update
+**Source** : user merge checkpoint; local git verification in `neyssan-new`
+
+**Pages créées** :
+- `wiki/sources/2026-06-23-cover-letter-quality-pr248-merge-checkpoint.md`
+
+**Pages mises à jour** :
+- `wiki/tasks/2026-06-22-cover-letter-quality-production-roadmap.md`
+- `wiki/index.md`
+- `wiki/hot.md`
+- `wiki/log.md`
+- `/Volumes/video/kay/app/pouraurelien/save/implementation_UI/neyssan-new/docs/plans/2026-06-22-cover-letter-quality-production-roadmap.md`
+
+**Points notables** :
+- PR248 is merged by squash merge at `2fd7ebef142859fb089bf8e9d270bf6b5b590fa1`; expected head `fd478470525942caacbec12d01cdcb39d2688c22` matched.
+- Local diff verification shows two files changed: `premiumCoverLetter.ts` and `premiumCoverLetter.test.ts`.
+- PR248 tightened the Mistral V2 no-CV candidate-history boundary and reports `READY_FOR_STAGED_INTERNAL_MISTRAL_V2_EXPANSION`.
+- Quality repair remains OFF / NO-GO and production full GO remains a separate later decision.
+
+**Open items** : run post-merge verification from `2fd7ebef142859fb089bf8e9d270bf6b5b590fa1`; if clean, proceed to the staged internal Mistral V2 expansion/evidence gate.
+
 ## [2026-06-23] direct-update | PR246 merge SHA correction
 
 **Agent** : Codex
