@@ -2,7 +2,7 @@
 title: Index du Wiki — twoweeks
 category: overview
 sticker: emoji//1f9c6
-updated: 2026-06-22
+updated: 2026-06-23
 ---
 
 # Index du Wiki · twoweeks (v2)
@@ -19,6 +19,9 @@ Le contrôle opératoire du repo reste défini par `WIKI_SCHEMA.md` puis `CLAUDE
 | Mémoire active LLM | [[hot]] | [[overview]], [[meta/llm-wiki-pattern]] |
 | État produit | [[overview]] | [[entities/twoweeks]], [[product/product-roadmap]], [[product/product-vision]] |
 | Planning IA shadow | [[product/ai-product-model]] | [[tech/proposal-ai-routing-and-inline-diff]], [[sources/2026-05-25-proposal-generation-truth-planner]] |
+| Cover-letter quality | [[tasks/2026-06-22-cover-letter-quality-production-roadmap]] | [[sources/2026-06-23-cover-letter-quality-production-roadmap-updated-checklist]], [[product/ai-product-model]] |
+| ChatGPT App roadmap | [[product/chatgpt-app-sdk-roadmap]] | [[product/manual-application-handoff]], [[sources/2026-06-23-twoweeks-mcp-chatgpt-app-sdk-roadmap-checkpoint]], [[sources/2026-06-19-pr80b-safe-application-handoff-while-ats-access-pending]] |
+| Manual application handoff | [[product/manual-application-handoff]] | [[product/chatgpt-app-sdk-roadmap]], [[sources/2026-06-23-twoweeks-mcp-chatgpt-app-sdk-roadmap-checkpoint]] |
 | Parser / vérité CV | [[concepts/cv-parsing-pipeline]] | [[concepts/cv-families]], [[tech/import-ocr-pipeline]] |
 | Jobs / match | [[product/job-library]] | [[product/job-match-review]] |
 | Export / pagination | [[tech/export-pipeline]] | [[tech/preview-to-print-pipeline]], [[tech/workshop-pagination]] |
@@ -83,9 +86,11 @@ Cette carte est un routeur de lecture pour agents LLM. Elle ne remplace pas les 
 |------|--------|--------|------|
 | [[product/ai-product-model\|AI Product Model]] | 3 modes IA, rulebook, qualité writing, and Planner Agent shadow chain | current | ai, ux, modes |
 | [[product/ai-consistency-p0-editor-ai\|AI Consistency P0 — Closure Audit]] | Closure audit snapshot du rulebook AI editor, preview, telemetry et tailoring | current | ai, editor, rulebook |
+| [[product/chatgpt-app-sdk-roadmap\|ChatGPT/App SDK Roadmap]] | MCP/App SDK PR87.8 reconciliation next; PR80B implemented, PR88/PR89 blocked and separate from cover-letter PR246 | current | chatgpt-app, apps-sdk |
 | [[product/job-library\|Job Library]] | Jobs sauvegardés, Job Brief editable et documents liés | current | jobs, library |
 | [[product/job-match-review\|Job Match Review]] | Match comme indicateur d'attention utilisateur et dogfood interne | current | jobs, match |
 | [[product/kpis\|KPIs]] | Métriques de succès produit | current | kpi, métriques |
+| [[product/manual-application-handoff\|Manual Application Handoff]] | PR80B manual handoff implemented/tested on the MCP/App SDK track; live submit/apply still blocked | current | ats, handoff, safety |
 | [[product/product-roadmap\|Product Roadmap]] | Initiatives par phase, items implémentés et reliquat de raffinement | current | roadmap, product |
 | [[product/product-vision\|Product Vision]] | Blueprint produit complet | current | vision, architecture |
 
@@ -113,7 +118,7 @@ Cette carte est un routeur de lecture pour agents LLM. Elle ne remplace pas les 
 
 ## Sources
 
-CV Forge PR4 Remaining Tasks now reflects the 860px paper-width sync, rich summary parity, and `mistral-small-latest` helper routing.
+Cover-letter quality and MCP/App SDK now have separate active checklists: PR246 Mistral V2 factuality tightening belongs to cover-letter quality; PR87.8/PR88/PR89 and PR80B belong to the MCP/App SDK and manual handoff track.
 
 | Page | Type | Date | Status |
 |------|------|------|--------|
@@ -201,6 +206,10 @@ CV Forge PR4 Remaining Tasks now reflects the 860px paper-width sync, rich summa
 | [[sources/2026-06-11-emojis-library\|Emojis Library References]] | other | 2026-06-11 | current |
 | [[sources/2026-06-11-master-architecture-decision-doc-v1\|Twoweeks Application OS Execution Starter Pack]] | draft | 2026-06-11 | current |
 | [[sources/2026-06-11-oddyseo-pietro-schirano-writing-tool\|Oddyseo Writing Tool Note]] | other | 2026-06-11 | current |
+| [[sources/2026-06-12-chatgpt-app-sdk-roadmap-pr41-pr89\|ChatGPT/App SDK Roadmap PR41-PR89]] | roadmap | 2026-06-12 | current |
+| [[sources/2026-06-19-pr80b-safe-application-handoff-while-ats-access-pending\|PR80B - Safe Application Handoff While ATS Authorization Is Pending]] | implementation-plan | 2026-06-19 | current |
+| [[sources/2026-06-23-cover-letter-quality-production-roadmap-updated-checklist\|Cover Letter Quality Production Roadmap - Updated Checklist]] | analysis | 2026-06-23 | current |
+| [[sources/2026-06-23-twoweeks-mcp-chatgpt-app-sdk-roadmap-checkpoint\|Twoweeks MCP / ChatGPT App SDK Roadmap Checkpoint]] | analysis | 2026-06-23 | current |
 ---
 
 ## Tech
@@ -244,7 +253,7 @@ CV Forge PR4 Remaining Tasks now reflects the 860px paper-width sync, rich summa
 | [[tasks/docx-layout-parity-follow-up\|DOCX Layout Parity Follow-up]] | Deferred DOCX RTL layout, bullets, tables, and font strategy follow-up |
 | [[tasks/coffee talk\|Coffee Talk]] | Note courte pour synchroniser la skill Codex collaborateur |
 | [[tasks/Audit Workspace — Bonnes Pratiques, Sécurité, RGPD\|Audit Workspace — Bonnes Pratiques, Sécurité, RGPD]] | Audit sauvegardé du workspace |
-| [[tasks/2026-06-22-cover-letter-quality-production-roadmap|Cover Letter Quality Production Roadmap]] | PR sequence for premium provenance, legacy prompt, prompt V2, and quality repair; PR1-PR4 are open |
+| [[tasks/2026-06-22-cover-letter-quality-production-roadmap|Cover Letter Quality Production Roadmap]] | Cover-letter generation quality only; PR246 is draft/open and review is next, MCP/App SDK is out of scope |
 
 ---
 
@@ -268,8 +277,8 @@ CV Forge PR4 Remaining Tasks now reflects the 860px paper-width sync, rich summa
 
 ## Statistiques
 
-- **Pages actives** : 141 (5 overview, 1 entité, 2 concepts, 8 design, 7 product, 3 strategy, 3 meta, 83 sources, 14 tech, 7 howto, 6 tasks, 2 outputs)
+- **Pages actives** : 147 (5 overview, 1 entité, 2 concepts, 8 design, 9 product, 3 strategy, 3 meta, 87 sources, 14 tech, 7 howto, 6 tasks, 2 outputs)
 - **Pages archivées** : 2
-- **Sources dans `raw/`** : 86
-- **Sources en attente dans `rawinput/`** : 2
-- **Dernière mise à jour** : 2026-06-22
+- **Sources dans `raw/`** : 91
+- **Sources en attente dans `rawinput/`** : 0
+- **Dernière mise à jour** : 2026-06-23

@@ -1,8 +1,7 @@
 ---
 title: "Log — twoweeks Wiki"
 category: overview
-updated: 2026-06-11
-updated: 2026-06-22
+updated: 2026-06-23
 ---
 
 # Log du Wiki · twoweeks
@@ -15,6 +14,110 @@ grep "^## \[" wiki/log.md | grep "ingest"  # Tous les ingests
 ```
 
 ---
+
+## [2026-06-23] direct-update | PR246 draft review gate checkpoint
+
+**Agent** : Codex
+**Mode** : direct-update
+**Source** : user checkpoint; local branch check in `neyssan-new`
+
+**Pages mises à jour** :
+- `wiki/tasks/2026-06-22-cover-letter-quality-production-roadmap.md`
+- `wiki/index.md`
+- `wiki/hot.md`
+- `wiki/log.md`
+- `/Volumes/video/kay/app/pouraurelien/save/implementation_UI/neyssan-new/docs/plans/2026-06-22-cover-letter-quality-production-roadmap.md`
+
+**Points notables** :
+- PR246 is now tracked as draft/open and ready for real review, not as unimplemented work.
+- The reported PR246 implementation completed the Mistral V2 factuality tightening, regression coverage for `standardizing component usage and versioning`, targeted tests, and internal/no-DB canary rerun.
+- Internal Mistral V2 canary expansion is conditional GO only after clean review, merge, and post-merge canary rerun.
+- Quality repair remains OFF / NO-GO and full production remains NO-GO.
+
+**Verification** :
+- Local branch check reported `codex/pr246-mistral-v2-factuality-tightening`.
+- `gh` is not installed in this worktree, so GitHub PR draft state was not independently queried from the shell.
+
+**Open items** : review the real PR246 diff, merge only if clean, then rerun targeted tests and the same internal/no-DB Mistral V2 canary post-merge.
+
+## [2026-06-23] direct-update | clarify PR80B manual handoff implementation state
+
+**Agent** : Codex
+**Mode** : direct-update
+**Source** : code check in `neyssan-new`
+
+**Pages mises à jour** :
+- `wiki/product/manual-application-handoff.md`
+- `wiki/product/chatgpt-app-sdk-roadmap.md`
+- `wiki/index.md`
+- `wiki/hot.md`
+- `wiki/log.md`
+
+**Points notables** :
+- Confirmed PR80B manual handoff is implemented in `my-app/convex/manualApplicationHandoff.ts` and tested by `my-app/convex/__tests__/manualApplicationHandoff.test.ts`.
+- Reframed the manual handoff checklist as operational guardrails, not remaining initial implementation.
+- Preserved the blocked status for PR80-live submit/apply, approved answer copy, and provider-verified submission.
+
+**Verification** :
+- `rtk npx vitest run convex/__tests__/manualApplicationHandoff.test.ts` passed: 26 tests.
+
+**Open items** : none for PR80B initial implementation; PR87.8 and PR80-live remain separate MCP/App SDK roadmap items.
+
+## [2026-06-23] direct-update | split cover-letter quality from MCP/App SDK roadmap
+
+**Agent** : Codex
+**Mode** : direct-update
+**Source** : user request to prevent roadmap collapse and clarify remaining work
+
+**Pages mises à jour** :
+- `wiki/tasks/2026-06-22-cover-letter-quality-production-roadmap.md`
+- `wiki/product/chatgpt-app-sdk-roadmap.md`
+- `wiki/product/manual-application-handoff.md`
+- `wiki/index.md`
+- `wiki/hot.md`
+- `wiki/log.md`
+- `/Volumes/video/kay/app/pouraurelien/save/implementation_UI/neyssan-new/docs/plans/2026-06-22-cover-letter-quality-production-roadmap.md`
+
+**Points notables** :
+- Cover-letter quality now explicitly owns PR246 Mistral V2 factuality tightening only; MCP/App SDK, manual handoff, OAuth, tools, launch gates, and production App SDK work are out of scope.
+- ChatGPT/App SDK now has its own remaining checklist: PR87.8 production-gate reconciliation first, with PR88 private beta and PR89 public launch still blocked.
+- Manual handoff now has its own PR80B checklist and keeps live submit/apply plus `provider_verified_submitted` blocked.
+- The local code-adjacent cover-letter plan was synchronized from stale PR1-PR4 wording to the PR246-only checklist.
+- `hot.md` was reduced to a short routing cache so future sessions read the correct canonical page for each workstream.
+
+**Open items** : if new source files arrive in `rawinput/`, run ingest again and route each fact into the correct workstream.
+
+## [2026-06-23] ingest | cover-letter checklist, ChatGPT/App SDK roadmap, and manual handoff planning
+
+**Agent** : Codex
+**Mode** : ingest
+**Fichiers traités** :
+- `rawinput/Cover Letter Quality Production Roadmap — Updated Checklist.md`
+- `rawinput/Roadmap Twoweeks ChatGPTApp SDK — PR41 à PR89.md`
+- `rawinput/PR80B — Safe Application Handoff While ATS Authorization Is Pending.md`
+
+**Pages créées** :
+- `wiki/sources/2026-06-23-cover-letter-quality-production-roadmap-updated-checklist.md`
+- `wiki/sources/2026-06-12-chatgpt-app-sdk-roadmap-pr41-pr89.md`
+- `wiki/sources/2026-06-19-pr80b-safe-application-handoff-while-ats-access-pending.md`
+- `wiki/sources/2026-06-23-twoweeks-mcp-chatgpt-app-sdk-roadmap-checkpoint.md`
+- `wiki/product/chatgpt-app-sdk-roadmap.md`
+- `wiki/product/manual-application-handoff.md`
+
+**Pages mises à jour** :
+- `wiki/tasks/2026-06-22-cover-letter-quality-production-roadmap.md`
+- `wiki/product/chatgpt-app-sdk-roadmap.md`
+- `wiki/product/manual-application-handoff.md`
+- `wiki/index.md`
+- `wiki/hot.md`
+- `wiki/log.md`
+
+**Points notables** :
+- The cover-letter roadmap is now the PR246 hold / factuality-tightening checklist after PR230-PR245 and the first Mistral V2 canary.
+- The ChatGPT/App SDK track is now at PR87 production-gate reconciliation after PR245, with PR80B manual handoff current and PR88/PR89 blocked.
+- The staged files were moved to `raw/` and `rawinput/` now returns to `README.md` only.
+
+**Open items** : none
 
 ## [2026-06-22] direct-update | cover letter quality production roadmap
 
