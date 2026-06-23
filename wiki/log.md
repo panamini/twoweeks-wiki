@@ -15,6 +15,33 @@ grep "^## \[" wiki/log.md | grep "ingest"  # Tous les ingests
 
 ---
 
+## [2026-06-23] direct-update | cover-letter PR249 staged internal gate
+
+**Agent** : Codex
+**Mode** : direct-update
+**Source** : user release-recorder checkpoint; local post-merge gate report from `neyssan-new`
+
+**Pages créées** :
+- `wiki/sources/2026-06-23-cover-letter-quality-pr249-staged-internal-gate.md`
+
+**Pages mises à jour** :
+- `wiki/tasks/2026-06-22-cover-letter-quality-production-roadmap.md`
+- `wiki/index.md`
+- `wiki/hot.md`
+- `wiki/log.md`
+
+**Points notables** :
+- PR249 is merged into `application-os-foundation` by squash merge at `d628bed79c0063d2c06c836015e87d313385bbd2`; head SHA was `11f56d5e44b24db8b3a479cff0bee76c24974b05`.
+- GitHub checks before merge reported `CI` success and `Playwright Tests` success.
+- Local post-merge base was `application-os-foundation` at `d628bed79c0063d2c06c836015e87d313385bbd2`; local app status after the gate was clean except pre-existing untracked `docs/plans/2026-06-22-cover-letter-quality-production-roadmap.md`.
+- Targeted proposal tests passed: 2 files, 282 tests. Full proposal test directory passed: 20 files, 581 tests. `git diff --check` was clean.
+- Expanded staged internal gate reported 23 total cases, 19 PASS, 4 SKIPPED only because no committed French CV-backed fixtures existed, 0 FAIL.
+- PR246 forbidden extrapolation hits: none. PR248 no-CV leakage hits: none. Unsupported claim examples: none found.
+- Decision recorded: `COVER_LETTER_MISTRAL_V2_READY_FOR_INTERNAL_STAGING_ONLY`.
+- Production full GO is not approved. Quality repair remains OFF. Qwen remains legacy-only with `enteringPremiumAttempt=false`. GPT remains unchanged. MCP/App SDK work remains separate.
+
+**Open items** : internal/staging-only rollout readiness may proceed under the recorded gate; production full GO, quality repair, Qwen premium, GPT changes, and MCP/App SDK work require separate decisions.
+
 ## [2026-06-23] direct-update | cover-letter PR248 merge checkpoint
 
 **Agent** : Codex

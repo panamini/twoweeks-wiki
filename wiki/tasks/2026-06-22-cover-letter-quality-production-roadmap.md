@@ -5,7 +5,7 @@ status: current
 created: 2026-06-22
 updated: 2026-06-23
 type: implementation-roadmap
-sources: [2026-06-23-cover-letter-quality-pr248-merge-checkpoint, 2026-06-23-cover-letter-quality-pr246-merge-checkpoint, 2026-06-23-cover-letter-quality-production-roadmap-updated-checklist]
+sources: [2026-06-23-cover-letter-quality-pr249-staged-internal-gate, 2026-06-23-cover-letter-quality-pr248-merge-checkpoint, 2026-06-23-cover-letter-quality-pr246-merge-checkpoint, 2026-06-23-cover-letter-quality-production-roadmap-updated-checklist]
 related: [[product/ai-product-model]], [[tech/proposal-ai-routing-and-inline-diff]], [[outputs/2026-05-26-proposal-language-generation-hardening]]
 ---
 
@@ -13,7 +13,7 @@ related: [[product/ai-product-model]], [[tech/proposal-ai-routing-and-inline-dif
 
 ## Purpose
 
-Track the current state of the cover-letter quality work after the PR230-PR245 sequence, PR246, and PR248.
+Track the current state of the cover-letter quality work after the PR230-PR245 sequence, PR246, PR248, and PR249.
 
 This document is an updated working checklist. It does not replace the PRs, commits, diffs, or prior handoffs. Use those as source of truth when implementing.
 
@@ -57,6 +57,12 @@ PR248 merge commit:
 2fd7ebef142859fb089bf8e9d270bf6b5b590fa1
 ```
 
+PR249 merge commit:
+
+```text
+d628bed79c0063d2c06c836015e87d313385bbd2
+```
+
 Overall decision:
 
 ```text
@@ -65,9 +71,12 @@ PR246 merged into application-os-foundation: YES
 Post-merge Mistral V2 canary: CLEAN
 PR248 merged into application-os-foundation: YES
 PR248 decision marker: READY_FOR_STAGED_INTERNAL_MISTRAL_V2_EXPANSION
+PR249 merged into application-os-foundation: YES
+PR249 staged internal Mistral V2 gate: STAGED_INTERNAL_MISTRAL_V2_READY
+Decision to record: COVER_LETTER_MISTRAL_V2_READY_FOR_INTERNAL_STAGING_ONLY
 Quality repair: OFF / NO-GO
 Full production GO: NO-GO
-Next step: run post-merge verification from PR248, then staged internal Mistral V2 expansion/evidence gate if clean
+Next step: internal/staging-only Mistral V2 rollout readiness. Production full GO remains a separate later decision.
 ```
 
 ## Completed PRs / Gates
@@ -87,6 +96,7 @@ Next step: run post-merge verification from PR248, then staged internal Mistral 
 | PR246 - factuality tightening | Done, merged | Branch `codex/pr246-mistral-v2-factuality-tightening`; cleanup removed the roadmap doc from the PR diff; post-merge canary clean. |
 | Post-merge Mistral V2 internal canary | Done, clean | Medium/large direct V2 passed; forbiddenHits empty; internal expansion GO. |
 | PR248 - no-CV candidate-history boundary | Done, merged | Squash merge `2fd7ebef142859fb089bf8e9d270bf6b5b590fa1`; expected head `fd478470525942caacbec12d01cdcb39d2688c22`; diff scope stayed in `premiumCoverLetter.ts` and `premiumCoverLetter.test.ts`; merge message reports `READY_FOR_STAGED_INTERNAL_MISTRAL_V2_EXPANSION`. |
+| PR249 - staged internal Mistral V2 gate | Done, merged/gate clean | Squash merge `d628bed79c0063d2c06c836015e87d313385bbd2`; head `11f56d5e44b24db8b3a479cff0bee76c24974b05`; GitHub `CI` and `Playwright Tests` passed before merge; local staged internal gate reported `STAGED_INTERNAL_MISTRAL_V2_READY` / `COVER_LETTER_MISTRAL_V2_READY_FOR_INTERNAL_STAGING_ONLY`. |
 
 ## What Works Now With Flags OFF
 
@@ -175,6 +185,59 @@ Interpretation:
 - Quality repair remains OFF / NO-GO.
 - Production full GO remains a separate later decision.
 
+## PR249 Staged Internal Gate Checkpoint
+
+PR249 merged after the PR248 no-CV boundary. It records the completed staged internal Mistral V2 expansion evidence gate after merge.
+
+Verified merge facts:
+
+- PR: `https://github.com/panamini/neyssan/pull/249`
+- Base branch: `application-os-foundation`
+- Merge method: squash
+- Merge SHA: `d628bed79c0063d2c06c836015e87d313385bbd2`
+- Head SHA: `11f56d5e44b24db8b3a479cff0bee76c24974b05`
+- GitHub CI before merge: `CI` success and `Playwright Tests` success
+- Local post-merge base: `application-os-foundation` at `d628bed79c0063d2c06c836015e87d313385bbd2`
+- Local app status after gate: clean except pre-existing untracked `docs/plans/2026-06-22-cover-letter-quality-production-roadmap.md`
+
+Post-merge verification:
+
+- `CI=1 npx vitest run convex/lib/proposals/__tests__/premiumCoverLetter.test.ts convex/lib/proposals/__tests__/proposalWriterPrompt.test.ts --reporter=dot`: 2 files passed, 282 tests passed.
+- `CI=1 npx vitest run convex/lib/proposals/__tests__ --reporter=dot`: 20 files passed, 581 tests passed.
+- `git diff --check`: clean.
+
+Staged internal Mistral V2 gate:
+
+- 23 cases total.
+- 19 PASS.
+- 4 SKIPPED only because no committed French CV-backed fixtures existed.
+- 0 FAIL.
+- PR246 forbidden extrapolation hits: none.
+- PR248 no-CV leakage hits: none.
+- Unsupported claim examples: none found.
+- French no-CV medium/large remained fixed.
+- English no-CV medium/large remained fixed.
+- Mistral direct and adjacent controls passed.
+- GPT control passed: no Mistral V2 prompt marker or adapter text.
+- Qwen control passed: legacy-only, `enteringPremiumAttempt=false`.
+- Quality repair stayed OFF / not used.
+
+Decision:
+
+```text
+STAGED_INTERNAL_MISTRAL_V2_READY
+COVER_LETTER_MISTRAL_V2_READY_FOR_INTERNAL_STAGING_ONLY
+```
+
+Interpretation:
+
+- Mistral V2 is ready for internal/staging-only rollout readiness.
+- Production full GO is not approved.
+- Quality repair remains OFF.
+- Qwen remains legacy-only.
+- GPT remains unchanged.
+- MCP/App SDK work remains separate.
+
 ## Current Flags Policy
 
 Keep these OFF/unset outside a controlled internal test:
@@ -191,6 +254,7 @@ Allowed only for post-merge verification and staged internal expansion:
 - Mistral V2 flags ON in internal/no-DB canary only
 - Quality repair OFF always
 - Qwen premium flags OFF
+- Production/public env OFF until a separate production decision
 
 ## Checklist - Completed
 
@@ -228,21 +292,30 @@ Allowed only for post-merge verification and staged internal expansion:
 - [x] Keep PR248 diff scoped to `premiumCoverLetter.ts` and `premiumCoverLetter.test.ts`.
 - [x] Keep quality repair and production flags OFF.
 - [x] Record `READY_FOR_STAGED_INTERNAL_MISTRAL_V2_EXPANSION` as the reported PR248 decision marker.
+- [x] Merge PR249 into `application-os-foundation`.
+- [x] Confirm PR249 merge SHA `d628bed79c0063d2c06c836015e87d313385bbd2`.
+- [x] Record GitHub CI before merge: `CI` success and `Playwright Tests` success.
+- [x] Run post-merge targeted proposal tests from PR249 merge baseline.
+- [x] Run post-merge full proposal test directory from PR249 merge baseline.
+- [x] Run staged internal Mistral V2 gate: 23 total, 19 PASS, 4 SKIPPED for missing French CV-backed fixtures, 0 FAIL.
+- [x] Confirm no PR246 forbidden extrapolation hits.
+- [x] Confirm no PR248 no-CV leakage hits.
+- [x] Confirm GPT control clean and unchanged.
+- [x] Confirm Qwen legacy-only with `enteringPremiumAttempt=false`.
+- [x] Confirm quality repair OFF / not used.
+- [x] Record `COVER_LETTER_MISTRAL_V2_READY_FOR_INTERNAL_STAGING_ONLY`.
 
 ## Checklist - Active / Next
 
-### Post-PR248 verification and staged internal Mistral V2 gate
+### Internal/staging-only Mistral V2 readiness
 
 - [ ] Keep Mistral V2 internal/staging only.
-- [ ] Sync `application-os-foundation` to `2fd7ebef142859fb089bf8e9d270bf6b5b590fa1`.
-- [ ] Rerun targeted proposal tests from the PR248 merge commit.
-- [ ] Rerun internal/no-DB Mistral V2 verification after merge, including no-CV English and French candidate-history leakage cases.
-- [ ] Run GPT control check and confirm GPT does not receive Mistral V2 prompt behavior.
-- [ ] Run Qwen control check with premium flags OFF and confirm legacy-only path.
-- [ ] Compare against V1 baseline for specificity, unsupported claims, finalization, provenance, latency/cost where available.
-- [ ] If clean, proceed to staged internal Mistral V2 expansion/evidence gate.
-- [ ] If a new failure appears, hold and open only a narrow follow-up PR for that exact failure class.
-- [ ] Do not enable production without a separate release decision.
+- [ ] Do not enable production without a separate production release decision.
+- [ ] Do not enable quality repair.
+- [ ] Do not change Qwen premium behavior; keep Qwen legacy-only unless a separate Qwen PR is approved.
+- [ ] Do not change GPT behavior.
+- [ ] Keep MCP/App SDK work separate.
+- [ ] Add committed French CV-backed direct/adjacent fixtures before treating those skipped rows as covered.
 
 Acceptance criteria for PR246:
 
