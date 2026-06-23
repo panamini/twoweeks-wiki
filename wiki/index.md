@@ -19,8 +19,8 @@ Le contrôle opératoire du repo reste défini par `WIKI_SCHEMA.md` puis `CLAUDE
 | Mémoire active LLM | [[hot]] | [[overview]], [[meta/llm-wiki-pattern]] |
 | État produit | [[overview]] | [[entities/twoweeks]], [[product/product-roadmap]], [[product/product-vision]] |
 | Planning IA shadow | [[product/ai-product-model]] | [[tech/proposal-ai-routing-and-inline-diff]], [[sources/2026-05-25-proposal-generation-truth-planner]] |
-| Cover-letter quality | [[tasks/2026-06-22-cover-letter-quality-production-roadmap]] | [[sources/2026-06-23-cover-letter-quality-pr249-staged-internal-gate]], [[sources/2026-06-23-cover-letter-quality-pr248-merge-checkpoint]], [[sources/2026-06-23-cover-letter-quality-pr246-merge-checkpoint]], [[sources/2026-06-23-cover-letter-quality-production-roadmap-updated-checklist]] |
-| ChatGPT App roadmap | [[product/chatgpt-app-sdk-roadmap]] | [[product/manual-application-handoff]], [[sources/2026-06-23-twoweeks-mcp-chatgpt-app-sdk-roadmap-checkpoint]], [[sources/2026-06-19-pr80b-safe-application-handoff-while-ats-access-pending]] |
+| Cover-letter quality | [[tasks/2026-06-22-cover-letter-quality-production-roadmap]] | [[sources/2026-06-23-release-orchestration-staging-pr87-8-checkpoint]], [[sources/2026-06-23-cover-letter-quality-pr249-staged-internal-gate]], [[sources/2026-06-23-cover-letter-quality-pr248-merge-checkpoint]], [[sources/2026-06-23-cover-letter-quality-pr246-merge-checkpoint]] |
+| ChatGPT App roadmap | [[product/chatgpt-app-sdk-roadmap]] | [[product/manual-application-handoff]], [[sources/2026-06-23-release-orchestration-staging-pr87-8-checkpoint]], [[sources/2026-06-23-twoweeks-mcp-chatgpt-app-sdk-roadmap-checkpoint]], [[sources/2026-06-19-pr80b-safe-application-handoff-while-ats-access-pending]] |
 | Manual application handoff | [[product/manual-application-handoff]] | [[product/chatgpt-app-sdk-roadmap]], [[sources/2026-06-23-twoweeks-mcp-chatgpt-app-sdk-roadmap-checkpoint]] |
 | Parser / vérité CV | [[concepts/cv-parsing-pipeline]] | [[concepts/cv-families]], [[tech/import-ocr-pipeline]] |
 | Jobs / match | [[product/job-library]] | [[product/job-match-review]] |
@@ -86,7 +86,7 @@ Cette carte est un routeur de lecture pour agents LLM. Elle ne remplace pas les 
 |------|--------|--------|------|
 | [[product/ai-product-model\|AI Product Model]] | 3 modes IA, rulebook, qualité writing, and Planner Agent shadow chain | current | ai, ux, modes |
 | [[product/ai-consistency-p0-editor-ai\|AI Consistency P0 — Closure Audit]] | Closure audit snapshot du rulebook AI editor, preview, telemetry et tailoring | current | ai, editor, rulebook |
-| [[product/chatgpt-app-sdk-roadmap\|ChatGPT/App SDK Roadmap]] | MCP/App SDK PR87.8 reconciliation next; PR80B implemented, PR88/PR89 blocked and separate from cover-letter PR246 | current | chatgpt-app, apps-sdk |
+| [[product/chatgpt-app-sdk-roadmap\|ChatGPT/App SDK Roadmap]] | MCP/App SDK PR87.8 remains blocked; PR80B implemented, PR88/PR89 blocked and separate from cover-letter work | current | chatgpt-app, apps-sdk |
 | [[product/job-library\|Job Library]] | Jobs sauvegardés, Job Brief editable et documents liés | current | jobs, library |
 | [[product/job-match-review\|Job Match Review]] | Match comme indicateur d'attention utilisateur et dogfood interne | current | jobs, match |
 | [[product/kpis\|KPIs]] | Métriques de succès produit | current | kpi, métriques |
@@ -118,7 +118,7 @@ Cette carte est un routeur de lecture pour agents LLM. Elle ne remplace pas les 
 
 ## Sources
 
-Cover-letter quality now has a merged PR249 staged internal Mistral V2 gate checkpoint; production full GO and quality repair remain separate/not approved. The MCP/App SDK track still sits on PR87.8 reconciliation with PR80B implemented and PR88/PR89 blocked.
+Cover-letter quality has a merged PR249 staged internal Mistral V2 gate checkpoint, but deployed staging rollout is blocked by Convex authorization. Production full GO and quality repair remain separate/not approved. The MCP/App SDK track reconciled PR87.8 as still blocked with PR80B implemented and PR88/PR89 blocked.
 
 | Page | Type | Date | Status |
 |------|------|------|--------|
@@ -211,6 +211,7 @@ Cover-letter quality now has a merged PR249 staged internal Mistral V2 gate chec
 | [[sources/2026-06-23-cover-letter-quality-production-roadmap-updated-checklist\|Cover Letter Quality Production Roadmap - Updated Checklist]] | analysis | 2026-06-23 | current |
 | [[sources/2026-06-23-cover-letter-quality-pr246-merge-checkpoint\|Cover Letter Quality PR246 Merge Checkpoint]] | analysis | 2026-06-23 | current |
 | [[sources/2026-06-23-cover-letter-quality-pr249-staged-internal-gate\|Cover Letter Quality PR249 Staged Internal Gate]] | analysis | 2026-06-23 | current |
+| [[sources/2026-06-23-release-orchestration-staging-pr87-8-checkpoint\|Release Orchestration Checkpoint - Staging and PR87.8]] | analysis | 2026-06-23 | current |
 | [[sources/2026-06-23-twoweeks-mcp-chatgpt-app-sdk-roadmap-checkpoint\|Twoweeks MCP / ChatGPT App SDK Roadmap Checkpoint]] | analysis | 2026-06-23 | current |
 ---
 
@@ -279,7 +280,7 @@ Cover-letter quality now has a merged PR249 staged internal Mistral V2 gate chec
 
 ## Statistiques
 
-- **Pages actives** : 148 (5 overview, 1 entité, 2 concepts, 8 design, 9 product, 3 strategy, 3 meta, 88 sources, 14 tech, 7 howto, 6 tasks, 2 outputs)
+- **Pages actives** : 149 (5 overview, 1 entité, 2 concepts, 8 design, 9 product, 3 strategy, 3 meta, 89 sources, 14 tech, 7 howto, 6 tasks, 2 outputs)
 - **Pages archivées** : 2
 - **Sources dans `raw/`** : 91
 - **Sources en attente dans `rawinput/`** : 0

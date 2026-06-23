@@ -5,7 +5,7 @@ status: current
 created: 2026-06-22
 updated: 2026-06-23
 type: implementation-roadmap
-sources: [2026-06-23-cover-letter-quality-pr249-staged-internal-gate, 2026-06-23-cover-letter-quality-pr248-merge-checkpoint, 2026-06-23-cover-letter-quality-pr246-merge-checkpoint, 2026-06-23-cover-letter-quality-production-roadmap-updated-checklist]
+sources: [2026-06-23-release-orchestration-staging-pr87-8-checkpoint, 2026-06-23-cover-letter-quality-pr249-staged-internal-gate, 2026-06-23-cover-letter-quality-pr248-merge-checkpoint, 2026-06-23-cover-letter-quality-pr246-merge-checkpoint, 2026-06-23-cover-letter-quality-production-roadmap-updated-checklist]
 related: [[product/ai-product-model]], [[tech/proposal-ai-routing-and-inline-diff]], [[outputs/2026-05-26-proposal-language-generation-hardening]]
 ---
 
@@ -77,6 +77,7 @@ Decision to record: COVER_LETTER_MISTRAL_V2_READY_FOR_INTERNAL_STAGING_ONLY
 Quality repair: OFF / NO-GO
 Full production GO: NO-GO
 Next step: internal/staging-only Mistral V2 rollout readiness. Production full GO remains a separate later decision.
+Latest root orchestration checkpoint: STAGING_BLOCKED because authorized Convex access could not read or set internal/staging flag values on `dev:neat-starfish-33`; no flags were changed and no deployed smoke was run.
 ```
 
 ## Completed PRs / Gates
@@ -238,6 +239,28 @@ Interpretation:
 - GPT remains unchanged.
 - MCP/App SDK work remains separate.
 
+## Root Orchestration Checkpoint - 2026-06-23
+
+Root spawned the internal/staging operator and MCP gate owner as isolated child lanes from `application-os-foundation` at `d628bed79c0063d2c06c836015e87d313385bbd2`.
+
+Internal/staging rollout terminal decision:
+
+```text
+STAGING_BLOCKED
+```
+
+Verified facts:
+
+- Intended staging target: Convex `dev:neat-starfish-33` / `https://neat-starfish-33.convex.cloud`.
+- Production target remained separate: `prod:giddy-basilisk-88` / `https://giddy-basilisk-88.convex.cloud`.
+- Staging env reads failed with `401 Unauthorized: MissingAccessToken`.
+- Previous staging flag values were not recorded because authenticated Convex access was unavailable.
+- No Mistral V2 flag or alias was set.
+- No restart, redeploy, smoke, or rollback occurred.
+- Production was untouched.
+
+Next staging work must first restore authorized Convex access, then record previous non-secret flag values, apply only the intended internal/staging Mistral V2 flag, prove deployed revision, and run the deployed smoke matrix.
+
 ## Current Flags Policy
 
 Keep these OFF/unset outside a controlled internal test:
@@ -310,6 +333,9 @@ Allowed only for post-merge verification and staged internal expansion:
 ### Internal/staging-only Mistral V2 readiness
 
 - [ ] Keep Mistral V2 internal/staging only.
+- [ ] Restore authorized Convex access for `dev:neat-starfish-33` before attempting rollout.
+- [ ] Record previous non-secret staging values before setting the selected Mistral V2 flag.
+- [ ] Prove deployed staging revision before running deployed smoke.
 - [ ] Do not enable production without a separate production release decision.
 - [ ] Do not enable quality repair.
 - [ ] Do not change Qwen premium behavior; keep Qwen legacy-only unless a separate Qwen PR is approved.
@@ -409,5 +435,5 @@ After PR248, the local mirror should be updated to reflect the merged no-CV boun
 ## Current Next Smallest Step
 
 ```text
-Run post-merge verification from `2fd7ebef142859fb089bf8e9d270bf6b5b590fa1`. If clean, proceed to staged internal Mistral V2 expansion/evidence gate. Do not enable production or quality repair.
+Resolve authorized Convex access for `dev:neat-starfish-33`, then rerun the internal/staging-only Mistral V2 rollout gate from `d628bed79c0063d2c06c836015e87d313385bbd2` or a verified descendant. Do not enable production or quality repair.
 ```

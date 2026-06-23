@@ -1434,3 +1434,20 @@ Migration vers schema v2 : ajout rawinput/ (staging), gestion temporelle (status
 **Points notables** :
 - PR4 `codex/quality-shadow-repair` a été implémentée, vérifiée, poussée, puis ouverte comme <https://github.com/panamini/neyssan/pull/233>.
 - La réparation `qualityShadow` reste une tentative unique et bornée; si elle casse validation, JSON, amélioration ou provenance finale, la sortie originale sûre est conservée.
+
+## 2026-06-23 — Release orchestration checkpoint: staging blocked, PR87.8 still blocked
+
+**Pages créées** :
+- `wiki/sources/2026-06-23-release-orchestration-staging-pr87-8-checkpoint.md`
+
+**Pages mises à jour** :
+- `wiki/tasks/2026-06-22-cover-letter-quality-production-roadmap.md`
+- `wiki/product/chatgpt-app-sdk-roadmap.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**Points notables** :
+- Child A returned `STAGING_BLOCKED`: Convex staging target `dev:neat-starfish-33` was identified, but authenticated env access failed with `401 Unauthorized: MissingAccessToken`; no flags changed and no deployed smoke ran.
+- Child B returned `PR87_8_GATE_STILL_BLOCKED`: PR80B manual handoff remains implemented, while production MCP endpoints, tool calls, OAuth, live submit/apply, approved-answer copy, provider-verified submission, billing, PR88, and PR89 remain blocked.
+- No application code changed, no application PR opened, no production behavior enabled, and the local application roadmap mirror remained untouched.
