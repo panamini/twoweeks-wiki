@@ -17,25 +17,26 @@ twoweeks is an active job application operating system centered on CV ingestion/
 Keep two workstreams separate:
 
 - Cover-letter quality: PR230-PR245, PR246, PR248, and PR249 are merged. After stale function-spec sync and cleanup of 28 old invalid `proposalHandoffs`, Convex staging `dev:neat-starfish-33` returned `COVER_LETTER_MISTRAL_V2_STAGING_GREEN`. Only `cover_letter_premium_prompt_v2=1` is enabled on staging; aliases are unset, quality repair is OFF, Qwen stayed legacy-only in the control route, GPT stayed on GPT, and production full GO remains not approved.
-- MCP / ChatGPT App SDK: PR87.12 is merged as the fixture-only local/dev MCP demo after PR87.10 reachability and PR87.11 auth/account-linking architecture. PR87.8 remains blocked for production exposure. PR80B manual handoff is implemented and remains the safe delivery boundary; production MCP endpoints, production `tools/list`/`tools/call`, OAuth, real handlers, live submit/apply, approved-answer copy, billing, PR88, and PR89 remain blocked.
+- MCP / ChatGPT App SDK: PR87.13 is merged as a pure MCP auth metadata and policy boundary after PR87.10 reachability, PR87.11 auth/account-linking architecture, and PR87.12 fixture-only local/dev demo. PR87.8 remains blocked for production exposure. PR80B manual handoff is implemented and remains the safe delivery boundary; production MCP endpoints, production `tools/list`/`tools/call`, runtime OAuth wiring, real handlers, live submit/apply, approved-answer copy, billing, PR88, and PR89 remain blocked.
 
 ## Key Active Facts
 
 - Product truth is `twoweeks`; CVForge and ProposalForge are internal module names.
 - `dev:neat-starfish-33` now has the synced function spec including `mistral-medium-latest` and `qwen3.7-max`; the staging smoke matrix passed 8/8.
-- PR87.12 adds a local/dev fixture-only MCP demo on top of PR87.10 reachability and PR87.11 auth/account-linking architecture; PR87.8 is still blocked for production exposure; future launch-readiness needs a separate reviewed gate.
+- PR87.13 adds a pure MCP auth metadata and policy boundary on top of PR87.10 reachability, PR87.11 auth/account-linking architecture, and PR87.12 local/dev fixture demo; PR87.8 is still blocked for production exposure; runtime auth wiring and future launch-readiness need separate reviewed gates.
 - PR80B must not claim provider submission. `provider_verified_submitted` remains unreachable; `user_reported_submitted` is the highest external reported state.
 - Persistent wiki mutations require `wiki/index.md`, `wiki/log.md`, and usually `wiki/hot.md`.
 
 ## Canonical Pages To Read
 
 - Cover-letter quality: [[tasks/2026-06-22-cover-letter-quality-production-roadmap]], [[sources/2026-06-24-cover-letter-mistral-v2-staging-green]], [[sources/2026-06-23-cover-letter-quality-pr249-staged-internal-gate]], [[sources/2026-06-23-release-orchestration-staging-pr87-8-checkpoint]]
-- MCP / ChatGPT App SDK: [[product/chatgpt-app-sdk-roadmap]], [[product/manual-application-handoff]], [[sources/2026-06-24-pr87-12-mcp-dev-fixture-demo-checkpoint]], [[sources/2026-06-24-pr87-11-mcp-auth-account-linking-architecture-checkpoint]], [[sources/2026-06-24-pr87-10-mcp-dev-endpoint-blocked-reachability-checkpoint]], [[sources/2026-06-23-release-orchestration-staging-pr87-8-checkpoint]]
+- MCP / ChatGPT App SDK: [[product/chatgpt-app-sdk-roadmap]], [[product/manual-application-handoff]], [[sources/2026-06-24-pr87-13-mcp-auth-policy-boundary-checkpoint]], [[sources/2026-06-24-pr87-12-mcp-dev-fixture-demo-checkpoint]], [[sources/2026-06-24-pr87-11-mcp-auth-account-linking-architecture-checkpoint]], [[sources/2026-06-24-pr87-10-mcp-dev-endpoint-blocked-reachability-checkpoint]], [[sources/2026-06-23-release-orchestration-staging-pr87-8-checkpoint]]
 - Product/parser/export routing: [[overview]], [[concepts/cv-parsing-pipeline]], [[tech/export-pipeline]]
 - Wiki operations: [[meta/llm-wiki-pattern]], [[meta/temporal-management]]
 
 ## Recent Changes
 
+- 2026-06-24: Recorded `MCP_AUTH_POLICY_BOUNDARY_PR87_13_CHECKPOINT`: PR254 merged pure MCP auth metadata and policy boundary; focused boundary tests passed 89/89 and full local-MCP suite passed 57 files / 1290 tests; CodeRabbit reported no actionable comments; docstring coverage stayed advisory; runtime auth wiring, production MCP, OAuth, real handlers, live submit/apply, approved-answer copy, billing, PR88, and PR89 remain blocked.
 - 2026-06-24: Recorded `MCP_DEV_FIXTURE_DEMO_PR87_12_CHECKPOINT`: PR253 merged fixture-only local/dev MCP demo; focused endpoint tests passed 17/17 and full local-MCP suite passed 56 files / 1201 tests; MCP Inspector was unavailable and live ChatGPT smoke was not run; production MCP, OAuth, real handlers, live submit/apply, approved-answer copy, billing, PR88, and PR89 remain blocked.
 - 2026-06-24: Recorded `MCP_DEV_ENDPOINT_PR87_10_TEST_ONLY_REACHABILITY`: PR251 merged as a one-file test-only checkpoint for the local/dev MCP endpoint; focused endpoint tests and the broader local-MCP suite passed; production MCP, OAuth, real handlers, live submit/apply, approved-answer copy, billing, PR88, and PR89 remain blocked.
 - 2026-06-24: Recorded `MCP_AUTH_ACCOUNT_LINKING_PR87_11_CHECKPOINT`: PR252 merged as a docs-only auth/account-linking checkpoint; Clerk remains app login authority, Stytch Connected Apps is the OAuth bridge, `(issuer, subject)` account linking is documented, `twoweeks:applications:read` is the first external scope, and runtime OAuth / production MCP remain blocked.

@@ -1472,6 +1472,24 @@ Migration vers schema v2 : ajout rawinput/ (staging), gestion temporelle (status
 - PR3 `codex/premium-cover-letter-prompt-v2-mistral` a été implémentée, relue en session indépendante, poussée, puis ouverte comme <https://github.com/panamini/neyssan/pull/232>.
 - Le statut roadmap note que PR4 doit rester bornée à une réparation `qualityShadow` unique et réversible.
 
+## 2026-06-24 — MCP auth policy boundary checkpoint PR87.13 merged
+
+**Pages créées** :
+- `wiki/sources/2026-06-24-pr87-13-mcp-auth-policy-boundary-checkpoint.md`
+
+**Pages mises à jour** :
+- `wiki/product/chatgpt-app-sdk-roadmap.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**Points notables** :
+- PR254 `PR87.13: add MCP auth metadata and policy boundary` merged into `application-os-foundation` as `b23a83b3d9652093f7cbb79b1fd7fe5f7e2c1b49`.
+- The merged head was `fb319b565e593a01f93c03d2e1fd06b7b6a5c4cc`; changed files stayed limited to `mcpAuthPolicyBoundary.ts`, its focused test, and `mcpAccountLinkingStorageBoundary.ts`.
+- Focused boundary tests passed 89/89; adjacent local-MCP tests passed 79/79; the full local-MCP suite passed 57 files / 1290 tests; typecheck, targeted ESLint, diff checks, GitHub checks, and CodeRabbit no-actionable review were verified before merge.
+- CodeRabbit's docstring coverage item remained advisory only and was not treated as a required blocking check.
+- This remains pure policy/metadata only: runtime auth wiring, production MCP endpoints, production `tools/list`/`tools/call`, OAuth runtime, Clerk runtime, Stytch runtime, Convex runtime, real handlers, real data, outbound/model calls, live submit/apply, approved-answer copy, billing, PR88, and PR89 remain blocked.
+
 ## 2026-06-24 — MCP dev fixture demo checkpoint PR87.12 merged
 
 **Pages créées** :
