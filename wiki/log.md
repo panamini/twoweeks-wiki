@@ -1,7 +1,7 @@
 ---
 title: "Log — twoweeks Wiki"
 category: overview
-updated: 2026-06-24
+updated: 2026-06-25
 ---
 
 # Log du Wiki · twoweeks
@@ -14,6 +14,30 @@ grep "^## \[" wiki/log.md | grep "ingest"  # Tous les ingests
 ```
 
 ---
+
+## [2026-06-25] direct-update | MCP PR87.15A Stytch bearer verifier boundary checkpoint
+
+**Agent** : Codex
+**Mode** : direct-update
+**Source** : PR257 merge result, GitHub PR metadata, CodeRabbit status, and local fetch verification from `neyssan-pr87-15a-mcp-stytch-verifier-boundary`
+
+**Pages créées** :
+- `wiki/sources/2026-06-25-pr87-15a-mcp-stytch-bearer-verifier-checkpoint.md`
+
+**Pages mises à jour** :
+- `wiki/product/chatgpt-app-sdk-roadmap.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**Points notables** :
+- PR257 `PR87.15A: add MCP Stytch bearer verifier boundary` merged into `application-os-foundation` as `372d16830dd6d3b66f39ba96e317641dcb207793`.
+- The final merged head was `00172f63a8a49d28756150e611a5371d615f2de3` after CodeRabbit fixes; changed files stayed limited to `mcpStytchBearerVerifierBoundary.ts` and its focused test.
+- Focused verifier tests passed 38/38; adjacent Stytch/OAuth/orchestrator/policy suites passed 188/188; the full local-MCP suite passed 59 files / 1377 tests; typecheck, targeted ESLint, diff checks, GitHub checks, and latest CodeRabbit no-actionable review were verified before merge.
+- `npm run build` still fails only on inherited Convex `_generated` baseline errors; filtered output had no local-MCP or verifier hits.
+- This remains a server-only verifier boundary: production MCP endpoints, runtime verifier wiring, production `tools/list`/`tools/call`, OAuth callback/token exchange, real Stytch runtime calls, remote JWKS fetch, token persistence, real handlers, real data, outbound/model calls, live submit/apply, approved-answer copy, billing, PR88, and PR89 remain blocked.
+
+**Open items** : The next MCP slice must be a separate explicit request and separately reviewed PR before any runtime wiring.
 
 ## [2026-06-24] direct-update | MCP PR87.14B local/dev auth endpoint wiring checkpoint
 
