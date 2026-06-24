@@ -15,6 +15,30 @@ grep "^## \[" wiki/log.md | grep "ingest"  # Tous les ingests
 
 ---
 
+## [2026-06-24] direct-update | MCP PR87.14A auth request orchestrator checkpoint
+
+**Agent** : Codex
+**Mode** : direct-update
+**Source** : PR255 merge result, GitHub PR metadata, and local fetch verification from `neyssan-new`
+
+**Pages créées** :
+- `wiki/sources/2026-06-24-pr87-14a-mcp-auth-request-orchestrator-checkpoint.md`
+
+**Pages mises à jour** :
+- `wiki/product/chatgpt-app-sdk-roadmap.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**Points notables** :
+- PR255 `PR87.14A: add MCP auth request orchestrator boundary` merged into `application-os-foundation` as `01aae0571b671f7b66141dbaff3796886c7186ad`.
+- The reviewed head was `36531ae971931e37985b71bb00eac33190300e3a`; changed files stayed exactly `mcpAuthRequestOrchestrator.ts` and `mcpAuthRequestOrchestrator.test.ts`.
+- GitHub reported CI, Playwright Tests, and CodeRabbit success before merge.
+- Reported validation included focused orchestrator tests passing 41/41, full local-MCP suite passing 58 files / 1331 tests, TypeScript passing, targeted ESLint passing, `git diff --check` passing, and forbidden-surface guards passing.
+- This remains a boundary checkpoint only: no endpoint wiring, no production MCP, no runtime OAuth, no real Stytch verifier, no Clerk/Convex runtime lookup, no account persistence, no real data, no outbound HTTP/model calls, no live submit/apply, no approved-answer copy, no billing, no PR88, and no PR89.
+
+**Open items** : PR87.14B may wire the orchestrator into the local/dev fixture endpoint only, preserving default-off, fixture-only, and runtime deny-all behavior.
+
 ## [2026-06-24] direct-update | MCP PR87.10 test-only reachability checkpoint
 
 **Agent** : Codex
