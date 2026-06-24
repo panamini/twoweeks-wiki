@@ -1472,6 +1472,24 @@ Migration vers schema v2 : ajout rawinput/ (staging), gestion temporelle (status
 - PR3 `codex/premium-cover-letter-prompt-v2-mistral` a été implémentée, relue en session indépendante, poussée, puis ouverte comme <https://github.com/panamini/neyssan/pull/232>.
 - Le statut roadmap note que PR4 doit rester bornée à une réparation `qualityShadow` unique et réversible.
 
+## 2026-06-24 — MCP dev fixture demo checkpoint PR87.12 merged
+
+**Pages créées** :
+- `wiki/sources/2026-06-24-pr87-12-mcp-dev-fixture-demo-checkpoint.md`
+
+**Pages mises à jour** :
+- `wiki/product/chatgpt-app-sdk-roadmap.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**Points notables** :
+- PR253 `PR87.12: add local/dev MCP fixture demo` merged into `application-os-foundation` as `ccd0e5d9b5a62722ec163e6b282e2e43619b33fe`.
+- The merged head was `97bbe4b40c8028f331fabdb508b5bd67a070aa60`; changed files stayed limited to `localMcpDevEndpoint.ts`, its focused test, and `vite.config.ts`.
+- Focused endpoint tests passed 17/17; the full local-MCP suite passed 56 files / 1201 tests; typecheck, targeted ESLint, GitHub checks, and CodeRabbit blocking review resolution were verified before merge.
+- MCP Inspector was unavailable and live ChatGPT smoke was not run. Protocol-level HTTP smoke covered the fixture boundary.
+- This remains local/dev fixture-only: production MCP endpoints, production `tools/list`/`tools/call`, OAuth, real handlers, real data, outbound/model calls, live submit/apply, approved-answer copy, billing, PR88, and PR89 remain blocked.
+
 ## 2026-06-22 — Cover-letter quality roadmap PR4 published
 
 **Pages mises à jour** :

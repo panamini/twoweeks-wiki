@@ -3,11 +3,11 @@ title: "ChatGPT/App SDK Roadmap"
 category: product
 tags: [chatgpt-app, apps-sdk, mcp, roadmap, safety]
 created: 2026-06-23
-updated: 2026-06-23
+updated: 2026-06-24
 status: current
 valid_from: 2026-06-12
 type: roadmap
-sources: [2026-06-23-release-orchestration-staging-pr87-8-checkpoint, 2026-06-23-twoweeks-mcp-chatgpt-app-sdk-roadmap-checkpoint, 2026-06-12-chatgpt-app-sdk-roadmap-pr41-pr89, 2026-06-12-non-production-apps-sdk-exploration-plan, 2026-06-19-pr80b-safe-application-handoff-while-ats-access-pending]
+sources: [2026-06-24-pr87-12-mcp-dev-fixture-demo-checkpoint, 2026-06-24-pr87-11-mcp-auth-account-linking-architecture-checkpoint, 2026-06-24-pr87-10-mcp-dev-endpoint-blocked-reachability-checkpoint, 2026-06-23-release-orchestration-staging-pr87-8-checkpoint, 2026-06-23-twoweeks-mcp-chatgpt-app-sdk-roadmap-checkpoint, 2026-06-12-chatgpt-app-sdk-roadmap-pr41-pr89, 2026-06-12-non-production-apps-sdk-exploration-plan, 2026-06-19-pr80b-safe-application-handoff-while-ats-access-pending]
 related: [[product/manual-application-handoff]], [[product/product-roadmap]], [[product/product-vision]], [[product/ai-product-model]]
 ---
 
@@ -17,11 +17,11 @@ The ChatGPT/App SDK roadmap is now a current checkpoint page, not just a future 
 
 ## Current state
 
-The roadmap has moved through the early MCP/App SDK phases and now sits around PR87 / production deployment gate reconciliation plus release stabilization.
+The roadmap has moved through the early MCP/App SDK phases and now sits around PR87 / production deployment gate reconciliation plus release stabilization. PR87.12 merged a local/dev fixture-only MCP demo for protocol testing, but it does not open production MCP or real handlers.
 
 PR80B manual handoff is already implemented as the safe delivery path while ATS authorization is pending, but live submit/apply remains blocked.
 
-The 2026-06-23 root orchestration checkpoint returned `PR87_8_GATE_STILL_BLOCKED` without requiring a corrective PR. Runtime MCP production endpoints, `tools/list`, `tools/call`, OAuth, real handlers, outbound HTTP/model calls, live submit/apply, approved-answer copy, `provider_verified_submitted`, production billing, PR88, and PR89 remain blocked.
+The 2026-06-23 root orchestration checkpoint returned `PR87_8_GATE_STILL_BLOCKED` without requiring a corrective PR. Runtime MCP production endpoints, production `tools/list`, production `tools/call`, OAuth, real handlers, outbound HTTP/model calls, live submit/apply, approved-answer copy, `provider_verified_submitted`, production billing, PR88, and PR89 remain blocked.
 
 The PR245 reference is a shared branch/readiness checkpoint only. It does not move cover-letter prompt work into this roadmap, and it does not make MCP/App SDK launch work part of PR246.
 
@@ -44,9 +44,10 @@ It does not own cover-letter prompt V2, Mistral factuality tightening, premium p
 | PR81-PR85 | Merged production-readiness hardening | launch still blocked |
 | PR86-PR87 | Merged governance / production gate checkpoints | BLOCKED_PRODUCTION_GATE |
 | PR87.8 | Gate reconciled as still blocked after PR245 | no corrective PR opened |
+| PR87.10-PR87.12 | Local/dev MCP reachability, auth architecture checkpoint, and fixture-only demo merged | local/dev only; production still blocked |
 | PR88-PR89 | Private beta / public launch | blocked |
 
-Forbidden surfaces stay blocked unless a later reviewed decision opens them: runtime endpoints, `tools/list`, `tools/call`, OAuth, real handlers, real user data, outbound HTTP, LLM/model calls, export/download/send/submit/apply, production behavior, approved answer copy, and PR80-live.
+Forbidden production surfaces stay blocked unless a later reviewed decision opens them: production endpoints, production `tools/list`, production `tools/call`, OAuth, real handlers, real user data, outbound HTTP, LLM/model calls, export/download/send/submit/apply, production behavior, approved answer copy, and PR80-live.
 
 ## Remaining checklist
 
@@ -72,6 +73,9 @@ Forbidden surfaces stay blocked unless a later reviewed decision opens them: run
 
 ## Sources
 
+- [[sources/2026-06-24-pr87-12-mcp-dev-fixture-demo-checkpoint]]
+- [[sources/2026-06-24-pr87-11-mcp-auth-account-linking-architecture-checkpoint]]
+- [[sources/2026-06-24-pr87-10-mcp-dev-endpoint-blocked-reachability-checkpoint]]
 - [[sources/2026-06-23-release-orchestration-staging-pr87-8-checkpoint]]
 - [[sources/2026-06-23-twoweeks-mcp-chatgpt-app-sdk-roadmap-checkpoint]]
 - [[sources/2026-06-12-chatgpt-app-sdk-roadmap-pr41-pr89]]
