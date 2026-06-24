@@ -7,7 +7,7 @@ updated: 2026-06-24
 status: current
 valid_from: 2026-06-12
 type: roadmap
-sources: [2026-06-24-pr87-14a-mcp-auth-request-orchestrator-checkpoint, 2026-06-24-pr87-13-mcp-auth-policy-boundary-checkpoint, 2026-06-24-pr87-12-mcp-dev-fixture-demo-checkpoint, 2026-06-24-pr87-11-mcp-auth-account-linking-architecture-checkpoint, 2026-06-24-pr87-10-mcp-dev-endpoint-blocked-reachability-checkpoint, 2026-06-23-release-orchestration-staging-pr87-8-checkpoint, 2026-06-23-twoweeks-mcp-chatgpt-app-sdk-roadmap-checkpoint, 2026-06-12-chatgpt-app-sdk-roadmap-pr41-pr89, 2026-06-12-non-production-apps-sdk-exploration-plan, 2026-06-19-pr80b-safe-application-handoff-while-ats-access-pending]
+sources: [2026-06-24-pr87-14b-mcp-auth-dev-endpoint-wiring-checkpoint, 2026-06-24-pr87-14a-mcp-auth-request-orchestrator-checkpoint, 2026-06-24-pr87-13-mcp-auth-policy-boundary-checkpoint, 2026-06-24-pr87-12-mcp-dev-fixture-demo-checkpoint, 2026-06-24-pr87-11-mcp-auth-account-linking-architecture-checkpoint, 2026-06-24-pr87-10-mcp-dev-endpoint-blocked-reachability-checkpoint, 2026-06-23-release-orchestration-staging-pr87-8-checkpoint, 2026-06-23-twoweeks-mcp-chatgpt-app-sdk-roadmap-checkpoint, 2026-06-12-chatgpt-app-sdk-roadmap-pr41-pr89, 2026-06-12-non-production-apps-sdk-exploration-plan, 2026-06-19-pr80b-safe-application-handoff-while-ats-access-pending]
 related: [[product/manual-application-handoff]], [[product/product-roadmap]], [[product/product-vision]], [[product/ai-product-model]]
 ---
 
@@ -17,7 +17,7 @@ The ChatGPT/App SDK roadmap is now a current checkpoint page, not just a future 
 
 ## Current state
 
-The roadmap has moved through the early MCP/App SDK phases and now sits around PR87 / production deployment gate reconciliation plus release stabilization. PR87.14A merged a pure MCP auth request orchestrator boundary after PR87.13 auth metadata/policy and the PR87.12 local/dev fixture-only MCP demo, but it does not wire OAuth or auth into a runtime endpoint and does not open production MCP or real handlers.
+The roadmap has moved through the early MCP/App SDK phases and now sits around PR87 / production deployment gate reconciliation plus release stabilization. PR87.14B merged local/dev-only MCP auth discovery and challenge wiring after PR87.14A auth orchestration, PR87.13 auth metadata/policy, and the PR87.12 local/dev fixture-only MCP demo. It does not open production MCP, real Stytch verification, OAuth callback/token exchange, real handlers, or real user data.
 
 PR80B manual handoff is already implemented as the safe delivery path while ATS authorization is pending, but live submit/apply remains blocked.
 
@@ -44,7 +44,7 @@ It does not own cover-letter prompt V2, Mistral factuality tightening, premium p
 | PR81-PR85 | Merged production-readiness hardening | launch still blocked |
 | PR86-PR87 | Merged governance / production gate checkpoints | BLOCKED_PRODUCTION_GATE |
 | PR87.8 | Gate reconciled as still blocked after PR245 | no corrective PR opened |
-| PR87.10-PR87.14A | Local/dev MCP reachability, auth architecture checkpoint, fixture-only demo, pure auth-policy boundary, and auth request orchestrator boundary merged | local/dev and policy/orchestrator boundary only; endpoint auth wiring and production still blocked |
+| PR87.10-PR87.14B | Local/dev MCP reachability, auth architecture checkpoint, fixture-only demo, pure auth-policy boundary, auth request orchestrator boundary, and local/dev auth discovery/challenge endpoint wiring merged | local/dev only; production MCP, real OAuth/Stytch runtime, real handlers, and launch surfaces still blocked |
 | PR88-PR89 | Private beta / public launch | blocked |
 
 Forbidden production surfaces stay blocked unless a later reviewed decision opens them: production endpoints, production `tools/list`, production `tools/call`, OAuth, real handlers, real user data, outbound HTTP, LLM/model calls, export/download/send/submit/apply, production behavior, approved answer copy, and PR80-live.
@@ -74,6 +74,7 @@ Forbidden production surfaces stay blocked unless a later reviewed decision open
 ## Sources
 
 - [[sources/2026-06-24-pr87-12-mcp-dev-fixture-demo-checkpoint]]
+- [[sources/2026-06-24-pr87-14b-mcp-auth-dev-endpoint-wiring-checkpoint]]
 - [[sources/2026-06-24-pr87-14a-mcp-auth-request-orchestrator-checkpoint]]
 - [[sources/2026-06-24-pr87-13-mcp-auth-policy-boundary-checkpoint]]
 - [[sources/2026-06-24-pr87-11-mcp-auth-account-linking-architecture-checkpoint]]

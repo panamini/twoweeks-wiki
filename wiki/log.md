@@ -15,6 +15,32 @@ grep "^## \[" wiki/log.md | grep "ingest"  # Tous les ingests
 
 ---
 
+## [2026-06-24] direct-update | MCP PR87.14B local/dev auth endpoint wiring checkpoint
+
+**Agent** : Codex
+**Mode** : direct-update
+**Source** : PR256 merge result, GitHub PR metadata, CodeRabbit status, and local fetch verification from `neyssan-pr87-14b-mcp-auth-dev-endpoint-wiring`
+
+**Pages créées** :
+- `wiki/sources/2026-06-24-pr87-14b-mcp-auth-dev-endpoint-wiring-checkpoint.md`
+
+**Pages mises à jour** :
+- `wiki/product/chatgpt-app-sdk-roadmap.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**Points notables** :
+- PR256 merged into `application-os-foundation` as merge commit `4a98a97387b6675eb7d27f632434f390462f2d40`.
+- The reviewed head was `7dbce814ccc851ac7d588dd98143b5b5b25925e5`.
+- The changed files stayed exactly `localMcpDevEndpoint.test.ts`, `localMcpDevAuthConfig.ts`, `localMcpDevEndpoint.ts`, `tsconfig.node.json`, and `vite.config.ts`.
+- GitHub checks were green: CodeRabbit, `js-tests`, and `test`.
+- Reported validation included focused endpoint tests passing 22/22, full local-MCP suite passing 58 files / 1339 tests, TypeScript passing, targeted ESLint passing, Vite HTTP smoke passing, injected fake verifier/account-link smoke passing, and forbidden-surface grep passing.
+- `npm run build` remained red only on inherited Convex `_generated` baseline errors, with no PR256 changed-file hits and no prior TS6307/sync/readonly errors.
+- This remains local/dev only: no production `/mcp`, no production `tools/list` or `tools/call`, no real Stytch bearer verification, no OAuth callback/token exchange, no Convex/Clerk/Stytch runtime, no outbound HTTP/model calls, no cover-letter work, no PR88, and no PR89.
+
+**Open items** : PR87.15A must remain a separate reviewed slice; it must not be treated as started by this checkpoint.
+
 ## [2026-06-24] direct-update | MCP PR87.14A auth request orchestrator checkpoint
 
 **Agent** : Codex
