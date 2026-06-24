@@ -17,13 +17,13 @@ twoweeks is an active job application operating system centered on CV ingestion/
 Keep two workstreams separate:
 
 - Cover-letter quality: PR230-PR245, PR246, PR248, and PR249 are merged. After stale function-spec sync and cleanup of 28 old invalid `proposalHandoffs`, Convex staging `dev:neat-starfish-33` returned `COVER_LETTER_MISTRAL_V2_STAGING_GREEN`. Only `cover_letter_premium_prompt_v2=1` is enabled on staging; aliases are unset, quality repair is OFF, Qwen stayed legacy-only in the control route, GPT stayed on GPT, and production full GO remains not approved.
-- MCP / ChatGPT App SDK: PR87.10 is merged as a test-only reachability proof for the local/dev endpoint. PR87.8 remains blocked for production exposure. PR80B manual handoff is implemented and remains the safe delivery boundary; production MCP endpoints, `tools/call`, OAuth, real handlers, live submit/apply, approved-answer copy, billing, PR88, and PR89 remain blocked.
+- MCP / ChatGPT App SDK: PR87.11 is merged as the docs-only auth/account-linking architecture checkpoint. PR87.10 is the test-only reachability proof for the local/dev endpoint. PR87.8 remains blocked for production exposure. PR80B manual handoff is implemented and remains the safe delivery boundary; production MCP endpoints, `tools/call`, OAuth, real handlers, live submit/apply, approved-answer copy, billing, PR88, and PR89 remain blocked.
 
 ## Key Active Facts
 
 - Product truth is `twoweeks`; CVForge and ProposalForge are internal module names.
 - `dev:neat-starfish-33` now has the synced function spec including `mistral-medium-latest` and `qwen3.7-max`; the staging smoke matrix passed 8/8.
-- PR87.10 added test-only local MCP dev endpoint reachability proof; PR87.8 is still blocked for production exposure; future launch-readiness needs a separate reviewed gate.
+- PR87.11 adds the auth/account-linking architecture checkpoint on top of PR87.10's test-only reachability proof; PR87.8 is still blocked for production exposure; future launch-readiness needs a separate reviewed gate.
 - PR80B must not claim provider submission. `provider_verified_submitted` remains unreachable; `user_reported_submitted` is the highest external reported state.
 - Persistent wiki mutations require `wiki/index.md`, `wiki/log.md`, and usually `wiki/hot.md`.
 
@@ -37,5 +37,6 @@ Keep two workstreams separate:
 ## Recent Changes
 
 - 2026-06-24: Recorded `MCP_DEV_ENDPOINT_PR87_10_TEST_ONLY_REACHABILITY`: PR251 merged as a one-file test-only checkpoint for the local/dev MCP endpoint; focused endpoint tests and the broader local-MCP suite passed; production MCP, OAuth, real handlers, live submit/apply, approved-answer copy, billing, PR88, and PR89 remain blocked.
+- 2026-06-24: Recorded `MCP_AUTH_ACCOUNT_LINKING_PR87_11_CHECKPOINT`: PR252 merged as a docs-only auth/account-linking checkpoint; Clerk remains app login authority, Stytch Connected Apps is the OAuth bridge, `(issuer, subject)` account linking is documented, `twoweeks:applications:read` is the first external scope, and runtime OAuth / production MCP remain blocked.
 - 2026-06-24: Recorded `COVER_LETTER_MISTRAL_V2_STAGING_GREEN`: staging function spec synced after stale `proposalHandoffs` cleanup; canonical Mistral V2 flag enabled only on `dev:neat-starfish-33`; 8/8 staging smoke passed; production and quality repair remain not approved/off.
 - 2026-06-23: Recorded PR249 merge and staged internal Mistral V2 gate: `COVER_LETTER_MISTRAL_V2_READY_FOR_INTERNAL_STAGING_ONLY`; production full GO remains separate, quality repair OFF, Qwen legacy-only, GPT unchanged.

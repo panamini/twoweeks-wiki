@@ -86,7 +86,7 @@ Cette carte est un routeur de lecture pour agents LLM. Elle ne remplace pas les 
 |------|--------|--------|------|
 | [[product/ai-product-model\|AI Product Model]] | 3 modes IA, rulebook, qualité writing, and Planner Agent shadow chain | current | ai, ux, modes |
 | [[product/ai-consistency-p0-editor-ai\|AI Consistency P0 — Closure Audit]] | Closure audit snapshot du rulebook AI editor, preview, telemetry et tailoring | current | ai, editor, rulebook |
-| [[product/chatgpt-app-sdk-roadmap\|ChatGPT/App SDK Roadmap]] | MCP/App SDK PR87.8 remains blocked; PR80B implemented, PR88/PR89 blocked and separate from cover-letter work | current | chatgpt-app, apps-sdk |
+| [[product/chatgpt-app-sdk-roadmap\|ChatGPT/App SDK Roadmap]] | MCP/App SDK PR87.8 remains blocked; PR80B implemented, PR87.11 adds the auth/account-linking architecture checkpoint, and PR88/PR89 remain blocked and separate from cover-letter work | current | chatgpt-app, apps-sdk |
 | [[product/job-library\|Job Library]] | Jobs sauvegardés, Job Brief editable et documents liés | current | jobs, library |
 | [[product/job-match-review\|Job Match Review]] | Match comme indicateur d'attention utilisateur et dogfood interne | current | jobs, match |
 | [[product/kpis\|KPIs]] | Métriques de succès produit | current | kpi, métriques |
@@ -213,6 +213,7 @@ Cover-letter quality has a merged PR249 staged internal Mistral V2 gate and a gr
 | [[sources/2026-06-23-cover-letter-quality-pr249-staged-internal-gate\|Cover Letter Quality PR249 Staged Internal Gate]] | analysis | 2026-06-23 | current |
 | [[sources/2026-06-23-release-orchestration-staging-pr87-8-checkpoint\|Release Orchestration Checkpoint - Staging and PR87.8]] | analysis | 2026-06-23 | current |
 | [[sources/2026-06-24-pr87-10-mcp-dev-endpoint-blocked-reachability-checkpoint\|MCP Dev Endpoint Test-Only Reachability Checkpoint - PR87.10]] | analysis | 2026-06-24 | current |
+| [[sources/2026-06-24-pr87-11-mcp-auth-account-linking-architecture-checkpoint\|ChatGPT App MCP Auth And Account-Linking Architecture Checkpoint - PR87.11]] | analysis | 2026-06-24 | current |
 | [[sources/2026-06-24-cover-letter-mistral-v2-staging-green\|Cover Letter Mistral V2 Staging Green Checkpoint]] | analysis | 2026-06-24 | current |
 | [[sources/2026-06-23-twoweeks-mcp-chatgpt-app-sdk-roadmap-checkpoint\|Twoweeks MCP / ChatGPT App SDK Roadmap Checkpoint]] | analysis | 2026-06-23 | current |
 ---

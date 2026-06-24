@@ -40,6 +40,30 @@ grep "^## \[" wiki/log.md | grep "ingest"  # Tous les ingests
 
 **Open items** : the next MCP slice should be the auth/OAuth architecture decision, not runtime exposure.
 
+## [2026-06-24] direct-update | MCP PR87.11 auth/account-linking architecture checkpoint
+
+**Agent** : Codex
+**Mode** : direct-update
+**Source** : PR252 merge result and local verification from `neyssan-pr87-11-mcp-auth-account-linking-architecture`
+
+**Pages créées** :
+- `wiki/sources/2026-06-24-pr87-11-mcp-auth-account-linking-architecture-checkpoint.md`
+
+**Pages mises à jour** :
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**Points notables** :
+- PR252 merged into `application-os-foundation` at `d9b47c72dd68dd388561b6c71d50d5952742c761`; head SHA was `7d7008c2943986c6b4c8d56f816c9381ffd79a05`.
+- The changed files stayed docs-only: `docs/decisions/2026-06-24-chatgpt-app-mcp-auth-account-linking-architecture.md` and `docs/audits/2026-06-24-mcp-app-sdk-production-gate-blocker-register.md`.
+- GitHub checks were green: CI success, Playwright Tests success, CodeRabbit success.
+- The CodeRabbit wording nit in the ADR status banner was fixed before merge and the review thread resolved.
+- The checkpoint records Clerk as the app login authority, Stytch Connected Apps as the OAuth bridge, `(issuer, subject)` account linking, and `twoweeks:applications:read` as the first external scope.
+- Production MCP, runtime OAuth, production `tools/list`, production `tools/call`, real handlers, PR88, and PR89 remain blocked.
+
+**Open items** : none. This checkpoint has been published and verified on `origin/main`.
+
 ## [2026-06-23] direct-update | cover-letter PR249 staged internal gate
 
 **Agent** : Codex
