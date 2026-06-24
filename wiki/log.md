@@ -1,7 +1,7 @@
 ---
 title: "Log — twoweeks Wiki"
 category: overview
-updated: 2026-06-23
+updated: 2026-06-24
 ---
 
 # Log du Wiki · twoweeks
@@ -14,6 +14,31 @@ grep "^## \[" wiki/log.md | grep "ingest"  # Tous les ingests
 ```
 
 ---
+
+## [2026-06-24] direct-update | MCP PR87.10 test-only reachability checkpoint
+
+**Agent** : Codex
+**Mode** : direct-update
+**Source** : PR251 merge result and local verification from `neyssan-new`
+
+**Pages créées** :
+- `wiki/sources/2026-06-24-pr87-10-mcp-dev-endpoint-blocked-reachability-checkpoint.md`
+
+**Pages mises à jour** :
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**Points notables** :
+- PR251 merged into `application-os-foundation` at `1f121b008296fb47cc13519595e9e0ac0c2e0637`; head SHA was `ac72565de07ae8fd13f70cf0dcd01643fd72d03a`.
+- The changed file stayed test-only: `my-app/src/modules/local-mcp/__tests__/localMcpDevEndpoint.test.ts`.
+- Focused endpoint tests were reported as passed: 13 tests.
+- Broader local-MCP tests were reported as passed: 56 files, 1197 tests.
+- `git diff --check application-os-foundation...HEAD` was clean and `git diff --name-only application-os-foundation...HEAD` showed exactly one file.
+- The checkpoint proves the local/dev MCP endpoint remains default-off, loopback-only, JSON-only, bounded by request size, fixture-only for `initialize` and `tools/list`, and blocked for `tools/call`.
+- No production MCP, OAuth, real handlers, outbound HTTP, model calls, live submit/apply, approved-answer production behavior, `provider_verified_submitted`, billing, PR88, or PR89 behavior changed.
+
+**Open items** : the next MCP slice should be the auth/OAuth architecture decision, not runtime exposure.
 
 ## [2026-06-23] direct-update | cover-letter PR249 staged internal gate
 
