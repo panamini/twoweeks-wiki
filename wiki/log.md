@@ -15,6 +15,30 @@ grep "^## \[" wiki/log.md | grep "ingest"  # Tous les ingests
 
 ---
 
+## [2026-06-25] direct-update | MCP PR87.15B0 account-link canonical storage checkpoint
+
+**Agent** : Codex
+**Mode** : direct-update
+**Source** : PR258 merge result, GitHub PR metadata, and local fetch verification from `neyssan-new`
+
+**Pages créées** :
+- `wiki/sources/2026-06-25-pr87-15b0-mcp-account-link-canonical-storage-checkpoint.md`
+
+**Pages mises à jour** :
+- `wiki/product/chatgpt-app-sdk-roadmap.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**Points notables** :
+- PR258 `PR87.15B0: add MCP canonical account-link storage contract` merged into `application-os-foundation` as `06a76a0b5f87f0d30c24635c436cfe3ffa80b29a`.
+- The merged head was `7c6ccc30c55334570da2da3d279f13920033a915`; changed files stayed exactly `schema.ts`, `mcpAccountLinks.ts`, and `mcpAccountLinks.test.ts`.
+- The canonical contract adds optional issuer, provider environment, canonical granted scopes, expiry, canonical version, classification/projection helpers, and index `by_provider_issuer_subject_environment`.
+- Reported validation included focused Convex account-link tests passing 24/24, full local-MCP suite passing 59 files / 1377 tests, TypeScript passing, targeted ESLint passing, build passing with existing warnings only, Fallow passing, and diff checks passing.
+- This remains storage/index only: no final lookup adapter, no endpoint wiring, no Vite middleware change, no runtime verifier wiring, no production MCP, no OAuth callback/token exchange, no account-link creation or mutation, no real handlers, no outbound/model calls, no write/export/send/apply, no production flags, no billing, no PR88, and no PR89.
+
+**Open items** : PR87.15B1 may add the server-only lookup adapter as a separate reviewed slice, but must not wire runtime auth or production MCP behavior.
+
 ## [2026-06-25] direct-update | MCP PR87.15A Stytch bearer verifier boundary checkpoint
 
 **Agent** : Codex
