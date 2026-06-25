@@ -15,6 +15,32 @@ grep "^## \[" wiki/log.md | grep "ingest"  # Tous les ingests
 
 ---
 
+## [2026-06-25] direct-update | MCP PR87.15C auth composition checkpoint
+
+**Agent** : Codex
+**Mode** : direct-update
+**Source** : PR261 merge result, GitHub PR metadata, and local fetch/source verification from `neyssan-new`
+
+**Pages créées** :
+- `wiki/sources/2026-06-25-pr87-15c-mcp-auth-composition-checkpoint.md`
+
+**Pages mises à jour** :
+- `wiki/product/chatgpt-app-sdk-roadmap.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**Points notables** :
+- PR261 `PR87.15C: compose Stytch verification and account-link lookup for local/dev MCP auth` merged into `application-os-foundation` as `f161ae9302269e5944101dd65ec4e375c112c070`.
+- The final merged head was `ccc4fe7469d17e62e8ec400288e45c4243679d94`; changed files stayed exactly `mcpAuthCompositionBoundary.ts` and `mcpAuthCompositionBoundary.test.ts`.
+- The composition boundary uses the PR257 verifier, PR259 lookup adapter, PR254 policy/resolver, and PR255 orchestrator dependency ports; it exports endpoint dependency output for a later runtime wiring slice.
+- The CodeRabbit P2 malformed-JWKS fix was included before merge; malformed, empty, private, non-RSA, duplicate-`kid`, or otherwise unacceptable JWKS fails closed before `configured: true`.
+- Local validation passed focused composition tests, adjacent verifier/orchestrator tests, the full local-MCP suite, TypeScript, targeted ESLint, build, diff checks, and forbidden-surface checks.
+- CodeRabbit reported success before merge. GitHub CI and Playwright checks were red at merge time with unavailable logs, and the PR was admin-squash-merged.
+- This remains a composition boundary only: no endpoint wiring, no Vite middleware wiring, no production MCP, no real OAuth/Stytch runtime calls, no account-link creation or mutation, no public Convex auth surface, no real handlers, no outbound/model calls, no write/export/send/apply, no production flags, no billing, no PR88, and no PR89.
+
+**Open items** : PR87.15D may wire the composed auth dependencies into the local/dev Vite MCP runtime, preserving existing default, anonymous, and deny-all modes. Do not mutate this checkpoint after PR87.15D implementation begins.
+
 ## [2026-06-25] direct-update | MCP PR87.15B1 account-link lookup adapter checkpoint
 
 **Agent** : Codex
