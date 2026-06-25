@@ -1,7 +1,7 @@
 ---
 title: "Log — twoweeks Wiki"
 category: overview
-updated: 2026-06-25
+updated: 2026-06-26
 ---
 
 # Log du Wiki · twoweeks
@@ -14,6 +14,32 @@ grep "^## \[" wiki/log.md | grep "ingest"  # Tous les ingests
 ```
 
 ---
+
+## [2026-06-26] direct-update | MCP PR87.17A OAuth authorization request boundary checkpoint
+
+**Agent** : Codex
+**Mode** : direct-update
+**Source** : PR265 merge result, GitHub PR metadata, local validation report, and checkpoint request
+
+**Pages créées** :
+- `wiki/sources/2026-06-26-pr87-17a-mcp-oauth-authorization-request-boundary-checkpoint.md`
+
+**Pages mises à jour** :
+- `wiki/product/chatgpt-app-sdk-roadmap.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**Points notables** :
+- PR265 `PR87.17A: add MCP OAuth authorization request boundary` merged into `application-os-foundation` as `1f1cb7cb46a7bfa165bbfe37f728dd2aefe44091` on `2026-06-25T23:14:46Z`.
+- The final merged head was `3c7a48a8111019b08c1991ed540ff16a6a13d001`; changed files stayed within the PR-local brief, `mcpOAuthAuthorizationRequestBoundary.ts`, its focused test, and the two already-merged account-link fixups plus the PR brief.
+- PR87.17A adds the server-only MCP OAuth authorization request boundary and safe intent-preservation layer after PR87.16 account-link lifecycle work.
+- Local validation reported focused OAuth boundary tests, targeted ESLint, and `git diff --check` passing before merge.
+- CodeRabbit status was `SUCCESS`; Semgrep cloud scan was `SUCCESS`.
+- Remote `CI / js-tests` failed twice and `Playwright Tests / test` failed; `gh run view --log-failed` returned `log not found`, and the Actions job API returned empty `steps` arrays.
+- This remains server-only boundary work: no production MCP, no OAuth callback/code exchange, no consent UI, no token persistence, no public account-link API, no endpoint/Vite lifecycle wiring, no real Stytch/Clerk network calls, no real user data, no outbound/model calls, no write/export/send/apply, no production flags, no billing, no PR88, and no PR89.
+
+**Open items** : Start PR87.17B only as a separate explicit request and reviewed slice. Do not start PR87.17B from this checkpoint.
 
 ## [2026-06-25] direct-update | MCP PR87.16 account-link lifecycle checkpoint
 
