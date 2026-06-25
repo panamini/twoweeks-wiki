@@ -15,6 +15,31 @@ grep "^## \[" wiki/log.md | grep "ingest"  # Tous les ingests
 
 ---
 
+## [2026-06-25] direct-update | MCP PR87.15D local/dev auth runtime wiring checkpoint
+
+**Agent** : Codex
+**Mode** : direct-update
+**Source** : PR263 merge result, GitHub PR metadata, local validation report, and checkpoint request
+
+**Pages créées** :
+- `wiki/sources/2026-06-25-pr87-15d-mcp-auth-local-runtime-wiring-checkpoint.md`
+
+**Pages mises à jour** :
+- `wiki/product/chatgpt-app-sdk-roadmap.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**Points notables** :
+- PR263 `PR87.15D: wire composed auth into local/dev MCP runtime` merged into `application-os-foundation` as `97b8faa9c326868a298ed73d4357d03bdaf7ec47` on `2026-06-25T06:56:04Z`.
+- The final merged head was `6faf7cd8f66134eb81a6d34bec8f21510a210773`; changed files stayed within the PR-local brief, local-MCP auth runtime module/tests, `tsconfig.node.json`, and `vite.config.ts`.
+- The runtime wiring reuses PR87.15C auth composition, PR87.15B1 lookup adapter, PR87.15A verifier, PR87.14B local/dev challenge wiring, PR87.14A orchestrator, and PR87.13 policy/resolver boundaries.
+- Local validation passed focused PR87.15D tests, adjacent auth tests, full local-MCP suite, relevant Convex guardrail tests, TypeScript, targeted ESLint, build, diff checks, forbidden-surface grep, and Fallow advisory review.
+- CodeRabbit and Semgrep were green before merge. GitHub CI/Playwright stayed red with unavailable logs and empty job steps after rerun, so PR263 was admin-squash-merged.
+- This remains local/dev runtime auth wiring only: no production MCP, no OAuth callback/code exchange, no real Stytch runtime call, no account-link lifecycle mutation, no public Convex function, no real handlers, no real user data, no outbound/model calls, no write/export/send/apply, no production flags, no billing, no PR88, and no PR89.
+
+**Open items** : Run Gate87.16A MCP Inspector local authentication smoke next. Do not start PR87.16 account-link lifecycle work unless Gate87.16A returns green.
+
 ## [2026-06-25] direct-update | MCP PR87.15C auth composition checkpoint
 
 **Agent** : Codex
