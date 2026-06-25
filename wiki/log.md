@@ -15,6 +15,30 @@ grep "^## \[" wiki/log.md | grep "ingest"  # Tous les ingests
 
 ---
 
+## [2026-06-25] direct-update | MCP PR87.15B1 account-link lookup adapter checkpoint
+
+**Agent** : Codex
+**Mode** : direct-update
+**Source** : PR259 merge result, GitHub PR metadata, and local fetch/source verification from `neyssan-new`
+
+**Pages créées** :
+- `wiki/sources/2026-06-25-pr87-15b1-mcp-account-link-lookup-adapter-checkpoint.md`
+
+**Pages mises à jour** :
+- `wiki/product/chatgpt-app-sdk-roadmap.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**Points notables** :
+- PR259 `PR87.15B1: add server-only MCP account-link lookup adapter` merged into `application-os-foundation` as `732bef170fd4175cb70cd2f0cc1bda858f2e93bb`.
+- The merged head was `4bc277f28253ffe8411160615d8af68f7cdd4b95`; changed files stayed exactly `mcpAccountLinks.ts`, `mcpAccountLinks.test.ts`, `mcpConvexAccountLinkLookupAdapter.ts`, and `mcpConvexAccountLinkLookupAdapter.test.ts`.
+- The adapter exposes `buildMcpConvexAccountLinkLookupAdapter` with an injected `runQuery` and opaque `queryRef`; the bounded Convex query is `internalLookupMcpAuthPolicyAccountLinkCandidates`.
+- GitHub reported `js-tests`, `test`, and CodeRabbit success; local fetch, ancestry, changed-file, and source-symbol checks were verified before this checkpoint.
+- This remains server-only lookup-adapter work: no endpoint wiring, no Vite middleware wiring, no runtime verifier wiring, no production MCP, no real OAuth/Stytch runtime calls, no account-link mutation, no real handlers, no outbound/model calls, no write/export/send/apply, no production flags, no billing, no PR88, and no PR89.
+
+**Open items** : PR87.15C may compose the merged non-production auth pieces with deterministic synthetic fixtures, but must not mutate this checkpoint after implementation begins or open production MCP behavior.
+
 ## [2026-06-25] direct-update | MCP PR87.15B0 account-link canonical storage checkpoint
 
 **Agent** : Codex
