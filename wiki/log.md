@@ -15,6 +15,32 @@ grep "^## \[" wiki/log.md | grep "ingest"  # Tous les ingests
 
 ---
 
+## [2026-06-25] direct-update | MCP PR87.16 account-link lifecycle checkpoint
+
+**Agent** : Codex
+**Mode** : direct-update
+**Source** : PR264 merge result, GitHub PR metadata, local validation report, and checkpoint request
+
+**Pages créées** :
+- `wiki/sources/2026-06-25-pr87-16-mcp-account-link-lifecycle-checkpoint.md`
+
+**Pages mises à jour** :
+- `wiki/product/chatgpt-app-sdk-roadmap.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**Points notables** :
+- PR264 `PR87.16: add authoritative MCP account-link lifecycle` merged into `application-os-foundation` as `ba62200d28deaae56387e06fd13e20aea580758d` on `2026-06-25T18:26:13Z`.
+- The final merged head was `1a3a94821b0d5409db64b88d5a7d500672c09b22`; changed files stayed within the PR-local brief, `mcpAccountLinks.ts`, and its focused Convex test.
+- PR87.16 adds server-only canonical account-link link, refresh, and revoke lifecycle operations using already-verified OAuth evidence plus trusted Twoweeks owner context.
+- Local validation passed focused lifecycle tests, adjacent auth/runtime tests, full local-MCP suite, full Convex test scope, TypeScript, targeted ESLint, build, diff checks, forbidden-surface grep, and Fallow advisory review.
+- CodeRabbit status was `SUCCESS`; Semgrep was `SUCCESS`; the latest CodeRabbit review also recorded one minor test-tightening suggestion on the final head.
+- Remote `CI / js-tests` failed twice and `Playwright Tests / test` failed; failed logs were unavailable through `gh run view --log-failed`, and the Actions job API returned empty `steps` arrays.
+- This remains server-only lifecycle work: no production MCP, no OAuth callback/code exchange, no consent UI, no token persistence, no public account-link API, no endpoint/Vite lifecycle wiring, no provider/Clerk network calls, no real user data, no outbound/model calls, no write/export/send/apply, no production flags, no billing, no PR88, and no PR89.
+
+**Open items** : Start PR87.17A only as a separate explicit request and reviewed slice. Do not start PR87.17A/PR87.17 from this checkpoint.
+
 ## [2026-06-25] direct-update | MCP PR87.15D local/dev auth runtime wiring checkpoint
 
 **Agent** : Codex
