@@ -15,6 +15,31 @@ grep "^## \[" wiki/log.md | grep "ingest"  # Tous les ingests
 
 ---
 
+## [2026-06-26] direct-update | MCP PR87.17C0 OAuth login-return convention checkpoint
+
+**Agent** : Codex
+**Mode** : direct-update
+**Source** : PR268 merge result, GitHub PR metadata, and checkpoint request
+
+**Pages créées** :
+- `wiki/sources/2026-06-26-pr87-17c0-mcp-oauth-login-return-convention-checkpoint.md`
+
+**Pages mises à jour** :
+- `wiki/product/chatgpt-app-sdk-roadmap.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**Points notables** :
+- PR268 `PR87.17C0: define MCP OAuth login return convention` merged into `application-os-foundation` as `cdf3b9e95e1abad77beb7d96f9de0fcfb830f369` on `2026-06-26T03:06:46Z`.
+- The final merged head was `3892163e7850e2596d7f335cae4325ceb0dd3c34`.
+- CodeRabbit and Semgrep were `SUCCESS`; Qodo issue was resolved.
+- Remaining red checks at merge were inherited or broader `js-tests` and Playwright lanes.
+- PR87.17C0 defines repository-owned `mcp_oauth_return`, preserves `/cv` fallback, allows only the fixed local/dev MCP OAuth continuation path, requires `mcp_oauth_intent`, rejects unsafe or arbitrary return URLs, and adds focused resolver plus SignInPage wiring tests.
+- This remains convention/placeholder work only: no OAuth authorization endpoint behavior, Convex changes, Stytch provider integration, MCP endpoint/runtime composition, Vite/package/lockfile changes, PR88, PR89, or cover-letter changes.
+
+**Open items** : Start PR87.17C1 as the next separate reviewed slice. Do not start PR87.17D, PR88, PR89, or cover-letter work from this checkpoint.
+
 ## [2026-06-26] direct-update | MCP PR87.17B OAuth authorization intent storage checkpoint
 
 **Agent** : Codex
