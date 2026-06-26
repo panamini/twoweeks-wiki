@@ -15,6 +15,29 @@ grep "^## \[" wiki/log.md | grep "ingest"  # Tous les ingests
 
 ---
 
+## [2026-06-26] direct-update | MCP PR87.17B OAuth authorization intent storage checkpoint
+
+**Agent** : Codex
+**Mode** : direct-update
+**Source** : PR267 merge result, GitHub PR metadata, and checkpoint request
+
+**Pages créées** :
+- `wiki/sources/2026-06-26-pr87-17b-mcp-oauth-authorization-intent-checkpoint.md`
+
+**Pages mises à jour** :
+- `wiki/product/chatgpt-app-sdk-roadmap.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**Points notables** :
+- PR267 `PR87.17B: add MCP OAuth authorization intent storage` merged into `application-os-foundation` as `108f740a5cbcc5a75c58d0e16bd865f9e98ba169` on `2026-06-26T01:21:01Z`.
+- The final merged head was `4e78cdb302eb8d9b12422db7b8668197de8f73e3`; changed files stayed within the PR-local brief, `mcpOAuthAuthorizationIntents.ts`, its focused test, and the schema change.
+- PR87.17B adds the server-only one-time authorization-intent storage boundary with digest-only continuation handles and short-lived expiry.
+- Raw continuation handles stay out of storage, login-return routing remains deferred, and production MCP/OAuth/public account-link API/real handlers remain blocked.
+
+**Open items** : Start PR87.17C only as a separate explicit request and reviewed slice. Do not start PR87.17C from this checkpoint.
+
 ## [2026-06-26] direct-update | MCP PR87.17A OAuth authorization request boundary checkpoint
 
 **Agent** : Codex
