@@ -1,7 +1,7 @@
 ---
 title: "Log — twoweeks Wiki"
 category: overview
-updated: 2026-06-26
+updated: 2026-06-27
 ---
 
 # Log du Wiki · twoweeks
@@ -14,6 +14,32 @@ grep "^## \[" wiki/log.md | grep "ingest"  # Tous les ingests
 ```
 
 ---
+
+## [2026-06-27] pr-branch | MCP PR87.17D OAuth local/dev route adapter checkpoint
+
+**Agent** : Codex
+**Mode** : pr-branch
+**Source** : PR273 merge result, GitHub PR metadata, local validation evidence, and checkpoint request
+
+**Pages créées** :
+- `wiki/sources/2026-06-27-pr87-17d-mcp-oauth-local-dev-route-adapter-checkpoint.md`
+
+**Pages mises à jour** :
+- `wiki/product/chatgpt-app-sdk-roadmap.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**Points notables** :
+- PR273 `PR87.17D: wire local MCP OAuth route adapter` merged into `application-os-foundation` as `ece26dbf2a899b69d42343e1d1165dbc05d12d53` on `2026-06-26T21:43:32Z`.
+- The final merged head was `9b23d85682a5b69d4b76904f7cd5931280fd3218` on branch `codex/pr87-17d-mcp-oauth-local-dev-route-adapter`.
+- Changed files were limited to the local/dev route adapter, its focused route tests, and `vite.config.ts`.
+- PR87.17D wires the local/dev-only flow: ChatGPT OAuth request -> PR265 validation -> PR271 pre-auth storage -> PR268 Clerk login return -> PR272 owner binding -> PR267 owner-bound intent -> PR269 continuation.
+- Validation evidence: focused OAuth suite 222 passing, full MCP suite 1,793 passing, TypeScript clean, changed-file ESLint with `--no-ignore` clean, and `git diff --check` clean.
+- GitHub Actions `js-tests` and Playwright `test` failures had `runner_id: 0` and no steps, so they are classified as external runner/billing/spending-limit availability.
+- This remains local/dev-only behind `LOCAL_MCP_DEV_OAUTH_AUTHORIZATION=1`: no production MCP/OAuth endpoints, Stytch runtime integration, authorization-code issuance, token exchange, production account-link creation, PR88, or PR89.
+
+**Open items** : Do not rerun PR87.17D. Do not start PR88 or PR89 from this checkpoint. Choose the next implementation PR only after reloading the roadmap and verifying the current lowest-numbered unmerged blocker; production MCP/OAuth/token/account-link runtime remains blocked pending a separate reviewed gate.
 
 ## [2026-06-26] direct-update | MCP PR87.17C1 OAuth login-return continuation checkpoint
 
