@@ -15,6 +15,32 @@ grep "^## \[" wiki/log.md | grep "ingest"  # Tous les ingests
 
 ---
 
+## [2026-06-26] direct-update | MCP PR87.17C1 OAuth login-return continuation checkpoint
+
+**Agent** : Codex
+**Mode** : direct-update
+**Source** : PR269 merge result, GitHub PR metadata, and PR87.17C2 precondition
+
+**Pages créées** :
+- `wiki/sources/2026-06-26-pr87-17c1-mcp-oauth-login-return-continuation-checkpoint.md`
+
+**Pages mises à jour** :
+- `wiki/product/chatgpt-app-sdk-roadmap.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**Points notables** :
+- PR269 `PR87.17C1: add MCP OAuth login return continuation boundary` merged into `application-os-foundation` as `84d6b9bab8c4f2b046f6d298eda2b329b65d52dd` on `2026-06-26T15:58:19Z`.
+- The final merged head was `133efa7af3c7fe5be4feac6d7f3887321d85683b`.
+- Changed files were limited to `mcpOAuthLoginReturnContinuationBoundary.ts` and its focused test.
+- CodeRabbit status was `SUCCESS`; Semgrep cloud scan was `SUCCESS`.
+- Remaining red checks at merge were `CI / js-tests` and `Playwright Tests / test`.
+- PR87.17C1 adds route-independent prepare/resume continuation logic that reuses PR87.17A requests, PR87.17B digest-only intents, and PR87.17C0 return constants.
+- This remains server-only boundary work: no route/page, Stytch call, token exchange, authorization code, account-link lifecycle invocation, production OAuth runtime, PR88, PR89, cover-letter work, or real user data.
+
+**Open items** : Start PR87.17C2 as the next separate reviewed slice. Do not start PR87.17D, PR88, PR89, or cover-letter work from this checkpoint.
+
 ## [2026-06-26] direct-update | MCP PR87.17C0 OAuth login-return convention checkpoint
 
 **Agent** : Codex
