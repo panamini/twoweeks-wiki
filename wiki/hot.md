@@ -3,12 +3,12 @@ title: "Hot Cache - twoweeks"
 category: overview
 status: current
 created: 2026-05-02
-updated: 2026-07-13
+updated: 2026-06-26
 ---
 
 # Hot Cache
 
-Non-canonical active-memory cache for routing. Use it to choose pages, then trust durable pages.
+This page is the active-memory cache for LLM retrieval. It is overwrite-only and non-canonical. Use it to choose pages, then trust durable pages.
 
 ## Current Focus
 
@@ -17,30 +17,23 @@ twoweeks centers on CV ingestion/parsing, canonical saved profile/CV data, and p
 Keep two workstreams separate:
 
 - Cover-letter quality: staging `dev:neat-starfish-33` is green for Mistral V2 with only `cover_letter_premium_prompt_v2=1`; quality repair is OFF and production full GO is not approved.
-- MCP / ChatGPT App SDK: PR305-PR320 are merged. The digest-based private-beta configuration is deployed, the V2 confidential connector is connected, `/oauth/token` was observed through a token-record count increase, exactly six read-only tools were listed, one safe `application_package` summary call completed, and PR320 minimized the four summary-tool model-visible outputs to a closed status-only envelope. `run.sh doctor` remains the collaborator preflight and `run.sh mcp-smoke` the credential-free public canary.
+- MCP / ChatGPT App SDK: PR87.17C2/PR270 is merged as the docs-only MCP OAuth pre-auth ownership decision and browser-storage policy after PR87.17C1/PR269 login-return continuation boundary, PR87.17C0/PR268 login-return convention, PR87.17B/PR267 authorization-intent storage, PR87.17A/PR265 authorization request boundary, PR87.16 account-link lifecycle, PR87.15D runtime composition wiring, PR87.15C auth composition, PR87.15B1 lookup adapter, PR87.15B0 storage, PR87.15A verifier, PR87.14B endpoint challenge wiring, PR87.14A orchestrator, PR87.13 policy, PR87.12 fixture demo, PR87.11 architecture, and PR87.10 reachability.
 
 ## Key Active Facts
 
-- PR305 is private-beta proof only. Provider calls, writes, refresh tokens, billing, shared DB mutation, account-link expansion and public launch remain blocked.
-- The exact redirect is `https://chatgpt.com/connector/oauth/b7v_6OncLEsg`; wildcard redirects are forbidden.
-- Server configuration belongs in ignored root `.env.local` mode `600`. Use `./run.sh mcp-check`, `./run.sh mcp-private-beta`, and `./run.sh reload-env`.
-- The canonical eligibility key is `MCP_OAUTH_PRODUCTION_PRIVATE_BETA_SUBJECT_DIGESTS` with lowercase SHA-256 digests. Legacy raw-subject configuration and `MCP_PRODUCTION_PRIVATE_BETA_*` aliases must not be used.
-- Missing or malformed secret digest never downgrades OAuth to public client `none`; token exchange fails closed while metadata remains `client_secret_post`.
-- The shared client secret is sourced from Infisical EU Cloud; collaborators authenticate individually, and the digest cannot recover the secret. The root `.env.local` is canonical; `my-app/.env.local` is for client values only.
-- PR306 regression coverage proves that prerequisite, partial-retrieval, post-digest permission, and success paths do not expose the raw secret or either digest under `bash -x`.
-- PR307 keeps `my-app/.env.local` Vite-only, rejects Docker-client env drift and symlinked MCP secret files, and selects native Linux host networking for cloudflared while Vite remains loopback-only.
-- PR308 adds operational read-only smoke coverage only. PR309 fixes protocol compatibility and proves one existing `application_package` read without adding tools or opening provider/write/public surfaces.
-- PR311 closes startup-preflight regressions for ports, local Docker, WSL2 tunnel networking, Bash special variables, and strict Vite port binding; it does not alter MCP behavior or the separate cover-letter rail.
-- PR313-PR316 establish the digest-only eligibility contract and private-beta readiness checks. PR317 keeps the exact six-tool projection under CI regression coverage.
-- The deployed environment now uses the digest key. A rotated Infisical secret and fresh V2 connector re-proved authenticated token exchange, six-tool discovery, and one safe read-only call without exposing private values.
-- PR320 removes the optional aggregate `summary` payload from the four authenticated summary-tool model-visible outputs; OAuth, private-beta eligibility, exact six-tool catalog, search/fetch behavior, internal read execution, and launch blocks remain unchanged.
 - Product truth is `twoweeks`; CVForge and ProposalForge are internal module names.
-- PR80B remains the safe manual application handoff while ATS authorization is pending; `provider_verified_submitted` remains unreachable.
+- PR87.17C2 adds the docs-only pre-auth ownership decision and browser-storage policy, records `TWO_PHASE_PREAUTH_INTENT_REQUIRED`, and keeps route/runtime/provider/token/code/account-link behavior blocked until later slices.
+- PR87.17C0 defines `mcp_oauth_return`, preserves `/cv` fallback, allows only the fixed local/dev MCP OAuth continuation path with `mcp_oauth_intent`, and adds resolver/SignInPage tests only.
+- PR87.17B adds server-only authorization-intent storage with digest-only handles and one-time consume behavior; neither PR87.17B nor PR87.17C0 opens production MCP, OAuth callback/code exchange, consent UI, token persistence, public account-link API, endpoint/Vite lifecycle wiring, real Stytch/Clerk network calls, or real user data.
+- The next MCP step is PR87.17C3 as the pre-auth intent storage contract; do not start PR87.17D, PR88, or PR89 from this checkpoint.
+- PR87.15B1 adds `buildMcpConvexAccountLinkLookupAdapter` plus bounded lookup query `internalLookupMcpAuthPolicyAccountLinkCandidates`.
+- PR87.8 remains blocked for production exposure; OAuth callback/token exchange, production MCP, real handlers, live submit/apply, billing, PR88, and PR89 require separate reviewed gates.
+- PR80B must not claim provider submission. `provider_verified_submitted` remains unreachable; `user_reported_submitted` is the highest external reported state.
 - Persistent wiki mutations require `wiki/index.md`, `wiki/log.md`, and usually `wiki/hot.md`.
 
 ## Canonical Pages To Read
 
-- MCP / ChatGPT App SDK: [[sources/2026-07-13-pr320-mcp-output-minimization-checkpoint]], [[sources/2026-07-13-pr313-pr317-mcp-private-beta-live-reproof-checkpoint]], [[howto/chatgpt-mcp-private-beta-tunnel-connector]], [[product/chatgpt-app-sdk-roadmap]], [[sources/2026-07-13-pr311-runsh-doctor-regression-closure-checkpoint]], [[sources/2026-07-13-pr309-mcp-protocol-compatibility-checkpoint]], [[product/manual-application-handoff]]
 - Cover-letter quality: [[tasks/2026-06-22-cover-letter-quality-production-roadmap]], [[sources/2026-06-24-cover-letter-mistral-v2-staging-green]]
+- MCP / ChatGPT App SDK: [[product/chatgpt-app-sdk-roadmap]], [[product/manual-application-handoff]], [[sources/2026-06-26-pr87-17c2-mcp-oauth-preauth-ownership-checkpoint]], [[sources/2026-06-26-pr87-17c1-mcp-oauth-login-return-continuation-checkpoint]], [[sources/2026-06-26-pr87-17c0-mcp-oauth-login-return-convention-checkpoint]], [[sources/2026-06-26-pr87-17b-mcp-oauth-authorization-intent-checkpoint]], [[sources/2026-06-26-pr87-17a-mcp-oauth-authorization-request-boundary-checkpoint]], [[sources/2026-06-25-pr87-16-mcp-account-link-lifecycle-checkpoint]], [[sources/2026-06-25-pr87-15d-mcp-auth-local-runtime-wiring-checkpoint]], [[sources/2026-06-25-pr87-15c-mcp-auth-composition-checkpoint]], [[sources/2026-06-25-pr87-15b1-mcp-account-link-lookup-adapter-checkpoint]], [[sources/2026-06-25-pr87-15b0-mcp-account-link-canonical-storage-checkpoint]], [[sources/2026-06-25-pr87-15a-mcp-stytch-bearer-verifier-checkpoint]], [[sources/2026-06-24-pr87-14b-mcp-auth-dev-endpoint-wiring-checkpoint]]
 - Product/parser/export routing: [[overview]], [[concepts/cv-parsing-pipeline]], [[tech/export-pipeline]]
 - Wiki operations: [[meta/llm-wiki-pattern]], [[meta/temporal-management]]
