@@ -86,7 +86,7 @@ Cette carte est un routeur de lecture pour agents LLM. Elle ne remplace pas les 
 |------|--------|--------|------|
 | [[product/ai-product-model\|AI Product Model]] | 3 modes IA, rulebook, qualité writing, and Planner Agent shadow chain | current | ai, ux, modes |
 | [[product/ai-consistency-p0-editor-ai\|AI Consistency P0 — Closure Audit]] | Closure audit snapshot du rulebook AI editor, preview, telemetry et tailoring | current | ai, editor, rulebook |
-| [[product/chatgpt-app-sdk-roadmap\|ChatGPT/App SDK Roadmap]] | MCP/App SDK PR87.17D merged the local/dev-only OAuth route adapter behind `LOCAL_MCP_DEV_OAUTH_AUTHORIZATION=1` after PR87.17C1 continuation, PR87.17C0 convention, PR87.17B authorization-intent storage, PR87.17A authorization request boundary, PR87.16 account-link lifecycle, and earlier auth/storage/lookup boundaries; production MCP/OAuth/token/account-link runtime remains blocked, with PR88/PR89 still separate from cover-letter work | current | chatgpt-app, apps-sdk |
+| [[product/chatgpt-app-sdk-roadmap\|ChatGPT/App SDK Roadmap]] | MCP/App SDK PR94 merged production `/oauth/authorize` ownerless pre-auth intent creation behind PR89 activation, PR90 status, PR92 preflight, and PR93 shells; `/oauth/callback` and `/mcp` remain inert, next slice is production login-return owner binding | current | chatgpt-app, apps-sdk |
 | [[product/job-library\|Job Library]] | Jobs sauvegardés, Job Brief editable et documents liés | current | jobs, library |
 | [[product/job-match-review\|Job Match Review]] | Match comme indicateur d'attention utilisateur et dogfood interne | current | jobs, match |
 | [[product/kpis\|KPIs]] | Métriques de succès produit | current | kpi, métriques |
