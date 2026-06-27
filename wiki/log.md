@@ -15,6 +15,56 @@ grep "^## \[" wiki/log.md | grep "ingest"  # Tous les ingests
 
 ---
 
+## [2026-06-27] pr-branch | MCP PR94 production authorize pre-auth checkpoint
+
+**Agent** : Codex
+**Mode** : pr-branch
+**Source** : PR279 merge result, GitHub PR metadata, local validation evidence, review findings, and checkpoint request
+
+**Pages créées** :
+- `wiki/sources/2026-06-27-pr94-mcp-oauth-production-authorize-preauth-checkpoint.md`
+
+**Pages mises à jour** :
+- `wiki/product/chatgpt-app-sdk-roadmap.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**Points notables** :
+- PR279 `PR94: connect production /oauth/authorize to existing pre-auth intent creation` merged into `application-os-foundation` as `d9e42556a511ca5b3e78dce07f48b2366b210a0d` on `2026-06-27T21:22:08Z`.
+- The final merged head was `51a1a8052afd42b9d4d1788205506d5c14210a4c`; the final pushed bug-fix head before base merge was `1d2fcc8ee151e6adbfe777871bccf10fafcdb40a`.
+- PR94 connects production `/oauth/authorize` to the existing ownerless pre-auth path using PR87.17A request projection, PR87.17C3 pre-auth storage, and the continuation/login-return convention.
+- `/oauth/callback` and `/mcp` remain guarded inert production handlers.
+- Review fixes included Vite default dependency wiring, preview middleware, OAuth host allowlisting, local route precedence, Convex fail-closed setup, refreshed create deadlines, trimmed resource guards, caller-scoped quotas, and server-time stale-deadline rejection.
+- Validation evidence: focused production route and Convex pre-auth tests passed, broader OAuth/local MCP subset passed with 215 tests, TypeScript passed, `git diff --check` passed, Fallow was advisory-only, Semgrep passed, and Qodo reported no open findings on the final bug-fix commit.
+- GitHub `js-tests` remained red for the Match Review guardrail job; PR279 was merged with admin bypass after resolving the base merge conflict.
+
+**Open items** : Do not rerun PR89, PR90, PR92, PR93, or PR94. Do not start PR88/private beta/public launch from this checkpoint. The next narrow app PR should be production login-return / owner-binding continuation while provider validation, consent, authorization-code issuance, token exchange, account-link creation, token persistence, `/mcp`, `tools/list`, and `tools/call` remain blocked.
+
+## [2026-06-27] direct-update | MCP PR89-PR93 OAuth production gate and route shell checkpoint
+
+**Agent** : Codex
+**Mode** : direct-update
+**Source** : PR274, PR275, PR276, PR277 merge results; GitHub PR metadata; local code verification; and user request
+
+**Pages créées** :
+- `wiki/sources/2026-06-27-pr89-pr93-mcp-oauth-production-gate-route-shell-checkpoint.md`
+
+**Pages mises à jour** :
+- `wiki/product/chatgpt-app-sdk-roadmap.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**Points notables** :
+- PR274 `PR89: controlled MCP OAuth production activation boundary` merged into `application-os-foundation` as `a1b7c01c05a5a2288a3ae6ab97cd5320844252f8` on `2026-06-27T03:39:08Z`.
+- PR275 `PR90: production OAuth operational status` merged into `application-os-foundation` as `eb703b7ebc2c8cd8149adb9fb3705cb7aee56f34` on `2026-06-27T03:45:58Z`.
+- PR276 `PR92: add production MCP OAuth route preflight boundary` merged into `application-os-foundation` as `d8eafac75fb3b7cbf53ff9732a5815bb85d5fa38` on `2026-06-27T05:18:05Z`.
+- PR277 `PR93: wire production MCP OAuth routes behind preflight boundary` merged into `application-os-foundation` as `d63f3144dee5260a7d350f3dfde85e00fd4c9046` on `2026-06-27T06:03:01Z`.
+- PR93 production route shells for `/oauth/authorize`, `/oauth/callback`, and `/mcp` remain guarded inert handlers: no provider calls, consent, owner binding, authorization-code issuance, token exchange, account-link creation, token persistence, `tools/list`, or `tools/call`.
+
+**Open items** : Do not rerun PR89, PR90, PR92, or PR93. Do not create PR88 retroactively. The next narrow implementation PR is PR94: connect production `/oauth/authorize` to existing pre-auth intent creation while keeping `/oauth/callback` and `/mcp` inert.
+
 ## [2026-06-27] pr-branch | MCP PR87.17D OAuth local/dev route adapter checkpoint
 
 **Agent** : Codex
