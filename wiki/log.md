@@ -15,6 +15,30 @@ grep "^## \[" wiki/log.md | grep "ingest"  # Tous les ingests
 
 ---
 
+## [2026-06-27] direct-update | MCP PR89-PR93 OAuth production gate and route shell checkpoint
+
+**Agent** : Codex
+**Mode** : direct-update
+**Source** : PR274, PR275, PR276, PR277 merge results; GitHub PR metadata; local code verification; and user request
+
+**Pages créées** :
+- `wiki/sources/2026-06-27-pr89-pr93-mcp-oauth-production-gate-route-shell-checkpoint.md`
+
+**Pages mises à jour** :
+- `wiki/product/chatgpt-app-sdk-roadmap.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**Points notables** :
+- PR274 `PR89: controlled MCP OAuth production activation boundary` merged into `application-os-foundation` as `a1b7c01c05a5a2288a3ae6ab97cd5320844252f8` on `2026-06-27T03:39:08Z`.
+- PR275 `PR90: production OAuth operational status` merged into `application-os-foundation` as `eb703b7ebc2c8cd8149adb9fb3705cb7aee56f34` on `2026-06-27T03:45:58Z`.
+- PR276 `PR92: add production MCP OAuth route preflight boundary` merged into `application-os-foundation` as `d8eafac75fb3b7cbf53ff9732a5815bb85d5fa38` on `2026-06-27T05:18:05Z`.
+- PR277 `PR93: wire production MCP OAuth routes behind preflight boundary` merged into `application-os-foundation` as `d63f3144dee5260a7d350f3dfde85e00fd4c9046` on `2026-06-27T06:03:01Z`.
+- PR93 production route shells for `/oauth/authorize`, `/oauth/callback`, and `/mcp` remain guarded inert handlers: no provider calls, consent, owner binding, authorization-code issuance, token exchange, account-link creation, token persistence, `tools/list`, or `tools/call`.
+
+**Open items** : Do not rerun PR89, PR90, PR92, or PR93. Do not create PR88 retroactively. The next narrow implementation PR is PR94: connect production `/oauth/authorize` to existing pre-auth intent creation while keeping `/oauth/callback` and `/mcp` inert.
+
 ## [2026-06-27] pr-branch | MCP PR87.17D OAuth local/dev route adapter checkpoint
 
 **Agent** : Codex
