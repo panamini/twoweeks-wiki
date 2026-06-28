@@ -1,7 +1,7 @@
 ---
 title: "Log — twoweeks Wiki"
 category: overview
-updated: 2026-06-27
+updated: 2026-06-28
 ---
 
 # Log du Wiki · twoweeks
@@ -14,6 +14,32 @@ grep "^## \[" wiki/log.md | grep "ingest"  # Tous les ingests
 ```
 
 ---
+
+## [2026-06-28] pr-branch | MCP PR96 production authorization-code checkpoint
+
+**Agent** : Codex
+**Mode** : pr-branch
+**Source** : PR280 and PR281 merge results, GitHub PR metadata, local validation evidence, review comments, and post-merge checkpoint request
+
+**Pages créées** :
+- `wiki/sources/2026-06-28-pr96-mcp-oauth-production-authorization-code-checkpoint.md`
+
+**Pages mises à jour** :
+- `wiki/product/chatgpt-app-sdk-roadmap.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**Points notables** :
+- PR280 `PR95: bind production OAuth login return continuation` merged into `application-os-foundation` as `afde4f88d9b8bff6a4afbc2bb8d3aef3d6622f95` on `2026-06-28T03:27:36Z`.
+- PR281 `PR96: issue production OAuth authorization codes` merged into `application-os-foundation` as `6beeee919a1cded82a3598f785eb507c58b76436` on `2026-06-28T04:43:17Z`.
+- PR96 consumes the owner-bound authorization intent, stores only digest-backed short-lived authorization-code state server-side, and redirects the browser to the validated OAuth client `redirect_uri` with `code` and original `state`.
+- Raw authorization codes remain browser-only after redirect; Convex storage keeps digest-backed state with owner, client, redirect URI, resource, scopes, state, PKCE, production environment, status, timestamps, and version.
+- `/oauth/token`, production `/mcp`, provider calls, consent UI, token exchange, access tokens, refresh tokens, token persistence, production account links, `tools/list`, `tools/call`, PR88/private beta, and public launch remain blocked.
+- Validation evidence: focused production route/storage tests passed with 65 tests, broader OAuth/local MCP subset passed with 280 tests, `npm run build` passed, `git diff --check` passed, Semgrep passed, CodeRabbit completed, and Qodo had no blocking finding.
+- GitHub `js-tests` and Playwright `test` jobs failed before starting with `runner_id: 0`, zero steps, and billing/spending-limit annotations; these were external CI availability failures.
+
+**Open items** : Do not rerun PR89, PR90, PR92, PR93, PR94, PR95, or PR96. Do not start PR88/private beta/public launch from this checkpoint. The next narrow app PR should be PR97 production OAuth token endpoint / authorization-code redemption boundary while token issuance, provider calls, account-link creation, token persistence, `/mcp`, `tools/list`, and `tools/call` remain blocked.
 
 ## [2026-06-27] pr-branch | MCP PR94 production authorize pre-auth checkpoint
 
