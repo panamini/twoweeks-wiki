@@ -15,6 +15,32 @@ grep "^## \[" wiki/log.md | grep "ingest"  # Tous les ingests
 
 ---
 
+## [2026-06-29] pr-branch | MCP PR98 access-token issuance checkpoint
+
+**Agent** : Codex
+**Mode** : pr-branch
+**Source** : PR284 merge result, GitHub PR metadata, local validation evidence, review-fix hardening, and post-merge checkpoint request
+
+**Pages créées** :
+- `wiki/sources/2026-06-29-pr98-mcp-oauth-access-token-issuance-checkpoint.md`
+
+**Pages mises à jour** :
+- `wiki/product/chatgpt-app-sdk-roadmap.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**Points notables** :
+- PR284 `PR98: add production OAuth access-token issuance boundary` merged into `application-os-foundation` as `e1a22cb5c1a660b9fd9a8f02b76226761128ea33` on `2026-06-29T21:34:08Z`.
+- Final head was `02b2ef2df6bca8e6577db183aa498ee09986c44a`.
+- PR98 issues bearer access tokens for valid authorization-code token requests, persists only token digests, and atomically consumes authorization codes with token digest persistence.
+- Access-token storage includes expiry metadata and cleanup; OAuth responses filter OpenID Connect identity scopes because no ID token is minted.
+- Final review hardening added storage, PKCE, scope, and clock-skew proof checks.
+- Validation evidence: focused route adapter tests passed with 94 tests, focused Convex auth/access-token tests passed with 15 tests, `tsc -p tsconfig.node.json --pretty false` passed from `my-app`, `git diff --check` passed, Fallow ran read-only, Semgrep passed, CodeRabbit completed, and Qodo updated to the final head.
+- Codex review trigger was blocked by usage limits; GitHub `js-tests` and Playwright `test` jobs failed before executing any steps with `runner_id: 0` and empty `steps`.
+
+**Open items** : Do not rerun PR89, PR90, PR92, PR93, PR94, PR95, PR96, PR96.1, PR97, or PR98. The next narrow app PR should be PR99 production MCP bearer-token verification boundary while MCP execution, `tools/list`, `tools/call`, provider calls, refresh tokens, account-link lifecycle, private beta, and public launch remain blocked.
+
 ## [2026-06-29] pr-branch | MCP PR96.1 redirect URI normalization checkpoint
 
 **Agent** : Codex

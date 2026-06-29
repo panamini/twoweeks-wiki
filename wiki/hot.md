@@ -17,31 +17,25 @@ twoweeks centers on CV ingestion/parsing, canonical saved profile/CV data, and p
 Keep two workstreams separate:
 
 - Cover-letter quality: staging `dev:neat-starfish-33` is green for Mistral V2 with only `cover_letter_premium_prompt_v2=1`; quality repair is OFF and production full GO is not approved.
-- MCP / ChatGPT App SDK: PR96/PR281 is merged as production OAuth authorization-code issuance after PR94 `/oauth/authorize` ownerless pre-auth creation and PR95 owner-bound login-return continuation; PR96.1/PR282 is merged as the redirect URI allowlist normalization review fix. `/oauth/token`, production `/mcp`, `tools/list`, and `tools/call` remain blocked; PR87.17D remains the local/dev-only route adapter behind `LOCAL_MCP_DEV_OAUTH_AUTHORIZATION=1`.
+- MCP / ChatGPT App SDK: PR98/PR284 is merged as production OAuth access-token issuance after PR94 ownerless pre-auth creation, PR95 owner binding, PR96 authorization-code issuance, PR96.1 redirect URI normalization, and PR97 code redemption. Production `/mcp`, bearer-token verification, `tools/list`, `tools/call`, provider calls, refresh tokens, account-link lifecycle, private beta, and public launch remain blocked.
 
 ## Key Active Facts
 
 - Product truth is `twoweeks`; CVForge and ProposalForge are internal module names.
-- PR87.17D wires the local/dev OAuth route flow: ChatGPT OAuth request -> PR265 validation -> PR271 pre-auth storage -> PR268 Clerk login return -> PR272 owner binding -> PR267 owner-bound intent -> PR269 continuation.
-- PR87.17D remains local/dev only behind `LOCAL_MCP_DEV_OAUTH_AUTHORIZATION=1`; it does not open production MCP/OAuth, add Stytch runtime integration, issue OAuth codes, exchange tokens, create production account links, persist sensitive OAuth request data in browser storage, unlock PR88, or unlock PR89.
-- PR94 connects production `/oauth/authorize` to existing ownerless pre-auth intent creation using PR87.17A request projection, PR87.17C3 storage, and the continuation/login-return convention.
-- PR95 binds production login-return continuation to the authenticated owner after sign-in and prepares the owner-bound authorization intent handoff.
-- PR96 consumes the owner-bound authorization intent, stores only digest-backed short-lived authorization-code state server-side, and redirects the browser to the validated OAuth client `redirect_uri` with `code` and original `state`.
-- PR96.1 canonicalizes production OAuth redirect URI env allowlist entries before exact handoff comparison, rejects raw control characters and malformed percent escapes before URL parsing, and preserves invalid raw entries so the downstream boundary still fails closed.
-- PR96 does not open `/oauth/token`, `/mcp`, provider calls, consent UI, token exchange, access tokens, refresh tokens, token persistence, production account links, production `tools/list`, or production `tools/call`.
-- The next narrow app PR should be PR97 production OAuth token endpoint / authorization-code redemption boundary while token issuance, provider calls, account links, `/mcp`, `tools/list`, and `tools/call` remain blocked.
-- PR87.17C1 adds the server-only login-return continuation boundary with `prepareMcpOAuthLoginReturnContinuation` and `resumeMcpOAuthAuthorizationAfterLoginReturn`, digest-only PR267-style ports, one-time owner-bound resume behavior, and no provider/token/code/account-link/production behavior.
-- PR87.17C0 defines `mcp_oauth_return`, preserves `/cv` fallback, allows only the fixed local/dev MCP OAuth continuation path with `mcp_oauth_intent`, and adds resolver/SignInPage tests only.
-- PR87.17B adds server-only authorization-intent storage with digest-only handles and one-time consume behavior; neither PR87.17B nor PR87.17C0 opens production MCP, OAuth callback/code exchange, consent UI, token persistence, public account-link API, endpoint/Vite lifecycle wiring, real Stytch/Clerk network calls, or real user data.
-- Do not rerun PR87.17D. Do not start PR88 or PR89 from this checkpoint; choose the next implementation PR only after reloading the roadmap and verifying the current lowest-numbered unmerged blocker.
-- PR87.15B1 adds `buildMcpConvexAccountLinkLookupAdapter` plus bounded lookup query `internalLookupMcpAuthPolicyAccountLinkCandidates`.
-- PR87.8 remains blocked for production exposure; OAuth callback/token exchange, production MCP, real handlers, live submit/apply, billing, PR88, and PR89 require separate reviewed gates.
-- PR80B must not claim provider submission. `provider_verified_submitted` remains unreachable; `user_reported_submitted` is the highest external reported state.
+- PR87.17D remains local/dev only behind `LOCAL_MCP_DEV_OAUTH_AUTHORIZATION=1`.
+- PR94 connects production `/oauth/authorize` to ownerless pre-auth intent creation.
+- PR95 binds production login-return continuation to the authenticated owner.
+- PR96 consumes owner-bound authorization intent and issues digest-backed short-lived authorization codes.
+- PR96.1 canonicalizes production OAuth redirect URI allowlist entries and preserves invalid raw entries fail-closed.
+- PR98 issues bearer access tokens from valid authorization-code token requests, persists only token digests, consumes the authorization code atomically with token digest persistence, adds expired access-token cleanup, filters OIDC identity scopes from the token response, and hardens storage/PKCE/scope/clock-skew proofs.
+- Do not rerun PR89, PR90, PR92, PR93, PR94, PR95, PR96, PR96.1, PR97, or PR98.
+- The next narrow app PR should be PR99 production MCP bearer-token verification boundary: validate access tokens for `/mcp` requests while keeping MCP execution, `tools/list`, `tools/call`, provider calls, refresh tokens, account-link lifecycle, private beta, and public launch blocked.
+- PR80B remains the safe manual application handoff path while ATS authorization is pending; `provider_verified_submitted` remains unreachable.
 - Persistent wiki mutations require `wiki/index.md`, `wiki/log.md`, and usually `wiki/hot.md`.
 
 ## Canonical Pages To Read
 
+- MCP / ChatGPT App SDK: [[product/chatgpt-app-sdk-roadmap]], [[sources/2026-06-29-pr98-mcp-oauth-access-token-issuance-checkpoint]], [[sources/2026-06-29-pr96-1-mcp-oauth-redirect-uri-normalization-checkpoint]], [[sources/2026-06-28-pr96-mcp-oauth-production-authorization-code-checkpoint]], [[sources/2026-06-27-pr94-mcp-oauth-production-authorize-preauth-checkpoint]], [[sources/2026-06-27-pr89-pr93-mcp-oauth-production-gate-route-shell-checkpoint]]
 - Cover-letter quality: [[tasks/2026-06-22-cover-letter-quality-production-roadmap]], [[sources/2026-06-24-cover-letter-mistral-v2-staging-green]]
-- MCP / ChatGPT App SDK: [[product/chatgpt-app-sdk-roadmap]], [[product/manual-application-handoff]], [[sources/2026-06-29-pr96-1-mcp-oauth-redirect-uri-normalization-checkpoint]], [[sources/2026-06-28-pr96-mcp-oauth-production-authorization-code-checkpoint]], [[sources/2026-06-27-pr94-mcp-oauth-production-authorize-preauth-checkpoint]], [[sources/2026-06-27-pr89-pr93-mcp-oauth-production-gate-route-shell-checkpoint]], [[sources/2026-06-27-pr87-17d-mcp-oauth-local-dev-route-adapter-checkpoint]], [[sources/2026-06-26-pr87-17c1-mcp-oauth-login-return-continuation-checkpoint]], [[sources/2026-06-26-pr87-17c0-mcp-oauth-login-return-convention-checkpoint]], [[sources/2026-06-26-pr87-17b-mcp-oauth-authorization-intent-checkpoint]], [[sources/2026-06-26-pr87-17a-mcp-oauth-authorization-request-boundary-checkpoint]], [[sources/2026-06-25-pr87-16-mcp-account-link-lifecycle-checkpoint]], [[sources/2026-06-25-pr87-15d-mcp-auth-local-runtime-wiring-checkpoint]], [[sources/2026-06-25-pr87-15c-mcp-auth-composition-checkpoint]], [[sources/2026-06-25-pr87-15b1-mcp-account-link-lookup-adapter-checkpoint]], [[sources/2026-06-25-pr87-15b0-mcp-account-link-canonical-storage-checkpoint]], [[sources/2026-06-25-pr87-15a-mcp-stytch-bearer-verifier-checkpoint]], [[sources/2026-06-24-pr87-14b-mcp-auth-dev-endpoint-wiring-checkpoint]]
 - Product/parser/export routing: [[overview]], [[concepts/cv-parsing-pipeline]], [[tech/export-pipeline]]
 - Wiki operations: [[meta/llm-wiki-pattern]], [[meta/temporal-management]]
