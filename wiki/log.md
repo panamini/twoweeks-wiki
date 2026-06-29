@@ -1,7 +1,7 @@
 ---
 title: "Log — twoweeks Wiki"
 category: overview
-updated: 2026-06-28
+updated: 2026-06-29
 ---
 
 # Log du Wiki · twoweeks
@@ -14,6 +14,32 @@ grep "^## \[" wiki/log.md | grep "ingest"  # Tous les ingests
 ```
 
 ---
+
+## [2026-06-29] pr-branch | MCP PR96.1 redirect URI normalization checkpoint
+
+**Agent** : Codex
+**Mode** : pr-branch
+**Source** : PR282 merge result, GitHub PR metadata, local validation evidence, review fix request, and post-merge checkpoint request
+
+**Pages créées** :
+- `wiki/sources/2026-06-29-pr96-1-mcp-oauth-redirect-uri-normalization-checkpoint.md`
+
+**Pages mises à jour** :
+- `wiki/product/chatgpt-app-sdk-roadmap.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**Points notables** :
+- PR282 `PR96.1: normalize production OAuth redirect URI allowlist` merged into `application-os-foundation` as `08651f259c1ffa57396cb36d41163aed90dfb8a9` on `2026-06-29T15:33:18Z`.
+- PR96.1 fixes the post-merge PR96 redirect URI allowlist normalization review finding.
+- `MCP_OAUTH_PRODUCTION_REDIRECT_URIS` entries are canonicalized before exact login-return handoff comparison.
+- Raw C0 / DEL control characters and malformed percent escapes are rejected before `new URL()` can normalize them away.
+- Invalid raw redirect entries are preserved so the existing downstream boundary parser still fails closed.
+- Validation evidence: focused production route adapter tests passed with 61 tests, `tsc -p tsconfig.node.json --pretty false` passed, `git diff --check` passed, Fallow passed with no introduced findings, Semgrep passed, and CodeRabbit passed.
+- GitHub `js-tests` and Playwright `test` jobs failed before executing any steps; these matched the external runner availability failure pattern already seen on PR281.
+
+**Open items** : Do not rerun PR89, PR90, PR92, PR93, PR94, PR95, PR96, or PR96.1. The next narrow app PR should remain PR97 production OAuth token endpoint / authorization-code redemption boundary while token issuance, provider calls, account-link creation, token persistence, `/mcp`, `tools/list`, and `tools/call` remain blocked.
 
 ## [2026-06-28] pr-branch | MCP PR96 production authorization-code checkpoint
 

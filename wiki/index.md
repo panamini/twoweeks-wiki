@@ -86,7 +86,7 @@ Cette carte est un routeur de lecture pour agents LLM. Elle ne remplace pas les 
 |------|--------|--------|------|
 | [[product/ai-product-model\|AI Product Model]] | 3 modes IA, rulebook, qualité writing, and Planner Agent shadow chain | current | ai, ux, modes |
 | [[product/ai-consistency-p0-editor-ai\|AI Consistency P0 — Closure Audit]] | Closure audit snapshot du rulebook AI editor, preview, telemetry et tailoring | current | ai, editor, rulebook |
-| [[product/chatgpt-app-sdk-roadmap\|ChatGPT/App SDK Roadmap]] | MCP/App SDK PR96 merged production OAuth authorization-code issuance after PR94 pre-auth and PR95 owner-bound login return; `/oauth/token`, production `/mcp`, `tools/list`, and `tools/call` remain blocked, next slice is PR97 code redemption boundary | current | chatgpt-app, apps-sdk |
+| [[product/chatgpt-app-sdk-roadmap\|ChatGPT/App SDK Roadmap]] | MCP/App SDK PR96 merged production OAuth authorization-code issuance and PR96.1 merged redirect URI allowlist normalization; `/oauth/token`, production `/mcp`, `tools/list`, and `tools/call` remain blocked, next slice is PR97 code redemption boundary | current | chatgpt-app, apps-sdk |
 | [[product/job-library\|Job Library]] | Jobs sauvegardés, Job Brief editable et documents liés | current | jobs, library |
 | [[product/job-match-review\|Job Match Review]] | Match comme indicateur d'attention utilisateur et dogfood interne | current | jobs, match |
 | [[product/kpis\|KPIs]] | Métriques de succès produit | current | kpi, métriques |
@@ -228,6 +228,7 @@ Cover-letter quality has a merged PR249 staged internal Mistral V2 gate and a gr
 | [[sources/2026-06-26-pr87-17c0-mcp-oauth-login-return-convention-checkpoint\|MCP OAuth Login Return Convention Checkpoint - PR87.17C0]] | analysis | 2026-06-26 | current |
 | [[sources/2026-06-27-pr87-17d-mcp-oauth-local-dev-route-adapter-checkpoint\|MCP OAuth Local Dev Route Adapter Checkpoint - PR87.17D]] | analysis | 2026-06-27 | current |
 | [[sources/2026-06-26-pr87-17c1-mcp-oauth-login-return-continuation-checkpoint\|MCP OAuth Login Return Continuation Boundary Checkpoint - PR87.17C1]] | analysis | 2026-06-26 | current |
+| [[sources/2026-06-29-pr96-1-mcp-oauth-redirect-uri-normalization-checkpoint\|MCP OAuth Redirect URI Normalization Checkpoint - PR96.1]] | analysis | 2026-06-29 | current |
 | [[sources/2026-06-28-pr96-mcp-oauth-production-authorization-code-checkpoint\|MCP OAuth Production Authorization Code Checkpoint - PR96]] | analysis | 2026-06-28 | current |
 | [[sources/2026-06-25-pr87-16-mcp-account-link-lifecycle-checkpoint\|MCP Account-Link Lifecycle Checkpoint - PR87.16]] | analysis | 2026-06-25 | current |
 | [[sources/2026-06-24-cover-letter-mistral-v2-staging-green\|Cover Letter Mistral V2 Staging Green Checkpoint]] | analysis | 2026-06-24 | current |

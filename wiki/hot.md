@@ -3,7 +3,7 @@ title: "Hot Cache - twoweeks"
 category: overview
 status: current
 created: 2026-05-02
-updated: 2026-06-28
+updated: 2026-06-29
 ---
 
 # Hot Cache
@@ -17,7 +17,7 @@ twoweeks centers on CV ingestion/parsing, canonical saved profile/CV data, and p
 Keep two workstreams separate:
 
 - Cover-letter quality: staging `dev:neat-starfish-33` is green for Mistral V2 with only `cover_letter_premium_prompt_v2=1`; quality repair is OFF and production full GO is not approved.
-- MCP / ChatGPT App SDK: PR96/PR281 is merged as production OAuth authorization-code issuance after PR94 `/oauth/authorize` ownerless pre-auth creation and PR95 owner-bound login-return continuation. `/oauth/token`, production `/mcp`, `tools/list`, and `tools/call` remain blocked; PR87.17D remains the local/dev-only route adapter behind `LOCAL_MCP_DEV_OAUTH_AUTHORIZATION=1`.
+- MCP / ChatGPT App SDK: PR96/PR281 is merged as production OAuth authorization-code issuance after PR94 `/oauth/authorize` ownerless pre-auth creation and PR95 owner-bound login-return continuation; PR96.1/PR282 is merged as the redirect URI allowlist normalization review fix. `/oauth/token`, production `/mcp`, `tools/list`, and `tools/call` remain blocked; PR87.17D remains the local/dev-only route adapter behind `LOCAL_MCP_DEV_OAUTH_AUTHORIZATION=1`.
 
 ## Key Active Facts
 
@@ -27,6 +27,7 @@ Keep two workstreams separate:
 - PR94 connects production `/oauth/authorize` to existing ownerless pre-auth intent creation using PR87.17A request projection, PR87.17C3 storage, and the continuation/login-return convention.
 - PR95 binds production login-return continuation to the authenticated owner after sign-in and prepares the owner-bound authorization intent handoff.
 - PR96 consumes the owner-bound authorization intent, stores only digest-backed short-lived authorization-code state server-side, and redirects the browser to the validated OAuth client `redirect_uri` with `code` and original `state`.
+- PR96.1 canonicalizes production OAuth redirect URI env allowlist entries before exact handoff comparison, rejects raw control characters and malformed percent escapes before URL parsing, and preserves invalid raw entries so the downstream boundary still fails closed.
 - PR96 does not open `/oauth/token`, `/mcp`, provider calls, consent UI, token exchange, access tokens, refresh tokens, token persistence, production account links, production `tools/list`, or production `tools/call`.
 - The next narrow app PR should be PR97 production OAuth token endpoint / authorization-code redemption boundary while token issuance, provider calls, account links, `/mcp`, `tools/list`, and `tools/call` remain blocked.
 - PR87.17C1 adds the server-only login-return continuation boundary with `prepareMcpOAuthLoginReturnContinuation` and `resumeMcpOAuthAuthorizationAfterLoginReturn`, digest-only PR267-style ports, one-time owner-bound resume behavior, and no provider/token/code/account-link/production behavior.
@@ -41,6 +42,6 @@ Keep two workstreams separate:
 ## Canonical Pages To Read
 
 - Cover-letter quality: [[tasks/2026-06-22-cover-letter-quality-production-roadmap]], [[sources/2026-06-24-cover-letter-mistral-v2-staging-green]]
-- MCP / ChatGPT App SDK: [[product/chatgpt-app-sdk-roadmap]], [[product/manual-application-handoff]], [[sources/2026-06-28-pr96-mcp-oauth-production-authorization-code-checkpoint]], [[sources/2026-06-27-pr94-mcp-oauth-production-authorize-preauth-checkpoint]], [[sources/2026-06-27-pr89-pr93-mcp-oauth-production-gate-route-shell-checkpoint]], [[sources/2026-06-27-pr87-17d-mcp-oauth-local-dev-route-adapter-checkpoint]], [[sources/2026-06-26-pr87-17c1-mcp-oauth-login-return-continuation-checkpoint]], [[sources/2026-06-26-pr87-17c0-mcp-oauth-login-return-convention-checkpoint]], [[sources/2026-06-26-pr87-17b-mcp-oauth-authorization-intent-checkpoint]], [[sources/2026-06-26-pr87-17a-mcp-oauth-authorization-request-boundary-checkpoint]], [[sources/2026-06-25-pr87-16-mcp-account-link-lifecycle-checkpoint]], [[sources/2026-06-25-pr87-15d-mcp-auth-local-runtime-wiring-checkpoint]], [[sources/2026-06-25-pr87-15c-mcp-auth-composition-checkpoint]], [[sources/2026-06-25-pr87-15b1-mcp-account-link-lookup-adapter-checkpoint]], [[sources/2026-06-25-pr87-15b0-mcp-account-link-canonical-storage-checkpoint]], [[sources/2026-06-25-pr87-15a-mcp-stytch-bearer-verifier-checkpoint]], [[sources/2026-06-24-pr87-14b-mcp-auth-dev-endpoint-wiring-checkpoint]]
+- MCP / ChatGPT App SDK: [[product/chatgpt-app-sdk-roadmap]], [[product/manual-application-handoff]], [[sources/2026-06-29-pr96-1-mcp-oauth-redirect-uri-normalization-checkpoint]], [[sources/2026-06-28-pr96-mcp-oauth-production-authorization-code-checkpoint]], [[sources/2026-06-27-pr94-mcp-oauth-production-authorize-preauth-checkpoint]], [[sources/2026-06-27-pr89-pr93-mcp-oauth-production-gate-route-shell-checkpoint]], [[sources/2026-06-27-pr87-17d-mcp-oauth-local-dev-route-adapter-checkpoint]], [[sources/2026-06-26-pr87-17c1-mcp-oauth-login-return-continuation-checkpoint]], [[sources/2026-06-26-pr87-17c0-mcp-oauth-login-return-convention-checkpoint]], [[sources/2026-06-26-pr87-17b-mcp-oauth-authorization-intent-checkpoint]], [[sources/2026-06-26-pr87-17a-mcp-oauth-authorization-request-boundary-checkpoint]], [[sources/2026-06-25-pr87-16-mcp-account-link-lifecycle-checkpoint]], [[sources/2026-06-25-pr87-15d-mcp-auth-local-runtime-wiring-checkpoint]], [[sources/2026-06-25-pr87-15c-mcp-auth-composition-checkpoint]], [[sources/2026-06-25-pr87-15b1-mcp-account-link-lookup-adapter-checkpoint]], [[sources/2026-06-25-pr87-15b0-mcp-account-link-canonical-storage-checkpoint]], [[sources/2026-06-25-pr87-15a-mcp-stytch-bearer-verifier-checkpoint]], [[sources/2026-06-24-pr87-14b-mcp-auth-dev-endpoint-wiring-checkpoint]]
 - Product/parser/export routing: [[overview]], [[concepts/cv-parsing-pipeline]], [[tech/export-pipeline]]
 - Wiki operations: [[meta/llm-wiki-pattern]], [[meta/temporal-management]]
