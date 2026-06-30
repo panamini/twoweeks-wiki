@@ -2089,3 +2089,21 @@ Migration vers schema v2 : ajout rawinput/ (staging), gestion temporelle (status
 - Production `/mcp` can now verify bearer tokens, apply trusted caller quota, run the authenticated JSON-RPC protocol shell, and return authenticated metadata-only `tools/list`.
 - `tools/call`, MCP execution, provider calls, write actions, refresh tokens, production account-link lifecycle expansion, private beta, public launch, and UI changes remain blocked.
 - The next app PR is PR102 `tools/call` read-only boundary plus hardening.
+
+## 2026-06-30 — MCP tools/call and schema matcher hardening checkpoint PR102/PR103 merged
+
+**Pages créées** :
+- `wiki/sources/2026-06-30-pr102-pr103-mcp-tools-call-schema-hardening-checkpoint.md`
+
+**Pages mises à jour** :
+- `wiki/product/chatgpt-app-sdk-roadmap.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**Points notables** :
+- PR291 `PR102: add MCP tools/call read-only boundary and hardening` merged into `application-os-foundation` as `1a18564865313fad679d9ae2268fb561b1cf16c8`.
+- PR292 `PR103: add MCP schema normalization and matcher hardening` merged into `application-os-foundation` as `d269069922cd3e4e183223891f1fb175a9bbe568`.
+- Production `/mcp` can now verify bearer tokens, apply trusted caller quota, run the authenticated JSON-RPC protocol shell, return authenticated metadata-only `tools/list`, and accept validated read-only `tools/call`.
+- Provider calls, write actions, outbound HTTP/model calls, refresh tokens, production account-link lifecycle expansion, private beta, public launch, and UI changes remain blocked.
+- The next app PR is PR104 private beta gate.
