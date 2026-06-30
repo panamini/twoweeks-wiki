@@ -1,7 +1,7 @@
 ---
 title: "Log — twoweeks Wiki"
 category: overview
-updated: 2026-06-29
+updated: 2026-06-30
 ---
 
 # Log du Wiki · twoweeks
@@ -14,6 +14,55 @@ grep "^## \[" wiki/log.md | grep "ingest"  # Tous les ingests
 ```
 
 ---
+
+## [2026-06-30] checkpoint | MCP PR99.2 trusted bearer quota caller
+
+**Agent** : Codex
+**Mode** : checkpoint
+**Source** : PR287 merge metadata, PR287 review comments, active route-adapter anchors, and post-merge roadmap request
+
+**Pages créées** :
+- `wiki/sources/2026-06-30-pr99-2-mcp-bearer-quota-trusted-caller-checkpoint.md`
+
+**Pages mises à jour** :
+- `wiki/product/chatgpt-app-sdk-roadmap.md`
+- `wiki/sources/2026-06-30-pr99-1-mcp-bearer-verification-hardening-bug-list.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**Points notables** :
+- PR287 `PR99.2: trust socket address for MCP bearer quota` merged into `application-os-foundation` as `82fa9a09e40d2243bd2d220785c094788ff9e703` on `2026-06-30T04:20:56Z`.
+- Final PR99.2 head was `b1d36fba3c74ca98854a7b75243f64774dbdc289`.
+- PR99.2 changes `/mcp` bearer-verification quota keying to use the trusted socket address rather than caller-controlled forwarding headers.
+- Post-merge Qodo review reported two narrow follow-up issues: canonicalize equivalent trusted socket address forms and fail closed if `/mcp` bearer verification has no trusted remote address.
+- MCP execution, `tools/list`, `tools/call`, provider calls, refresh tokens, production account-link lifecycle, private beta, and public launch remain blocked.
+
+**Open items** : The next narrow app PR is PR99.3 MCP bearer quota caller-key hardening. After PR99.3, PR100 should be the authenticated MCP protocol envelope boundary.
+
+## [2026-06-30] bug-list | MCP PR99.1 bearer verification hardening follow-up
+
+**Agent** : Codex
+**Mode** : bug-list
+**Source** : PR285 merge metadata, local PR99.1 hardening branch, and user-reported post-PR99 review findings
+
+**Pages créées** :
+- `wiki/sources/2026-06-30-pr99-1-mcp-bearer-verification-hardening-bug-list.md`
+
+**Pages mises à jour** :
+- `wiki/product/chatgpt-app-sdk-roadmap.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**Points notables** :
+- PR285 `PR99: add production MCP bearer-token verification boundary` merged into `application-os-foundation` as `b306ea16f48bd7cf7591370949496d0c54e83ea9` on `2026-06-30T02:09:10Z`.
+- Final PR99 head was `eee8ad0e8bd0859a3dd4173d97d090ec57d0b326`.
+- PR99 validates production `/mcp` bearer access tokens against digest-backed storage and returns authenticated-MCP-blocked without executing MCP.
+- PR99.1 bug list covers per-caller bearer verification quota before Convex lookup, route/storage clock skew at the final proof boundary, wrong-client/wrong-resource status as `401 invalid_token`, and production authorization-server metadata for OAuth discovery.
+- MCP execution, `tools/list`, `tools/call`, provider calls, refresh tokens, production account-link lifecycle, private beta, and public launch remain blocked.
+
+**Open items** : Finish and merge PR99.1 before starting PR100. Do not start PR88/private beta/public launch from this checkpoint.
 
 ## [2026-06-29] pr-branch | MCP PR98 access-token issuance checkpoint
 
@@ -2021,3 +2070,22 @@ Migration vers schema v2 : ajout rawinput/ (staging), gestion temporelle (status
 - `npx convex dev --once` completed and the deployed function spec now includes `mistral-medium-latest` and `qwen3.7-max`.
 - Only canonical staging flag `cover_letter_premium_prompt_v2=1` was enabled; aliases remained unset, quality repair remained OFF, and path flags stayed unchanged.
 - Staging smoke returned `STAGING_GREEN`: 8/8 PASS, no PR246 forbidden terms, no PR248 no-CV leakage, GPT stayed on GPT, Qwen stayed legacy-only, production untouched, no app PR/MCP/source-code changes.
+
+## 2026-06-30 — MCP policy kernel and tools/list metadata checkpoint PR101 merged
+
+**Pages créées** :
+- `wiki/sources/2026-06-30-pr101-mcp-policy-kernel-tools-list-checkpoint.md`
+
+**Pages mises à jour** :
+- `wiki/product/chatgpt-app-sdk-roadmap.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**Points notables** :
+- PR288 `PR99.3: harden MCP bearer quota caller key canonicalization` merged into `application-os-foundation` as `f1b233b0069b12872ea25ffc7c3594eba956ffdf`.
+- PR289 `PR100: add authenticated MCP protocol and session envelope boundary` merged into `application-os-foundation` as `dc02d692a47be673ade48ba5a1de1842807532da`.
+- PR290 `PR101: add MCP policy kernel and tools/list metadata boundary` merged into `application-os-foundation` as `44c70ddcad5f4bcf36e5076ec0a7c67a0facf395`.
+- Production `/mcp` can now verify bearer tokens, apply trusted caller quota, run the authenticated JSON-RPC protocol shell, and return authenticated metadata-only `tools/list`.
+- `tools/call`, MCP execution, provider calls, write actions, refresh tokens, production account-link lifecycle expansion, private beta, public launch, and UI changes remain blocked.
+- The next app PR is PR102 `tools/call` read-only boundary plus hardening.

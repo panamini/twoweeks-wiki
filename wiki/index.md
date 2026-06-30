@@ -2,7 +2,7 @@
 title: Index du Wiki — twoweeks
 category: overview
 sticker: emoji//1f9c6
-updated: 2026-06-29
+updated: 2026-06-30
 ---
 
 # Index du Wiki · twoweeks (v2)
@@ -20,7 +20,7 @@ Le contrôle opératoire du repo reste défini par `WIKI_SCHEMA.md` puis `CLAUDE
 | État produit | [[overview]] | [[entities/twoweeks]], [[product/product-roadmap]], [[product/product-vision]] |
 | Planning IA shadow | [[product/ai-product-model]] | [[tech/proposal-ai-routing-and-inline-diff]], [[sources/2026-05-25-proposal-generation-truth-planner]] |
 | Cover-letter quality | [[tasks/2026-06-22-cover-letter-quality-production-roadmap]] | [[sources/2026-06-24-cover-letter-mistral-v2-staging-green]], [[sources/2026-06-23-cover-letter-quality-pr249-staged-internal-gate]], [[sources/2026-06-23-release-orchestration-staging-pr87-8-checkpoint]], [[sources/2026-06-23-cover-letter-quality-pr248-merge-checkpoint]], [[sources/2026-06-23-cover-letter-quality-pr246-merge-checkpoint]] |
-| ChatGPT App roadmap | [[product/chatgpt-app-sdk-roadmap]] | [[sources/2026-06-29-pr98-mcp-oauth-access-token-issuance-checkpoint]], [[sources/2026-06-29-pr96-1-mcp-oauth-redirect-uri-normalization-checkpoint]], [[sources/2026-06-28-pr96-mcp-oauth-production-authorization-code-checkpoint]], [[sources/2026-06-27-pr94-mcp-oauth-production-authorize-preauth-checkpoint]], [[sources/2026-06-27-pr89-pr93-mcp-oauth-production-gate-route-shell-checkpoint]], [[sources/2026-06-27-pr87-17d-mcp-oauth-local-dev-route-adapter-checkpoint]], [[product/manual-application-handoff]] |
+| ChatGPT App roadmap | [[product/chatgpt-app-sdk-roadmap]] | [[sources/2026-06-30-pr101-mcp-policy-kernel-tools-list-checkpoint]], [[sources/2026-06-30-pr99-2-mcp-bearer-quota-trusted-caller-checkpoint]], [[sources/2026-06-30-pr99-1-mcp-bearer-verification-hardening-bug-list]], [[sources/2026-06-29-pr98-mcp-oauth-access-token-issuance-checkpoint]], [[sources/2026-06-29-pr96-1-mcp-oauth-redirect-uri-normalization-checkpoint]], [[sources/2026-06-28-pr96-mcp-oauth-production-authorization-code-checkpoint]], [[sources/2026-06-27-pr94-mcp-oauth-production-authorize-preauth-checkpoint]], [[sources/2026-06-27-pr89-pr93-mcp-oauth-production-gate-route-shell-checkpoint]], [[sources/2026-06-27-pr87-17d-mcp-oauth-local-dev-route-adapter-checkpoint]], [[product/manual-application-handoff]] |
 | Manual application handoff | [[product/manual-application-handoff]] | [[product/chatgpt-app-sdk-roadmap]], [[sources/2026-06-23-twoweeks-mcp-chatgpt-app-sdk-roadmap-checkpoint]] |
 | Parser / vérité CV | [[concepts/cv-parsing-pipeline]] | [[concepts/cv-families]], [[tech/import-ocr-pipeline]] |
 | Jobs / match | [[product/job-library]] | [[product/job-match-review]] |
@@ -86,7 +86,7 @@ Cette carte est un routeur de lecture pour agents LLM. Elle ne remplace pas les 
 |------|--------|--------|------|
 | [[product/ai-product-model\|AI Product Model]] | 3 modes IA, rulebook, qualité writing, and Planner Agent shadow chain | current | ai, ux, modes |
 | [[product/ai-consistency-p0-editor-ai\|AI Consistency P0 — Closure Audit]] | Closure audit snapshot du rulebook AI editor, preview, telemetry et tailoring | current | ai, editor, rulebook |
-| [[product/chatgpt-app-sdk-roadmap\|ChatGPT/App SDK Roadmap]] | MCP/App SDK PR98 merged production OAuth access-token issuance; production `/mcp` bearer-token verification, MCP execution, `tools/list`, and `tools/call` remain blocked, next slice is PR99 bearer-token verification boundary | current | chatgpt-app, apps-sdk |
+| [[product/chatgpt-app-sdk-roadmap\|ChatGPT/App SDK Roadmap]] | MCP/App SDK PR101 merged policy kernel and metadata-only `tools/list`; next narrow app PR is PR102 `tools/call` read-only boundary plus hardening | current | chatgpt-app, apps-sdk |
 | [[product/job-library\|Job Library]] | Jobs sauvegardés, Job Brief editable et documents liés | current | jobs, library |
 | [[product/job-match-review\|Job Match Review]] | Match comme indicateur d'attention utilisateur et dogfood interne | current | jobs, match |
 | [[product/kpis\|KPIs]] | Métriques de succès produit | current | kpi, métriques |
@@ -118,10 +118,13 @@ Cette carte est un routeur de lecture pour agents LLM. Elle ne remplace pas les 
 
 ## Sources
 
-Cover-letter quality has a merged PR249 staged internal Mistral V2 gate and a green Convex staging checkpoint on `dev:neat-starfish-33`; production full GO and quality repair remain separate/not approved. The MCP/App SDK track now has PR87.17D local/dev-only OAuth route adapter, PR89 activation gate, PR90 operational status, PR92 route preflight, PR93 guarded inert production route shells, PR94 production `/oauth/authorize` pre-auth creation, PR95 login-return owner binding, PR96 authorization-code issuance, PR96.1 redirect URI allowlist normalization, PR97 authorization-code redemption validation, and PR98 access-token issuance merged. Production `/mcp` bearer-token verification, MCP execution, provider calls, refresh tokens, production account-link lifecycle, `tools/list`, `tools/call`, private beta, and public launch remain blocked; PR80B remains the safe manual handoff path while ATS authorization is pending.
+Cover-letter quality has a merged PR249 staged internal Mistral V2 gate and a green Convex staging checkpoint on `dev:neat-starfish-33`; production full GO and quality repair remain separate/not approved. The MCP/App SDK track now has PR87.17D local/dev-only OAuth route adapter, PR89 activation gate, PR90 operational status, PR92 route preflight, PR93 guarded inert production route shells, PR94 production `/oauth/authorize` pre-auth creation, PR95 login-return owner binding, PR96 authorization-code issuance, PR96.1 redirect URI allowlist normalization, PR97 authorization-code redemption validation, PR98 access-token issuance, PR99 production `/mcp` bearer-token verification, PR99.1 OAuth discovery/quota/time/binding hardening, PR99.2 trusted-socket bearer quota hardening, PR99.3 caller-key canonicalization, PR100 authenticated MCP protocol/session envelope, and PR101 production policy kernel plus metadata-only `tools/list` merged. MCP `tools/call`, execution beyond metadata/list, provider calls, refresh tokens, production account-link lifecycle expansion, private beta, and public launch remain blocked; PR80B remains the safe manual handoff path while ATS authorization is pending.
 
 | Page | Type | Date | Status |
 |------|------|------|--------|
+| [[sources/2026-06-30-pr101-mcp-policy-kernel-tools-list-checkpoint\|MCP Policy Kernel And Tools List Metadata Checkpoint - PR101]] | checkpoint | 2026-06-30 | current |
+| [[sources/2026-06-30-pr99-2-mcp-bearer-quota-trusted-caller-checkpoint\|MCP Bearer Quota Trusted Caller Checkpoint - PR99.2]] | checkpoint | 2026-06-30 | current |
+| [[sources/2026-06-30-pr99-1-mcp-bearer-verification-hardening-bug-list\|MCP Bearer Verification Hardening Bug List - PR99.1]] | checkpoint | 2026-06-30 | current |
 | [[sources/2026-04-03-workspace-security-rgpd-audit\|Workspace Security / RGPD Audit]] | analysis | 2026-04-03 | current |
 | [[sources/2026-04-09-decisions-cvforge-sprint\|Décisions sprint — parsing & features]] | conversation | 2026-04-09 | current |
 | [[sources/2026-04-09-tweet-karpathy-llm-wiki\|Tweet Karpathy — LLM Knowledge Bases]] | tweet | 2026-04-09 | current |

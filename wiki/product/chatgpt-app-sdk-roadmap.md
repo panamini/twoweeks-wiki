@@ -3,27 +3,27 @@ title: "ChatGPT/App SDK Roadmap"
 category: product
 tags: [chatgpt-app, apps-sdk, mcp, roadmap, safety]
 created: 2026-06-23
-updated: 2026-06-29
+updated: 2026-06-30
 status: current
 valid_from: 2026-06-12
 type: roadmap
-sources: [2026-06-29-pr98-mcp-oauth-access-token-issuance-checkpoint, 2026-06-29-pr96-1-mcp-oauth-redirect-uri-normalization-checkpoint, 2026-06-28-pr96-mcp-oauth-production-authorization-code-checkpoint, 2026-06-27-pr94-mcp-oauth-production-authorize-preauth-checkpoint, 2026-06-27-pr89-pr93-mcp-oauth-production-gate-route-shell-checkpoint, 2026-06-27-pr87-17d-mcp-oauth-local-dev-route-adapter-checkpoint, 2026-06-26-pr87-17c1-mcp-oauth-login-return-continuation-checkpoint, 2026-06-26-pr87-17c0-mcp-oauth-login-return-convention-checkpoint, 2026-06-26-pr87-17b-mcp-oauth-authorization-intent-checkpoint, 2026-06-26-pr87-17a-mcp-oauth-authorization-request-boundary-checkpoint, 2026-06-25-pr87-16-mcp-account-link-lifecycle-checkpoint, 2026-06-25-pr87-15d-mcp-auth-local-runtime-wiring-checkpoint, 2026-06-25-pr87-15c-mcp-auth-composition-checkpoint, 2026-06-25-pr87-15b1-mcp-account-link-lookup-adapter-checkpoint, 2026-06-25-pr87-15b0-mcp-account-link-canonical-storage-checkpoint, 2026-06-25-pr87-15a-mcp-stytch-bearer-verifier-checkpoint, 2026-06-24-pr87-14b-mcp-auth-dev-endpoint-wiring-checkpoint, 2026-06-24-pr87-14a-mcp-auth-request-orchestrator-checkpoint, 2026-06-24-pr87-13-mcp-auth-policy-boundary-checkpoint, 2026-06-24-pr87-12-mcp-dev-fixture-demo-checkpoint, 2026-06-24-pr87-11-mcp-auth-account-linking-architecture-checkpoint, 2026-06-24-pr87-10-mcp-dev-endpoint-blocked-reachability-checkpoint, 2026-06-23-release-orchestration-staging-pr87-8-checkpoint, 2026-06-23-twoweeks-mcp-chatgpt-app-sdk-roadmap-checkpoint, 2026-06-12-chatgpt-app-sdk-roadmap-pr41-pr89, 2026-06-12-non-production-apps-sdk-exploration-plan, 2026-06-19-pr80b-safe-application-handoff-while-ats-access-pending]
+sources: [2026-06-30-pr101-mcp-policy-kernel-tools-list-checkpoint, 2026-06-30-pr99-2-mcp-bearer-quota-trusted-caller-checkpoint, 2026-06-30-pr99-1-mcp-bearer-verification-hardening-bug-list, 2026-06-29-pr98-mcp-oauth-access-token-issuance-checkpoint, 2026-06-29-pr96-1-mcp-oauth-redirect-uri-normalization-checkpoint, 2026-06-28-pr96-mcp-oauth-production-authorization-code-checkpoint, 2026-06-27-pr94-mcp-oauth-production-authorize-preauth-checkpoint, 2026-06-27-pr89-pr93-mcp-oauth-production-gate-route-shell-checkpoint, 2026-06-27-pr87-17d-mcp-oauth-local-dev-route-adapter-checkpoint, 2026-06-26-pr87-17c1-mcp-oauth-login-return-continuation-checkpoint, 2026-06-26-pr87-17c0-mcp-oauth-login-return-convention-checkpoint, 2026-06-26-pr87-17b-mcp-oauth-authorization-intent-checkpoint, 2026-06-26-pr87-17a-mcp-oauth-authorization-request-boundary-checkpoint, 2026-06-25-pr87-16-mcp-account-link-lifecycle-checkpoint, 2026-06-25-pr87-15d-mcp-auth-local-runtime-wiring-checkpoint, 2026-06-25-pr87-15c-mcp-auth-composition-checkpoint, 2026-06-25-pr87-15b1-mcp-account-link-lookup-adapter-checkpoint, 2026-06-25-pr87-15b0-mcp-account-link-canonical-storage-checkpoint, 2026-06-25-pr87-15a-mcp-stytch-bearer-verifier-checkpoint, 2026-06-24-pr87-14b-mcp-auth-dev-endpoint-wiring-checkpoint, 2026-06-24-pr87-14a-mcp-auth-request-orchestrator-checkpoint, 2026-06-24-pr87-13-mcp-auth-policy-boundary-checkpoint, 2026-06-24-pr87-12-mcp-dev-fixture-demo-checkpoint, 2026-06-24-pr87-11-mcp-auth-account-linking-architecture-checkpoint, 2026-06-24-pr87-10-mcp-dev-endpoint-blocked-reachability-checkpoint, 2026-06-23-release-orchestration-staging-pr87-8-checkpoint, 2026-06-23-twoweeks-mcp-chatgpt-app-sdk-roadmap-checkpoint, 2026-06-12-chatgpt-app-sdk-roadmap-pr41-pr89, 2026-06-12-non-production-apps-sdk-exploration-plan, 2026-06-19-pr80b-safe-application-handoff-while-ats-access-pending]
 related: [[product/manual-application-handoff]], [[product/product-roadmap]], [[product/product-vision]], [[product/ai-product-model]]
 ---
 
 # ChatGPT/App SDK Roadmap
 
-The ChatGPT/App SDK roadmap is now a current checkpoint page, not just a future plan. The active truth is PR98 production OAuth access-token issuance after PR94 ownerless pre-auth creation, PR95 owner-bound login-return continuation, PR96 authorization-code issuance, PR96.1 redirect URI allowlist normalization, and PR97 code redemption.
+The ChatGPT/App SDK roadmap is now a current checkpoint page, not just a future plan. The active truth is PR101 production MCP policy kernel plus authenticated metadata-only `tools/list` after PR99 bearer verification, PR99.1 OAuth discovery/quota/time/binding hardening, PR99.2 trusted-socket bearer quota, PR99.3 quota caller-key canonicalization, and PR100 authenticated protocol/session envelope.
 
 ## Current state
 
-The roadmap has moved through PR87.17D local/dev-only MCP OAuth route wiring and then through PR89, PR90, PR92, PR93, PR94, PR95, PR96, PR96.1, PR97, and PR98 production OAuth preparation. PR89 added the controlled production activation boundary. PR90 added bounded operational status. PR92 added the production route preflight with `MCP_OAUTH_PRODUCTION_ROUTE_WIRING=1` and activation dependency readiness. PR93 added guarded inert production route shells for `/oauth/authorize`, `/oauth/callback`, and `/mcp`. PR94 connected production `/oauth/authorize` to existing ownerless pre-auth intent creation. PR95 bound production login-return continuation to the authenticated owner. PR96 issues short-lived digest-backed OAuth authorization codes and redirects the browser back to the validated OAuth client with `code` and original `state`. PR96.1 canonicalizes production redirect URI allowlist entries and keeps invalid raw entries fail-closed. PR97 validates authorization-code token requests without token issuance. PR98 issues bearer access tokens from valid authorization-code token requests, stores only access-token digests, atomically consumes codes with token digest persistence, filters OIDC identity scopes from access-token responses, and hardens expiry, PKCE, scope, and clock-skew proofs.
+The roadmap has moved through PR87.17D local/dev-only MCP OAuth route wiring and then through PR89, PR90, PR92, PR93, PR94, PR95, PR96, PR96.1, PR97, PR98, PR99, PR99.1, PR99.2, PR99.3, PR100, and PR101 production OAuth/MCP preparation. PR89 added the controlled production activation boundary. PR90 added bounded operational status. PR92 added the production route preflight with `MCP_OAUTH_PRODUCTION_ROUTE_WIRING=1` and activation dependency readiness. PR93 added guarded inert production route shells for `/oauth/authorize`, `/oauth/callback`, and `/mcp`. PR94 connected production `/oauth/authorize` to existing ownerless pre-auth intent creation. PR95 bound production login-return continuation to the authenticated owner. PR96 issues short-lived digest-backed OAuth authorization codes and redirects the browser back to the validated OAuth client with `code` and original `state`. PR96.1 canonicalizes production redirect URI allowlist entries and keeps invalid raw entries fail-closed. PR97 validates authorization-code token requests without token issuance. PR98 issues bearer access tokens from valid authorization-code token requests, stores only access-token digests, atomically consumes codes with token digest persistence, filters OIDC identity scopes from access-token responses, and hardens expiry, PKCE, scope, and clock-skew proofs. PR99 validates production `/mcp` bearer access tokens against digest-backed storage and returns an authenticated-MCP-blocked response without executing MCP. PR99.1 adds pre-lookup bearer quota, storage-side time trust, binding failures as invalid tokens, and authorization-server metadata. PR99.2 fixes the bearer-verification quota caller boundary so `/mcp` uses the trusted socket address instead of caller-controlled forwarding headers. PR99.3 canonicalizes trusted caller keys and fails closed when trusted remote address is missing. PR100 adds the authenticated MCP JSON-RPC protocol/session envelope. PR101 adds a decision-only production policy kernel and authenticated metadata-only `tools/list`.
 
-PR98 is merged. Do not rerun PR89, PR90, PR92, PR93, PR94, PR95, PR96, PR96.1, PR97, or PR98, and do not create PR88 retroactively. The next narrow implementation PR is PR99 production MCP bearer-token verification boundary: validate `Authorization: Bearer <access_token>` against digest-backed access-token storage for `/mcp` requests while keeping MCP execution, `tools/list`, `tools/call`, provider calls, refresh tokens, account-link lifecycle, private beta, and public launch blocked unless a later reviewed PR explicitly opens them.
+PR101 is merged. Do not rerun PR89, PR90, PR92, PR93, PR94, PR95, PR96, PR96.1, PR97, PR98, PR99, PR99.1, PR99.2, PR99.3, PR100, or PR101, and do not create PR88 retroactively. The current narrow implementation PR is PR102 `tools/call` read-only boundary plus hardening. MCP execution beyond read-only tool-call boundary, provider calls, write actions, refresh tokens, account-link lifecycle expansion, private beta, and public launch remain blocked unless a later reviewed PR explicitly opens them.
 
 PR80B manual handoff is already implemented as the safe delivery path while ATS authorization is pending, but live submit/apply remains blocked.
 
-The 2026-06-23 root orchestration checkpoint returned `PR87_8_GATE_STILL_BLOCKED` without requiring a corrective PR. Runtime MCP production endpoints, production `tools/list`, production `tools/call`, OAuth, real handlers, outbound HTTP/model calls, live submit/apply, approved-answer copy, `provider_verified_submitted`, production billing, PR88, and PR89 remain blocked.
+The 2026-06-23 root orchestration checkpoint returned `PR87_8_GATE_STILL_BLOCKED` without requiring a corrective PR. MCP execution beyond the reviewed protocol/metadata surfaces, production `tools/call`, provider calls, outbound HTTP/model calls, live submit/apply, approved-answer copy, `provider_verified_submitted`, production billing, PR88, private beta, and public launch remain blocked.
 
 The PR245 reference is a shared branch/readiness checkpoint only. It does not move cover-letter prompt work into this roadmap, and it does not make MCP/App SDK launch work part of PR246.
 
@@ -47,35 +47,45 @@ It does not own cover-letter prompt V2, Mistral factuality tightening, premium p
 | PR86-PR87 | Merged governance / production gate checkpoints | BLOCKED_PRODUCTION_GATE |
 | PR87.8 | Gate reconciled as still blocked after PR245 | no corrective PR opened |
 | PR87.10-PR87.17D | Local/dev MCP reachability, auth architecture checkpoint, fixture-only demo, pure auth-policy boundary, auth request orchestrator boundary, local/dev auth discovery/challenge endpoint wiring, server-only Stytch bearer verifier boundary, canonical account-link storage/index contract, server-only account-link lookup adapter, deterministic auth composition boundary, local/dev runtime composition wiring, authoritative server-only account-link lifecycle, MCP OAuth authorization request boundary, MCP OAuth authorization-intent storage, MCP OAuth login-return convention, MCP OAuth login-return continuation boundary, and local/dev-only MCP OAuth route adapter merged | local/dev, storage, lookup, composition, local runtime wiring, internal lifecycle, authorization-request boundary, authorization-intent storage, login-return convention, route-independent continuation boundary, and `LOCAL_MCP_DEV_OAUTH_AUTHORIZATION=1` route adapter only; production MCP/OAuth/token/account-link runtime, real Stytch runtime calls, public account-link API, authorization-code issuance, token exchange, production account-link creation, real handlers, and launch surfaces still blocked |
-| PR89-PR98 | Production activation gate, operational status, route preflight, guarded production route shells, production `/oauth/authorize` ownerless pre-auth intent creation, production login-return owner binding, production OAuth authorization-code issuance, redirect URI allowlist normalization, authorization-code redemption, and access-token issuance merged | `/oauth/authorize` may create ownerless pre-auth intents; login return may bind the authenticated owner and issue a short-lived digest-backed authorization code; production redirect allowlists are canonicalized with invalid entries fail-closed; `/oauth/token` may issue digest-backed bearer access tokens for valid authorization-code token requests; production `/mcp` bearer-token verification, MCP execution, provider calls, consent UI, refresh tokens, production account-link lifecycle, `tools/list`, and `tools/call` remain blocked |
-| PR88-PR89 | Private beta / public launch | blocked |
+| PR89-PR101 | Production activation gate, operational status, route preflight, guarded production route shells, production `/oauth/authorize` ownerless pre-auth intent creation, production login-return owner binding, production OAuth authorization-code issuance, redirect URI allowlist normalization, authorization-code redemption, access-token issuance, production `/mcp` bearer-token verification, bearer-verification hardening, authenticated protocol/session envelope, policy kernel, and metadata-only `tools/list` merged | `/oauth/authorize` may create ownerless pre-auth intents; login return may bind the authenticated owner and issue a short-lived digest-backed authorization code; production redirect allowlists are canonicalized with invalid entries fail-closed; `/oauth/token` may issue digest-backed bearer access tokens for valid authorization-code token requests; production `/mcp` may verify digest-backed bearer tokens, apply trusted quota, process JSON-RPC `initialize`/`notifications/initialized`/`ping`, and expose authenticated metadata-only `tools/list`; MCP execution beyond reviewed metadata/protocol surfaces, provider calls, consent UI, refresh tokens, production account-link lifecycle expansion, and `tools/call` remain blocked |
+| PR99.1 | MCP bearer verification hardening | caller quota before digest lookup, storage-time trust at route proof boundary, binding failures challenged as invalid tokens, and authorization-server metadata for OAuth discovery; no MCP execution or tool exposure |
+| PR99.2 | MCP bearer quota trusted caller boundary | `/mcp` bearer-verification quota uses trusted socket address instead of forwarding headers; next follow-up is canonicalization/fail-closed remote-address hardening |
+| PR99.3 | MCP bearer quota caller-key hardening | trusted remote address forms are canonicalized before quota keying and missing trusted remote address fails closed |
+| PR100 | Authenticated MCP protocol envelope boundary | minimal JSON-RPC is parsed after bearer verification; `initialize`, `notifications/initialized`, and `ping` are supported without tools execution |
+| PR101 | MCP policy kernel plus `tools/list` metadata boundary | decision-only policy kernel and separate metadata projection expose authenticated metadata-only `tools/list`; no tool execution |
+| PR102 | `tools/call` read-only boundary plus hardening | next; strict schema/audit/limits, no write actions or provider submission |
+| PR103-PR104 | Private beta and staged launch decisions | blocked until prior authenticated protocol and tool boundaries pass review |
 
-Forbidden production surfaces stay blocked unless a later reviewed decision opens them: production endpoints, production `tools/list`, production `tools/call`, OAuth, real handlers, real user data, outbound HTTP, LLM/model calls, export/download/send/submit/apply, production behavior, approved answer copy, and PR80-live.
+Forbidden runtime and launch surfaces stay blocked unless a later reviewed decision opens them: production `tools/call`, MCP execution beyond reviewed protocol/metadata surfaces, provider calls, real handlers with write effects, real user-data mutation, outbound HTTP, LLM/model calls, export/download/send/submit/apply, approved answer copy, PR80-live, private beta, and public launch.
 
 ## Remaining checklist
 
-### PR87.8 - Production gate reconciliation
+### Completed PR99.3-PR101 compressed MCP protocol and metadata chain
 
-- [x] Reconcile the production gate after PR245 without changing cover-letter PR246 work.
-- [x] Confirm the current blocked surfaces are still blocked: runtime endpoints, tool listing/calls, OAuth, real handlers, outbound HTTP, LLM/model calls, export/download/send/submit/apply, approved answer copy, and PR80-live.
-- [x] Confirm PR80B manual handoff remains implemented and is still the only application-delivery path while ATS authorization is pending.
-- [x] Document which PR87 blockers are still real after the merged governance/status gates.
-- [ ] Decide whether a later MCP/App SDK PR should remain reconciliation-only or become a separately approved launch-readiness slice.
+- [x] PR99.3 canonicalized trusted socket address forms before `/mcp` bearer-verification quota keying.
+- [x] PR99.3 fails closed when production `/mcp` bearer verification lacks a trusted remote address.
+- [x] PR100 parses minimal JSON-RPC after bearer verification succeeds and supports `initialize`, `notifications/initialized`, and `ping`.
+- [x] PR101 centralizes production MCP method eligibility in a decision-only policy kernel.
+- [x] PR101 exposes authenticated metadata-only `tools/list`.
+- [x] `tools/call`, provider calls, write actions, refresh tokens, account-link lifecycle expansion, private beta, public launch, and UI changes remain blocked.
 
-### PR88 - Private beta, blocked
+### PR102 - `tools/call` read-only boundary plus hardening, next
 
-- [ ] Do not start until PR87.8 confirms the production gate is open.
-- [ ] Keep private beta copy, approved-answer behavior, and production user data blocked until separately reviewed.
-- [ ] Require a launch-readiness review before any production ChatGPT/App SDK exposure.
+- [ ] Add authenticated `tools/call` only for known listed read-only tools.
+- [ ] Validate method params, tool name, and tool arguments strictly before any handler boundary.
+- [ ] Add payload limits, result limits, audit/log-safe summaries, and abuse controls.
+- [ ] Keep write actions, provider submit/apply, outbound HTTP/model calls, billing/entitlements, private beta, and public launch blocked unless separately approved.
 
-### PR89 - Public launch, blocked
+### PR103-PR104 - Rollout decisions
 
-- [ ] Do not start until private beta has a reviewed success signal.
-- [ ] Do not open runtime, billing/entitlements, OAuth, provider submission, or public App SDK behavior by assumption.
-- [ ] Treat public launch as a separate release decision, not as a continuation of cover-letter quality work.
+- [ ] Private beta is PR103 and remains blocked until the authenticated protocol/tool boundaries pass review.
+- [ ] Public launch is PR104 and remains a separate decision after private beta evidence.
 
 ## Sources
 
+- [[sources/2026-06-30-pr101-mcp-policy-kernel-tools-list-checkpoint]]
+- [[sources/2026-06-30-pr99-2-mcp-bearer-quota-trusted-caller-checkpoint]]
+- [[sources/2026-06-30-pr99-1-mcp-bearer-verification-hardening-bug-list]]
 - [[sources/2026-06-29-pr98-mcp-oauth-access-token-issuance-checkpoint]]
 - [[sources/2026-06-29-pr96-1-mcp-oauth-redirect-uri-normalization-checkpoint]]
 - [[sources/2026-06-27-pr94-mcp-oauth-production-authorize-preauth-checkpoint]]
