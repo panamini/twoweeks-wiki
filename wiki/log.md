@@ -2171,3 +2171,21 @@ Migration vers schema v2 : ajout rawinput/ (staging), gestion temporelle (status
 - Production `/mcp` validated read-only `tools/call` now executes the four existing Convex internal summary queries after bearer auth, quota, private-beta, launch-readiness, policy, and tools-call validation.
 - The executor accepts only mapped public safe ref IDs, uses server-only owner identity, validates safe result kinds, and maps dependency/query/stalled/malformed failures to safe `Read-only summary unavailable.` errors.
 - Provider calls, writes/mutations, outbound HTTP/model calls, OAuth/token issuance changes, refresh tokens, account-link lifecycle expansion, public launch, UI changes, export/send/submit/apply, and billing/entitlements remain blocked.
+
+## 2026-07-01 — MCP tools/call synthetic metadata cleanup checkpoint PR300 merged
+
+**Pages créées** :
+- `wiki/sources/2026-07-01-pr300-mcp-tools-call-synthetic-metadata-cleanup-checkpoint.md`
+
+**Pages mises à jour** :
+- `wiki/product/chatgpt-app-sdk-roadmap.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**Points notables** :
+- PR300 `Remove stale production tools-call synthetic metadata` merged into `application-os-foundation` as `d0141ea1ec3a5b21598190bb62e3577779421fd9`.
+- Active production `tools/call` boundary no longer exports or builds stale PR102 synthetic result kind/type/builder/status/phase metadata.
+- PR106 read-only summary execution and PR107 status normalization remain the real output/status owners.
+- Validation recorded on PR300: local Vitest boundary/route and executor/status-normalizer tests, TypeScript, `diff --check`, Fallow audit, GitHub CI/Playwright/Semgrep, Codex Review, and Qodo review passed or reported no material issues.
+- Provider calls, writes/mutations, outbound HTTP/model calls, OAuth/token issuance changes, refresh tokens, account-link lifecycle expansion, public launch, UI changes, export/send/submit/apply, approved-answer copy, and billing/entitlements remain blocked.
