@@ -44,9 +44,9 @@ PR106 does not unlock provider calls, writes/mutations, outbound HTTP/model call
 
 ## Next state
 
-The next guarded MCP app PR should add an execution-result freshness/status boundary for the four real read-only summary tools.
+PR107 and PR108 have now followed this checkpoint; see [[sources/2026-07-01-pr107-pr108-mcp-summary-status-launch-readiness-checkpoint]].
 
-That follow-up should preserve PR101 policy, PR103 schema validation, PR104 private-beta eligibility, PR105 launch-readiness blocking, and PR106 safe-ref/query-result guards while making stale/no-data/onboarding states more explicit for callers. Provider/write/runtime expansion remains out of scope.
+Future MCP/App SDK follow-ups should preserve PR101 policy, PR103 schema validation, PR104 private-beta eligibility, PR105 launch-readiness blocking, PR106 safe-ref/query-result guards, PR107 status normalization, and PR108 launch-readiness summary evidence hardening. Provider/write/runtime expansion remains out of scope.
 
 ## Touched pages
 

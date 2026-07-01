@@ -15,6 +15,30 @@ grep "^## \[" wiki/log.md | grep "ingest"  # Tous les ingests
 
 ---
 
+## [2026-07-01] pr-branch | MCP PR107/PR108 summary status and launch-readiness checkpoint
+
+**Agent** : Codex
+**Mode** : pr-branch
+**Source** : PR298 and PR299 merge metadata, GitHub PR bodies, user-provided PR299 merge facts, and live `application-os-foundation` head check
+
+**Pages créées** :
+- `wiki/sources/2026-07-01-pr107-pr108-mcp-summary-status-launch-readiness-checkpoint.md`
+
+**Pages mises à jour** :
+- `wiki/product/chatgpt-app-sdk-roadmap.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**Points notables** :
+- PR298 `Add MCP readonly summary status boundary` merged into `application-os-foundation` as `072764abb80519bf2ce719a7816791d81053b0b9` on `2026-07-01T03:44:20Z`.
+- PR299 `Harden MCP launch-readiness summary evidence` merged into `application-os-foundation` as `90424f14ad4d25969095dc4d397c38bcd01d1054` on `2026-07-01T13:20:26Z`.
+- PR107 wraps the four PR106 real read-only summary tool results in a strict status envelope: `OK`, `STALE`, `NO_DATA`, `ONBOARDING_REQUIRED`, `MALFORMED`, `TIMEOUT`, or `DEPENDENCY_MISSING`.
+- PR108 requires launch-readiness evidence to include explicit review flags for PR106 read-only summary execution and PR107 summary status normalization before evidence can be complete.
+- Provider calls, write actions, refresh tokens, production account-link lifecycle expansion, billing/entitlements, and public launch remain blocked.
+
+**Open items** : Do not rerun PR106, PR107, or PR108. Choose the next app-code safety or metadata refinement only after reloading the live roadmap and app code; public launch and provider/write expansion remain blocked unless a later reviewed decision explicitly opens them.
+
 ## [2026-07-01] pr-branch | MCP PR105 launch-readiness Vite wiring follow-up
 
 **Agent** : Codex
