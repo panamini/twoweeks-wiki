@@ -2,7 +2,7 @@
 title: Index du Wiki — twoweeks
 category: overview
 sticker: emoji//1f9c6
-updated: 2026-06-30
+updated: 2026-07-01
 ---
 
 # Index du Wiki · twoweeks (v2)
@@ -86,7 +86,7 @@ Cette carte est un routeur de lecture pour agents LLM. Elle ne remplace pas les 
 |------|--------|--------|------|
 | [[product/ai-product-model\|AI Product Model]] | 3 modes IA, rulebook, qualité writing, and Planner Agent shadow chain | current | ai, ux, modes |
 | [[product/ai-consistency-p0-editor-ai\|AI Consistency P0 — Closure Audit]] | Closure audit snapshot du rulebook AI editor, preview, telemetry et tailoring | current | ai, editor, rulebook |
-| [[product/chatgpt-app-sdk-roadmap\|ChatGPT/App SDK Roadmap]] | MCP/App SDK PR103 merged schema matcher hardening after PR102 read-only `tools/call`; next narrow app PR is PR104 private beta gate | current | chatgpt-app, apps-sdk |
+| [[product/chatgpt-app-sdk-roadmap\|ChatGPT/App SDK Roadmap]] | MCP/App SDK PR105 launch-readiness boundary and PR295 Vite wiring merged after PR104 private beta gate | current | chatgpt-app, apps-sdk |
 | [[product/job-library\|Job Library]] | Jobs sauvegardés, Job Brief editable et documents liés | current | jobs, library |
 | [[product/job-match-review\|Job Match Review]] | Match comme indicateur d'attention utilisateur et dogfood interne | current | jobs, match |
 | [[product/kpis\|KPIs]] | Métriques de succès produit | current | kpi, métriques |
@@ -118,7 +118,7 @@ Cette carte est un routeur de lecture pour agents LLM. Elle ne remplace pas les 
 
 ## Sources
 
-Cover-letter quality has a merged PR249 staged internal Mistral V2 gate and a green Convex staging checkpoint on `dev:neat-starfish-33`; production full GO and quality repair remain separate/not approved. The MCP/App SDK track now has PR87.17D local/dev-only OAuth route adapter, PR89 activation gate, PR90 operational status, PR92 route preflight, PR93 guarded inert production route shells, PR94 production `/oauth/authorize` pre-auth creation, PR95 login-return owner binding, PR96 authorization-code issuance, PR96.1 redirect URI allowlist normalization, PR97 authorization-code redemption validation, PR98 access-token issuance, PR99 production `/mcp` bearer-token verification, PR99.1 OAuth discovery/quota/time/binding hardening, PR99.2 trusted-socket bearer quota hardening, PR99.3 caller-key canonicalization, PR100 authenticated MCP protocol/session envelope, PR101 production policy kernel plus metadata-only `tools/list`, PR102 read-only `tools/call`, and PR103 schema matcher hardening merged. Provider calls, write actions, refresh tokens, production account-link lifecycle expansion, private beta, and public launch remain blocked; PR80B remains the safe manual handoff path while ATS authorization is pending.
+Cover-letter quality has a merged PR249 staged internal Mistral V2 gate and a green Convex staging checkpoint on `dev:neat-starfish-33`; production full GO and quality repair remain separate/not approved. The MCP/App SDK track now has PR87.17D local/dev-only OAuth route adapter, PR89 activation gate, PR90 operational status, PR92 route preflight, PR93 guarded inert production route shells, PR94 production `/oauth/authorize` pre-auth creation, PR95 login-return owner binding, PR96 authorization-code issuance, PR96.1 redirect URI allowlist normalization, PR97 authorization-code redemption validation, PR98 access-token issuance, PR99 production `/mcp` bearer-token verification, PR99.1 OAuth discovery/quota/time/binding hardening, PR99.2 trusted-socket bearer quota hardening, PR99.3 caller-key canonicalization, PR100 authenticated MCP protocol/session envelope, PR101 production policy kernel plus metadata-only `tools/list`, PR102 read-only `tools/call`, PR103 schema matcher hardening, PR104 private beta gate, PR105 launch-readiness boundary, and PR295 default Vite launch-readiness wiring merged. Provider calls, write actions, refresh tokens, production account-link lifecycle expansion, and public launch remain blocked; PR80B remains the safe manual handoff path while ATS authorization is pending.
 
 | Page | Type | Date | Status |
 |------|------|------|--------|

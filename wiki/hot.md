@@ -3,7 +3,7 @@ title: "Hot Cache - twoweeks"
 category: overview
 status: current
 created: 2026-05-02
-updated: 2026-06-30
+updated: 2026-07-01
 ---
 
 # Hot Cache
@@ -17,7 +17,7 @@ twoweeks centers on CV ingestion/parsing, canonical saved profile/CV data, and p
 Keep two workstreams separate:
 
 - Cover-letter quality: staging `dev:neat-starfish-33` is green for Mistral V2 with only `cover_letter_premium_prompt_v2=1`; quality repair is OFF and production full GO is not approved.
-- MCP / ChatGPT App SDK: PR99/PR285, PR99.1/PR286, PR99.2/PR287, PR99.3/PR288, PR100/PR289, PR101/PR290, PR102/PR291, and PR103/PR292 are merged after PR94 ownerless pre-auth creation, PR95 owner binding, PR96 authorization-code issuance, PR96.1 redirect URI normalization, PR97 code redemption, and PR98 access-token issuance. Production `/mcp` can verify digest-backed bearer tokens, apply trusted caller quota, process JSON-RPC `initialize`/`notifications/initialized`/`ping`, expose authenticated metadata-only `tools/list`, and accept validated read-only `tools/call`; provider calls, write actions, refresh tokens, account-link lifecycle expansion, private beta, and public launch remain blocked.
+- MCP / ChatGPT App SDK: PR99/PR285 through PR105/PR294 and PR295 launch-readiness Vite wiring are merged after PR94 ownerless pre-auth creation, PR95 owner binding, PR96 authorization-code issuance, PR96.1 redirect URI normalization, PR97 code redemption, and PR98 access-token issuance. Production `/mcp` can verify digest-backed bearer tokens, apply trusted caller quota, process JSON-RPC `initialize`/`notifications/initialized`/`ping`, expose authenticated metadata-only `tools/list`, accept validated read-only `tools/call`, require private-beta eligibility, and block public-launch-shaped traffic through launch readiness; provider calls, write actions, refresh tokens, account-link lifecycle expansion, and public launch remain blocked.
 
 ## Key Active Facts
 
@@ -36,8 +36,10 @@ Keep two workstreams separate:
 - PR101 adds the production MCP policy kernel and authenticated metadata-only `tools/list`.
 - PR102 adds the authenticated production `tools/call` read-only boundary plus hardening.
 - PR103 adds schema normalization and matcher hardening for production MCP tool-call validation.
-- Do not rerun PR89, PR90, PR92, PR93, PR94, PR95, PR96, PR96.1, PR97, PR98, PR99, PR99.1, PR99.2, PR99.3, PR100, PR101, PR102, or PR103.
-- The next narrow app PR should be PR104 private beta gate.
+- PR104 adds deterministic private-beta eligibility gating after auth/quota/envelope and before policy dispatch.
+- PR105 adds launch-readiness/public-launch blocking, and PR295 wires launch-readiness env into the default Vite production route so `publicLaunchRequested` fails closed before evidence completeness.
+- Do not rerun PR89, PR90, PR92, PR93, PR94, PR95, PR96, PR96.1, PR97, PR98, PR99, PR99.1, PR99.2, PR99.3, PR100, PR101, PR102, PR103, PR104, PR105, or PR295.
+- The next guarded MCP app PR must preserve PR101 policy, PR103 schema validation, PR104 private beta eligibility, and PR105 launch-readiness blocking.
 - PR80B remains the safe manual application handoff path while ATS authorization is pending; `provider_verified_submitted` remains unreachable.
 - Persistent wiki mutations require `wiki/index.md`, `wiki/log.md`, and usually `wiki/hot.md`.
 

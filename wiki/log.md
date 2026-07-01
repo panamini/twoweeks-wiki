@@ -1,7 +1,7 @@
 ---
 title: "Log — twoweeks Wiki"
 category: overview
-updated: 2026-06-30
+updated: 2026-07-01
 ---
 
 # Log du Wiki · twoweeks
@@ -14,6 +14,29 @@ grep "^## \[" wiki/log.md | grep "ingest"  # Tous les ingests
 ```
 
 ---
+
+## [2026-07-01] pr-branch | MCP PR105 launch-readiness Vite wiring follow-up
+
+**Agent** : Codex
+**Mode** : pr-branch
+**Source** : PR295 merge metadata, PR105 follow-up branch `codex/pr105-launch-readiness-vite-fix`, user-reported review findings, local verification evidence, and post-merge roadmap request
+
+**Pages mises à jour** :
+- `wiki/product/chatgpt-app-sdk-roadmap.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**Points notables** :
+- PR293 `PR104: add MCP private beta eligibility gate` is merged into `application-os-foundation` as `7d96f7354a2c18282db019db718c0cc80862ab9e`.
+- PR294 `PR105: add MCP launch readiness boundary` is merged into `application-os-foundation` as `6cadc1f6f2451e70734c8f0b36f91eaf7d505583`.
+- PR295 `Fix PR105 launch readiness Vite wiring` merged into `application-os-foundation` as `d87260c018c3493d0f68de73fb5c0b38d7e7f710` from head `76f5580665be49813aaff689679468148fb276eb`.
+- PR295 wires launch-readiness env into the default Vite production MCP route config, so real `/mcp` traffic no longer evaluates through an absent launch-readiness config.
+- PR295 makes `publicLaunchRequested: true` return the blocking `public_launch_blocked` decision before evidence completeness checks, so public-launch-shaped requests cannot fall through to `tools/list` or `tools/call` dispatch.
+- Validation evidence: focused launch-readiness tests passed with 7 tests, focused production route adapter tests passed with 165 tests, focused operational status tests passed with 18 tests, `tsc -p tsconfig.node.json --pretty false` passed, `git diff --check` passed, and Fallow audit passed with no issues in the 4 changed files.
+- GitHub `js-tests`, Playwright `test`, CodeRabbit, and Semgrep passed; Semgrep completed successfully after the user-requested immediate merge.
+
+**Open items** : Do not rerun PR104, PR105, or PR295. The next guarded MCP app PR must preserve PR101 policy, PR103 schema validation, PR104 private beta eligibility, and PR105 launch-readiness/public-launch blocking; provider calls, write actions, refresh tokens, production account-link lifecycle expansion, and public launch remain blocked.
 
 ## [2026-06-30] checkpoint | MCP PR99.2 trusted bearer quota caller
 
