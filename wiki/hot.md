@@ -17,7 +17,7 @@ twoweeks centers on CV ingestion/parsing, canonical saved profile/CV data, and p
 Keep two workstreams separate:
 
 - Cover-letter quality: staging `dev:neat-starfish-33` is green for Mistral V2 with only `cover_letter_premium_prompt_v2=1`; quality repair is OFF and production full GO is not approved.
-- MCP / ChatGPT App SDK: PR99/PR285 through PR105/PR294 and PR295 launch-readiness Vite wiring are merged after PR94 ownerless pre-auth creation, PR95 owner binding, PR96 authorization-code issuance, PR96.1 redirect URI normalization, PR97 code redemption, and PR98 access-token issuance. Production `/mcp` can verify digest-backed bearer tokens, apply trusted caller quota, process JSON-RPC `initialize`/`notifications/initialized`/`ping`, expose authenticated metadata-only `tools/list`, accept validated read-only `tools/call`, require private-beta eligibility, and block public-launch-shaped traffic through launch readiness; provider calls, write actions, refresh tokens, account-link lifecycle expansion, and public launch remain blocked.
+- MCP / ChatGPT App SDK: PR99/PR285 through PR106/PR296 are merged after PR94 ownerless pre-auth creation, PR95 owner binding, PR96 authorization-code issuance, PR96.1 redirect URI normalization, PR97 code redemption, and PR98 access-token issuance. Production `/mcp` can verify digest-backed bearer tokens, apply trusted caller quota, process JSON-RPC `initialize`/`notifications/initialized`/`ping`, expose authenticated metadata-only `tools/list`, accept validated read-only `tools/call`, execute four gated Convex read-only summary queries behind safe-ref/result guards, require private-beta eligibility, and block public-launch-shaped traffic through launch readiness; provider calls, write actions, refresh tokens, account-link lifecycle expansion, and public launch remain blocked.
 
 ## Key Active Facts
 
@@ -38,14 +38,15 @@ Keep two workstreams separate:
 - PR103 adds schema normalization and matcher hardening for production MCP tool-call validation.
 - PR104 adds deterministic private-beta eligibility gating after auth/quota/envelope and before policy dispatch.
 - PR105 adds launch-readiness/public-launch blocking, and PR295 wires launch-readiness env into the default Vite production route so `publicLaunchRequested` fails closed before evidence completeness.
-- Do not rerun PR89, PR90, PR92, PR93, PR94, PR95, PR96, PR96.1, PR97, PR98, PR99, PR99.1, PR99.2, PR99.3, PR100, PR101, PR102, PR103, PR104, PR105, or PR295.
-- The next guarded MCP app PR must preserve PR101 policy, PR103 schema validation, PR104 private beta eligibility, and PR105 launch-readiness blocking.
+- PR106 replaces PR102 synthetic production `tools/call` output with gated read-only summary execution for the four existing summary tools.
+- Do not rerun PR89, PR90, PR92, PR93, PR94, PR95, PR96, PR96.1, PR97, PR98, PR99, PR99.1, PR99.2, PR99.3, PR100, PR101, PR102, PR103, PR104, PR105, PR295, or PR106.
+- The next guarded MCP app PR must preserve PR101 policy, PR103 schema validation, PR104 private beta eligibility, PR105 launch-readiness blocking, and PR106 safe-ref/query-result guards.
 - PR80B remains the safe manual application handoff path while ATS authorization is pending; `provider_verified_submitted` remains unreachable.
 - Persistent wiki mutations require `wiki/index.md`, `wiki/log.md`, and usually `wiki/hot.md`.
 
 ## Canonical Pages To Read
 
-- MCP / ChatGPT App SDK: [[product/chatgpt-app-sdk-roadmap]], [[sources/2026-06-30-pr102-pr103-mcp-tools-call-schema-hardening-checkpoint]], [[sources/2026-06-30-pr101-mcp-policy-kernel-tools-list-checkpoint]], [[sources/2026-06-30-pr99-2-mcp-bearer-quota-trusted-caller-checkpoint]], [[sources/2026-06-30-pr99-1-mcp-bearer-verification-hardening-bug-list]], [[sources/2026-06-29-pr98-mcp-oauth-access-token-issuance-checkpoint]], [[sources/2026-06-29-pr96-1-mcp-oauth-redirect-uri-normalization-checkpoint]], [[sources/2026-06-28-pr96-mcp-oauth-production-authorization-code-checkpoint]], [[sources/2026-06-27-pr94-mcp-oauth-production-authorize-preauth-checkpoint]], [[sources/2026-06-27-pr89-pr93-mcp-oauth-production-gate-route-shell-checkpoint]]
+- MCP / ChatGPT App SDK: [[product/chatgpt-app-sdk-roadmap]], [[sources/2026-07-01-pr106-mcp-readonly-summary-execution-checkpoint]], [[sources/2026-06-30-pr102-pr103-mcp-tools-call-schema-hardening-checkpoint]], [[sources/2026-06-30-pr101-mcp-policy-kernel-tools-list-checkpoint]], [[sources/2026-06-30-pr99-2-mcp-bearer-quota-trusted-caller-checkpoint]], [[sources/2026-06-30-pr99-1-mcp-bearer-verification-hardening-bug-list]], [[sources/2026-06-29-pr98-mcp-oauth-access-token-issuance-checkpoint]], [[sources/2026-06-29-pr96-1-mcp-oauth-redirect-uri-normalization-checkpoint]], [[sources/2026-06-28-pr96-mcp-oauth-production-authorization-code-checkpoint]], [[sources/2026-06-27-pr94-mcp-oauth-production-authorize-preauth-checkpoint]], [[sources/2026-06-27-pr89-pr93-mcp-oauth-production-gate-route-shell-checkpoint]]
 - Cover-letter quality: [[tasks/2026-06-22-cover-letter-quality-production-roadmap]], [[sources/2026-06-24-cover-letter-mistral-v2-staging-green]]
 - Product/parser/export routing: [[overview]], [[concepts/cv-parsing-pipeline]], [[tech/export-pipeline]]
 - Wiki operations: [[meta/llm-wiki-pattern]], [[meta/temporal-management]]

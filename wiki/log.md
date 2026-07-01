@@ -2130,3 +2130,20 @@ Migration vers schema v2 : ajout rawinput/ (staging), gestion temporelle (status
 - Production `/mcp` can now verify bearer tokens, apply trusted caller quota, run the authenticated JSON-RPC protocol shell, return authenticated metadata-only `tools/list`, and accept validated read-only `tools/call`.
 - Provider calls, write actions, outbound HTTP/model calls, refresh tokens, production account-link lifecycle expansion, private beta, public launch, and UI changes remain blocked.
 - The next app PR is PR104 private beta gate.
+
+## 2026-07-01 — MCP read-only summary execution checkpoint PR106 merged
+
+**Pages créées** :
+- `wiki/sources/2026-07-01-pr106-mcp-readonly-summary-execution-checkpoint.md`
+
+**Pages mises à jour** :
+- `wiki/product/chatgpt-app-sdk-roadmap.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**Points notables** :
+- PR296 `Add production MCP readonly summary executor` merged into `application-os-foundation` as `557b7799eedd6a7605c1da74baa62357974e6629`.
+- Production `/mcp` validated read-only `tools/call` now executes the four existing Convex internal summary queries after bearer auth, quota, private-beta, launch-readiness, policy, and tools-call validation.
+- The executor accepts only mapped public safe ref IDs, uses server-only owner identity, validates safe result kinds, and maps dependency/query/stalled/malformed failures to safe `Read-only summary unavailable.` errors.
+- Provider calls, writes/mutations, outbound HTTP/model calls, OAuth/token issuance changes, refresh tokens, account-link lifecycle expansion, public launch, UI changes, export/send/submit/apply, and billing/entitlements remain blocked.
