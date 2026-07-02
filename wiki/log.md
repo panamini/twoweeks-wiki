@@ -2189,3 +2189,41 @@ Migration vers schema v2 : ajout rawinput/ (staging), gestion temporelle (status
 - PR106 read-only summary execution and PR107 status normalization remain the real output/status owners.
 - Validation recorded on PR300: local Vitest boundary/route and executor/status-normalizer tests, TypeScript, `diff --check`, Fallow audit, GitHub CI/Playwright/Semgrep, Codex Review, and Qodo review passed or reported no material issues.
 - Provider calls, writes/mutations, outbound HTTP/model calls, OAuth/token issuance changes, refresh tokens, account-link lifecycle expansion, public launch, UI changes, export/send/submit/apply, approved-answer copy, and billing/entitlements remain blocked.
+
+## 2026-07-01 — MCP readiness diagnostics checkpoint PR301 merged
+
+**Pages créées** :
+- `wiki/sources/2026-07-01-pr301-mcp-readiness-diagnostics-checkpoint.md`
+
+**Pages mises à jour** :
+- `wiki/product/chatgpt-app-sdk-roadmap.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**Points notables** :
+- PR301 `PR301: Add MCP readiness cleanup diagnostic evidence` merged into `application-os-foundation` as `149ef8e8fbbb46bab0435f04eb1487c1b78b0040`.
+- Launch-readiness evidence now accepts optional strict boolean `toolsCallSyntheticMetadataCleanupReviewed` from `MCP_OAUTH_PRODUCTION_LAUNCH_TOOLS_CALL_SYNTHETIC_METADATA_CLEANUP_REVIEWED`.
+- The PR301 field is diagnostic-only and remains outside readiness completeness, so false or missing diagnostic evidence does not block an otherwise complete readiness decision.
+- Malformed non-boolean diagnostic evidence still fails closed as `launch_config_invalid`.
+- Local tests, TypeScript, `diff --check`, Fallow audit, GitHub CI/Playwright/Semgrep, Codex Review, CodeRabbit status, and Qodo summary/review-thread checks were recorded before merge.
+- Provider calls, writes/mutations, outbound HTTP/model calls, OAuth/token issuance changes, refresh tokens, account-link lifecycle expansion, public launch, UI changes, export/send/submit/apply, approved-answer copy, and billing/entitlements remain blocked.
+
+## 2026-07-02 — MCP Stage 3 read-side materialization checkpoint PR302/PR303 merged
+
+**Pages créées** :
+- `wiki/sources/2026-07-02-pr302-pr303-mcp-stage3-readside-materialization-checkpoint.md`
+
+**Pages mises à jour** :
+- `wiki/product/chatgpt-app-sdk-roadmap.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**Points notables** :
+- PR302 `Add MCP Stage 3 read-side materialization` merged into `application-os-foundation` as `262444e5ea4ed24e493fd93599452ddb56a0c317`.
+- PR303 `Post-merge Stage 3 MCP proof` merged into `application-os-foundation` as `f63d35dc6f8ae765d9afb004991e2a2aeb6c5679`.
+- PR302 materializes safe Stage 3 MCP read-side `applicationContexts` and `applicationPackages` from proposal save/update paths and reconciles stale derived rows when jobs, profiles, ownership, or proposals become invalid.
+- PR303 records a proof-only audit and adds a focused regression for owner-profile deletion cleanup; it does not grant runtime or production permission.
+- PR303 was marked ready and merged after green GitHub checks, latest-head Codex review with no major issues, CodeRabbit full-review completion, and Qodo review updated to the latest head with no new findings.
+- Provider calls, write actions, outbound HTTP/model calls, refresh tokens, account-link lifecycle expansion, production/shared database access, public launch, UI changes, export/send/submit/apply, approved-answer copy, and billing/entitlements remain blocked.
