@@ -1,7 +1,7 @@
 ---
 title: "Log — twoweeks Wiki"
 category: overview
-updated: 2026-06-27
+updated: 2026-07-01
 ---
 
 # Log du Wiki · twoweeks
@@ -14,6 +14,180 @@ grep "^## \[" wiki/log.md | grep "ingest"  # Tous les ingests
 ```
 
 ---
+
+## [2026-07-01] pr-branch | MCP PR107/PR108 summary status and launch-readiness checkpoint
+
+**Agent** : Codex
+**Mode** : pr-branch
+**Source** : PR298 and PR299 merge metadata, GitHub PR bodies, user-provided PR299 merge facts, and live `application-os-foundation` head check
+
+**Pages créées** :
+- `wiki/sources/2026-07-01-pr107-pr108-mcp-summary-status-launch-readiness-checkpoint.md`
+
+**Pages mises à jour** :
+- `wiki/product/chatgpt-app-sdk-roadmap.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**Points notables** :
+- PR298 `Add MCP readonly summary status boundary` merged into `application-os-foundation` as `072764abb80519bf2ce719a7816791d81053b0b9` on `2026-07-01T03:44:20Z`.
+- PR299 `Harden MCP launch-readiness summary evidence` merged into `application-os-foundation` as `90424f14ad4d25969095dc4d397c38bcd01d1054` on `2026-07-01T13:20:26Z`.
+- PR107 wraps the four PR106 real read-only summary tool results in a strict status envelope: `OK`, `STALE`, `NO_DATA`, `ONBOARDING_REQUIRED`, `MALFORMED`, `TIMEOUT`, or `DEPENDENCY_MISSING`.
+- PR108 requires launch-readiness evidence to include explicit review flags for PR106 read-only summary execution and PR107 summary status normalization before evidence can be complete.
+- Provider calls, write actions, refresh tokens, production account-link lifecycle expansion, billing/entitlements, and public launch remain blocked.
+
+**Open items** : Do not rerun PR106, PR107, or PR108. Choose the next app-code safety or metadata refinement only after reloading the live roadmap and app code; public launch and provider/write expansion remain blocked unless a later reviewed decision explicitly opens them.
+
+## [2026-07-01] pr-branch | MCP PR105 launch-readiness Vite wiring follow-up
+
+**Agent** : Codex
+**Mode** : pr-branch
+**Source** : PR295 merge metadata, PR105 follow-up branch `codex/pr105-launch-readiness-vite-fix`, user-reported review findings, local verification evidence, and post-merge roadmap request
+
+**Pages mises à jour** :
+- `wiki/product/chatgpt-app-sdk-roadmap.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**Points notables** :
+- PR293 `PR104: add MCP private beta eligibility gate` is merged into `application-os-foundation` as `7d96f7354a2c18282db019db718c0cc80862ab9e`.
+- PR294 `PR105: add MCP launch readiness boundary` is merged into `application-os-foundation` as `6cadc1f6f2451e70734c8f0b36f91eaf7d505583`.
+- PR295 `Fix PR105 launch readiness Vite wiring` merged into `application-os-foundation` as `d87260c018c3493d0f68de73fb5c0b38d7e7f710` from head `76f5580665be49813aaff689679468148fb276eb`.
+- PR295 wires launch-readiness env into the default Vite production MCP route config, so real `/mcp` traffic no longer evaluates through an absent launch-readiness config.
+- PR295 makes `publicLaunchRequested: true` return the blocking `public_launch_blocked` decision before evidence completeness checks, so public-launch-shaped requests cannot fall through to `tools/list` or `tools/call` dispatch.
+- Validation evidence: focused launch-readiness tests passed with 7 tests, focused production route adapter tests passed with 165 tests, focused operational status tests passed with 18 tests, `tsc -p tsconfig.node.json --pretty false` passed, `git diff --check` passed, and Fallow audit passed with no issues in the 4 changed files.
+- GitHub `js-tests`, Playwright `test`, CodeRabbit, and Semgrep passed; Semgrep completed successfully after the user-requested immediate merge.
+
+**Open items** : Do not rerun PR104, PR105, or PR295. The next guarded MCP app PR must preserve PR101 policy, PR103 schema validation, PR104 private beta eligibility, and PR105 launch-readiness/public-launch blocking; provider calls, write actions, refresh tokens, production account-link lifecycle expansion, and public launch remain blocked.
+
+## [2026-06-30] checkpoint | MCP PR99.2 trusted bearer quota caller
+
+**Agent** : Codex
+**Mode** : checkpoint
+**Source** : PR287 merge metadata, PR287 review comments, active route-adapter anchors, and post-merge roadmap request
+
+**Pages créées** :
+- `wiki/sources/2026-06-30-pr99-2-mcp-bearer-quota-trusted-caller-checkpoint.md`
+
+**Pages mises à jour** :
+- `wiki/product/chatgpt-app-sdk-roadmap.md`
+- `wiki/sources/2026-06-30-pr99-1-mcp-bearer-verification-hardening-bug-list.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**Points notables** :
+- PR287 `PR99.2: trust socket address for MCP bearer quota` merged into `application-os-foundation` as `82fa9a09e40d2243bd2d220785c094788ff9e703` on `2026-06-30T04:20:56Z`.
+- Final PR99.2 head was `b1d36fba3c74ca98854a7b75243f64774dbdc289`.
+- PR99.2 changes `/mcp` bearer-verification quota keying to use the trusted socket address rather than caller-controlled forwarding headers.
+- Post-merge Qodo review reported two narrow follow-up issues: canonicalize equivalent trusted socket address forms and fail closed if `/mcp` bearer verification has no trusted remote address.
+- MCP execution, `tools/list`, `tools/call`, provider calls, refresh tokens, production account-link lifecycle, private beta, and public launch remain blocked.
+
+**Open items** : The next narrow app PR is PR99.3 MCP bearer quota caller-key hardening. After PR99.3, PR100 should be the authenticated MCP protocol envelope boundary.
+
+## [2026-06-30] bug-list | MCP PR99.1 bearer verification hardening follow-up
+
+**Agent** : Codex
+**Mode** : bug-list
+**Source** : PR285 merge metadata, local PR99.1 hardening branch, and user-reported post-PR99 review findings
+
+**Pages créées** :
+- `wiki/sources/2026-06-30-pr99-1-mcp-bearer-verification-hardening-bug-list.md`
+
+**Pages mises à jour** :
+- `wiki/product/chatgpt-app-sdk-roadmap.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**Points notables** :
+- PR285 `PR99: add production MCP bearer-token verification boundary` merged into `application-os-foundation` as `b306ea16f48bd7cf7591370949496d0c54e83ea9` on `2026-06-30T02:09:10Z`.
+- Final PR99 head was `eee8ad0e8bd0859a3dd4173d97d090ec57d0b326`.
+- PR99 validates production `/mcp` bearer access tokens against digest-backed storage and returns authenticated-MCP-blocked without executing MCP.
+- PR99.1 bug list covers per-caller bearer verification quota before Convex lookup, route/storage clock skew at the final proof boundary, wrong-client/wrong-resource status as `401 invalid_token`, and production authorization-server metadata for OAuth discovery.
+- MCP execution, `tools/list`, `tools/call`, provider calls, refresh tokens, production account-link lifecycle, private beta, and public launch remain blocked.
+
+**Open items** : Finish and merge PR99.1 before starting PR100. Do not start PR88/private beta/public launch from this checkpoint.
+
+## [2026-06-29] pr-branch | MCP PR98 access-token issuance checkpoint
+
+**Agent** : Codex
+**Mode** : pr-branch
+**Source** : PR284 merge result, GitHub PR metadata, local validation evidence, review-fix hardening, and post-merge checkpoint request
+
+**Pages créées** :
+- `wiki/sources/2026-06-29-pr98-mcp-oauth-access-token-issuance-checkpoint.md`
+
+**Pages mises à jour** :
+- `wiki/product/chatgpt-app-sdk-roadmap.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**Points notables** :
+- PR284 `PR98: add production OAuth access-token issuance boundary` merged into `application-os-foundation` as `e1a22cb5c1a660b9fd9a8f02b76226761128ea33` on `2026-06-29T21:34:08Z`.
+- Final head was `02b2ef2df6bca8e6577db183aa498ee09986c44a`.
+- PR98 issues bearer access tokens for valid authorization-code token requests, persists only token digests, and atomically consumes authorization codes with token digest persistence.
+- Access-token storage includes expiry metadata and cleanup; OAuth responses filter OpenID Connect identity scopes because no ID token is minted.
+- Final review hardening added storage, PKCE, scope, and clock-skew proof checks.
+- Validation evidence: focused route adapter tests passed with 94 tests, focused Convex auth/access-token tests passed with 15 tests, `tsc -p tsconfig.node.json --pretty false` passed from `my-app`, `git diff --check` passed, Fallow ran read-only, Semgrep passed, CodeRabbit completed, and Qodo updated to the final head.
+- Codex review trigger was blocked by usage limits; GitHub `js-tests` and Playwright `test` jobs failed before executing any steps with `runner_id: 0` and empty `steps`.
+
+**Open items** : Do not rerun PR89, PR90, PR92, PR93, PR94, PR95, PR96, PR96.1, PR97, or PR98. The next narrow app PR should be PR99 production MCP bearer-token verification boundary while MCP execution, `tools/list`, `tools/call`, provider calls, refresh tokens, account-link lifecycle, private beta, and public launch remain blocked.
+
+## [2026-06-29] pr-branch | MCP PR96.1 redirect URI normalization checkpoint
+
+**Agent** : Codex
+**Mode** : pr-branch
+**Source** : PR282 merge result, GitHub PR metadata, local validation evidence, review fix request, and post-merge checkpoint request
+
+**Pages créées** :
+- `wiki/sources/2026-06-29-pr96-1-mcp-oauth-redirect-uri-normalization-checkpoint.md`
+
+**Pages mises à jour** :
+- `wiki/product/chatgpt-app-sdk-roadmap.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**Points notables** :
+- PR282 `PR96.1: normalize production OAuth redirect URI allowlist` merged into `application-os-foundation` as `08651f259c1ffa57396cb36d41163aed90dfb8a9` on `2026-06-29T15:33:18Z`.
+- PR96.1 fixes the post-merge PR96 redirect URI allowlist normalization review finding.
+- `MCP_OAUTH_PRODUCTION_REDIRECT_URIS` entries are canonicalized before exact login-return handoff comparison.
+- Raw C0 / DEL control characters and malformed percent escapes are rejected before `new URL()` can normalize them away.
+- Invalid raw redirect entries are preserved so the existing downstream boundary parser still fails closed.
+- Validation evidence: focused production route adapter tests passed with 61 tests, `tsc -p tsconfig.node.json --pretty false` passed, `git diff --check` passed, Fallow passed with no introduced findings, Semgrep passed, and CodeRabbit passed.
+- GitHub `js-tests` and Playwright `test` jobs failed before executing any steps; these matched the external runner availability failure pattern already seen on PR281.
+
+**Open items** : Do not rerun PR89, PR90, PR92, PR93, PR94, PR95, PR96, or PR96.1. The next narrow app PR should remain PR97 production OAuth token endpoint / authorization-code redemption boundary while token issuance, provider calls, account-link creation, token persistence, `/mcp`, `tools/list`, and `tools/call` remain blocked.
+
+## [2026-06-28] pr-branch | MCP PR96 production authorization-code checkpoint
+
+**Agent** : Codex
+**Mode** : pr-branch
+**Source** : PR280 and PR281 merge results, GitHub PR metadata, local validation evidence, review comments, and post-merge checkpoint request
+
+**Pages créées** :
+- `wiki/sources/2026-06-28-pr96-mcp-oauth-production-authorization-code-checkpoint.md`
+
+**Pages mises à jour** :
+- `wiki/product/chatgpt-app-sdk-roadmap.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**Points notables** :
+- PR280 `PR95: bind production OAuth login return continuation` merged into `application-os-foundation` as `afde4f88d9b8bff6a4afbc2bb8d3aef3d6622f95` on `2026-06-28T03:27:36Z`.
+- PR281 `PR96: issue production OAuth authorization codes` merged into `application-os-foundation` as `6beeee919a1cded82a3598f785eb507c58b76436` on `2026-06-28T04:43:17Z`.
+- PR96 consumes the owner-bound authorization intent, stores only digest-backed short-lived authorization-code state server-side, and redirects the browser to the validated OAuth client `redirect_uri` with `code` and original `state`.
+- Raw authorization codes remain browser-only after redirect; Convex storage keeps digest-backed state with owner, client, redirect URI, resource, scopes, state, PKCE, production environment, status, timestamps, and version.
+- `/oauth/token`, production `/mcp`, provider calls, consent UI, token exchange, access tokens, refresh tokens, token persistence, production account links, `tools/list`, `tools/call`, PR88/private beta, and public launch remain blocked.
+- Validation evidence: focused production route/storage tests passed with 65 tests, broader OAuth/local MCP subset passed with 280 tests, `npm run build` passed, `git diff --check` passed, Semgrep passed, CodeRabbit completed, and Qodo had no blocking finding.
+- GitHub `js-tests` and Playwright `test` jobs failed before starting with `runner_id: 0`, zero steps, and billing/spending-limit annotations; these were external CI availability failures.
+
+**Open items** : Do not rerun PR89, PR90, PR92, PR93, PR94, PR95, or PR96. Do not start PR88/private beta/public launch from this checkpoint. The next narrow app PR should be PR97 production OAuth token endpoint / authorization-code redemption boundary while token issuance, provider calls, account-link creation, token persistence, `/mcp`, `tools/list`, and `tools/call` remain blocked.
 
 ## [2026-06-27] pr-branch | MCP PR94 production authorize pre-auth checkpoint
 
@@ -1943,3 +2117,113 @@ Migration vers schema v2 : ajout rawinput/ (staging), gestion temporelle (status
 - `npx convex dev --once` completed and the deployed function spec now includes `mistral-medium-latest` and `qwen3.7-max`.
 - Only canonical staging flag `cover_letter_premium_prompt_v2=1` was enabled; aliases remained unset, quality repair remained OFF, and path flags stayed unchanged.
 - Staging smoke returned `STAGING_GREEN`: 8/8 PASS, no PR246 forbidden terms, no PR248 no-CV leakage, GPT stayed on GPT, Qwen stayed legacy-only, production untouched, no app PR/MCP/source-code changes.
+
+## 2026-06-30 — MCP policy kernel and tools/list metadata checkpoint PR101 merged
+
+**Pages créées** :
+- `wiki/sources/2026-06-30-pr101-mcp-policy-kernel-tools-list-checkpoint.md`
+
+**Pages mises à jour** :
+- `wiki/product/chatgpt-app-sdk-roadmap.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**Points notables** :
+- PR288 `PR99.3: harden MCP bearer quota caller key canonicalization` merged into `application-os-foundation` as `f1b233b0069b12872ea25ffc7c3594eba956ffdf`.
+- PR289 `PR100: add authenticated MCP protocol and session envelope boundary` merged into `application-os-foundation` as `dc02d692a47be673ade48ba5a1de1842807532da`.
+- PR290 `PR101: add MCP policy kernel and tools/list metadata boundary` merged into `application-os-foundation` as `44c70ddcad5f4bcf36e5076ec0a7c67a0facf395`.
+- Production `/mcp` can now verify bearer tokens, apply trusted caller quota, run the authenticated JSON-RPC protocol shell, and return authenticated metadata-only `tools/list`.
+- `tools/call`, MCP execution, provider calls, write actions, refresh tokens, production account-link lifecycle expansion, private beta, public launch, and UI changes remain blocked.
+- The next app PR is PR102 `tools/call` read-only boundary plus hardening.
+
+## 2026-06-30 — MCP tools/call and schema matcher hardening checkpoint PR102/PR103 merged
+
+**Pages créées** :
+- `wiki/sources/2026-06-30-pr102-pr103-mcp-tools-call-schema-hardening-checkpoint.md`
+
+**Pages mises à jour** :
+- `wiki/product/chatgpt-app-sdk-roadmap.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**Points notables** :
+- PR291 `PR102: add MCP tools/call read-only boundary and hardening` merged into `application-os-foundation` as `1a18564865313fad679d9ae2268fb561b1cf16c8`.
+- PR292 `PR103: add MCP schema normalization and matcher hardening` merged into `application-os-foundation` as `d269069922cd3e4e183223891f1fb175a9bbe568`.
+- Production `/mcp` can now verify bearer tokens, apply trusted caller quota, run the authenticated JSON-RPC protocol shell, return authenticated metadata-only `tools/list`, and accept validated read-only `tools/call`.
+- Provider calls, write actions, outbound HTTP/model calls, refresh tokens, production account-link lifecycle expansion, private beta, public launch, and UI changes remain blocked.
+- The next app PR is PR104 private beta gate.
+
+## 2026-07-01 — MCP read-only summary execution checkpoint PR106 merged
+
+**Pages créées** :
+- `wiki/sources/2026-07-01-pr106-mcp-readonly-summary-execution-checkpoint.md`
+
+**Pages mises à jour** :
+- `wiki/product/chatgpt-app-sdk-roadmap.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**Points notables** :
+- PR296 `Add production MCP readonly summary executor` merged into `application-os-foundation` as `557b7799eedd6a7605c1da74baa62357974e6629`.
+- Production `/mcp` validated read-only `tools/call` now executes the four existing Convex internal summary queries after bearer auth, quota, private-beta, launch-readiness, policy, and tools-call validation.
+- The executor accepts only mapped public safe ref IDs, uses server-only owner identity, validates safe result kinds, and maps dependency/query/stalled/malformed failures to safe `Read-only summary unavailable.` errors.
+- Provider calls, writes/mutations, outbound HTTP/model calls, OAuth/token issuance changes, refresh tokens, account-link lifecycle expansion, public launch, UI changes, export/send/submit/apply, and billing/entitlements remain blocked.
+
+## 2026-07-01 — MCP tools/call synthetic metadata cleanup checkpoint PR300 merged
+
+**Pages créées** :
+- `wiki/sources/2026-07-01-pr300-mcp-tools-call-synthetic-metadata-cleanup-checkpoint.md`
+
+**Pages mises à jour** :
+- `wiki/product/chatgpt-app-sdk-roadmap.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**Points notables** :
+- PR300 `Remove stale production tools-call synthetic metadata` merged into `application-os-foundation` as `d0141ea1ec3a5b21598190bb62e3577779421fd9`.
+- Active production `tools/call` boundary no longer exports or builds stale PR102 synthetic result kind/type/builder/status/phase metadata.
+- PR106 read-only summary execution and PR107 status normalization remain the real output/status owners.
+- Validation recorded on PR300: local Vitest boundary/route and executor/status-normalizer tests, TypeScript, `diff --check`, Fallow audit, GitHub CI/Playwright/Semgrep, Codex Review, and Qodo review passed or reported no material issues.
+- Provider calls, writes/mutations, outbound HTTP/model calls, OAuth/token issuance changes, refresh tokens, account-link lifecycle expansion, public launch, UI changes, export/send/submit/apply, approved-answer copy, and billing/entitlements remain blocked.
+
+## 2026-07-01 — MCP readiness diagnostics checkpoint PR301 merged
+
+**Pages créées** :
+- `wiki/sources/2026-07-01-pr301-mcp-readiness-diagnostics-checkpoint.md`
+
+**Pages mises à jour** :
+- `wiki/product/chatgpt-app-sdk-roadmap.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**Points notables** :
+- PR301 `PR301: Add MCP readiness cleanup diagnostic evidence` merged into `application-os-foundation` as `149ef8e8fbbb46bab0435f04eb1487c1b78b0040`.
+- Launch-readiness evidence now accepts optional strict boolean `toolsCallSyntheticMetadataCleanupReviewed` from `MCP_OAUTH_PRODUCTION_LAUNCH_TOOLS_CALL_SYNTHETIC_METADATA_CLEANUP_REVIEWED`.
+- The PR301 field is diagnostic-only and remains outside readiness completeness, so false or missing diagnostic evidence does not block an otherwise complete readiness decision.
+- Malformed non-boolean diagnostic evidence still fails closed as `launch_config_invalid`.
+- Local tests, TypeScript, `diff --check`, Fallow audit, GitHub CI/Playwright/Semgrep, Codex Review, CodeRabbit status, and Qodo summary/review-thread checks were recorded before merge.
+- Provider calls, writes/mutations, outbound HTTP/model calls, OAuth/token issuance changes, refresh tokens, account-link lifecycle expansion, public launch, UI changes, export/send/submit/apply, approved-answer copy, and billing/entitlements remain blocked.
+
+## 2026-07-02 — MCP Stage 3 read-side materialization checkpoint PR302/PR303 merged
+
+**Pages créées** :
+- `wiki/sources/2026-07-02-pr302-pr303-mcp-stage3-readside-materialization-checkpoint.md`
+
+**Pages mises à jour** :
+- `wiki/product/chatgpt-app-sdk-roadmap.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**Points notables** :
+- PR302 `Add MCP Stage 3 read-side materialization` merged into `application-os-foundation` as `262444e5ea4ed24e493fd93599452ddb56a0c317`.
+- PR303 `Post-merge Stage 3 MCP proof` merged into `application-os-foundation` as `f63d35dc6f8ae765d9afb004991e2a2aeb6c5679`.
+- PR302 materializes safe Stage 3 MCP read-side `applicationContexts` and `applicationPackages` from proposal save/update paths and reconciles stale derived rows when jobs, profiles, ownership, or proposals become invalid.
+- PR303 records a proof-only audit and adds a focused regression for owner-profile deletion cleanup; it does not grant runtime or production permission.
+- PR303 was marked ready and merged after green GitHub checks, latest-head Codex review with no major issues, CodeRabbit full-review completion, and Qodo review updated to the latest head with no new findings.
+- Provider calls, write actions, outbound HTTP/model calls, refresh tokens, account-link lifecycle expansion, production/shared database access, public launch, UI changes, export/send/submit/apply, approved-answer copy, and billing/entitlements remain blocked.

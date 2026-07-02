@@ -2,7 +2,7 @@
 title: Index du Wiki — twoweeks
 category: overview
 sticker: emoji//1f9c6
-updated: 2026-06-27
+updated: 2026-07-02
 ---
 
 # Index du Wiki · twoweeks (v2)
@@ -20,7 +20,7 @@ Le contrôle opératoire du repo reste défini par `WIKI_SCHEMA.md` puis `CLAUDE
 | État produit | [[overview]] | [[entities/twoweeks]], [[product/product-roadmap]], [[product/product-vision]] |
 | Planning IA shadow | [[product/ai-product-model]] | [[tech/proposal-ai-routing-and-inline-diff]], [[sources/2026-05-25-proposal-generation-truth-planner]] |
 | Cover-letter quality | [[tasks/2026-06-22-cover-letter-quality-production-roadmap]] | [[sources/2026-06-24-cover-letter-mistral-v2-staging-green]], [[sources/2026-06-23-cover-letter-quality-pr249-staged-internal-gate]], [[sources/2026-06-23-release-orchestration-staging-pr87-8-checkpoint]], [[sources/2026-06-23-cover-letter-quality-pr248-merge-checkpoint]], [[sources/2026-06-23-cover-letter-quality-pr246-merge-checkpoint]] |
-| ChatGPT App roadmap | [[product/chatgpt-app-sdk-roadmap]] | [[product/manual-application-handoff]], [[sources/2026-06-27-pr87-17d-mcp-oauth-local-dev-route-adapter-checkpoint]], [[sources/2026-06-26-pr87-17c1-mcp-oauth-login-return-continuation-checkpoint]], [[sources/2026-06-26-pr87-17c0-mcp-oauth-login-return-convention-checkpoint]], [[sources/2026-06-26-pr87-17b-mcp-oauth-authorization-intent-checkpoint]], [[sources/2026-06-26-pr87-17a-mcp-oauth-authorization-request-boundary-checkpoint]], [[sources/2026-06-25-pr87-16-mcp-account-link-lifecycle-checkpoint]], [[sources/2026-06-25-pr87-15d-mcp-auth-local-runtime-wiring-checkpoint]], [[sources/2026-06-25-pr87-15c-mcp-auth-composition-checkpoint]], [[sources/2026-06-25-pr87-15b1-mcp-account-link-lookup-adapter-checkpoint]], [[sources/2026-06-25-pr87-15b0-mcp-account-link-canonical-storage-checkpoint]], [[sources/2026-06-25-pr87-15a-mcp-stytch-bearer-verifier-checkpoint]], [[sources/2026-06-24-pr87-14b-mcp-auth-dev-endpoint-wiring-checkpoint]], [[sources/2026-06-24-pr87-14a-mcp-auth-request-orchestrator-checkpoint]], [[sources/2026-06-24-pr87-13-mcp-auth-policy-boundary-checkpoint]], [[sources/2026-06-24-pr87-12-mcp-dev-fixture-demo-checkpoint]], [[sources/2026-06-24-pr87-10-mcp-dev-endpoint-blocked-reachability-checkpoint]], [[sources/2026-06-23-release-orchestration-staging-pr87-8-checkpoint]], [[sources/2026-06-23-twoweeks-mcp-chatgpt-app-sdk-roadmap-checkpoint]], [[sources/2026-06-19-pr80b-safe-application-handoff-while-ats-access-pending]] |
+| ChatGPT App roadmap | [[product/chatgpt-app-sdk-roadmap]] | [[sources/2026-07-02-pr302-pr303-mcp-stage3-readside-materialization-checkpoint]], [[sources/2026-07-01-pr301-mcp-readiness-diagnostics-checkpoint]], [[sources/2026-07-01-pr300-mcp-tools-call-synthetic-metadata-cleanup-checkpoint]], [[sources/2026-07-01-pr107-pr108-mcp-summary-status-launch-readiness-checkpoint]], [[sources/2026-07-01-pr106-mcp-readonly-summary-execution-checkpoint]], [[sources/2026-06-30-pr102-pr103-mcp-tools-call-schema-hardening-checkpoint]], [[sources/2026-06-30-pr101-mcp-policy-kernel-tools-list-checkpoint]], [[sources/2026-06-30-pr99-2-mcp-bearer-quota-trusted-caller-checkpoint]], [[sources/2026-06-30-pr99-1-mcp-bearer-verification-hardening-bug-list]], [[sources/2026-06-29-pr98-mcp-oauth-access-token-issuance-checkpoint]], [[sources/2026-06-29-pr96-1-mcp-oauth-redirect-uri-normalization-checkpoint]], [[sources/2026-06-28-pr96-mcp-oauth-production-authorization-code-checkpoint]], [[sources/2026-06-27-pr94-mcp-oauth-production-authorize-preauth-checkpoint]], [[sources/2026-06-27-pr89-pr93-mcp-oauth-production-gate-route-shell-checkpoint]], [[product/manual-application-handoff]] |
 | Manual application handoff | [[product/manual-application-handoff]] | [[product/chatgpt-app-sdk-roadmap]], [[sources/2026-06-23-twoweeks-mcp-chatgpt-app-sdk-roadmap-checkpoint]] |
 | Parser / vérité CV | [[concepts/cv-parsing-pipeline]] | [[concepts/cv-families]], [[tech/import-ocr-pipeline]] |
 | Jobs / match | [[product/job-library]] | [[product/job-match-review]] |
@@ -86,7 +86,7 @@ Cette carte est un routeur de lecture pour agents LLM. Elle ne remplace pas les 
 |------|--------|--------|------|
 | [[product/ai-product-model\|AI Product Model]] | 3 modes IA, rulebook, qualité writing, and Planner Agent shadow chain | current | ai, ux, modes |
 | [[product/ai-consistency-p0-editor-ai\|AI Consistency P0 — Closure Audit]] | Closure audit snapshot du rulebook AI editor, preview, telemetry et tailoring | current | ai, editor, rulebook |
-| [[product/chatgpt-app-sdk-roadmap\|ChatGPT/App SDK Roadmap]] | MCP/App SDK PR94 merged production `/oauth/authorize` ownerless pre-auth intent creation behind PR89 activation, PR90 status, PR92 preflight, and PR93 shells; `/oauth/callback` and `/mcp` remain inert, next slice is production login-return owner binding | current | chatgpt-app, apps-sdk |
+| [[product/chatgpt-app-sdk-roadmap\|ChatGPT/App SDK Roadmap]] | MCP/App SDK PR303 post-merge proof merged after PR302 Stage 3 read-side materialization | current | chatgpt-app, apps-sdk |
 | [[product/job-library\|Job Library]] | Jobs sauvegardés, Job Brief editable et documents liés | current | jobs, library |
 | [[product/job-match-review\|Job Match Review]] | Match comme indicateur d'attention utilisateur et dogfood interne | current | jobs, match |
 | [[product/kpis\|KPIs]] | Métriques de succès produit | current | kpi, métriques |
@@ -118,10 +118,19 @@ Cette carte est un routeur de lecture pour agents LLM. Elle ne remplace pas les 
 
 ## Sources
 
-Cover-letter quality has a merged PR249 staged internal Mistral V2 gate and a green Convex staging checkpoint on `dev:neat-starfish-33`; production full GO and quality repair remain separate/not approved. The MCP/App SDK track now has PR87.10 reachability, PR87.11 auth architecture, PR87.12 local/dev fixture demo, PR87.13 pure auth-policy boundary, PR87.14A auth request orchestrator boundary, PR87.14B local/dev auth endpoint wiring, PR87.15A server-only Stytch bearer verifier boundary, PR87.15B0 canonical account-link storage/index, PR87.15B1 server-only account-link lookup adapter, PR87.15C non-production auth composition boundary, PR87.15D local/dev runtime auth composition wiring, PR87.16 authoritative server-only account-link lifecycle, PR87.17A OAuth authorization request boundary, PR87.17B OAuth authorization-intent storage, PR87.17C0 OAuth login-return convention, PR87.17C1 OAuth login-return continuation boundary, and PR87.17D local/dev-only OAuth route adapter merged, while production MCP/OAuth/token/account-link runtime remains blocked with PR80B implemented and PR88/PR89 blocked.
+Cover-letter quality has a merged PR249 staged internal Mistral V2 gate and a green Convex staging checkpoint on `dev:neat-starfish-33`; production full GO and quality repair remain separate/not approved. The MCP/App SDK track now has PR87.17D local/dev-only OAuth route adapter, PR89 activation gate, PR90 operational status, PR92 route preflight, PR93 guarded inert production route shells, PR94 production `/oauth/authorize` pre-auth creation, PR95 login-return owner binding, PR96 authorization-code issuance, PR96.1 redirect URI allowlist normalization, PR97 authorization-code redemption validation, PR98 access-token issuance, PR99 production `/mcp` bearer-token verification, PR99.1 OAuth discovery/quota/time/binding hardening, PR99.2 trusted-socket bearer quota hardening, PR99.3 caller-key canonicalization, PR100 authenticated MCP protocol/session envelope, PR101 production policy kernel plus metadata-only `tools/list`, PR102 read-only `tools/call`, PR103 schema matcher hardening, PR104 private beta gate, PR105 launch-readiness boundary, PR295 default Vite launch-readiness wiring, PR106 read-only summary execution, PR107 summary status normalization, PR108 launch-readiness summary evidence hardening, PR300 stale synthetic tools-call metadata cleanup, PR301 diagnostic-only cleanup-review evidence, PR302 Stage 3 read-side materialization, and PR303 post-merge proof merged. Provider calls, write actions, refresh tokens, production account-link lifecycle expansion, and public launch remain blocked; PR80B remains the safe manual handoff path while ATS authorization is pending.
 
 | Page | Type | Date | Status |
 |------|------|------|--------|
+| [[sources/2026-07-02-pr302-pr303-mcp-stage3-readside-materialization-checkpoint\|MCP Stage 3 Read-side Materialization Checkpoint - PR302/PR303]] | checkpoint | 2026-07-02 | current |
+| [[sources/2026-07-01-pr301-mcp-readiness-diagnostics-checkpoint\|MCP Readiness Diagnostics Checkpoint - PR301]] | checkpoint | 2026-07-01 | current |
+| [[sources/2026-07-01-pr300-mcp-tools-call-synthetic-metadata-cleanup-checkpoint\|MCP Tools Call Synthetic Metadata Cleanup Checkpoint - PR300]] | checkpoint | 2026-07-01 | current |
+| [[sources/2026-07-01-pr107-pr108-mcp-summary-status-launch-readiness-checkpoint\|MCP Summary Status And Launch Readiness Checkpoint - PR107/PR108]] | checkpoint | 2026-07-01 | current |
+| [[sources/2026-07-01-pr106-mcp-readonly-summary-execution-checkpoint\|MCP Read-only Summary Execution Checkpoint - PR106]] | checkpoint | 2026-07-01 | current |
+| [[sources/2026-06-30-pr102-pr103-mcp-tools-call-schema-hardening-checkpoint\|MCP Tools Call And Schema Matcher Hardening Checkpoint - PR102/PR103]] | checkpoint | 2026-06-30 | current |
+| [[sources/2026-06-30-pr101-mcp-policy-kernel-tools-list-checkpoint\|MCP Policy Kernel And Tools List Metadata Checkpoint - PR101]] | checkpoint | 2026-06-30 | current |
+| [[sources/2026-06-30-pr99-2-mcp-bearer-quota-trusted-caller-checkpoint\|MCP Bearer Quota Trusted Caller Checkpoint - PR99.2]] | checkpoint | 2026-06-30 | current |
+| [[sources/2026-06-30-pr99-1-mcp-bearer-verification-hardening-bug-list\|MCP Bearer Verification Hardening Bug List - PR99.1]] | checkpoint | 2026-06-30 | current |
 | [[sources/2026-04-03-workspace-security-rgpd-audit\|Workspace Security / RGPD Audit]] | analysis | 2026-04-03 | current |
 | [[sources/2026-04-09-decisions-cvforge-sprint\|Décisions sprint — parsing & features]] | conversation | 2026-04-09 | current |
 | [[sources/2026-04-09-tweet-karpathy-llm-wiki\|Tweet Karpathy — LLM Knowledge Bases]] | tweet | 2026-04-09 | current |
@@ -228,6 +237,9 @@ Cover-letter quality has a merged PR249 staged internal Mistral V2 gate and a gr
 | [[sources/2026-06-26-pr87-17c0-mcp-oauth-login-return-convention-checkpoint\|MCP OAuth Login Return Convention Checkpoint - PR87.17C0]] | analysis | 2026-06-26 | current |
 | [[sources/2026-06-27-pr87-17d-mcp-oauth-local-dev-route-adapter-checkpoint\|MCP OAuth Local Dev Route Adapter Checkpoint - PR87.17D]] | analysis | 2026-06-27 | current |
 | [[sources/2026-06-26-pr87-17c1-mcp-oauth-login-return-continuation-checkpoint\|MCP OAuth Login Return Continuation Boundary Checkpoint - PR87.17C1]] | analysis | 2026-06-26 | current |
+| [[sources/2026-06-29-pr98-mcp-oauth-access-token-issuance-checkpoint\|MCP OAuth Access Token Issuance Checkpoint - PR98]] | analysis | 2026-06-29 | current |
+| [[sources/2026-06-29-pr96-1-mcp-oauth-redirect-uri-normalization-checkpoint\|MCP OAuth Redirect URI Normalization Checkpoint - PR96.1]] | analysis | 2026-06-29 | current |
+| [[sources/2026-06-28-pr96-mcp-oauth-production-authorization-code-checkpoint\|MCP OAuth Production Authorization Code Checkpoint - PR96]] | analysis | 2026-06-28 | current |
 | [[sources/2026-06-25-pr87-16-mcp-account-link-lifecycle-checkpoint\|MCP Account-Link Lifecycle Checkpoint - PR87.16]] | analysis | 2026-06-25 | current |
 | [[sources/2026-06-24-cover-letter-mistral-v2-staging-green\|Cover Letter Mistral V2 Staging Green Checkpoint]] | analysis | 2026-06-24 | current |
 | [[sources/2026-06-23-twoweeks-mcp-chatgpt-app-sdk-roadmap-checkpoint\|Twoweeks MCP / ChatGPT App SDK Roadmap Checkpoint]] | analysis | 2026-06-23 | current |
@@ -298,8 +310,8 @@ Cover-letter quality has a merged PR249 staged internal Mistral V2 gate and a gr
 
 ## Statistiques
 
-- **Pages actives** : 152 (5 overview, 1 entité, 2 concepts, 8 design, 9 product, 3 strategy, 3 meta, 92 sources, 14 tech, 7 howto, 6 tasks, 2 outputs)
+- **Pages actives** : 153 (5 overview, 1 entité, 2 concepts, 8 design, 9 product, 3 strategy, 3 meta, 93 sources, 14 tech, 7 howto, 6 tasks, 2 outputs)
 - **Pages archivées** : 2
 - **Sources dans `raw/`** : 91
 - **Sources en attente dans `rawinput/`** : 0
-- **Dernière mise à jour** : 2026-06-25
+- **Dernière mise à jour** : 2026-06-29
