@@ -19,7 +19,7 @@ PR304 is a draft proof slice for the ChatGPT private-beta connector boundary aft
 
 - Base app state: `origin/application-os-foundation` after PR303 merge commit `f63d35dc6f8ae765d9afb004991e2a2aeb6c5679`.
 - App branch: `codex/mcp-pr304-live-connector-smoke`.
-- Draft app PR: `https://github.com/panamini/neyssan/pull/304`.
+- App PR: `https://github.com/panamini/neyssan/pull/304`.
 - Tunnel used for proof: `https://are-effort-skirts-hints.trycloudflare.com`.
 - Connector used for proof: `twoweeks-mcp-pr304-fixed-1783182736885`.
 - The tunnel was created with `cloudflared tunnel --config /dev/null --no-autoupdate --loglevel info --protocol http2 --url http://localhost:5187`.
