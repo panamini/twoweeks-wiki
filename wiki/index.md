@@ -2,7 +2,7 @@
 title: Index du Wiki — twoweeks
 category: overview
 sticker: emoji//1f9c6
-updated: 2026-07-02
+updated: 2026-07-04
 ---
 
 # Index du Wiki · twoweeks (v2)
@@ -20,7 +20,7 @@ Le contrôle opératoire du repo reste défini par `WIKI_SCHEMA.md` puis `CLAUDE
 | État produit | [[overview]] | [[entities/twoweeks]], [[product/product-roadmap]], [[product/product-vision]] |
 | Planning IA shadow | [[product/ai-product-model]] | [[tech/proposal-ai-routing-and-inline-diff]], [[sources/2026-05-25-proposal-generation-truth-planner]] |
 | Cover-letter quality | [[tasks/2026-06-22-cover-letter-quality-production-roadmap]] | [[sources/2026-06-24-cover-letter-mistral-v2-staging-green]], [[sources/2026-06-23-cover-letter-quality-pr249-staged-internal-gate]], [[sources/2026-06-23-release-orchestration-staging-pr87-8-checkpoint]], [[sources/2026-06-23-cover-letter-quality-pr248-merge-checkpoint]], [[sources/2026-06-23-cover-letter-quality-pr246-merge-checkpoint]] |
-| ChatGPT App roadmap | [[product/chatgpt-app-sdk-roadmap]] | [[sources/2026-07-02-pr302-pr303-mcp-stage3-readside-materialization-checkpoint]], [[sources/2026-07-01-pr301-mcp-readiness-diagnostics-checkpoint]], [[sources/2026-07-01-pr300-mcp-tools-call-synthetic-metadata-cleanup-checkpoint]], [[sources/2026-07-01-pr107-pr108-mcp-summary-status-launch-readiness-checkpoint]], [[sources/2026-07-01-pr106-mcp-readonly-summary-execution-checkpoint]], [[sources/2026-06-30-pr102-pr103-mcp-tools-call-schema-hardening-checkpoint]], [[sources/2026-06-30-pr101-mcp-policy-kernel-tools-list-checkpoint]], [[sources/2026-06-30-pr99-2-mcp-bearer-quota-trusted-caller-checkpoint]], [[sources/2026-06-30-pr99-1-mcp-bearer-verification-hardening-bug-list]], [[sources/2026-06-29-pr98-mcp-oauth-access-token-issuance-checkpoint]], [[sources/2026-06-29-pr96-1-mcp-oauth-redirect-uri-normalization-checkpoint]], [[sources/2026-06-28-pr96-mcp-oauth-production-authorization-code-checkpoint]], [[sources/2026-06-27-pr94-mcp-oauth-production-authorize-preauth-checkpoint]], [[sources/2026-06-27-pr89-pr93-mcp-oauth-production-gate-route-shell-checkpoint]], [[product/manual-application-handoff]] |
+| ChatGPT App roadmap | [[product/chatgpt-app-sdk-roadmap]] | [[howto/chatgpt-mcp-private-beta-tunnel-connector]], [[sources/2026-07-04-pr304-live-mcp-connector-smoke-checkpoint]], [[sources/2026-07-02-pr302-pr303-mcp-stage3-readside-materialization-checkpoint]], [[sources/2026-07-01-pr301-mcp-readiness-diagnostics-checkpoint]], [[sources/2026-07-01-pr300-mcp-tools-call-synthetic-metadata-cleanup-checkpoint]], [[sources/2026-07-01-pr107-pr108-mcp-summary-status-launch-readiness-checkpoint]], [[sources/2026-07-01-pr106-mcp-readonly-summary-execution-checkpoint]], [[sources/2026-06-30-pr102-pr103-mcp-tools-call-schema-hardening-checkpoint]], [[sources/2026-06-30-pr101-mcp-policy-kernel-tools-list-checkpoint]], [[sources/2026-06-30-pr99-2-mcp-bearer-quota-trusted-caller-checkpoint]], [[sources/2026-06-30-pr99-1-mcp-bearer-verification-hardening-bug-list]], [[sources/2026-06-29-pr98-mcp-oauth-access-token-issuance-checkpoint]], [[sources/2026-06-29-pr96-1-mcp-oauth-redirect-uri-normalization-checkpoint]], [[sources/2026-06-28-pr96-mcp-oauth-production-authorization-code-checkpoint]], [[sources/2026-06-27-pr94-mcp-oauth-production-authorize-preauth-checkpoint]], [[sources/2026-06-27-pr89-pr93-mcp-oauth-production-gate-route-shell-checkpoint]], [[product/manual-application-handoff]] |
 | Manual application handoff | [[product/manual-application-handoff]] | [[product/chatgpt-app-sdk-roadmap]], [[sources/2026-06-23-twoweeks-mcp-chatgpt-app-sdk-roadmap-checkpoint]] |
 | Parser / vérité CV | [[concepts/cv-parsing-pipeline]] | [[concepts/cv-families]], [[tech/import-ocr-pipeline]] |
 | Jobs / match | [[product/job-library]] | [[product/job-match-review]] |
@@ -30,7 +30,7 @@ Le contrôle opératoire du repo reste défini par `WIKI_SCHEMA.md` puis `CLAUDE
 | Design / ATS / motion | [[design/ats-safety]] | [[design/document-token-contract]], [[design/motion-system]], [[design/brand-voice]] |
 | ATS scoring / health | [[tech/cv-ats-audit-heuristic]] | [[design/ats-safety]], [[concepts/cv-parsing-pipeline]] |
 | Langue / localisation | [[strategy/language-localization]] | [[design/locale-typography-rules]], [[product/product-roadmap]] |
-| Opérations locales | [[howto/local-parser-operations]] | [[tech/local-vs-remote-parser-architecture]] |
+| Opérations locales | [[howto/local-parser-operations]] | [[howto/chatgpt-mcp-private-beta-tunnel-connector]], [[tech/local-vs-remote-parser-architecture]] |
 | Règles wiki | [[meta/llm-wiki-pattern]] | [[meta/temporal-management]], [[meta/codex-prompting-standards]] |
 
 Cette carte est un routeur de lecture pour agents LLM. Elle ne remplace pas les pages durables.
@@ -86,7 +86,7 @@ Cette carte est un routeur de lecture pour agents LLM. Elle ne remplace pas les 
 |------|--------|--------|------|
 | [[product/ai-product-model\|AI Product Model]] | 3 modes IA, rulebook, qualité writing, and Planner Agent shadow chain | current | ai, ux, modes |
 | [[product/ai-consistency-p0-editor-ai\|AI Consistency P0 — Closure Audit]] | Closure audit snapshot du rulebook AI editor, preview, telemetry et tailoring | current | ai, editor, rulebook |
-| [[product/chatgpt-app-sdk-roadmap\|ChatGPT/App SDK Roadmap]] | MCP/App SDK PR303 post-merge proof merged after PR302 Stage 3 read-side materialization | current | chatgpt-app, apps-sdk |
+| [[product/chatgpt-app-sdk-roadmap\|ChatGPT/App SDK Roadmap]] | MCP/App SDK PR304 draft live connector smoke after PR303 post-merge proof and PR302 Stage 3 read-side materialization | current | chatgpt-app, apps-sdk |
 | [[product/job-library\|Job Library]] | Jobs sauvegardés, Job Brief editable et documents liés | current | jobs, library |
 | [[product/job-match-review\|Job Match Review]] | Match comme indicateur d'attention utilisateur et dogfood interne | current | jobs, match |
 | [[product/kpis\|KPIs]] | Métriques de succès produit | current | kpi, métriques |
@@ -116,12 +116,19 @@ Cette carte est un routeur de lecture pour agents LLM. Elle ne remplace pas les 
 
 ---
 
+## Howto
+
+| Page | Résumé | Status | Tags |
+|------|--------|--------|------|
+| [[howto/chatgpt-mcp-private-beta-tunnel-connector\|ChatGPT MCP Private Beta Tunnel Connector Runbook]] | Procedure manuelle en francais pour creer le tunnel Cloudflare quick tunnel, configurer le connecteur ChatGPT OAuth prive, et verifier le smoke MCP read-only | current | chatgpt-app, mcp, cloudflare |
+
 ## Sources
 
-Cover-letter quality has a merged PR249 staged internal Mistral V2 gate and a green Convex staging checkpoint on `dev:neat-starfish-33`; production full GO and quality repair remain separate/not approved. The MCP/App SDK track now has PR87.17D local/dev-only OAuth route adapter, PR89 activation gate, PR90 operational status, PR92 route preflight, PR93 guarded inert production route shells, PR94 production `/oauth/authorize` pre-auth creation, PR95 login-return owner binding, PR96 authorization-code issuance, PR96.1 redirect URI allowlist normalization, PR97 authorization-code redemption validation, PR98 access-token issuance, PR99 production `/mcp` bearer-token verification, PR99.1 OAuth discovery/quota/time/binding hardening, PR99.2 trusted-socket bearer quota hardening, PR99.3 caller-key canonicalization, PR100 authenticated MCP protocol/session envelope, PR101 production policy kernel plus metadata-only `tools/list`, PR102 read-only `tools/call`, PR103 schema matcher hardening, PR104 private beta gate, PR105 launch-readiness boundary, PR295 default Vite launch-readiness wiring, PR106 read-only summary execution, PR107 summary status normalization, PR108 launch-readiness summary evidence hardening, PR300 stale synthetic tools-call metadata cleanup, PR301 diagnostic-only cleanup-review evidence, PR302 Stage 3 read-side materialization, and PR303 post-merge proof merged. Provider calls, write actions, refresh tokens, production account-link lifecycle expansion, and public launch remain blocked; PR80B remains the safe manual handoff path while ATS authorization is pending.
+Cover-letter quality has a merged PR249 staged internal Mistral V2 gate and a green Convex staging checkpoint on `dev:neat-starfish-33`; production full GO and quality repair remain separate/not approved. The MCP/App SDK track now has PR87.17D local/dev-only OAuth route adapter, PR89 activation gate, PR90 operational status, PR92 route preflight, PR93 guarded inert production route shells, PR94 production `/oauth/authorize` pre-auth creation, PR95 login-return owner binding, PR96 authorization-code issuance, PR96.1 redirect URI allowlist normalization, PR97 authorization-code redemption validation, PR98 access-token issuance, PR99 production `/mcp` bearer-token verification, PR99.1 OAuth discovery/quota/time/binding hardening, PR99.2 trusted-socket bearer quota hardening, PR99.3 caller-key canonicalization, PR100 authenticated MCP protocol/session envelope, PR101 production policy kernel plus metadata-only `tools/list`, PR102 read-only `tools/call`, PR103 schema matcher hardening, PR104 private beta gate, PR105 launch-readiness boundary, PR295 default Vite launch-readiness wiring, PR106 read-only summary execution, PR107 summary status normalization, PR108 launch-readiness summary evidence hardening, PR300 stale synthetic tools-call metadata cleanup, PR301 diagnostic-only cleanup-review evidence, PR302 Stage 3 read-side materialization, and PR303 post-merge proof merged. Draft PR304 proves a local/private-beta ChatGPT connector smoke through an ephemeral Cloudflare quick tunnel with real read-side `application_package` data. Provider calls, write actions, refresh tokens, production account-link lifecycle expansion, and public launch remain blocked; PR80B remains the safe manual handoff path while ATS authorization is pending.
 
 | Page | Type | Date | Status |
 |------|------|------|--------|
+| [[sources/2026-07-04-pr304-live-mcp-connector-smoke-checkpoint\|PR304 Live MCP Connector Smoke Checkpoint]] | checkpoint | 2026-07-04 | current |
 | [[sources/2026-07-02-pr302-pr303-mcp-stage3-readside-materialization-checkpoint\|MCP Stage 3 Read-side Materialization Checkpoint - PR302/PR303]] | checkpoint | 2026-07-02 | current |
 | [[sources/2026-07-01-pr301-mcp-readiness-diagnostics-checkpoint\|MCP Readiness Diagnostics Checkpoint - PR301]] | checkpoint | 2026-07-01 | current |
 | [[sources/2026-07-01-pr300-mcp-tools-call-synthetic-metadata-cleanup-checkpoint\|MCP Tools Call Synthetic Metadata Cleanup Checkpoint - PR300]] | checkpoint | 2026-07-01 | current |

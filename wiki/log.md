@@ -2227,3 +2227,23 @@ Migration vers schema v2 : ajout rawinput/ (staging), gestion temporelle (status
 - PR303 records a proof-only audit and adds a focused regression for owner-profile deletion cleanup; it does not grant runtime or production permission.
 - PR303 was marked ready and merged after green GitHub checks, latest-head Codex review with no major issues, CodeRabbit full-review completion, and Qodo review updated to the latest head with no new findings.
 - Provider calls, write actions, outbound HTTP/model calls, refresh tokens, account-link lifecycle expansion, production/shared database access, public launch, UI changes, export/send/submit/apply, approved-answer copy, and billing/entitlements remain blocked.
+
+## 2026-07-04 — PR304 live MCP connector smoke and tunnel runbook
+
+**Pages créées** :
+- `wiki/sources/2026-07-04-pr304-live-mcp-connector-smoke-checkpoint.md`
+- `wiki/howto/chatgpt-mcp-private-beta-tunnel-connector.md`
+
+**Pages mises à jour** :
+- `wiki/product/chatgpt-app-sdk-roadmap.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**Points notables** :
+- Draft PR304 `PR304: prove live MCP connector smoke` was opened against `application-os-foundation`.
+- The local/private-beta proof used an ephemeral Cloudflare quick tunnel, `https://are-effort-skirts-hints.trycloudflare.com`, created with `cloudflared tunnel --config /dev/null --no-autoupdate --loglevel info --protocol http2 --url http://localhost:5187`.
+- `--config /dev/null` avoided the local default cloudflared config that otherwise routed quick tunnels to `http_status:404`.
+- A real ChatGPT connector completed OAuth and called `twoweeks.application_package.summarize`, returning `status=available`, `count=1`, and real read-side data.
+- The new French runbook documents the manual tunnel creation, ChatGPT connector OAuth fields, login expectations for Google/Clerk, smoke args, troubleshooting, and cleanup.
+- Provider calls, write actions, refresh tokens, billing, production/shared database mutation, public launch, raw data logging, and durable production deployment remain blocked.
