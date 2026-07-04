@@ -23,7 +23,7 @@ PR303 is merged and PR304 is draft/pending review. Do not rerun PR89, PR90, PR92
 
 PR80B manual handoff is already implemented as the safe delivery path while ATS authorization is pending, but live submit/apply remains blocked.
 
-The 2026-06-23 root orchestration checkpoint returned `PR87_8_GATE_STILL_BLOCKED` without requiring a corrective PR. MCP execution beyond the reviewed protocol, metadata, and read-only tool-call surfaces, provider calls, outbound HTTP/model calls, live submit/apply, approved-answer copy, `provider_verified_submitted`, production billing, PR88, private beta, and public launch remain blocked.
+The 2026-06-23 root orchestration checkpoint returned `PR87_8_GATE_STILL_BLOCKED` without requiring a corrective PR. MCP execution beyond the reviewed protocol, metadata, read-only tool-call surfaces, and reviewed local/private-beta connector smoke remains blocked; provider calls, outbound HTTP/model calls, live submit/apply, approved-answer copy, `provider_verified_submitted`, production billing, PR88, non-beta access, and public launch remain blocked.
 
 The PR245 reference is a shared branch/readiness checkpoint only. It does not move cover-letter prompt work into this roadmap, and it does not make MCP/App SDK launch work part of PR246.
 
