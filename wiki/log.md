@@ -2228,6 +2228,26 @@ Migration vers schema v2 : ajout rawinput/ (staging), gestion temporelle (status
 - PR303 was marked ready and merged after green GitHub checks, latest-head Codex review with no major issues, CodeRabbit full-review completion, and Qodo review updated to the latest head with no new findings.
 - Provider calls, write actions, outbound HTTP/model calls, refresh tokens, account-link lifecycle expansion, production/shared database access, public launch, UI changes, export/send/submit/apply, approved-answer copy, and billing/entitlements remain blocked.
 
+## 2026-07-05 — PR305 durable MCP connector proof checkpoint
+
+**Pages créées** :
+- `wiki/sources/2026-07-05-pr305-durable-mcp-connector-proof-checkpoint.md`
+
+**Pages mises à jour** :
+- `wiki/product/chatgpt-app-sdk-roadmap.md`
+- `wiki/howto/chatgpt-mcp-private-beta-tunnel-connector.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**Points notables** :
+- PR305 is a draft/proof-only durable-host follow-up for `https://mcp.twoweeks.ai/mcp`.
+- The named Cloudflare tunnel is `neyssan-mcp-pr305-twoweeks-ai` / `935a2064-9473-41bc-bd73-174660892847`.
+- Direct durable route/OAuth/token/MCP/read-side proof passed, including `tools/list` and `twoweeks.application_package.summarize` against real read-side data.
+- ChatGPT UI activation remains blocked until local Vite can render Clerk sign-in with `VITE_CLERK_PUBLISHABLE_KEY`.
+- The current ChatGPT redirect URL shape requires `https://chatgpt.com/connector/oauth/*`, not only `connector_platform_oauth_redirect`.
+- Provider calls, write actions, refresh tokens, billing, production/shared database mutation, public launch, and durable hosted production deployment remain blocked.
+
 ## 2026-07-04 — PR304 live MCP connector smoke and tunnel runbook
 
 **Pages créées** :
