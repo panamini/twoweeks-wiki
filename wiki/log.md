@@ -2241,7 +2241,7 @@ Migration vers schema v2 : ajout rawinput/ (staging), gestion temporelle (status
 - `wiki/log.md`
 
 **Points notables** :
-- PR304 `PR304: prove live MCP connector smoke` was opened against `application-os-foundation` and later marked ready for review after the continuation handle-length config fix.
+- PR304 `PR304: prove live MCP connector smoke` merged into `application-os-foundation` as `d158768d28e418aeca5e176e504b8cf79fb1a8c1` after the continuation handle-length config fix.
 - The local/private-beta proof used an ephemeral Cloudflare quick tunnel, `https://are-effort-skirts-hints.trycloudflare.com`, created with `cloudflared tunnel --config /dev/null --no-autoupdate --loglevel info --protocol http2 --url http://localhost:5187`.
 - `--config /dev/null` avoided the local default cloudflared config that otherwise routed quick tunnels to `http_status:404`.
 - A real ChatGPT connector completed OAuth and called `twoweeks.application_package.summarize`, returning `status=available`, `count=1`, and real read-side data.

@@ -13,13 +13,13 @@ related: [[product/chatgpt-app-sdk-roadmap]], [[howto/chatgpt-mcp-private-beta-t
 
 ## Summary
 
-PR304 is a draft proof slice for the ChatGPT private-beta connector boundary after PR303. It proves the local Vite/Convex OAuth/MCP/read-only summary path through a real ChatGPT connector and an ephemeral Cloudflare quick tunnel, without opening public launch or write surfaces.
+PR304 is a merged proof slice for the ChatGPT private-beta connector boundary after PR303. It proves the local Vite/Convex OAuth/MCP/read-only summary path through a real ChatGPT connector and an ephemeral Cloudflare quick tunnel, without opening public launch or write surfaces.
 
 ## Key points
 
 - Base app state: `origin/application-os-foundation` after PR303 merge commit `f63d35dc6f8ae765d9afb004991e2a2aeb6c5679`.
 - App branch: `codex/mcp-pr304-live-connector-smoke`.
-- App PR: `https://github.com/panamini/neyssan/pull/304`.
+- App PR: `https://github.com/panamini/neyssan/pull/304`, merged as `d158768d28e418aeca5e176e504b8cf79fb1a8c1`.
 - Tunnel used for proof: `https://are-effort-skirts-hints.trycloudflare.com`.
 - Connector used for proof: `twoweeks-mcp-pr304-fixed-1783182736885`.
 - The tunnel was created with `cloudflared tunnel --config /dev/null --no-autoupdate --loglevel info --protocol http2 --url http://localhost:5187`.
