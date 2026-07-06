@@ -1,7 +1,7 @@
 ---
 title: "Log — twoweeks Wiki"
 category: overview
-updated: 2026-07-01
+updated: 2026-07-06
 ---
 
 # Log du Wiki · twoweeks
@@ -14,6 +14,26 @@ grep "^## \[" wiki/log.md | grep "ingest"  # Tous les ingests
 ```
 
 ---
+
+## [2026-07-06] direct-update | PR305 durable connector confidential-client proof update
+
+**Agent** : Codex
+**Mode** : direct-update
+**Source** : PR305 local proof on `https://mcp.twoweeks.ai/mcp`
+
+**Pages mises à jour** :
+- `wiki/howto/chatgpt-mcp-private-beta-tunnel-connector.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**Points notables** :
+- The current ChatGPT connector path requires a confidential OAuth client: `local-chatgpt-client`, a generated per-run client secret in ChatGPT, SHA-256 digest in Vite, and `client_secret_post`. The older `token_endpoint_auth = none` instruction is stale for this path.
+- Safe route proof passed through the durable named tunnel: authorization-server metadata advertised `client_secret_post`, protected-resource metadata returned `https://mcp.twoweeks.ai/mcp`, `/sign-in` rendered without missing Clerk key, and `GET /mcp` returned the expected unsupported-method boundary.
+- Local blockers found and classified: `pre_auth_create_failed` meant missing Convex admin auth in Vite; `owner_binding_failed` after Clerk token retrieval meant `CLERK_JWT_ISSUER_DOMAIN` did not match the active Clerk issuer origin.
+- Final ChatGPT UI proof remained blocked after callback: `/oauth/continue` returned 200 and redirected to ChatGPT, but a local diagnostic proxy that recorded only method/path/status saw no `POST /oauth/token`; local Convex had a recent pending OAuth code and no fresh access token. Classification: `BLOCKED_CHATGPT_UI`.
+
+**Open items** : Ask ChatGPT/OpenAI connector runtime owners for callback/token-exchange logs for app `twoweeks-mcp-pr305-durable-20260706-client-post`; do not widen runtime behavior or use wildcard redirect URIs.
 
 ## [2026-07-01] pr-branch | MCP PR107/PR108 summary status and launch-readiness checkpoint
 

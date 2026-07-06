@@ -270,7 +270,7 @@ Cover-letter quality has a merged PR249 staged internal Mistral V2 gate and a gr
 
 | Page | Résumé | Tags |
 |------|--------|------|
-| [[howto/chatgpt-mcp-private-beta-tunnel-connector\|ChatGPT MCP Private Beta Tunnel Connector Runbook]] | Procedure manuelle en francais pour creer un tunnel Cloudflare quick ou nomme durable, configurer le connecteur ChatGPT OAuth prive, et verifier le smoke MCP read-only | chatgpt-app, mcp, cloudflare |
+| [[howto/chatgpt-mcp-private-beta-tunnel-connector\|ChatGPT MCP Private Beta Tunnel Connector Runbook]] | Durable PR305 private-beta tunnel runbook for `https://mcp.twoweeks.ai/mcp`, exact redirect URI allowlisting, confidential OAuth client, and current ChatGPT UI blocker | chatgpt-app, mcp, cloudflare |
 | [[howto/cloudflare-zero-trust-tunnel\|Cloudflare Zero Trust + Tunnel]] | Runbook parser.dasti.ai, CF Access, tunnel, DNS, token, WAF | cloudflare, devops |
 | [[howto/git-branch-hygiene|Git Branch Hygiene]] | Démarrer une tâche depuis `main` à jour avant branche courte | git, workflow |
 | [[howto/headless-workshop-preview-probe|Headless Workshop Preview Probe]] | Probe Playwright headless pour `/cv` workshop preview | playwright, workshop |
