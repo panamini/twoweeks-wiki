@@ -2247,3 +2247,39 @@ Migration vers schema v2 : ajout rawinput/ (staging), gestion temporelle (status
 - A real ChatGPT connector completed OAuth and called `twoweeks.application_package.summarize`, returning `status=available`, `count=1`, and real read-side data.
 - The new French runbook documents the manual tunnel creation, ChatGPT connector OAuth fields, login expectations for Google/Clerk, smoke args, troubleshooting, and cleanup.
 - Provider calls, write actions, refresh tokens, billing, production/shared database mutation, public launch, raw data logging, and durable production deployment remain blocked.
+
+## 2026-07-05 — PR305 durable MCP connector proof checkpoint
+
+**Pages créées** :
+- `wiki/sources/2026-07-05-pr305-durable-mcp-connector-proof-checkpoint.md`
+
+**Pages mises à jour** :
+- `wiki/product/chatgpt-app-sdk-roadmap.md`
+- `wiki/howto/chatgpt-mcp-private-beta-tunnel-connector.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**Points notables** :
+- PR305 is a draft/proof-only durable-host follow-up for `https://mcp.twoweeks.ai/mcp`.
+- The named Cloudflare tunnel is `neyssan-mcp-pr305-twoweeks-ai` / `935a2064-9473-41bc-bd73-174660892847`.
+- Direct durable route/OAuth/token/MCP/read-side proof passed, including `tools/list` and `twoweeks.application_package.summarize` against real read-side data.
+- ChatGPT UI activation remains blocked until local Vite can render Clerk sign-in with `VITE_CLERK_PUBLISHABLE_KEY`.
+- The current ChatGPT redirect URL shape uses a concrete `https://chatgpt.com/connector/oauth/<id-runtime>` URI; because PR96.1 performs exact redirect URI matching, the concrete URI must be allowlisted and `https://chatgpt.com/connector/oauth/*` remains invalid/fail-closed.
+- Provider calls, write actions, refresh tokens, billing, production/shared database mutation, public launch, and durable hosted production deployment remain blocked.
+
+## 2026-07-06 — PR305 durable connector retry truth sync
+
+**Pages mises à jour** :
+- `wiki/sources/2026-07-05-pr305-durable-mcp-connector-proof-checkpoint.md`
+- `wiki/product/chatgpt-app-sdk-roadmap.md`
+- `wiki/howto/chatgpt-mcp-private-beta-tunnel-connector.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**Points notables** :
+- The previous PR305 local Clerk blocker is stale: Vite was restarted with a valid `VITE_CLERK_PUBLISHABLE_KEY`, and `https://mcp.twoweeks.ai/sign-in` rendered the signed-in app.
+- A manual durable OAuth authorize flow through `mcp.twoweeks.ai` returned to ChatGPT, and local Convex contained digest-backed OAuth access-token rows; raw codes/tokens were not documented.
+- Final ChatGPT UI activation remains unconfirmed because the attached ChatGPT settings UI did not launch a fresh connector OAuth flow from `Connecter`; stale `/oauth/continue` tabs may show browser-side `ERR_BLOCKED_BY_CLIENT`.
+- Provider calls, write actions, refresh tokens, billing, production/shared database mutation, public launch, and durable hosted production deployment remain blocked.
