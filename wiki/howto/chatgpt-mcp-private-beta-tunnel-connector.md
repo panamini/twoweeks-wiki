@@ -155,13 +155,9 @@ Le redirect URI ChatGPT observe pendant PR305 utilise la forme :
 https://chatgpt.com/connector/oauth/<id-runtime>
 ```
 
-La config locale doit donc autoriser :
+La config locale doit autoriser l'URI concrete et complete generee par ChatGPT, pas un wildcard. PR96.1 canonicalise les redirect URIs puis fait une comparaison exacte; une entree comme `https://chatgpt.com/connector/oauth/*` reste invalide et fail-closed. Copier donc l'URL exacte affichee par ChatGPT, par exemple la valeur complete qui remplace `<id-runtime>`.
 
-```text
-https://chatgpt.com/connector/oauth/*
-```
-
-`https://chatgpt.com/connector_platform_oauth_redirect` seul ne suffit pas pour ce flux.
+`https://chatgpt.com/connector_platform_oauth_redirect` seul ne suffit pas pour le flux UI courant si ChatGPT envoie une URI concrete `https://chatgpt.com/connector/oauth/<id-runtime>`.
 
 Attention au remplissage automatique du navigateur : Chrome peut remplir l'email dans `Client ID` et un mot de passe dans `Client secret`. Il faut les effacer. Le client ID attendu pour cette preuve est `local-chatgpt-client`, et le client secret doit rester vide.
 
@@ -216,7 +212,7 @@ Si le resultat est `no_data_available`, le connecteur peut etre correct mais les
 | Un mot de passe est dans `Client secret` | Autofill navigateur | Vider le champ secret et mettre token endpoint auth a `none` |
 | Login twoweeks demande un mot de passe inconnu | Le compte utilise Google/Clerk | Utiliser le bouton Google, pas un mot de passe invente |
 | `/sign-in` affiche `Missing publishableKey` | `VITE_CLERK_PUBLISHABLE_KEY` absent de l'env Vite | Charger la cle publique Clerk locale avant de relancer Vite |
-| `/oauth/authorize` renvoie `invalid_authorization_request` avec ChatGPT | Redirect URI ChatGPT courant non allowliste | Ajouter `https://chatgpt.com/connector/oauth/*` a `MCP_OAUTH_PRODUCTION_REDIRECT_URIS` |
+| `/oauth/authorize` renvoie `invalid_authorization_request` avec ChatGPT | Redirect URI ChatGPT courant non allowliste | Ajouter l'URI concrete complete envoyee par ChatGPT a `MCP_OAUTH_PRODUCTION_REDIRECT_URIS`; ne pas utiliser `https://chatgpt.com/connector/oauth/*`, car PR96.1 compare exactement les URIs canonicalisees |
 | Tunnel nomme connecte mais `mcp.twoweeks.ai` retourne 404 | `cloudflared` a charge la config globale parser | Relancer avec `--config /tmp/pr305-cloudflared.yml` pointant vers le credential PR305 |
 | Le bouton ChatGPT `Connecter` ne lance aucun nouvel onglet OAuth | Etat UI/navigateur ChatGPT bloque ou onglets `/oauth/continue` perimes | Fermer les anciens onglets `mcp.twoweeks.ai/oauth/continue`, rouvrir les reglages ChatGPT Applications dans une session propre, puis relancer le connecteur; ne pas classer cela comme un probleme Clerk si `/sign-in` rend deja l'app connectee |
 | `invalid_continuation_request` avec nonce/intention | Code avant PR304 ou URL OAuth mal conservee | Appliquer PR304 et recreer le connecteur |
