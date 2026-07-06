@@ -39,7 +39,7 @@ hostname: mcp.twoweeks.ai
 origin local: http://127.0.0.1:5187
 ```
 
-Etat PR305 : la preuve route/OAuth/token/MCP/read-side directe passe par `mcp.twoweeks.ai`, mais l'activation finale dans l'UI ChatGPT reste bloquee si la page locale `/sign-in` ne peut pas charger Clerk faute de `VITE_CLERK_PUBLISHABLE_KEY`.
+Etat PR305 : la preuve route/OAuth/token/MCP/read-side directe passe par `mcp.twoweeks.ai`. Le blocage local Clerk `VITE_CLERK_PUBLISHABLE_KEY` a ete corrige pendant la reprise du 2026-07-06; l'activation finale dans l'UI ChatGPT reste a confirmer depuis une session de reglages propre.
 
 ## Pre-requis
 
@@ -218,6 +218,7 @@ Si le resultat est `no_data_available`, le connecteur peut etre correct mais les
 | `/sign-in` affiche `Missing publishableKey` | `VITE_CLERK_PUBLISHABLE_KEY` absent de l'env Vite | Charger la cle publique Clerk locale avant de relancer Vite |
 | `/oauth/authorize` renvoie `invalid_authorization_request` avec ChatGPT | Redirect URI ChatGPT courant non allowliste | Ajouter `https://chatgpt.com/connector/oauth/*` a `MCP_OAUTH_PRODUCTION_REDIRECT_URIS` |
 | Tunnel nomme connecte mais `mcp.twoweeks.ai` retourne 404 | `cloudflared` a charge la config globale parser | Relancer avec `--config /tmp/pr305-cloudflared.yml` pointant vers le credential PR305 |
+| Le bouton ChatGPT `Connecter` ne lance aucun nouvel onglet OAuth | Etat UI/navigateur ChatGPT bloque ou onglets `/oauth/continue` perimes | Fermer les anciens onglets `mcp.twoweeks.ai/oauth/continue`, rouvrir les reglages ChatGPT Applications dans une session propre, puis relancer le connecteur; ne pas classer cela comme un probleme Clerk si `/sign-in` rend deja l'app connectee |
 | `invalid_continuation_request` avec nonce/intention | Code avant PR304 ou URL OAuth mal conservee | Appliquer PR304 et recreer le connecteur |
 | `Invalid tools/call metadata` | Code avant PR304 rejetant `_meta` ChatGPT | Appliquer PR304 |
 | `-32602` sur tool call | Arguments invalides ou safe-ref mal copiee | Utiliser exactement `mcp-safe-ref:application-package:latest` |

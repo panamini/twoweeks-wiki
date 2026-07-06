@@ -3,7 +3,7 @@ title: "PR305 Durable MCP Connector Proof Checkpoint"
 category: source
 tags: [chatgpt-app, mcp, oauth, cloudflare, private-beta, smoke]
 created: 2026-07-05
-updated: 2026-07-05
+updated: 2026-07-06
 status: current
 type: checkpoint
 related: [[product/chatgpt-app-sdk-roadmap]], [[howto/chatgpt-mcp-private-beta-tunnel-connector]]
@@ -17,13 +17,15 @@ PR305 is a draft proof-only slice for the durable private-beta MCP connector bou
 https://mcp.twoweeks.ai/mcp
 ```
 
-It does not replace PR304's merged quick-tunnel smoke. It records the follow-up durable-host proof and the remaining ChatGPT UI activation blocker.
+It does not replace PR304's merged quick-tunnel smoke. It records the follow-up durable-host proof and the remaining ChatGPT UI activation/UI-state blocker.
 
 ## Proven
 
 - Cloudflare named tunnel exists for `mcp.twoweeks.ai`.
 - Durable OAuth protected-resource metadata returned `200`.
 - Durable private-beta OAuth/token/MCP proof ladder passed directly through `https://mcp.twoweeks.ai`.
+- Local Vite can render the Clerk-backed app through `https://mcp.twoweeks.ai/sign-in` when the worktree is started with a valid `VITE_CLERK_PUBLISHABLE_KEY`; the session redirected to the signed-in CV page during the 2026-07-06 retry.
+- A manual OAuth authorize flow through `https://mcp.twoweeks.ai/oauth/authorize` returned to ChatGPT and local Convex showed digest-backed OAuth access-token rows, without exposing raw codes or tokens.
 - MCP `initialize` worked.
 - MCP `tools/list` returned the four read-only summary tools.
 - MCP `tools/call` for `twoweeks.application_package.summarize` returned real read-side `application_package` data with `available` status.
@@ -55,7 +57,7 @@ token endpoint auth: none
 scope: twoweeks:applications:read
 ```
 
-Activation through ChatGPT currently remains blocked at the local login boundary when the Vite worktree lacks `VITE_CLERK_PUBLISHABLE_KEY`. The OAuth request reaches `https://mcp.twoweeks.ai/sign-in`, then the React page cannot render Clerk.
+Activation through ChatGPT UI remains unconfirmed after the 2026-07-06 retry. The previous local Clerk blocker was fixed by starting Vite with a valid `VITE_CLERK_PUBLISHABLE_KEY`; `https://mcp.twoweeks.ai/sign-in` rendered and redirected to the signed-in app. However, clicking `Connecter` for `twoweeks-mcp-pr305-durable` in the ChatGPT settings UI did not open a fresh OAuth flow in the attached Chrome session, and stale `/oauth/continue` tabs could show browser-side `ERR_BLOCKED_BY_CLIENT`. Treat the direct durable OAuth/token proof as server proof, not as final ChatGPT UI activation proof.
 
 The redirect allowlist for this ChatGPT UI flow must include:
 
@@ -71,7 +73,7 @@ PR305 does not approve public launch. It does not add provider calls, write acti
 
 ## Next action
 
-To finish the UI activation proof, provide or load a valid local `VITE_CLERK_PUBLISHABLE_KEY` for the Vite worktree, keep the named Cloudflare tunnel running, then reconnect `twoweeks-mcp-pr305-durable` from ChatGPT.
+To finish the UI activation proof, keep local Convex, Vite, and the named Cloudflare tunnel running, open a clean ChatGPT connector settings session, reconnect `twoweeks-mcp-pr305-durable`, and verify that ChatGPT lists the connector as connected and can call `twoweeks.application_package.summarize`. If the ChatGPT settings button still does not launch OAuth, debug that as a ChatGPT/browser UI-state issue rather than a missing Clerk env issue.
 
 ## Related
 

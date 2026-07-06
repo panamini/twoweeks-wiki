@@ -2248,6 +2248,22 @@ Migration vers schema v2 : ajout rawinput/ (staging), gestion temporelle (status
 - The current ChatGPT redirect URL shape requires `https://chatgpt.com/connector/oauth/*`, not only `connector_platform_oauth_redirect`.
 - Provider calls, write actions, refresh tokens, billing, production/shared database mutation, public launch, and durable hosted production deployment remain blocked.
 
+## 2026-07-06 — PR305 durable connector retry truth sync
+
+**Pages mises à jour** :
+- `wiki/sources/2026-07-05-pr305-durable-mcp-connector-proof-checkpoint.md`
+- `wiki/product/chatgpt-app-sdk-roadmap.md`
+- `wiki/howto/chatgpt-mcp-private-beta-tunnel-connector.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**Points notables** :
+- The previous PR305 local Clerk blocker is stale: Vite was restarted with a valid `VITE_CLERK_PUBLISHABLE_KEY`, and `https://mcp.twoweeks.ai/sign-in` rendered the signed-in app.
+- A manual durable OAuth authorize flow through `mcp.twoweeks.ai` returned to ChatGPT, and local Convex contained digest-backed OAuth access-token rows; raw codes/tokens were not documented.
+- Final ChatGPT UI activation remains unconfirmed because the attached ChatGPT settings UI did not launch a fresh connector OAuth flow from `Connecter`; stale `/oauth/continue` tabs may show browser-side `ERR_BLOCKED_BY_CLIENT`.
+- Provider calls, write actions, refresh tokens, billing, production/shared database mutation, public launch, and durable hosted production deployment remain blocked.
+
 ## 2026-07-04 — PR304 live MCP connector smoke and tunnel runbook
 
 **Pages créées** :
