@@ -2283,3 +2283,21 @@ Migration vers schema v2 : ajout rawinput/ (staging), gestion temporelle (status
 - A manual durable OAuth authorize flow through `mcp.twoweeks.ai` returned to ChatGPT, and local Convex contained digest-backed OAuth access-token rows; raw codes/tokens were not documented.
 - Final ChatGPT UI activation remains unconfirmed because the attached ChatGPT settings UI did not launch a fresh connector OAuth flow from `Connecter`; stale `/oauth/continue` tabs may show browser-side `ERR_BLOCKED_BY_CLIENT`.
 - Provider calls, write actions, refresh tokens, billing, production/shared database mutation, public launch, and durable hosted production deployment remain blocked.
+
+## 2026-07-06 — PR305 ChatGPT callback/token breakpoint sync
+
+**Pages mises à jour** :
+- `wiki/sources/2026-07-05-pr305-durable-mcp-connector-proof-checkpoint.md`
+- `wiki/product/chatgpt-app-sdk-roadmap.md`
+- `wiki/howto/chatgpt-mcp-private-beta-tunnel-connector.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**Points notables** :
+- App commit `fb17e6cc6171f3e54baa805c39eb5e34728f5b0a` fixes the stale Clerk `__session` owner-binding retry path without widening production OAuth behavior.
+- Browser `/oauth/continue` documents now go through the React bridge even when a stale unsuffixed Clerk session cookie exists, and `owner_binding_failed` bridge fetches retry with a Clerk bearer token.
+- Safe diagnostic evidence from the latest ChatGPT UI attempt showed the twoweeks continuation leg returned ChatGPT to its callback with query keys `code,state`; no raw OAuth code, state value, nonce, token, session, email, or owner id was documented.
+- No `/oauth/token` request reached `mcp.twoweeks.ai` during that ChatGPT UI attempt, so the current activation breakpoint is classified as `BLOCKED_CHATGPT_UI`: ChatGPT callback handling aborts before token exchange.
+- The next useful action is ChatGPT/OpenAI-side callback/token-exchange diagnostics for the connector, not wildcard redirect configuration or repeated connector recreation.
+- Provider calls, write actions, refresh tokens, billing, production/shared database mutation, public launch, and durable hosted production deployment remain blocked.

@@ -3,7 +3,7 @@ title: "ChatGPT MCP Private Beta Tunnel Connector Runbook"
 category: howto
 tags: [chatgpt-app, mcp, cloudflare, tunnel, oauth, private-beta]
 created: 2026-07-04
-updated: 2026-07-05
+updated: 2026-07-06
 status: current
 type: runbook
 sources: [2026-07-04-pr304-live-mcp-connector-smoke-checkpoint, 2026-07-05-pr305-durable-mcp-connector-proof-checkpoint]
@@ -39,7 +39,9 @@ hostname: mcp.twoweeks.ai
 origin local: http://127.0.0.1:5187
 ```
 
-Etat PR305 : la preuve route/OAuth/token/MCP/read-side directe passe par `mcp.twoweeks.ai`. Le blocage local Clerk `VITE_CLERK_PUBLISHABLE_KEY` a ete corrige pendant la reprise du 2026-07-06; l'activation finale dans l'UI ChatGPT reste a confirmer depuis une session de reglages propre.
+Etat PR305 : la preuve route/OAuth/token/MCP/read-side directe passe par `mcp.twoweeks.ai`. Le blocage local Clerk `VITE_CLERK_PUBLISHABLE_KEY` a ete corrige pendant la reprise du 2026-07-06. Un second blocage local, cause par un cookie Clerk `__session` stale sur `/oauth/continue`, a ete corrige cote app par `fb17e6cc6171f3e54baa805c39eb5e34728f5b0a` sans elargir le comportement runtime.
+
+Dernier point de preuve ChatGPT UI : le navigateur a fini la connexion twoweeks, la continuation OAuth a renvoye ChatGPT vers son callback avec les cles de requete attendues `code` et `state`, puis ChatGPT a affiche une erreur generique de connexion. Aucun appel `/oauth/token` n'a atteint `mcp.twoweeks.ai` pendant cette tentative. Classer ce point comme `BLOCKED_CHATGPT_UI` / callback ChatGPT avant echange token, pas comme une action manuelle restante dans la configuration du connecteur.
 
 ## Pre-requis
 
@@ -214,6 +216,8 @@ Si le resultat est `no_data_available`, le connecteur peut etre correct mais les
 | `/sign-in` affiche `Missing publishableKey` | `VITE_CLERK_PUBLISHABLE_KEY` absent de l'env Vite | Charger la cle publique Clerk locale avant de relancer Vite |
 | `/oauth/authorize` renvoie `invalid_authorization_request` avec ChatGPT | Redirect URI ChatGPT courant non allowliste | Ajouter l'URI concrete complete envoyee par ChatGPT a `MCP_OAUTH_PRODUCTION_REDIRECT_URIS`; ne pas utiliser `https://chatgpt.com/connector/oauth/*`, car PR96.1 compare exactement les URIs canonicalisees |
 | Tunnel nomme connecte mais `mcp.twoweeks.ai` retourne 404 | `cloudflared` a charge la config globale parser | Relancer avec `--config /tmp/pr305-cloudflared.yml` pointant vers le credential PR305 |
+| `/oauth/continue` renvoie `owner_binding_failed` alors que l'utilisateur est signe | Cookie Clerk `__session` stale ou mauvais jeton de session lu avant le bridge React | Utiliser le patch app `fb17e6cc6171f3e54baa805c39eb5e34728f5b0a` ou equivalent : les documents navigateur `/oauth/continue` passent par le bridge React et les fetchs `owner_binding_failed` retentent avec un bearer Clerk |
+| ChatGPT affiche une erreur generique apres que l'onglet twoweeks s'est connecte puis ferme | ChatGPT a recu le callback OAuth mais a abandonne avant d'appeler `/oauth/token` | Ne pas recreer en boucle le connecteur. Conserver les preuves safe : callback avec cles `code,state`, absence d'appel `/oauth/token`, nom du connecteur, URL MCP. Demander les logs cote ChatGPT/OpenAI; classer `BLOCKED_CHATGPT_UI` tant que le token endpoint n'est jamais appele |
 | Le bouton ChatGPT `Connecter` ne lance aucun nouvel onglet OAuth | Etat UI/navigateur ChatGPT bloque ou onglets `/oauth/continue` perimes | Fermer les anciens onglets `mcp.twoweeks.ai/oauth/continue`, rouvrir les reglages ChatGPT Applications dans une session propre, puis relancer le connecteur; ne pas classer cela comme un probleme Clerk si `/sign-in` rend deja l'app connectee |
 | `invalid_continuation_request` avec nonce/intention | Code avant PR304 ou URL OAuth mal conservee | Appliquer PR304 et recreer le connecteur |
 | `Invalid tools/call metadata` | Code avant PR304 rejetant `_meta` ChatGPT | Appliquer PR304 |
