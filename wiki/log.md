@@ -2343,3 +2343,26 @@ Migration vers schema v2 : ajout rawinput/ (staging), gestion temporelle (status
 **Open items** : This checkpoint does not authorize provider calls, writes, refresh tokens, billing, production/shared DB mutation, account-link expansion, or public launch.
 
 ---
+
+## [2026-07-10] checkpoint | PR306 xtrace-safe Infisical secret synchronization
+
+**Agent** : Codex
+**Mode** : docs-only post-merge synchronization
+**Source** : merged app PR306 and post-merge local/public/ChatGPT verification
+
+**Pages mises a jour** :
+- `wiki/howto/chatgpt-mcp-private-beta-tunnel-connector.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**Points notables** :
+- PR306 est mergee dans `application-os-foundation` par `23c2cca9c09ba22c522242305545390dbc1bbea1`.
+- `mcp-secret-sync` suspend desormais `xtrace` avant le chargement des fichiers env et pendant toute manipulation sensible, puis restaure l'etat initial sur les sorties controlees.
+- Les regressions synthetiques couvrent l'absence de configuration, une sortie Infisical partielle, un echec de permission apres hachage et le succes, sans exposer le secret brut ni les anciens ou nouveaux digests.
+- La preuve post-merge a confirme `mcp-secret-sync`, `mcp-check`, la racine `.env.local` mode `600`, la metadata publique `client_secret_post`, le catalogue `search`/`fetch` et le statut ChatGPT connecte de `twoweeks-mcp-infisical-0710`.
+- Aucun secret brut, digest reel, token, identifiant utilisateur ou resultat prive de tool n'est documente.
+
+**Open items** : Provider calls, writes, refresh tokens, billing, production/shared DB mutation, account-link expansion and public launch remain blocked.
+
+---
