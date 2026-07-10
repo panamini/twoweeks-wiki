@@ -15,29 +15,6 @@ grep "^## \[" wiki/log.md | grep "ingest"  # Tous les ingests
 
 ---
 
-## [2026-07-10] checkpoint | PR305 Infisical team secret source and private-beta connector proof
-
-**Agent** : Codex
-**Mode** : docs-only wiki synchronization
-**Source** : proven PR305 Infisical team secret source and private-beta connector evidence supplied for this checkpoint
-
-**Pages mises a jour** :
-- `wiki/howto/chatgpt-mcp-private-beta-tunnel-connector.md`
-- `wiki/hot.md`
-- `wiki/index.md`
-- `wiki/log.md`
-
-**Points notables** :
-- Infisical EU Cloud project `twoweeks`, environment `dev`, and shared key `MCP_OAUTH_PRODUCTION_CLIENT_SECRET` are the documented secret source.
-- `.infisical.json` is documented as a non-secret project binding; collaborators authenticate individually.
-- `./run.sh mcp-secret-sync` is documented as digest-only, root `.env.local` canonical, mode `600`, and value-silent.
-- One-time rotation and connector `twoweeks-mcp-infisical-0710` are proven; `search` and `fetch` are listed and safe read-only calls succeeded.
-- The OAuth claim is stated behaviorally because direct `/oauth/token` was not separately captured in the current Vite log.
-
-**Open items** : This checkpoint does not authorize provider calls, writes, refresh tokens, billing, production/shared DB mutation, account-link expansion, or public launch.
-
----
-
 ## [2026-07-01] pr-branch | MCP PR107/PR108 summary status and launch-readiness checkpoint
 
 **Agent** : Codex
@@ -2343,3 +2320,26 @@ Migration vers schema v2 : ajout rawinput/ (staging), gestion temporelle (status
 - Un digest absent ou malforme ne downgrade jamais la metadata vers `none`; token exchange reste fail-closed. Les redirects wildcard et `client_secret_basic` restent refuses.
 - Le wiki ne contient aucun secret brut, digest reel, token, identifiant utilisateur ou resultat prive de tool.
 - Provider calls, write actions, refresh tokens, billing, account-link lifecycle expansion, mutations production/shared et lancement public restent interdits.
+
+## [2026-07-10] checkpoint | PR305 Infisical team secret source and private-beta connector proof
+
+**Agent** : Codex
+**Mode** : docs-only wiki synchronization
+**Source** : proven PR305 Infisical team secret source and private-beta connector evidence supplied for this checkpoint
+
+**Pages mises a jour** :
+- `wiki/howto/chatgpt-mcp-private-beta-tunnel-connector.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**Points notables** :
+- Infisical EU Cloud project `twoweeks`, environment `dev`, and shared key `MCP_OAUTH_PRODUCTION_CLIENT_SECRET` are the documented secret source.
+- `.infisical.json` is documented as a non-secret project binding; collaborators authenticate individually.
+- `./run.sh mcp-secret-sync` is documented as digest-only, root `.env.local` canonical, mode `600`, and value-silent.
+- One-time rotation and connector `twoweeks-mcp-infisical-0710` are proven; `search` and `fetch` are listed and safe read-only calls succeeded.
+- The OAuth claim is stated behaviorally because direct `/oauth/token` was not separately captured in the current Vite log.
+
+**Open items** : This checkpoint does not authorize provider calls, writes, refresh tokens, billing, production/shared DB mutation, account-link expansion, or public launch.
+
+---
