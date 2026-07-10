@@ -21,7 +21,7 @@ PR305 est mergee dans `application-os-foundation` par `f9dd477b116c48f1b223b17e1
 - Le connecteur frais `twoweeks-mcp-pr305-final-0710` est connecte dans ChatGPT.
 - `tools/list` expose les tools read-only `search` et `fetch`.
 - Un `tools/call search` read-only a termine avec succes dans ChatGPT sans erreur de connexion.
-- Les tests focalises passent `205/205`; le build TypeScript/Vite, la syntaxe shell, `mcp-check`, `reload-env`, `git diff --check` et les checks GitHub ont passe sur le head merge `e9ddb1b6997e9bdd6c2663d3837abbd32d8c13e1`.
+- Les tests focalises passent `205/205`; le build TypeScript/Vite, la syntaxe shell, `mcp-check`, `reload-env`, `git diff --check` et les checks GitHub ont passe sur le head de PR `e9ddb1b6997e9bdd6c2663d3837abbd32d8c13e1`.
 
 ## Root cause
 
