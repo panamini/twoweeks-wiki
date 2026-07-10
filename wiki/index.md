@@ -315,4 +315,4 @@ Cover-letter quality has a merged PR249 staged internal Mistral V2 gate and a gr
 - **Pages archivées** : 2
 - **Sources dans `raw/`** : 91
 - **Sources en attente dans `rawinput/`** : 0
-- **Dernière mise à jour** : 2026-06-29
+- **Dernière mise à jour** : 2026-07-10
