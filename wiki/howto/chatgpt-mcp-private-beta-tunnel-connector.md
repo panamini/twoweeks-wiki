@@ -74,7 +74,7 @@ shared key: MCP_OAUTH_PRODUCTION_CLIENT_SECRET
 
 Le fichier `.infisical.json` contient uniquement le binding non-secret du projet et de l'environnement; il ne contient aucune valeur de secret. Chaque collaborateur se connecte individuellement a Infisical avec son propre compte. Ne jamais mettre la valeur dans le wiki, une commande shell, un log, une PR ou un fichier de configuration suivi par Git.
 
-La rotation one-shot PR305 a ete executee depuis la source Infisical et synchronisee vers la racine `.env.local` avec `./run.sh mcp-secret-sync`. Cette commande refuse un fichier qui n'est pas deja en mode `600`, ne persiste que le digest SHA-256 lors du remplacement atomique et n'imprime aucune valeur. Une rotation ulterieure doit remplacer la valeur Infisical et recreer le connecteur dans la meme operation controlee.
+La rotation one-shot PR305 a ete executee depuis la source Infisical et synchronisee vers la racine `.env.local` avec `./run.sh mcp-secret-sync`. Cette commande refuse un fichier qui n'est pas deja en mode `600`, ne persiste que le digest SHA-256 lors du remplacement atomique et n'imprime aucune valeur. PR306, mergee par `23c2cca9c09ba22c522242305545390dbc1bbea1`, suspend aussi `xtrace` avant le chargement des fichiers env et pendant la recuperation, le hachage et le remplacement atomique; elle restaure ensuite l'etat initial sur les sorties controlees. Ainsi, meme `bash -x ./run.sh mcp-secret-sync` ne doit afficher ni secret brut, ni ancien ou nouveau digest. Une rotation ulterieure doit remplacer la valeur Infisical et recreer le connecteur dans la meme operation controlee.
 
 ## Demarrage et controle
 

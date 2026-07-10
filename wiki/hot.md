@@ -17,7 +17,7 @@ twoweeks centers on CV ingestion/parsing, canonical saved profile/CV data, and p
 Keep two workstreams separate:
 
 - Cover-letter quality: staging `dev:neat-starfish-33` is green for Mistral V2 with only `cover_letter_premium_prompt_v2=1`; quality repair is OFF and production full GO is not approved.
-- MCP / ChatGPT App SDK: PR305 is merged as `f9dd477b116c48f1b223b17e1636876edf3c939f`. The shared OAuth secret is sourced from Infisical EU Cloud project `twoweeks`, `dev` environment, key `MCP_OAUTH_PRODUCTION_CLIENT_SECRET`; `.infisical.json` contains only non-secret binding. `./run.sh mcp-secret-sync` stores only the SHA-256 digest in root `.env.local` mode `600` and prints no values. One-time rotation and connector `twoweeks-mcp-infisical-0710` are proven; the connector uses confidential OAuth `client_secret_post`, lists `search` and `fetch`, and completed safe read-only `search` and `fetch` calls. Direct `/oauth/token` was not separately captured in the current Vite log, so the claim is behavioral rather than a direct network capture.
+- MCP / ChatGPT App SDK: PR305 is merged as `f9dd477b116c48f1b223b17e1636876edf3c939f`; follow-up PR306 is merged as `23c2cca9c09ba22c522242305545390dbc1bbea1`. The shared OAuth secret is sourced from Infisical EU Cloud project `twoweeks`, `dev` environment, key `MCP_OAUTH_PRODUCTION_CLIENT_SECRET`; `.infisical.json` contains only non-secret binding. `./run.sh mcp-secret-sync` stores only the SHA-256 digest in root `.env.local` mode `600`, prints no values, and suppresses `xtrace` before env loading and sensitive handling. One-time rotation and connector `twoweeks-mcp-infisical-0710` are proven; the connector uses confidential OAuth `client_secret_post`, lists `search` and `fetch`, and completed safe read-only `search` and `fetch` calls. Direct `/oauth/token` was not separately captured in the current Vite log, so the claim is behavioral rather than a direct network capture.
 
 ## Key Active Facts
 
@@ -27,6 +27,7 @@ Keep two workstreams separate:
 - The active key family is `MCP_OAUTH_PRODUCTION_PRIVATE_BETA_*`; legacy `MCP_PRODUCTION_PRIVATE_BETA_*` aliases are invalid.
 - Missing or malformed secret digest never downgrades OAuth to public client `none`; token exchange fails closed while metadata remains `client_secret_post`.
 - The shared client secret is sourced from Infisical EU Cloud; collaborators authenticate individually, and the digest cannot recover the secret. The root `.env.local` is canonical; `my-app/.env.local` is for client values only.
+- PR306 regression coverage proves that prerequisite, partial-retrieval, post-digest permission, and success paths do not expose the raw secret or either digest under `bash -x`.
 - Product truth is `twoweeks`; CVForge and ProposalForge are internal module names.
 - PR80B remains the safe manual application handoff while ATS authorization is pending; `provider_verified_submitted` remains unreachable.
 - Persistent wiki mutations require `wiki/index.md`, `wiki/log.md`, and usually `wiki/hot.md`.
