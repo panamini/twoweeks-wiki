@@ -22,16 +22,16 @@ Procedure reproductible pour demarrer le serveur MCP prive twoweeks, exposer son
 - Client ID : `local-chatgpt-client`.
 - Methode token : `client_secret_post` uniquement.
 - Scope : `twoweeks:applications:read`.
-- Connecteur final : `twoweeks-mcp-pr305-final-0710`, etat connecte.
-- Les actions read-only `search` et `fetch` sont visibles.
-- Un appel `search` read-only a termine avec succes dans ChatGPT, sans erreur de connexion ou reconnexion.
-- Un diagnostic live anterieur a observe directement `POST /oauth/token` en `200`. La connexion du connecteur final prouve aussi l'echange token de facon comportementale, mais sa requete backend n'a pas ete capturee directement dans la trace navigateur finale.
+- Rotation one-shot du secret et nouveau connecteur `twoweeks-mcp-infisical-0710` prouves.
+- Le connecteur est connecte; les actions read-only `search` et `fetch` sont visibles.
+- Des appels read-only `search` et `fetch` ont reussi sans mutation ni erreur de reconnexion.
+- La preuve d'echange OAuth est comportementale via la connexion du connecteur et les appels d'outils. `POST /oauth/token` n'a pas ete capture separement dans le log Vite de la session courante; ne pas le presenter comme une capture reseau directe.
 
 Cette preuve est privee. Elle n'autorise ni lancement public, ni provider calls, ni write tools, ni refresh tokens, ni billing, ni expansion du cycle account-link, ni mutation de base production/shared.
 
 ## Configuration canonique
 
-Le fichier serveur canonique est la racine `.env.local`, ignoree par Git et en mode `600`. Il contient les valeurs serveur suivantes sans les afficher dans les logs :
+Le fichier serveur canonique est la racine `.env.local`, ignoree par Git et en mode `600`. Les valeurs serveur y sont chargees sans etre affichees dans les logs. Les cles de configuration pertinentes incluent :
 
 ```dotenv
 MCP_OAUTH_PRODUCTION_RUNTIME=1
@@ -46,7 +46,7 @@ MCP_OAUTH_PRODUCTION_AUTHORIZATION_ORIGIN=https://mcp.twoweeks.ai
 MCP_OAUTH_PRODUCTION_REDIRECT_URIS=https://chatgpt.com/connector/oauth/b7v_6OncLEsg
 MCP_OAUTH_PRODUCTION_ISSUER=<issuer-serveur>
 MCP_OAUTH_PRODUCTION_PROVIDER_ENVIRONMENT=<environnement>
-MCP_OAUTH_PRODUCTION_CLIENT_SECRET_SHA256=<sha256-minuscule-du-secret-brut>
+MCP_OAUTH_PRODUCTION_CLIENT_SECRET_SHA256=<digest-non-documente>
 CLERK_JWT_ISSUER_DOMAIN=<issuer-clerk>
 CONVEX_URL=http://127.0.0.1:3210
 CONVEX_AUTH_TOKEN=<admin-local>
@@ -55,24 +55,26 @@ MCP_PRIVATE_BETA_TUNNEL_CREDENTIALS_FILE=<chemin-absolu-du-fichier-credentials>
 
 Regles :
 
-- ne jamais mettre ces cles serveur dans `.env`, `my-app/.env` ou `my-app/.env.local`;
+- la racine `.env.local` est la seule source canonique des cles serveur; ne pas les placer dans `.env`, `my-app/.env` ou `my-app/.env.local`;
 - `my-app/.env.local` reste reserve aux valeurs client `VITE_*`;
 - `run.sh` derive en memoire la cle publique Clerk depuis l'issuer et ne l'affiche ni ne la persiste;
 - le digest SHA-256 ne permet pas de retrouver le secret brut;
 - tous les fichiers `.env*` restent exclus du contexte Docker;
 - ne jamais stocker le secret brut, son digest ou un token de tunnel dans Git, le wiki, une PR ou des logs.
 
-## Gestion du secret brut
+## Source Infisical du secret
 
-Le secret brut doit exister a deux endroits seulement : le champ securise du connecteur ChatGPT et un gestionnaire de secrets personnel. Reference conseillee :
+Le secret partage est gere dans Infisical EU Cloud :
 
 ```text
-service: twoweeks ChatGPT MCP OAuth
-account: local-chatgpt-client
-endpoint: https://mcp.twoweeks.ai/mcp
+project: twoweeks
+environment: dev
+shared key: MCP_OAUTH_PRODUCTION_CLIENT_SECRET
 ```
 
-Ne jamais mettre la valeur dans le nom, les notes du wiki ou une commande shell. Si cette entree n'existe pas, le digest local ne permet aucune recuperation : generer un nouveau secret, remplacer son digest dans la racine `.env.local`, puis remplacer le champ securise du connecteur dans la meme rotation.
+Le fichier `.infisical.json` contient uniquement le binding non-secret du projet et de l'environnement; il ne contient aucune valeur de secret. Chaque collaborateur se connecte individuellement a Infisical avec son propre compte. Ne jamais mettre la valeur dans le wiki, une commande shell, un log, une PR ou un fichier de configuration suivi par Git.
+
+La rotation one-shot PR305 a ete executee depuis la source Infisical et synchronisee vers la racine `.env.local` avec `./run.sh mcp-secret-sync`. Cette commande refuse un fichier qui n'est pas deja en mode `600`, ne persiste que le digest SHA-256 lors du remplacement atomique et n'imprime aucune valeur. Une rotation ulterieure doit remplacer la valeur Infisical et recreer le connecteur dans la meme operation controlee.
 
 ## Demarrage et controle
 
@@ -81,6 +83,7 @@ Depuis le repo app :
 ```bash
 chmod 600 .env.local
 ./run.sh mcp-check
+./run.sh mcp-secret-sync
 ./run.sh mcp-private-beta
 ```
 
@@ -139,12 +142,12 @@ Ne jamais utiliser de wildcard redirect. La seule URI autorisee pour cette preuv
 
 ## Preuve ChatGPT minimale
 
-1. Creer un connecteur frais avec le meme couple secret brut/digest.
+1. Recuperer le secret partage depuis Infisical et creer un connecteur frais avec le secret correspondant au digest local, sans documenter la valeur.
 2. Terminer le login twoweeks/Clerk.
 3. Verifier que ChatGPT affiche `Connecte`.
 4. Actualiser les actions et verifier `search` et `fetch`.
 5. Selectionner le connecteur dans un nouveau chat.
-6. Demander un seul appel `search` read-only, sans mutation.
+6. Demander des appels `search` et `fetch` read-only, sans mutation.
 7. Verifier un succes explicite et l'absence d'erreur de reconnexion.
 
 Ne pas documenter le resultat prive retourne par l'outil. Documenter uniquement la forme de preuve, les statuts et les noms de tools publics.
@@ -157,7 +160,7 @@ Ne pas documenter le resultat prive retourne par l'outil. Documenter uniquement 
 | `pre_auth_create_failed` | dependance Convex locale/config runtime indisponible | demarrer la stack par `run.sh` et faire passer `mcp-check` |
 | `owner_binding_failed` | retour Clerk incomplet ou session stale | correctifs login-return/StrictMode deja merges; cle Clerk derivee au demarrage |
 | callback ChatGPT puis aucun `/oauth/token` | ancien client public `none` non viable sur ce chemin ChatGPT | client confidentiel avec secret et `client_secret_post` |
-| metadata correcte mais secret rejete | secret ChatGPT et digest local ne correspondent pas, souvent apres rotation partielle | rotation atomique des deux cotes et connecteur frais |
+| metadata correcte mais secret rejete | secret Infisical et digest local ne correspondent pas, souvent apres rotation partielle | resynchroniser par `run.sh mcp-secret-sync` et recreer le connecteur frais |
 | politique `invalidConfiguration` malgre des valeurs presentes | anciennes variables `MCP_PRODUCTION_PRIVATE_BETA_*` ou valeurs placees seulement dans l'env app | utiliser `MCP_OAUTH_PRODUCTION_PRIVATE_BETA_*` dans la racine `.env.local` |
 | `Missing publishableKey` sur `/sign-in` | Vite n'a pas recu la cle Clerk publique | demarrer/recharger par `run.sh`, qui la derive en memoire depuis l'issuer |
 | premier `tools/call` en `400`, puis retry en `200` | ChatGPT a reinitialise la session MCP | preuve finale valide, mais comportement a surveiller |
