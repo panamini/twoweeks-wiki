@@ -3,7 +3,7 @@ title: "ChatGPT MCP Private Beta Tunnel Connector Runbook"
 category: howto
 tags: [chatgpt-app, mcp, cloudflare, tunnel, oauth, private-beta]
 created: 2026-07-04
-updated: 2026-07-06
+updated: 2026-07-10
 status: current
 type: runbook
 sources: [2026-07-04-pr304-live-mcp-connector-smoke-checkpoint, 2026-07-05-pr305-durable-mcp-connector-proof-checkpoint]
@@ -12,239 +12,164 @@ related: [[product/chatgpt-app-sdk-roadmap]]
 
 # ChatGPT MCP Private Beta Tunnel Connector Runbook
 
-Runbook manuel pour exposer l'app locale twoweeks via un tunnel Cloudflare quick tunnel, creer un connecteur ChatGPT prive, connecter OAuth/Clerk, puis verifier que ChatGPT appelle le serveur MCP local avec des donnees read-only reelles.
+Procedure reproductible pour demarrer le serveur MCP prive twoweeks, exposer son origine locale par le tunnel Cloudflare nomme, connecter ChatGPT avec un client OAuth confidentiel, puis prouver `tools/list` et un `tools/call` read-only.
 
-## Etat actuel
+## Etat verifie
 
-Le smoke PR304 a utilise un tunnel ephemere Cloudflare vers Vite local, puis un connecteur ChatGPT prive. Le tunnel cree pendant la preuve etait :
+- PR305 est mergee dans `application-os-foundation` par `f9dd477b116c48f1b223b17e1636876edf3c939f`.
+- Endpoint MCP : `https://mcp.twoweeks.ai/mcp`.
+- Redirect URI exact : `https://chatgpt.com/connector/oauth/b7v_6OncLEsg`.
+- Client ID : `local-chatgpt-client`.
+- Methode token : `client_secret_post` uniquement.
+- Scope : `twoweeks:applications:read`.
+- Connecteur final : `twoweeks-mcp-pr305-final-0710`, etat connecte.
+- Les actions read-only `search` et `fetch` sont visibles.
+- Un appel `search` read-only a termine avec succes dans ChatGPT, sans erreur de connexion ou reconnexion.
+- Un diagnostic live anterieur a observe directement `POST /oauth/token` en `200`. La connexion du connecteur final prouve aussi l'echange token de facon comportementale, mais sa requete backend n'a pas ete capturee directement dans la trace navigateur finale.
 
-```text
-https://are-effort-skirts-hints.trycloudflare.com
+Cette preuve est privee. Elle n'autorise ni lancement public, ni provider calls, ni write tools, ni refresh tokens, ni billing, ni expansion du cycle account-link, ni mutation de base production/shared.
+
+## Configuration canonique
+
+Le fichier serveur canonique est la racine `.env.local`, ignoree par Git et en mode `600`. Il contient les valeurs serveur suivantes sans les afficher dans les logs :
+
+```dotenv
+MCP_OAUTH_PRODUCTION_RUNTIME=1
+MCP_OAUTH_PRODUCTION_APPROVED=1
+MCP_OAUTH_PRODUCTION_ROUTE_WIRING=1
+MCP_OAUTH_PRODUCTION_CLIENT_IDS=local-chatgpt-client
+MCP_OAUTH_PRODUCTION_PRIVATE_BETA_ENABLED=1
+MCP_OAUTH_PRODUCTION_PRIVATE_BETA_CLIENT_IDS=local-chatgpt-client
+MCP_OAUTH_PRODUCTION_PRIVATE_BETA_RESOURCES=https://mcp.twoweeks.ai/mcp
+MCP_OAUTH_PRODUCTION_RESOURCE=https://mcp.twoweeks.ai/mcp
+MCP_OAUTH_PRODUCTION_AUTHORIZATION_ORIGIN=https://mcp.twoweeks.ai
+MCP_OAUTH_PRODUCTION_REDIRECT_URIS=https://chatgpt.com/connector/oauth/b7v_6OncLEsg
+MCP_OAUTH_PRODUCTION_ISSUER=<issuer-serveur>
+MCP_OAUTH_PRODUCTION_PROVIDER_ENVIRONMENT=<environnement>
+MCP_OAUTH_PRODUCTION_CLIENT_SECRET_SHA256=<sha256-minuscule-du-secret-brut>
+CLERK_JWT_ISSUER_DOMAIN=<issuer-clerk>
+CONVEX_URL=http://127.0.0.1:3210
+CONVEX_AUTH_TOKEN=<admin-local>
+MCP_PRIVATE_BETA_TUNNEL_CREDENTIALS_FILE=<chemin-absolu-du-fichier-credentials>
 ```
 
-Ce domaine `trycloudflare.com` est temporaire. Il ne doit pas etre hardcode comme URL stable. Il sert seulement a prouver la frontiere locale/private-beta.
+Regles :
 
-PR305 ajoute une preuve durable limitee avec un tunnel nomme Cloudflare :
+- ne jamais mettre ces cles serveur dans `.env`, `my-app/.env` ou `my-app/.env.local`;
+- `my-app/.env.local` reste reserve aux valeurs client `VITE_*`;
+- `run.sh` derive en memoire la cle publique Clerk depuis l'issuer et ne l'affiche ni ne la persiste;
+- le digest SHA-256 ne permet pas de retrouver le secret brut;
+- tous les fichiers `.env*` restent exclus du contexte Docker;
+- ne jamais stocker le secret brut, son digest ou un token de tunnel dans Git, le wiki, une PR ou des logs.
+
+## Gestion du secret brut
+
+Le secret brut doit exister a deux endroits seulement : le champ securise du connecteur ChatGPT et un gestionnaire de secrets personnel. Reference conseillee :
 
 ```text
-https://mcp.twoweeks.ai/mcp
+service: twoweeks ChatGPT MCP OAuth
+account: local-chatgpt-client
+endpoint: https://mcp.twoweeks.ai/mcp
 ```
 
-Tunnel PR305 :
+Ne jamais mettre la valeur dans le nom, les notes du wiki ou une commande shell. Si cette entree n'existe pas, le digest local ne permet aucune recuperation : generer un nouveau secret, remplacer son digest dans la racine `.env.local`, puis remplacer le champ securise du connecteur dans la meme rotation.
+
+## Demarrage et controle
+
+Depuis le repo app :
+
+```bash
+chmod 600 .env.local
+./run.sh mcp-check
+./run.sh mcp-private-beta
+```
+
+`mcp-check` doit afficher seulement `PASS` et les noms de cles en cas d'erreur, jamais leurs valeurs. `mcp-private-beta` demarre Convex local, Vite sur `127.0.0.1:5196`, le runtime parser image et le tunnel nomme.
+
+Apres une modification de configuration :
+
+```bash
+./run.sh reload-env
+```
+
+Pour un stack `mcp-private-beta` suivi, `reload-env` rejoue d'abord `mcp-check`, recree la cle Clerk publique en memoire, puis seulement redemarre Vite si l'environnement a change.
+
+Verifier les surfaces publiques :
+
+```bash
+curl -sS https://mcp.twoweeks.ai/.well-known/oauth-authorization-server
+curl -sS https://mcp.twoweeks.ai/.well-known/oauth-protected-resource/mcp
+```
+
+Attendu : metadata `200`, `token_endpoint_auth_methods_supported` vaut exactement `client_secret_post`, et la ressource vaut exactement `https://mcp.twoweeks.ai/mcp`.
+
+## Tunnel Cloudflare nomme
 
 ```text
 name: neyssan-mcp-pr305-twoweeks-ai
 id: 935a2064-9473-41bc-bd73-174660892847
 hostname: mcp.twoweeks.ai
-origin local: http://127.0.0.1:5187
+origin: http://host.docker.internal:5196
 ```
 
-Etat PR305 : la preuve route/OAuth/token/MCP/read-side directe passe par `mcp.twoweeks.ai`. Le blocage local Clerk `VITE_CLERK_PUBLISHABLE_KEY` a ete corrige pendant la reprise du 2026-07-06. Un second blocage local, cause par un cookie Clerk `__session` stale sur `/oauth/continue`, a ete corrige cote app par `fb17e6cc6171f3e54baa805c39eb5e34728f5b0a` sans elargir le comportement runtime.
+`run.sh` monte le fichier de credentials du tunnel en lecture seule. Le tunnel transporte le trafic; les valeurs OAuth restent dans le processus Vite local, pas dans Workers, Pages ou le dashboard Cloudflare.
 
-Dernier point de preuve ChatGPT UI : le navigateur a fini la connexion twoweeks, la continuation OAuth a renvoye ChatGPT vers son callback avec les cles de requete attendues `code` et `state`, puis ChatGPT a affiche une erreur generique de connexion. Aucun appel `/oauth/token` n'a atteint `mcp.twoweeks.ai` pendant cette tentative. Classer ce point comme `BLOCKED_CHATGPT_UI` / callback ChatGPT avant echange token, pas comme une action manuelle restante dans la configuration du connecteur.
+`Bot Fight Mode` et `AI Labyrinth` sont restes desactives apres la preuve. Cette session ne prouve pas qu'ils etaient la cause du blocage; utiliser un A/B separe avant toute reactivation sur ce hostname.
 
-## Pre-requis
-
-- Avoir le checkout twoweeks/neyssan contenant le patch PR304, ou une branche equivalente basee sur `application-os-foundation` apres PR303.
-- Avoir les dependances locales deja installees. Ne pas lancer d'installation pendant une preuve si le contrat l'interdit.
-- Avoir Convex local demarre sur `127.0.0.1:3210`.
-- Avoir Vite local demarre sur un port connu. La preuve PR304 a utilise `http://localhost:5187`.
-- Avoir `cloudflared` disponible localement.
-- Avoir un compte ChatGPT qui peut creer un connecteur prive / private beta.
-- Avoir un compte twoweeks/Clerk valide. Si le compte twoweeks utilise Google, il faut se connecter avec Google ; ne pas inventer un mot de passe twoweeks.
-- Avoir `VITE_CLERK_PUBLISHABLE_KEY` disponible dans l'environnement Vite local. Sans cette cle publique, `/sign-in` affiche l'erreur Clerk `Missing publishableKey` et le flux OAuth ChatGPT ne peut pas finir.
-
-## 1. Demarrer la stack locale
-
-Dans le repo app, utiliser le workflow local existant du projet pour demarrer Convex et Vite. La preuve PR304 attendait :
-
-```text
-Convex local: http://127.0.0.1:3210
-Vite local:   http://localhost:5187
-```
-
-Verifier que Vite sert l'app avant de creer le tunnel.
-
-## 2. Creer le tunnel Cloudflare
-
-Lancer un quick tunnel depuis la machine locale :
-
-```bash
-cloudflared tunnel --config /dev/null --no-autoupdate --loglevel info --protocol http2 --url http://localhost:5187
-```
-
-Pourquoi `--config /dev/null` est important : sur la machine de preuve, le fichier `~/.cloudflared/config.yml` local redirigeait les quick tunnels vers `http_status:404`. En forcant une config vide, le tunnel pointe vraiment vers Vite.
-
-Copier l'URL `https://...trycloudflare.com` affichee par `cloudflared`. Dans la preuve PR304, l'URL etait :
-
-```text
-https://are-effort-skirts-hints.trycloudflare.com
-```
-
-Pour un nouveau run, remplacer partout cette URL par la nouvelle URL generee.
-
-### Variante PR305 : tunnel nomme durable
-
-Si le tunnel nomme PR305 existe deja, utiliser une config explicite pour eviter que `cloudflared` charge le vieux `~/.cloudflared/config.yml` du parser :
-
-```yaml
-tunnel: 935a2064-9473-41bc-bd73-174660892847
-credentials-file: /Users/pana/.cloudflared/935a2064-9473-41bc-bd73-174660892847.json
-ingress:
-  - hostname: mcp.twoweeks.ai
-    service: http://127.0.0.1:5187
-  - service: http_status:404
-```
-
-Puis lancer :
-
-```bash
-cloudflared tunnel --config /tmp/pr305-cloudflared.yml run
-```
-
-Verifier ensuite :
-
-```bash
-curl -sS https://mcp.twoweeks.ai/.well-known/oauth-protected-resource/mcp
-```
-
-Le champ `resource` doit valoir `https://mcp.twoweeks.ai/mcp`.
-
-## 3. Verifier les routes depuis le tunnel
-
-Definir la variable locale :
-
-```bash
-BASE="https://<votre-sous-domaine>.trycloudflare.com"
-```
-
-Verifier les metadonnees OAuth/MCP :
-
-```bash
-curl -sS "$BASE/.well-known/oauth-protected-resource/mcp"
-curl -sS "$BASE/.well-known/oauth-authorization-server"
-```
-
-Verifier `tools/list` avec un token local de preuve seulement si le script de smoke du repo le fournit. Ne jamais coller de secret reel dans le terminal ou dans le wiki.
-
-Un `GET /mcp` qui retourne `unsupported_method` est normal : MCP attend un `POST` JSON-RPC, pas un GET navigateur.
-
-## 4. Creer le connecteur dans ChatGPT
-
-Ouvrir ChatGPT avec le compte qui possede l'acces aux connecteurs. Aller dans l'interface de creation de connecteur / app privee.
-
-Creer un nouveau connecteur avec ces valeurs :
+## Configuration ChatGPT
 
 | Champ | Valeur |
 | --- | --- |
-| Nom | `twoweeks-mcp-pr304-<timestamp>` |
-| URL MCP | `https://<votre-sous-domaine>.trycloudflare.com/mcp` |
-| Auth | Mixte / OAuth |
-| Client registration | User-defined / manuel |
+| Connexion | URL du serveur |
+| URL MCP | `https://mcp.twoweeks.ai/mcp` |
+| Authentification | OAuth |
+| Enregistrement client | Client OAuth defini par l'utilisateur |
 | Client ID | `local-chatgpt-client` |
-| Client secret | vide |
-| Token endpoint auth | `none` |
+| Client secret | secret brut correspondant exactement au digest local |
+| Methode token | `client_secret_post` |
 | Scope par defaut | `twoweeks:applications:read` |
-| Authorization URL | `https://<votre-sous-domaine>.trycloudflare.com/oauth/authorize` |
-| Token URL | `https://<votre-sous-domaine>.trycloudflare.com/oauth/token` |
-| Resource | `https://<votre-sous-domaine>.trycloudflare.com/mcp` |
+| Authorization URL | `https://mcp.twoweeks.ai/oauth/authorize` |
+| Token URL | `https://mcp.twoweeks.ai/oauth/token` |
+| Authorization server | `https://mcp.twoweeks.ai/` |
+| Resource | `https://mcp.twoweeks.ai/mcp` |
 
-Pour PR305 durable, remplacer toutes les valeurs `https://<votre-sous-domaine>.trycloudflare.com` par `https://mcp.twoweeks.ai`.
+Utiliser `URL du serveur`, pas `Tunnel`. L'identifiant OAuth n'est pas un email et le secret OAuth n'est pas le mot de passe du compte twoweeks. Le compte utilisateur est choisi plus tard par Clerk pendant le login.
 
-Le redirect URI ChatGPT observe pendant PR305 utilise la forme :
+Ne jamais utiliser de wildcard redirect. La seule URI autorisee pour cette preuve est la valeur complete et exacte indiquee plus haut.
 
-```text
-https://chatgpt.com/connector/oauth/<id-runtime>
-```
+## Preuve ChatGPT minimale
 
-La config locale doit autoriser l'URI concrete et complete generee par ChatGPT, pas un wildcard. PR96.1 canonicalise les redirect URIs puis fait une comparaison exacte; une entree comme `https://chatgpt.com/connector/oauth/*` reste invalide et fail-closed. Copier donc l'URL exacte affichee par ChatGPT, par exemple la valeur complete qui remplace `<id-runtime>`.
+1. Creer un connecteur frais avec le meme couple secret brut/digest.
+2. Terminer le login twoweeks/Clerk.
+3. Verifier que ChatGPT affiche `Connecte`.
+4. Actualiser les actions et verifier `search` et `fetch`.
+5. Selectionner le connecteur dans un nouveau chat.
+6. Demander un seul appel `search` read-only, sans mutation.
+7. Verifier un succes explicite et l'absence d'erreur de reconnexion.
 
-`https://chatgpt.com/connector_platform_oauth_redirect` seul ne suffit pas pour le flux UI courant si ChatGPT envoie une URI concrete `https://chatgpt.com/connector/oauth/<id-runtime>`.
+Ne pas documenter le resultat prive retourne par l'outil. Documenter uniquement la forme de preuve, les statuts et les noms de tools publics.
 
-Attention au remplissage automatique du navigateur : Chrome peut remplir l'email dans `Client ID` et un mot de passe dans `Client secret`. Il faut les effacer. Le client ID attendu pour cette preuve est `local-chatgpt-client`, et le client secret doit rester vide.
+## Historique des blocages et diagnostic
 
-## 5. Connecter OAuth
-
-Cliquer sur connecter le connecteur dans ChatGPT. ChatGPT ouvre la route OAuth twoweeks.
-
-Si twoweeks demande une connexion, utiliser la methode normale du compte :
-
-- si le compte twoweeks utilise Google, cliquer Google ;
-- si Google demande un code, un telephone, ou une validation, la personne doit le faire manuellement ;
-- ne pas mettre le mot de passe Google dans la configuration OAuth du connecteur.
-
-La continuation doit revenir vers ChatGPT avec un code OAuth, puis ChatGPT doit pouvoir appeler MCP.
-
-## 6. Smoke ChatGPT attendu
-
-Dans ChatGPT, demander un appel au tool :
-
-```text
-twoweeks.application_package.summarize
-```
-
-Avec les arguments :
-
-```json
-{
-  "applicationPackageRef": {
-    "id": "mcp-safe-ref:application-package:latest"
-  }
-}
-```
-
-Resultat attendu si Stage 3 a bien materialise des donnees read-side :
-
-```text
-status: available
-count: 1
-result: real_data
-```
-
-Si le resultat est `no_data_available`, le connecteur peut etre correct mais les donnees read-side ne sont pas materialisees pour cet utilisateur. Refaire une sauvegarde de proposition liee a un job/profile valide, puis relancer le smoke.
-
-## 7. Depannage
-
-| Symptome | Cause probable | Correction |
+| Symptome | Cause ou conclusion prouvee | Correction durable |
 | --- | --- | --- |
-| Le navigateur affiche `unsupported_method` sur `/mcp` | Normal : GET navigateur au lieu de POST JSON-RPC | Tester avec ChatGPT ou le harness MCP, pas avec un simple GET |
-| Le tunnel retourne 404 | `cloudflared` a charge une ancienne config locale | Relancer avec `--config /dev/null` |
-| ChatGPT refuse le connecteur ou voit 403/404 | L'URL ne pointe pas vers Vite ou le tunnel est mort | Refaire un quick tunnel et mettre a jour l'URL MCP |
-| `client_id` vaut un email | Autofill navigateur dans le champ OAuth | Recreer ou corriger le connecteur avec `local-chatgpt-client` |
-| Un mot de passe est dans `Client secret` | Autofill navigateur | Vider le champ secret et mettre token endpoint auth a `none` |
-| Login twoweeks demande un mot de passe inconnu | Le compte utilise Google/Clerk | Utiliser le bouton Google, pas un mot de passe invente |
-| `/sign-in` affiche `Missing publishableKey` | `VITE_CLERK_PUBLISHABLE_KEY` absent de l'env Vite | Charger la cle publique Clerk locale avant de relancer Vite |
-| `/oauth/authorize` renvoie `invalid_authorization_request` avec ChatGPT | Redirect URI ChatGPT courant non allowliste | Ajouter l'URI concrete complete envoyee par ChatGPT a `MCP_OAUTH_PRODUCTION_REDIRECT_URIS`; ne pas utiliser `https://chatgpt.com/connector/oauth/*`, car PR96.1 compare exactement les URIs canonicalisees |
-| Tunnel nomme connecte mais `mcp.twoweeks.ai` retourne 404 | `cloudflared` a charge la config globale parser | Relancer avec `--config /tmp/pr305-cloudflared.yml` pointant vers le credential PR305 |
-| `/oauth/continue` renvoie `owner_binding_failed` alors que l'utilisateur est signe | Cookie Clerk `__session` stale ou mauvais jeton de session lu avant le bridge React | Utiliser le patch app `fb17e6cc6171f3e54baa805c39eb5e34728f5b0a` ou equivalent : les documents navigateur `/oauth/continue` passent par le bridge React et les fetchs `owner_binding_failed` retentent avec un bearer Clerk |
-| ChatGPT affiche une erreur generique apres que l'onglet twoweeks s'est connecte puis ferme | ChatGPT a recu le callback OAuth mais a abandonne avant d'appeler `/oauth/token` | Ne pas recreer en boucle le connecteur. Conserver les preuves safe : callback avec cles `code,state`, absence d'appel `/oauth/token`, nom du connecteur, URL MCP. Demander les logs cote ChatGPT/OpenAI; classer `BLOCKED_CHATGPT_UI` tant que le token endpoint n'est jamais appele |
-| Le bouton ChatGPT `Connecter` ne lance aucun nouvel onglet OAuth | Etat UI/navigateur ChatGPT bloque ou onglets `/oauth/continue` perimes | Fermer les anciens onglets `mcp.twoweeks.ai/oauth/continue`, rouvrir les reglages ChatGPT Applications dans une session propre, puis relancer le connecteur; ne pas classer cela comme un probleme Clerk si `/sign-in` rend deja l'app connectee |
-| `invalid_continuation_request` avec nonce/intention | Code avant PR304 ou URL OAuth mal conservee | Appliquer PR304 et recreer le connecteur |
-| `Invalid tools/call metadata` | Code avant PR304 rejetant `_meta` ChatGPT | Appliquer PR304 |
-| `-32602` sur tool call | Arguments invalides ou safe-ref mal copiee | Utiliser exactement `mcp-safe-ref:application-package:latest` |
-| `no_data_available` | Pas de package Stage 3 materialise pour cet owner | Sauvegarder une proposition valide puis retester |
+| `invalid_authorization_request` | client, resource, scope ou redirect incoherent | utiliser les valeurs exactes ci-dessus; aucun wildcard |
+| `pre_auth_create_failed` | dependance Convex locale/config runtime indisponible | demarrer la stack par `run.sh` et faire passer `mcp-check` |
+| `owner_binding_failed` | retour Clerk incomplet ou session stale | correctifs login-return/StrictMode deja merges; cle Clerk derivee au demarrage |
+| callback ChatGPT puis aucun `/oauth/token` | ancien client public `none` non viable sur ce chemin ChatGPT | client confidentiel avec secret et `client_secret_post` |
+| metadata correcte mais secret rejete | secret ChatGPT et digest local ne correspondent pas, souvent apres rotation partielle | rotation atomique des deux cotes et connecteur frais |
+| politique `invalidConfiguration` malgre des valeurs presentes | anciennes variables `MCP_PRODUCTION_PRIVATE_BETA_*` ou valeurs placees seulement dans l'env app | utiliser `MCP_OAUTH_PRODUCTION_PRIVATE_BETA_*` dans la racine `.env.local` |
+| `Missing publishableKey` sur `/sign-in` | Vite n'a pas recu la cle Clerk publique | demarrer/recharger par `run.sh`, qui la derive en memoire depuis l'issuer |
+| premier `tools/call` en `400`, puis retry en `200` | ChatGPT a reinitialise la session MCP | preuve finale valide, mais comportement a surveiller |
 
-## 8. Frontieres de securite
+## Comportement fail-closed
 
-Cette procedure ne doit pas ouvrir :
-
-- lancement public ;
-- appels provider ;
-- actions write ;
-- refresh tokens ;
-- billing ;
-- expansion du cycle account-link ;
-- mutation de base de donnees production/shared ;
-- logs contenant secrets, texte CV/proposition/job brut, provider output, prompts, ou fichiers.
-
-## 9. Nettoyage
-
-Quand la preuve est terminee :
-
-1. Arreter `cloudflared`.
-2. Arreter Vite si le serveur local n'est plus necessaire.
-3. Supprimer ou ignorer les connecteurs ChatGPT temporaires mal configures.
-4. Garder uniquement le connecteur qui pointe vers le tunnel actif du moment.
+- digest absent ou malforme : metadata reste `client_secret_post`, mais `/oauth/token` retourne `invalid_request` avant issuance;
+- `client_secret_basic` : refuse;
+- secret absent ou incorrect : `invalid_request` generique, sans echo;
+- wildcard ou redirect malforme : configuration rejetee;
+- `client_id`, redirect, resource, PKCE et authorization code restent verifies exactement;
+- aucun refresh token n'est emis.
 
 ## Sources
 

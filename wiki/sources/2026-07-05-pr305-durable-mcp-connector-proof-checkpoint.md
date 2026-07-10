@@ -3,7 +3,7 @@ title: "PR305 Durable MCP Connector Proof Checkpoint"
 category: source
 tags: [chatgpt-app, mcp, oauth, cloudflare, private-beta, smoke]
 created: 2026-07-05
-updated: 2026-07-06
+updated: 2026-07-10
 status: current
 type: checkpoint
 related: [[product/chatgpt-app-sdk-roadmap]], [[howto/chatgpt-mcp-private-beta-tunnel-connector]]
@@ -11,72 +11,38 @@ related: [[product/chatgpt-app-sdk-roadmap]], [[howto/chatgpt-mcp-private-beta-t
 
 # PR305 Durable MCP Connector Proof Checkpoint
 
-PR305 is a draft proof-only slice for the durable private-beta MCP connector boundary at:
-
-```text
-https://mcp.twoweeks.ai/mcp
-```
-
-It does not replace PR304's merged quick-tunnel smoke. It records the follow-up durable-host proof and the remaining ChatGPT UI callback/token-exchange blocker.
+PR305 est mergee dans `application-os-foundation` par `f9dd477b116c48f1b223b17e1636876edf3c939f`. Elle prouve le connecteur private-beta durable a `https://mcp.twoweeks.ai/mcp` sans autoriser de lancement public.
 
 ## Proven
 
-- Cloudflare named tunnel exists for `mcp.twoweeks.ai`.
-- Durable OAuth protected-resource metadata returned `200`.
-- Durable private-beta OAuth/token/MCP proof ladder passed directly through `https://mcp.twoweeks.ai`.
-- Local Vite can render the Clerk-backed app through `https://mcp.twoweeks.ai/sign-in` when the worktree is started with a valid `VITE_CLERK_PUBLISHABLE_KEY`; the session redirected to the signed-in CV page during the 2026-07-06 retry.
-- A manual OAuth authorize flow through `https://mcp.twoweeks.ai/oauth/authorize` returned to ChatGPT and local Convex showed digest-backed OAuth access-token rows, without exposing raw codes or tokens.
-- After the 2026-07-06 stale-cookie retry fix, the browser continuation leg reached ChatGPT's callback with the expected safe query-key shape `code,state`; no `/oauth/token` request reached `mcp.twoweeks.ai` during that ChatGPT UI activation attempt.
-- MCP `initialize` worked.
-- MCP `tools/list` returned the four read-only summary tools.
-- MCP `tools/call` for `twoweeks.application_package.summarize` returned real read-side `application_package` data with `available` status.
-- PR305 is docs-only in app code: it adds the proof audit, not a runtime expansion.
+- Le tunnel Cloudflare nomme `neyssan-mcp-pr305-twoweeks-ai` route le hostname durable vers Vite local sur le port `5196`.
+- Les metadata OAuth et protected-resource repondent `200` et annoncent exactement `client_secret_post` et la ressource MCP attendue.
+- Un diagnostic live a observe directement `POST /oauth/token` en `200`.
+- Le connecteur frais `twoweeks-mcp-pr305-final-0710` est connecte dans ChatGPT.
+- `tools/list` expose les tools read-only `search` et `fetch`.
+- Un `tools/call search` read-only a termine avec succes dans ChatGPT sans erreur de connexion.
+- Les tests focalises passent `205/205`; le build TypeScript/Vite, la syntaxe shell, `mcp-check`, `reload-env`, `git diff --check` et les checks GitHub ont passe sur le head de PR `e9ddb1b6997e9bdd6c2663d3837abbd32d8c13e1`.
 
-## Tunnel
+## Root cause
 
-Cloudflare named tunnel:
+Le blocage final etait un drift de configuration locale, pas Cloudflare ni le callback ChatGPT :
 
-```text
-name: neyssan-mcp-pr305-twoweeks-ai
-id: 935a2064-9473-41bc-bd73-174660892847
-hostname: mcp.twoweeks.ai
-origin: http://127.0.0.1:5187
-```
+- le chemin ChatGPT exigeait un client OAuth confidentiel, pas `token_endpoint_auth_method=none`;
+- le secret brut ChatGPT et son digest local devaient correspondre exactement;
+- le runtime actif attend `MCP_OAUTH_PRODUCTION_PRIVATE_BETA_*`, pas les anciens alias `MCP_PRODUCTION_PRIVATE_BETA_*`;
+- les valeurs serveur devaient etre chargees dans `process.env` depuis la racine `.env.local`, pas seulement dans `my-app/.env.local`.
 
-The local global `~/.cloudflared/config.yml` can point at an unrelated parser tunnel. For PR305, run the named tunnel with an explicit config or explicit credentials file for `935a2064-9473-41bc-bd73-174660892847`.
+## Durable controls
 
-## ChatGPT activation status
-
-The ChatGPT connector was created as:
-
-```text
-name: twoweeks-mcp-pr305-durable
-url: https://mcp.twoweeks.ai/mcp
-client id: local-chatgpt-client
-client secret: empty
-token endpoint auth: none
-scope: twoweeks:applications:read
-```
-
-Activation through ChatGPT UI remains unconfirmed after the 2026-07-06 retry. The previous local Clerk blocker was fixed by starting Vite with a valid `VITE_CLERK_PUBLISHABLE_KEY`; `https://mcp.twoweeks.ai/sign-in` rendered and redirected to the signed-in app. A later local app fix, `fb17e6cc6171f3e54baa805c39eb5e34728f5b0a`, made browser `/oauth/continue` document requests fall through to the React bridge even when a stale unsuffixed Clerk `__session` cookie exists, and made `owner_binding_failed` bridge fetches retry with a Clerk bearer token.
-
-After that fix, a fresh ChatGPT connection attempt for a correctly configured connector completed the visible twoweeks sign-in/continuation leg and returned to ChatGPT's callback with safe query keys `code,state`, but ChatGPT still showed a generic connection error and no `/oauth/token` request reached the local server. Treat the direct durable OAuth/token proof as server proof, and classify the current UI activation breakpoint as `BLOCKED_CHATGPT_UI`: ChatGPT callback handling aborts before token exchange.
-
-The redirect allowlist for this ChatGPT UI flow must include the exact concrete redirect URI generated by ChatGPT, for example the full value matching this shape:
-
-```text
-https://chatgpt.com/connector/oauth/<id-runtime>
-```
-
-Do not configure `https://chatgpt.com/connector/oauth/*` as a wildcard. PR96.1 canonicalizes redirect URI env entries and then performs an exact-match comparison; wildcard entries are preserved invalid and fail closed. The older `connector_platform_oauth_redirect` value is also not sufficient for the current ChatGPT connector OAuth URL shape when ChatGPT sends a concrete `/connector/oauth/<id-runtime>` URI.
+- `/oauth/token` reste `client_secret_post` uniquement et fail-closed si la politique digest est absente ou malformee.
+- Les redirects sont exacts; tous les wildcards sont rejetes.
+- `run.sh mcp-check` impose la racine `.env.local` en mode `600`, controle la provenance des cles serveur et ne publie aucune valeur.
+- `reload-env` rejoue le controle et recree la cle Clerk publique en memoire avant tout restart Vite private-beta.
+- `.dockerignore` exclut les fichiers dotenv du contexte Docker.
 
 ## Boundaries
 
-PR305 does not approve public launch. It does not add provider calls, write actions, refresh tokens, billing, account-link lifecycle expansion, production/shared database mutation, raw user-data logging, or durable hosted production deployment.
-
-## Next action
-
-To finish the UI activation proof, keep local Convex, Vite, and the named Cloudflare tunnel running, but do not keep recreating connector records blindly. Use the correctly configured connector and escalate with safe evidence if ChatGPT returns a generic connection error after receiving the callback while never calling `/oauth/token`. The smallest useful external diagnostic is ChatGPT/OpenAI-side callback/token-exchange logs for the connector, not another local Clerk or redirect wildcard change.
+Cette preuve n'ajoute aucun provider call, write tool, refresh token, billing, account-link lifecycle expansion, mutation production/shared, raw-data logging ou lancement public. Le resultat prive des tools et les secrets ne sont pas conserves dans ce checkpoint.
 
 ## Related
 

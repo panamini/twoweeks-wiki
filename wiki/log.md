@@ -1,7 +1,7 @@
 ---
 title: "Log — twoweeks Wiki"
 category: overview
-updated: 2026-07-01
+updated: 2026-07-10
 ---
 
 # Log du Wiki · twoweeks
@@ -2301,3 +2301,22 @@ Migration vers schema v2 : ajout rawinput/ (staging), gestion temporelle (status
 - No `/oauth/token` request reached `mcp.twoweeks.ai` during that ChatGPT UI attempt, so the current activation breakpoint is classified as `BLOCKED_CHATGPT_UI`: ChatGPT callback handling aborts before token exchange.
 - The next useful action is ChatGPT/OpenAI-side callback/token-exchange diagnostics for the connector, not wildcard redirect configuration or repeated connector recreation.
 - Provider calls, write actions, refresh tokens, billing, production/shared database mutation, public launch, and durable hosted production deployment remain blocked.
+
+## 2026-07-10 — PR305 durable private-beta connector merged and runbook hardened
+
+**Pages mises a jour** :
+- `wiki/howto/chatgpt-mcp-private-beta-tunnel-connector.md`
+- `wiki/sources/2026-07-05-pr305-durable-mcp-connector-proof-checkpoint.md`
+- `wiki/product/chatgpt-app-sdk-roadmap.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**Points notables** :
+- PR305 est mergee dans `application-os-foundation` par `f9dd477b116c48f1b223b17e1636876edf3c939f`.
+- Le connecteur frais `twoweeks-mcp-pr305-final-0710` est connecte a `https://mcp.twoweeks.ai/mcp` avec le client confidentiel `local-chatgpt-client`, l'URI de callback exacte et `client_secret_post`.
+- ChatGPT expose `search` et `fetch` et a termine un appel `search` read-only sans erreur de connexion.
+- Le runtime durable impose la racine `.env.local` mode `600`, rejette les cles serveur dans les fichiers env app, derive la cle Clerk publique en memoire, et rejoue ce controle lors de `reload-env`.
+- Un digest absent ou malforme ne downgrade jamais la metadata vers `none`; token exchange reste fail-closed. Les redirects wildcard et `client_secret_basic` restent refuses.
+- Le wiki ne contient aucun secret brut, digest reel, token, identifiant utilisateur ou resultat prive de tool.
+- Provider calls, write actions, refresh tokens, billing, account-link lifecycle expansion, mutations production/shared et lancement public restent interdits.
