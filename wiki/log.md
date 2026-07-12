@@ -2393,3 +2393,29 @@ Migration vers schema v2 : ajout rawinput/ (staging), gestion temporelle (status
 **Open items** : Provider calls, writes, refresh tokens, billing, account-link expansion, non-beta access, shared/production mutation and public launch remain blocked.
 
 ---
+
+## [2026-07-12] checkpoint | PR308 no-credential MCP operational smoke
+
+**Agent** : Codex
+**Mode** : docs-only post-merge synchronization
+**Source** : merged app PR308, final local/live verification, GitHub CI, and review history
+
+**Pages creees** :
+- `wiki/sources/2026-07-12-pr308-mcp-private-beta-operational-smoke-checkpoint.md`
+
+**Pages mises a jour** :
+- `wiki/product/chatgpt-app-sdk-roadmap.md`
+- `wiki/howto/chatgpt-mcp-private-beta-tunnel-connector.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**Points notables** :
+- PR308 est mergee dans `application-os-foundation` par `b101a75a1b625f7b0f3a62f677f474b4a030bff6`; son head final est `99e0cd6a340b8efdb972e5a0b944498514a780fb`.
+- `./run.sh mcp-smoke` verifie la frontiere publique OAuth/MCP sans source dotenv, secret, token, login, provider call, outil authentifie ou donnee privee.
+- La preuve couvre metadata exacte, lifecycle MCP, challenge HTTP/body, erreur token fail-closed, 16 tests focalises, 181/181 tests Node, Bash 3.2, build, smoke live et CI verte.
+- PR309 a un candidat de planning `application_package`, mais reste `NOT APPROVED` jusqu'a un Change Contract et un file allowlist exacts sur la base post-PR308.
+
+**Open items** : Provider calls, writes, refresh tokens, billing, account-link expansion, non-beta access, shared/production mutation and public launch remain blocked.
+
+---
