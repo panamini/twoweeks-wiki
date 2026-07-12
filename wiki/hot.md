@@ -3,7 +3,7 @@ title: "Hot Cache - twoweeks"
 category: overview
 status: current
 created: 2026-05-02
-updated: 2026-07-12
+updated: 2026-07-13
 ---
 
 # Hot Cache
@@ -17,7 +17,7 @@ twoweeks centers on CV ingestion/parsing, canonical saved profile/CV data, and p
 Keep two workstreams separate:
 
 - Cover-letter quality: staging `dev:neat-starfish-33` is green for Mistral V2 with only `cover_letter_premium_prompt_v2=1`; quality repair is OFF and production full GO is not approved.
-- MCP / ChatGPT App SDK: PR305 is merged as `f9dd477b116c48f1b223b17e1636876edf3c939f`; PR306 as `23c2cca9c09ba22c522242305545390dbc1bbea1`; PR307 as `736c6193966006e91a7bbbad5ff4b60898dd45fb`; PR308 as `b101a75a1b625f7b0f3a62f677f474b4a030bff6`. The confidential private connector lists `search` and `fetch` and completed safe read-only calls. `run.sh doctor` is the collaborator preflight and `run.sh mcp-smoke` is the no-credential public canary. PR309 remains not approved pending an exact post-PR308 Change Contract/file allowlist for one safe read-side capability.
+- MCP / ChatGPT App SDK: PR305 through PR309 are merged; PR309 is `b2090fd71e643120d2d695704536d1a45f690b57`. The private connector negotiates MCP `2025-06-18` or `2025-11-25`, displays exactly six existing read-only Actions, and completed a safe `application_package` summary call. `run.sh doctor` is the collaborator preflight and `run.sh mcp-smoke` is the no-credential public canary.
 
 ## Key Active Facts
 
@@ -29,14 +29,14 @@ Keep two workstreams separate:
 - The shared client secret is sourced from Infisical EU Cloud; collaborators authenticate individually, and the digest cannot recover the secret. The root `.env.local` is canonical; `my-app/.env.local` is for client values only.
 - PR306 regression coverage proves that prerequisite, partial-retrieval, post-digest permission, and success paths do not expose the raw secret or either digest under `bash -x`.
 - PR307 keeps `my-app/.env.local` Vite-only, rejects Docker-client env drift and symlinked MCP secret files, and selects native Linux host networking for cloudflared while Vite remains loopback-only.
-- PR308 adds operational read-only smoke coverage only. PR309 planning names `application_package` as the candidate but remains separately unapproved; neither step opens provider/write/public surfaces.
+- PR308 adds operational read-only smoke coverage only. PR309 fixes protocol compatibility and proves one existing `application_package` read without adding tools or opening provider/write/public surfaces.
 - Product truth is `twoweeks`; CVForge and ProposalForge are internal module names.
 - PR80B remains the safe manual application handoff while ATS authorization is pending; `provider_verified_submitted` remains unreachable.
 - Persistent wiki mutations require `wiki/index.md`, `wiki/log.md`, and usually `wiki/hot.md`.
 
 ## Canonical Pages To Read
 
-- MCP / ChatGPT App SDK: [[howto/chatgpt-mcp-private-beta-tunnel-connector]], [[sources/2026-07-12-pr308-mcp-private-beta-operational-smoke-checkpoint]], [[sources/2026-07-12-pr307-runsh-collaborator-portability-checkpoint]], [[sources/2026-07-05-pr305-durable-mcp-connector-proof-checkpoint]], [[product/chatgpt-app-sdk-roadmap]], [[product/manual-application-handoff]]
+- MCP / ChatGPT App SDK: [[howto/chatgpt-mcp-private-beta-tunnel-connector]], [[sources/2026-07-13-pr309-mcp-protocol-compatibility-checkpoint]], [[sources/2026-07-12-pr308-mcp-private-beta-operational-smoke-checkpoint]], [[sources/2026-07-12-pr307-runsh-collaborator-portability-checkpoint]], [[sources/2026-07-05-pr305-durable-mcp-connector-proof-checkpoint]], [[product/chatgpt-app-sdk-roadmap]], [[product/manual-application-handoff]]
 - Cover-letter quality: [[tasks/2026-06-22-cover-letter-quality-production-roadmap]], [[sources/2026-06-24-cover-letter-mistral-v2-staging-green]]
 - Product/parser/export routing: [[overview]], [[concepts/cv-parsing-pipeline]], [[tech/export-pipeline]]
 - Wiki operations: [[meta/llm-wiki-pattern]], [[meta/temporal-management]]

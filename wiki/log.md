@@ -2419,3 +2419,29 @@ Migration vers schema v2 : ajout rawinput/ (staging), gestion temporelle (status
 **Open items** : Provider calls, writes, refresh tokens, billing, account-link expansion, non-beta access, shared/production mutation and public launch remain blocked.
 
 ---
+
+## [2026-07-13] checkpoint | PR309 MCP protocol compatibility and authenticated proof
+
+**Agent** : Codex
+**Mode** : docs-only post-merge synchronization
+**Source** : merged app PR309, post-merge public smoke, live ChatGPT proof, GitHub CI, and final review
+
+**Pages creees** :
+- `wiki/sources/2026-07-13-pr309-mcp-protocol-compatibility-checkpoint.md`
+
+**Pages mises a jour** :
+- `wiki/product/chatgpt-app-sdk-roadmap.md`
+- `wiki/howto/chatgpt-mcp-private-beta-tunnel-connector.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**Points notables** :
+- PR309 est mergee dans `application-os-foundation` par `b2090fd71e643120d2d695704536d1a45f690b57`; son head final relu est `6db6bacef190cc4f62d9ea1ba3999a54abeaefbf`.
+- La cause etait un mismatch de version MCP : ChatGPT utilisait `2025-06-18`, tandis que le serveur acceptait seulement `2025-11-25`. Le serveur accepte maintenant exactement les deux versions et negocie celle demandee.
+- Le smoke public post-merge est vert; ChatGPT a affiche exactement six Actions et un appel read-only `twoweeks.application_package.summarize` a reussi sans capture de contenu prive.
+- Aucun outil ou champ de resultat n'a ete ajoute. OAuth, provider calls, writes, refresh tokens, billing, account linking et public launch restent inchanges et bloques.
+
+**Open items** : La capture reseau directe de `POST /oauth/token` n'a pas ete realisee; la connexion et l'appel authentifie constituent une preuve comportementale. Toute prochaine tranche MCP exige un contrat separe.
+
+---

@@ -3,17 +3,17 @@ title: "ChatGPT/App SDK Roadmap"
 category: product
 tags: [chatgpt-app, apps-sdk, mcp, roadmap, safety]
 created: 2026-06-23
-updated: 2026-07-12
+updated: 2026-07-13
 status: current
 valid_from: 2026-06-12
 type: roadmap
-sources: [2026-07-12-pr308-mcp-private-beta-operational-smoke-checkpoint, 2026-07-12-pr307-runsh-collaborator-portability-checkpoint, 2026-07-05-pr305-durable-mcp-connector-proof-checkpoint, 2026-07-04-pr304-live-mcp-connector-smoke-checkpoint, 2026-07-02-pr302-pr303-mcp-stage3-readside-materialization-checkpoint, 2026-07-01-pr301-mcp-readiness-diagnostics-checkpoint, 2026-07-01-pr300-mcp-tools-call-synthetic-metadata-cleanup-checkpoint, 2026-07-01-pr107-pr108-mcp-summary-status-launch-readiness-checkpoint, 2026-07-01-pr106-mcp-readonly-summary-execution-checkpoint, 2026-06-30-pr102-pr103-mcp-tools-call-schema-hardening-checkpoint, 2026-06-30-pr101-mcp-policy-kernel-tools-list-checkpoint, 2026-06-30-pr99-2-mcp-bearer-quota-trusted-caller-checkpoint, 2026-06-30-pr99-1-mcp-bearer-verification-hardening-bug-list, 2026-06-29-pr98-mcp-oauth-access-token-issuance-checkpoint, 2026-06-29-pr96-1-mcp-oauth-redirect-uri-normalization-checkpoint, 2026-06-28-pr96-mcp-oauth-production-authorization-code-checkpoint, 2026-06-27-pr94-mcp-oauth-production-authorize-preauth-checkpoint, 2026-06-27-pr89-pr93-mcp-oauth-production-gate-route-shell-checkpoint, 2026-06-27-pr87-17d-mcp-oauth-local-dev-route-adapter-checkpoint, 2026-06-26-pr87-17c1-mcp-oauth-login-return-continuation-checkpoint, 2026-06-26-pr87-17c0-mcp-oauth-login-return-convention-checkpoint, 2026-06-26-pr87-17b-mcp-oauth-authorization-intent-checkpoint, 2026-06-26-pr87-17a-mcp-oauth-authorization-request-boundary-checkpoint, 2026-06-25-pr87-16-mcp-account-link-lifecycle-checkpoint, 2026-06-25-pr87-15d-mcp-auth-local-runtime-wiring-checkpoint, 2026-06-25-pr87-15c-mcp-auth-composition-checkpoint, 2026-06-25-pr87-15b1-mcp-account-link-lookup-adapter-checkpoint, 2026-06-25-pr87-15b0-mcp-account-link-canonical-storage-checkpoint, 2026-06-25-pr87-15a-mcp-stytch-bearer-verifier-checkpoint, 2026-06-24-pr87-14b-mcp-auth-dev-endpoint-wiring-checkpoint, 2026-06-24-pr87-14a-mcp-auth-request-orchestrator-checkpoint, 2026-06-24-pr87-13-mcp-auth-policy-boundary-checkpoint, 2026-06-24-pr87-12-mcp-dev-fixture-demo-checkpoint, 2026-06-24-pr87-11-mcp-auth-account-linking-architecture-checkpoint, 2026-06-24-pr87-10-mcp-dev-endpoint-blocked-reachability-checkpoint, 2026-06-23-release-orchestration-staging-pr87-8-checkpoint, 2026-06-23-twoweeks-mcp-chatgpt-app-sdk-roadmap-checkpoint, 2026-06-12-chatgpt-app-sdk-roadmap-pr41-pr89, 2026-06-12-non-production-apps-sdk-exploration-plan, 2026-06-19-pr80b-safe-application-handoff-while-ats-access-pending]
+sources: [2026-07-13-pr309-mcp-protocol-compatibility-checkpoint, 2026-07-12-pr308-mcp-private-beta-operational-smoke-checkpoint, 2026-07-12-pr307-runsh-collaborator-portability-checkpoint, 2026-07-05-pr305-durable-mcp-connector-proof-checkpoint, 2026-07-04-pr304-live-mcp-connector-smoke-checkpoint, 2026-07-02-pr302-pr303-mcp-stage3-readside-materialization-checkpoint, 2026-07-01-pr301-mcp-readiness-diagnostics-checkpoint, 2026-07-01-pr300-mcp-tools-call-synthetic-metadata-cleanup-checkpoint, 2026-07-01-pr107-pr108-mcp-summary-status-launch-readiness-checkpoint, 2026-07-01-pr106-mcp-readonly-summary-execution-checkpoint, 2026-06-30-pr102-pr103-mcp-tools-call-schema-hardening-checkpoint, 2026-06-30-pr101-mcp-policy-kernel-tools-list-checkpoint, 2026-06-30-pr99-2-mcp-bearer-quota-trusted-caller-checkpoint, 2026-06-30-pr99-1-mcp-bearer-verification-hardening-bug-list, 2026-06-29-pr98-mcp-oauth-access-token-issuance-checkpoint, 2026-06-29-pr96-1-mcp-oauth-redirect-uri-normalization-checkpoint, 2026-06-28-pr96-mcp-oauth-production-authorization-code-checkpoint, 2026-06-27-pr94-mcp-oauth-production-authorize-preauth-checkpoint, 2026-06-27-pr89-pr93-mcp-oauth-production-gate-route-shell-checkpoint, 2026-06-27-pr87-17d-mcp-oauth-local-dev-route-adapter-checkpoint, 2026-06-26-pr87-17c1-mcp-oauth-login-return-continuation-checkpoint, 2026-06-26-pr87-17c0-mcp-oauth-login-return-convention-checkpoint, 2026-06-26-pr87-17b-mcp-oauth-authorization-intent-checkpoint, 2026-06-26-pr87-17a-mcp-oauth-authorization-request-boundary-checkpoint, 2026-06-25-pr87-16-mcp-account-link-lifecycle-checkpoint, 2026-06-25-pr87-15d-mcp-auth-local-runtime-wiring-checkpoint, 2026-06-25-pr87-15c-mcp-auth-composition-checkpoint, 2026-06-25-pr87-15b1-mcp-account-link-lookup-adapter-checkpoint, 2026-06-25-pr87-15b0-mcp-account-link-canonical-storage-checkpoint, 2026-06-25-pr87-15a-mcp-stytch-bearer-verifier-checkpoint, 2026-06-24-pr87-14b-mcp-auth-dev-endpoint-wiring-checkpoint, 2026-06-24-pr87-14a-mcp-auth-request-orchestrator-checkpoint, 2026-06-24-pr87-13-mcp-auth-policy-boundary-checkpoint, 2026-06-24-pr87-12-mcp-dev-fixture-demo-checkpoint, 2026-06-24-pr87-11-mcp-auth-account-linking-architecture-checkpoint, 2026-06-24-pr87-10-mcp-dev-endpoint-blocked-reachability-checkpoint, 2026-06-23-release-orchestration-staging-pr87-8-checkpoint, 2026-06-23-twoweeks-mcp-chatgpt-app-sdk-roadmap-checkpoint, 2026-06-12-chatgpt-app-sdk-roadmap-pr41-pr89, 2026-06-12-non-production-apps-sdk-exploration-plan, 2026-06-19-pr80b-safe-application-handoff-while-ats-access-pending]
 related: [[product/manual-application-handoff]], [[product/product-roadmap]], [[product/product-vision]], [[product/ai-product-model]], [[howto/chatgpt-mcp-private-beta-tunnel-connector]]
 ---
 
 # ChatGPT/App SDK Roadmap
 
-The ChatGPT/App SDK roadmap is now a current checkpoint page, not just a future plan. The active truth is the merged PR305 durable private-beta connector proof at `mcp.twoweeks.ai`, followed by PR306 secret-sync hardening and PR307 collaborator startup diagnostics. The private connector is proven read-only; public launch and every provider/write surface remain separately gated.
+The ChatGPT/App SDK roadmap is now a current checkpoint page, not just a future plan. The active truth is the merged PR305 durable private-beta connector proof at `mcp.twoweeks.ai`, followed by PR306 secret-sync hardening, PR307 collaborator startup diagnostics, PR308 public smoke, and PR309 protocol compatibility with a safe authenticated ChatGPT call. The private connector is proven read-only; public launch and every provider/write surface remain separately gated.
 
 ## Current state
 
@@ -24,6 +24,10 @@ PR305 is merged as `f9dd477b116c48f1b223b17e1636876edf3c939f`. The durable conne
 PR306 is merged as `23c2cca9c09ba22c522242305545390dbc1bbea1`. Infisical remains the team source for the raw OAuth secret, while `mcp-secret-sync` stores only the digest in root `.env.local` and suppresses `xtrace` before sensitive loading, retrieval, hashing, replacement, and controlled exits.
 
 PR307 is merged as `736c6193966006e91a7bbbad5ff4b60898dd45fb`. `./run.sh doctor [local-fast|mcp-private-beta]` now provides a read-only, value-silent collaborator preflight across macOS, Linux, and WSL2. It aligns dotenv precedence and startup blockers, rejects Docker client control-variable drift and symlinked MCP secret files, and uses native Linux host networking for cloudflared while keeping loopback-bound Vite. PR307 changes startup reproducibility only; it does not expand OAuth, MCP tools, data access, provider behavior, or launch eligibility.
+
+PR308 is merged as `b101a75a1b625f7b0f3a62f677f474b4a030bff6`. `./run.sh mcp-smoke` is the no-credential public canary for OAuth/MCP discovery, lifecycle, auth challenge, and fail-closed token errors.
+
+PR309 is merged as `b2090fd71e643120d2d695704536d1a45f690b57`. It resolves the first live ChatGPT boundary by accepting exactly MCP `2025-06-18` and `2025-11-25`. Post-merge smoke passed, the fresh connector exposed exactly six existing read-only Actions, and one safe `twoweeks.application_package.summarize` call succeeded without capturing private content.
 
 PR80B manual handoff is already implemented as the safe delivery path while ATS authorization is pending, but live submit/apply remains blocked.
 
@@ -109,16 +113,17 @@ Forbidden runtime and launch surfaces stay blocked unless a later reviewed decis
 - [x] `./run.sh mcp-smoke` skips dotenv/secret/runtime setup and validates exact public metadata, MCP lifecycle, HTTP/body auth challenge, and malformed token failure without credentials or private data.
 - [x] Focused smoke 16/16, combined root Node 181/181 with explicit exit 0, live public smoke, Bash 3.2, build, CI, Playwright, and Semgrep passed.
 
-### PR309 - One authenticated read-only user-data slice (not approved)
+### PR309 - MCP protocol compatibility and authenticated proof (merged)
 
-- [ ] PR308 prerequisite is satisfied. Start only after a separate approved PR309 Change Contract resolves the exact latest-base file allowlist and names one existing safe read-side capability.
-- [ ] Current planning candidate is the existing `application_package` summary; this is not approval to implement or widen its result shape.
-- [ ] Keep ownership binding, private-beta eligibility, policy, schema, safe-ref, result-shape, status-normalization, and no-raw-text constraints fail-closed.
-- [ ] Prove `tools/list` and one safe ChatGPT `tools/call` for the selected capability without exposing private data in logs, tests, PR text, or the wiki.
-- [ ] Keep provider submit/apply, write actions, outbound HTTP/model calls, billing/entitlements, account-link lifecycle expansion, non-beta access, and public launch blocked.
+- [x] Merged as `b2090fd71e643120d2d695704536d1a45f690b57`; reviewed head `6db6bacef190cc4f62d9ea1ba3999a54abeaefbf`.
+- [x] The server now accepts exactly MCP `2025-06-18` and `2025-11-25`, returning the supported version requested by the client and retaining `2025-11-25` as the latest fallback.
+- [x] Post-merge public smoke passed, and a `2025-06-18` lifecycle listed exactly six existing read-only tools.
+- [x] A fresh ChatGPT connector displayed exactly six Actions and completed one safe `twoweeks.application_package.summarize` call with a deterministic `no_data_available` result and no private-content capture.
+- [x] No new tool, result field, OAuth behavior, provider/write path, refresh token, account-link lifecycle, billing behavior, non-beta access, or public launch was added.
 
 ## Sources
 
+- [[sources/2026-07-13-pr309-mcp-protocol-compatibility-checkpoint]]
 - [[sources/2026-07-12-pr308-mcp-private-beta-operational-smoke-checkpoint]]
 - [[sources/2026-07-12-pr307-runsh-collaborator-portability-checkpoint]]
 - [[sources/2026-07-04-pr304-live-mcp-connector-smoke-checkpoint]]
