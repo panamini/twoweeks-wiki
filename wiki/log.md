@@ -1,7 +1,7 @@
 ---
 title: "Log — twoweeks Wiki"
 category: overview
-updated: 2026-07-10
+updated: 2026-07-12
 ---
 
 # Log du Wiki · twoweeks
@@ -2364,5 +2364,32 @@ Migration vers schema v2 : ajout rawinput/ (staging), gestion temporelle (status
 - Aucun secret brut, digest reel, token, identifiant utilisateur ou resultat prive de tool n'est documente.
 
 **Open items** : Provider calls, writes, refresh tokens, billing, production/shared DB mutation, account-link expansion and public launch remain blocked.
+
+---
+
+## [2026-07-12] checkpoint | PR307 collaborator startup portability and MCP roadmap reconciliation
+
+**Agent** : Codex
+**Mode** : docs-only post-merge synchronization
+**Source** : merged app PR307, final CI/review evidence, and current PR305/PR306 private-beta runbook
+
+**Pages creees** :
+- `wiki/sources/2026-07-12-pr307-runsh-collaborator-portability-checkpoint.md`
+
+**Pages mises a jour** :
+- `wiki/product/chatgpt-app-sdk-roadmap.md`
+- `wiki/howto/chatgpt-mcp-private-beta-tunnel-connector.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**Points notables** :
+- PR307 est mergee dans `application-os-foundation` par `736c6193966006e91a7bbbad5ff4b60898dd45fb`; son head final relu est `982ae1405899ed5fb7b76ada1cf2bb1236436a58`.
+- `./run.sh doctor [local-fast|mcp-private-beta]` est le preflight collaborateur read-only et value-silent pour macOS, Linux et WSL2.
+- Le diagnostic preserve la propriete root/app des env, rejette les variables de controle du client Docker et les symlinks de fichiers MCP sensibles, et aligne le tunnel Linux natif avec Vite lie a loopback.
+- La verification finale a couvert 165 tests doctor, le build app, Bash 3.2 macOS/Linux, les deux doctors live, GitHub CI/Playwright et une revue independante claire.
+- PR308 est maintenant la prochaine tranche d'operational stabilization sans nouvel outil ni nouvelle donnee. PR309 reste bloquee jusqu'a PR308 et a un Change Contract separe pour une seule capacite user-data read-only.
+
+**Open items** : Provider calls, writes, refresh tokens, billing, account-link expansion, non-beta access, shared/production mutation and public launch remain blocked.
 
 ---
