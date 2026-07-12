@@ -3,10 +3,10 @@ title: "ChatGPT MCP Private Beta Tunnel Connector Runbook"
 category: howto
 tags: [chatgpt-app, mcp, cloudflare, tunnel, oauth, private-beta]
 created: 2026-07-04
-updated: 2026-07-12
+updated: 2026-07-13
 status: current
 type: runbook
-sources: [2026-07-12-pr308-mcp-private-beta-operational-smoke-checkpoint, 2026-07-12-pr307-runsh-collaborator-portability-checkpoint, 2026-07-05-pr305-durable-mcp-connector-proof-checkpoint, 2026-07-04-pr304-live-mcp-connector-smoke-checkpoint]
+sources: [2026-07-13-pr309-mcp-protocol-compatibility-checkpoint, 2026-07-12-pr308-mcp-private-beta-operational-smoke-checkpoint, 2026-07-12-pr307-runsh-collaborator-portability-checkpoint, 2026-07-05-pr305-durable-mcp-connector-proof-checkpoint, 2026-07-04-pr304-live-mcp-connector-smoke-checkpoint]
 related: [[product/chatgpt-app-sdk-roadmap]]
 ---
 
@@ -20,6 +20,7 @@ Procedure reproductible pour demarrer le serveur MCP prive twoweeks, exposer son
 - PR306 est mergee par `23c2cca9c09ba22c522242305545390dbc1bbea1`; `mcp-secret-sync` reste value-silent sous `bash -x`.
 - PR307 est mergee par `736c6193966006e91a7bbbad5ff4b60898dd45fb`; `run.sh doctor` couvre le demarrage collaborateur macOS/Linux/WSL2 sans elargir MCP/OAuth.
 - PR308 est mergee par `b101a75a1b625f7b0f3a62f677f474b4a030bff6`; `run.sh mcp-smoke` verifie la frontiere publique sans charger de dotenv, secret, token ou donnee privee.
+- PR309 est mergee par `b2090fd71e643120d2d695704536d1a45f690b57`; le serveur accepte exactement MCP `2025-06-18` et `2025-11-25` et negocie la version supportee demandee.
 - Endpoint MCP : `https://mcp.twoweeks.ai/mcp`.
 - Redirect URI exact : `https://chatgpt.com/connector/oauth/b7v_6OncLEsg`.
 - Client ID : `local-chatgpt-client`.
@@ -28,6 +29,7 @@ Procedure reproductible pour demarrer le serveur MCP prive twoweeks, exposer son
 - Rotation one-shot du secret et nouveau connecteur `twoweeks-mcp-infisical-0710` prouves.
 - Le connecteur est connecte; les actions read-only `search` et `fetch` sont visibles.
 - Des appels read-only `search` et `fetch` ont reussi sans mutation ni erreur de reconnexion.
+- Un connecteur frais a affiche exactement six Actions et un appel `twoweeks.application_package.summarize` a reussi avec le resultat sur `no_data_available`, sans contenu prive capture.
 - La preuve d'echange OAuth est comportementale via la connexion du connecteur et les appels d'outils. `POST /oauth/token` n'a pas ete capture separement dans le log Vite de la session courante; ne pas le presenter comme une capture reseau directe.
 
 Cette preuve est privee. Elle n'autorise ni lancement public, ni provider calls, ni write tools, ni refresh tokens, ni billing, ni expansion du cycle account-link, ni mutation de base production/shared.
@@ -151,9 +153,9 @@ Ne jamais utiliser de wildcard redirect. La seule URI autorisee pour cette preuv
 1. Recuperer le secret partage depuis Infisical et creer un connecteur frais avec le secret correspondant au digest local, sans documenter la valeur.
 2. Terminer le login twoweeks/Clerk.
 3. Verifier que ChatGPT affiche `Connecte`.
-4. Actualiser les actions et verifier `search` et `fetch`.
+4. Actualiser les actions et verifier exactement six actions, dont une seule `twoweeks.application_package.summarize`.
 5. Selectionner le connecteur dans un nouveau chat.
-6. Demander des appels `search` et `fetch` read-only, sans mutation.
+6. Demander un appel `twoweeks.application_package.summarize` read-only, sans mutation.
 7. Verifier un succes explicite et l'absence d'erreur de reconnexion.
 
 Ne pas documenter le resultat prive retourne par l'outil. Documenter uniquement la forme de preuve, les statuts et les noms de tools publics.
@@ -170,6 +172,7 @@ Ne pas documenter le resultat prive retourne par l'outil. Documenter uniquement 
 | politique `invalidConfiguration` malgre des valeurs presentes | anciennes variables `MCP_PRODUCTION_PRIVATE_BETA_*` ou valeurs placees seulement dans l'env app | utiliser `MCP_OAUTH_PRODUCTION_PRIVATE_BETA_*` dans la racine `.env.local` |
 | `Missing publishableKey` sur `/sign-in` | Vite n'a pas recu la cle Clerk publique | demarrer/recharger par `run.sh`, qui la derive en memoire depuis l'issuer |
 | premier `tools/call` en `400`, puis retry en `200` | ChatGPT a reinitialise la session MCP | preuve finale valide, mais comportement a surveiller |
+| connecteur OAuth valide mais Actions indisponibles | ChatGPT initialise avec MCP `2025-06-18`, anciennement refuse par le serveur limite a `2025-11-25` | PR309 accepte exactement les deux versions et negocie celle demandee |
 
 ## Comportement fail-closed
 
@@ -182,6 +185,7 @@ Ne pas documenter le resultat prive retourne par l'outil. Documenter uniquement 
 
 ## Sources
 
+- [[sources/2026-07-13-pr309-mcp-protocol-compatibility-checkpoint]]
 - [[sources/2026-07-12-pr307-runsh-collaborator-portability-checkpoint]]
 - [[sources/2026-07-04-pr304-live-mcp-connector-smoke-checkpoint]]
 - [[sources/2026-07-05-pr305-durable-mcp-connector-proof-checkpoint]]
