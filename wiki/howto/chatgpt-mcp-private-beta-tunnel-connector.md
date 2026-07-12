@@ -6,7 +6,7 @@ created: 2026-07-04
 updated: 2026-07-12
 status: current
 type: runbook
-sources: [2026-07-12-pr307-runsh-collaborator-portability-checkpoint, 2026-07-05-pr305-durable-mcp-connector-proof-checkpoint, 2026-07-04-pr304-live-mcp-connector-smoke-checkpoint]
+sources: [2026-07-12-pr308-mcp-private-beta-operational-smoke-checkpoint, 2026-07-12-pr307-runsh-collaborator-portability-checkpoint, 2026-07-05-pr305-durable-mcp-connector-proof-checkpoint, 2026-07-04-pr304-live-mcp-connector-smoke-checkpoint]
 related: [[product/chatgpt-app-sdk-roadmap]]
 ---
 
@@ -19,6 +19,7 @@ Procedure reproductible pour demarrer le serveur MCP prive twoweeks, exposer son
 - PR305 est mergee dans `application-os-foundation` par `f9dd477b116c48f1b223b17e1636876edf3c939f`.
 - PR306 est mergee par `23c2cca9c09ba22c522242305545390dbc1bbea1`; `mcp-secret-sync` reste value-silent sous `bash -x`.
 - PR307 est mergee par `736c6193966006e91a7bbbad5ff4b60898dd45fb`; `run.sh doctor` couvre le demarrage collaborateur macOS/Linux/WSL2 sans elargir MCP/OAuth.
+- PR308 est mergee par `b101a75a1b625f7b0f3a62f677f474b4a030bff6`; `run.sh mcp-smoke` verifie la frontiere publique sans charger de dotenv, secret, token ou donnee privee.
 - Endpoint MCP : `https://mcp.twoweeks.ai/mcp`.
 - Redirect URI exact : `https://chatgpt.com/connector/oauth/b7v_6OncLEsg`.
 - Client ID : `local-chatgpt-client`.
@@ -88,9 +89,10 @@ chmod 600 .env.local
 ./run.sh mcp-check
 ./run.sh mcp-secret-sync
 ./run.sh mcp-private-beta
+./run.sh mcp-smoke
 ```
 
-`doctor mcp-private-beta` est un preflight read-only : il ne source pas les fichiers dotenv, ne recupere pas le secret Infisical et ne demarre ni n'arrete de service. Il doit finir en `PASS` avant le premier demarrage collaborateur. `mcp-check` doit afficher seulement `PASS` et les noms de cles en cas d'erreur, jamais leurs valeurs. `mcp-private-beta` demarre Convex local, Vite sur `127.0.0.1:5196`, le runtime parser image et le tunnel nomme.
+`doctor mcp-private-beta` est un preflight read-only : il ne source pas les fichiers dotenv, ne recupere pas le secret Infisical et ne demarre ni n'arrete de service. Il doit finir en `PASS` avant le premier demarrage collaborateur. `mcp-check` doit afficher seulement `PASS` et les noms de cles en cas d'erreur, jamais leurs valeurs. `mcp-private-beta` demarre Convex local, Vite sur `127.0.0.1:5196`, le runtime parser image et le tunnel nomme. Une fois l'origine publique disponible, `mcp-smoke` verifie les metadata OAuth/MCP, le lifecycle `initialize`/`initialized`, le challenge Bearer et l'erreur token fail-closed; il ne source aucun dotenv et n'envoie aucun credential.
 
 Apres une modification de configuration :
 
