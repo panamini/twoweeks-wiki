@@ -180,6 +180,7 @@ Ne pas documenter le resultat prive retourne par l'outil. Documenter uniquement 
 
 ## Sources
 
+- [[sources/2026-07-12-pr307-runsh-collaborator-portability-checkpoint]]
 - [[sources/2026-07-04-pr304-live-mcp-connector-smoke-checkpoint]]
 - [[sources/2026-07-05-pr305-durable-mcp-connector-proof-checkpoint]]
 - [[product/chatgpt-app-sdk-roadmap]]

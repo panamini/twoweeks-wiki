@@ -134,8 +134,6 @@ Cover-letter quality has a merged PR249 staged internal Mistral V2 gate and a gr
 | [[sources/2026-06-30-pr99-1-mcp-bearer-verification-hardening-bug-list\|MCP Bearer Verification Hardening Bug List - PR99.1]] | checkpoint | 2026-06-30 | current |
 | [[sources/2026-04-03-workspace-security-rgpd-audit\|Workspace Security / RGPD Audit]] | analysis | 2026-04-03 | current |
 | [[sources/2026-04-09-decisions-cvforge-sprint\|Décisions sprint — parsing & features]] | conversation | 2026-04-09 | current |
-| [[sources/2026-04-09-tweet-karpathy-llm-wiki\|Tweet Karpathy — LLM Knowledge Bases]] | tweet | 2026-04-09 | current |
-| [[sources/2026-04-09-wiki-paste-llm-wiki\|Wiki Paste — LLM Wiki]] | document | 2026-04-09 | current |
 | [[sources/2026-04-10-notion-roadmap-cvforge\|Notion Roadmap — CVForge]] | document | 2026-04-10 | current |
 | [[sources/2026-04-10-benchmark-matrix\|Ideal Benchmark Matrix — Path A]] | document | 2026-04-10 | current |
 | [[sources/2026-04-10-success-blueprint\|Success Blueprint — Path B]] | document | 2026-04-10 | current |
@@ -220,6 +218,7 @@ Cover-letter quality has a merged PR249 staged internal Mistral V2 gate and a gr
 | [[sources/2026-06-19-pr80b-safe-application-handoff-while-ats-access-pending\|PR80B - Safe Application Handoff While ATS Authorization Is Pending]] | implementation-plan | 2026-06-19 | current |
 | [[sources/2026-06-23-cover-letter-quality-production-roadmap-updated-checklist\|Cover Letter Quality Production Roadmap - Updated Checklist]] | analysis | 2026-06-23 | current |
 | [[sources/2026-06-23-cover-letter-quality-pr246-merge-checkpoint\|Cover Letter Quality PR246 Merge Checkpoint]] | analysis | 2026-06-23 | current |
+| [[sources/2026-06-23-cover-letter-quality-pr248-merge-checkpoint\|Cover Letter Quality PR248 Merge Checkpoint]] | analysis | 2026-06-23 | current |
 | [[sources/2026-06-23-cover-letter-quality-pr249-staged-internal-gate\|Cover Letter Quality PR249 Staged Internal Gate]] | analysis | 2026-06-23 | current |
 | [[sources/2026-06-23-release-orchestration-staging-pr87-8-checkpoint\|Release Orchestration Checkpoint - Staging and PR87.8]] | analysis | 2026-06-23 | current |
 | [[sources/2026-06-24-pr87-10-mcp-dev-endpoint-blocked-reachability-checkpoint\|MCP Dev Endpoint Test-Only Reachability Checkpoint - PR87.10]] | analysis | 2026-06-24 | current |
@@ -238,6 +237,8 @@ Cover-letter quality has a merged PR249 staged internal Mistral V2 gate and a gr
 | [[sources/2026-06-26-pr87-17c0-mcp-oauth-login-return-convention-checkpoint\|MCP OAuth Login Return Convention Checkpoint - PR87.17C0]] | analysis | 2026-06-26 | current |
 | [[sources/2026-06-27-pr87-17d-mcp-oauth-local-dev-route-adapter-checkpoint\|MCP OAuth Local Dev Route Adapter Checkpoint - PR87.17D]] | analysis | 2026-06-27 | current |
 | [[sources/2026-06-26-pr87-17c1-mcp-oauth-login-return-continuation-checkpoint\|MCP OAuth Login Return Continuation Boundary Checkpoint - PR87.17C1]] | analysis | 2026-06-26 | current |
+| [[sources/2026-06-27-pr89-pr93-mcp-oauth-production-gate-route-shell-checkpoint\|MCP OAuth Production Gate And Route Shell Checkpoint - PR89-PR93]] | checkpoint | 2026-06-27 | current |
+| [[sources/2026-06-27-pr94-mcp-oauth-production-authorize-preauth-checkpoint\|MCP OAuth Production Authorize Pre-auth Checkpoint - PR94]] | checkpoint | 2026-06-27 | current |
 | [[sources/2026-06-29-pr98-mcp-oauth-access-token-issuance-checkpoint\|MCP OAuth Access Token Issuance Checkpoint - PR98]] | analysis | 2026-06-29 | current |
 | [[sources/2026-06-29-pr96-1-mcp-oauth-redirect-uri-normalization-checkpoint\|MCP OAuth Redirect URI Normalization Checkpoint - PR96.1]] | analysis | 2026-06-29 | current |
 | [[sources/2026-06-28-pr96-mcp-oauth-production-authorization-code-checkpoint\|MCP OAuth Production Authorization Code Checkpoint - PR96]] | analysis | 2026-06-28 | current |
@@ -312,7 +313,7 @@ Cover-letter quality has a merged PR249 staged internal Mistral V2 gate and a gr
 
 ## Statistiques
 
-- **Pages actives** : 154 (5 overview, 1 entité, 2 concepts, 8 design, 9 product, 3 strategy, 3 meta, 94 sources, 14 tech, 7 howto, 6 tasks, 2 outputs)
+- **Pages actives** : 184 (5 overview, 1 entité, 2 concepts, 8 design, 9 product, 3 strategy, 3 meta, 124 sources, 14 tech, 7 howto, 6 tasks, 2 outputs)
 - **Pages archivées** : 2
 - **Sources dans `raw/`** : 91
 - **Sources en attente dans `rawinput/`** : 0
