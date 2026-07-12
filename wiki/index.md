@@ -2,7 +2,7 @@
 title: Index du Wiki — twoweeks
 category: overview
 sticker: emoji//1f9c6
-updated: 2026-07-10
+updated: 2026-07-12
 ---
 
 # Index du Wiki · twoweeks (v2)
@@ -86,7 +86,7 @@ Cette carte est un routeur de lecture pour agents LLM. Elle ne remplace pas les 
 |------|--------|--------|------|
 | [[product/ai-product-model\|AI Product Model]] | 3 modes IA, rulebook, qualité writing, and Planner Agent shadow chain | current | ai, ux, modes |
 | [[product/ai-consistency-p0-editor-ai\|AI Consistency P0 — Closure Audit]] | Closure audit snapshot du rulebook AI editor, preview, telemetry et tailoring | current | ai, editor, rulebook |
-| [[product/chatgpt-app-sdk-roadmap\|ChatGPT/App SDK Roadmap]] | PR305 durable `mcp.twoweeks.ai` private connector merged and connected with confidential OAuth, `tools/list` and one read-only `tools/call`; public launch remains blocked | current | chatgpt-app, apps-sdk |
+| [[product/chatgpt-app-sdk-roadmap\|ChatGPT/App SDK Roadmap]] | PR305 durable private connector proven, PR306 secret sync hardened, and PR307 collaborator preflight merged; PR308 operational stabilization is next while PR309 user-data expansion and public launch remain gated | current | chatgpt-app, apps-sdk |
 | [[product/job-library\|Job Library]] | Jobs sauvegardés, Job Brief editable et documents liés | current | jobs, library |
 | [[product/job-match-review\|Job Match Review]] | Match comme indicateur d'attention utilisateur et dogfood interne | current | jobs, match |
 | [[product/kpis\|KPIs]] | Métriques de succès produit | current | kpi, métriques |
@@ -116,10 +116,11 @@ Cette carte est un routeur de lecture pour agents LLM. Elle ne remplace pas les 
 
 ## Sources
 
-Cover-letter quality has a merged PR249 staged internal Mistral V2 gate and a green Convex staging checkpoint on `dev:neat-starfish-33`; production full GO and quality repair remain separate/not approved. The MCP/App SDK track now has PR87.17D local/dev-only OAuth route adapter, PR89 activation gate, PR90 operational status, PR92 route preflight, PR93 guarded inert production route shells, PR94 production `/oauth/authorize` pre-auth creation, PR95 login-return owner binding, PR96 authorization-code issuance, PR96.1 redirect URI allowlist normalization, PR97 authorization-code redemption validation, PR98 access-token issuance, PR99 production `/mcp` bearer-token verification, PR99.1 OAuth discovery/quota/time/binding hardening, PR99.2 trusted-socket bearer quota hardening, PR99.3 caller-key canonicalization, PR100 authenticated MCP protocol/session envelope, PR101 production policy kernel plus metadata-only `tools/list`, PR102 read-only `tools/call`, PR103 schema matcher hardening, PR104 private beta gate, PR105 launch-readiness boundary, PR295 default Vite launch-readiness wiring, PR106 read-only summary execution, PR107 summary status normalization, PR108 launch-readiness summary evidence hardening, PR300 stale synthetic tools-call metadata cleanup, PR301 diagnostic-only cleanup-review evidence, PR302 Stage 3 read-side materialization, PR303 post-merge proof, PR304 live connector smoke, and PR305 durable private-beta proof merged. PR305 connects `mcp.twoweeks.ai` with confidential `client_secret_post`, exact redirect matching, `search`/`fetch` discovery and one successful read-only `search` call. Provider calls, write actions, refresh tokens, production account-link lifecycle expansion, and public launch remain blocked; PR80B remains the safe manual handoff path while ATS authorization is pending.
+Cover-letter quality has a merged PR249 staged internal Mistral V2 gate and a green Convex staging checkpoint on `dev:neat-starfish-33`; production full GO and quality repair remain separate/not approved. The MCP/App SDK track has reached durable confidential private-beta proof in PR305, team secret-sync hardening in PR306, and collaborator startup portability in PR307. PR308 is the next operational-stabilization slice. PR309 may open only one separately approved authenticated read-only user-data capability after PR308. Provider calls, write actions, refresh tokens, production account-link lifecycle expansion, non-beta access, and public launch remain blocked; PR80B remains the safe manual handoff path while ATS authorization is pending.
 
 | Page | Type | Date | Status |
 |------|------|------|--------|
+| [[sources/2026-07-12-pr307-runsh-collaborator-portability-checkpoint\|PR307 run.sh Collaborator Portability Checkpoint]] | checkpoint | 2026-07-12 | current |
 | [[sources/2026-07-04-pr304-live-mcp-connector-smoke-checkpoint\|PR304 Live MCP Connector Smoke Checkpoint]] | checkpoint | 2026-07-04 | current |
 | [[sources/2026-07-05-pr305-durable-mcp-connector-proof-checkpoint\|PR305 Durable MCP Connector Proof Checkpoint]] | checkpoint | 2026-07-05 | current |
 | [[sources/2026-07-02-pr302-pr303-mcp-stage3-readside-materialization-checkpoint\|MCP Stage 3 Read-side Materialization Checkpoint - PR302/PR303]] | checkpoint | 2026-07-02 | current |
@@ -311,8 +312,8 @@ Cover-letter quality has a merged PR249 staged internal Mistral V2 gate and a gr
 
 ## Statistiques
 
-- **Pages actives** : 153 (5 overview, 1 entité, 2 concepts, 8 design, 9 product, 3 strategy, 3 meta, 93 sources, 14 tech, 7 howto, 6 tasks, 2 outputs)
+- **Pages actives** : 154 (5 overview, 1 entité, 2 concepts, 8 design, 9 product, 3 strategy, 3 meta, 94 sources, 14 tech, 7 howto, 6 tasks, 2 outputs)
 - **Pages archivées** : 2
 - **Sources dans `raw/`** : 91
 - **Sources en attente dans `rawinput/`** : 0
-- **Dernière mise à jour** : 2026-07-10
+- **Dernière mise à jour** : 2026-07-12

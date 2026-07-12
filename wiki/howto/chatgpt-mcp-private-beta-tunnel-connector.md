@@ -3,10 +3,10 @@ title: "ChatGPT MCP Private Beta Tunnel Connector Runbook"
 category: howto
 tags: [chatgpt-app, mcp, cloudflare, tunnel, oauth, private-beta]
 created: 2026-07-04
-updated: 2026-07-10
+updated: 2026-07-12
 status: current
 type: runbook
-sources: [2026-07-04-pr304-live-mcp-connector-smoke-checkpoint, 2026-07-05-pr305-durable-mcp-connector-proof-checkpoint]
+sources: [2026-07-12-pr307-runsh-collaborator-portability-checkpoint, 2026-07-05-pr305-durable-mcp-connector-proof-checkpoint, 2026-07-04-pr304-live-mcp-connector-smoke-checkpoint]
 related: [[product/chatgpt-app-sdk-roadmap]]
 ---
 
@@ -17,6 +17,8 @@ Procedure reproductible pour demarrer le serveur MCP prive twoweeks, exposer son
 ## Etat verifie
 
 - PR305 est mergee dans `application-os-foundation` par `f9dd477b116c48f1b223b17e1636876edf3c939f`.
+- PR306 est mergee par `23c2cca9c09ba22c522242305545390dbc1bbea1`; `mcp-secret-sync` reste value-silent sous `bash -x`.
+- PR307 est mergee par `736c6193966006e91a7bbbad5ff4b60898dd45fb`; `run.sh doctor` couvre le demarrage collaborateur macOS/Linux/WSL2 sans elargir MCP/OAuth.
 - Endpoint MCP : `https://mcp.twoweeks.ai/mcp`.
 - Redirect URI exact : `https://chatgpt.com/connector/oauth/b7v_6OncLEsg`.
 - Client ID : `local-chatgpt-client`.
@@ -82,12 +84,13 @@ Depuis le repo app :
 
 ```bash
 chmod 600 .env.local
+./run.sh doctor mcp-private-beta
 ./run.sh mcp-check
 ./run.sh mcp-secret-sync
 ./run.sh mcp-private-beta
 ```
 
-`mcp-check` doit afficher seulement `PASS` et les noms de cles en cas d'erreur, jamais leurs valeurs. `mcp-private-beta` demarre Convex local, Vite sur `127.0.0.1:5196`, le runtime parser image et le tunnel nomme.
+`doctor mcp-private-beta` est un preflight read-only : il ne source pas les fichiers dotenv, ne recupere pas le secret Infisical et ne demarre ni n'arrete de service. Il doit finir en `PASS` avant le premier demarrage collaborateur. `mcp-check` doit afficher seulement `PASS` et les noms de cles en cas d'erreur, jamais leurs valeurs. `mcp-private-beta` demarre Convex local, Vite sur `127.0.0.1:5196`, le runtime parser image et le tunnel nomme.
 
 Apres une modification de configuration :
 
@@ -112,10 +115,11 @@ Attendu : metadata `200`, `token_endpoint_auth_methods_supported` vaut exactemen
 name: neyssan-mcp-pr305-twoweeks-ai
 id: 935a2064-9473-41bc-bd73-174660892847
 hostname: mcp.twoweeks.ai
-origin: http://host.docker.internal:5196
+Docker Desktop / WSL2 origin: http://host.docker.internal:5196
+native Linux Docker Engine origin: http://127.0.0.1:5196 through --network host
 ```
 
-`run.sh` monte le fichier de credentials du tunnel en lecture seule. Le tunnel transporte le trafic; les valeurs OAuth restent dans le processus Vite local, pas dans Workers, Pages ou le dashboard Cloudflare.
+`run.sh` monte le fichier de credentials du tunnel en lecture seule. Sur Linux natif, cloudflared utilise le reseau hote pour joindre Vite qui reste lie a loopback; Docker Desktop et WSL2 utilisent `host.docker.internal`. Le tunnel transporte le trafic; les valeurs OAuth restent dans le processus Vite local, pas dans Workers, Pages ou le dashboard Cloudflare.
 
 `Bot Fight Mode` et `AI Labyrinth` sont restes desactives apres la preuve. Cette session ne prouve pas qu'ils etaient la cause du blocage; utiliser un A/B separe avant toute reactivation sur ce hostname.
 
