@@ -316,7 +316,7 @@ Cover-letter quality has a merged PR249 staged internal Mistral V2 gate and a gr
 
 ## Statistiques
 
-- **Pages actives** : 185 (5 overview, 1 entité, 2 concepts, 8 design, 9 product, 3 strategy, 3 meta, 125 sources, 14 tech, 7 howto, 6 tasks, 2 outputs)
+- **Pages actives** : 187 (5 overview, 1 entité, 2 concepts, 8 design, 9 product, 3 strategy, 3 meta, 127 sources, 14 tech, 7 howto, 6 tasks, 2 outputs)
 - **Pages archivées** : 2
 - **Sources dans `raw/`** : 91
 - **Sources en attente dans `rawinput/`** : 0
