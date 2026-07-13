@@ -3,7 +3,7 @@ title: "Cover Letter Quality Production Roadmap"
 category: task
 status: current
 created: 2026-06-22
-updated: 2026-06-24
+updated: 2026-07-13
 type: implementation-roadmap
 sources: [2026-06-24-cover-letter-mistral-v2-staging-green, 2026-06-23-release-orchestration-staging-pr87-8-checkpoint, 2026-06-23-cover-letter-quality-pr249-staged-internal-gate, 2026-06-23-cover-letter-quality-pr248-merge-checkpoint, 2026-06-23-cover-letter-quality-pr246-merge-checkpoint, 2026-06-23-cover-letter-quality-production-roadmap-updated-checklist]
 related: [[product/ai-product-model]], [[tech/proposal-ai-routing-and-inline-diff]], [[outputs/2026-05-26-proposal-language-generation-hardening]]
@@ -13,7 +13,7 @@ related: [[product/ai-product-model]], [[tech/proposal-ai-routing-and-inline-dif
 
 ## Purpose
 
-Track the current state of the cover-letter quality work after the PR230-PR245 sequence, PR246, PR248, and PR249.
+Track the current state of the cover-letter quality work through the deterministic replay contract in PR310 and the multilingual policy shadow in PR312.
 
 This document is an updated working checklist. It does not replace the PRs, commits, diffs, or prior handoffs. Use those as source of truth when implementing.
 
@@ -25,7 +25,60 @@ It does not own the Twoweeks MCP / ChatGPT App SDK roadmap, manual application h
 
 Shared branch/base references such as `application-os-foundation` and PR245 are coordination anchors only. They do not mean the cover-letter quality checklist and the MCP/App SDK checklist should be executed in the same PR.
 
-## Current State - 2026-06-24
+## Current State - 2026-07-13
+
+Authoritative app target:
+
+```text
+application-os-foundation@3f3fb3a42c1a7594a43c0360613a7f2360ecf078
+```
+
+| Delivery | Exact evidence | Current meaning |
+|---|---|---|
+| PR310 - evaluation/replay truth contract | Reviewed head `ff6d93b356d77e5aff8f72348a4b2a743b18afe5`; merge `f1794d421a3b07b67315efd8e335929193979fd9` | Offline replay is deterministic, budgeted, prompt/config-bound, and provider-free by default. |
+| PR312 - multilingual policy shadow | Reviewed head `4a3d2d48ec822bfbde2c4d7382cfd52d420b0629`; merge `3f3fb3a42c1a7594a43c0360613a7f2360ecf078` | Policy candidate remains shadow-only; no production cutover occurred. |
+
+Post-merge verification:
+
+- Production and replay call the same `attemptPremiumCoverLetterGeneration` preparation path and the same `finalizePremiumCoverLetterPayloadForPersistence` finalizer. A separate cosmetic "shared core" extraction is not justified; this roadmap treats that leaf as `ALREADY_SATISFIED`.
+- Recorded replay remains provider-free and preserves the OpenAI and Mistral artifact/provenance hashes.
+- Policy shadow remains 84 records, 70 plans, 14 rejections, and 13 non-English distant plans without demand anchors.
+- Policy matrix hash remains `b447e3568abe93f4f42b3419894bb19720583f89f7f60e364ceea2aa22e20260`.
+- Quality repair remains OFF. Production policy cutover and full production GO remain unapproved.
+
+### Evidence boundary: examples versus quality benchmarks
+
+- PR310 contains two authored synthetic replay fixtures, both in English: one OpenAI direct-fit case and one structured Mistral adjacent-fit case. They prove deterministic production-path replay and provenance, not live editorial superiority.
+- There is no committed French replay fixture yet. A complete French letter exists only as synthetic test content, not as a recorded provider response or current live benchmark.
+- The historical 2026-03-12 benchmark contains 48 complete English outputs across 12 cases and four models, including latency, token, and cost data. Its harness is explicitly isolated from current production generation, so it is historical evidence only.
+- The 84-case multilingual shadow measures planning and acceptance policy. It does not score the prose quality of 84 generated letters.
+
+Do not remove a configured document language solely because it lacks current editorial evidence. Separate deterministic capability, policy eligibility, and native-language quality; promote or demote only from cohort-specific evidence.
+
+## Roadmap After PR312
+
+### Architecture and reliability
+
+1. Run a separate `HIGH`-risk assessment and plan for single-flight request claiming, transactional accepted-artifact commit, abandoned-processing recovery, and idempotency/concurrency tests.
+2. Keep that work behavior-preserving: no prompt tuning, provider/model switch, policy cutover, or UI change in the same PR.
+3. Preserve the existing shared preparation/finalization path; do not create a duplicate truth model or façade.
+
+### Multilingual quality evidence
+
+1. Add at least one committed French replay fixture that exercises the same final artifact path as the English fixtures.
+2. Add one representative non-Latin replay fixture before claiming broad multilingual editorial parity.
+3. Resolve or explicitly reclassify the 13 distant non-English plans with zero demand anchors, then rebaseline the matrix and explain every hash change.
+4. Run blind paired editorial review by eligible language/context cohorts. Deterministic tests alone cannot prove hiring-quality prose.
+5. If live provider comparison is needed, use a small explicit budget and representative cohorts first; PR310/PR312 themselves made zero provider calls.
+
+### Cutover gates
+
+- Keep the policy candidate shadow-only until the multilingual acceptance gaps and editorial review are closed.
+- Keep quality repair OFF until a separately budgeted latency, cancellation, factuality, and provenance canary passes.
+- Keep production full GO, client post-save patch removal, server artifact authority, and simplified user messaging in later reversible PRs.
+- Keep GPT, Mistral, Qwen, routing, and model-selection changes separate from persistence and cutover work.
+
+## Historical checkpoint - 2026-06-24
 
 Current branch line:
 
@@ -427,6 +480,19 @@ Allowed only for post-merge verification and controlled internal/staging expansi
 
 ## Checklist - Active / Next
 
+### Post-PR312 truth and shadow closeout
+
+- [x] Merge PR310 deterministic replay truth contract with zero-provider default execution.
+- [x] Bind recorded responses to production prompts, schemas, frozen configuration, finalizer, and stable artifact/provenance hashes.
+- [x] Merge PR312 multilingual policy candidate as shadow-only.
+- [x] Preserve the shadow baseline: 84 records, 70 plans, 14 rejections, 13 unanchored distant non-English plans, hash `b447e3568abe93f4f42b3419894bb19720583f89f7f60e364ceea2aa22e20260`.
+- [x] Verify that production and evaluation already share deterministic preparation/finalization; dismiss a duplicate shared-core PR.
+- [ ] Add a committed French replay fixture with a complete finalized letter.
+- [ ] Add a representative non-Latin replay fixture.
+- [ ] Resolve or explicitly reclassify the 13 unanchored distant non-English plans before policy cutover.
+- [ ] Approve a separate transactional reliability program before changing claim/commit or recovery behavior.
+- [ ] Run cohort-specific blind editorial review before claiming quality improvement or production readiness.
+
 ### Internal/staging-only Mistral V2 readiness
 
 - [ ] Keep Mistral V2 internal/staging only.
@@ -521,17 +587,10 @@ Git rollback:
 
 ## Local Alignment
 
-Code-adjacent mirror:
-
-```text
-/Volumes/video/kay/app/pouraurelien/save/implementation_UI/neyssan-new/docs/plans/2026-06-22-cover-letter-quality-production-roadmap.md
-```
-
-As of 2026-06-23, the local mirror is aligned to this PR246-only cover-letter quality plan and explicitly excludes MCP/App SDK and manual handoff work.
-After PR248, the local mirror should be updated to reflect the merged no-CV boundary checkpoint while keeping the same workstream boundary.
+This wiki page is the canonical durable roadmap. The post-PR312 target does not contain a tracked code-adjacent mirror under `docs/plans/`; do not publish an older untracked local copy as current truth.
 
 ## Current Next Smallest Step
 
 ```text
-Keep `dev:neat-starfish-33` as the only enabled Mistral V2 environment and prepare a separate production release decision. Do not enable production or quality repair without a new explicit gate.
+Assess and plan the transactional reliability rail separately, while adding French/non-Latin replay evidence and resolving the 13 unanchored distant non-English shadow rows. Do not enable policy cutover, production, or quality repair without their own evidence and explicit gates.
 ```
