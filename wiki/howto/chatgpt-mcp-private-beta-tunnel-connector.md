@@ -6,7 +6,7 @@ created: 2026-07-04
 updated: 2026-07-13
 status: current
 type: runbook
-sources: [2026-07-13-pr311-runsh-doctor-regression-closure-checkpoint, 2026-07-13-pr309-mcp-protocol-compatibility-checkpoint, 2026-07-12-pr308-mcp-private-beta-operational-smoke-checkpoint, 2026-07-12-pr307-runsh-collaborator-portability-checkpoint, 2026-07-05-pr305-durable-mcp-connector-proof-checkpoint, 2026-07-04-pr304-live-mcp-connector-smoke-checkpoint]
+sources: [2026-07-13-pr313-pr316-mcp-private-beta-readiness-checkpoint, 2026-07-13-pr311-runsh-doctor-regression-closure-checkpoint, 2026-07-13-pr309-mcp-protocol-compatibility-checkpoint, 2026-07-12-pr308-mcp-private-beta-operational-smoke-checkpoint, 2026-07-12-pr307-runsh-collaborator-portability-checkpoint, 2026-07-05-pr305-durable-mcp-connector-proof-checkpoint, 2026-07-04-pr304-live-mcp-connector-smoke-checkpoint]
 related: [[product/chatgpt-app-sdk-roadmap]]
 ---
 
@@ -22,6 +22,10 @@ Procedure reproductible pour demarrer le serveur MCP prive twoweeks, exposer son
 - PR308 est mergee par `b101a75a1b625f7b0f3a62f677f474b4a030bff6`; `run.sh mcp-smoke` verifie la frontiere publique sans charger de dotenv, secret, token ou donnee privee.
 - PR309 est mergee par `b2090fd71e643120d2d695704536d1a45f690b57`; le serveur accepte exactement MCP `2025-06-18` et `2025-11-25` et negocie la version supportee demandee.
 - PR311 est mergee par `c61c9945e33f9208f4e3cb28dfd9e48d6fcfae50`; `run.sh doctor` detecte les collisions de ports, refuse un daemon Docker distant, verifie WSL2/Docker Desktop et impose le port Vite valide.
+- PR313 est mergee par `d091c066edceaa60ba4e92dd0e215a913aa1d2a3` depuis le head relu `894ee870c24433b3636f9cfe6841a29a694e085b`.
+- PR314 est mergee par `ccbba0a4a655af942b21c8e9144c432df79cbb38` depuis le head relu `85b8b201f2cae99b09007013398d3c7983220b03`.
+- PR315 est mergee par `14e5abcdc880ef9ed020fe34e3d5f586819381c4` depuis le head relu `8f58c4637b81e45c6d5d8dec75bd9a2b7ff142e3`.
+- PR316 est la cible courante, mergee par `bbd96b5cbaa3f7a24908ed51b001183b62119001` depuis le head relu `0c63c234f004ac4fbd853eb6aebf328ebf6bc758`.
 - Endpoint MCP : `https://mcp.twoweeks.ai/mcp`.
 - Redirect URI exact : `https://chatgpt.com/connector/oauth/b7v_6OncLEsg`.
 - Client ID : `local-chatgpt-client`.
@@ -47,6 +51,7 @@ MCP_OAUTH_PRODUCTION_CLIENT_IDS=local-chatgpt-client
 MCP_OAUTH_PRODUCTION_PRIVATE_BETA_ENABLED=1
 MCP_OAUTH_PRODUCTION_PRIVATE_BETA_CLIENT_IDS=local-chatgpt-client
 MCP_OAUTH_PRODUCTION_PRIVATE_BETA_RESOURCES=https://mcp.twoweeks.ai/mcp
+MCP_OAUTH_PRODUCTION_PRIVATE_BETA_SUBJECT_DIGESTS=<digests-sha256-minuscules-non-documentes>
 MCP_OAUTH_PRODUCTION_RESOURCE=https://mcp.twoweeks.ai/mcp
 MCP_OAUTH_PRODUCTION_AUTHORIZATION_ORIGIN=https://mcp.twoweeks.ai
 MCP_OAUTH_PRODUCTION_REDIRECT_URIS=https://chatgpt.com/connector/oauth/b7v_6OncLEsg
@@ -64,9 +69,12 @@ Regles :
 - la racine `.env.local` est la seule source canonique des cles serveur; ne pas les placer dans `.env`, `my-app/.env` ou `my-app/.env.local`;
 - `my-app/.env.local` reste reserve aux valeurs client `VITE_*`;
 - `run.sh` derive en memoire la cle publique Clerk depuis l'issuer et ne l'affiche ni ne la persiste;
+- `MCP_OAUTH_PRODUCTION_PRIVATE_BETA_SUBJECT_DIGESTS` est la seule cle canonique d'eligibilite par sujet; ses valeurs sont des digests SHA-256 minuscules et la configuration legacy avec sujets bruts ne doit pas etre recommandee;
 - le digest SHA-256 ne permet pas de retrouver le secret brut;
 - tous les fichiers `.env*` restent exclus du contexte Docker;
 - ne jamais stocker le secret brut, son digest ou un token de tunnel dans Git, le wiki, une PR ou des logs.
+
+Etat du checkpoint : le contrat source PR314 est merge, mais la migration de l'environnement de deploiement vers la cle de digests et son deploiement restent **NOT DONE**. Ne pas deduire leur presence du merge ou d'un `mcp-smoke` public.
 
 ## Source Infisical du secret
 
@@ -96,6 +104,8 @@ chmod 600 .env.local
 ```
 
 `doctor mcp-private-beta` est un preflight read-only : il ne source pas les fichiers dotenv, ne recupere pas le secret Infisical et ne demarre ni n'arrete de service. Il doit finir en `PASS` avant le premier demarrage collaborateur. PR311 aligne ce diagnostic avec le demarrage reel pour les ports Convex/Vite/parser, le daemon Docker local, WSL2 et les variables Bash speciales. Vite utilise `--strictPort` et ne doit jamais migrer silencieusement vers un autre port. `mcp-check` doit afficher seulement `PASS` et les noms de cles en cas d'erreur, jamais leurs valeurs. `mcp-private-beta` demarre Convex local, Vite sur `127.0.0.1:5196`, le runtime parser image et le tunnel nomme. Une fois l'origine publique disponible, `mcp-smoke` verifie les metadata OAuth/MCP, le lifecycle `initialize`/`initialized`, le challenge Bearer et l'erreur token fail-closed; il ne source aucun dotenv et n'envoie aucun credential.
+
+Le smoke credential-free frais apres PR316 est `PASS` pour les metadata, les metadata protected-resource, les deux versions MCP supportees, l'inventaire exact de six tools, `tools/call` non authentifie fail-closed et le token malforme fail-closed. Il ne prouve ni la migration/deploiement de la configuration de digests, ni l'acces authentifie ChatGPT.
 
 Apres une modification de configuration :
 
@@ -151,6 +161,8 @@ Ne jamais utiliser de wildcard redirect. La seule URI autorisee pour cette preuv
 
 ## Preuve ChatGPT minimale
 
+Cette preuve doit etre rejouee apres la migration et le deploiement de `MCP_OAUTH_PRODUCTION_PRIVATE_BETA_SUBJECT_DIGESTS`. Le `tools/list` et le `tools/call` ChatGPT authentifies frais apres migration sont **NOT DONE**; la preuve PR309 anterieure reste historique et ne ferme pas ce gate.
+
 1. Recuperer le secret partage depuis Infisical et creer un connecteur frais avec le secret correspondant au digest local, sans documenter la valeur.
 2. Terminer le login twoweeks/Clerk.
 3. Verifier que ChatGPT affiche `Connecte`.
@@ -177,6 +189,7 @@ Ne pas documenter le resultat prive retourne par l'outil. Documenter uniquement 
 
 ## Comportement fail-closed
 
+- liste de digests de sujets absente, malformee ou sans correspondance : eligibilite private-beta refusee;
 - digest absent ou malforme : metadata reste `client_secret_post`, mais `/oauth/token` retourne `invalid_request` avant issuance;
 - `client_secret_basic` : refuse;
 - secret absent ou incorrect : `invalid_request` generique, sans echo;
@@ -186,6 +199,7 @@ Ne pas documenter le resultat prive retourne par l'outil. Documenter uniquement 
 
 ## Sources
 
+- [[sources/2026-07-13-pr313-pr316-mcp-private-beta-readiness-checkpoint]]
 - [[sources/2026-07-13-pr311-runsh-doctor-regression-closure-checkpoint]]
 - [[sources/2026-07-13-pr309-mcp-protocol-compatibility-checkpoint]]
 - [[sources/2026-07-12-pr307-runsh-collaborator-portability-checkpoint]]

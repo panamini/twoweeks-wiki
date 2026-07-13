@@ -2495,3 +2495,30 @@ Migration vers schema v2 : ajout rawinput/ (staging), gestion temporelle (status
 **Open items** : Evaluer le rail transactionnel separe; ajouter des fixtures replay francaise et non latine; resoudre ou reclassifier les 13 rows non ancrees; lancer une revue editoriale aveugle par cohortes avant tout cutover. Quality repair et production full GO restent bloques.
 
 ---
+
+## [2026-07-13] checkpoint | PR313-PR316 MCP private-beta readiness and post-merge public smoke
+
+**Agent** : Codex
+**Mode** : docs-only post-merge synchronization
+**Source** : merged app PR313-PR316 identities and fresh credential-free public MCP smoke supplied for this checkpoint
+
+**Pages creees** :
+- `wiki/sources/2026-07-13-pr313-pr316-mcp-private-beta-readiness-checkpoint.md`
+
+**Pages mises a jour** :
+- `wiki/product/chatgpt-app-sdk-roadmap.md`
+- `wiki/howto/chatgpt-mcp-private-beta-tunnel-connector.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**Points notables** :
+- PR313 est mergee par `d091c066edceaa60ba4e92dd0e215a913aa1d2a3` depuis `894ee870c24433b3636f9cfe6841a29a694e085b`; PR314 par `ccbba0a4a655af942b21c8e9144c432df79cbb38` depuis `85b8b201f2cae99b09007013398d3c7983220b03`.
+- PR315 est mergee par `14e5abcdc880ef9ed020fe34e3d5f586819381c4` depuis `8f58c4637b81e45c6d5d8dec75bd9a2b7ff142e3`; PR316 est la cible courante `bbd96b5cbaa3f7a24908ed51b001183b62119001` depuis `0c63c234f004ac4fbd853eb6aebf328ebf6bc758`.
+- `MCP_OAUTH_PRODUCTION_PRIVATE_BETA_SUBJECT_DIGESTS` avec digests SHA-256 minuscules est la configuration canonique; la configuration legacy avec sujets bruts ne doit plus etre recommandee.
+- Le smoke public credential-free frais est `PASS` pour les metadata, protected-resource metadata, MCP `2025-06-18` et `2025-11-25`, l'inventaire exact de six tools, `tools/call` non authentifie fail-closed et le token malforme fail-closed.
+- Aucun sujet, digest, token, code, secret, email, identifiant utilisateur, donnee privee ou live OAuth query n'a ete ajoute au wiki.
+
+**Open items** : La migration et le deploiement de l'environnement vers la configuration de digests PR314 restent **NOT DONE**. Le `tools/list` et le `tools/call` ChatGPT authentifies frais apres migration restent **NOT DONE**. Provider calls, writes, refresh tokens, billing, account-link expansion, shared/production mutation, non-beta access and public launch remain blocked.
+
+---
