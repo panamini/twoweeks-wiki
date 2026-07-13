@@ -2445,3 +2445,29 @@ Migration vers schema v2 : ajout rawinput/ (staging), gestion temporelle (status
 **Open items** : La capture reseau directe de `POST /oauth/token` n'a pas ete realisee; la connexion et l'appel authentifie constituent une preuve comportementale. Toute prochaine tranche MCP exige un contrat separe.
 
 ---
+
+## [2026-07-13] checkpoint | PR311 run.sh doctor regression closure
+
+**Agent** : Codex
+**Mode** : docs-only post-merge synchronization
+**Source** : merged app PR311, local/live verification, GitHub CI, and Codex Review
+
+**Pages creees** :
+- `wiki/sources/2026-07-13-pr311-runsh-doctor-regression-closure-checkpoint.md`
+
+**Pages mises a jour** :
+- `wiki/product/chatgpt-app-sdk-roadmap.md`
+- `wiki/howto/chatgpt-mcp-private-beta-tunnel-connector.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**Points notables** :
+- PR311 est mergee dans `application-os-foundation` par `c61c9945e33f9208f4e3cb28dfd9e48d6fcfae50`; son head final relu est `a077aa9da278ca25b975af61b3d5023289c7ae42`.
+- `run.sh doctor` detecte maintenant les collisions Convex/Vite/parser, refuse les daemons Docker distants, verifie Docker Desktop sous WSL2, rejette les variables Bash speciales incompatibles et impose le port Vite valide.
+- Les tests doctor, Bash 3.2, le build, les deux doctors live, GitHub CI, Playwright et Semgrep sont verts; Codex Review n'a trouve aucun probleme majeur.
+- Le rail generation de lettres reste separe. Aucun outil MCP, schema, OAuth, secret, provider call, write ou gate de lancement n'a change.
+
+**Open items** : Toute prochaine capacite MCP ou etape de lancement exige un contrat separe.
+
+---

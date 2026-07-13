@@ -86,7 +86,7 @@ Cette carte est un routeur de lecture pour agents LLM. Elle ne remplace pas les 
 |------|--------|--------|------|
 | [[product/ai-product-model\|AI Product Model]] | 3 modes IA, rulebook, qualité writing, and Planner Agent shadow chain | current | ai, ux, modes |
 | [[product/ai-consistency-p0-editor-ai\|AI Consistency P0 — Closure Audit]] | Closure audit snapshot du rulebook AI editor, preview, telemetry et tailoring | current | ai, editor, rulebook |
-| [[product/chatgpt-app-sdk-roadmap\|ChatGPT/App SDK Roadmap]] | PR305-PR309 are merged; PR309 adds exact MCP protocol compatibility and proves the existing application-package summary through ChatGPT | current | chatgpt-app, apps-sdk |
+| [[product/chatgpt-app-sdk-roadmap\|ChatGPT/App SDK Roadmap]] | PR305-PR309 and operational PR311 are merged; PR311 closes run.sh doctor startup-parity regressions without widening MCP | current | chatgpt-app, apps-sdk |
 | [[product/job-library\|Job Library]] | Jobs sauvegardés, Job Brief editable et documents liés | current | jobs, library |
 | [[product/job-match-review\|Job Match Review]] | Match comme indicateur d'attention utilisateur et dogfood interne | current | jobs, match |
 | [[product/kpis\|KPIs]] | Métriques de succès produit | current | kpi, métriques |
@@ -116,10 +116,11 @@ Cette carte est un routeur de lecture pour agents LLM. Elle ne remplace pas les 
 
 ## Sources
 
-Cover-letter quality has a merged PR249 staged internal Mistral V2 gate and a green Convex staging checkpoint on `dev:neat-starfish-33`; production full GO and quality repair remain separate/not approved. The MCP/App SDK track has reached durable confidential private-beta proof in PR305, team secret-sync hardening in PR306, collaborator startup portability in PR307, a no-credential public operational canary in PR308, and exact ChatGPT protocol compatibility plus one safe existing summary proof in PR309. Provider calls, write actions, refresh tokens, production account-link lifecycle expansion, non-beta access, and public launch remain blocked; PR80B remains the safe manual handoff path while ATS authorization is pending.
+Cover-letter quality has a merged PR249 staged internal Mistral V2 gate and a green Convex staging checkpoint on `dev:neat-starfish-33`; production full GO and quality repair remain separate/not approved. The MCP/App SDK track has reached durable confidential private-beta proof in PR305, team secret-sync hardening in PR306, collaborator startup portability in PR307, a no-credential public operational canary in PR308, exact ChatGPT protocol compatibility plus one safe existing summary proof in PR309, and doctor startup-parity closure in PR311. Provider calls, write actions, refresh tokens, production account-link lifecycle expansion, non-beta access, and public launch remain blocked; PR80B remains the safe manual handoff path while ATS authorization is pending.
 
 | Page | Type | Date | Status |
 |------|------|------|--------|
+| [[sources/2026-07-13-pr311-runsh-doctor-regression-closure-checkpoint\|PR311 run.sh Doctor Regression Closure Checkpoint]] | checkpoint | 2026-07-13 | current |
 | [[sources/2026-07-13-pr309-mcp-protocol-compatibility-checkpoint\|PR309 MCP Protocol Compatibility Checkpoint]] | checkpoint | 2026-07-13 | current |
 | [[sources/2026-07-12-pr308-mcp-private-beta-operational-smoke-checkpoint\|PR308 MCP Private-beta Operational Smoke Checkpoint]] | checkpoint | 2026-07-12 | current |
 | [[sources/2026-07-12-pr307-runsh-collaborator-portability-checkpoint\|PR307 run.sh Collaborator Portability Checkpoint]] | checkpoint | 2026-07-12 | current |
@@ -315,7 +316,7 @@ Cover-letter quality has a merged PR249 staged internal Mistral V2 gate and a gr
 
 ## Statistiques
 
-- **Pages actives** : 185 (5 overview, 1 entité, 2 concepts, 8 design, 9 product, 3 strategy, 3 meta, 125 sources, 14 tech, 7 howto, 6 tasks, 2 outputs)
+- **Pages actives** : 187 (5 overview, 1 entité, 2 concepts, 8 design, 9 product, 3 strategy, 3 meta, 127 sources, 14 tech, 7 howto, 6 tasks, 2 outputs)
 - **Pages archivées** : 2
 - **Sources dans `raw/`** : 91
 - **Sources en attente dans `rawinput/`** : 0
