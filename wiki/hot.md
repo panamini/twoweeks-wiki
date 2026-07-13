@@ -17,7 +17,7 @@ twoweeks centers on CV ingestion/parsing, canonical saved profile/CV data, and p
 Keep two workstreams separate:
 
 - Cover-letter quality: staging `dev:neat-starfish-33` is green for Mistral V2 with only `cover_letter_premium_prompt_v2=1`; quality repair is OFF and production full GO is not approved.
-- MCP / ChatGPT App SDK: PR305-PR317 are merged. The digest-based private-beta configuration is deployed, the V2 confidential connector is connected, `/oauth/token` was observed through a token-record count increase, exactly six read-only tools were listed, and one safe `application_package` summary call completed. `run.sh doctor` remains the collaborator preflight and `run.sh mcp-smoke` the credential-free public canary.
+- MCP / ChatGPT App SDK: PR305-PR320 are merged. The digest-based private-beta configuration is deployed, the V2 confidential connector is connected, `/oauth/token` was observed through a token-record count increase, exactly six read-only tools were listed, one safe `application_package` summary call completed, and PR320 minimized the four summary-tool model-visible outputs to a closed status-only envelope. `run.sh doctor` remains the collaborator preflight and `run.sh mcp-smoke` the credential-free public canary.
 
 ## Key Active Facts
 
@@ -33,13 +33,14 @@ Keep two workstreams separate:
 - PR311 closes startup-preflight regressions for ports, local Docker, WSL2 tunnel networking, Bash special variables, and strict Vite port binding; it does not alter MCP behavior or the separate cover-letter rail.
 - PR313-PR316 establish the digest-only eligibility contract and private-beta readiness checks. PR317 keeps the exact six-tool projection under CI regression coverage.
 - The deployed environment now uses the digest key. A rotated Infisical secret and fresh V2 connector re-proved authenticated token exchange, six-tool discovery, and one safe read-only call without exposing private values.
+- PR320 removes the optional aggregate `summary` payload from the four authenticated summary-tool model-visible outputs; OAuth, private-beta eligibility, exact six-tool catalog, search/fetch behavior, internal read execution, and launch blocks remain unchanged.
 - Product truth is `twoweeks`; CVForge and ProposalForge are internal module names.
 - PR80B remains the safe manual application handoff while ATS authorization is pending; `provider_verified_submitted` remains unreachable.
 - Persistent wiki mutations require `wiki/index.md`, `wiki/log.md`, and usually `wiki/hot.md`.
 
 ## Canonical Pages To Read
 
-- MCP / ChatGPT App SDK: [[sources/2026-07-13-pr313-pr317-mcp-private-beta-live-reproof-checkpoint]], [[howto/chatgpt-mcp-private-beta-tunnel-connector]], [[product/chatgpt-app-sdk-roadmap]], [[sources/2026-07-13-pr311-runsh-doctor-regression-closure-checkpoint]], [[sources/2026-07-13-pr309-mcp-protocol-compatibility-checkpoint]], [[product/manual-application-handoff]]
+- MCP / ChatGPT App SDK: [[sources/2026-07-13-pr320-mcp-output-minimization-checkpoint]], [[sources/2026-07-13-pr313-pr317-mcp-private-beta-live-reproof-checkpoint]], [[howto/chatgpt-mcp-private-beta-tunnel-connector]], [[product/chatgpt-app-sdk-roadmap]], [[sources/2026-07-13-pr311-runsh-doctor-regression-closure-checkpoint]], [[sources/2026-07-13-pr309-mcp-protocol-compatibility-checkpoint]], [[product/manual-application-handoff]]
 - Cover-letter quality: [[tasks/2026-06-22-cover-letter-quality-production-roadmap]], [[sources/2026-06-24-cover-letter-mistral-v2-staging-green]]
 - Product/parser/export routing: [[overview]], [[concepts/cv-parsing-pipeline]], [[tech/export-pipeline]]
 - Wiki operations: [[meta/llm-wiki-pattern]], [[meta/temporal-management]]
