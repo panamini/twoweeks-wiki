@@ -2503,3 +2503,29 @@ Migration vers schema v2 : ajout rawinput/ (staging), gestion temporelle (status
 **Open items** : Minimiser encore les sorties et decider l'URL catalogue/soumission avant le rail de soumission public. Provider calls, writes, refresh tokens, billing, account-link expansion, shared/production mutation, non-beta access and public launch remain blocked.
 
 ---
+
+## [2026-07-13] checkpoint | PR320 MCP output minimization
+
+**Agent** : Codex
+**Mode** : docs-only post-merge synchronization
+**Source** : merged app PR320, GitHub checks, Codex Review, and local implementation verification report
+
+**Pages creees** :
+- `wiki/sources/2026-07-13-pr320-mcp-output-minimization-checkpoint.md`
+
+**Pages mises a jour** :
+- `wiki/product/chatgpt-app-sdk-roadmap.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**Points notables** :
+- PR320 est mergee dans `application-os-foundation` par `3710e54f869dba1d457e43b1d33403079c7e7f4f`; son head final relu est `d7f590fcc8d8ede0ce799bd0b90563af1390c4ed`.
+- Les quatre tools summary authentifies exposent maintenant seulement l'enveloppe model-visible fermee `kind`, `status`, `toolName`, `version`; la propriete optionnelle `summary` est retiree du `structuredContent` runtime et du schema de sortie annonce.
+- Le catalogue exact de six tools, OAuth, eligibility private-beta, policy kernel, `search`/`fetch`, executions internes read-only et comportements fail-closed restent inchanges.
+- Les checks GitHub et Codex Review sont verts; Codex Review n'a trouve aucun probleme majeur sur `d7f590fcc8`.
+- Aucun live connector re-proof n'a ete execute pour PR320. La preuve live PR313-PR317 reste la derniere preuve connector; `POST /oauth/token`, live `tools/list` et live `tools/call` n'ont pas ete re-exerces.
+
+**Open items** : Decider l'URL catalogue/soumission stable avant tout rail de soumission. Provider calls, writes, refresh tokens, billing, account-link expansion, shared/production mutation, non-beta access and public launch remain blocked.
+
+---
