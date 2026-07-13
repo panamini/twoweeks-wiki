@@ -16,7 +16,7 @@ twoweeks centers on CV ingestion/parsing, canonical saved profile/CV data, and p
 
 Keep two workstreams separate:
 
-- Cover-letter quality: staging `dev:neat-starfish-33` is green for Mistral V2 with only `cover_letter_premium_prompt_v2=1`; quality repair is OFF and production full GO is not approved.
+- Cover-letter quality: PR310 deterministic replay and PR312 multilingual policy shadow are merged in `application-os-foundation@3f3fb3a4`. Production and replay share the same deterministic preparation/finalization path; policy remains shadow-only, quality repair is OFF, and production full GO is not approved.
 - MCP / ChatGPT App SDK: PR305 through PR309 and operational follow-up PR311 are merged. The private connector negotiates MCP `2025-06-18` or `2025-11-25`, displays exactly six existing read-only Actions, and completed a safe `application_package` summary call. `run.sh doctor` is the collaborator preflight, hardened by PR311, and `run.sh mcp-smoke` is the no-credential public canary.
 
 ## Key Active Facts
@@ -31,6 +31,7 @@ Keep two workstreams separate:
 - PR307 keeps `my-app/.env.local` Vite-only, rejects Docker-client env drift and symlinked MCP secret files, and selects native Linux host networking for cloudflared while Vite remains loopback-only.
 - PR308 adds operational read-only smoke coverage only. PR309 fixes protocol compatibility and proves one existing `application_package` read without adding tools or opening provider/write/public surfaces.
 - PR311 closes startup-preflight regressions for ports, local Docker, WSL2 tunnel networking, Bash special variables, and strict Vite port binding; it does not alter MCP behavior or the separate cover-letter rail.
+- Cover-letter replay currently has two English authored-synthetic fixtures and no French replay fixture. The policy baseline is 84 records / 70 plans / 14 rejections, with 13 distant non-English plans still unanchored; matrix hash `b447e3568abe93f4f42b3419894bb19720583f89f7f60e364ceea2aa22e20260`.
 - Product truth is `twoweeks`; CVForge and ProposalForge are internal module names.
 - PR80B remains the safe manual application handoff while ATS authorization is pending; `provider_verified_submitted` remains unreachable.
 - Persistent wiki mutations require `wiki/index.md`, `wiki/log.md`, and usually `wiki/hot.md`.

@@ -1,7 +1,7 @@
 ---
 title: "Log — twoweeks Wiki"
 category: overview
-updated: 2026-07-12
+updated: 2026-07-13
 ---
 
 # Log du Wiki · twoweeks
@@ -2469,5 +2469,29 @@ Migration vers schema v2 : ajout rawinput/ (staging), gestion temporelle (status
 - Le rail generation de lettres reste separe. Aucun outil MCP, schema, OAuth, secret, provider call, write ou gate de lancement n'a change.
 
 **Open items** : Toute prochaine capacite MCP ou etape de lancement exige un contrat separe.
+
+---
+
+## [2026-07-13] checkpoint | PR310 replay truth and PR312 multilingual policy shadow
+
+**Agent** : Codex
+**Mode** : direct durable roadmap update after merged app PR310 and PR312
+**Source** : merged app commits, post-merge offline replay, policy-shadow matrix, GitHub checks, and exact-head Codex reviews
+
+**Pages mises a jour** :
+- `wiki/tasks/2026-06-22-cover-letter-quality-production-roadmap.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**Points notables** :
+- PR310 est mergee par `f1794d421a3b07b67315efd8e335929193979fd9`; son head final relu est `ff6d93b356d77e5aff8f72348a4b2a743b18afe5`.
+- PR312 est mergee par `3f3fb3a42c1a7594a43c0360613a7f2360ecf078`; son head final relu est `4a3d2d48ec822bfbde2c4d7382cfd52d420b0629`.
+- Production et replay partagent deja la meme preparation/finalisation deterministe; aucune PR d'extraction cosmetique n'est requise.
+- Le replay provider-free conserve deux fixtures authored-synthetic anglaises et leurs hashes OpenAI/Mistral. Aucune fixture replay francaise n'est encore committee.
+- Le shadow reste a 84 records, 70 plans, 14 rejets et 13 plans distants non anglais sans demand anchor; hash `b447e3568abe93f4f42b3419894bb19720583f89f7f60e364ceea2aa22e20260`.
+- La matrice shadow mesure la policy, pas la qualite editoriale de lettres multilingues.
+
+**Open items** : Evaluer le rail transactionnel separe; ajouter des fixtures replay francaise et non latine; resoudre ou reclassifier les 13 rows non ancrees; lancer une revue editoriale aveugle par cohortes avant tout cutover. Quality repair et production full GO restent bloques.
 
 ---
