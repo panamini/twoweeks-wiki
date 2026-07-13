@@ -8,7 +8,7 @@ updated: 2026-07-13
 
 # Hot Cache
 
-This page is the active-memory cache for LLM retrieval. It is overwrite-only and non-canonical. Use it to choose pages, then trust durable pages.
+Non-canonical active-memory cache for routing. Use it to choose pages, then trust durable pages.
 
 ## Current Focus
 
