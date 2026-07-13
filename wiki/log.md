@@ -1,7 +1,7 @@
 ---
 title: "Log — twoweeks Wiki"
 category: overview
-updated: 2026-06-26
+updated: 2026-07-13
 ---
 
 # Log du Wiki · twoweeks
@@ -14,6 +14,30 @@ grep "^## \[" wiki/log.md | grep "ingest"  # Tous les ingests
 ```
 
 ---
+
+## [2026-07-13] direct-update | MCP PR322 public catalog URL checkpoint
+
+**Agent** : Codex
+**Mode** : direct-update
+**Source** : PR322 merge result, GitHub PR metadata, and checkpoint request
+
+**Pages créées** :
+- `wiki/sources/2026-07-13-pr322-mcp-public-catalog-url-checkpoint.md`
+
+**Pages mises à jour** :
+- `wiki/product/chatgpt-app-sdk-roadmap.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**Points notables** :
+- PR322 `Decide MCP public catalog URL` merged into `application-os-foundation` as `783d86f4473b7f00b6ef4f44a33188287d53c69b` on `2026-07-13T19:11:01Z`.
+- The final merged head was `c9057e313a7997419ac0911504dc502aed379370`.
+- Stable MCP catalog/submission URL selected: `https://mcp.twoweeks.ai/mcp`.
+- Runtime effect: fail-closed launch-readiness evidence bit added for public catalog/submission URL review; public launch remains blocked; OAuth/auth/tool catalog/runtime reachability unchanged; no provider/model calls; no live ChatGPT connector reproof.
+- QUALITY-EVAL-2C remains separate and is not part of this checkpoint.
+
+**Open items** : None. Public launch remains blocked until a separate reviewed decision opens it.
 
 ## [2026-06-26] direct-update | MCP PR87.17C2 pre-auth ownership checkpoint
 
@@ -1893,3 +1917,19 @@ Migration vers schema v2 : ajout rawinput/ (staging), gestion temporelle (status
 - `npx convex dev --once` completed and the deployed function spec now includes `mistral-medium-latest` and `qwen3.7-max`.
 - Only canonical staging flag `cover_letter_premium_prompt_v2=1` was enabled; aliases remained unset, quality repair remained OFF, and path flags stayed unchanged.
 - Staging smoke returned `STAGING_GREEN`: 8/8 PASS, no PR246 forbidden terms, no PR248 no-CV leakage, GPT stayed on GPT, Qwen stayed legacy-only, production untouched, no app PR/MCP/source-code changes.
+
+## 2026-07-10 — PR305 ChatGPT private-beta activation proven
+
+**Pages mises à jour** :
+- `wiki/howto/chatgpt-mcp-private-beta-tunnel-connector.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**Points notables** :
+- Le connecteur ChatGPT `twoweeks-mcp-pr305-rotated-0710` est connecte a `https://mcp.twoweeks.ai/mcp` avec le client confidentiel `local-chatgpt-client` et `client_secret_post`.
+- La cause racine etait une famille de noms env incorrecte : le runtime actif exige `MCP_OAUTH_PRODUCTION_PRIVATE_BETA_*`, charge dans `process.env`; les anciens noms `MCP_PRODUCTION_PRIVATE_BETA_*` maintenaient la politique confidentielle en `invalidConfiguration`.
+- Le secret brut est reste uniquement dans le champ securise ChatGPT; le fichier local ignore ne contient que son digest SHA-256 et les allowlists exactes.
+- Preuve live : `/oauth/token` `200`, `tools/list` `200` avec `search` et `fetch`, puis un `tools/call search` read-only final en `200` avec quatre resultats du catalogue sur.
+- `Bot Fight Mode` et `AI Labyrinth` sont restes desactives apres la preuve, sans attribution causale; un A/B separe est requis avant reactivation.
+- Provider calls, writes, refresh tokens, billing, account-link lifecycle expansion, production/shared DB mutation et lancement public restent interdits.
