@@ -13,7 +13,7 @@ related: [[product/manual-application-handoff]], [[product/product-roadmap]], [[
 
 # ChatGPT/App SDK Roadmap
 
-The ChatGPT/App SDK roadmap is now a current checkpoint page, not just a future plan. The active truth is the merged PR305 durable private-beta connector proof at `mcp.twoweeks.ai`, followed by PR306 secret-sync hardening, PR307 collaborator startup diagnostics, PR308 public smoke, and PR309 protocol compatibility with a safe authenticated ChatGPT call. The private connector is proven read-only; public launch and every provider/write surface remain separately gated.
+The ChatGPT/App SDK roadmap is now a current checkpoint page, not just a future plan. The active truth is the merged PR305 durable private-beta connector proof at `mcp.twoweeks.ai`, followed by PR306 secret-sync hardening, PR307 collaborator startup diagnostics, PR308 public smoke, PR309 protocol compatibility with a safe authenticated ChatGPT call, and PR311 doctor regression closure. The private connector is proven read-only; public launch and every provider/write surface remain separately gated.
 
 ## Current state
 
@@ -28,6 +28,8 @@ PR307 is merged as `736c6193966006e91a7bbbad5ff4b60898dd45fb`. `./run.sh doctor 
 PR308 is merged as `b101a75a1b625f7b0f3a62f677f474b4a030bff6`. `./run.sh mcp-smoke` is the no-credential public canary for OAuth/MCP discovery, lifecycle, auth challenge, and fail-closed token errors.
 
 PR309 is merged as `b2090fd71e643120d2d695704536d1a45f690b57`. It resolves the first live ChatGPT boundary by accepting exactly MCP `2025-06-18` and `2025-11-25`. Post-merge smoke passed, the fresh connector exposed exactly six existing read-only Actions, and one safe `twoweeks.application_package.summarize` call succeeded without capturing private content.
+
+PR311 is merged as `c61c9945e33f9208f4e3cb28dfd9e48d6fcfae50`. It closes `run.sh doctor` startup-parity regressions for port relationships, local Docker sockets, WSL2 tunnel networking, Bash special variables, strict Vite port binding, and dedicated CI coverage. It changes operational diagnostics only and does not widen MCP or cover-letter behavior.
 
 PR80B manual handoff is already implemented as the safe delivery path while ATS authorization is pending, but live submit/apply remains blocked.
 
@@ -105,6 +107,7 @@ Forbidden runtime and launch surfaces stay blocked unless a later reviewed decis
 - [x] PR306 is merged: the team secret source and digest-only synchronization are documented and protected against `xtrace` leakage.
 - [x] PR307 is merged: collaborator startup diagnostics and macOS/Linux/WSL2 tunnel/runtime parity are covered without widening MCP or OAuth behavior.
 - [x] PR308 is merged: `./run.sh mcp-smoke` provides a no-credential public canary for exact OAuth/MCP discovery, lifecycle, challenge, and fail-closed token-error behavior.
+- [x] PR311 is merged: `run.sh doctor` now catches startup-parity regressions for ports, local Docker, WSL2 networking, Bash variables, and strict Vite binding.
 - [x] Provider calls, write actions, refresh tokens, account-link lifecycle expansion, public launch, and UI changes remain blocked.
 
 ### PR308 - Private-beta operational stabilization (merged)
@@ -123,6 +126,7 @@ Forbidden runtime and launch surfaces stay blocked unless a later reviewed decis
 
 ## Sources
 
+- [[sources/2026-07-13-pr311-runsh-doctor-regression-closure-checkpoint]]
 - [[sources/2026-07-13-pr309-mcp-protocol-compatibility-checkpoint]]
 - [[sources/2026-07-12-pr308-mcp-private-beta-operational-smoke-checkpoint]]
 - [[sources/2026-07-12-pr307-runsh-collaborator-portability-checkpoint]]

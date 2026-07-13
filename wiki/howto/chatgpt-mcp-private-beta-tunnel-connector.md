@@ -6,7 +6,7 @@ created: 2026-07-04
 updated: 2026-07-13
 status: current
 type: runbook
-sources: [2026-07-13-pr309-mcp-protocol-compatibility-checkpoint, 2026-07-12-pr308-mcp-private-beta-operational-smoke-checkpoint, 2026-07-12-pr307-runsh-collaborator-portability-checkpoint, 2026-07-05-pr305-durable-mcp-connector-proof-checkpoint, 2026-07-04-pr304-live-mcp-connector-smoke-checkpoint]
+sources: [2026-07-13-pr311-runsh-doctor-regression-closure-checkpoint, 2026-07-13-pr309-mcp-protocol-compatibility-checkpoint, 2026-07-12-pr308-mcp-private-beta-operational-smoke-checkpoint, 2026-07-12-pr307-runsh-collaborator-portability-checkpoint, 2026-07-05-pr305-durable-mcp-connector-proof-checkpoint, 2026-07-04-pr304-live-mcp-connector-smoke-checkpoint]
 related: [[product/chatgpt-app-sdk-roadmap]]
 ---
 
@@ -21,6 +21,7 @@ Procedure reproductible pour demarrer le serveur MCP prive twoweeks, exposer son
 - PR307 est mergee par `736c6193966006e91a7bbbad5ff4b60898dd45fb`; `run.sh doctor` couvre le demarrage collaborateur macOS/Linux/WSL2 sans elargir MCP/OAuth.
 - PR308 est mergee par `b101a75a1b625f7b0f3a62f677f474b4a030bff6`; `run.sh mcp-smoke` verifie la frontiere publique sans charger de dotenv, secret, token ou donnee privee.
 - PR309 est mergee par `b2090fd71e643120d2d695704536d1a45f690b57`; le serveur accepte exactement MCP `2025-06-18` et `2025-11-25` et negocie la version supportee demandee.
+- PR311 est mergee par `c61c9945e33f9208f4e3cb28dfd9e48d6fcfae50`; `run.sh doctor` detecte les collisions de ports, refuse un daemon Docker distant, verifie WSL2/Docker Desktop et impose le port Vite valide.
 - Endpoint MCP : `https://mcp.twoweeks.ai/mcp`.
 - Redirect URI exact : `https://chatgpt.com/connector/oauth/b7v_6OncLEsg`.
 - Client ID : `local-chatgpt-client`.
@@ -94,7 +95,7 @@ chmod 600 .env.local
 ./run.sh mcp-smoke
 ```
 
-`doctor mcp-private-beta` est un preflight read-only : il ne source pas les fichiers dotenv, ne recupere pas le secret Infisical et ne demarre ni n'arrete de service. Il doit finir en `PASS` avant le premier demarrage collaborateur. `mcp-check` doit afficher seulement `PASS` et les noms de cles en cas d'erreur, jamais leurs valeurs. `mcp-private-beta` demarre Convex local, Vite sur `127.0.0.1:5196`, le runtime parser image et le tunnel nomme. Une fois l'origine publique disponible, `mcp-smoke` verifie les metadata OAuth/MCP, le lifecycle `initialize`/`initialized`, le challenge Bearer et l'erreur token fail-closed; il ne source aucun dotenv et n'envoie aucun credential.
+`doctor mcp-private-beta` est un preflight read-only : il ne source pas les fichiers dotenv, ne recupere pas le secret Infisical et ne demarre ni n'arrete de service. Il doit finir en `PASS` avant le premier demarrage collaborateur. PR311 aligne ce diagnostic avec le demarrage reel pour les ports Convex/Vite/parser, le daemon Docker local, WSL2 et les variables Bash speciales. Vite utilise `--strictPort` et ne doit jamais migrer silencieusement vers un autre port. `mcp-check` doit afficher seulement `PASS` et les noms de cles en cas d'erreur, jamais leurs valeurs. `mcp-private-beta` demarre Convex local, Vite sur `127.0.0.1:5196`, le runtime parser image et le tunnel nomme. Une fois l'origine publique disponible, `mcp-smoke` verifie les metadata OAuth/MCP, le lifecycle `initialize`/`initialized`, le challenge Bearer et l'erreur token fail-closed; il ne source aucun dotenv et n'envoie aucun credential.
 
 Apres une modification de configuration :
 
@@ -185,6 +186,7 @@ Ne pas documenter le resultat prive retourne par l'outil. Documenter uniquement 
 
 ## Sources
 
+- [[sources/2026-07-13-pr311-runsh-doctor-regression-closure-checkpoint]]
 - [[sources/2026-07-13-pr309-mcp-protocol-compatibility-checkpoint]]
 - [[sources/2026-07-12-pr307-runsh-collaborator-portability-checkpoint]]
 - [[sources/2026-07-04-pr304-live-mcp-connector-smoke-checkpoint]]
