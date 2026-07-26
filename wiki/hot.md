@@ -3,7 +3,7 @@ title: "Hot Cache - twoweeks"
 category: overview
 status: current
 created: 2026-05-02
-updated: 2026-07-13
+updated: 2026-07-27
 ---
 
 # Hot Cache
@@ -16,25 +16,30 @@ twoweeks centers on CV ingestion/parsing, canonical saved profile/CV data, and p
 
 Keep two workstreams separate:
 
-- Cover-letter quality: staging `dev:neat-starfish-33` is green for Mistral V2 with only `cover_letter_premium_prompt_v2=1`; quality repair is OFF and production full GO is not approved.
-- MCP / ChatGPT App SDK: PR322 selected the stable MCP public catalog/submission URL `https://mcp.twoweeks.ai/mcp` and added a fail-closed launch-readiness evidence bit. Public launch remains blocked; OAuth/auth/tool catalog/runtime reachability unchanged.
+- MCP commercial launch: V19 proved the current-head private-beta transport, confidential-client OAuth, six-tool catalog and one protected read-only call. The result was `NO_DATA`; commercial value is not yet proven. The next slice is `COMMERCIAL-MCP-1`, a useful but bounded read-only projection.
+- Cover-letter quality: PR337 (`QUALITY-CL-4`) is ready for merge review at `977f1a29d8b9a5b3f1f67964eff61f46e5373f53`; all 8 GitHub checks pass and the exact-head Codex review is clear. This proves deterministic EN/FR CV-backed prompt/finalizer integrity, not a provider-output quality win or default-model decision.
 
 ## Key Active Facts
 
-- PR322 selected the stable MCP catalog/submission URL `https://mcp.twoweeks.ai/mcp` and added a fail-closed launch-readiness evidence bit. Public launch remains blocked.
-- PR305 is connected in ChatGPT as a private/development connector; `tools/list` and one safe read-only `tools/call search` are live-proven. This does not authorize provider calls, writes, refresh tokens, billing, production/shared DB mutation, account-link expansion, or public launch.
+- Stable endpoint: `https://mcp.twoweeks.ai/mcp`.
+- V19 directly proved HEAD `0503832f5671b995b0095841104afc2e33b065ee`, MCP `2025-06-18` and `2025-11-25`, six ordered read-only tools, OAuth token-count delta `30 -> 31`, and exactly one protected `twoweeks.application_package.summarize` call.
+- The protected result was the four-field status envelope with `status=NO_DATA`; no summary or private nested data was exposed.
+- Current protected tools report availability/status only. A commercial V1 must add safe readiness, bounded counts/categories and next-action codes, then prove `OK` with controlled data.
+- Private beta must cover one data-bearing subject and one empty subject before a 3-5 user cohort.
+- Public launch, write tools, provider/model calls, export, live submit/apply, refresh tokens and billing remain blocked pending separate reviewed gates.
+- The public distribution surface is evolving; decide the final tool catalog before submission because approved tools are snapshot-frozen.
+- `application-os-foundation` is verified at PR336 merge `80b4af7a764b37cc57b5bcb25a4f3bfc0a16a23b`.
+- Luna low passed the English direct/adjacent development cells but only matched the stable control; do not promote it as a general default.
+- Historical French CV-backed EVAL3D vetoes are invalid for quality inference because a canonical formal closing was counted as body content. No provider rerun is required now.
+- No-CV remains a separate evidence/UX problem and is byte-locked against QUALITY-CL-4 drift. Any four-cell EN/FR CV-backed old/new comparison requires a separate exact contract and approval after merge; no provider run is automatic.
 - Product truth is `twoweeks`; CVForge and ProposalForge are internal module names.
-- PR87.17C2 adds the docs-only pre-auth ownership decision and browser-storage policy, records `TWO_PHASE_PREAUTH_INTENT_REQUIRED`, and keeps route/runtime/provider/token/code/account-link behavior blocked until later slices.
-- PR87.17C0 defines `mcp_oauth_return`, preserves `/cv` fallback, allows only the fixed local/dev MCP OAuth continuation path with `mcp_oauth_intent`, and adds resolver/SignInPage tests only.
-- PR87.17B adds server-only authorization-intent storage with digest-only handles and one-time consume behavior; neither PR87.17B nor PR87.17C0 opens production MCP, OAuth callback/code exchange, consent UI, token persistence, public account-link API, endpoint/Vite lifecycle wiring, real Stytch/Clerk network calls, or real user data.
-- PR87.15B1 adds `buildMcpConvexAccountLinkLookupAdapter` plus bounded lookup query `internalLookupMcpAuthPolicyAccountLinkCandidates`.
-- PR87.8 remains blocked for production exposure; OAuth callback/token exchange, production MCP, real handlers, live submit/apply, billing, PR88, and PR89 require separate reviewed gates.
-- PR80B must not claim provider submission. `provider_verified_submitted` remains unreachable; `user_reported_submitted` is the highest external reported state.
+- Cloud-region decision: Twoweeks is US-first; future Convex Cloud and first production parser default to US East (N. Virginia), while parser provider selection remains benchmark-gated. Read [[strategy/us-first-cloud-region]] and [[sources/2026-07-27-us-first-cloud-region]].
 - Persistent wiki mutations require `wiki/index.md`, `wiki/log.md`, and usually `wiki/hot.md`.
 
 ## Canonical Pages To Read
 
+- MCP commercial roadmap: [[product/chatgpt-app-sdk-roadmap]], [[sources/2026-07-15-mcp-current-head-authenticated-summary-reproof-checkpoint]], [[howto/chatgpt-mcp-private-beta-tunnel-connector]], [[sources/2026-07-13-pr322-mcp-public-catalog-url-checkpoint]]
 - Cover-letter quality: [[tasks/2026-06-22-cover-letter-quality-production-roadmap]], [[sources/2026-06-24-cover-letter-mistral-v2-staging-green]]
-- MCP / ChatGPT App SDK: [[howto/chatgpt-mcp-private-beta-tunnel-connector]], [[product/chatgpt-app-sdk-roadmap]], [[sources/2026-07-13-pr322-mcp-public-catalog-url-checkpoint]], [[product/manual-application-handoff]], [[sources/2026-06-26-pr87-17c2-mcp-oauth-preauth-ownership-checkpoint]], [[sources/2026-06-26-pr87-17c1-mcp-oauth-login-return-continuation-checkpoint]], [[sources/2026-06-26-pr87-17c0-mcp-oauth-login-return-convention-checkpoint]], [[sources/2026-06-26-pr87-17b-mcp-oauth-authorization-intent-checkpoint]], [[sources/2026-06-26-pr87-17a-mcp-oauth-authorization-request-boundary-checkpoint]], [[sources/2026-06-25-pr87-16-mcp-account-link-lifecycle-checkpoint]], [[sources/2026-06-25-pr87-15d-mcp-auth-local-runtime-wiring-checkpoint]], [[sources/2026-06-25-pr87-15c-mcp-auth-composition-checkpoint]], [[sources/2026-06-25-pr87-15b1-mcp-account-link-lookup-adapter-checkpoint]], [[sources/2026-06-25-pr87-15b0-mcp-account-link-canonical-storage-checkpoint]], [[sources/2026-06-25-pr87-15a-mcp-stytch-bearer-verifier-checkpoint]], [[sources/2026-06-24-pr87-14b-mcp-auth-dev-endpoint-wiring-checkpoint]]
 - Product/parser/export routing: [[overview]], [[concepts/cv-parsing-pipeline]], [[tech/export-pipeline]]
+- Cloud region / parser hosting: [[strategy/us-first-cloud-region]], [[tech/local-vs-remote-parser-architecture]], [[howto/local-parser-operations]]
 - Wiki operations: [[meta/llm-wiki-pattern]], [[meta/temporal-management]]

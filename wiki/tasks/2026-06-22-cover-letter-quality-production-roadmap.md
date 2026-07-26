@@ -3,7 +3,7 @@ title: "Cover Letter Quality Production Roadmap"
 category: task
 status: current
 created: 2026-06-22
-updated: 2026-06-24
+updated: 2026-07-16
 type: implementation-roadmap
 sources: [2026-06-24-cover-letter-mistral-v2-staging-green, 2026-06-23-release-orchestration-staging-pr87-8-checkpoint, 2026-06-23-cover-letter-quality-pr249-staged-internal-gate, 2026-06-23-cover-letter-quality-pr248-merge-checkpoint, 2026-06-23-cover-letter-quality-pr246-merge-checkpoint, 2026-06-23-cover-letter-quality-production-roadmap-updated-checklist]
 related: [[product/ai-product-model]], [[tech/proposal-ai-routing-and-inline-diff]], [[outputs/2026-05-26-proposal-language-generation-hardening]]
@@ -13,7 +13,7 @@ related: [[product/ai-product-model]], [[tech/proposal-ai-routing-and-inline-dif
 
 ## Purpose
 
-Track the current state of the cover-letter quality work after the PR230-PR245 sequence, PR246, PR248, and PR249.
+Track the current state of the cover-letter quality work from the PR230-PR249 safety baseline through the EVAL3C/EVAL3D quality diagnostics and PR336.
 
 This document is an updated working checklist. It does not replace the PRs, commits, diffs, or prior handoffs. Use those as source of truth when implementing.
 
@@ -25,7 +25,134 @@ It does not own the Twoweeks MCP / ChatGPT App SDK roadmap, manual application h
 
 Shared branch/base references such as `application-os-foundation` and PR245 are coordination anchors only. They do not mean the cover-letter quality checklist and the MCP/App SDK checklist should be executed in the same PR.
 
-## Current State - 2026-06-24
+## Current Quality Truth - 2026-07-16
+
+Current verified base:
+
+~~~text
+application-os-foundation
+80b4af7a764b37cc57b5bcb25a4f3bfc0a16a23b
+~~~
+
+PR336 merged the bounded EVAL3D offline-diagnostic correction:
+
+- PR: https://github.com/panamini/neyssan/pull/336
+- feature head: d4f73af4f4a07ef397868df0b630f871edaa4e32
+- merge commit: 80b4af7a764b37cc57b5bcb25a4f3bfc0a16a23b
+- product route, model defaults, prompts, templates, and provider behavior were not changed
+
+The evaluation infrastructure is now materially more trustworthy, but this is not proof that the product already generates generally premium letters.
+
+Confirmed development evidence:
+
+- gpt-5.6-luna@low produced acceptable results for English direct-CV and adjacent-experience cells.
+- The stable control also passed those cells. Luna low is a provisional development-cell winner, not a generally selected default and not proven superior.
+- Higher reasoning is not the next justified experiment. Do not run Luna medium/high/extra-high without a precise recovery hypothesis.
+- No-CV remains a structural evidence boundary. The product should collect candidate evidence or offer a deliberately limited output rather than promise a premium letter.
+- Historical French CV-backed EVAL3D vetoes are invalid as writing-quality evidence because the evaluator misclassified a canonical formal closing as body content.
+- The historical French outputs cannot be replayed: the retained artifacts contain hashes/provenance, not the final visible text needed for a valid replay.
+
+Canonical diagnostic status:
+
+~~~text
+Diagnostic fix: LOCAL_PASS
+Historical French CV-backed verdicts: INVALID_FOR_QUALITY_INFERENCE
+Historical no-CV context: STRUCTURAL_EVIDENCE_LIMIT_CONFIRMED
+Historical no-CV veto cause: NOT_FULLY_ATTRIBUTED
+Provider rerun required now: NO
+Product-quality refactor blocked: NO
+Future French four-cell run: OPTIONAL_AND_SEPARATELY_APPROVED
+~~~
+
+PR336 fixed measurement validity only:
+
+- reviewer-safe veto diagnostics are retained without exposing private letter content;
+- evidence insufficiency, safety vetoes, and editorial vetoes are distinguished;
+- the French formal closing emitted by the finalizer is recognized by sendability evaluation;
+- old French veto classifications remain historical facts but cannot support model or writing-quality conclusions.
+
+Deferred architecture debt, not part of the next quality slice:
+
+- replace duplicated closing/boundary regex knowledge with one shared finalizer/sendability contract.
+
+## Master Workstream - QUALITY-CL-4
+
+The next master thread owns one product-focused slice: improve the final visible quality of CV-backed cover letters.
+
+Scope:
+
+- English and French;
+- direct-CV and adjacent-experience cases;
+- active prompt and active finalizer only;
+- one bounded implementation PR;
+- offline implementation and regression verification first.
+
+Visible defects to address:
+
+1. generic or mechanical openings;
+2. body paragraphs that read like a CV inventory;
+3. weak bridge between candidate evidence and employer need;
+4. generic or repetitive conclusions such as repeated “I would be glad...” patterns;
+5. French that reads like literal English translation instead of idiomatic professional French.
+
+Acceptance behavior:
+
+- opening is specific to the role without invented praise or unsupported company claims;
+- body selects one or two concrete candidate proofs instead of listing the CV;
+- each proof explains its relevance to the employer's stated need;
+- conclusion is short, natural, and non-repetitive;
+- French and English are independently idiomatic;
+- factuality, candidate-evidence provenance, ATS safety, and no-invention boundaries do not weaken.
+
+Explicit exclusions:
+
+- no model, reasoning-level, template, page-format, or default-route change;
+- no no-CV redesign in this slice;
+- no held-out access;
+- no provider call during implementation;
+- no automatic four-cell rerun;
+- no broad evaluator or finalizer architecture refactor.
+
+After the implementation is locally green and independently reviewed, an optional blind old/new comparison may be proposed for exactly four CV-backed development classes: English direct, English adjacent, French direct, and French adjacent. It must compare pipeline versions rather than models and requires a separate exact contract and approval before any provider call.
+
+The separate no-CV product slice should later collect missing candidate information or expose a clearly limited letter mode. It must not be used to tune the CV-backed quality slice.
+
+## QUALITY-CL-4 Implementation Checkpoint - PR337
+
+PR337 is ready for merge review on the exact feature head below:
+
+~~~text
+PR: https://github.com/panamini/neyssan/pull/337
+feature head: 977f1a29d8b9a5b3f1f67964eff61f46e5373f53
+base: 80b4af7a764b37cc57b5bcb25a4f3bfc0a16a23b
+status: CI_GREEN_CODEX_REVIEW_CLEAR
+~~~
+
+The bounded implementation:
+
+- adds an English/French CV-backed editorial contract for direct and adjacent experience;
+- improves deterministic employer-value bridges and generic-closing cleanup;
+- preserves grounded content when a closing sentence mixes evidence with a discussion invitation;
+- avoids unsupported fallback evidence and language-specific English guidance for other output languages;
+- keeps the historical no-CV prompt and finalizer behavior locked by regression tests;
+- updates only deterministic replay hashes, size expectations, and a synthetic blinding test seed required by the intentional prompt/output-byte change.
+
+Exact-head verification:
+
+- premium cover-letter tests: 121/121;
+- all proposal tests: 21 files, 622/622;
+- cover-letter CI truth contract: 12 files, 356/356;
+- benchmark replay and policy-shadow CLIs: pass;
+- unflagged stability live run: correctly refused;
+- TypeScript, GitHub CI, and GitHub Playwright: pass;
+- Fallow new-only: zero introduced complexity and zero introduced duplication; its only introduced attribution is the pre-existing `openai` dependency/import false positive;
+- all 8 GitHub checks pass on the exact head, Codex reviewed `977f1a29` without a major issue, and every earlier actionable review thread is fixed and resolved.
+
+This checkpoint proves deterministic prompt/finalizer integrity, regression safety, and review readiness. It does not prove a provider-output quality win, authorize a model/default change, or activate anything publicly. No provider call, held-out access, MCP mutation, deployment, or merge was performed by the implementation thread.
+
+The next quality measurement, if a product decision requires it after merge, is a separately approved blind old/new comparison for the four CV-backed EN/FR classes. It must compare pipeline versions, not reasoning levels or models. No-CV evidence collection remains a separate product slice.
+
+## Historical State - 2026-06-24
 
 Current branch line:
 
@@ -532,6 +659,11 @@ After PR248, the local mirror should be updated to reflect the merged no-CV boun
 
 ## Current Next Smallest Step
 
-```text
-Keep `dev:neat-starfish-33` as the only enabled Mistral V2 environment and prepare a separate production release decision. Do not enable production or quality repair without a new explicit gate.
-```
+~~~text
+Start QUALITY-CL-4 from application-os-foundation at
+80b4af7a764b37cc57b5bcb25a4f3bfc0a16a23b in a clean worktree.
+
+Improve the active CV-backed English/French prompt and final visible output.
+Stay offline during implementation. Preserve factuality and provenance.
+Do not change models, reasoning, templates, routes, no-CV behavior, or production flags.
+~~~

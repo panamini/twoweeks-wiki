@@ -1,7 +1,7 @@
 ---
 title: "Log — twoweeks Wiki"
 category: overview
-updated: 2026-07-13
+updated: 2026-07-27
 ---
 
 # Log du Wiki · twoweeks
@@ -14,6 +14,101 @@ grep "^## \[" wiki/log.md | grep "ingest"  # Tous les ingests
 ```
 
 ---
+
+## [2026-07-27] ingest | US-first cloud region decision
+
+**Agent** : Codex
+**Mode** : ingest
+**Source** : `/Users/pana/.codex/worktrees/08cf/neyssan-new/docs/decisions/2026-07-27-us-first-cloud-region.md`
+
+**Pages créées** :
+- `wiki/sources/2026-07-27-us-first-cloud-region.md`
+- `wiki/strategy/us-first-cloud-region.md`
+
+**Pages mises à jour** :
+- `wiki/index.md`
+- `wiki/hot.md`
+- `wiki/log.md`
+
+**Points notables** :
+- Twoweeks is recorded as natively English-speaking and US-first; the first future Convex Cloud deployment and first production parser default to US East (N. Virginia).
+- Local development remains `./run.sh local-fast` with local Convex; no cloud-region choice is required locally.
+- Hetzner Ashburn, Railway US-East, and Cloud Run remain benchmark candidates, not a selected provider.
+- Europe remains phase 2 and conditional on contractual data-residency requirements.
+- No code, deployment, provider call, or wiki mutation beyond this ingest was performed.
+
+**Open items** : Run the provider benchmark, freeze the production data map, and rehearse export/import before production provisioning.
+
+## [2026-07-16] direct-update | QUALITY-CL-4 PR337 exact-head checkpoint
+
+**Agent** : Codex
+**Mode** : direct-update
+**Source** : PR337 feature head `977f1a29d8b9a5b3f1f67964eff61f46e5373f53`, exact local verification, 8/8 GitHub checks green, and exact-head Codex review clear
+
+**Pages mises à jour** :
+- `wiki/tasks/2026-06-22-cover-letter-quality-production-roadmap.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**Points notables** :
+- PR337 is ready for merge review on `application-os-foundation`; the implementation remains one bounded five-file commit.
+- The active EN/FR CV-backed prompt/finalizer now improves editorial guidance, employer-value bridges, and generic-closing cleanup while preserving grounded clauses and avoiding unsupported fallback evidence.
+- Non-English/non-French output is not forced through the English-specific contract, French closing variants and bridge agreement have targeted regressions, and the historical no-CV prompt/finalizer behavior remains locked.
+- Exact-head evidence is green: 121 premium tests, 622 proposal tests, 356 CI-truth tests, benchmark replay, policy shadow, TypeScript, all 8 GitHub checks, and a clear Codex review of `977f1a29`.
+- Fallow attributes no introduced complexity or duplication; its only introduced dependency finding is a pre-existing `openai` import attribution artifact.
+- No provider call, held-out access, MCP mutation, model/default/route/template/page-format/flag change, deployment, or merge occurred.
+- This proves deterministic implementation quality and review readiness only. A provider-output quality improvement remains unproven.
+
+**Open items** : Merge remains a separate user decision. After merge, propose a four-cell blind EN/FR CV-backed old/new pipeline comparison only if a concrete product decision requires it and only under a separately approved exact contract. Keep no-CV evidence collection separate.
+
+## [2026-07-16] direct-update | Cover-letter quality master-thread handoff after PR336
+
+**Agent** : Codex
+**Mode** : direct-update
+**Source** : merged PR336 truth, EVAL3C/EVAL3D development evidence, and the approved next product-quality direction
+
+**Pages mises à jour** :
+- `wiki/tasks/2026-06-22-cover-letter-quality-production-roadmap.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**Points notables** :
+- PR336 is merged into `application-os-foundation` at `80b4af7a764b37cc57b5bcb25a4f3bfc0a16a23b` and corrected EVAL3D measurement validity without changing prompts, routes, models, templates, or production behavior.
+- Evaluation reliability improved, but generally premium cover-letter quality and a default-model change remain unproven.
+- Luna low passed the English CV-backed development cells but only matched the stable control; higher reasoning is not the next justified test.
+- Historical French CV-backed vetoes are invalid for writing-quality inference because the evaluator counted a canonical formal closing as body content; the retained artifacts cannot support a historical replay.
+- The next master workstream is `QUALITY-CL-4`: one bounded offline-first PR focused on final visible English/French CV-backed editorial quality while preserving factuality and provenance.
+- No-CV product handling, shared finalizer/sendability boundary architecture, provider reruns, model selection, and production rollout remain separate work.
+
+**Open items** : Start the new master thread in a clean worktree from the verified merge base. Only propose a four-cell blind old/new provider comparison after the implementation is locally green and if a concrete decision requires it.
+
+## [2026-07-15] direct-update | MCP commercial launch roadmap after V19
+
+**Agent** : Codex
+**Mode** : direct-update
+**Source** : V19 sanitized proof evidence, exact proof checkout, current MCP production projection, original MCP readiness goals, and current official OpenAI app/MCP guidance
+
+**Pages créées** :
+- `wiki/sources/2026-07-15-mcp-current-head-authenticated-summary-reproof-checkpoint.md`
+
+**Pages mises à jour** :
+- `wiki/product/chatgpt-app-sdk-roadmap.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**Points notables** :
+- V19 directly proved current-head private-beta reachability, both supported MCP versions, the ordered six-tool catalog, confidential-client OAuth and exactly one protected read-only `twoweeks.application_package.summarize` call.
+- The sanitized token-record count moved from `30` to `31`; no token or private identity value was documented.
+- The protected result was the minimized four-field envelope with `status=NO_DATA`, no `summary` and no private nested data.
+- The roadmap now distinguishes secure transport proof from commercial value proof. The next implementation slice is `COMMERCIAL-MCP-1`, a useful bounded read-only projection with safe readiness, counts/categories and next-action codes.
+- Controlled data/onboarding proof, a 3-5 user operational beta, distribution assets and a final launch gate now precede public launch.
+- Current OpenAI constraints recorded: Apps SDK is the recommended packaging path, privacy policy is required, approved tool definitions are snapshot-frozen, `search`/`fetch` are no longer required, OAuth continuity needs refresh access or explicit reauthentication, and public discovery now routes primarily through the Plugin Directory.
+- No application code, runtime, OAuth configuration, browser, provider, GitHub, deployment, submission or public-launch action was performed.
+
+**Open items** : Define and approve the separate app-repo Change Contract for `COMMERCIAL-MCP-1`; do not start public launch or write tools from this wiki update.
 
 ## [2026-07-13] direct-update | MCP PR322 public catalog URL checkpoint
 

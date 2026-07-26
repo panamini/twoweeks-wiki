@@ -2,7 +2,7 @@
 title: Index du Wiki — twoweeks
 category: overview
 sticker: emoji//1f9c6
-updated: 2026-07-13
+updated: 2026-07-27
 ---
 
 # Index du Wiki · twoweeks (v2)
@@ -20,7 +20,7 @@ Le contrôle opératoire du repo reste défini par `WIKI_SCHEMA.md` puis `CLAUDE
 | État produit | [[overview]] | [[entities/twoweeks]], [[product/product-roadmap]], [[product/product-vision]] |
 | Planning IA shadow | [[product/ai-product-model]] | [[tech/proposal-ai-routing-and-inline-diff]], [[sources/2026-05-25-proposal-generation-truth-planner]] |
 | Cover-letter quality | [[tasks/2026-06-22-cover-letter-quality-production-roadmap]] | [[sources/2026-06-24-cover-letter-mistral-v2-staging-green]], [[sources/2026-06-23-cover-letter-quality-pr249-staged-internal-gate]], [[sources/2026-06-23-release-orchestration-staging-pr87-8-checkpoint]], [[sources/2026-06-23-cover-letter-quality-pr248-merge-checkpoint]], [[sources/2026-06-23-cover-letter-quality-pr246-merge-checkpoint]] |
-| ChatGPT App roadmap | [[product/chatgpt-app-sdk-roadmap]] | [[howto/chatgpt-mcp-private-beta-tunnel-connector]], [[product/manual-application-handoff]], [[sources/2026-06-26-pr87-17c2-mcp-oauth-preauth-ownership-checkpoint]], [[sources/2026-06-26-pr87-17c1-mcp-oauth-login-return-continuation-checkpoint]], [[sources/2026-06-26-pr87-17c0-mcp-oauth-login-return-convention-checkpoint]], [[sources/2026-06-26-pr87-17b-mcp-oauth-authorization-intent-checkpoint]], [[sources/2026-06-26-pr87-17a-mcp-oauth-authorization-request-boundary-checkpoint]], [[sources/2026-06-25-pr87-16-mcp-account-link-lifecycle-checkpoint]], [[sources/2026-06-25-pr87-15d-mcp-auth-local-runtime-wiring-checkpoint]], [[sources/2026-06-25-pr87-15c-mcp-auth-composition-checkpoint]], [[sources/2026-06-25-pr87-15b1-mcp-account-link-lookup-adapter-checkpoint]], [[sources/2026-06-25-pr87-15b0-mcp-account-link-canonical-storage-checkpoint]], [[sources/2026-06-25-pr87-15a-mcp-stytch-bearer-verifier-checkpoint]], [[sources/2026-06-24-pr87-14b-mcp-auth-dev-endpoint-wiring-checkpoint]], [[sources/2026-06-24-pr87-14a-mcp-auth-request-orchestrator-checkpoint]], [[sources/2026-06-24-pr87-13-mcp-auth-policy-boundary-checkpoint]], [[sources/2026-06-24-pr87-12-mcp-dev-fixture-demo-checkpoint]], [[sources/2026-06-24-pr87-10-mcp-dev-endpoint-blocked-reachability-checkpoint]], [[sources/2026-06-23-release-orchestration-staging-pr87-8-checkpoint]], [[sources/2026-06-23-twoweeks-mcp-chatgpt-app-sdk-roadmap-checkpoint]], [[sources/2026-06-19-pr80b-safe-application-handoff-while-ats-access-pending]] |
+| ChatGPT App roadmap | [[product/chatgpt-app-sdk-roadmap]] | [[sources/2026-07-15-mcp-current-head-authenticated-summary-reproof-checkpoint]], [[howto/chatgpt-mcp-private-beta-tunnel-connector]], [[sources/2026-07-13-pr322-mcp-public-catalog-url-checkpoint]], [[sources/2026-06-11-mcp-chatgpt-app-readiness-spec]], [[product/manual-application-handoff]] |
 | Manual application handoff | [[product/manual-application-handoff]] | [[product/chatgpt-app-sdk-roadmap]], [[sources/2026-06-23-twoweeks-mcp-chatgpt-app-sdk-roadmap-checkpoint]] |
 | Parser / vérité CV | [[concepts/cv-parsing-pipeline]] | [[concepts/cv-families]], [[tech/import-ocr-pipeline]] |
 | Jobs / match | [[product/job-library]] | [[product/job-match-review]] |
@@ -30,6 +30,7 @@ Le contrôle opératoire du repo reste défini par `WIKI_SCHEMA.md` puis `CLAUDE
 | Design / ATS / motion | [[design/ats-safety]] | [[design/document-token-contract]], [[design/motion-system]], [[design/brand-voice]] |
 | ATS scoring / health | [[tech/cv-ats-audit-heuristic]] | [[design/ats-safety]], [[concepts/cv-parsing-pipeline]] |
 | Langue / localisation | [[strategy/language-localization]] | [[design/locale-typography-rules]], [[product/product-roadmap]] |
+| Cloud region / US-first | [[strategy/us-first-cloud-region]] | [[tech/local-vs-remote-parser-architecture]], [[strategy/language-localization]] |
 | Opérations locales | [[howto/local-parser-operations]] | [[tech/local-vs-remote-parser-architecture]] |
 | Règles wiki | [[meta/llm-wiki-pattern]] | [[meta/temporal-management]], [[meta/codex-prompting-standards]] |
 
@@ -86,7 +87,7 @@ Cette carte est un routeur de lecture pour agents LLM. Elle ne remplace pas les 
 |------|--------|--------|------|
 | [[product/ai-product-model\|AI Product Model]] | 3 modes IA, rulebook, qualité writing, and Planner Agent shadow chain | current | ai, ux, modes |
 | [[product/ai-consistency-p0-editor-ai\|AI Consistency P0 — Closure Audit]] | Closure audit snapshot du rulebook AI editor, preview, telemetry et tailoring | current | ai, editor, rulebook |
-| [[product/chatgpt-app-sdk-roadmap\|ChatGPT/App SDK Roadmap]] | MCP/App SDK PR87.17C2 merged the docs-only OAuth pre-auth ownership decision and browser-storage policy after PR87.17C1 continuation boundary, PR87.17C0 convention, PR87.17B authorization-intent storage, PR87.17A authorization request boundary, PR87.16 account-link lifecycle, and earlier auth/storage/lookup boundaries; production MCP/OAuth/public account-link API/real handlers remain blocked, with PR88/PR89 still separate from cover-letter work | current | chatgpt-app, apps-sdk |
+| [[product/chatgpt-app-sdk-roadmap\|ChatGPT/App SDK Roadmap]] | V19 proved current-head private-beta transport, confidential-client OAuth, six read-only tools and one protected call; the result was `NO_DATA`, so the next dependency is `COMMERCIAL-MCP-1` useful bounded projection, followed by controlled data/onboarding proof and a 3-5 user beta before launch | current | chatgpt-app, apps-sdk |
 | [[product/job-library\|Job Library]] | Jobs sauvegardés, Job Brief editable et documents liés | current | jobs, library |
 | [[product/job-match-review\|Job Match Review]] | Match comme indicateur d'attention utilisateur et dogfood interne | current | jobs, match |
 | [[product/kpis\|KPIs]] | Métriques de succès produit | current | kpi, métriques |
@@ -103,6 +104,7 @@ Cette carte est un routeur de lecture pour agents LLM. Elle ne remplace pas les 
 | [[strategy/benchmark-matrix\|Benchmark Matrix]] | Scorecard concurrentielle pondérée | current | benchmark, scoring |
 | [[strategy/gap-analysis\|Gap Analysis]] | Diagnostic concurrentiel avec gaps restants vs items déjà implémentés | current | gap, diagnostic |
 | [[strategy/language-localization\|Language Localization]] | Rollout language strategy: UI vs document vs market, promotion gates, RTL and release rules | current | i18n, localization |
+| [[strategy/us-first-cloud-region\|US-First Cloud Region]] | US East default for future Convex Cloud and first production parser; provider gate remains open | current | cloud, convex, parser, data-residency |
 
 ---
 
@@ -118,7 +120,7 @@ Cette carte est un routeur de lecture pour agents LLM. Elle ne remplace pas les 
 
 ## Sources
 
-Cover-letter quality has a merged PR249 staged internal Mistral V2 gate and a green Convex staging checkpoint on `dev:neat-starfish-33`; production full GO and quality repair remain separate/not approved. The MCP/App SDK track now has PR87.10 reachability, PR87.11 auth architecture, PR87.12 local/dev fixture demo, PR87.13 pure auth-policy boundary, PR87.14A auth request orchestrator boundary, PR87.14B local/dev auth endpoint wiring, PR87.15A server-only Stytch bearer verifier boundary, PR87.15B0 canonical account-link storage/index, PR87.15B1 server-only account-link lookup adapter, PR87.15C non-production auth composition boundary, PR87.15D local/dev runtime auth composition wiring, PR87.16 authoritative server-only account-link lifecycle, PR87.17A OAuth authorization request boundary, PR87.17B OAuth authorization-intent storage, PR87.17C0 OAuth login-return convention, PR87.17C1 OAuth login-return continuation boundary, and PR87.17C2 docs-only pre-auth ownership decision merged, while production MCP/OAuth/public account-link API/real handlers remain blocked with PR80B implemented and PR88/PR89 blocked.
+Cover-letter quality has a merged PR249 staged internal Mistral V2 gate and a green Convex staging checkpoint on `dev:neat-starfish-33`; production full GO and quality repair remain separate/not approved. The MCP/App SDK transport and confidential OAuth path are now directly proven through V19, including one protected read-only call, but the only live protected result was `NO_DATA`. The commercial roadmap therefore moves next to a useful bounded read-only projection, controlled data/onboarding proof, operational private beta, and only then public distribution.
 
 | Page | Type | Date | Status |
 |------|------|------|--------|
@@ -230,6 +232,8 @@ Cover-letter quality has a merged PR249 staged internal Mistral V2 gate and a gr
 | [[sources/2026-06-26-pr87-17c1-mcp-oauth-login-return-continuation-checkpoint\|MCP OAuth Login Return Continuation Boundary Checkpoint - PR87.17C1]] | analysis | 2026-06-26 | current |
 | [[sources/2026-06-25-pr87-16-mcp-account-link-lifecycle-checkpoint\|MCP Account-Link Lifecycle Checkpoint - PR87.16]] | analysis | 2026-06-25 | current |
 | [[sources/2026-07-13-pr322-mcp-public-catalog-url-checkpoint\|MCP Public Catalog URL Decision Checkpoint - PR322]] | checkpoint | 2026-07-13 | Stable MCP catalog/submission URL decision and fail-closed launch-readiness evidence bit |
+| [[sources/2026-07-15-mcp-current-head-authenticated-summary-reproof-checkpoint\|MCP Current-Head Authenticated Summary Reproof Checkpoint - V19]] | checkpoint | 2026-07-15 | Current-head transport/OAuth/six-tool proof; one protected call returned bounded `NO_DATA`, so commercial value remains to prove |
+| [[sources/2026-07-27-us-first-cloud-region\|US-First Cloud Region Decision]] | decision | 2026-07-27 | US-first cloud-region direction, local Convex boundary, provider gate, and migration implications |
 | [[sources/2026-06-24-cover-letter-mistral-v2-staging-green\|Cover Letter Mistral V2 Staging Green Checkpoint]] | analysis | 2026-06-24 | current |
 | [[sources/2026-06-23-twoweeks-mcp-chatgpt-app-sdk-roadmap-checkpoint\|Twoweeks MCP / ChatGPT App SDK Roadmap Checkpoint]] | analysis | 2026-06-23 | current |
 ---
@@ -276,7 +280,7 @@ Cover-letter quality has a merged PR249 staged internal Mistral V2 gate and a gr
 | [[tasks/docx-layout-parity-follow-up\|DOCX Layout Parity Follow-up]] | Deferred DOCX RTL layout, bullets, tables, and font strategy follow-up |
 | [[tasks/coffee talk\|Coffee Talk]] | Note courte pour synchroniser la skill Codex collaborateur |
 | [[tasks/Audit Workspace — Bonnes Pratiques, Sécurité, RGPD\|Audit Workspace — Bonnes Pratiques, Sécurité, RGPD]] | Audit sauvegardé du workspace |
-| [[tasks/2026-06-22-cover-letter-quality-production-roadmap|Cover Letter Quality Production Roadmap]] | Cover-letter generation quality only; Mistral V2 is green on Convex staging `dev:neat-starfish-33`; production and quality repair remain separate/not approved |
+| [[tasks/2026-06-22-cover-letter-quality-production-roadmap|Cover Letter Quality Production Roadmap]] | Current truth through PR337 head `977f1a29`: QUALITY-CL-4 has 8/8 GitHub checks green and exact-head Codex review clear for deterministic EN/FR CV-backed prompt/finalizer improvements; no provider quality win or public activation is claimed |
 
 ---
 
@@ -300,8 +304,8 @@ Cover-letter quality has a merged PR249 staged internal Mistral V2 gate and a gr
 
 ## Statistiques
 
-- **Pages actives** : 153 (5 overview, 1 entité, 2 concepts, 8 design, 9 product, 3 strategy, 3 meta, 93 sources, 14 tech, 7 howto, 6 tasks, 2 outputs)
+- **Pages actives** : 156 (5 overview, 1 entité, 2 concepts, 8 design, 9 product, 4 strategy, 3 meta, 95 sources, 14 tech, 7 howto, 6 tasks, 2 outputs)
 - **Pages archivées** : 2
 - **Sources dans `raw/`** : 91
 - **Sources en attente dans `rawinput/`** : 0
-- **Dernière mise à jour** : 2026-07-13
+- **Dernière mise à jour** : 2026-07-27
