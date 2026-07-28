@@ -3,7 +3,7 @@ title: "ChatGPT/App SDK Roadmap"
 category: product
 tags: [chatgpt-app, apps-sdk, mcp, roadmap, safety]
 created: 2026-06-23
-updated: 2026-07-15
+updated: 2026-07-28
 status: current
 valid_from: 2026-06-12
 type: roadmap
@@ -13,17 +13,19 @@ related: [[howto/chatgpt-mcp-private-beta-tunnel-connector]], [[product/manual-a
 
 # ChatGPT/App SDK Roadmap
 
-Le transport MCP privé est désormais prouvé sur le current head, mais la valeur commerciale ne l'est pas encore. La priorité n'est plus de refaire l'OAuth : elle est de transformer la projection read-only actuelle en un produit utile, testable avec de vraies données contrôlées, puis de conduire une petite bêta avant toute publication.
+Le transport MCP privé et la lecture utile sur données contrôlées sont désormais prouvés sur `main`, mais la valeur commerciale utilisateur ne l'est pas encore. La priorité n'est plus de refaire l'OAuth : elle est de connecter ce socle à un parcours utile dans ChatGPT, puis de conduire une petite bêta avant toute publication.
 
 ## Current state
 
-Statut : `PRIVATE_BETA_TRANSPORT_PROVEN` / `COMMERCIAL_VALUE_NOT_YET_PROVEN`.
+Statut : `PRIVATE_BETA_CONTROLLED_DATA_PROVEN` / `COMMERCIAL_USER_VALUE_NOT_YET_PROVEN`.
 
-V19 a directement prouvé le HEAD `0503832f5671b995b0095841104afc2e33b065ee`, les metadata publiques, les deux versions MCP supportées, le catalogue ordonné de six tools, le client OAuth confidentiel, un échange token observé sans valeur sensible et exactement un appel protégé à `twoweeks.application_package.summarize`.
+V19 reste la preuve historique du transport, des metadata publiques, des deux versions MCP, du client OAuth confidentiel et d'un appel protégé `NO_DATA`.
 
-Le résultat protégé était `NO_DATA`. Il contenait seulement `kind`, `status`, `toolName`, `version`, sans `summary` ni donnée privée imbriquée. C'est une preuve de transport et de sécurité, pas encore une preuve de valeur utilisateur.
+Le 28 juillet 2026, la PR369 a été mergée sur `main` au commit `a3ea57da6138707fea02a10acbc23583139493b4`. Une preuve locale contrôlée avec deux comptes authentifiés distincts a exécuté 8/8 appels protégés, seed et cleanup 4/4, recovery `RECOVERED`, baseline et delta `ACCEPTED`. Une course entre deux sessions a aussi prouvé qu'un seul rail peut s'exécuter, que l'autre reçoit `409`, puis réussit au retry sans perdre sa session. Le coordinateur partage désormais un lease atomique entre les deux routes de preuve.
 
-Le runtime current-head de preuve a ensuite été arrêté et l'ancien runtime private-beta a été restauré canoniquement. Le lancement public, la soumission, les write tools, les provider/model calls, l'export et le live submit/apply restent bloqués.
+Cette preuve qualifie le rail opérationnel et l'isolation contrôlée, pas un parcours commercial dans ChatGPT. La surface actuelle expose exactement quatre tools read-only `summarize`. Elle ne sait pas encore chercher un emploi, ingérer une offre, créer une variante de CV ou générer une lettre.
+
+Le lancement public, les write tools, les provider/model calls déclenchés par le MCP, l'export et le live submit/apply restent bloqués.
 
 ## Commercial V1 product decision
 
@@ -45,20 +47,21 @@ Le V1 reste read-only. Il peut exposer des états, compteurs bornés, catégorie
 | Endpoint stable | `https://mcp.twoweeks.ai/mcp` décidé par PR322 |
 | Protocol | MCP `2025-06-18` et `2025-11-25` prouvés |
 | OAuth | client confidentiel et `client_secret_post` prouvés sans exposer de credential |
-| Catalog | six tools ordonnés et scope `twoweeks:applications:read` prouvés |
+| Catalog | quatre tools protégés read-only `summarize` et scope `twoweeks:applications:read` |
 | Safety | annotations read-only, schémas stricts, résultats minimisés et fail-closed |
-| Protected call | un appel `application_package.summarize` exécuté, résultat `NO_DATA` |
+| Controlled data | deux sujets distincts, 8/8 appels protégés, seed/cleanup 4/4, recovery et deltas acceptés |
+| Coordination | lease atomique partagé, une seule exécution concurrente, session occupée conservée pour retry |
 | Operations | doctor, démarrage, tunnel, preuve et recovery canoniques disponibles |
 | Public launch | toujours bloqué |
 
 ## Functional gap before selling
 
-- Les quatre tools protégés sont actuellement des tools de statut. Leur contrat public ne donne au modèle que `kind`, `status`, `toolName`, `version`.
-- Aucun compte data-bearing n'a encore produit `OK` en live. Le seul résultat authentifié actuel est `NO_DATA`.
+- Les quatre tools protégés exposent des projections bornées et non sensibles, mais aucun parcours ChatGPT commercial ne les compose encore en résultat utilisateur.
+- La preuve data-bearing reste une fixture contrôlée locale ; elle ne démontre ni utilité répétée, ni qualité sur données client réelles.
 - Le parcours `ONBOARDING_REQUIRED -> import/creation Twoweeks -> OK` n'est pas prouvé.
-- La preuve ne couvre qu'un sujet et un appel protégé, pas une cohorte ni une session longue.
+- La preuve couvre deux sujets et les quatre tools, pas une cohorte ni une session longue.
 - Le serveur n'émet pas de refresh token. Pour un lancement large, il faut soit un cycle de refresh revu séparément, soit une politique de réauthentification explicite et acceptable.
-- `search` et `fetch` ne sont plus imposés par OpenAI. Leur maintien doit être décidé avant publication, car les workspaces utilisent un snapshot figé des tools approuvés.
+- `search` et `fetch` figuraient dans le catalogue V19 mais ne sont pas dans le registre actif à quatre tools. Le snapshot public final doit être figé avant publication.
 - La privacy policy, les conditions/support, les assets de listing, les scénarios de review et le packaging Plugin/App ne sont pas encore enregistrés comme prêts.
 
 ## Dependency-first execution roadmap
@@ -69,21 +72,20 @@ Le V1 reste read-only. Il peut exposer des états, compteurs bornés, catégorie
 - [x] Conserver le contrat fail-closed et l'absence de données privées imbriquées.
 - [x] Garder V19 comme preuve de transport, sans le présenter comme preuve de valeur commerciale.
 
-### 1. `COMMERCIAL-MCP-1` — useful bounded read-only projection — next
+### 1. `COMMERCIAL-MCP-1` — useful bounded read-only projection — done
 
-- [ ] Versionner un nouveau contrat public pour les quatre summary tools.
-- [ ] Ajouter uniquement des champs utiles et non sensibles : état de readiness, compteurs bornés, catégories sûres, fraîcheur et codes de prochaines actions.
-- [ ] Garder les textes libres privés, PII, identifiants internes et données brutes hors du résultat model-visible.
-- [ ] Définir les comportements exacts `OK`, `STALE`, `NO_DATA`, `ONBOARDING_REQUIRED`, `TIMEOUT`, `DEPENDENCY_MISSING` et `MALFORMED`.
-- [ ] Ajouter des tests de projection, de compatibilité, d'absence de fuite et de double `CallToolResult`.
+- [x] Versionner un nouveau contrat public pour les quatre summary tools.
+- [x] Ajouter uniquement des champs utiles et non sensibles : état de readiness, compteurs bornés, catégories sûres, fraîcheur et codes de prochaines actions.
+- [x] Garder les textes libres privés, PII, identifiants internes et données brutes hors du résultat model-visible.
+- [x] Définir les comportements exacts `OK`, `STALE`, `NO_DATA`, `ONBOARDING_REQUIRED`, `TIMEOUT`, `DEPENDENCY_MISSING` et `MALFORMED`.
+- [x] Ajouter des tests de projection, de compatibilité et d'absence de fuite.
 
 ### 2. `COMMERCIAL-MCP-2` — data and onboarding proof
 
-- [ ] Préparer un compte de test data-bearing contrôlé et un compte vide distinct, sans données client réelles.
-- [ ] Prouver les quatre tools en `OK` sur le compte data-bearing.
+- [x] `COMMERCIAL-MCP-2A` : prouver deux comptes authentifiés distincts, les quatre tools sur fixture data-bearing contrôlée, l'isolation A/B, le cleanup/recovery et la coordination concurrente atomique.
 - [ ] Prouver `ONBOARDING_REQUIRED` sur le compte vide avec une prochaine action sûre et compréhensible.
 - [ ] Prouver le parcours complet : connexion, import/création dans Twoweeks, disponibilité MCP, lecture utile.
-- [ ] Vérifier que la donnée reste propriétaire du bon sujet et qu'aucun compte ne peut lire un autre compte.
+- [ ] Rejouer l'isolation et la valeur sur une petite cohorte privée, sans données client réelles dans le harness.
 
 ### 3. `COMMERCIAL-MCP-3` — operational private beta
 

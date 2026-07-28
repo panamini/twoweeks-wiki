@@ -3,7 +3,7 @@ title: "Hot Cache - twoweeks"
 category: overview
 status: current
 created: 2026-05-02
-updated: 2026-07-27
+updated: 2026-07-28
 ---
 
 # Hot Cache
@@ -16,16 +16,17 @@ twoweeks centers on CV ingestion/parsing, canonical saved profile/CV data, and p
 
 Keep two workstreams separate:
 
-- MCP commercial launch: V19 proved the current-head private-beta transport, confidential-client OAuth, six-tool catalog and one protected read-only call. The result was `NO_DATA`; commercial value is not yet proven. The next slice is `COMMERCIAL-MCP-1`, a useful but bounded read-only projection.
+- MCP commercial launch: PR369 is merged on `main` at `a3ea57da`. Two distinct authenticated accounts completed the controlled four-tool rail with 8/8 protected calls, seed/cleanup 4/4, recovery and accepted deltas. Atomic coordination prevents concurrent proof runs and preserves a busy session for retry. This is controlled operational proof, not commercial user-value proof.
 - Cover-letter quality: PR337 (`QUALITY-CL-4`) is ready for merge review at `977f1a29d8b9a5b3f1f67964eff61f46e5373f53`; all 8 GitHub checks pass and the exact-head Codex review is clear. This proves deterministic EN/FR CV-backed prompt/finalizer integrity, not a provider-output quality win or default-model decision.
 
 ## Key Active Facts
 
 - Stable endpoint: `https://mcp.twoweeks.ai/mcp`.
-- V19 directly proved HEAD `0503832f5671b995b0095841104afc2e33b065ee`, MCP `2025-06-18` and `2025-11-25`, six ordered read-only tools, OAuth token-count delta `30 -> 31`, and exactly one protected `twoweeks.application_package.summarize` call.
-- The protected result was the four-field status envelope with `status=NO_DATA`; no summary or private nested data was exposed.
-- Current protected tools report availability/status only. A commercial V1 must add safe readiness, bounded counts/categories and next-action codes, then prove `OK` with controlled data.
-- Private beta must cover one data-bearing subject and one empty subject before a 3-5 user cohort.
+- V19 remains the historical transport/OAuth proof; PR369 supersedes its `NO_DATA` limitation with a controlled data-bearing two-account proof.
+- Current MCP surface is exactly four read-only `summarize` tools. It does not search jobs, ingest offers, create CV variants, or generate letters.
+- Remaining MCP gates: prove onboarding from an empty account, compose a genuinely useful ChatGPT journey, then run a 3-5 user private beta.
+- Recommended product demo slice: ChatGPT search or pasted offer → Job Brief → AI-proposed experience selection → human checkboxes → derived CV with provenance → existing proposal generation.
+- A broad location/radius ATS provider comes second; a full editable master CV comes third.
 - Public launch, write tools, provider/model calls, export, live submit/apply, refresh tokens and billing remain blocked pending separate reviewed gates.
 - The public distribution surface is evolving; decide the final tool catalog before submission because approved tools are snapshot-frozen.
 - `application-os-foundation` is verified at PR336 merge `80b4af7a764b37cc57b5bcb25a4f3bfc0a16a23b`.
@@ -38,7 +39,7 @@ Keep two workstreams separate:
 
 ## Canonical Pages To Read
 
-- MCP commercial roadmap: [[product/chatgpt-app-sdk-roadmap]], [[sources/2026-07-15-mcp-current-head-authenticated-summary-reproof-checkpoint]], [[howto/chatgpt-mcp-private-beta-tunnel-connector]], [[sources/2026-07-13-pr322-mcp-public-catalog-url-checkpoint]]
+- MCP commercial roadmap: [[product/chatgpt-app-sdk-roadmap]], [[howto/chatgpt-mcp-private-beta-tunnel-connector]]
 - Cover-letter quality: [[tasks/2026-06-22-cover-letter-quality-production-roadmap]], [[sources/2026-06-24-cover-letter-mistral-v2-staging-green]]
 - Product/parser/export routing: [[overview]], [[concepts/cv-parsing-pipeline]], [[tech/export-pipeline]]
 - Cloud region / parser hosting: [[strategy/us-first-cloud-region]], [[tech/local-vs-remote-parser-architecture]], [[howto/local-parser-operations]]

@@ -2,7 +2,7 @@
 title: Index du Wiki — twoweeks
 category: overview
 sticker: emoji//1f9c6
-updated: 2026-07-27
+updated: 2026-07-28
 ---
 
 # Index du Wiki · twoweeks (v2)
@@ -87,12 +87,12 @@ Cette carte est un routeur de lecture pour agents LLM. Elle ne remplace pas les 
 |------|--------|--------|------|
 | [[product/ai-product-model\|AI Product Model]] | 3 modes IA, rulebook, qualité writing, and Planner Agent shadow chain | current | ai, ux, modes |
 | [[product/ai-consistency-p0-editor-ai\|AI Consistency P0 — Closure Audit]] | Closure audit snapshot du rulebook AI editor, preview, telemetry et tailoring | current | ai, editor, rulebook |
-| [[product/chatgpt-app-sdk-roadmap\|ChatGPT/App SDK Roadmap]] | V19 proved current-head private-beta transport, confidential-client OAuth, six read-only tools and one protected call; the result was `NO_DATA`, so the next dependency is `COMMERCIAL-MCP-1` useful bounded projection, followed by controlled data/onboarding proof and a 3-5 user beta before launch | current | chatgpt-app, apps-sdk |
+| [[product/chatgpt-app-sdk-roadmap\|ChatGPT/App SDK Roadmap]] | PR369 merged a controlled two-account four-tool proof with atomic concurrency coordination; commercial ChatGPT value, onboarding and private-beta cohort remain unproven | current | chatgpt-app, apps-sdk |
 | [[product/job-library\|Job Library]] | Jobs sauvegardés, Job Brief editable et documents liés | current | jobs, library |
 | [[product/job-match-review\|Job Match Review]] | Match comme indicateur d'attention utilisateur et dogfood interne | current | jobs, match |
 | [[product/kpis\|KPIs]] | Métriques de succès produit | current | kpi, métriques |
 | [[product/manual-application-handoff\|Manual Application Handoff]] | PR80B manual handoff implemented/tested on the MCP/App SDK track; live submit/apply still blocked | current | ats, handoff, safety |
-| [[product/product-roadmap\|Product Roadmap]] | Initiatives par phase, items implémentés et reliquat de raffinement | current | roadmap, product |
+| [[product/product-roadmap\|Product Roadmap]] | Initiatives par phase et prochaine tranche wow offre → sélection humaine → CV dérivé → proposition | current | roadmap, product |
 | [[product/product-vision\|Product Vision]] | Blueprint produit complet | current | vision, architecture |
 
 ---
@@ -308,4 +308,4 @@ Cover-letter quality has a merged PR249 staged internal Mistral V2 gate and a gr
 - **Pages archivées** : 2
 - **Sources dans `raw/`** : 91
 - **Sources en attente dans `rawinput/`** : 0
-- **Dernière mise à jour** : 2026-07-27
+- **Dernière mise à jour** : 2026-07-28

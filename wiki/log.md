@@ -1,7 +1,7 @@
 ---
 title: "Log — twoweeks Wiki"
 category: overview
-updated: 2026-07-27
+updated: 2026-07-28
 ---
 
 # Log du Wiki · twoweeks
@@ -14,6 +14,29 @@ grep "^## \[" wiki/log.md | grep "ingest"  # Tous les ingests
 ```
 
 ---
+
+## [2026-07-28] direct-update | PR369 controlled two-account MCP proof and CV wow-slice priority
+
+**Agent** : Codex + GPT-5.6 high read-only audit
+**Mode** : direct-update
+**Source** : merged Neyssan PR369, `main` commit `a3ea57da6138707fea02a10acbc23583139493b4`, exact-head CI/Codex review, and controlled local two-account browser proof
+
+**Pages mises à jour** :
+- `wiki/product/chatgpt-app-sdk-roadmap.md`
+- `wiki/product/product-roadmap.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**Points notables** :
+- Two distinct authenticated accounts completed 8/8 protected calls, seed/cleanup 4/4, recovery `RECOVERED`, baseline and delta `ACCEPTED`.
+- A concurrent two-session proof allowed exactly one run, returned `409` to the other, preserved its pending pair, then completed it on retry.
+- This is controlled operational MCP evidence, not proof of repeated commercial value or a complete ChatGPT user journey.
+- The current MCP exposes four read-only summary tools; it does not search jobs, ingest offers, create CV variants, or generate letters.
+- The next recommended wow slice is offer discovery or pasted URL → Job Brief → AI-proposed experience selection → human checkboxes → derived CV with provenance → existing proposal generation.
+- Broad ATS search is second; a full editable master CV is third.
+
+**Open items** : Prove empty-account onboarding and one end-to-end useful ChatGPT journey before the 3-5 user private beta.
 
 ## [2026-07-27] ingest | US-first cloud region decision
 

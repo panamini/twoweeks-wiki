@@ -3,7 +3,7 @@ title: "Product Roadmap — twoweeks"
 category: product
 tags: [roadmap, product, initiatives, phases, stratégie]
 created: 2026-04-10
-updated: 2026-04-27
+updated: 2026-07-28
 status: current
 valid_from: 2026-04-10
 version: v1
@@ -103,6 +103,18 @@ Le match review est un indicateur d'intérêt utilisateur, pas un ATS ni une dé
 
 ### Duplicate / retarget workflow
 Duplication et retargeting de CV/proposition pour un nouveau rôle — préserver la structure en mettant à jour le contexte. Fort levier de rétention.
+
+### Job-tailored CV wow slice
+**Statut** : prochaine tranche démonstration recommandée; les schémas de plan, review et provenance existent, mais le parcours produit n'est pas encore connecté.
+
+Parcours visé : recherche ChatGPT ou URL d'offre collée → Job Brief Twoweeks → sélection d'expériences proposée par l'IA → validation humaine par checkboxes → CV dérivé avec provenance `sourceCvId` / `jobId` → génération de proposition existante.
+
+**Ordre recommandé** :
+1. livrer cette tranche verticale avec contrôle humain;
+2. brancher ensuite un fournisseur de recherche large par métier, lieu et rayon;
+3. transformer enfin `candidate-evidence` en master CV complet, versionné et éditable.
+
+Le fournisseur ATS n'est donc pas le premier bloqueur d'une démo si ChatGPT assure la découverte. Le bloqueur immédiat est le pont offre → expériences → CV dérivé → lettre.
 
 ### Versioning / compare states
 Historique de versions léger avec comparaison, restauration, labels optionnels par date/job. Réduit la peur des modifications et de l'IA.
