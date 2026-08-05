@@ -2,7 +2,7 @@
 title: Index du Wiki — twoweeks
 category: overview
 sticker: emoji//1f9c6
-updated: 2026-07-28
+updated: 2026-08-05
 ---
 
 # Index du Wiki · twoweeks (v2)
@@ -21,9 +21,11 @@ Le contrôle opératoire du repo reste défini par `WIKI_SCHEMA.md` puis `CLAUDE
 | Planning IA shadow | [[product/ai-product-model]] | [[tech/proposal-ai-routing-and-inline-diff]], [[sources/2026-05-25-proposal-generation-truth-planner]] |
 | Cover-letter quality | [[tasks/2026-06-22-cover-letter-quality-production-roadmap]] | [[sources/2026-06-24-cover-letter-mistral-v2-staging-green]], [[sources/2026-06-23-cover-letter-quality-pr249-staged-internal-gate]], [[sources/2026-06-23-release-orchestration-staging-pr87-8-checkpoint]], [[sources/2026-06-23-cover-letter-quality-pr248-merge-checkpoint]], [[sources/2026-06-23-cover-letter-quality-pr246-merge-checkpoint]] |
 | ChatGPT App roadmap | [[product/chatgpt-app-sdk-roadmap]] | [[sources/2026-07-15-mcp-current-head-authenticated-summary-reproof-checkpoint]], [[howto/chatgpt-mcp-private-beta-tunnel-connector]], [[sources/2026-07-13-pr322-mcp-public-catalog-url-checkpoint]], [[sources/2026-06-11-mcp-chatgpt-app-readiness-spec]], [[product/manual-application-handoff]] |
+| Infisical / runtime MCP local | [[howto/chatgpt-mcp-private-beta-tunnel-connector]] | [[howto/local-parser-operations]], [[product/chatgpt-app-sdk-roadmap]] |
 | Manual application handoff | [[product/manual-application-handoff]] | [[product/chatgpt-app-sdk-roadmap]], [[sources/2026-06-23-twoweeks-mcp-chatgpt-app-sdk-roadmap-checkpoint]] |
 | Parser / vérité CV | [[concepts/cv-parsing-pipeline]] | [[concepts/cv-families]], [[tech/import-ocr-pipeline]] |
 | Jobs / match | [[product/job-library]] | [[product/job-match-review]] |
+| Neyssan post-merge Jobs smoke | [[sources/2026-08-05-neyssan-post-merge-jobs-smoke-checkpoint]] | [[product/product-roadmap]], [[product/job-library]] |
 | Export / pagination | [[tech/export-pipeline]] | [[tech/preview-to-print-pipeline]], [[tech/workshop-pagination]] |
 | Proposal Forge geometry | [[tech/proposal-forge-document-geometry]] | [[tech/proposal-style-layer]], [[design/document-token-contract]] |
 | Proposal signature/closing | [[tech/proposal-signature-closing-layer]] | [[tech/proposal-style-layer]], [[tech/proposal-forge-document-geometry]], [[tech/export-pipeline]] |
@@ -263,7 +265,7 @@ Cover-letter quality has a merged PR249 staged internal Mistral V2 gate and a gr
 
 | Page | Résumé | Tags |
 |------|--------|------|
-| [[howto/chatgpt-mcp-private-beta-tunnel-connector\|ChatGPT MCP Private Beta Tunnel Connector]] | Runbook durable PR305: OAuth confidentiel, env canoniques, tunnel et preuve tools/list/tools/call | chatgpt, mcp, oauth, cloudflare |
+| [[howto/chatgpt-mcp-private-beta-tunnel-connector\|ChatGPT MCP Private Beta Tunnel Connector]] | Authentification CLI Infisical `dev` `/twoweeks`, configuration OAuth/Convex, runtime owner-scoped, tunnel et preuves MCP | chatgpt, mcp, oauth, cloudflare |
 | [[howto/cloudflare-zero-trust-tunnel\|Cloudflare Zero Trust + Tunnel]] | Runbook parser.dasti.ai, CF Access, tunnel, DNS, token, WAF | cloudflare, devops |
 | [[howto/git-branch-hygiene|Git Branch Hygiene]] | Démarrer une tâche depuis `main` à jour avant branche courte | git, workflow |
 | [[howto/headless-workshop-preview-probe|Headless Workshop Preview Probe]] | Probe Playwright headless pour `/cv` workshop preview | playwright, workshop |
@@ -308,4 +310,4 @@ Cover-letter quality has a merged PR249 staged internal Mistral V2 gate and a gr
 - **Pages archivées** : 2
 - **Sources dans `raw/`** : 91
 - **Sources en attente dans `rawinput/`** : 0
-- **Dernière mise à jour** : 2026-07-28
+- **Dernière mise à jour** : 2026-08-05

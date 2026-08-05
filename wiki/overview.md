@@ -3,7 +3,7 @@ title: "Vue d'ensemble — twoweeks"
 category: overview
 tags: [project, overview, twoweeks, roadmap, parser, ats]
 created: 2026-04-09
-updated: 2026-04-27
+updated: 2026-08-05
 status: current
 valid_from: 2026-04-09
 version: v1
@@ -56,7 +56,7 @@ La vérité d'export suit la même logique : fichiers PDF/DOCX finaux dérivés 
 | Priorité parser | stabiliser `sections[*].structuredContent` comme source de vérité |
 | Priorité qualité | fiabilité sur vrais CVs, observabilité, régression |
 | Priorité UX | quick-start onboarding, extension save-to-twoweeks, sections custom alignées sur le block renderer |
-| Dernière activité | 2026-04-18 |
+| Dernière activité | 2026-08-05 — checkpoint post-merge Jobs/Proposal sur `main@3ef0bbdb` |
 
 ---
 
@@ -69,6 +69,7 @@ La vérité d'export suit la même logique : fichiers PDF/DOCX finaux dérivés 
 - **Quick Start shell** : l'activation vit dans l'app-shell via `App.tsx`; `/proposal` ne sert le cold start cover-letter que comme état d'entrée intentionnel, et la primitive de choix partagée reste commune.
 - **Sections custom** : `add your own section` doit rejoindre le vrai block renderer et non un legacy nested model.
 - **Jobs first-class** : Job Library devient la couche durable des offres sauvegardées, avec Job Brief editable et documents liés.
+- **Jobs → Proposal beta candidate** : le parcours Job Brief prêt → CV attaché → tailoring revu par humain → CV dérivé → Proposal est connecté sur `main`; une smoke locale authentifiée desktop/mobile est positive. Déploiement, isolation/sign-out multi-compte et sécurité suppression/cache/écritures tardives restent des gates avant bêta privée.
 - **Match Review** : le match est un indicateur d'attention utilisateur, pas un ATS; structured read reste advisory/shadow tant que la dogfood review ne valide pas les seuils.
 - **Motion** : la période terracotta est le seul loop ambient autorisé; l'IA doit prouver son travail par stages, diffs et settle.
 - **Workshop pagination** : `committedPages` est la source de vérité pour preview, print et export sur `workshop_resume_onecol_ats`.

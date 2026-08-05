@@ -3,7 +3,7 @@ title: "ChatGPT/App SDK Roadmap"
 category: product
 tags: [chatgpt-app, apps-sdk, mcp, roadmap, safety]
 created: 2026-06-23
-updated: 2026-07-28
+updated: 2026-08-05
 status: current
 valid_from: 2026-06-12
 type: roadmap
@@ -13,7 +13,7 @@ related: [[howto/chatgpt-mcp-private-beta-tunnel-connector]], [[product/manual-a
 
 # ChatGPT/App SDK Roadmap
 
-Le transport MCP privé et la lecture utile sur données contrôlées sont désormais prouvés sur `main`, mais la valeur commerciale utilisateur ne l'est pas encore. La priorité n'est plus de refaire l'OAuth : elle est de connecter ce socle à un parcours utile dans ChatGPT, puis de conduire une petite bêta avant toute publication.
+Le transport MCP privé et la lecture utile sur données contrôlées sont désormais prouvés sur `main`, mais la valeur commerciale utilisateur ne l'est pas encore. Le parcours produit Jobs → CV → Proposal est également un candidat de bêta privée locale, sans constituer une preuve de lancement public. La priorité n'est plus de refaire l'OAuth : elle est de connecter ce socle à un parcours utile dans ChatGPT, puis de conduire une petite bêta avant toute publication.
 
 ## Current state
 

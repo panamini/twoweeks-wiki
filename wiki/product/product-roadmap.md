@@ -3,7 +3,7 @@ title: "Product Roadmap — twoweeks"
 category: product
 tags: [roadmap, product, initiatives, phases, stratégie]
 created: 2026-04-10
-updated: 2026-07-28
+updated: 2026-08-05
 status: current
 valid_from: 2026-04-10
 version: v1
@@ -105,12 +105,18 @@ Le match review est un indicateur d'intérêt utilisateur, pas un ATS ni une dé
 Duplication et retargeting de CV/proposition pour un nouveau rôle — préserver la structure en mettant à jour le contexte. Fort levier de rétention.
 
 ### Job-tailored CV wow slice
-**Statut** : prochaine tranche démonstration recommandée; les schémas de plan, review et provenance existent, mais le parcours produit n'est pas encore connecté.
+**Statut** : implémenté sur `main` et candidat à une bêta privée contrôlée; la preuve locale authentifiée desktop/mobile est positive, mais l'identité frontend déployée et les gates de sécurité bêta restent à prouver.
 
 Parcours visé : recherche ChatGPT ou URL d'offre collée → Job Brief Twoweeks → sélection d'expériences proposée par l'IA → validation humaine par checkboxes → CV dérivé avec provenance `sourceCvId` / `jobId` → génération de proposition existante.
 
+Le parcours est maintenant connecté : Job Brief prêt + CV attaché → recommandations déterministes → revue humaine → CV dérivé matérialisé → Proposal. La preuve post-merge sur `origin/main@3ef0bbdb` couvre un compte synthétique local, desktop et 640px mobile, sans erreur runtime ni overflow horizontal. Elle ne vaut pas preuve de déploiement, d'isolation entre comptes ou de suppression sûre.
+
+**Checkpoint** : [[sources/2026-08-05-neyssan-post-merge-jobs-smoke-checkpoint]].
+
+**Reste avant bêta privée** : smoke sur l'identité frontend déployée; isolation/sign-out de deux comptes; sécurité suppression de compte, cache et écritures tardives; puis cohorte autorisée et supportée. Pagination Jobs, plafonds de chargement et exactitude des agrégats restent un backlog de scalabilité différé.
+
 **Ordre recommandé** :
-1. livrer cette tranche verticale avec contrôle humain;
+1. valider les gates de bêta privée sur le parcours livré;
 2. brancher ensuite un fournisseur de recherche large par métier, lieu et rayon;
 3. transformer enfin `candidate-evidence` en master CV complet, versionné et éditable.
 

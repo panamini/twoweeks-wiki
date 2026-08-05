@@ -2051,3 +2051,37 @@ Migration vers schema v2 : ajout rawinput/ (staging), gestion temporelle (status
 - Preuve live : `/oauth/token` `200`, `tools/list` `200` avec `search` et `fetch`, puis un `tools/call search` read-only final en `200` avec quatre resultats du catalogue sur.
 - `Bot Fight Mode` et `AI Labyrinth` sont restes desactives apres la preuve, sans attribution causale; un A/B separe est requis avant reactivation.
 - Provider calls, writes, refresh tokens, billing, account-link lifecycle expansion, production/shared DB mutation et lancement public restent interdits.
+
+## 2026-08-05 — Neyssan post-merge Jobs smoke and private-beta checkpoint
+
+**Pages created**:
+- `wiki/sources/2026-08-05-neyssan-post-merge-jobs-smoke-checkpoint.md`
+
+**Pages updated**:
+- `wiki/product/product-roadmap.md`
+- `wiki/product/job-library.md`
+- `wiki/product/chatgpt-app-sdk-roadmap.md`
+- `wiki/overview.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**Points notables**:
+- Exact Neyssan `origin/main` checkpoint is `3ef0bbdb1552eb064051df887379f637071ba037`; PRs #378–#382 are merged.
+- Local authenticated synthetic-account smoke passed the Job → Job Brief → attached CV → tailoring review → materialize → Proposal flow on desktop and 640px mobile, with zero runtime errors and zero horizontal overflow.
+- The result is a private-beta candidate, not public-launch proof. Remaining gates are deployed frontend identity, two-account sign-out/isolation, account-deletion/cache/late-write safety, MCP empty-account onboarding, an authorized 3–5 user cohort, and operational/privacy/support controls.
+- Jobs pagination, caps and exact aggregate counts remain deferred scalability work.
+
+## 2026-08-05 — Infisical and local MCP bootstrap procedure clarified
+
+**Pages updated**:
+- `wiki/howto/chatgpt-mcp-private-beta-tunnel-connector.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**Points notables**:
+- Recorded that Chrome and Infisical CLI authentication are separate boundaries; the verified shared-secret route is project `twoweeks`, environment `dev`, CLI path `/twoweeks`.
+- Distinguished fixed non-secret `run.sh` contract values from environment bindings and private credentials, including the server-only nature of `CONVEX_AUTH_TOKEN`.
+- Added the value-silent OAuth-secret sync, ordered MCP validation commands, public smoke origin, and checkout-owner rule for runtime/container reuse.
+- No secret value, JWT, private subject, Infisical token, Convex token, or tunnel credential was copied into the wiki.

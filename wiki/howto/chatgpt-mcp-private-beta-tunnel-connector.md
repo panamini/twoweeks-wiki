@@ -3,7 +3,7 @@ title: "ChatGPT MCP Private Beta Tunnel Connector Runbook"
 category: howto
 tags: [chatgpt-app, mcp, cloudflare, tunnel, oauth, private-beta]
 created: 2026-07-04
-updated: 2026-07-13
+updated: 2026-08-05
 status: current
 type: runbook
 sources: [2026-07-13-pr313-pr317-mcp-private-beta-live-reproof-checkpoint, 2026-07-13-pr311-runsh-doctor-regression-closure-checkpoint, 2026-07-13-pr309-mcp-protocol-compatibility-checkpoint, 2026-07-12-pr308-mcp-private-beta-operational-smoke-checkpoint, 2026-07-12-pr307-runsh-collaborator-portability-checkpoint, 2026-07-05-pr305-durable-mcp-connector-proof-checkpoint, 2026-07-04-pr304-live-mcp-connector-smoke-checkpoint]
@@ -84,10 +84,39 @@ Le secret partage est gere dans Infisical EU Cloud :
 ```text
 project: twoweeks
 environment: dev
+CLI path: /twoweeks
 shared key: MCP_OAUTH_PRODUCTION_CLIENT_SECRET
 ```
 
-Le fichier `.infisical.json` contient uniquement le binding non-secret du projet et de l'environnement; il ne contient aucune valeur de secret. Chaque collaborateur se connecte individuellement a Infisical avec son propre compte. Ne jamais mettre la valeur dans le wiki, une commande shell, un log, une PR ou un fichier de configuration suivi par Git.
+Le fichier `.infisical.json` contient uniquement le binding non-secret du projet et de l'environnement; il ne contient aucune valeur de secret. Chaque collaborateur se connecte individuellement a Infisical avec son propre compte. Une session Infisical ouverte dans Chrome ne connecte pas la CLI : le cookie navigateur et la session CLI sont deux frontieres distinctes.
+
+Depuis le checkout Neyssan, authentifier puis verifier la CLI sans imprimer de valeur :
+
+```bash
+infisical login --domain=https://eu.infisical.com
+infisical login status --domain=https://eu.infisical.com
+```
+
+La connexion navigateur ouverte par la premiere commande sert uniquement a terminer cette authentification CLI. Pour ce projet, les lectures approuvees ciblent `environment=dev` et le chemin CLI exact `/twoweeks`; ne pas remplacer ce chemin par `/` sur la base du seul libelle visible dans l'interface web.
+
+Les valeurs fixes du contrat (`...RUNTIME=1`, client ID, resource, authorization origin et redirect URI) viennent de `run.sh`; elles ne doivent pas etre devinees ni copiees d'un autre checkout. Les valeurs d'environnement a recuperer ou confirmer sans les afficher sont :
+
+- `CONVEX_TEAM` et `CONVEX_PROJECT`, bindings Convex non secrets ;
+- `MCP_OAUTH_PRODUCTION_ISSUER`, `MCP_OAUTH_PRODUCTION_PROVIDER_ENVIRONMENT` et `CLERK_JWT_ISSUER_DOMAIN` ;
+- `MCP_OAUTH_PRODUCTION_PRIVATE_BETA_SUBJECT_DIGESTS`, qui contient uniquement les digests approuves ;
+- `CONVEX_URL` et `CONVEX_AUTH_TOKEN` pour le serveur local autorise ;
+- `MCP_OAUTH_PRODUCTION_CLIENT_SECRET`, conserve brut uniquement dans Infisical et dans le champ confidentiel approuve qui en a besoin.
+
+`CONVEX_AUTH_TOKEN` est un credential serveur. Ne jamais le remplacer par un JWT du navigateur, un resultat `useAuthToken()`, un token Clerk ou un token personnel de CLI Convex. Pour la stack locale private-beta, `CONVEX_URL` est normalement `http://127.0.0.1:3210`.
+
+Ne pas utiliser une commande `infisical secrets get --plain` dans un terminal enregistre. La voie canonique pour le secret OAuth est le helper value-silent :
+
+```bash
+chmod 600 .env.local
+./run.sh mcp-secret-sync
+```
+
+Il lit `MCP_OAUTH_PRODUCTION_CLIENT_SECRET` depuis `dev` et `/twoweeks`, puis ne persiste que `MCP_OAUTH_PRODUCTION_CLIENT_SECRET_SHA256`. Ne jamais mettre une valeur de secret, un JWT, un token Infisical ou un token Convex dans le wiki, une commande partagee, un log, une PR ou un fichier suivi par Git.
 
 La rotation one-shot PR305 a ete executee depuis la source Infisical et synchronisee vers la racine `.env.local` avec `./run.sh mcp-secret-sync`. Cette commande refuse un fichier qui n'est pas deja en mode `600`, ne persiste que le digest SHA-256 lors du remplacement atomique et n'imprime aucune valeur. PR306, mergee par `23c2cca9c09ba22c522242305545390dbc1bbea1`, suspend aussi `xtrace` avant le chargement des fichiers env et pendant la recuperation, le hachage et le remplacement atomique; elle restaure ensuite l'etat initial sur les sorties controlees. Ainsi, meme `bash -x ./run.sh mcp-secret-sync` ne doit afficher ni secret brut, ni ancien ou nouveau digest. Une rotation ulterieure doit remplacer la valeur Infisical et recreer le connecteur dans la meme operation controlee.
 
@@ -97,14 +126,17 @@ Depuis le repo app :
 
 ```bash
 chmod 600 .env.local
-./run.sh doctor mcp-private-beta
 ./run.sh mcp-check
 ./run.sh mcp-secret-sync
+./run.sh doctor mcp-private-beta
 ./run.sh mcp-private-beta
-./run.sh mcp-smoke
+./run.sh status
+./run.sh mcp-smoke --origin https://mcp.twoweeks.ai
 ```
 
-`doctor mcp-private-beta` est un preflight read-only : il ne source pas les fichiers dotenv, ne recupere pas le secret Infisical et ne demarre ni n'arrete de service. Il doit finir en `PASS` avant le premier demarrage collaborateur. PR311 aligne ce diagnostic avec le demarrage reel pour les ports Convex/Vite/parser, le daemon Docker local, WSL2 et les variables Bash speciales. Vite utilise `--strictPort` et ne doit jamais migrer silencieusement vers un autre port. `mcp-check` doit afficher seulement `PASS` et les noms de cles en cas d'erreur, jamais leurs valeurs. `mcp-private-beta` demarre Convex local, Vite sur `127.0.0.1:5196`, le runtime parser image et le tunnel nomme. Une fois l'origine publique disponible, `mcp-smoke` verifie les metadata OAuth/MCP, le lifecycle `initialize`/`initialized`, le challenge Bearer et l'erreur token fail-closed; il ne source aucun dotenv et n'envoie aucun credential.
+`mcp-check` valide d'abord les noms, valeurs fixes, permissions et formes sans imprimer de valeur. `doctor mcp-private-beta` est ensuite le preflight read-only : il ne source pas les fichiers dotenv, ne recupere pas le secret Infisical et ne demarre ni n'arrete de service. Il doit finir en `PASS` avant le premier demarrage collaborateur. PR311 aligne ce diagnostic avec le demarrage reel pour les ports Convex/Vite/parser, le daemon Docker local, WSL2 et les variables Bash speciales. Vite utilise `--strictPort` et ne doit jamais migrer silencieusement vers un autre port. `mcp-private-beta` demarre Convex local, Vite sur `127.0.0.1:5196`, le runtime parser image et le tunnel nomme. Une fois l'origine publique disponible, `mcp-smoke --origin https://mcp.twoweeks.ai` verifie les metadata OAuth/MCP, le lifecycle `initialize`/`initialized`, le challenge Bearer et l'erreur token fail-closed; il ne source aucun dotenv et n'envoie aucun credential. Ne pas cibler directement le port Vite `5196` avec ce smoke public : il sert l'application HTML, pas l'origine publique MCP.
+
+Le runtime est owner-scoped. Si `doctor`, `down` ou le demarrage signale un conteneur ou un listener non possede par le checkout courant, ne pas le supprimer, le remplacer ou le tuer. Utiliser le checkout proprietaire prouve par `./run.sh status`, ou choisir un nom de conteneur/tunnel distinct lorsqu'il est explicitement autorise.
 
 Le smoke credential-free frais apres PR317 est `PASS` pour les metadata, les metadata protected-resource, les deux versions MCP supportees, l'inventaire exact de six tools, `tools/call` non authentifie fail-closed et le token malforme fail-closed. La preuve authentifiee est separee : connexion V2, token-record count 7 vers 8, six tools listes et un appel read-only reussi.
 

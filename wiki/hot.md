@@ -3,7 +3,7 @@ title: "Hot Cache - twoweeks"
 category: overview
 status: current
 created: 2026-05-02
-updated: 2026-07-28
+updated: 2026-08-05
 ---
 
 # Hot Cache
@@ -16,14 +16,15 @@ twoweeks centers on CV ingestion/parsing, canonical saved profile/CV data, and p
 
 Keep two workstreams separate:
 
-- MCP commercial launch: PR369 is merged on `main` at `a3ea57da`. Two distinct authenticated accounts completed the controlled four-tool rail with 8/8 protected calls, seed/cleanup 4/4, recovery and accepted deltas. Atomic coordination prevents concurrent proof runs and preserves a busy session for retry. This is controlled operational proof, not commercial user-value proof.
-- Cover-letter quality: PR337 (`QUALITY-CL-4`) is ready for merge review at `977f1a29d8b9a5b3f1f67964eff61f46e5373f53`; all 8 GitHub checks pass and the exact-head Codex review is clear. This proves deterministic EN/FR CV-backed prompt/finalizer integrity, not a provider-output quality win or default-model decision.
+- MCP commercial launch: PR369 merged at `a3ea57da`. Two authenticated accounts passed 8/8 protected calls, seed/cleanup 4/4, recovery/deltas accepted, plus atomic concurrency/retry. Operational proof only, not commercial user value.
+- Cover-letter quality: PR337 (`QUALITY-CL-4`) is ready at `977f1a29d8b9a5b3f1f67964eff61f46e5373f53`; 8 checks and exact-head Codex review are clear. Proves deterministic EN/FR prompt/finalizer integrity, not provider quality or a default-model choice.
 
 ## Key Active Facts
 
 - Stable endpoint: `https://mcp.twoweeks.ai/mcp`.
 - V19 remains the historical transport/OAuth proof; PR369 supersedes its `NO_DATA` limitation with a controlled data-bearing two-account proof.
 - Current MCP surface is exactly four read-only `summarize` tools. It does not search jobs, ingest offers, create CV variants, or generate letters.
+- Local MCP bootstrap: an Infisical Chrome session does not authenticate the CLI. Use project `twoweeks`, environment `dev`, CLI path `/twoweeks`, then the value-silent `run.sh` helpers and owner-scoped runtime procedure in [[howto/chatgpt-mcp-private-beta-tunnel-connector]]. Never substitute browser JWTs for the server-only Convex credential.
 - Remaining MCP gates: prove onboarding from an empty account, compose a genuinely useful ChatGPT journey, then run a 3-5 user private beta.
 - Recommended product demo slice: ChatGPT search or pasted offer → Job Brief → AI-proposed experience selection → human checkboxes → derived CV with provenance → existing proposal generation.
 - A broad location/radius ATS provider comes second; a full editable master CV comes third.
@@ -34,6 +35,7 @@ Keep two workstreams separate:
 - Historical French CV-backed EVAL3D vetoes are invalid for quality inference because a canonical formal closing was counted as body content. No provider rerun is required now.
 - No-CV remains a separate evidence/UX problem and is byte-locked against QUALITY-CL-4 drift. Any four-cell EN/FR CV-backed old/new comparison requires a separate exact contract and approval after merge; no provider run is automatic.
 - Product truth is `twoweeks`; CVForge and ProposalForge are internal module names.
+- Neyssan `main@3ef0bbdb`: Jobs→Proposal path (#378–#382) passed local desktop/mobile smoke; private-beta candidate, not public-ready. Open gates: deployed identity, account isolation, deletion safety, MCP operations. Read [[sources/2026-08-05-neyssan-post-merge-jobs-smoke-checkpoint]].
 - Cloud-region decision: Twoweeks is US-first; future Convex Cloud and first production parser default to US East (N. Virginia), while parser provider selection remains benchmark-gated. Read [[strategy/us-first-cloud-region]] and [[sources/2026-07-27-us-first-cloud-region]].
 - Persistent wiki mutations require `wiki/index.md`, `wiki/log.md`, and usually `wiki/hot.md`.
 
