@@ -47,9 +47,9 @@ La vérité d'export suit la même logique : fichiers PDF/DOCX finaux dérivés 
 
 ### Checkpoint identité et production (2026-08-14)
 
-Les PR #408 et #409 sont fusionnées dans `main`, avec `main@a1bfbd42f7cfa3e639532683c0a59224c668fa02` comme point de code de référence. Cloudflare Pages Production a un build/déploiement réussi sur ce SHA, avec les alias `twoweeks.ai` et `beta.twoweeks.ai`; sa configuration utilise encore une clé Clerk `pk_test` liée à `accounts.dev`. Le site public sert donc l’instance Clerk Development, tandis que Cloudflare pointe vers le déploiement Convex Production `prod:giddy-basilisk-88`.
+Les PR #408 et #409 sont fusionnées dans `main`, avec `main@a1bfbd42f7cfa3e639532683c0a59224c668fa02` comme point de code de référence. Cloudflare Pages Production a publié ce SHA avec les alias `twoweeks.ai` et `beta.twoweeks.ai`; sa clé publique Clerk est maintenant `pk_live` liée à `clerk.twoweeks.ai`, et Convex Production utilise le même issuer.
 
-Le backend de suppression correspondant à ce SHA est maintenant déployé sur Convex Production; les fonctions `accountDeletion` et les tables de tombstone sont visibles. Le compte synthétique existe dans Clerk Production, mais Cloudflare/Convex utilisent encore l’issuer Clerk Dev (`accounts.dev`) et aucun canary de suppression n’a été lancé. La bascule Clerk Production, la purge canary et la preuve d’un rollback Convex restent des gates avant lancement réel. Voir [[sources/2026-08-14-neyssan-auth-production-transition-checkpoint]] et [[tech/aws-production-industrialization]].
+Le backend de suppression correspondant à ce SHA est déployé sur Convex Production; les fonctions `accountDeletion` et les tables de tombstone sont visibles. Le compte synthétique Production attend actuellement un code email après renouvellement de session; aucun canary de suppression n’a été lancé. Le smoke complet, les tests A/B et la preuve d’un rollback Convex restent les gates avant lancement réel. Voir [[sources/2026-08-14-neyssan-auth-production-transition-checkpoint]] et [[tech/aws-production-industrialization]].
 
 ---
 
@@ -62,7 +62,7 @@ Le backend de suppression correspondant à ce SHA est maintenant déployé sur C
 | Priorité parser | stabiliser `sections[*].structuredContent` comme source de vérité |
 | Priorité qualité | fiabilité sur vrais CVs, observabilité, régression |
 | Priorité UX | quick-start onboarding, extension save-to-twoweeks, sections custom alignées sur le block renderer |
-| Dernière activité | 2026-08-14 — Convex Production déployé sur `main@a1bfbd42`, Cloudflare/Convex encore branchés sur Clerk `pk_test`/Dev |
+| Dernière activité | 2026-08-14 — Convex/Cloudflare alignés sur Clerk Production; smoke par code email encore en attente |
 
 ---
 

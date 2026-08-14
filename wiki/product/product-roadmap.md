@@ -109,7 +109,7 @@ Duplication et retargeting de CV/proposition pour un nouveau rôle — préserve
 
 Parcours visé : recherche ChatGPT ou URL d'offre collée → Job Brief Twoweeks → sélection d'expériences proposée par l'IA → validation humaine par checkboxes → CV dérivé avec provenance `sourceCvId` / `jobId` → génération de proposition existante.
 
-Le parcours est maintenant connecté : Job Brief prêt + CV attaché → recommandations déterministes → revue humaine → CV dérivé matérialisé → Proposal. La preuve post-merge sur `origin/main@3ef0bbdb` couvre un compte synthétique local, desktop et 640px mobile, sans erreur runtime ni overflow horizontal. Les PR #408 et #409 ont ensuite fusionné la frontière d’autorisation et le parcours Settings de suppression, avec `main@a1bfbd42` comme référence de code. Le backend Convex Production correspondant est désormais déployé; l’identité frontend reste toutefois branchée sur Clerk Dev.
+Le parcours est maintenant connecté : Job Brief prêt + CV attaché → recommandations déterministes → revue humaine → CV dérivé matérialisé → Proposal. La preuve post-merge sur `origin/main@3ef0bbdb` couvre un compte synthétique local, desktop et 640px mobile, sans erreur runtime ni overflow horizontal. Les PR #408 et #409 ont ensuite fusionné la frontière d’autorisation et le parcours Settings de suppression, avec `main@a1bfbd42` comme référence de code. Le backend Convex Production correspondant est déployé et l’identité frontend est maintenant branchée sur Clerk Production; le smoke par code email reste à terminer.
 
 **Checkpoint** : [[sources/2026-08-05-neyssan-post-merge-jobs-smoke-checkpoint]].
 

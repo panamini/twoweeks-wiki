@@ -2188,3 +2188,24 @@ Migration vers schema v2 : ajout rawinput/ (staging), gestion temporelle (status
 - Cloudflare et l’issuer Convex restent branchés sur Clerk Development (`pk_test`/`accounts.dev`); un compte synthétique existe dans Clerk Production, mais aucun canary de suppression n’a été exécuté. L’Access externe conserve son confinement à deux identités.
 - L’historique Convex et le rollback exact de la version précédente ne sont pas disponibles sur le plan courant; cette limite bloque la bascule `pk_live` et la suppression canary jusqu’à une procédure coordonnée.
 - Les bugs non bloquants restants, notamment la course d’upload simultané à une suppression, sont explicitement différés pour la bêta et ne sont pas présentés comme corrigés. La rotation/révocation des secrets reste une gate finale pré-production; aucune valeur n’est consignée.
+
+## [2026-08-14] direct-update | identité Clerk Production alignée, smoke en attente
+
+**Agent** : Codex
+**Mode** : direct-update
+**Source** : métadonnées OpenID/JWKS publiques Clerk, dashboards Clerk/Convex/Cloudflare et redéploiements contrôlés
+
+**Pages mises à jour** :
+- `wiki/sources/2026-08-14-neyssan-auth-production-transition-checkpoint.md`
+- `wiki/overview.md`
+- `wiki/tech/aws-production-industrialization.md`
+- `wiki/hot.md`
+- `wiki/product/product-roadmap.md`
+- `wiki/log.md`
+
+**Points notables** :
+- L’issuer Clerk Production vérifié est `https://clerk.twoweeks.ai`; le template JWT `convex` est présent dans l’instance Production.
+- Convex Production utilise maintenant cet issuer via `CLERK_JWT_ISSUER_DOMAIN`; aucune modification de code, schéma ou donnée n’a été effectuée.
+- Cloudflare Production utilise la clé publique `pk_live` et a publié `main@a1bfbd42` avec build réussi sur les deux alias.
+- Le smoke a affiché le dashboard Production, puis la session a été renouvelée; Clerk attend maintenant un code email pour terminer l’authentification Convex. Aucun canary de suppression n’a été lancé.
+- La seconde adresse bêta est confirmée par l’utilisateur, mais sa connexion live n’est pas vérifiée ici; le confinement Access à deux identités reste inchangé.
