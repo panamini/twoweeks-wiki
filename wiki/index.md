@@ -238,7 +238,7 @@ Cover-letter quality has a merged PR249 staged internal Mistral V2 gate and a gr
 | [[sources/2026-07-13-pr322-mcp-public-catalog-url-checkpoint\|MCP Public Catalog URL Decision Checkpoint - PR322]] | checkpoint | 2026-07-13 | Stable MCP catalog/submission URL decision and fail-closed launch-readiness evidence bit |
 | [[sources/2026-07-15-mcp-current-head-authenticated-summary-reproof-checkpoint\|MCP Current-Head Authenticated Summary Reproof Checkpoint - V19]] | checkpoint | 2026-07-15 | Current-head transport/OAuth/six-tool proof; one protected call returned bounded `NO_DATA`, so commercial value remains to prove |
 | [[sources/2026-07-27-us-first-cloud-region\|US-First Cloud Region Decision]] | decision | 2026-07-27 | US-first cloud-region direction, local Convex boundary, provider gate, and migration implications |
-| [[sources/2026-08-14-neyssan-auth-production-transition-checkpoint\|Neyssan Auth / Production Transition Checkpoint]] | checkpoint | 2026-08-14 | Distinction code fusionné, Cloudflare Edge, Convex live, Clerk Dev/Production et canary synthétique |
+| [[sources/2026-08-14-neyssan-auth-production-transition-checkpoint\|Neyssan Auth / Production Transition Checkpoint]] | checkpoint | 2026-08-14 | Distinction code fusionné, Cloudflare Edge, Convex live, identité Clerk alignée et canary synthétique |
 | [[sources/2026-06-24-cover-letter-mistral-v2-staging-green\|Cover Letter Mistral V2 Staging Green Checkpoint]] | analysis | 2026-06-24 | current |
 | [[sources/2026-06-23-twoweeks-mcp-chatgpt-app-sdk-roadmap-checkpoint\|Twoweeks MCP / ChatGPT App SDK Roadmap Checkpoint]] | analysis | 2026-06-23 | current |
 ---

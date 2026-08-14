@@ -2209,3 +2209,24 @@ Migration vers schema v2 : ajout rawinput/ (staging), gestion temporelle (status
 - Cloudflare Production utilise la clé publique `pk_live` et a publié `main@a1bfbd42` avec build réussi sur les deux alias.
 - Le smoke a affiché le dashboard Production, puis la session a été renouvelée; Clerk attend maintenant un code email pour terminer l’authentification Convex. Aucun canary de suppression n’a été lancé.
 - La seconde adresse bêta est confirmée par l’utilisateur, mais sa connexion live n’est pas vérifiée ici; le confinement Access à deux identités reste inchangé.
+
+## [2026-08-14] direct-update | canary suppression synthétique validé
+
+**Agent** : Codex
+**Mode** : direct-update
+**Source** : rebuild Cloudflare Pages, logs/data Convex Production et canary navigateur sur le compte synthétique uniquement
+
+**Pages mises à jour** :
+- `wiki/sources/2026-08-14-neyssan-auth-production-transition-checkpoint.md`
+- `wiki/tech/aws-production-industrialization.md`
+- `wiki/product/product-roadmap.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**Points notables** :
+- Le rebuild Cloudflare Pages `a7b4be50` a réussi sur `main@a1bfbd42` après le déploiement Convex, afin de régénérer les bindings `accountDeletion.request` comme Action; aucun code n’a changé.
+- Le canary synthétique de suppression est passé en Production : `accountDeletion:request`, 41 `purgeBatch`, `markClerkDeletionComplete` et `deleteClerkUser` sont en succès; le tombstone est `purged`/`complete` et le sujet synthétique n’est plus présent dans `users`.
+- L’erreur `proposalsPublic` affichée ensuite est le garde `assertAccountActive` attendu pour un compte en suppression; elle ne constitue pas un échec du canary.
+- Aucun compte réel, aucun schéma supplémentaire, aucune infrastructure et aucune valeur de secret n’ont été modifiés. La rotation/révocation des secrets reste une gate finale pré-production.
+- Les gates restantes sont le smoke des deux identités Cloudflare autorisées, les tests anonyme/A/B post-déploiement et une procédure de rollback Convex coordonnée; le confinement Cloudflare est conservé.
