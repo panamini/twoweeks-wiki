@@ -30,7 +30,7 @@ Ce checkpoint distingue le code fusionné, le déploiement Edge, le backend Conv
 1. **Frontière d’autorisation Convex (CS-P0-1)** : code fusionné via #407; les preuves anonyme/A/B ont été acceptées pour le code actif. Une vérification ultérieure a montré qu’il ne faut pas déduire de cette acceptation que chaque merge ultérieur est déjà déployé sur Convex Production.
 2. **Suppression de compte (CS-P0-2, #408)** : ajout du tombstone persistant, de la purge rejouable et des garde-fous d’écriture tardive; fusion validée après corrections de revue.
 3. **Settings (#409)** : parcours frontend connecté aux bindings Convex générés; le correctif Cloudflare a supprimé le shim typé et a fait passer le build Production/preview, les tests ciblés et les checks CI observés.
-4. **Canary humainement piloté** : l’invitation a été retrouvée dans Gmail Spam puis acceptée dans le flux Clerk; la page d’inscription exigeait un username sans `+`. Le compte a été créé dans Clerk Development et connecté à l’application.
+4. **Canary humainement piloté** : l’invitation a été retrouvée dans Gmail Spam puis acceptée dans le flux Clerk; la page d’inscription exigeait un username sans `+`. Le compte a été créé dans Clerk Production; l’application est ensuite restée sur l’identité Dev configurée.
 5. **Contrôle live** : l’application fonctionnait, mais le menu Clerk affichait `Development mode` et le dashboard affichait des données de l’environnement Dev. Ce résultat est une preuve de fonctionnement Dev, pas une preuve d’isolation Production.
 6. **Déploiement Convex Production (2026-08-14)** : depuis une archive propre de `origin/main@a1bfbd42f7cfa3e639532683c0a59224c668fa02`, codegen et `npm run build` ont réussi, puis la commande `npx convex deploy --yes --typecheck disable --cmd 'npm run build'` a publié les fonctions sur `https://giddy-basilisk-88.convex.cloud`. `accountDeletionTombstones`, `documentAssetReferences`, `documentAssetUploadIntents` et leurs index observés sont visibles après le déploiement.
 
@@ -55,7 +55,7 @@ Ce checkpoint distingue le code fusionné, le déploiement Edge, le backend Conv
 - Clerk Production contient exactement un compte synthétique identifié par son adresse de test; il n’est pas utilisé pour un canary tant que la surface Cloudflare/Convex reste branchée sur Dev.
 - Le domaine Clerk personnalisé `twoweeks.ai` a été vérifié côté DNS et SSL.
 - Le Google OAuth Clerk Production n’est pas configuré : le bouton Google aboutit à `Missing required parameter: client_id`. Aucun secret OAuth n’a été affiché ni écrit dans le wiki.
-- Le parcours email/invitation a fonctionné pour l’instance Dev; le parcours Google n’est pas une preuve valide pour la Production.
+- Le parcours email/invitation a créé le compte Clerk Production; le smoke applicatif est resté Dev. Le parcours Google n’est pas une preuve valide pour la Production.
 - Le site et le dashboard sont accessibles depuis Chrome avec l’identité Dev synthétique; aucune action de suppression ou d’écriture destructive n’a été effectuée pendant ce contrôle.
 
 ### Inférences contrôlées
