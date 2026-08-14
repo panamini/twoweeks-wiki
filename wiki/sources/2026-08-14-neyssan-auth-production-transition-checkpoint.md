@@ -1,0 +1,92 @@
+---
+title: "Neyssan — checkpoint identité, bêta et transition production"
+category: source
+tags: [neyssan, clerk, convex, cloudflare, beta, production, security, deletion]
+created: 2026-08-14
+updated: 2026-08-14
+status: current
+type: checkpoint
+related:
+  - "[[tech/aws-production-industrialization]]"
+  - "[[strategy/us-first-cloud-region]]"
+  - "[[product/product-roadmap]]"
+---
+
+# Neyssan — checkpoint identité, bêta et transition production
+
+Ce checkpoint distingue le code fusionné, le déploiement Edge, le backend Convex réellement live et la configuration d’identité. Il ne constitue pas une autorisation de lancement public.
+
+## Résumé exécutif
+
+- Le code de suppression de compte est fusionné dans `main` via #408 et son parcours Settings via #409; le point de code de référence déployé est `main@a1bfbd42f7cfa3e639532683c0a59224c668fa02`.
+- Cloudflare Pages Production est configuré pour construire `my-app` avec `npx convex codegen --typecheck disable && npm run build`; le dernier déploiement Production sur `main@a1bfbd42` est réussi et sert les alias `twoweeks.ai` et `beta.twoweeks.ai`. Le déploiement Edge précédent `8c973ff` fournit un rollback identifiable.
+- La configuration Cloudflare Production utilise encore une clé Clerk `pk_test` dont l’issuer est `accounts.dev`. Le site public sert donc l’instance Clerk Development, même si la destination Convex est la production `prod:giddy-basilisk-88`.
+- Convex Production a ensuite été déployé depuis une archive propre de ce SHA avec `CONVEX_DEPLOYMENT=prod:giddy-basilisk-88 npx convex deploy --yes --typecheck disable --cmd 'npm run build'`; le build `tsc -b && vite build` et le déploiement ont réussi. La fonction `accountDeletion`, la table `accountDeletionTombstones`, les tables de fichiers `documentAssetReferences` et `documentAssetUploadIntents`, ainsi que l’index `by_clerk_id`, sont désormais observés dans l’environnement live.
+- Le compte synthétique `porphyre2025+clerk_test@gmail.com` existe dans Clerk Production, mais le frontend Cloudflare sert encore la clé Dev; aucun canary de suppression n’a donc été lancé depuis la surface Production.
+- Aucune suppression de compte réelle ou synthétique n’a été lancée. Aucune donnée n’a été supprimée. La rotation des secrets reste différée à la gate finale pré-production; les noms/valeurs ne sont pas consignés ici.
+
+## Chronologie bornée
+
+1. **Frontière d’autorisation Convex (CS-P0-1)** : code fusionné via #407; les preuves anonyme/A/B ont été acceptées pour le code actif. Une vérification ultérieure a montré qu’il ne faut pas déduire de cette acceptation que chaque merge ultérieur est déjà déployé sur Convex Production.
+2. **Suppression de compte (CS-P0-2, #408)** : ajout du tombstone persistant, de la purge rejouable et des garde-fous d’écriture tardive; fusion validée après corrections de revue.
+3. **Settings (#409)** : parcours frontend connecté aux bindings Convex générés; le correctif Cloudflare a supprimé le shim typé et a fait passer le build Production/preview, les tests ciblés et les checks CI observés.
+4. **Canary humainement piloté** : l’invitation a été retrouvée dans Gmail Spam puis acceptée dans le flux Clerk; la page d’inscription exigeait un username sans `+`. Le compte a été créé dans Clerk Development et connecté à l’application.
+5. **Contrôle live** : l’application fonctionnait, mais le menu Clerk affichait `Development mode` et le dashboard affichait des données de l’environnement Dev. Ce résultat est une preuve de fonctionnement Dev, pas une preuve d’isolation Production.
+6. **Déploiement Convex Production (2026-08-14)** : depuis une archive propre de `origin/main@a1bfbd42f7cfa3e639532683c0a59224c668fa02`, codegen et `npm run build` ont réussi, puis la commande `npx convex deploy --yes --typecheck disable --cmd 'npm run build'` a publié les fonctions sur `https://giddy-basilisk-88.convex.cloud`. `accountDeletionTombstones`, `documentAssetReferences`, `documentAssetUploadIntents` et leurs index observés sont visibles après le déploiement.
+
+## Audit sécurité et changesets réalisés
+
+- L’audit initial sécurité/industrialisation a réconcilié le comptage à **six classes P0** : profils unclaimed, gateway/jobs publics, routes IA publiques, polling IDOR, suppression de compte et export public. Les classes ont été traitées séparément; elles ne doivent pas être recomptées comme cinq.
+- **CS-P0-1** a borné l’autorisation Convex sur le code actif : identité requise pour les API publiques, propriété A/B pour lecture/modification/lancement/polling, suppression des accès unclaimed et gateway worker interne après vérification d’usage. Les tests anonyme/A/B ont été ajoutés et acceptés au niveau code.
+- **CS-P0-2 / #408** a implémenté la suppression applicative avec tombstone persistant, purge paginée/rejouable, Clerk en dernier, webhook signé réutilisant l’orchestrateur et reçu opaque `_id` Convex. Le backend correspondant est maintenant déployé sur Convex Production; le canary réel reste volontairement non exécuté.
+- **#409** a connecté Settings au backend avec les bindings Convex générés; le shim typé Cloudflare a été retiré et le build Production observé est passé.
+- Le confinement Cloudflare de la bêta est conservé. Aucun élargissement de cohorte n’est autorisé avant les preuves A/B sur l’identité et le backend réellement déployés.
+- L’exposition de secrets vue pendant le dry-run n’est pas traitée comme une permission de publier des valeurs : noms seulement, rotation/révocation différée à la gate finale pré-production, et aucune valeur ne figure dans ce wiki.
+- Les bugs non bloquants restants sont volontairement différés pendant cette bêta. La course résiduelle d’upload simultané à une suppression est une limitation connue; elle n’est ni corrigée ni traitée comme une fuite d’autorisation. Aucun élargissement de bêta ni lancement public n’en découle.
+
+## Faits confirmés, inférences et non-vérifiable
+
+### Faits confirmés
+
+- Dans Cloudflare Pages Production : `CONVEX_DEPLOYMENT` pointe vers `prod:giddy-basilisk-88`; `VITE_CONVEX_URL` pointe vers l’URL Convex `giddy-basilisk-88`; `VITE_CLERK_PUBLISHABLE_KEY` est de type `pk_test` et lié à `accounts.dev`.
+- Dans Convex Production, l’issuer d’authentification reste configuré sur l’instance Clerk Dev (`accounts.dev`); aucune bascule d’issuer n’a été effectuée.
+- Cloudflare Access répond anonymement par un blocage sur `twoweeks.ai` et `beta.twoweeks.ai`; la liste d’accès observée contient deux identités sur chaque domaine. Leurs adresses ne sont pas recopiées ici.
+- Le dernier déploiement Cloudflare Pages Production correspondant à `main@a1bfbd42` est réussi sur les deux alias; le déploiement Edge précédent `8c973ff` est le rollback identifié. Le smoke autorisé de `twoweeks.ai` ouvre le dashboard; `beta.twoweeks.ai` demande une session Access distincte et n’a pas été marqué smoke-vert ici.
+- Clerk Production contient exactement un compte synthétique identifié par son adresse de test; il n’est pas utilisé pour un canary tant que la surface Cloudflare/Convex reste branchée sur Dev.
+- Le domaine Clerk personnalisé `twoweeks.ai` a été vérifié côté DNS et SSL.
+- Le Google OAuth Clerk Production n’est pas configuré : le bouton Google aboutit à `Missing required parameter: client_id`. Aucun secret OAuth n’a été affiché ni écrit dans le wiki.
+- Le parcours email/invitation a fonctionné pour l’instance Dev; le parcours Google n’est pas une preuve valide pour la Production.
+- Le site et le dashboard sont accessibles depuis Chrome avec l’identité Dev synthétique; aucune action de suppression ou d’écriture destructive n’a été effectuée pendant ce contrôle.
+
+### Inférences contrôlées
+
+- Tant que `pk_test` reste la clé Cloudflare Production, le domaine public et l’instance Clerk Production ne forment pas une frontière d’identité cohérente; un changement de clé est susceptible de déconnecter les sessions et de changer la population de données visible.
+- Les données visibles dans le dashboard Dev ne permettent pas de conclure à une fuite entre comptes Production; elles prouvent seulement que le canary n’était pas dans la bonne instance.
+
+### Non vérifiable dans ce checkpoint
+
+- La version précédente exacte du backend Convex et un rollback opérateur sûr restent non vérifiables : l’historique de versions n’est pas exposé par le plan Convex courant. Le SHA déployé est toutefois prouvé par l’archive source, la commande et les artefacts observés.
+- L’identité du second utilisateur autorisé de bêta n’est pas confirmée dans ce checkpoint; le canary Production est distinct mais ne remplace pas cette confirmation.
+- La purge de bout en bout sur Convex Production et la preuve d’effacement des fichiers.
+
+## Gates restantes
+
+Avant une vraie production :
+
+1. confirmer les deux identités autorisées de bêta et conserver le compte synthétique Clerk **Production** séparé, avec inventaire redacted et sans donnée utilisateur réelle;
+2. identifier une procédure de rollback Convex coordonnée (frontend/backend), puisque l’historique de version précédent n’est pas disponible sur le plan courant;
+3. seulement après cette confirmation et une procédure de rollback Convex coordonnée, remplacer la clé Clerk Dev de Cloudflare Production par la clé Clerk Production, aligner l’issuer Convex, redéployer et vérifier le smoke frontend;
+4. refaire les tests anonyme/A/B : profils, jobs, historique, suppression, polling et absence d’accès public unclaimed;
+5. exécuter le canary de suppression uniquement sur le compte synthétique Production;
+6. traiter la rotation/révocation des secrets et le contrôle des logs à la gate finale pré-production;
+7. conserver le confinement Cloudflare actuel et ne pas élargir la bêta avant ces preuves.
+
+Les travaux ECS/SQS/multi-AZ/IaC, migration de région, extension Chrome et supply-chain avancée restent hors de ce checkpoint et ne sont pas des prérequis ajoutés à cette tâche.
+
+## Actions non effectuées
+
+- aucune modification de code;
+- aucun changement de variable Cloudflare, Clerk ou Convex;
+- déploiement Convex Production effectué depuis `main@a1bfbd42f7cfa3e639532683c0a59224c668fa02` avec build réussi; historique de rollback précédent non exposé;
+- aucune suppression de données;
+- aucun changement d’infrastructure.

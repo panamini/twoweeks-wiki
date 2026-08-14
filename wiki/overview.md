@@ -3,11 +3,11 @@ title: "Vue d'ensemble — twoweeks"
 category: overview
 tags: [project, overview, twoweeks, roadmap, parser, ats]
 created: 2026-04-09
-updated: 2026-08-05
+updated: 2026-08-14
 status: current
 valid_from: 2026-04-09
 version: v1
-sources: [2026-04-09-decisions-cvforge-sprint, 2026-04-10-notion-roadmap-cvforge, 2026-04-10-success-blueprint, 2026-04-10-benchmark-matrix, 2026-04-10-gap-analysis, 2026-04-14-structured-parsing-canonical-truth, 2026-04-14-ats-compliant-score, 2026-04-14-kanban-sprint-notes, 2026-04-14-run-sh-quick-note, 2026-04-14-export-pipeline-brief-ocr-to-ats-styled-output, 2026-04-15-mistral-resume-v3-section-recovery-scratchpad, 2026-04-15-run-sh-workspace-modes, 2026-04-18-quick-start-module-hierarchy, 2026-04-27-job-library-prd, 2026-04-27-job-match-validation-contract, 2026-04-27-twoweeks-motion-system, 2026-04-27-workshop-pagination]
+sources: [2026-04-09-decisions-cvforge-sprint, 2026-04-10-notion-roadmap-cvforge, 2026-04-10-success-blueprint, 2026-04-10-benchmark-matrix, 2026-04-10-gap-analysis, 2026-04-14-structured-parsing-canonical-truth, 2026-04-14-ats-compliant-score, 2026-04-14-kanban-sprint-notes, 2026-04-14-run-sh-quick-note, 2026-04-14-export-pipeline-brief-ocr-to-ats-styled-output, 2026-04-15-mistral-resume-v3-section-recovery-scratchpad, 2026-04-15-run-sh-workspace-modes, 2026-04-18-quick-start-module-hierarchy, 2026-04-27-job-library-prd, 2026-04-27-job-match-validation-contract, 2026-04-27-twoweeks-motion-system, 2026-04-27-workshop-pagination, 2026-08-14-neyssan-auth-production-transition-checkpoint]
 related: [[entities/twoweeks]], [[product/product-roadmap]], [[concepts/cv-parsing-pipeline]], [[design/ats-safety]], [[howto/local-parser-operations]], [[product/job-library]], [[product/job-match-review]], [[design/motion-system]], [[tech/workshop-pagination]]
 ---
 
@@ -45,6 +45,12 @@ La vérité d'export suit la même logique : fichiers PDF/DOCX finaux dérivés 
 
 `run.sh` est la source de vérité opératoire pour ces modes. `local-fast` est désormais la boucle locale complète recommandée pour le parser; `local` ne suffit pas à garantir le même call path que le structured upload backend. La préférence localhost doit rester strictement dev-only.
 
+### Checkpoint identité et production (2026-08-14)
+
+Les PR #408 et #409 sont fusionnées dans `main`, avec `main@a1bfbd42f7cfa3e639532683c0a59224c668fa02` comme point de code de référence. Cloudflare Pages Production a un build/déploiement réussi sur ce SHA, avec les alias `twoweeks.ai` et `beta.twoweeks.ai`; sa configuration utilise encore une clé Clerk `pk_test` liée à `accounts.dev`. Le site public sert donc l’instance Clerk Development, tandis que Cloudflare pointe vers le déploiement Convex Production `prod:giddy-basilisk-88`.
+
+Le backend de suppression correspondant à ce SHA est maintenant déployé sur Convex Production; les fonctions `accountDeletion` et les tables de tombstone sont visibles. Le compte synthétique existe dans Clerk Production, mais Cloudflare/Convex utilisent encore l’issuer Clerk Dev (`accounts.dev`) et aucun canary de suppression n’a été lancé. La bascule Clerk Production, la purge canary et la preuve d’un rollback Convex restent des gates avant lancement réel. Voir [[sources/2026-08-14-neyssan-auth-production-transition-checkpoint]] et [[tech/aws-production-industrialization]].
+
 ---
 
 ## État du projet
@@ -56,7 +62,7 @@ La vérité d'export suit la même logique : fichiers PDF/DOCX finaux dérivés 
 | Priorité parser | stabiliser `sections[*].structuredContent` comme source de vérité |
 | Priorité qualité | fiabilité sur vrais CVs, observabilité, régression |
 | Priorité UX | quick-start onboarding, extension save-to-twoweeks, sections custom alignées sur le block renderer |
-| Dernière activité | 2026-08-05 — checkpoint post-merge Jobs/Proposal sur `main@3ef0bbdb` |
+| Dernière activité | 2026-08-14 — Convex Production déployé sur `main@a1bfbd42`, Cloudflare/Convex encore branchés sur Clerk `pk_test`/Dev |
 
 ---
 
@@ -69,7 +75,7 @@ La vérité d'export suit la même logique : fichiers PDF/DOCX finaux dérivés 
 - **Quick Start shell** : l'activation vit dans l'app-shell via `App.tsx`; `/proposal` ne sert le cold start cover-letter que comme état d'entrée intentionnel, et la primitive de choix partagée reste commune.
 - **Sections custom** : `add your own section` doit rejoindre le vrai block renderer et non un legacy nested model.
 - **Jobs first-class** : Job Library devient la couche durable des offres sauvegardées, avec Job Brief editable et documents liés.
-- **Jobs → Proposal beta candidate** : le parcours Job Brief prêt → CV attaché → tailoring revu par humain → CV dérivé → Proposal est connecté sur `main`; une smoke locale authentifiée desktop/mobile est positive. Déploiement, isolation/sign-out multi-compte et sécurité suppression/cache/écritures tardives restent des gates avant bêta privée.
+- **Jobs → Proposal beta candidate** : le parcours Job Brief prêt → CV attaché → tailoring revu par humain → CV dérivé → Proposal est connecté sur `main`; une smoke locale authentifiée desktop/mobile est positive. Le code de frontière d’autorisation et de suppression est fusionné, mais la cohérence Clerk Production ↔ Convex Production et le canary Production restent à prouver.
 - **Match Review** : le match est un indicateur d'attention utilisateur, pas un ATS; structured read reste advisory/shadow tant que la dogfood review ne valide pas les seuils.
 - **Motion** : la période terracotta est le seul loop ambient autorisé; l'IA doit prouver son travail par stages, diffs et settle.
 - **Workshop pagination** : `committedPages` est la source de vérité pour preview, print et export sur `workshop_resume_onecol_ats`.

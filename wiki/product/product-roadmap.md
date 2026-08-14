@@ -3,7 +3,7 @@ title: "Product Roadmap — twoweeks"
 category: product
 tags: [roadmap, product, initiatives, phases, stratégie]
 created: 2026-04-10
-updated: 2026-08-05
+updated: 2026-08-14
 status: current
 valid_from: 2026-04-10
 version: v1
@@ -109,11 +109,11 @@ Duplication et retargeting de CV/proposition pour un nouveau rôle — préserve
 
 Parcours visé : recherche ChatGPT ou URL d'offre collée → Job Brief Twoweeks → sélection d'expériences proposée par l'IA → validation humaine par checkboxes → CV dérivé avec provenance `sourceCvId` / `jobId` → génération de proposition existante.
 
-Le parcours est maintenant connecté : Job Brief prêt + CV attaché → recommandations déterministes → revue humaine → CV dérivé matérialisé → Proposal. La preuve post-merge sur `origin/main@3ef0bbdb` couvre un compte synthétique local, desktop et 640px mobile, sans erreur runtime ni overflow horizontal. Elle ne vaut pas preuve de déploiement, d'isolation entre comptes ou de suppression sûre.
+Le parcours est maintenant connecté : Job Brief prêt + CV attaché → recommandations déterministes → revue humaine → CV dérivé matérialisé → Proposal. La preuve post-merge sur `origin/main@3ef0bbdb` couvre un compte synthétique local, desktop et 640px mobile, sans erreur runtime ni overflow horizontal. Les PR #408 et #409 ont ensuite fusionné la frontière d’autorisation et le parcours Settings de suppression, avec `main@a1bfbd42` comme référence de code. Le backend Convex Production correspondant est désormais déployé; l’identité frontend reste toutefois branchée sur Clerk Dev.
 
 **Checkpoint** : [[sources/2026-08-05-neyssan-post-merge-jobs-smoke-checkpoint]].
 
-**Reste avant bêta privée** : smoke sur l'identité frontend déployée; isolation/sign-out de deux comptes; sécurité suppression de compte, cache et écritures tardives; puis cohorte autorisée et supportée. Pagination Jobs, plafonds de chargement et exactitude des agrégats restent un backlog de scalabilité différé.
+**Reste avant élargissement de la bêta privée** : procédure de rollback Convex coordonnée (historique précédent indisponible sur le plan courant); confirmation des deux identités autorisées; alignement de l’issuer Clerk Production entre Cloudflare et Convex; smoke frontend, isolation/sign-out A/B et canary de suppression sur le compte synthétique Production. Les bugs non bloquants restants, dont la course d’upload simultané à une suppression, sont différés et suivis séparément. Pagination Jobs, plafonds de chargement et exactitude des agrégats restent un backlog de scalabilité différé. Voir [[sources/2026-08-14-neyssan-auth-production-transition-checkpoint]].
 
 **Ordre recommandé** :
 1. valider les gates de bêta privée sur le parcours livré;

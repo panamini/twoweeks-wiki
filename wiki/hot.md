@@ -3,7 +3,7 @@ title: "Hot Cache - twoweeks"
 category: overview
 status: current
 created: 2026-05-02
-updated: 2026-08-05
+updated: 2026-08-14
 ---
 
 # Hot Cache
@@ -24,19 +24,18 @@ Keep two workstreams separate:
 - Stable endpoint: `https://mcp.twoweeks.ai/mcp`.
 - V19 remains the historical transport/OAuth proof; PR369 supersedes its `NO_DATA` limitation with a controlled data-bearing two-account proof.
 - Current MCP surface is exactly four read-only `summarize` tools. It does not search jobs, ingest offers, create CV variants, or generate letters.
-- Local MCP bootstrap: an Infisical Chrome session does not authenticate the CLI. Use project `twoweeks`, environment `dev`, CLI path `/twoweeks`, then the value-silent `run.sh` helpers and owner-scoped runtime procedure in [[howto/chatgpt-mcp-private-beta-tunnel-connector]]. Never substitute browser JWTs for the server-only Convex credential.
+- Infisical local contract: project `twoweeks`, environment `dev`, path `/twoweeks` holds the Convex bindings and the OpenAI Agent Proxy mapping. Launch proxied agents with `infisical secrets agent-proxy run ... -- codex`; `OPENAI_API_KEY_INFISICAL` is the placeholder for source secret `OPENAI_API_KEY`, while Mistral stays separate. Browser login does not authenticate the CLI; see [[howto/local-parser-operations]].
 - Remaining MCP gates: prove onboarding from an empty account, compose a genuinely useful ChatGPT journey, then run a 3-5 user private beta.
 - Recommended product demo slice: ChatGPT search or pasted offer → Job Brief → AI-proposed experience selection → human checkboxes → derived CV with provenance → existing proposal generation.
 - A broad location/radius ATS provider comes second; a full editable master CV comes third.
 - Public launch, write tools, provider/model calls, export, live submit/apply, refresh tokens and billing remain blocked pending separate reviewed gates.
-- The public distribution surface is evolving; decide the final tool catalog before submission because approved tools are snapshot-frozen.
-- `application-os-foundation` is verified at PR336 merge `80b4af7a764b37cc57b5bcb25a4f3bfc0a16a23b`.
-- Luna low passed the English direct/adjacent development cells but only matched the stable control; do not promote it as a general default.
 - Historical French CV-backed EVAL3D vetoes are invalid for quality inference because a canonical formal closing was counted as body content. No provider rerun is required now.
 - No-CV remains a separate evidence/UX problem and is byte-locked against QUALITY-CL-4 drift. Any four-cell EN/FR CV-backed old/new comparison requires a separate exact contract and approval after merge; no provider run is automatic.
 - Product truth is `twoweeks`; CVForge and ProposalForge are internal module names.
 - Neyssan `main@3ef0bbdb`: Jobs→Proposal path (#378–#382) passed local desktop/mobile smoke; private-beta candidate, not public-ready. Open gates: deployed identity, account isolation, deletion safety, MCP operations. Read [[sources/2026-08-05-neyssan-post-merge-jobs-smoke-checkpoint]].
+- Neyssan auth/production checkpoint (2026-08-14): #408/#409 are merged and `main@a1bfbd42` is the code reference; Cloudflare Production deploys that SHA on `twoweeks.ai` and `beta.twoweeks.ai`, but still carries a Clerk `pk_test` key for `accounts.dev`. Convex Production `prod:giddy-basilisk-88` now has the #408 deletion functions/tables. A synthetic Clerk Production user exists, but no deletion canary ran and Convex rollback history is unavailable on the current plan. Keep the two-domain Access confinement and defer beta expansion. Read [[sources/2026-08-14-neyssan-auth-production-transition-checkpoint]].
 - Cloud-region decision: Twoweeks is US-first; future Convex Cloud and first production parser default to US East (N. Virginia), while parser provider selection remains benchmark-gated. Read [[strategy/us-first-cloud-region]] and [[sources/2026-07-27-us-first-cloud-region]].
+- AWS industrialisation is security-first and threshold-driven. The stateless Lightsail beta requires measured capacity, SLOs, observability, automated rollback and closed identity/data-safety gates before broader launch. Read [[tech/aws-production-industrialization]].
 - Persistent wiki mutations require `wiki/index.md`, `wiki/log.md`, and usually `wiki/hot.md`.
 
 ## Canonical Pages To Read
@@ -44,5 +43,5 @@ Keep two workstreams separate:
 - MCP commercial roadmap: [[product/chatgpt-app-sdk-roadmap]], [[howto/chatgpt-mcp-private-beta-tunnel-connector]]
 - Cover-letter quality: [[tasks/2026-06-22-cover-letter-quality-production-roadmap]], [[sources/2026-06-24-cover-letter-mistral-v2-staging-green]]
 - Product/parser/export routing: [[overview]], [[concepts/cv-parsing-pipeline]], [[tech/export-pipeline]]
-- Cloud region / parser hosting: [[strategy/us-first-cloud-region]], [[tech/local-vs-remote-parser-architecture]], [[howto/local-parser-operations]]
+- Cloud region / parser hosting / scale: [[strategy/us-first-cloud-region]], [[tech/aws-production-industrialization]], [[tech/local-vs-remote-parser-architecture]]
 - Wiki operations: [[meta/llm-wiki-pattern]], [[meta/temporal-management]]
