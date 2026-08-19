@@ -2,7 +2,7 @@
 title: Index du Wiki — twoweeks
 category: overview
 sticker: emoji//1f9c6
-updated: 2026-08-14
+updated: 2026-08-19
 ---
 
 # Index du Wiki · twoweeks (v2)
@@ -26,7 +26,7 @@ Le contrôle opératoire du repo reste défini par `WIKI_SCHEMA.md` puis `CLAUDE
 | Parser / vérité CV | [[concepts/cv-parsing-pipeline]] | [[concepts/cv-families]], [[tech/import-ocr-pipeline]] |
 | Jobs / match | [[product/job-library]] | [[product/job-match-review]] |
 | Neyssan post-merge Jobs smoke | [[sources/2026-08-05-neyssan-post-merge-jobs-smoke-checkpoint]] | [[product/product-roadmap]], [[product/job-library]] |
-| Neyssan identité / transition production | [[sources/2026-08-14-neyssan-auth-production-transition-checkpoint]] | [[tech/aws-production-industrialization]], [[strategy/us-first-cloud-region]], [[product/product-roadmap]] |
+| Neyssan identité / alignement production `83872148` | [[sources/2026-08-14-neyssan-auth-production-transition-checkpoint]] | [[tech/aws-production-industrialization]], [[strategy/us-first-cloud-region]], [[product/product-roadmap]] |
 | Export / pagination | [[tech/export-pipeline]] | [[tech/preview-to-print-pipeline]], [[tech/workshop-pagination]] |
 | Proposal Forge geometry | [[tech/proposal-forge-document-geometry]] | [[tech/proposal-style-layer]], [[design/document-token-contract]] |
 | Proposal signature/closing | [[tech/proposal-signature-closing-layer]] | [[tech/proposal-style-layer]], [[tech/proposal-forge-document-geometry]], [[tech/export-pipeline]] |

@@ -2230,3 +2230,24 @@ Migration vers schema v2 : ajout rawinput/ (staging), gestion temporelle (status
 - L’erreur `proposalsPublic` affichée ensuite est le garde `assertAccountActive` attendu pour un compte en suppression; elle ne constitue pas un échec du canary.
 - Aucun compte réel, aucun schéma supplémentaire, aucune infrastructure et aucune valeur de secret n’ont été modifiés. La rotation/révocation des secrets reste une gate finale pré-production.
 - Les gates restantes sont le smoke des deux identités Cloudflare autorisées, les tests anonyme/A/B post-déploiement et une procédure de rollback Convex coordonnée; le confinement Cloudflare est conservé.
+
+## [2026-08-19] direct-update | main, Pages et Convex alignés sur `83872148`
+
+**Agent** : Codex
+**Mode** : direct-update
+**Source** : worktree propre `origin/main`, déploiements Convex/Cloudflare observés, function-spec et workflows GitHub
+
+**Pages mises à jour** :
+- `wiki/sources/2026-08-14-neyssan-auth-production-transition-checkpoint.md`
+- `wiki/product/product-roadmap.md`
+- `wiki/tech/aws-production-industrialization.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**Points notables** :
+- `origin/main`, Cloudflare Pages Production et Convex Production sont alignés sur `83872148d91263591d4cb9025cd39fbe60acfef4`; build et déploiement Convex ont réussi depuis un worktree propre.
+- Le delta de schéma est limité à `metadata.generationContext` optionnel; aucune migration destructive n’a été exécutée.
+- Les deux domaines renvoient anonymement HTTP 302 vers Cloudflare Access. Les smokes des deux identités autorisées, l’isolation A/B post-déploiement et l’appel LLM anonyme restent non vérifiés.
+- Le repli source coordonné pré-#411 est identifié à `966890d9df580ca2c404faa8e1ed3da87f691ffd`, mais l’historique Convex instantané reste indisponible.
+- L’image parser `83872148` est construite/testée/publiée; Lightsail reste sur `408e428`. Aucun déploiement parser, changement de code, secret ou donnée utilisateur n’a été effectué pendant cette mise à jour wiki.

@@ -3,7 +3,7 @@ title: "Industrialisation AWS — sécurité, scalabilité et exploitation"
 category: tech
 status: current
 created: 2026-08-13
-updated: 2026-08-14
+updated: 2026-08-19
 valid_from: 2026-08-13
 version: v1
 tags: [aws, security, industrialization, scalability, automation, production, capacity]
@@ -70,19 +70,20 @@ Le parser beta est stateless du point de vue métier : aucun CV ne doit être co
 
 Cette architecture est adaptée à une beta contrôlée, mais elle possède un point unique de défaillance et aucune élasticité horizontale. Elle ne constitue donc pas l’architecture de croissance.
 
-## Checkpoint réel Neyssan — 2026-08-14
+## Checkpoint réel Neyssan — 2026-08-19
 
 Le code fusionné, l’artefact Edge et la configuration d’identité doivent rester trois preuves séparées :
 
 | Surface | État observé | Conséquence |
 | --- | --- | --- |
-| Code | PR #408 (suppression) et PR #409 (Settings) fusionnées; référence `main@a1bfbd42f7cfa3e639532683c0a59224c668fa02` | le code et le SHA source sont prouvés |
-| Cloudflare Pages Production | build `my-app` configuré avec codegen Convex puis `npm run build`; rebuild Production `a7b4be50` réussi sur `main@a1bfbd42` avec alias `twoweeks.ai` et `beta.twoweeks.ai` | rollback Edge identifiable vers le déploiement précédent `8c973ff`; smoke des deux identités autorisées encore à terminer |
-| Convex Production | cible `prod:giddy-basilisk-88`; déploiement effectué depuis une archive propre de `main@a1bfbd42` avec build réussi; `accountDeletion`, `accountDeletionTombstones`, `documentAssetReferences`, `documentAssetUploadIntents` et `by_clerk_id` sont visibles; issuer `https://clerk.twoweeks.ai` | le SHA et l’issuer déployés sont prouvés; l’historique/rollback Convex précédent est indisponible sur le plan courant |
+| Code | #408/#409 et #411–#414 fusionnées; référence `main@83872148d91263591d4cb9025cd39fbe60acfef4` | le code et le SHA source sont prouvés |
+| Cloudflare Pages Production | build `my-app` réussi sur `main@83872148`, alias `twoweeks.ai` et `beta.twoweeks.ai`; les deux domaines renvoient anonymement HTTP 302 vers Cloudflare Access | le déploiement Pages immédiatement précédent est `5de4e349`; le smoke des deux identités autorisées reste à terminer |
+| Convex Production | cible `prod:giddy-basilisk-88`; déploiement depuis un worktree propre de `main@83872148` avec build réussi; fonctions profils/Jobs/propositions/génération/suppression présentes; issuer `https://clerk.twoweeks.ai` | le SHA et l’issuer sont prouvés; le seul delta de schéma est optionnel, sans migration destructive; l’historique instantané reste indisponible |
 | Clerk dans Cloudflare Production | `VITE_CLERK_PUBLISHABLE_KEY` est une clé `pk_live` liée à `clerk.twoweeks.ai`; template JWT `convex` présent | identité Production alignée; sessions anciennes à renouveler |
 | Canary | compte synthétique supprimé en Production; tombstone `purged`/`complete`, 41 lots, `deleteClerkUser` en succès | canary de suppression validé; smoke des deux identités autorisées et rollback Convex restent à traiter |
+| Parser Lightsail | image `sha-83872148` construite, testée PDF/DOCX et publiée; image live toujours `sha-408e428577704007a5fbafce179b14ef8765a0f2` | alignement de maintenance recommandé, non blocker fonctionnel de la bêta privée |
 
-La bascule Clerk Production est effectuée et l’issuer Convex est aligné. Le canary de suppression synthétique est validé; le smoke des deux identités autorisées et l’historique/rollback Convex précédent restent à traiter. Le confinement Cloudflare actuel reste en place. Les bugs non bloquants de bêta, dont la course d’upload/suppression, restent documentés en backlog séparé. Le détail et les limites sont consignés dans [[sources/2026-08-14-neyssan-auth-production-transition-checkpoint]].
+La bascule Clerk Production est effectuée et l’issuer Convex est aligné. Le canary de suppression synthétique est validé. Le code, Pages et Convex sont alignés sur `83872148`; restent le smoke des deux identités autorisées, l’isolation A/B et l’exercice du repli coordonné vers la source pré-#411 `966890d9df580ca2c404faa8e1ed3da87f691ffd`. Le confinement Cloudflare actuel reste en place. Les bugs non bloquants de bêta, dont la course d’upload/suppression, restent documentés en backlog séparé. Le détail et les limites sont consignés dans [[sources/2026-08-14-neyssan-auth-production-transition-checkpoint]].
 
 Les secrets ne doivent jamais être copiés dans ce document. La rotation/révocation observée pendant le dry-run reste une gate finale pré-production différée; ce report ne vaut pas preuve de rotation.
 

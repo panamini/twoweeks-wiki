@@ -3,7 +3,7 @@ title: "Neyssan — checkpoint identité, bêta et transition production"
 category: source
 tags: [neyssan, clerk, convex, cloudflare, beta, production, security, deletion]
 created: 2026-08-14
-updated: 2026-08-14
+updated: 2026-08-19
 status: current
 type: checkpoint
 related:
@@ -18,10 +18,10 @@ Ce checkpoint distingue le code fusionné, le déploiement Edge, le backend Conv
 
 ## Résumé exécutif
 
-- Le code de suppression de compte est fusionné dans `main` via #408 et son parcours Settings via #409; le point de code de référence déployé est `main@a1bfbd42f7cfa3e639532683c0a59224c668fa02`.
-- Cloudflare Pages Production est configuré pour construire `my-app` avec `npx convex codegen --typecheck disable && npm run build`; le rebuild Production `a7b4be50` (même source `main@a1bfbd42`, sans changement de code) est réussi et sert les alias `twoweeks.ai` et `beta.twoweeks.ai`. Le déploiement Edge précédent `8c973ff` fournit un rollback identifiable.
+- Le code de suppression de compte est fusionné via #408 et son parcours Settings via #409. Après les correctifs #411–#414, le point de code actuellement aligné entre `origin/main`, Cloudflare Pages Production et Convex Production est `main@83872148d91263591d4cb9025cd39fbe60acfef4`.
+- Cloudflare Pages Production construit `my-app` avec le codegen Convex puis `npm run build`; le déploiement du SHA `83872148` est réussi et sert les alias `twoweeks.ai` et `beta.twoweeks.ai`. Le déploiement Pages immédiatement précédent correspond à `5de4e349`.
 - La configuration Cloudflare Production utilise désormais la clé publique Clerk `pk_live` liée à `clerk.twoweeks.ai`; la destination Convex est `prod:giddy-basilisk-88`.
-- Convex Production a ensuite été déployé depuis une archive propre de ce SHA avec `CONVEX_DEPLOYMENT=prod:giddy-basilisk-88 npx convex deploy --yes --typecheck disable --cmd 'npm run build'`; le build `tsc -b && vite build` et le déploiement ont réussi. La fonction `accountDeletion`, la table `accountDeletionTombstones`, les tables de fichiers `documentAssetReferences` et `documentAssetUploadIntents`, ainsi que l’index `by_clerk_id`, sont désormais observés dans l’environnement live.
+- Convex Production a été déployé depuis un worktree propre du même SHA `83872148` avec `CONVEX_DEPLOYMENT=prod:giddy-basilisk-88 npx convex deploy --yes --typecheck disable --cmd 'npm run build'`; le build `tsc -b && vite build` et le déploiement ont réussi. Les fonctions actives de profils, Jobs, propositions, génération et suppression de compte sont observées dans l’environnement live.
 - Le compte synthétique `porphyre2025+clerk_test@gmail.com` a servi au canary Production puis a été supprimé; aucun compte réel n’a été ciblé.
 - Le canary de suppression est passé : `accountDeletionTombstones` est `state=purged`, `phase=complete`, avec 41 lots traités; `deleteClerkUser` et `markClerkDeletionComplete` sont en succès. La rotation des secrets reste différée à la gate finale pré-production; les noms/valeurs ne sont pas consignés ici.
 
@@ -46,6 +46,15 @@ Ce checkpoint distingue le code fusionné, le déploiement Edge, le backend Conv
 - L’exposition de secrets vue pendant le dry-run n’est pas traitée comme une permission de publier des valeurs : noms seulement, rotation/révocation différée à la gate finale pré-production, et aucune valeur ne figure dans ce wiki.
 - Les bugs non bloquants restants sont volontairement différés pendant cette bêta. La course résiduelle d’upload simultané à une suppression est une limitation connue; elle n’est ni corrigée ni traitée comme une fuite d’autorisation. Aucun élargissement de bêta ni lancement public n’en découle.
 
+## Delta vérifié — 2026-08-19
+
+- Le dernier déploiement Cloudflare Pages Production, ses alias `twoweeks.ai` et `beta.twoweeks.ai`, ainsi que `origin/main` correspondent au SHA `83872148d91263591d4cb9025cd39fbe60acfef4`. Le build Pages et les checks associés aux PR #413/#414 sont réussis.
+- Convex Production `prod:giddy-basilisk-88` a été déployé depuis un worktree propre au même SHA avec `convex deploy --yes --typecheck disable --cmd 'npm run build'`; le build et la publication ont réussi. La function-spec post-déploiement expose les fonctions actives de profils, Jobs, propositions, génération et suppression de compte.
+- Le seul delta de schéma depuis le backend précédemment prouvé est le champ optionnel `metadata.generationContext`; aucune migration destructive n’a été exécutée.
+- Sans cookies, les deux domaines renvoient HTTP 302 vers Cloudflare Access. Le smoke des deux identités autorisées, l’isolation A/B rejouée après ce déploiement et l’appel LLM anonyme ne sont pas validés par ce checkpoint.
+- Le déploiement Pages immédiatement précédent correspond au commit `5de4e349fb1565a78ac45f738f79303805b00052`. La source de repli coordonné Edge/Convex avant #411 est `966890d9df580ca2c404faa8e1ed3da87f691ffd`; faute d’historique Convex sur le plan courant, ce repli reste une procédure opérateur à vérifier, pas une restauration instantanée prouvée.
+- L’image parser du SHA `83872148` est construite, testée sur les chemins PDF/DOCX et publiée, mais n’est pas promue sur Lightsail. L’image live reste `sha-408e428577704007a5fbafce179b14ef8765a0f2`; cet alignement de maintenance ne bloque pas fonctionnellement la bêta privée.
+
 ## Faits confirmés, inférences et non-vérifiable
 
 ### Faits confirmés
@@ -53,7 +62,7 @@ Ce checkpoint distingue le code fusionné, le déploiement Edge, le backend Conv
 - Dans Cloudflare Pages Production : `CONVEX_DEPLOYMENT` pointe vers `prod:giddy-basilisk-88`; `VITE_CONVEX_URL` pointe vers l’URL Convex `giddy-basilisk-88`; `VITE_CLERK_PUBLISHABLE_KEY` est de type `pk_live` et lié à `clerk.twoweeks.ai`.
 - Dans Convex Production, l’issuer d’authentification est `https://clerk.twoweeks.ai` et le template JWT `convex` est présent dans Clerk Production.
 - Cloudflare Access répond anonymement par un blocage sur `twoweeks.ai` et `beta.twoweeks.ai`; la liste d’accès observée contient deux identités sur chaque domaine. Leurs adresses ne sont pas recopiées ici.
-- Le dernier déploiement Cloudflare Pages Production correspondant à `main@a1bfbd42` est réussi sur les deux alias; le déploiement Edge précédent `8c973ff` est le rollback identifié. Le smoke autorisé de `twoweeks.ai` ouvre le dashboard; `beta.twoweeks.ai` demande une session Access distincte et n’a pas été marqué smoke-vert ici.
+- Le dernier déploiement Cloudflare Pages Production correspondant à `main@83872148` est réussi sur les deux alias. Sans cookies, les deux domaines renvoient HTTP 302 vers Cloudflare Access; le smoke des deux identités autorisées n’a pas été rejoué sur ce SHA.
 - Clerk Production contient exactement un compte synthétique identifié par son adresse de test; il attend le code email de reconnexion avant le smoke complet.
 - Le domaine Clerk personnalisé `twoweeks.ai` a été vérifié côté DNS et SSL.
 - Le Google OAuth Clerk Production n’est pas configuré : le bouton Google aboutit à `Missing required parameter: client_id`. Aucun secret OAuth n’a été affiché ni écrit dans le wiki.
@@ -77,7 +86,7 @@ Avant une vraie production :
 
 1. terminer le smoke des deux identités Cloudflare autorisées sur `twoweeks.ai` et `beta.twoweeks.ai`;
 2. refaire les tests anonyme/A/B : profils, jobs, historique, suppression, polling et absence d’accès public unclaimed;
-3. identifier une procédure de rollback Convex coordonnée (frontend/backend); le rollback Edge est `8c973ff`;
+3. tester la procédure de repli coordonné Edge/Convex vers la source identifiée `966890d9df580ca2c404faa8e1ed3da87f691ffd`; l’historique Convex instantané reste indisponible;
 4. traiter la rotation/révocation des secrets et le contrôle des logs à la gate finale pré-production;
 5. conserver le confinement Cloudflare actuel et ne pas élargir la bêta avant ces preuves.
 
@@ -87,6 +96,6 @@ Les travaux ECS/SQS/multi-AZ/IaC, migration de région, extension Chrome et supp
 
 - aucune modification de code;
 - variables d’authentification alignées : Convex `CLERK_JWT_ISSUER_DOMAIN=https://clerk.twoweeks.ai` et Cloudflare `VITE_CLERK_PUBLISHABLE_KEY` de type `pk_live`; aucun secret privé affiché;
-- déploiement Convex Production effectué depuis `main@a1bfbd42f7cfa3e639532683c0a59224c668fa02` avec build réussi; historique de rollback précédent non exposé;
+- déploiement Convex Production effectué depuis `main@83872148d91263591d4cb9025cd39fbe60acfef4` avec build réussi; historique de rollback précédent non exposé;
 - aucune suppression de données réelles; les données du compte synthétique du canary ont été purgées;
 - aucun changement d’infrastructure.
