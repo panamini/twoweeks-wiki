@@ -3,7 +3,7 @@ title: "Hot Cache - twoweeks"
 category: overview
 status: current
 created: 2026-05-02
-updated: 2026-07-28
+updated: 2026-08-19
 ---
 
 # Hot Cache
@@ -16,25 +16,23 @@ twoweeks centers on CV ingestion/parsing, canonical saved profile/CV data, and p
 
 Keep two workstreams separate:
 
-- MCP commercial launch: PR369 is merged on `main` at `a3ea57da`. Two distinct authenticated accounts completed the controlled four-tool rail with 8/8 protected calls, seed/cleanup 4/4, recovery and accepted deltas. Atomic coordination prevents concurrent proof runs and preserves a busy session for retry. This is controlled operational proof, not commercial user-value proof.
-- Cover-letter quality: PR337 (`QUALITY-CL-4`) is ready for merge review at `977f1a29d8b9a5b3f1f67964eff61f46e5373f53`; all 8 GitHub checks pass and the exact-head Codex review is clear. This proves deterministic EN/FR CV-backed prompt/finalizer integrity, not a provider-output quality win or default-model decision.
+- MCP commercial launch: PR369 merged at `a3ea57da`. Two authenticated accounts passed 8/8 protected calls, seed/cleanup 4/4, recovery/deltas accepted, plus atomic concurrency/retry. Operational proof only, not commercial user value.
+- Cover-letter quality: PR337 (`QUALITY-CL-4`) is ready at `977f1a29d8b9a5b3f1f67964eff61f46e5373f53`; 8 checks and exact-head Codex review are clear. Proves deterministic EN/FR prompt/finalizer integrity, not provider quality or a default-model choice.
 
 ## Key Active Facts
 
 - Stable endpoint: `https://mcp.twoweeks.ai/mcp`.
 - V19 remains the historical transport/OAuth proof; PR369 supersedes its `NO_DATA` limitation with a controlled data-bearing two-account proof.
 - Current MCP surface is exactly four read-only `summarize` tools. It does not search jobs, ingest offers, create CV variants, or generate letters.
+- Infisical local: project `twoweeks`, environnement `dev`, chemin `/twoweeks`. Launch proxy: `infisical secrets agent-proxy run ... -- codex`; voir [[howto/local-parser-operations]].
 - Remaining MCP gates: prove onboarding from an empty account, compose a genuinely useful ChatGPT journey, then run a 3-5 user private beta.
 - Recommended product demo slice: ChatGPT search or pasted offer → Job Brief → AI-proposed experience selection → human checkboxes → derived CV with provenance → existing proposal generation.
 - A broad location/radius ATS provider comes second; a full editable master CV comes third.
 - Public launch, write tools, provider/model calls, export, live submit/apply, refresh tokens and billing remain blocked pending separate reviewed gates.
-- The public distribution surface is evolving; decide the final tool catalog before submission because approved tools are snapshot-frozen.
-- `application-os-foundation` is verified at PR336 merge `80b4af7a764b37cc57b5bcb25a4f3bfc0a16a23b`.
-- Luna low passed the English direct/adjacent development cells but only matched the stable control; do not promote it as a general default.
-- Historical French CV-backed EVAL3D vetoes are invalid for quality inference because a canonical formal closing was counted as body content. No provider rerun is required now.
-- No-CV remains a separate evidence/UX problem and is byte-locked against QUALITY-CL-4 drift. Any four-cell EN/FR CV-backed old/new comparison requires a separate exact contract and approval after merge; no provider run is automatic.
+- Historical French EVAL3D vetoes are invalid because a formal closing was counted as body content. No-CV remains separate and locked; any provider rerun requires its own approved contract.
 - Product truth is `twoweeks`; CVForge and ProposalForge are internal module names.
-- Cloud-region decision: Twoweeks is US-first; future Convex Cloud and first production parser default to US East (N. Virginia), while parser provider selection remains benchmark-gated. Read [[strategy/us-first-cloud-region]] and [[sources/2026-07-27-us-first-cloud-region]].
+- Neyssan production checkpoint (2026-08-19): `origin/main`, Cloudflare Pages Production et Convex Production sont alignés sur `83872148`; Clerk Production et l’issuer `clerk.twoweeks.ai` restent alignés, le canary de suppression est passé et les deux domaines sont anonymement confinés par Access. Restent le smoke des deux identités autorisées, l’isolation A/B et l’exercice du repli coordonné vers `966890d9`; l’image parser `83872148` est publiée mais Lightsail reste sur `408e428`. Read [[sources/2026-08-14-neyssan-auth-production-transition-checkpoint]].
+- Twoweeks is US-first; future Convex Cloud and parser default to US East, provider benchmark-gated. AWS industrialisation remains security-first and threshold-driven. Read [[strategy/us-first-cloud-region]] and [[tech/aws-production-industrialization]].
 - Persistent wiki mutations require `wiki/index.md`, `wiki/log.md`, and usually `wiki/hot.md`.
 
 ## Canonical Pages To Read
@@ -42,5 +40,5 @@ Keep two workstreams separate:
 - MCP commercial roadmap: [[product/chatgpt-app-sdk-roadmap]], [[howto/chatgpt-mcp-private-beta-tunnel-connector]]
 - Cover-letter quality: [[tasks/2026-06-22-cover-letter-quality-production-roadmap]], [[sources/2026-06-24-cover-letter-mistral-v2-staging-green]]
 - Product/parser/export routing: [[overview]], [[concepts/cv-parsing-pipeline]], [[tech/export-pipeline]]
-- Cloud region / parser hosting: [[strategy/us-first-cloud-region]], [[tech/local-vs-remote-parser-architecture]], [[howto/local-parser-operations]]
+- Cloud region / parser hosting / scale: [[strategy/us-first-cloud-region]], [[tech/aws-production-industrialization]], [[tech/local-vs-remote-parser-architecture]]
 - Wiki operations: [[meta/llm-wiki-pattern]], [[meta/temporal-management]]

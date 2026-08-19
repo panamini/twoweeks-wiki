@@ -1,7 +1,7 @@
 ---
 title: "Log — twoweeks Wiki"
 category: overview
-updated: 2026-07-28
+updated: 2026-08-14
 ---
 
 # Log du Wiki · twoweeks
@@ -2051,3 +2051,203 @@ Migration vers schema v2 : ajout rawinput/ (staging), gestion temporelle (status
 - Preuve live : `/oauth/token` `200`, `tools/list` `200` avec `search` et `fetch`, puis un `tools/call search` read-only final en `200` avec quatre resultats du catalogue sur.
 - `Bot Fight Mode` et `AI Labyrinth` sont restes desactives apres la preuve, sans attribution causale; un A/B separe est requis avant reactivation.
 - Provider calls, writes, refresh tokens, billing, account-link lifecycle expansion, production/shared DB mutation et lancement public restent interdits.
+
+## 2026-08-05 — Neyssan post-merge Jobs smoke and private-beta checkpoint
+
+**Pages created**:
+- `wiki/sources/2026-08-05-neyssan-post-merge-jobs-smoke-checkpoint.md`
+
+**Pages updated**:
+- `wiki/product/product-roadmap.md`
+- `wiki/product/job-library.md`
+- `wiki/product/chatgpt-app-sdk-roadmap.md`
+- `wiki/overview.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**Points notables**:
+- Exact Neyssan `origin/main` checkpoint is `3ef0bbdb1552eb064051df887379f637071ba037`; PRs #378–#382 are merged.
+- Local authenticated synthetic-account smoke passed the Job → Job Brief → attached CV → tailoring review → materialize → Proposal flow on desktop and 640px mobile, with zero runtime errors and zero horizontal overflow.
+- The result is a private-beta candidate, not public-launch proof. Remaining gates are deployed frontend identity, two-account sign-out/isolation, account-deletion/cache/late-write safety, MCP empty-account onboarding, an authorized 3–5 user cohort, and operational/privacy/support controls.
+- Jobs pagination, caps and exact aggregate counts remain deferred scalability work.
+
+## 2026-08-05 — Infisical and local MCP bootstrap procedure clarified
+
+**Pages updated**:
+- `wiki/howto/chatgpt-mcp-private-beta-tunnel-connector.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**Points notables**:
+- Recorded that Chrome and Infisical CLI authentication are separate boundaries; the verified shared-secret route is project `twoweeks`, environment `dev`, CLI path `/twoweeks`.
+- Distinguished fixed non-secret `run.sh` contract values from environment bindings and private credentials, including the server-only nature of `CONVEX_AUTH_TOKEN`.
+- Added the value-silent OAuth-secret sync, ordered MCP validation commands, public smoke origin, and checkout-owner rule for runtime/container reuse.
+- No secret value, JWT, private subject, Infisical token, Convex token, or tunnel credential was copied into the wiki.
+
+## [2026-08-10] direct-update | Convex Infisical bindings documented for local parser operations
+
+**Agent** : Codex
+**Mode** : direct-update
+**Source** : active Neyssan `run.sh` plus a value-silent Infisical name-only read of project `twoweeks`, environment `dev`, path `/twoweeks`
+
+**Pages mises à jour** :
+- `wiki/howto/local-parser-operations.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**Points notables** :
+- Recorded the six available Convex variable names without copying any value.
+- Distinguished local project bindings from `CONVEX_DEPLOY_KEY` and the server-only `CONVEX_AUTH_TOKEN`.
+- Recorded that current `./run.sh bootstrap` retrieves Clerk configuration but does not automatically materialize Convex bindings from Infisical.
+
+## [2026-08-12] direct-update | Infisical OpenAI Agent Proxy verified and documented
+
+**Agent** : Codex
+**Mode** : direct-update
+**Source** : value-silent live verification through Infisical Agent Proxy, project `twoweeks`, environment `dev`, path `/twoweeks`
+
+**Pages mises à jour** :
+- `wiki/howto/local-parser-operations.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**Points notables** :
+- Confirmed that a proxied process receives the `OPENAI_API_KEY_INFISICAL` placeholder and that the proxy authenticates a bounded OpenAI models request with HTTP 200.
+- Documented `OPENAI_API_KEY` as the source secret, `OPENAI_API_KEY_INFISICAL` as the placeholder, and `MISTRAL_API_KEY` as a separate provider secret.
+- Recorded the keyring-backed CLI session as the default local automation and kept fully unattended machine identity setup as a separate least-privilege access decision.
+- No secret value, Infisical token, provider payload, or personal data was read into or copied into the wiki.
+
+## [2026-08-13] direct-update | AWS production industrialisation framework created
+
+**Agent** : Codex
+**Mode** : direct-update
+**Source** : user request, merged Neyssan production-beta deployment baseline, and official AWS architecture guidance
+
+**Pages créées** :
+- `wiki/tech/aws-production-industrialization.md`
+
+**Pages mises à jour** :
+- `wiki/strategy/us-first-cloud-region.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**Points notables** :
+- Established security as a production prerequisite and the transversal decision gate for industrialisation, scalability and automation.
+- Recorded a four-level AWS trajectory from measured Lightsail beta to managed multi-AZ compute, asynchronous workers, and only conditionally multi-region operation.
+- Added provisional traffic estimates, workload-unit formulas, load-test protocol, SLOs and objective thresholds that trigger capacity changes.
+- Reconciled the durable region page with the selected Lightsail beta baseline while keeping the growth platform benchmark-gated.
+- No infrastructure, production environment, secret, account permission, provider configuration or application code was changed.
+
+## [2026-08-14] direct-update | Neyssan identité et frontière Dev/Production documentées
+
+**Agent** : Codex
+**Mode** : direct-update
+**Source** : contrôle read-only du code fusionné, Cloudflare Pages Production, Clerk et Convex; canary synthétique piloté depuis Chrome
+
+**Pages créées** :
+- `wiki/sources/2026-08-14-neyssan-auth-production-transition-checkpoint.md`
+
+**Pages mises à jour** :
+- `wiki/overview.md`
+- `wiki/tech/aws-production-industrialization.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**Points notables** :
+- Documenté que #408 et #409 sont fusionnées et que `main@a1bfbd42` est le point de code de référence; le code fusionné, le déploiement Edge, le backend Convex live et la configuration Clerk restent des preuves séparées.
+- Réconcilié le rapport sécurité à six classes P0 et rappelé que CS-P0-1, CS-P0-2/#408 et #409 sont des changesets distincts, sans les transformer en une seule PR.
+- Documenté que Cloudflare Production pointe encore vers une clé Clerk `pk_test` de `accounts.dev`, tandis que la destination Convex est `prod:giddy-basilisk-88`.
+- Documenté que le canary synthétique créé via invitation est Development-only et que `Development mode` était visible dans l’application.
+- Documenté que Convex Production n’est pas considéré comme déployé au code #408/#409 tant que la version, le timestamp et le rollback ne sont pas prouvés.
+- Documenté les gates restantes : compte synthétique Clerk Production, déploiement Convex exact, bascule de clé Clerk, smoke/isolation A/B, canary suppression et rotation finale des secrets.
+- Aucun code, secret, variable Cloudflare/Clerk/Convex, infrastructure ou donnée n’a été modifié; aucune suppression n’a été lancée.
+
+## [2026-08-14] direct-update | Convex Production déployé, identité encore Dev
+
+**Agent** : Codex
+**Mode** : direct-update
+**Source** : déploiement autorisé depuis une archive propre de `origin/main`, contrôles read-only Convex/Cloudflare/Clerk et smoke protégé
+
+**Pages mises à jour** :
+- `wiki/sources/2026-08-14-neyssan-auth-production-transition-checkpoint.md`
+- `wiki/overview.md`
+- `wiki/tech/aws-production-industrialization.md`
+- `wiki/hot.md`
+- `wiki/log.md`
+
+**Points notables** :
+- Le backend Convex Production `prod:giddy-basilisk-88` a été déployé exactement depuis `main@a1bfbd42f7cfa3e639532683c0a59224c668fa02` avec `npx convex deploy --yes --typecheck disable --cmd 'npm run build'`; codegen, `tsc -b` et Vite build ont réussi.
+- Les fonctions `accountDeletion` et les tables/index #408 sont visibles après déploiement. Aucune suppression, migration destructive ou autre mutation de données n’a été lancée.
+- Le déploiement Cloudflare Production du même SHA reste réussi sur `twoweeks.ai` et `beta.twoweeks.ai`; le rollback Edge vers le déploiement précédent `8c973ff` est identifiable.
+- Cloudflare et l’issuer Convex restent branchés sur Clerk Development (`pk_test`/`accounts.dev`); un compte synthétique existe dans Clerk Production, mais aucun canary de suppression n’a été exécuté. L’Access externe conserve son confinement à deux identités.
+- L’historique Convex et le rollback exact de la version précédente ne sont pas disponibles sur le plan courant; cette limite bloque la bascule `pk_live` et la suppression canary jusqu’à une procédure coordonnée.
+- Les bugs non bloquants restants, notamment la course d’upload simultané à une suppression, sont explicitement différés pour la bêta et ne sont pas présentés comme corrigés. La rotation/révocation des secrets reste une gate finale pré-production; aucune valeur n’est consignée.
+
+## [2026-08-14] direct-update | identité Clerk Production alignée, smoke en attente
+
+**Agent** : Codex
+**Mode** : direct-update
+**Source** : métadonnées OpenID/JWKS publiques Clerk, dashboards Clerk/Convex/Cloudflare et redéploiements contrôlés
+
+**Pages mises à jour** :
+- `wiki/sources/2026-08-14-neyssan-auth-production-transition-checkpoint.md`
+- `wiki/overview.md`
+- `wiki/tech/aws-production-industrialization.md`
+- `wiki/hot.md`
+- `wiki/product/product-roadmap.md`
+- `wiki/log.md`
+
+**Points notables** :
+- L’issuer Clerk Production vérifié est `https://clerk.twoweeks.ai`; le template JWT `convex` est présent dans l’instance Production.
+- Convex Production utilise maintenant cet issuer via `CLERK_JWT_ISSUER_DOMAIN`; aucune modification de code, schéma ou donnée n’a été effectuée.
+- Cloudflare Production utilise la clé publique `pk_live` et a publié `main@a1bfbd42` avec build réussi sur les deux alias.
+- Le smoke a affiché le dashboard Production, puis la session a été renouvelée; Clerk attend maintenant un code email pour terminer l’authentification Convex. Aucun canary de suppression n’a été lancé.
+- La seconde adresse bêta est confirmée par l’utilisateur, mais sa connexion live n’est pas vérifiée ici; le confinement Access à deux identités reste inchangé.
+
+## [2026-08-14] direct-update | canary suppression synthétique validé
+
+**Agent** : Codex
+**Mode** : direct-update
+**Source** : rebuild Cloudflare Pages, logs/data Convex Production et canary navigateur sur le compte synthétique uniquement
+
+**Pages mises à jour** :
+- `wiki/sources/2026-08-14-neyssan-auth-production-transition-checkpoint.md`
+- `wiki/tech/aws-production-industrialization.md`
+- `wiki/product/product-roadmap.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**Points notables** :
+- Le rebuild Cloudflare Pages `a7b4be50` a réussi sur `main@a1bfbd42` après le déploiement Convex, afin de régénérer les bindings `accountDeletion.request` comme Action; aucun code n’a changé.
+- Le canary synthétique de suppression est passé en Production : `accountDeletion:request`, 41 `purgeBatch`, `markClerkDeletionComplete` et `deleteClerkUser` sont en succès; le tombstone est `purged`/`complete` et le sujet synthétique n’est plus présent dans `users`.
+- L’erreur `proposalsPublic` affichée ensuite est le garde `assertAccountActive` attendu pour un compte en suppression; elle ne constitue pas un échec du canary.
+- Aucun compte réel, aucun schéma supplémentaire, aucune infrastructure et aucune valeur de secret n’ont été modifiés. La rotation/révocation des secrets reste une gate finale pré-production.
+- Les gates restantes sont le smoke des deux identités Cloudflare autorisées, les tests anonyme/A/B post-déploiement et une procédure de rollback Convex coordonnée; le confinement Cloudflare est conservé.
+
+## [2026-08-19] direct-update | main, Pages et Convex alignés sur `83872148`
+
+**Agent** : Codex
+**Mode** : direct-update
+**Source** : worktree propre `origin/main`, déploiements Convex/Cloudflare observés, function-spec et workflows GitHub
+
+**Pages mises à jour** :
+- `wiki/sources/2026-08-14-neyssan-auth-production-transition-checkpoint.md`
+- `wiki/product/product-roadmap.md`
+- `wiki/tech/aws-production-industrialization.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**Points notables** :
+- `origin/main`, Cloudflare Pages Production et Convex Production sont alignés sur `83872148d91263591d4cb9025cd39fbe60acfef4`; build et déploiement Convex ont réussi depuis un worktree propre.
+- Le delta de schéma est limité à `metadata.generationContext` optionnel; aucune migration destructive n’a été exécutée.
+- Les deux domaines renvoient anonymement HTTP 302 vers Cloudflare Access. Les smokes des deux identités autorisées, l’isolation A/B post-déploiement et l’appel LLM anonyme restent non vérifiés.
+- Le repli source coordonné pré-#411 est identifié à `966890d9df580ca2c404faa8e1ed3da87f691ffd`, mais l’historique Convex instantané reste indisponible.
+- L’image parser `83872148` est construite/testée/publiée; Lightsail reste sur `408e428`. Aucun déploiement parser, changement de code, secret ou donnée utilisateur n’a été effectué pendant cette mise à jour wiki.
