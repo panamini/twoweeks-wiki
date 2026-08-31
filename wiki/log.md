@@ -1,7 +1,7 @@
 ---
 title: "Log — twoweeks Wiki"
 category: overview
-updated: 2026-08-14
+updated: 2026-08-31
 ---
 
 # Log du Wiki · twoweeks
@@ -2251,3 +2251,26 @@ Migration vers schema v2 : ajout rawinput/ (staging), gestion temporelle (status
 - Les deux domaines renvoient anonymement HTTP 302 vers Cloudflare Access. Les smokes des deux identités autorisées, l’isolation A/B post-déploiement et l’appel LLM anonyme restent non vérifiés.
 - Le repli source coordonné pré-#411 est identifié à `966890d9df580ca2c404faa8e1ed3da87f691ffd`, mais l’historique Convex instantané reste indisponible.
 - L’image parser `83872148` est construite/testée/publiée; Lightsail reste sur `408e428`. Aucun déploiement parser, changement de code, secret ou donnée utilisateur n’a été effectué pendant cette mise à jour wiki.
+
+## [2026-08-31] direct-update | Jobs, Mistral et remediation UI fusionnés
+
+**Agent** : Codex
+**Mode** : direct-update
+**Source** : états et commits GitHub vérifiés pour les PR #419, #420 et #421; audit read-only des PR encore ouvertes
+
+**Pages mises à jour** :
+- `wiki/sources/2026-08-31-neyssan-jobs-mistral-ui-merge-checkpoint.md`
+- `wiki/product/job-library.md`
+- `wiki/concepts/cv-parsing-pipeline.md`
+- `wiki/product/product-roadmap.md`
+- `wiki/overview.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**Points notables** :
+- #420 est fusionnée à `f30522427cf5f864ca930a06d8c78b3672eac08a`; le read-model Jobs, les fallbacks proposal/shadow bornés et la gate durable du backfill sont livrés. Le backfill n'a pas été exécuté.
+- #419 est fusionnée à `fbe29ec8782f3f301c7c42e7af6cbc51ebe75c92`; le port Mistral sélectif préserve les sections canoniques jusqu'aux mappings/exports sans réintroduire les anciennes branches larges.
+- #421 est fusionnée à `cab56d6873c2dd32f988a48899e035e61f519fce`; la remediation UI v1 active couvre recovery localisée, guards preview/query, tokens sémantiques et motion retenue, sans changer la géométrie/templates, parser, auth, billing ou export.
+- Ce checkpoint ne revendique aucun déploiement, smoke production, validation fournisseur live ou migration de données.
+- #418 est supersédée; #387/#389 ne doivent pas être fusionnées en bloc. #385, #396, #405 et #383 restent des décisions séparées.

@@ -2,7 +2,7 @@
 title: Index du Wiki — twoweeks
 category: overview
 sticker: emoji//1f9c6
-updated: 2026-08-19
+updated: 2026-08-31
 ---
 
 # Index du Wiki · twoweeks (v2)
@@ -27,6 +27,7 @@ Le contrôle opératoire du repo reste défini par `WIKI_SCHEMA.md` puis `CLAUDE
 | Jobs / match | [[product/job-library]] | [[product/job-match-review]] |
 | Neyssan post-merge Jobs smoke | [[sources/2026-08-05-neyssan-post-merge-jobs-smoke-checkpoint]] | [[product/product-roadmap]], [[product/job-library]] |
 | Neyssan identité / alignement production `83872148` | [[sources/2026-08-14-neyssan-auth-production-transition-checkpoint]] | [[tech/aws-production-industrialization]], [[strategy/us-first-cloud-region]], [[product/product-roadmap]] |
+| Neyssan Jobs / Mistral / UI merge checkpoint | [[sources/2026-08-31-neyssan-jobs-mistral-ui-merge-checkpoint]] | [[product/job-library]], [[concepts/cv-parsing-pipeline]], [[product/product-roadmap]] |
 | Export / pagination | [[tech/export-pipeline]] | [[tech/preview-to-print-pipeline]], [[tech/workshop-pagination]] |
 | Proposal Forge geometry | [[tech/proposal-forge-document-geometry]] | [[tech/proposal-style-layer]], [[design/document-token-contract]] |
 | Proposal signature/closing | [[tech/proposal-signature-closing-layer]] | [[tech/proposal-style-layer]], [[tech/proposal-forge-document-geometry]], [[tech/export-pipeline]] |
@@ -239,6 +240,7 @@ Cover-letter quality has a merged PR249 staged internal Mistral V2 gate and a gr
 | [[sources/2026-07-15-mcp-current-head-authenticated-summary-reproof-checkpoint\|MCP Current-Head Authenticated Summary Reproof Checkpoint - V19]] | checkpoint | 2026-07-15 | Current-head transport/OAuth/six-tool proof; one protected call returned bounded `NO_DATA`, so commercial value remains to prove |
 | [[sources/2026-07-27-us-first-cloud-region\|US-First Cloud Region Decision]] | decision | 2026-07-27 | US-first cloud-region direction, local Convex boundary, provider gate, and migration implications |
 | [[sources/2026-08-14-neyssan-auth-production-transition-checkpoint\|Neyssan Auth / Production Transition Checkpoint]] | checkpoint | 2026-08-14 | Distinction code fusionné, Cloudflare Edge, Convex live, identité Clerk alignée et canary synthétique |
+| [[sources/2026-08-31-neyssan-jobs-mistral-ui-merge-checkpoint\|Neyssan Jobs, Mistral and UI Merge Checkpoint]] | checkpoint | 2026-08-31 | #420/#419/#421 fusionnées; backfill, déploiement et smoke production non exécutés |
 | [[sources/2026-06-24-cover-letter-mistral-v2-staging-green\|Cover Letter Mistral V2 Staging Green Checkpoint]] | analysis | 2026-06-24 | current |
 | [[sources/2026-06-23-twoweeks-mcp-chatgpt-app-sdk-roadmap-checkpoint\|Twoweeks MCP / ChatGPT App SDK Roadmap Checkpoint]] | analysis | 2026-06-23 | current |
 ---
@@ -310,9 +312,9 @@ Cover-letter quality has a merged PR249 staged internal Mistral V2 gate and a gr
 
 ## Statistiques
 
-- **Pages `current` / `planned` détectées par frontmatter** : 189 (2 overview, 1 entité, 2 concepts, 8 design, 8 product, 4 strategy, 2 meta, 135 sources, 15 tech, 6 howto, 2 tasks, 2 `todo` legacy, 2 outputs)
+- **Pages `current` / `planned` détectées par frontmatter** : 190 (2 overview, 1 entité, 2 concepts, 8 design, 8 product, 4 strategy, 2 meta, 136 sources, 15 tech, 6 howto, 2 tasks, 2 `todo` legacy, 2 outputs)
 - **Note de comptage** : les fichiers système ou pages sans `status` ne sont pas comptés; les 2 pages de catégorie legacy `todo` sont signalées sans être reclassées dans cette mutation.
 - **Pages archivées** : 2
 - **Sources dans `raw/`** : 91
 - **Sources en attente dans `rawinput/`** : 0
-- **Dernière mise à jour** : 2026-08-14
+- **Dernière mise à jour** : 2026-08-31

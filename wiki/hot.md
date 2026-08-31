@@ -3,7 +3,7 @@ title: "Hot Cache - twoweeks"
 category: overview
 status: current
 created: 2026-05-02
-updated: 2026-08-19
+updated: 2026-08-31
 ---
 
 # Hot Cache
@@ -18,6 +18,7 @@ Keep two workstreams separate:
 
 - MCP commercial launch: PR369 merged at `a3ea57da`. Two authenticated accounts passed 8/8 protected calls, seed/cleanup 4/4, recovery/deltas accepted, plus atomic concurrency/retry. Operational proof only, not commercial user value.
 - Cover-letter quality: PR337 (`QUALITY-CL-4`) is ready at `977f1a29d8b9a5b3f1f67964eff61f46e5373f53`; 8 checks and exact-head Codex review are clear. Proves deterministic EN/FR prompt/finalizer integrity, not provider quality or a default-model choice.
+- Neyssan merge checkpoint: #420 Jobs read-model, #419 selective Mistral trust/export hardening, and #421 v1 UI remediation are merged. This is code integration only; Jobs backfill, deployment, live provider validation, and production smoke were not run.
 
 ## Key Active Facts
 
@@ -31,6 +32,7 @@ Keep two workstreams separate:
 - Public launch, write tools, provider/model calls, export, live submit/apply, refresh tokens and billing remain blocked pending separate reviewed gates.
 - Historical French EVAL3D vetoes are invalid because a formal closing was counted as body content. No-CV remains separate and locked; any provider rerun requires its own approved contract.
 - Product truth is `twoweeks`; CVForge and ProposalForge are internal module names.
+- Old PR #418 is superseded by #421; broad Mistral PRs #387/#389 are not merge candidates after selective #419. #385, #396, #405 and #383 remain separate review decisions, not missing pieces of the completed merge train.
 - Neyssan production checkpoint (2026-08-19): `origin/main`, Cloudflare Pages Production et Convex Production sont alignés sur `83872148`; Clerk Production et l’issuer `clerk.twoweeks.ai` restent alignés, le canary de suppression est passé et les deux domaines sont anonymement confinés par Access. Restent le smoke des deux identités autorisées, l’isolation A/B et l’exercice du repli coordonné vers `966890d9`; l’image parser `83872148` est publiée mais Lightsail reste sur `408e428`. Read [[sources/2026-08-14-neyssan-auth-production-transition-checkpoint]].
 - Twoweeks is US-first; future Convex Cloud and parser default to US East, provider benchmark-gated. AWS industrialisation remains security-first and threshold-driven. Read [[strategy/us-first-cloud-region]] and [[tech/aws-production-industrialization]].
 - Persistent wiki mutations require `wiki/index.md`, `wiki/log.md`, and usually `wiki/hot.md`.
@@ -40,5 +42,6 @@ Keep two workstreams separate:
 - MCP commercial roadmap: [[product/chatgpt-app-sdk-roadmap]], [[howto/chatgpt-mcp-private-beta-tunnel-connector]]
 - Cover-letter quality: [[tasks/2026-06-22-cover-letter-quality-production-roadmap]], [[sources/2026-06-24-cover-letter-mistral-v2-staging-green]]
 - Product/parser/export routing: [[overview]], [[concepts/cv-parsing-pipeline]], [[tech/export-pipeline]]
+- 2026-08-31 Jobs/Mistral/UI checkpoint: [[sources/2026-08-31-neyssan-jobs-mistral-ui-merge-checkpoint]], [[product/job-library]], [[product/product-roadmap]]
 - Cloud region / parser hosting / scale: [[strategy/us-first-cloud-region]], [[tech/aws-production-industrialization]], [[tech/local-vs-remote-parser-architecture]]
 - Wiki operations: [[meta/llm-wiki-pattern]], [[meta/temporal-management]]
