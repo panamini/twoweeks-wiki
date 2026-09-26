@@ -1,7 +1,7 @@
 ---
 title: "Log — twoweeks Wiki"
 category: overview
-updated: 2026-08-31
+updated: 2026-09-26
 ---
 
 # Log du Wiki · twoweeks
@@ -12,6 +12,31 @@ Journal chronologique append-only de toutes les opérations sur le wiki.
 grep "^## \[" wiki/log.md | tail -5   # Dernières 5 entrées
 grep "^## \[" wiki/log.md | grep "ingest"  # Tous les ingests
 ```
+
+---
+
+## [2026-09-26] ingest | archivage de l’audit et du plan billing du 16 septembre
+
+**Agent** : Codex
+**Mode** : ingest ciblé depuis deux documents projet
+**Sources** :
+- `docs/audits/2026-09-16-billing-launch-current-state.md`
+- `docs/plans/2026-09-16-billing-launch-qualification.md`
+
+**Pages créées** :
+- `wiki/archive/outputs/2026-09-16-billing-launch-current-state.md`
+- `wiki/archive/tasks/2026-09-16-billing-launch-qualification.md`
+
+**Routage** :
+- Les deux snapshots sont archivés et marqués superseded par
+  `wiki/product/billing-launch-readiness.md`, qui contient l’état canonique
+  plus récent du 24 septembre.
+- `wiki/index.md` et `wiki/hot.md` pointent vers les archives sans les
+  présenter comme des preuves de production actuelles.
+
+**Vérification** : frontmatter, liens, index, hot cache et journal mis à jour;
+aucune valeur secrète, aucun code et aucune configuration de production n’ont
+été modifiés.
 
 ---
 
@@ -2274,3 +2299,60 @@ Migration vers schema v2 : ajout rawinput/ (staging), gestion temporelle (status
 - #421 est fusionnée à `cab56d6873c2dd32f988a48899e035e61f519fce`; la remediation UI v1 active couvre recovery localisée, guards preview/query, tokens sémantiques et motion retenue, sans changer la géométrie/templates, parser, auth, billing ou export.
 - Ce checkpoint ne revendique aucun déploiement, smoke production, validation fournisseur live ou migration de données.
 - #418 est supersédée; #387/#389 ne doivent pas être fusionnées en bloc. #385, #396, #405 et #383 restent des décisions séparées.
+
+## [2026-09-16] direct-update | readiness essais/paiement et alignement production
+
+**Agent** : Codex
+**Mode** : direct-update
+**Source** : lecture directe read-only de Convex Dashboard/CLI, Infisical `prod /twoweeks`, Stripe live et JobsPipe dans Chrome; aucun secret consigné.
+
+**Pages créées** :
+- `wiki/product/billing-launch-readiness.md`
+
+**Pages mises à jour** :
+- `wiki/overview.md`
+- `wiki/index.md`
+- `wiki/hot.md`
+- `wiki/log.md`
+
+**Configuration non secrète alignée** :
+- Convex Production `prod:giddy-basilisk-88` reçoit `STRIPE_LAUNCH_PRICE_ID` avec le Price live existant; aucun produit Stripe supplémentaire n’a été créé.
+- Convex et Infisical `prod /twoweeks` portent `gpt-5.6-terra`, `PREMIUM_COVER_LETTER_BOUNDED_REQUESTS=1`, `STRIPE_LIVE_MODE_ENABLED=1` et `BILLING_METER_UNIT=off`.
+- `BILLING_LAUNCH_MODE` reste absent; essais et Checkout restent fermés.
+
+**Preuves observées** :
+- Stripe live : Twoweeks Pro actif, Price EUR 7,90 unique; webhook actif vers `/stripe/webhook`, quatre événements, 15 tentatives dont 10 échecs (67 %), tentatives récentes à 200.
+- JobsPipe : workspace `twoweeks`, plan Free, 990 crédits restants sur 1 000, 2 requêtes/seconde; preuve fonctionnelle manuelle acceptée, qualification économique non prouvée.
+- Readiness Convex : Price PASS; lettre, édition Mistral, parser OCR, sandbox, rétention, fiscalité et legacy BLOCK; `ready=false`, `trialReady=false`.
+
+**Limites et sécurité** :
+- Présence des secrets vérifiée sans valeur; `JOBSPIPE_API_KEY` est présent dans Convex mais absent d’Infisical et n’a pas été transféré.
+- Aucun code, commit, push, merge ou déploiement n’a été effectué. La branche locale d’audit et sa référence `origin/main` ne constituent pas une base Git fraîche pour une implémentation.
+
+## [2026-09-24] direct-update | activation essais et paiement en production après PR #481
+
+**Agent** : Codex
+**Mode** : direct-update
+**Source** : PR #481 et ses checkpoints de revue, déploiements Cloudflare Pages/Convex, configuration Infisical EU `prod /twoweeks`, readiness Production, smoke UI authentifié et événement Stripe live; aucune valeur secrète ni identité utilisateur consignée.
+
+**Pages mises à jour** :
+- `wiki/product/billing-launch-readiness.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**État de fusion et déploiement** :
+- [PR #481](https://github.com/panamini/neyssan/pull/481) a été fusionnée le 2026-09-24T20:56:39Z au commit `8513c35f234b11dc0f0cc00d11c36709ba08cbce`; tous les contrôles GitHub étaient verts. Codex Review s’est terminé sans nouveau finding sur le head `1dea6dd964be32282a0a54752b6675dfc56240b5`.
+- Cloudflare Pages et Convex Production `prod:giddy-basilisk-88` ont déployé avec succès l’arbre fusionné.
+- L’image parser immuable `ghcr.io/panamini/neyssan/cv-parser:sha-8513c35f234b11dc0f0cc00d11c36709ba08cbce`, digest `sha256:8a1ab27de73903d9f31a2e7b04a2e542479cc47bb8cb088c89bc44f9dfc5799c`, est déployée et saine derrière cloudflared, sans port applicatif public.
+- Aucun nouveau code n’a été écrit au checkpoint d’activation après la fusion.
+
+**Activation et preuves** :
+- `BILLING_LAUNCH_MODE=enforced` est aligné dans Convex Production et Infisical EU `prod /twoweeks`; une requête Production confirme `enabled=true`. Readiness : `ready=true`, `trialReady=true`, 23/23 contrôles réussis, aucun échec.
+- `BILLING_METER_UNIT=off` reste aligné dans les deux environnements : la branche `enforced` utilise le flux entitlement/wallet V2, et le smoke Checkout live confirme que `off` ne bloque pas l’activation.
+- Le smoke authentifié sur `/settings?tab=billing` a réussi : la réclamation d’essai a affiché 2 lettres et 4 optimisations; Checkout Stripe live s’est ouvert au Price `price_1UDtQfFkKSo5QGwIw7WQQSYs`, 7,90 € en paiement unique.
+- Aucun achat payant n’a été soumis par l’agent. La preuve d’un achat manuel par l’utilisateur reste la seule preuve utilisateur en attente.
+- L’offre reste `twoweeks_letters_25_optimizations_50_v1` (essai : 2 lettres, 4 optimisations, 5 pages OCR; pack : 25 lettres, 50 optimisations, 10 pages OCR, 5 recherches, 25 imports).
+- L’endpoint Stripe live `we_1UDu0QFkKSo5QGwITijUNltK` pointe vers `https://giddy-basilisk-88.convex.site/stripe/webhook` et est activé. La preuve de transport signée sans frais a produit `evt_1UJJqsFkKSo5QGwICqLvcgKS` (`checkout.session.expired`, `livemode=true`, `pending_webhooks=0`) à 2026-09-24T21:06:50.725Z; l’identifiant de session n’est pas consigné.
+- La qualification couvre Terra lettres en conservant la décision `gpt-5.6-terra`, Mistral édition/matching/extraction, contrat OCR v2 signé, JobsPipe recherche/import, identité Clerk vérifiée et parser déployé. Les valeurs de secrets et l’identité Clerk ne sont pas consignées.
+- Les checkpoints PR sont le [checkpoint d’activation](https://github.com/panamini/neyssan/pull/481#issuecomment-5813645723), [audit Luna](https://github.com/panamini/neyssan/pull/481#issuecomment-5813785120), [checkpoint pré-fusion](https://github.com/panamini/neyssan/pull/481#issuecomment-5813887408) et [activation finale](https://github.com/panamini/neyssan/pull/481#issuecomment-5822506871).

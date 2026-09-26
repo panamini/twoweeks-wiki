@@ -2,7 +2,7 @@
 title: Index du Wiki — twoweeks
 category: overview
 sticker: emoji//1f9c6
-updated: 2026-08-31
+updated: 2026-09-26
 ---
 
 # Index du Wiki · twoweeks (v2)
@@ -18,6 +18,7 @@ Le contrôle opératoire du repo reste défini par `WIKI_SCHEMA.md` puis `CLAUDE
 |-------|----------------|------------|
 | Mémoire active LLM | [[hot]] | [[overview]], [[meta/llm-wiki-pattern]] |
 | État produit | [[overview]] | [[entities/twoweeks]], [[product/product-roadmap]], [[product/product-vision]] |
+| Essais et paiement / activation production | [[product/billing-launch-readiness]] | [[product/product-roadmap]], [[howto/local-parser-operations]] |
 | Planning IA shadow | [[product/ai-product-model]] | [[tech/proposal-ai-routing-and-inline-diff]], [[sources/2026-05-25-proposal-generation-truth-planner]] |
 | Cover-letter quality | [[tasks/2026-06-22-cover-letter-quality-production-roadmap]] | [[sources/2026-06-24-cover-letter-mistral-v2-staging-green]], [[sources/2026-06-23-cover-letter-quality-pr249-staged-internal-gate]], [[sources/2026-06-23-release-orchestration-staging-pr87-8-checkpoint]], [[sources/2026-06-23-cover-letter-quality-pr248-merge-checkpoint]], [[sources/2026-06-23-cover-letter-quality-pr246-merge-checkpoint]] |
 | ChatGPT App roadmap | [[product/chatgpt-app-sdk-roadmap]] | [[sources/2026-07-15-mcp-current-head-authenticated-summary-reproof-checkpoint]], [[howto/chatgpt-mcp-private-beta-tunnel-connector]], [[sources/2026-07-13-pr322-mcp-public-catalog-url-checkpoint]], [[sources/2026-06-11-mcp-chatgpt-app-readiness-spec]], [[product/manual-application-handoff]] |
@@ -92,6 +93,7 @@ Cette carte est un routeur de lecture pour agents LLM. Elle ne remplace pas les 
 |------|--------|--------|------|
 | [[product/ai-product-model\|AI Product Model]] | 3 modes IA, rulebook, qualité writing, and Planner Agent shadow chain | current | ai, ux, modes |
 | [[product/ai-consistency-p0-editor-ai\|AI Consistency P0 — Closure Audit]] | Closure audit snapshot du rulebook AI editor, preview, telemetry et tailoring | current | ai, editor, rulebook |
+| [[product/billing-launch-readiness\|Billing Launch Readiness]] | Activation production : readiness 23/23, essai vérifié, Checkout live ; achat payant manuel encore attendu | current | billing, stripe, trials, production |
 | [[product/chatgpt-app-sdk-roadmap\|ChatGPT/App SDK Roadmap]] | PR369 merged a controlled two-account four-tool proof with atomic concurrency coordination; commercial ChatGPT value, onboarding and private-beta cohort remain unproven | current | chatgpt-app, apps-sdk |
 | [[product/job-library\|Job Library]] | Jobs sauvegardés, Job Brief editable et documents liés | current | jobs, library |
 | [[product/job-match-review\|Job Match Review]] | Match comme indicateur d'attention utilisateur et dogfood interne | current | jobs, match |
@@ -307,14 +309,16 @@ Cover-letter quality has a merged PR249 staged internal Mistral V2 gate and a gr
 |------|-------------|----------------|
 | [[archive/concepts/parsing-poc-progress\|Parsing POC Progress]] | 2026-04-15 | [[concepts/cv-parsing-pipeline]] |
 | [[archive/entities/cv-forge\|CV Forge (ancienne entité)]] | 2026-04-12 | [[entities/twoweeks]] |
+| [[archive/outputs/2026-09-16-billing-launch-current-state\|Audit historique — lancement essais et paiement]] | 2026-09-24 | [[product/billing-launch-readiness]] |
+| [[archive/tasks/2026-09-16-billing-launch-qualification\|Plan historique — qualification du lancement]] | 2026-09-24 | [[product/billing-launch-readiness]] |
 
 ---
 
 ## Statistiques
 
-- **Pages `current` / `planned` détectées par frontmatter** : 190 (2 overview, 1 entité, 2 concepts, 8 design, 8 product, 4 strategy, 2 meta, 136 sources, 15 tech, 6 howto, 2 tasks, 2 `todo` legacy, 2 outputs)
+- **Pages `current` / `planned` détectées par frontmatter** : 192 (2 overview, 1 entité, 2 concepts, 8 design, 10 product, 4 strategy, 2 meta, 136 sources, 15 tech, 6 howto, 2 tasks, 2 `todo` legacy, 2 outputs)
 - **Note de comptage** : les fichiers système ou pages sans `status` ne sont pas comptés; les 2 pages de catégorie legacy `todo` sont signalées sans être reclassées dans cette mutation.
-- **Pages archivées** : 2
+- **Pages archivées** : 4
 - **Sources dans `raw/`** : 91
 - **Sources en attente dans `rawinput/`** : 0
-- **Dernière mise à jour** : 2026-08-31
+- **Dernière mise à jour** : 2026-09-26
