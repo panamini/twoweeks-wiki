@@ -15,6 +15,18 @@ grep "^## \[" wiki/log.md | grep "ingest"  # Tous les ingests
 
 ---
 
+## [2026-09-28] direct-update | Automatic Convex deploy from Cloudflare Pages
+
+**Agent** : Claude Code
+**Mode** : direct-update
+**Source** : Neyssan `scripts/cloudflare-convex-deploy.mjs` wired into `build:cloudflare`
+
+**Pages mises à jour** :
+- `wiki/howto/convex-environment-sync.md`
+- `wiki/log.md`
+
+---
+
 ## [2026-09-28] direct-update | Convex environment sync runbook
 
 **Agent** : Claude Code

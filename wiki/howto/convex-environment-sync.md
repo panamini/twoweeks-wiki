@@ -48,9 +48,13 @@ Codes de sortie : `1` = une variable `core` manque à la fois dans Infisical et 
 
 `deploy:prod` exporte `CONVEX_DEPLOY_KEY` depuis le secret Infisical `CONVEX_deploy_key_PROD`. Si le sync signale qu'il ne peut pas lire les variables (`deployment:env:view`), soit lancer `npx convex login` une fois, soit créer dans le dashboard Convex une clé de déploiement prod avec les droits variables d'environnement et la ranger dans Infisical sous le même nom.
 
-### La CI ne déploie pas Convex
+### Déploiement automatique au merge sur `main`
 
-Cloudflare Pages construit le frontend à chaque merge sur `main`. Les fonctions et le schéma Convex ne sont **pas** déployés par la CI. Après un merge touchant `my-app/convex/`, lancer `npm run deploy:prod`, sinon le nouveau frontend appelle un ancien backend et l'utilisateur voit `Server Error`.
+Cloudflare Pages lance `npm run build:cloudflare`. Sur `main`, ce build exécute d'abord `scripts/cloudflare-convex-deploy.mjs` (`npx convex deploy`), puis construit le frontend : un merge sur `main` déploie backend et frontend ensemble, sans minutes GitHub Actions. Si le deploy Convex échoue, le build échoue et l'ancien frontend reste en ligne.
+
+Réglage unique : Cloudflare Pages → projet → Settings → Variables and secrets → **Production** uniquement → `CONVEX_DEPLOY_KEY` = même valeur que le secret Infisical `CONVEX_deploy_key_PROD`. Ne pas l'ajouter en Preview. Le script refuse toute autre branche et toute clé qui n'est pas celle de `prodDeployment`. Sans la variable, le build affiche `Convex deploy skipped` et il faut lancer `npm run deploy:prod` à la main.
+
+Les variables d'environnement ne sont pas synchronisées par ce build : après un ajout ou changement de secret dans Infisical, lancer une fois `infisical run … -- npm run convex:env:sync`.
 
 ### Import CV (`structuredUpload`)
 
