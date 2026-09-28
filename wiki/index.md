@@ -2,7 +2,7 @@
 title: Index du Wiki — twoweeks
 category: overview
 sticker: emoji//1f9c6
-updated: 2026-08-19
+updated: 2026-09-28
 ---
 
 # Index du Wiki · twoweeks (v2)
@@ -36,6 +36,7 @@ Le contrôle opératoire du repo reste défini par `WIKI_SCHEMA.md` puis `CLAUDE
 | Cloud region / US-first | [[strategy/us-first-cloud-region]] | [[tech/local-vs-remote-parser-architecture]], [[strategy/language-localization]] |
 | Industrialisation AWS / sécurité / capacité | [[tech/aws-production-industrialization]] | [[strategy/us-first-cloud-region]], [[tech/local-vs-remote-parser-architecture]], [[howto/cloudflare-zero-trust-tunnel]] |
 | Opérations locales | [[howto/local-parser-operations]] | [[tech/local-vs-remote-parser-architecture]] |
+| Variables d'environnement Convex / deploy prod | [[howto/convex-environment-sync]] | [[howto/local-parser-operations]], [[tech/import-ocr-pipeline]] |
 | Règles wiki | [[meta/llm-wiki-pattern]] | [[meta/temporal-management]], [[meta/codex-prompting-standards]] |
 
 Cette carte est un routeur de lecture pour agents LLM. Elle ne remplace pas les pages durables.
@@ -271,6 +272,7 @@ Cover-letter quality has a merged PR249 staged internal Mistral V2 gate and a gr
 |------|--------|------|
 | [[howto/chatgpt-mcp-private-beta-tunnel-connector\|ChatGPT MCP Private Beta Tunnel Connector]] | Authentification CLI Infisical `dev` `/twoweeks`, configuration OAuth/Convex, runtime owner-scoped, tunnel et preuves MCP | chatgpt, mcp, oauth, cloudflare |
 | [[howto/cloudflare-zero-trust-tunnel\|Cloudflare Zero Trust + Tunnel]] | Runbook parser.dasti.ai, CF Access, tunnel, DNS, token, WAF | cloudflare, devops |
+| [[howto/convex-environment-sync\|Convex Environment Sync]] | Infisical → Convex prod : manifeste des variables, `npm run deploy:prod`, check/sync, interrupteurs, dépendance parser de l'import CV | convex, infisical, env, deploy |
 | [[howto/git-branch-hygiene|Git Branch Hygiene]] | Démarrer une tâche depuis `main` à jour avant branche courte | git, workflow |
 | [[howto/headless-workshop-preview-probe|Headless Workshop Preview Probe]] | Probe Playwright headless pour `/cv` workshop preview | playwright, workshop |
 | [[howto/local-parser-operations\|Local Parser Operations]] | Lancer la stack parser locale, utiliser le proxy OpenAI Infisical et retrouver les bindings Convex | parser, local, convex, infisical, openai, run.sh |
@@ -310,7 +312,7 @@ Cover-letter quality has a merged PR249 staged internal Mistral V2 gate and a gr
 
 ## Statistiques
 
-- **Pages `current` / `planned` détectées par frontmatter** : 189 (2 overview, 1 entité, 2 concepts, 8 design, 8 product, 4 strategy, 2 meta, 135 sources, 15 tech, 6 howto, 2 tasks, 2 `todo` legacy, 2 outputs)
+- **Pages `current` / `planned` détectées par frontmatter** : 189 (2 overview, 1 entité, 2 concepts, 8 design, 8 product, 4 strategy, 2 meta, 135 sources, 15 tech, 7 howto, 2 tasks, 2 `todo` legacy, 2 outputs)
 - **Note de comptage** : les fichiers système ou pages sans `status` ne sont pas comptés; les 2 pages de catégorie legacy `todo` sont signalées sans être reclassées dans cette mutation.
 - **Pages archivées** : 2
 - **Sources dans `raw/`** : 91

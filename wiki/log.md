@@ -1,7 +1,7 @@
 ---
 title: "Log — twoweeks Wiki"
 category: overview
-updated: 2026-08-14
+updated: 2026-09-28
 ---
 
 # Log du Wiki · twoweeks
@@ -12,6 +12,21 @@ Journal chronologique append-only de toutes les opérations sur le wiki.
 grep "^## \[" wiki/log.md | tail -5   # Dernières 5 entrées
 grep "^## \[" wiki/log.md | grep "ingest"  # Tous les ingests
 ```
+
+---
+
+## [2026-09-28] direct-update | Convex environment sync runbook
+
+**Agent** : Claude Code
+**Mode** : direct-update
+**Source** : merged Neyssan PR #509 (`convex-env` manifest, `convex-env-sync.mjs`, `deploy:prod`, `docs/runbooks/convex-environment.md`) and the Convex prod env var names list
+
+**Pages créées** :
+- `wiki/howto/convex-environment-sync.md`
+
+**Pages mises à jour** :
+- `wiki/index.md`
+- `wiki/log.md`
 
 ---
 
