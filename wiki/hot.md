@@ -3,7 +3,7 @@ title: "Hot Cache - twoweeks"
 category: overview
 status: current
 created: 2026-05-02
-updated: 2026-09-26
+updated: 2026-09-29
 ---
 
 # Hot Cache
@@ -22,6 +22,10 @@ provider qualification, and commercial launch evidence distinct.
   Convex Production and Infisical EU `prod /twoweeks`; readiness is 23/23,
   `ready=true`, `trialReady=true`. Read
   [[product/billing-launch-readiness]].
+- **Billing décisions (2026-09-29)**: prix 7,90 € TTC (Price `tax_behavior=inclusive`
+  `price_1UL3EUFkKSo5QGwIdGDjp4H2`); webhook compare `amount_subtotal` (incident TVA,
+  PR #531); essais plafonnés à 50, e-mails jetables refusés; plafond d’édition
+  32 000 octets (PR #534). Détails : [[product/billing-launch-readiness]].
 - The 2026-09-16 billing audit and qualification plan are preserved as
   historical archives only: [[archive/outputs/2026-09-16-billing-launch-current-state]]
   and [[archive/tasks/2026-09-16-billing-launch-qualification]]. Do not use

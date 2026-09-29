@@ -1,7 +1,7 @@
 ---
 title: "Log — twoweeks Wiki"
 category: overview
-updated: 2026-09-26
+updated: 2026-09-29
 ---
 
 # Log du Wiki · twoweeks
@@ -12,6 +12,20 @@ Journal chronologique append-only de toutes les opérations sur le wiki.
 grep "^## \[" wiki/log.md | tail -5   # Dernières 5 entrées
 grep "^## \[" wiki/log.md | grep "ingest"  # Tous les ingests
 ```
+
+---
+
+## [2026-09-29] direct-update | décisions billing : correctif TVA, prix TTC, plafonds de coût, essais
+
+**Agent** : Claude
+**Mode** : mise à jour directe de la page canonique
+**Pages modifiées** :
+- `wiki/product/billing-launch-readiness.md` (section « Décisions du 2026-09-29 », Price courant, prix TTC)
+- `wiki/index.md`, `wiki/hot.md`
+
+**Contenu** : incident TVA Stripe et correctif (PR #531) ; Price inclusive, plafonds de coût, essais plafonnés à 50 et refus des e-mails jetables, changement d’interface (PR #534) ; économie unitaire estimée.
+
+**Vérification** : aucune valeur secrète consignée ; index, hot cache et journal mis à jour.
 
 ---
 
