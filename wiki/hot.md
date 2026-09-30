@@ -3,7 +3,7 @@ title: "Hot Cache - twoweeks"
 category: overview
 status: current
 created: 2026-05-02
-updated: 2026-09-29
+updated: 2026-09-30
 ---
 
 # Hot Cache
@@ -26,6 +26,11 @@ provider qualification, and commercial launch evidence distinct.
   `price_1UL3EUFkKSo5QGwIdGDjp4H2`); webhook compare `amount_subtotal` (incident TVA,
   PR #531); essais plafonnés à 50, e-mails jetables refusés; plafond d’édition
   32 000 octets (PR #534). Détails : [[product/billing-launch-readiness]].
+- **Export documents (2026-09-30)** : le navigateur passe par le relais Convex
+  authentifié `/document-export/*` (jamais le parser en direct) ; Access laisse
+  passer la clé de service « parser » via une politique Service Auth ; le worker
+  Lightsail a `DOCUMENT_EXPORT_FRONTEND_URL=https://twoweeks.ai`. Réglages et
+  diagnostic : [[tech/export-pipeline]].
 - The 2026-09-16 billing audit and qualification plan are preserved as
   historical archives only: [[archive/outputs/2026-09-16-billing-launch-current-state]]
   and [[archive/tasks/2026-09-16-billing-launch-qualification]]. Do not use

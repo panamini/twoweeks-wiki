@@ -15,6 +15,20 @@ grep "^## \[" wiki/log.md | grep "ingest"  # Tous les ingests
 
 ---
 
+## [2026-09-30] direct-update | export documents : relais Convex, Access Service Auth, URL frontend du worker
+
+**Agent** : Claude
+**Mode** : mise à jour directe de la page canonique
+**Pages modifiées** :
+- `wiki/tech/export-pipeline.md` (sections « Chemin de production », « Réglages requis », « Diagnostic », « Incident du 2026-09-30 »)
+- `wiki/index.md`, `wiki/hot.md`
+
+**Contenu** : panne « Le service d’export n’a pas répondu » sur tous les exports ; trois causes (URL parser absente du build, confinement Access, URL frontend absente du worker) ; corrections PR #541–#546 et réglages opérateur.
+
+**Vérification** : export réel CV + lettre (PDF, DOCX) en 200 depuis une session connectée ; aucune valeur secrète consignée ; index, hot cache et journal mis à jour.
+
+---
+
 ## [2026-09-29] direct-update | décisions billing : correctif TVA, prix TTC, plafonds de coût, essais
 
 **Agent** : Claude

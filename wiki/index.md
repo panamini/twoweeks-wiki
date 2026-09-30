@@ -2,7 +2,7 @@
 title: Index du Wiki — twoweeks
 category: overview
 sticker: emoji//1f9c6
-updated: 2026-09-26
+updated: 2026-09-30
 ---
 
 # Index du Wiki · twoweeks (v2)
