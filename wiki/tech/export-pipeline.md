@@ -3,7 +3,7 @@ title: "Export Pipeline — OCR to ATS / Styled Output"
 category: tech
 tags: [export, pdf, docx, ats, renderer, worker, preview, stylePreset]
 created: 2026-04-14
-updated: 2026-09-30
+updated: 2026-10-01
 status: current
 valid_from: 2026-04-14
 version: v1
