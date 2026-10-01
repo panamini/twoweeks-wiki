@@ -2384,3 +2384,14 @@ Migration vers schema v2 : ajout rawinput/ (staging), gestion temporelle (status
 - L’endpoint Stripe live `we_1UDu0QFkKSo5QGwITijUNltK` pointe vers `https://giddy-basilisk-88.convex.site/stripe/webhook` et est activé. La preuve de transport signée sans frais a produit `evt_1UJJqsFkKSo5QGwICqLvcgKS` (`checkout.session.expired`, `livemode=true`, `pending_webhooks=0`) à 2026-09-24T21:06:50.725Z; l’identifiant de session n’est pas consigné.
 - La qualification couvre Terra lettres en conservant la décision `gpt-5.6-terra`, Mistral édition/matching/extraction, contrat OCR v2 signé, JobsPipe recherche/import, identité Clerk vérifiée et parser déployé. Les valeurs de secrets et l’identité Clerk ne sont pas consignées.
 - Les checkpoints PR sont le [checkpoint d’activation](https://github.com/panamini/neyssan/pull/481#issuecomment-5813645723), [audit Luna](https://github.com/panamini/neyssan/pull/481#issuecomment-5813785120), [checkpoint pré-fusion](https://github.com/panamini/neyssan/pull/481#issuecomment-5813887408) et [activation finale](https://github.com/panamini/neyssan/pull/481#issuecomment-5822506871).
+
+## [2026-10-01] direct-update | serveur d'export Lightsail : déploiement manuel et piège Buffer Convex
+
+**Agent** : Claude Code (Opus)
+**Mode** : direct-update
+**Source** : débogage en production de l'image du CV absente du PDF (PR #576, #577), redéploiement du parser Lightsail ; aucune valeur secrète consignée.
+
+**Pages mises à jour** :
+- [[tech/export-pipeline]] : section « Serveur d'export Lightsail : mise à jour MANUELLE » (procédure, rollback, piège `Buffer`, piste d'automatisation).
+- [[hot]] : rappel court sur le déploiement manuel du parser.
+

@@ -31,6 +31,10 @@ provider qualification, and commercial launch evidence distinct.
   passer la clé de service « parser » via une politique Service Auth ; le worker
   Lightsail a `DOCUMENT_EXPORT_FRONTEND_URL=https://twoweeks.ai`. Réglages et
   diagnostic : [[tech/export-pipeline]].
+- **Serveur d'export Lightsail = déploiement MANUEL** : Pages et Convex se
+  déploient seuls, pas le parser/worker PDF. Après une fusion qui touche le
+  worker ou le payload d'impression, lancer `deploy.sh` sur l'hôte avec le tag
+  `sha-<commit>`. Procédure : [[tech/export-pipeline]].
 - The 2026-09-16 billing audit and qualification plan are preserved as
   historical archives only: [[archive/outputs/2026-09-16-billing-launch-current-state]]
   and [[archive/tasks/2026-09-16-billing-launch-qualification]]. Do not use

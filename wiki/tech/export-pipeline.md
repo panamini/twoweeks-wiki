@@ -204,6 +204,26 @@ Symptôme : « Le service d'export n'a pas répondu » sur tout export (PDF, PDF
 
 Corrections : relais Convex (PR #541–#545), politique Service Auth ajoutée par l'opérateur, `DOCUMENT_EXPORT_FRONTEND_URL` sur Lightsail (PR #546, appliqué sur l'hôte avec sauvegarde `compose.production.yaml.bak-*` et redéploiement de la même image). Vérifié depuis une session réelle : CV et lettre en PDF + DOCX en 200.
 
+## Serveur d'export Lightsail : mise à jour MANUELLE (important)
+
+Le site (Cloudflare Pages) et Convex se déploient tout seuls à chaque fusion sur `main`. **Le serveur d'export Lightsail, non.** Le workflow `Release (production parser image)` construit et publie l'image `ghcr.io/panamini/neyssan/cv-parser:sha-<commit>` à chaque fusion, mais rien ne l'installe sur l'hôte.
+
+Conséquence : tout changement dans `my-app/scripts/document-export-worker.ts`, `my-app/src/lib/document-export-models.ts` (payload d'impression) ou `cv_parser_service/` n'est **pas en production** tant qu'on n'a pas redéployé. Le 2026-10-01, l'hôte tournait encore sur l'image du 17 septembre (PR #481) : l'image ajoutée sur un CV n'arrivait jamais dans le PDF.
+
+Vérifier puis déployer (après que le run `Release` du commit voulu est vert) :
+
+```bash
+ssh -i ~/.ssh/twoweeks-lightsail ubuntu@3.220.205.193 'sudo cat /opt/twoweeks/parser/deployed-image'
+ssh -i ~/.ssh/twoweeks-lightsail ubuntu@3.220.205.193 \
+  'sudo /opt/twoweeks/parser/deploy.sh ghcr.io/panamini/neyssan/cv-parser:sha-<commit-complet>'
+```
+
+`deploy.sh` attend la santé du conteneur ; rollback = redéployer le tag précédent. Utiliser le `deploy.sh` de l'hôte (il garde le `compose.production.yaml` de l'hôte et ses réglages, dont `DOCUMENT_EXPORT_FRONTEND_URL`). Après déploiement, refaire un export PDF réel.
+
+Piège Convex vu le même jour : le runtime Convex (httpActions) n'a **pas** `Buffer` de Node. Un `Buffer.from(...)` y lève une erreur ; si elle est attrapée, la fonction échoue en silence. Encoder en base64 avec `btoa` (PR #577).
+
+Automatisation possible (pas faite) : ajouter au workflow `Release` une étape SSH qui lance `deploy.sh` avec le tag du commit, protégée par un environnement GitHub avec approbation.
+
 ## Règles d'architecture
 
 - Le fichier final doit être généré hors preview DOM.
