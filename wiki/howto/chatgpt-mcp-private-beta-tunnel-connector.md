@@ -216,7 +216,7 @@ Pour qualifier une branche, utiliser un tunnel et un hostname de test (ex. `mcp-
 - `MCP_PRIVATE_BETA_TUNNEL_ID`, `MCP_PRIVATE_BETA_TUNNEL_HOSTNAME`, `MCP_PRIVATE_BETA_TUNNEL_CREDENTIALS_FILE` ;
 - `MCP_PRIVATE_BETA_AUTHORIZATION_ORIGIN`, `MCP_PRIVATE_BETA_RESOURCE` (= origine + `/mcp`), `MCP_PRIVATE_BETA_CLIENT_ID`, `MCP_PRIVATE_BETA_REDIRECT_URI`.
 
-Les mettre dans un fichier d'exports ignore (mode 600) source avant CHAQUE commande `run.sh`, avec un `.env.local` coherent. Le doctor verifie la coherence (HTTPS, resource, hostname, callback ChatGPT, UUID) et echoue sans les exports : le prouver avant de demarrer. Verifier ensuite que le tunnel de test n'a qu'un connecteur et que le tunnel `935a2064` n'en a gagne aucun. Demonter apres le test : `run.sh down`, CNAME, tunnel, credentials, fichiers locaux, connecteur ChatGPT.
+Les mettre dans un fichier d'exports ignore (mode 600) source avant CHAQUE commande `run.sh`, avec un `.env.local` coherent. Le doctor verifie la coherence (HTTPS, resource, hostname, callback ChatGPT, UUID) et echoue sans les exports : le prouver avant de demarrer. Verifier ensuite que le tunnel de test n'a qu'un connecteur et que le tunnel `935a2064` n'en a gagne aucun. Demonter apres le test : `run.sh down`, CNAME, tunnel, credentials, fichiers locaux, connecteur ChatGPT. Le conteneur cloudflared de `run.sh` a la politique `unless-stopped` : oublie, il revient a chaque demarrage de Docker (cas reel : conteneur du 2026-09-27 attache au tunnel de production, 502 publics, arrete le 2026-10-05).
 
 ChatGPT utilise desormais le callback generique `https://chatgpt.com/connector_platform_oauth_redirect`, accepte en correspondance exacte (commit `01fbf9f1`).
 

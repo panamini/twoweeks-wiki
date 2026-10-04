@@ -53,8 +53,9 @@ provider qualification, and commercial launch evidence distinct.
   operational evidence, not commercial value proof.
 - **MCP boucle lettre (2026-10-05)** : 5 outils, qualifiée de bout en bout
   sur un stack isolé ; branche `codex/mcp-letter-loop` non poussée.
-  `mcp.twoweeks.ai` = connecteur sur la Lightsail de PRODUCTION (ancienne
-  version) : ne jamais y attacher un stack local ; tester sur un hostname
+  `mcp.twoweeks.ai` = connecteur sur la Lightsail de PRODUCTION (scope
+  lecture seule) : ne jamais y attacher un stack local, et toujours faire
+  `run.sh down` après un test (conteneur oublié du 27/09 → 502) ; tester sur un hostname
   dédié ([[howto/chatgpt-mcp-private-beta-tunnel-connector]]). Lire
   [[product/chatgpt-app-sdk-roadmap]] section « October 2026 ».
 - Product truth is `twoweeks`; CVForge and ProposalForge are internal names.

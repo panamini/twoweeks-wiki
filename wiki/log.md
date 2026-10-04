@@ -2437,3 +2437,12 @@ Migration vers schema v2 : ajout rawinput/ (staging), gestion temporelle (status
 - [[product/chatgpt-app-sdk-roadmap]] : état qualifié, et ce qui reste avant la production (serveur MCP sur la Lightsail).
 - [[howto/chatgpt-mcp-private-beta-tunnel-connector]] : procédure de test sur un hostname dédié, nouveau callback ChatGPT.
 - [[index]] et [[hot]] : résumé et fait actif.
+
+## [2026-10-05] direct-update | MCP : conteneur tunnel oublié sur le tunnel de production
+
+**Agent** : Claude Code (Opus)
+**Mode** : direct-update
+**Source** : inventaire Cloudflare du tunnel `935a2064` (deux connecteurs), inspection Docker locale, échantillons HTTP publics avant/après arrêt.
+
+**Pages mises à jour** :
+- [[product/chatgpt-app-sdk-roadmap]], [[howto/chatgpt-mcp-private-beta-tunnel-connector]], [[hot]] : le second connecteur était le conteneur `run.sh` du 2026-09-27 sur le Mac (502 publics) ; arrêté ; la Lightsail seule répond 200 avec le scope lecture seule.
