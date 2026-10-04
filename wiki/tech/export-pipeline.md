@@ -222,6 +222,8 @@ ssh -i ~/.ssh/twoweeks-lightsail ubuntu@3.220.205.193 \
 
 Piège Convex vu le même jour : le runtime Convex (httpActions) n'a **pas** `Buffer` de Node. Un `Buffer.from(...)` y lève une erreur ; si elle est attrapée, la fonction échoue en silence. Encoder en base64 avec `btoa` (PR #577).
 
+Disque plein (vu le 2026-10-04) : chaque déploiement garde l'ancienne image. Quand le disque (58 Go) est plein, `deploy.sh` échoue avec un trompeur `denied` sur ghcr.io (le pull anonyme échoue faute de place, puis le repli par jeton GHCR échoue). Vérifier `df -h /`, puis `sudo docker image prune -a -f && sudo docker builder prune -a -f` (les images en cours d'utilisation sont gardées), et relancer `deploy.sh`.
+
 Automatisation possible (pas faite) : ajouter au workflow `Release` une étape SSH qui lance `deploy.sh` avec le tag du commit, protégée par un environnement GitHub avec approbation.
 
 ## Règles d'architecture

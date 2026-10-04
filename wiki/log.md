@@ -2406,3 +2406,13 @@ Migration vers schema v2 : ajout rawinput/ (staging), gestion temporelle (status
 - [[product/chatgpt-app-sdk-roadmap]] : section « October 2026 scope decision » (principe, catalogue à 5 outils, écarts, état et requalification).
 - [[index]] : résumé de la page roadmap.
 - [[hot]] : fait actif sur le périmètre MCP.
+
+## [2026-10-04] direct-update | serveur d'export : disque plein et faux « denied » GHCR
+
+**Agent** : Claude Code (Opus)
+**Mode** : direct-update
+**Source** : déploiement Lightsail en échec, diagnostic sur l'hôte ; aucune valeur secrète consignée.
+
+**Pages mises à jour** :
+- [[tech/export-pipeline]] : diagnostic du disque plein et commande de nettoyage Docker.
+
