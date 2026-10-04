@@ -3,7 +3,7 @@ title: "ChatGPT/App SDK Roadmap"
 category: product
 tags: [chatgpt-app, apps-sdk, mcp, roadmap, safety]
 created: 2026-06-23
-updated: 2026-08-05
+updated: 2026-10-04
 status: current
 valid_from: 2026-06-12
 type: roadmap
@@ -17,7 +17,7 @@ Le transport MCP privé et la lecture utile sur données contrôlées sont déso
 
 ## Current state
 
-Statut : `PRIVATE_BETA_CONTROLLED_DATA_PROVEN` / `COMMERCIAL_USER_VALUE_NOT_YET_PROVEN`.
+Statut : `PRIVATE_BETA_CONTROLLED_DATA_PROVEN` / `COMMERCIAL_USER_VALUE_NOT_YET_PROVEN`. Mise à jour 2026-10-04 : la boucle lettre confirmée est prouvée en bêta privée ; voir la section « October 2026 scope decision ».
 
 V19 reste la preuve historique du transport, des metadata publiques, des deux versions MCP, du client OAuth confidentiel et d'un appel protégé `NO_DATA`.
 
@@ -26,6 +26,19 @@ Le 28 juillet 2026, la PR369 a été mergée sur `main` au commit `a3ea57da61387
 Cette preuve qualifie le rail opérationnel et l'isolation contrôlée, pas un parcours commercial dans ChatGPT. La surface actuelle expose exactement quatre tools read-only `summarize`. Elle ne sait pas encore chercher un emploi, ingérer une offre, créer une variante de CV ou générer une lettre.
 
 Le lancement public, les write tools, les provider/model calls déclenchés par le MCP, l'export et le live submit/apply restent bloqués.
+
+## October 2026 scope decision — the letter loop (2026-10-04)
+
+Cette section prime sur la décision V1 read-only ci-dessous, qui reste comme historique.
+
+- **Déjà prouvé (2026-09-27, stack privé local)** : une lettre confirmée de bout en bout depuis un vrai ChatGPT connecté — prepare gratuit, approbation dans l'app, génération via le générateur réel, lettre sauvegardée et relue dans la bibliothèque, exactement un crédit débité. Preuve : `docs/audits/2026-09-27-connected-chatgpt-runtime.md` dans le dépôt code.
+- **Principe produit** : ChatGPT demande et lit ; TwoWeeks valide et écrit. Toute action qui coûte un crédit ou modifie un document est approuvée dans TwoWeeks ; chaque résultat renvoie un lien vers l'app (édition, mise en page, export y restent).
+- **Point d'arrêt** : « voici une offre » → enregistrée → choix du CV → approbation 1 crédit → lettre dans la bibliothèque → ChatGPT la montre avec un lien.
+- **Catalogue retenu (5 outils lettre)** : `fetch(twoweeks.letter_sources)` désormais en lecture seule, `twoweeks.letter.prepare`, `twoweeks.letter.generate` (+ lien app), nouveaux `twoweeks.letter.get` (lecture) et `twoweeks.job.add` (offre collée, même chemin de création que le site, sans appel provider). Même scope `twoweeks:letters:write` et même gate ; aucun nouveau scope, table ni fonction Convex publique.
+- **Plus tard, si besoin** : suggestions de modification de CV validées dans l'app (jamais d'écriture directe), création de CV, import PDF.
+- **Écarté** : recherche d'offres JobsPipe dans ChatGPT, dossiers de candidature parallèles, export comme outil, envoi de candidature.
+- **Rejeté** : le prototype à 18 outils (`codex/mcp-public-app-management`, non commité) — écritures CV destructrices, lettres et dossiers dans des tables parallèles, catalogue non filtré par scope.
+- **État** : implémenté sur la branche `codex/mcp-letter-loop` (commit `46d7209d`, non poussé, non déployé). Tests et typecheck locaux verts ; revue sécurité sans finding critique/élevé. **À requalifier sur le stack privé** avant tout usage (5 étapes dans `docs/decisions/2026-10-04-mcp-letter-loop-scope.md`).
 
 ## Commercial V1 product decision
 

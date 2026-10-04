@@ -3,7 +3,7 @@ title: "Hot Cache - twoweeks"
 category: overview
 status: current
 created: 2026-05-02
-updated: 2026-09-30
+updated: 2026-10-04
 ---
 
 # Hot Cache
@@ -51,6 +51,10 @@ provider qualification, and commercial launch evidence distinct.
   ports. No code was added after merge during activation.
 - Stable endpoint: `https://mcp.twoweeks.ai/mcp`; MCP proof remains
   operational evidence, not commercial value proof.
+- **MCP scope (2026-10-04)** : on s'arrête à la boucle lettre (5 outils,
+  ChatGPT demande / TwoWeeks valide). Prototype 18 outils rejeté. Branche
+  `codex/mcp-letter-loop` (`46d7209d`) non poussée, à requalifier. Lire
+  [[product/chatgpt-app-sdk-roadmap]] section « October 2026 ».
 - Product truth is `twoweeks`; CVForge and ProposalForge are internal names.
 - Persistent wiki mutations require `wiki/index.md`, `wiki/log.md`, and
   `wiki/hot.md`.

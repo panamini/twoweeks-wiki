@@ -2395,3 +2395,14 @@ Migration vers schema v2 : ajout rawinput/ (staging), gestion temporelle (status
 - [[tech/export-pipeline]] : section « Serveur d'export Lightsail : mise à jour MANUELLE » (procédure, rollback, piège `Buffer`, piste d'automatisation).
 - [[hot]] : rappel court sur le déploiement manuel du parser.
 
+
+## [2026-10-04] direct-update | MCP : périmètre de la boucle lettre et rejet du prototype 18 outils
+
+**Agent** : Claude Code (Opus)
+**Mode** : direct-update
+**Source** : revue du prototype `codex/mcp-public-app-management`, lecture du parcours `mcpLetters` existant, implémentation sur `codex/mcp-letter-loop` (commit `46d7209d`, non poussé) et `docs/decisions/2026-10-04-mcp-letter-loop-scope.md` du dépôt code ; aucune valeur secrète consignée.
+
+**Pages mises à jour** :
+- [[product/chatgpt-app-sdk-roadmap]] : section « October 2026 scope decision » (principe, catalogue à 5 outils, écarts, état et requalification).
+- [[index]] : résumé de la page roadmap.
+- [[hot]] : fait actif sur le périmètre MCP.
