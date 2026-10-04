@@ -2416,3 +2416,13 @@ Migration vers schema v2 : ajout rawinput/ (staging), gestion temporelle (status
 **Pages mises à jour** :
 - [[tech/export-pipeline]] : diagnostic du disque plein et commande de nettoyage Docker.
 
+
+## [2026-10-04] direct-update | MCP : transition de consentement et backlog reporté
+
+**Agent** : Claude Code (Opus)
+**Mode** : direct-update
+**Source** : revue GPT du commit `46d7209d` ; correctif `9cea1c5e` sur `codex/mcp-letter-loop`.
+
+**Pages mises à jour** :
+- [[product/chatgpt-app-sdk-roadmap]] : interrupteur `MCP_LETTER_LOOP_TOOLS_ENABLED` et ordre d'activation ; « écarté » remplacé par « reporté au backlog ».
+- [[hot]] : référence de commit et interrupteur.

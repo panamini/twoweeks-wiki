@@ -35,10 +35,10 @@ Cette section prime sur la décision V1 read-only ci-dessous, qui reste comme hi
 - **Principe produit** : ChatGPT demande et lit ; TwoWeeks valide et écrit. Toute action qui coûte un crédit ou modifie un document est approuvée dans TwoWeeks ; chaque résultat renvoie un lien vers l'app (édition, mise en page, export y restent).
 - **Point d'arrêt** : « voici une offre » → enregistrée → choix du CV → approbation 1 crédit → lettre dans la bibliothèque → ChatGPT la montre avec un lien.
 - **Catalogue retenu (5 outils lettre)** : `fetch(twoweeks.letter_sources)` désormais en lecture seule, `twoweeks.letter.prepare`, `twoweeks.letter.generate` (+ lien app), nouveaux `twoweeks.letter.get` (lecture) et `twoweeks.job.add` (offre collée, même chemin de création que le site, sans appel provider). Même scope `twoweeks:letters:write` et même gate ; aucun nouveau scope, table ni fonction Convex publique.
-- **Plus tard, si besoin** : suggestions de modification de CV validées dans l'app (jamais d'écriture directe), création de CV, import PDF.
-- **Écarté** : recherche d'offres JobsPipe dans ChatGPT, dossiers de candidature parallèles, export comme outil, envoi de candidature.
+- **Reporté au backlog (pas abandonné, décision et contrat dédiés à chaque fois)** : suggestions de modification de CV validées dans l'app (jamais d'écriture directe), création de CV, import PDF, recherche d'offres JobsPipe, dossiers de candidature sur `applicationPackages`, export comme outil. L'envoi de candidature reste hors périmètre tant qu'aucun flux confirmé par un fournisseur n'existe.
+- **Transition de consentement** : `job.add` et `letter.get` réutilisent le scope lettres ; ils restent masqués et refusés tant que `MCP_LETTER_LOOP_TOOLS_ENABLED` n'est pas à `1`. Activer au moins une heure après la mise en ligne du nouveau texte de consentement (jetons ≤ 1 h, sans refresh).
 - **Rejeté** : le prototype à 18 outils (`codex/mcp-public-app-management`, non commité) — écritures CV destructrices, lettres et dossiers dans des tables parallèles, catalogue non filtré par scope.
-- **État** : implémenté sur la branche `codex/mcp-letter-loop` (commit `46d7209d`, non poussé, non déployé). Tests et typecheck locaux verts ; revue sécurité sans finding critique/élevé. **À requalifier sur le stack privé** avant tout usage (5 étapes dans `docs/decisions/2026-10-04-mcp-letter-loop-scope.md`).
+- **État** : implémenté sur la branche `codex/mcp-letter-loop` (commits `46d7209d` et `9cea1c5e`, non poussés, non déployés). Tests et typecheck locaux verts ; revue sécurité sans finding critique/élevé. **À requalifier sur le stack privé** avant tout usage (5 étapes dans `docs/decisions/2026-10-04-mcp-letter-loop-scope.md`).
 
 ## Commercial V1 product decision
 

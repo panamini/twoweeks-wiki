@@ -53,7 +53,7 @@ provider qualification, and commercial launch evidence distinct.
   operational evidence, not commercial value proof.
 - **MCP scope (2026-10-04)** : on s'arrête à la boucle lettre (5 outils,
   ChatGPT demande / TwoWeeks valide). Prototype 18 outils rejeté. Branche
-  `codex/mcp-letter-loop` (`46d7209d`) non poussée, à requalifier. Lire
+  `codex/mcp-letter-loop` (`9cea1c5e`) non poussée, à requalifier ; nouveaux outils derrière `MCP_LETTER_LOOP_TOOLS_ENABLED`. Lire
   [[product/chatgpt-app-sdk-roadmap]] section « October 2026 ».
 - Product truth is `twoweeks`; CVForge and ProposalForge are internal names.
 - Persistent wiki mutations require `wiki/index.md`, `wiki/log.md`, and
