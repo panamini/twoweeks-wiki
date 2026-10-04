@@ -3,7 +3,7 @@ title: "ChatGPT/App SDK Roadmap"
 category: product
 tags: [chatgpt-app, apps-sdk, mcp, roadmap, safety]
 created: 2026-06-23
-updated: 2026-10-04
+updated: 2026-10-05
 status: current
 valid_from: 2026-06-12
 type: roadmap
@@ -38,7 +38,8 @@ Cette section prime sur la décision V1 read-only ci-dessous, qui reste comme hi
 - **Reporté au backlog (pas abandonné, décision et contrat dédiés à chaque fois)** : suggestions de modification de CV validées dans l'app (jamais d'écriture directe), création de CV, import PDF, recherche d'offres JobsPipe, dossiers de candidature sur `applicationPackages`, export comme outil. L'envoi de candidature reste hors périmètre tant qu'aucun flux confirmé par un fournisseur n'existe.
 - **Transition de consentement** : `job.add` et `letter.get` réutilisent le scope lettres ; ils restent masqués et refusés tant que `MCP_LETTER_LOOP_TOOLS_ENABLED` n'est pas à `1`. Activer au moins une heure après la mise en ligne du nouveau texte de consentement (jetons ≤ 1 h, sans refresh).
 - **Rejeté** : le prototype à 18 outils (`codex/mcp-public-app-management`, non commité) — écritures CV destructrices, lettres et dossiers dans des tables parallèles, catalogue non filtré par scope.
-- **État** : implémenté sur la branche `codex/mcp-letter-loop` (commits `46d7209d` et `9cea1c5e`, non poussés, non déployés). Tests et typecheck locaux verts ; revue sécurité sans finding critique/élevé. **À requalifier sur le stack privé** avant tout usage (5 étapes dans `docs/decisions/2026-10-04-mcp-letter-loop-scope.md`).
+- **État (2026-10-05)** : branche `codex/mcp-letter-loop` (non poussée, non déployée) **qualifiée de bout en bout** avec un vrai connecteur ChatGPT sur un stack local isolé (tunnel et hostname de test dédiés, production non touchée) : offre ajoutée puis dédupliquée, une lettre générée, exactement un crédit débité, idempotence sans second débit, `letter.get` et `openUrl` OK, approbation expirée refusée. Deux bugs runtime Convex trouvés et corrigés (`3cdd3791`). Détails : `docs/decisions/2026-10-04-mcp-letter-loop-scope.md`.
+- **Reste avant production** : `mcp.twoweeks.ai` est servi par un connecteur sur la Lightsail de production, avec une ancienne version en lecture seule ; son mode de build et de déploiement n'est pas documenté. Le fusionner sur `main` déploie Convex (fonctions internes, protégées par le gate) mais pas ce serveur. Ordre d'activation : déployer le serveur MCP avec le nouveau consentement, attendre ≥ 1 h, `MCP_LETTER_LOOP_TOOLS_ENABLED=1`, smoke `--letters --letter-loop` sur l'origine de production.
 
 ## Commercial V1 product decision
 

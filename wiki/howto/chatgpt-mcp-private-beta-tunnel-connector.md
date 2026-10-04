@@ -3,7 +3,7 @@ title: "ChatGPT MCP Private Beta Tunnel Connector Runbook"
 category: howto
 tags: [chatgpt-app, mcp, cloudflare, tunnel, oauth, private-beta]
 created: 2026-07-04
-updated: 2026-08-05
+updated: 2026-10-05
 status: current
 type: runbook
 sources: [2026-07-13-pr313-pr317-mcp-private-beta-live-reproof-checkpoint, 2026-07-13-pr311-runsh-doctor-regression-closure-checkpoint, 2026-07-13-pr309-mcp-protocol-compatibility-checkpoint, 2026-07-12-pr308-mcp-private-beta-operational-smoke-checkpoint, 2026-07-12-pr307-runsh-collaborator-portability-checkpoint, 2026-07-05-pr305-durable-mcp-connector-proof-checkpoint, 2026-07-04-pr304-live-mcp-connector-smoke-checkpoint]
@@ -206,6 +206,19 @@ Cette preuve a ete rejouee apres la migration et le deploiement de `MCP_OAUTH_PR
 8. Supprimer l'ancien connecteur apres rotation afin qu'il ne conserve pas le credential remplace.
 
 Ne pas documenter le resultat prive retourne par l'outil. Documenter uniquement la forme de preuve, les statuts et les noms de tools publics.
+
+## Test isole sur un hostname dedie (depuis 2026-10-05)
+
+`mcp.twoweeks.ai` est aujourd'hui servi par un connecteur sur la Lightsail de production. Ne jamais lancer un stack local sur ce tunnel tant qu'un autre connecteur y est attache : Cloudflare repartirait les requetes entre les deux.
+
+Pour qualifier une branche, utiliser un tunnel et un hostname de test (ex. `mcp-letter-loop-test.twoweeks.ai`), avec les surcharges `run.sh` (commit `f8a50802`, valeurs par defaut inchangees) :
+
+- `MCP_PRIVATE_BETA_TUNNEL_ID`, `MCP_PRIVATE_BETA_TUNNEL_HOSTNAME`, `MCP_PRIVATE_BETA_TUNNEL_CREDENTIALS_FILE` ;
+- `MCP_PRIVATE_BETA_AUTHORIZATION_ORIGIN`, `MCP_PRIVATE_BETA_RESOURCE` (= origine + `/mcp`), `MCP_PRIVATE_BETA_CLIENT_ID`, `MCP_PRIVATE_BETA_REDIRECT_URI`.
+
+Les mettre dans un fichier d'exports ignore (mode 600) source avant CHAQUE commande `run.sh`, avec un `.env.local` coherent. Le doctor verifie la coherence (HTTPS, resource, hostname, callback ChatGPT, UUID) et echoue sans les exports : le prouver avant de demarrer. Verifier ensuite que le tunnel de test n'a qu'un connecteur et que le tunnel `935a2064` n'en a gagne aucun. Demonter apres le test : `run.sh down`, CNAME, tunnel, credentials, fichiers locaux, connecteur ChatGPT.
+
+ChatGPT utilise desormais le callback generique `https://chatgpt.com/connector_platform_oauth_redirect`, accepte en correspondance exacte (commit `01fbf9f1`).
 
 ## Historique des blocages et diagnostic
 

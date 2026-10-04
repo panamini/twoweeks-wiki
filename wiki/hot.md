@@ -3,7 +3,7 @@ title: "Hot Cache - twoweeks"
 category: overview
 status: current
 created: 2026-05-02
-updated: 2026-10-04
+updated: 2026-10-05
 ---
 
 # Hot Cache
@@ -51,9 +51,11 @@ provider qualification, and commercial launch evidence distinct.
   ports. No code was added after merge during activation.
 - Stable endpoint: `https://mcp.twoweeks.ai/mcp`; MCP proof remains
   operational evidence, not commercial value proof.
-- **MCP scope (2026-10-04)** : on s'arrête à la boucle lettre (5 outils,
-  ChatGPT demande / TwoWeeks valide). Prototype 18 outils rejeté. Branche
-  `codex/mcp-letter-loop` (`9cea1c5e`) non poussée, à requalifier ; nouveaux outils derrière `MCP_LETTER_LOOP_TOOLS_ENABLED`. Lire
+- **MCP boucle lettre (2026-10-05)** : 5 outils, qualifiée de bout en bout
+  sur un stack isolé ; branche `codex/mcp-letter-loop` non poussée.
+  `mcp.twoweeks.ai` = connecteur sur la Lightsail de PRODUCTION (ancienne
+  version) : ne jamais y attacher un stack local ; tester sur un hostname
+  dédié ([[howto/chatgpt-mcp-private-beta-tunnel-connector]]). Lire
   [[product/chatgpt-app-sdk-roadmap]] section « October 2026 ».
 - Product truth is `twoweeks`; CVForge and ProposalForge are internal names.
 - Persistent wiki mutations require `wiki/index.md`, `wiki/log.md`, and

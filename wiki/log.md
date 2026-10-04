@@ -2426,3 +2426,14 @@ Migration vers schema v2 : ajout rawinput/ (staging), gestion temporelle (status
 **Pages mises à jour** :
 - [[product/chatgpt-app-sdk-roadmap]] : interrupteur `MCP_LETTER_LOOP_TOOLS_ENABLED` et ordre d'activation ; « écarté » remplacé par « reporté au backlog ».
 - [[hot]] : référence de commit et interrupteur.
+
+## [2026-10-05] direct-update | MCP : boucle lettre qualifiée sur stack isolé
+
+**Agent** : Claude Code (Opus)
+**Mode** : direct-update
+**Source** : rapport de qualification Codex du 2026-10-05 et commits `f8a50802`, `01fbf9f1`, `3cdd3791`, `ddae1b3c` sur `codex/mcp-letter-loop` ; aucune valeur secrète consignée.
+
+**Pages mises à jour** :
+- [[product/chatgpt-app-sdk-roadmap]] : état qualifié, et ce qui reste avant la production (serveur MCP sur la Lightsail).
+- [[howto/chatgpt-mcp-private-beta-tunnel-connector]] : procédure de test sur un hostname dédié, nouveau callback ChatGPT.
+- [[index]] et [[hot]] : résumé et fait actif.
