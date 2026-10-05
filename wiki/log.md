@@ -2446,3 +2446,26 @@ Migration vers schema v2 : ajout rawinput/ (staging), gestion temporelle (status
 
 **Pages mises à jour** :
 - [[product/chatgpt-app-sdk-roadmap]], [[howto/chatgpt-mcp-private-beta-tunnel-connector]], [[hot]] : le second connecteur était le conteneur `run.sh` du 2026-09-27 sur le Mac (502 publics) ; arrêté ; la Lightsail seule répond 200 avec le scope lecture seule.
+
+## [2026-10-05] direct-update | MCP production : procédure CIMD et échec d'issuer
+
+**Agent** : Codex
+**Mode** : direct-update
+**Source** : lecture SSH en lecture seule des sept paramètres OAuth non secrets de `/opt/twoweeks/mcp/secrets/mcp.env` et vérification de la connexion depuis le profil ChatGPT TwoWeeks ; aucune valeur secrète ni donnée privée de candidature consignée.
+
+**Pages mises à jour** :
+- `wiki/howto/chatgpt-mcp-private-beta-tunnel-connector.md` : distinction entre client confidentiel local historique et CIMD de production ; valeurs admises, étapes de connexion et état observé.
+- `wiki/product/chatgpt-app-sdk-roadmap.md` : configuration de production confirmée et reconnexion/read-only toujours non prouvés.
+- `wiki/index.md` et `wiki/hot.md` : résumé et contexte actif.
+
+Le connecteur `twoweeks-mcp-private-beta-20260717-r2` ne correspond pas aux listes client/redirect de la Lightsail. Un nouveau connecteur CIMD créé sans identifiant ni secret manuel a échoué avec `OAuth authorization response issuer does not match the expected issuer`. `r2` a été conservé ; aucun appel MCP read-only n'a été lancé.
+
+## [2026-10-05] direct-update | MCP production : bridge, issuer et build reproductible
+
+**Agent** : Claude Code (Opus)
+**Mode** : direct-update
+**Source** : PR #618, #623, #624, #626 (panamini/neyssan) ; inspection Lightsail en lecture seule ; sondes HTTP publiques ; aucune valeur secrète consignée.
+
+**Pages mises à jour** :
+- [[howto/chatgpt-mcp-private-beta-tunnel-connector]] : cause et correctif de l'erreur d'issuer, procédure de déploiement depuis `deploy/mcp/`, historique des incidents (bridge effacé, `.dockerignore`, `_generated`, conteneur tunnel oublié), règle « jamais de patch manuel ».
+- [[product/chatgpt-app-sdk-roadmap]], [[hot]], [[index]] : état à jour.

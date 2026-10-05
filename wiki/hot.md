@@ -51,13 +51,15 @@ provider qualification, and commercial launch evidence distinct.
   ports. No code was added after merge during activation.
 - Stable endpoint: `https://mcp.twoweeks.ai/mcp`; MCP proof remains
   operational evidence, not commercial value proof.
-- **MCP boucle lettre (2026-10-05)** : 5 outils, qualifiée de bout en bout
-  sur un stack isolé ; branche `codex/mcp-letter-loop` non poussée.
-  `mcp.twoweeks.ai` = connecteur sur la Lightsail de PRODUCTION (scope
-  lecture seule) : ne jamais y attacher un stack local, et toujours faire
-  `run.sh down` après un test (conteneur oublié du 27/09 → 502) ; tester sur un hostname
-  dédié ([[howto/chatgpt-mcp-private-beta-tunnel-connector]]). Lire
-  [[product/chatgpt-app-sdk-roadmap]] section « October 2026 ».
+- **MCP lettre (2026-10-05)** : 5 outils qualifiés sur stack isolé ; PR #613
+  rebasée, en attente de décision produit. Production = Lightsail : ne jamais y
+  attacher un stack local ; faire `run.sh down`. Runbook :
+  [[howto/chatgpt-mcp-private-beta-tunnel-connector]], roadmap :
+  [[product/chatgpt-app-sdk-roadmap]].
+- **OAuth MCP prod (2026-10-05)** : CIMD ChatGPT, callback générique, gate
+  lettres `0`. Bridge versionné (#618), issuer corrigé (#623), image construite
+  depuis `main` via `deploy/mcp/` (#626). Ne JAMAIS patcher la Lightsail à la
+  main. Reste : connexion + résumé read-only depuis un connecteur neuf ; garder `r2`. [[howto/chatgpt-mcp-private-beta-tunnel-connector]].
 - Product truth is `twoweeks`; CVForge and ProposalForge are internal names.
 - Persistent wiki mutations require `wiki/index.md`, `wiki/log.md`, and
   `wiki/hot.md`.

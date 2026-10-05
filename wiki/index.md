@@ -94,7 +94,7 @@ Cette carte est un routeur de lecture pour agents LLM. Elle ne remplace pas les 
 | [[product/ai-product-model\|AI Product Model]] | 3 modes IA, rulebook, qualité writing, and Planner Agent shadow chain | current | ai, ux, modes |
 | [[product/ai-consistency-p0-editor-ai\|AI Consistency P0 — Closure Audit]] | Closure audit snapshot du rulebook AI editor, preview, telemetry et tailoring | current | ai, editor, rulebook |
 | [[product/billing-launch-readiness\|Billing Launch Readiness]] | Activation production : readiness 23/23, essai vérifié, Checkout live ; achat payant manuel encore attendu ; décisions 2026-09-29 : prix 7,90 € TTC, correctif TVA, plafonds de coût, essais plafonnés à 50 | current | billing, stripe, trials, production |
-| [[product/chatgpt-app-sdk-roadmap\|ChatGPT/App SDK Roadmap]] | 2026-10-05: letter loop (5 letter tools, ChatGPT asks / TwoWeeks approves) qualified end to end on an isolated stack; unpushed branch; production MCP server on Lightsail still to be identified and updated | current | chatgpt-app, apps-sdk |
+| [[product/chatgpt-app-sdk-roadmap\|ChatGPT/App SDK Roadmap]] | 2026-10-05: boucle lettre qualifiee (PR #613); serveur MCP de production reproductible depuis Git et redeploye (CIMD, issuer corrige); connexion ChatGPT et resume read-only restent a prouver | current | chatgpt-app, apps-sdk |
 | [[product/job-library\|Job Library]] | Jobs sauvegardés, Job Brief editable et documents liés | current | jobs, library |
 | [[product/job-match-review\|Job Match Review]] | Match comme indicateur d'attention utilisateur et dogfood interne | current | jobs, match |
 | [[product/kpis\|KPIs]] | Métriques de succès produit | current | kpi, métriques |
