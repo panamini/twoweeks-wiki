@@ -2469,3 +2469,14 @@ Le connecteur `twoweeks-mcp-private-beta-20260717-r2` ne correspond pas aux list
 **Pages mises à jour** :
 - [[howto/chatgpt-mcp-private-beta-tunnel-connector]] : cause et correctif de l'erreur d'issuer, procédure de déploiement depuis `deploy/mcp/`, historique des incidents (bridge effacé, `.dockerignore`, `_generated`, conteneur tunnel oublié), règle « jamais de patch manuel ».
 - [[product/chatgpt-app-sdk-roadmap]], [[hot]], [[index]] : état à jour.
+
+## [2026-10-05] direct-update | MCP lettres : tous les appels par le bridge signé
+
+**Agent** : Claude Code (Opus)
+**Mode** : direct-update
+**Source** : PR #613 (panamini/neyssan), commits `f151b1bc`, `78d07f62`, `e2cc1b30`, `7a25afdf`, `9e98397f` ; rapports de tests et de relecture sécurité ; aucune valeur secrète consignée.
+
+**Pages mises à jour** :
+- [[product/chatgpt-app-sdk-roadmap]] : clé Convex prod sans `runInternalQueries`, décision « option B », état de la PR et reste à faire.
+- [[howto/chatgpt-mcp-private-beta-tunnel-connector]] : qualification locale avec une paire de clés bridge locale ; ligne d'incident prévue.
+- [[index]] et [[hot]] : résumé et fait actif.

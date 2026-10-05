@@ -248,6 +248,8 @@ Les mettre dans un fichier d'exports ignore (mode 600) source avant CHAQUE comma
 
 ChatGPT utilise desormais le callback generique `https://chatgpt.com/connector_platform_oauth_redirect`, accepte en correspondance exacte (commit `01fbf9f1`).
 
+Depuis PR #613 (`f151b1bc`), tous les appels lettre passent par le bridge signe `/mcp-oauth-storage`. Pour qualifier sans la cle de production : generer une paire P-256 locale, poser la cle publique SPKI en `MCP_OAUTH_BRIDGE_PUBLIC_KEY_SPKI_B64` sur le Convex **local** (honoree seulement si `CONVEX_CLOUD_URL` est en loopback ; ignoree par tout deploiement cloud) et la cle privee PKCS#8 en `MCP_OAUTH_BRIDGE_PRIVATE_KEY_B64` pour le seul serveur MCP local ; les retirer apres le test.
+
 ## Historique des blocages et diagnostic
 
 | Symptome | Cause ou conclusion prouvee | Correction durable |
@@ -258,6 +260,7 @@ ChatGPT utilise desormais le callback generique `https://chatgpt.com/connector_p
 | authorize/token/verification en echec en production | le bridge `/mcp-oauth-storage` n'existait que dans un patch manuel ; chaque deploiement automatique de Convex depuis `main` l'effacait (404) | PR #618 (bridge versionne), redeploye le 2026-10-05 |
 | build de l'image MCP en echec : `COPY shared/` | le `.dockerignore` racine (ecrit pour le parser) exclut `shared/` | PR #624 |
 | build de l'image MCP en echec : `convex/_generated/api` introuvable | fichiers generes ignores par Git ; `convex codegen` exige un deploiement | PR #626 : versionner seulement `api.js` et `server.js`, entierement generiques |
+| outils lettre en echec en production (prevu, avant activation) | la cle Convex du serveur n'a pas `deployment:functions:runInternalQueries` ; les lettres utilisaient le client admin et l'impersonation | PR #613 : six operations lettre sur le bridge signe, sans cle de deploiement complete sur la Lightsail (non deploye) |
 | 502 publics sur `mcp.twoweeks.ai` | conteneur cloudflared `run.sh` du test du 27/09 reste attache au tunnel de production (politique `unless-stopped`) | `run.sh down` dans son worktree, 2026-10-05 |
 | `invalid_authorization_request` | client, resource, scope ou redirect incoherent | utiliser les valeurs exactes ci-dessus; aucun wildcard |
 | `pre_auth_create_failed` | dependance Convex locale/config runtime indisponible | demarrer la stack par `run.sh` et faire passer `mcp-check` |
