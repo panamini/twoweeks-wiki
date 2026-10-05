@@ -2489,3 +2489,12 @@ Le connecteur `twoweeks-mcp-private-beta-20260717-r2` ne correspond pas aux list
 
 **Pages mises à jour** :
 - [[product/chatgpt-app-sdk-roadmap]] et [[hot]] : chemin bridge requalifié de bout en bout, reste fusion/activation avec accord.
+
+## [2026-10-05] direct-update | MCP production : déploiement de main 13147625
+
+**Agent** : Claude Code (Opus)
+**Mode** : direct-update
+**Source** : déploiement Lightsail selon `deploy/mcp/` (archive git, build sur l'hôte, bascule du seul service `mcp`), sondes publiques ; aucune valeur secrète consignée.
+
+**Pages mises à jour** :
+- [[product/chatgpt-app-sdk-roadmap]] et [[hot]] : image `13147625` en production à 20:16 UTC, lettres toujours désactivées, retour arrière documenté.

@@ -53,7 +53,7 @@ provider qualification, and commercial launch evidence distinct.
   operational evidence, not commercial value proof.
 - **MCP lettre (2026-10-05)** : PR #613 passe tous les appels lettre par le
   bridge signé (clé Convex prod sans `runInternalQueries`). Reste :
-  requalifié (stack isolé) ; reste fusion/activation avec accord. Jamais de stack
+  prod déployée 20:16 UTC, lettres à 0. Jamais de stack
   local sur le tunnel prod (`run.sh down`). [[product/chatgpt-app-sdk-roadmap]].
 - **OAuth MCP prod (2026-10-05)** : CIMD ChatGPT, callback générique, gate
   lettres `0`. Bridge versionné (#618), issuer corrigé (#623), image construite
