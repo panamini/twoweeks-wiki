@@ -2480,3 +2480,12 @@ Le connecteur `twoweeks-mcp-private-beta-20260717-r2` ne correspond pas aux list
 - [[product/chatgpt-app-sdk-roadmap]] : clé Convex prod sans `runInternalQueries`, décision « option B », état de la PR et reste à faire.
 - [[howto/chatgpt-mcp-private-beta-tunnel-connector]] : qualification locale avec une paire de clés bridge locale ; ligne d'incident prévue.
 - [[index]] et [[hot]] : résumé et fait actif.
+
+## [2026-10-05] direct-update | MCP lettres : requalification du bridge signé
+
+**Agent** : Claude Code (Opus)
+**Mode** : direct-update
+**Source** : rapport de qualification ChatGPT du 2026-10-05, registre de crédits du Convex local, journaux du stack de test, commits `93cc0b8b`, `3fd01331`, `b3407c01` (PR #613) ; aucune valeur secrète consignée.
+
+**Pages mises à jour** :
+- [[product/chatgpt-app-sdk-roadmap]] et [[hot]] : chemin bridge requalifié de bout en bout, reste fusion/activation avec accord.
