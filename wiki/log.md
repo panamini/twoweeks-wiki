@@ -2498,3 +2498,12 @@ Le connecteur `twoweeks-mcp-private-beta-20260717-r2` ne correspond pas aux list
 
 **Pages mises à jour** :
 - [[product/chatgpt-app-sdk-roadmap]] et [[hot]] : image `13147625` en production à 20:16 UTC, lettres toujours désactivées, retour arrière documenté.
+
+## [2026-10-05] direct-update | MCP production : lettres activées
+
+**Agent** : Claude Code (Opus)
+**Mode** : direct-update
+**Source** : variables Convex prod via CLI connectée, Infisical prod `/twoweeks`, `mcp.env` Lightsail, smoke de production ; aucune valeur secrète consignée.
+
+**Pages mises à jour** :
+- [[product/chatgpt-app-sdk-roadmap]] et [[hot]] : gate lettres ouvert côté Convex et serveur MCP ; outils de boucle encore fermés.
