@@ -69,9 +69,13 @@ Valeurs lues sur Convex prod le 2026-10-06 via la CLI connectée (VÉRIFIÉ, pas
 | `unsupported_context_class` | `inferPremiumCoverLetterContextClass` (`:2429`) renvoie `null` : CV présent mais trop peu de mots en commun avec l'offre (il faut ≥ 2 mots communs, ou 1 mot du titre + 5 au total pour « cv_direct ») | `:2406`, `:2473-2481` |
 | `no_allowed_facts` | aucune preuve exploitable après classement des faits | `:2418-2424` |
 
-Sans CV mais avec une offre exploitable, la classe est `no_cv` (`:2431-2442`). L'utilisateur voit le message générique de la garde Terra (étape 4), pas la raison précise.
+Sans CV mais avec une offre exploitable, la classe est `no_cv` (`:2431-2442`). Depuis la PR #640, l'utilisateur voit un refus explicite (`COVER_LETTER_CV_JOB_TOO_DISTANT`) ; les autres échecs gardent le message générique de la garde Terra (étape 4).
 
-**Correctif en cours (NON FUSIONNÉ, PR à venir)** : aujourd'hui `normalizeTokens` supprime tout caractère hors `a-z0-9` (`premiumCoverLetter.ts:1573`), donc « développeur » est coupé en morceaux et un CV français peut être jugé « trop éloigné » à tort. Le correctif prévu plie les accents français et ajoute un code `COVER_LETTER_CV_JOB_TOO_DISTANT` ; ce code **n'existe pas** dans `main` (recherche vide). Ne pas le décrire comme livré.
+**Correctif livré (PR #640, fusionnée le 2026-10-06, commit `ca8f0a481`)** : VÉRIFIÉ dans `origin/main`.
+- Les accents sont pliés avant le découpage en mots (`premiumCoverLetter.ts:1573`), donc « expérience » reste un mot ; un CV français n'est plus jugé « trop éloigné » à tort.
+- Le contrôle voit tout le CV (plus de plafond à 16 faits).
+- Nouveau code `COVER_LETTER_CV_JOB_TOO_DISTANT` (`convex/lib/proposals/coverLetterFit.ts:9`) : refus si `unsupported_context_class` ou `no_allowed_facts`. ChatGPT `letter.prepare` refuse **avant toute approbation**, sans réservation (`convex/mcpLetters.ts:159`) ; le rédacteur lance le même code (`generateProposalMutation.ts:11743`) ; le web affiche un message traduit (EN/FR/ES) au lieu de « réessayez ».
+- Déploiement : la partie Convex part à la fusion ; le message de l'outil ChatGPT et le libellé de `prepare` attendent la prochaine image du serveur MCP (SUPPOSÉ : non encore déployée à la date de cette page).
 
 ### Facturation : un débit par lettre (VÉRIFIÉ)
 

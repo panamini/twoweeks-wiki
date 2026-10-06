@@ -2556,3 +2556,11 @@ Le connecteur `twoweeks-mcp-private-beta-20260717-r2` ne correspond pas aux list
 
 **Pages mises à jour** : [[index]], [[hot]].
 
+## [2026-10-06] direct-update | Correctif accents et refus CV/offre livré
+
+**Agent** : Claude Code
+**Mode** : direct-update
+**Source** : PR #640 fusionnée (`ca8f0a481`), relue dans `origin/main`.
+
+**Pages mises à jour** : [[tech/letter-generation-pipeline]], [[hot]].
+

@@ -20,8 +20,8 @@ provider qualification, and commercial launch evidence distinct.
 
 - **Lettres (2026-10-06)** : un seul chemin actif (facturé, générateur « premium »
   = nom historique, rédacteur `gpt-5.6-terra`) ; tout autre chemin est refusé.
-  Carte : [[tech/letter-generation-pipeline]]. Correctif accents FR du contrôle
-  CV/offre : en cours, non fusionné.
+  Carte : [[tech/letter-generation-pipeline]]. Correctif accents FR + refus clair
+  `COVER_LETTER_CV_JOB_TOO_DISTANT` : fusionné (PR #640) ; image MCP à redéployer.
 - **Production** : secrets Infisical `prod /twoweeks`, Convex prod via CLI
   `--prod`, Lightsail MCP par paliers, aucun changement sans accord du
   fondateur : [[howto/production-operations]].
