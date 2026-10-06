@@ -2529,3 +2529,10 @@ Le connecteur `twoweeks-mcp-private-beta-20260717-r2` ne correspond pas aux list
 
 **Pages mises à jour** : [[index]], [[hot]].
 
+## [2026-10-06] direct-update | MCP lettres : validation de production FR/ES
+
+**Agent** : Claude Code (Opus)
+**Mode** : direct-update
+**Source** : tests ChatGPT réels du 2026-10-06, registre Convex prod, journaux Lightsail, PR #640–#647 ; aucune valeur secrète.
+
+**Pages mises à jour** : [[product/chatgpt-app-sdk-roadmap]], [[hot]].

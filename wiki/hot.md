@@ -46,10 +46,7 @@ provider qualification, and commercial launch evidence distinct.
   ports. No code was added after merge during activation.
 - Stable endpoint: `https://mcp.twoweeks.ai/mcp`; MCP proof remains
   operational evidence, not commercial value proof.
-- **MCP lettre (2026-10-05)** : PR #613 passe tous les appels lettre par le
-  bridge signé (clé Convex prod sans `runInternalQueries`). Reste :
-  prod déployée, lettres actives 20:20 UTC. Jamais de stack
-  local sur le tunnel prod (`run.sh down`). [[product/chatgpt-app-sdk-roadmap]].
+- **MCP lettre (2026-10-06)** : boucle FR/ES validée en prod (lettres fondées sur le CV, 1 crédit, idempotent), jetons renouvelables actifs. [[product/chatgpt-app-sdk-roadmap]].
 - **OAuth MCP prod (2026-10-05)** : CIMD ChatGPT, callback générique, gate
   lettres `0`. Bridge versionné (#618), issuer corrigé (#623), image construite
   depuis `main` via `deploy/mcp/` (#626). Ne JAMAIS patcher la Lightsail à la
