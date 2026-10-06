@@ -2564,3 +2564,10 @@ Le connecteur `twoweeks-mcp-private-beta-20260717-r2` ne correspond pas aux list
 
 **Pages mises à jour** : [[tech/letter-generation-pipeline]], [[hot]].
 
+## [2026-10-06] direct-update | Image MCP ca8f0a481 en production
+
+**Agent** : Claude Code
+**Mode** : direct-update
+**Source** : lecture seule de la Lightsail ; déploiement fait par une autre session. Une seule session déploie désormais le MCP.
+
+**Pages mises à jour** : [[tech/letter-generation-pipeline]], [[hot]].

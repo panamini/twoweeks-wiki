@@ -75,7 +75,7 @@ Sans CV mais avec une offre exploitable, la classe est `no_cv` (`:2431-2442`). D
 - Les accents sont pliés avant le découpage en mots (`premiumCoverLetter.ts:1573`), donc « expérience » reste un mot ; un CV français n'est plus jugé « trop éloigné » à tort.
 - Le contrôle voit tout le CV (plus de plafond à 16 faits).
 - Nouveau code `COVER_LETTER_CV_JOB_TOO_DISTANT` (`convex/lib/proposals/coverLetterFit.ts:9`) : refus si `unsupported_context_class` ou `no_allowed_facts`. ChatGPT `letter.prepare` refuse **avant toute approbation**, sans réservation (`convex/mcpLetters.ts:159`) ; le rédacteur lance le même code (`generateProposalMutation.ts:11743`) ; le web affiche un message traduit (EN/FR/ES) au lieu de « réessayez ».
-- Déploiement : la partie Convex part à la fusion ; le message de l'outil ChatGPT et le libellé de `prepare` attendent la prochaine image du serveur MCP (SUPPOSÉ : non encore déployée à la date de cette page).
+- Déploiement : la partie Convex part à la fusion ; le serveur MCP (message de l'outil et libellé de `prepare`) tourne avec l'image `ca8f0a481` depuis le 2026-10-06 à 08:40 UTC (VÉRIFIÉ sur la Lightsail : `MCP_IMAGE_TAG` = ce SHA, conteneur `healthy`, métadonnées 200, `/mcp` anonyme 401). Retour arrière : `c7b5c5e97`.
 
 ### Facturation : un débit par lettre (VÉRIFIÉ)
 
