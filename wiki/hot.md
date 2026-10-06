@@ -3,7 +3,7 @@ title: "Hot Cache - twoweeks"
 category: overview
 status: current
 created: 2026-05-02
-updated: 2026-10-05
+updated: 2026-10-06
 ---
 
 # Hot Cache
@@ -18,23 +18,18 @@ provider qualification, and commercial launch evidence distinct.
 
 ## Key Active Facts
 
-- **Billing activation (2026-09-24)**: `BILLING_LAUNCH_MODE=enforced` in
-  Convex Production and Infisical EU `prod /twoweeks`; readiness is 23/23,
-  `ready=true`, `trialReady=true`. Read
-  [[product/billing-launch-readiness]].
-- **Billing décisions (2026-09-29)**: prix 7,90 € TTC (Price `tax_behavior=inclusive`
-  `price_1UL3EUFkKSo5QGwIdGDjp4H2`); webhook compare `amount_subtotal` (incident TVA,
-  PR #531); essais plafonnés à 50, e-mails jetables refusés; plafond d’édition
-  32 000 octets (PR #534). Détails : [[product/billing-launch-readiness]].
-- **Export documents (2026-09-30)** : le navigateur passe par le relais Convex
-  authentifié `/document-export/*` (jamais le parser en direct) ; Access laisse
-  passer la clé de service « parser » via une politique Service Auth ; le worker
-  Lightsail a `DOCUMENT_EXPORT_FRONTEND_URL=https://twoweeks.ai`. Réglages et
-  diagnostic : [[tech/export-pipeline]].
-- **Serveur d'export Lightsail = déploiement MANUEL** : Pages et Convex se
-  déploient seuls, pas le parser/worker PDF. Après une fusion qui touche le
-  worker ou le payload d'impression, lancer `deploy.sh` sur l'hôte avec le tag
-  `sha-<commit>`. Procédure : [[tech/export-pipeline]].
+- **Lettres (2026-10-06)** : un seul chemin actif (facturé, générateur « premium »
+  = nom historique, rédacteur `gpt-5.6-terra`) ; tout autre chemin est refusé.
+  Carte : [[tech/letter-generation-pipeline]]. Correctif accents FR du contrôle
+  CV/offre : en cours, non fusionné.
+- **Production** : secrets Infisical `prod /twoweeks`, Convex prod via CLI
+  `--prod`, Lightsail MCP par paliers, aucun changement sans accord du
+  fondateur : [[howto/production-operations]].
+- **Billing activation (2026-09-24)** : `BILLING_LAUNCH_MODE=enforced` ;
+  prix 7,90 € TTC, essais plafonnés à 50. [[product/billing-launch-readiness]].
+- **Export documents** : relais Convex `/document-export/*` ; le serveur
+  d'export Lightsail se déploie à la main (`deploy.sh`, tag `sha-<commit>`).
+  [[tech/export-pipeline]].
 - The 2026-09-16 billing audit and qualification plan are preserved as
   historical archives only: [[archive/outputs/2026-09-16-billing-launch-current-state]]
   and [[archive/tasks/2026-09-16-billing-launch-qualification]]. Do not use
@@ -65,6 +60,7 @@ provider qualification, and commercial launch evidence distinct.
 
 ## Canonical Pages To Read
 
+- Letters and production ops: [[tech/letter-generation-pipeline]], [[howto/production-operations]]
 - Billing activation: [[product/billing-launch-readiness]], [[product/product-roadmap]]
 - Billing history: [[archive/outputs/2026-09-16-billing-launch-current-state]], [[archive/tasks/2026-09-16-billing-launch-qualification]]
 - MCP commercial roadmap: [[product/chatgpt-app-sdk-roadmap]], [[howto/chatgpt-mcp-private-beta-tunnel-connector]]

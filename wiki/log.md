@@ -2516,3 +2516,16 @@ Le connecteur `twoweeks-mcp-private-beta-20260717-r2` ne correspond pas aux list
 
 **Pages mises à jour** :
 - [[product/chatgpt-app-sdk-roadmap]] : `job.add` et `letter.get` ouverts, justification du délai.
+
+## [2026-10-06] direct-update | Carte des lettres et opérations de production
+
+**Agent** : Claude Code
+**Mode** : direct-update
+**Source** : code `origin/main` (`ffc385879`), lectures seules Convex prod et Lightsail ; aucune valeur secrète consignée.
+
+**Pages créées** :
+- [[tech/letter-generation-pipeline]] : chemin actif des lettres (facturé, premium/Terra), entrées, éligibilité, débit, legacy.
+- [[howto/production-operations]] : secrets, Convex prod, Lightsail, paliers, idempotence.
+
+**Pages mises à jour** : [[index]], [[hot]].
+
