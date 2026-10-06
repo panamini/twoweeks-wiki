@@ -3,11 +3,11 @@ title: "Product Roadmap — twoweeks"
 category: product
 tags: [roadmap, product, initiatives, phases, stratégie]
 created: 2026-04-10
-updated: 2026-08-19
+updated: 2026-08-31
 status: current
 valid_from: 2026-04-10
 version: v1
-sources: [2026-04-10-notion-roadmap-cvforge, 2026-04-10-gap-analysis, 2026-04-16-plan-onboarding-activation-interactive-preview, 2026-04-18-quick-start-module-hierarchy, 2026-04-27-job-library-prd, 2026-04-27-job-match-validation-contract]
+sources: [2026-04-10-notion-roadmap-cvforge, 2026-04-10-gap-analysis, 2026-04-16-plan-onboarding-activation-interactive-preview, 2026-04-18-quick-start-module-hierarchy, 2026-04-27-job-library-prd, 2026-04-27-job-match-validation-contract, 2026-08-31-neyssan-jobs-mistral-ui-merge-checkpoint]
 related: [[entities/twoweeks]], [[product/kpis]], [[strategy/gap-analysis]], [[product/product-vision]], [[design/brand-voice]], [[product/job-library]], [[product/job-match-review]]
 ---
 
@@ -27,10 +27,10 @@ Quatre axes séquencés :
 ## Phase 1 — P0 : Confiance et fondations (priorité maximale)
 
 ### Import recovery layer
-**Statut** : implémenté, avec besoin restant de raffinement UI sur le styling CSS et l'harmonisation des tokens visuels.
+**Statut** : implémenté; la remediation UI v1 partagée de #421 a livré les recovery boundaries localisées et les contrats de tokens/motion. La validation produit sur vrais imports reste distincte.
 **Problème** : Les utilisateurs perdent confiance quand l'import PDF place du contenu au mauvais endroit ou affiche des glyphes incorrects.
 **Solution** : UX de recovery autour du parsing — confidence scoring, interface de review des blocs incertains, nettoyage des glyphes, normalisation des bullets, flow de réassignation de sections.
-**Reste à durcir** : cohérence visuelle des surfaces d'import recovery, polish CSS, et alignement des tokens de design entre les états parser/review.
+**Reste à durcir** : validation sur vrais imports et cohérence des cas métier non couverts; ne pas rouvrir la géométrie des templates sous couvert de polish.
 **KPIs** : Import Completion Rate ↑, drop-off après import ↓, parse errors non résolus ↓
 
 ### Quick-start guided path
@@ -46,10 +46,10 @@ Quatre axes séquencés :
 **KPIs** : AI Accept Rate ↑, Undo Rate ↓
 
 ### Editor ↔ Preview linking
-**Statut** : implémenté, avec un reste de raffinement UI frontend sur le polish des interactions et de la présentation visuelle.
+**Statut** : implémenté; #421 a fusionné le polish actif v1, les actions preview gardées et les intentions de query séparées. Les évolutions produit au-delà de ce périmètre restent distinctes.
 **Problème** : L'édition en skeleton peut sembler abstraite sans mapping fort vers l'output final.
 **Solution** : Cliquer dans le preview → focus section dans l'éditeur. Hover section → highlight preview. Sync active section. Pas de pivot vers preview-first — renforcement du lien émotionnel.
-**Reste à durcir** : harmonisation des états hover/active, polish du feedback visuel, et finition des détails frontend autour du linking.
+**Reste à durcir** : validation comportementale sur davantage de parcours réels; la refonte des templates et de leur géométrie est explicitement hors périmètre.
 **KPIs** : Edit Completion ↑, Session Depth ↑
 
 **Statut d'exécution actuel** : la fonctionnalité de base est en place; import recovery, editor ↔ preview linking et le shell Quick Start sont implémentés; le reliquat principal porte sur l'onboarding de première session et le raffinement UI, pas sur un gap fonctionnel majeur.
@@ -90,7 +90,7 @@ Utiliser "Cover letter / Proposal" ou "Application letter" dans les points d'ent
 ## Phase 3 — P2 : Rétention et profondeur
 
 ### Jobs as first-class object
-**Statut** : PRD V1 posé.
+**Statut** : V1 livré; #420 ajoute le read-model de liste matérialisé et ses fallbacks bornés. Le backfill de projection est codé mais non exécuté.
 Construire une couche Jobs liée aux resumes / cover letters : record avec titre, entreprise, URL source, responsabilités parsées, keywords, docs liés. **Moat builder** selon la stratégie.
 **V1** : Job Library, Job Brief editable, extension save-to-library, handoff vers cover letter / resume tailoring, documents liés.
 **Non-V1** : notes, timeline, batch apply, batch generation, CRM/ATS avancé, status system complexe.
@@ -113,7 +113,7 @@ Le parcours est maintenant connecté : Job Brief prêt + CV attaché → recomma
 
 **Checkpoint** : [[sources/2026-08-05-neyssan-post-merge-jobs-smoke-checkpoint]].
 
-**Reste avant élargissement de la bêta privée** : tester le repli coordonné Edge/Convex vers la source pré-#411 identifiée; smoke frontend des deux identités autorisées et isolation/sign-out A/B sur le déploiement `83872148`. Le blocage anonyme des deux domaines par Cloudflare Access est prouvé, mais l’appel LLM anonyme n’a pas été tenté afin d’éviter une consommation fournisseur si le garde échouait. Les bugs non bloquants restants, dont la course d’upload simultané à une suppression, sont différés et suivis séparément. Pagination Jobs, plafonds de chargement et exactitude des agrégats restent un backlog de scalabilité différé. Voir [[sources/2026-08-14-neyssan-auth-production-transition-checkpoint]].
+**Reste avant élargissement de la bêta privée** : tester le repli coordonné Edge/Convex vers la source pré-#411 identifiée; smoke frontend des deux identités autorisées et isolation/sign-out A/B sur le déploiement `83872148`. Le blocage anonyme des deux domaines par Cloudflare Access est prouvé, mais l’appel LLM anonyme n’a pas été tenté afin d’éviter une consommation fournisseur si le garde échouait. Les bugs non bloquants restants, dont la course d’upload simultané à une suppression, sont différés et suivis séparément. Pagination Jobs et server-owned search/filter/sort restent un backlog de scalabilité différé. Le read-model et les agrégats projetés sont fusionnés via #420, mais leur backfill n'a pas été exécuté. Voir [[sources/2026-08-14-neyssan-auth-production-transition-checkpoint]] et [[sources/2026-08-31-neyssan-jobs-mistral-ui-merge-checkpoint]].
 
 **Ordre recommandé** :
 1. valider les gates de bêta privée sur le parcours livré;

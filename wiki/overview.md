@@ -3,12 +3,12 @@ title: "Vue d'ensemble — twoweeks"
 category: overview
 tags: [project, overview, twoweeks, roadmap, parser, ats]
 created: 2026-04-09
-updated: 2026-08-14
+updated: 2026-09-26
 status: current
 valid_from: 2026-04-09
 version: v1
-sources: [2026-04-09-decisions-cvforge-sprint, 2026-04-10-notion-roadmap-cvforge, 2026-04-10-success-blueprint, 2026-04-10-benchmark-matrix, 2026-04-10-gap-analysis, 2026-04-14-structured-parsing-canonical-truth, 2026-04-14-ats-compliant-score, 2026-04-14-kanban-sprint-notes, 2026-04-14-run-sh-quick-note, 2026-04-14-export-pipeline-brief-ocr-to-ats-styled-output, 2026-04-15-mistral-resume-v3-section-recovery-scratchpad, 2026-04-15-run-sh-workspace-modes, 2026-04-18-quick-start-module-hierarchy, 2026-04-27-job-library-prd, 2026-04-27-job-match-validation-contract, 2026-04-27-twoweeks-motion-system, 2026-04-27-workshop-pagination, 2026-08-14-neyssan-auth-production-transition-checkpoint]
-related: [[entities/twoweeks]], [[product/product-roadmap]], [[concepts/cv-parsing-pipeline]], [[design/ats-safety]], [[howto/local-parser-operations]], [[product/job-library]], [[product/job-match-review]], [[design/motion-system]], [[tech/workshop-pagination]]
+sources: [2026-04-09-decisions-cvforge-sprint, 2026-04-10-notion-roadmap-cvforge, 2026-04-10-success-blueprint, 2026-04-10-benchmark-matrix, 2026-04-10-gap-analysis, 2026-04-14-structured-parsing-canonical-truth, 2026-04-14-ats-compliant-score, 2026-04-14-kanban-sprint-notes, 2026-04-14-run-sh-quick-note, 2026-04-14-export-pipeline-brief-ocr-to-ats-styled-output, 2026-04-15-mistral-resume-v3-section-recovery-scratchpad, 2026-04-15-run-sh-workspace-modes, 2026-04-18-quick-start-module-hierarchy, 2026-04-27-job-library-prd, 2026-04-27-job-match-validation-contract, 2026-04-27-twoweeks-motion-system, 2026-04-27-workshop-pagination, 2026-08-14-neyssan-auth-production-transition-checkpoint, 2026-08-31-neyssan-jobs-mistral-ui-merge-checkpoint, 2026-09-16-direct-production-alignment]
+related: [[entities/twoweeks]], [[product/product-roadmap]], [[product/billing-launch-readiness]], [[concepts/cv-parsing-pipeline]], [[design/ats-safety]], [[howto/local-parser-operations]], [[product/job-library]], [[product/job-match-review]], [[design/motion-system]], [[tech/workshop-pagination]]
 ---
 
 # twoweeks — Vue d'ensemble
@@ -62,7 +62,7 @@ Le backend de suppression correspondant à ce SHA est déployé sur Convex Produ
 | Priorité parser | stabiliser `sections[*].structuredContent` comme source de vérité |
 | Priorité qualité | fiabilité sur vrais CVs, observabilité, régression |
 | Priorité UX | quick-start onboarding, extension save-to-twoweeks, sections custom alignées sur le block renderer |
-| Dernière activité | 2026-08-14 — Convex/Cloudflare alignés sur Clerk Production; smoke par code email encore en attente |
+| Dernière activité | 2026-09-16 — configuration non secrète essais/paiement alignée; readiness et smoke commercial encore bloqués |
 
 ---
 
@@ -75,6 +75,7 @@ Le backend de suppression correspondant à ce SHA est déployé sur Convex Produ
 - **Quick Start shell** : l'activation vit dans l'app-shell via `App.tsx`; `/proposal` ne sert le cold start cover-letter que comme état d'entrée intentionnel, et la primitive de choix partagée reste commune.
 - **Sections custom** : `add your own section` doit rejoindre le vrai block renderer et non un legacy nested model.
 - **Jobs first-class** : Job Library devient la couche durable des offres sauvegardées, avec Job Brief editable et documents liés.
+- **Checkpoint merge 2026-08-31** : #420 (Jobs read-model), #419 (durcissement Mistral sélectif) et #421 (remediation UI v1) sont fusionnées. Aucun backfill, déploiement ou smoke production n'a été exécuté dans ce checkpoint. Voir [[sources/2026-08-31-neyssan-jobs-mistral-ui-merge-checkpoint]].
 - **Jobs → Proposal beta candidate** : le parcours Job Brief prêt → CV attaché → tailoring revu par humain → CV dérivé → Proposal est connecté sur `main`; une smoke locale authentifiée desktop/mobile est positive. Le code de frontière d’autorisation et de suppression est fusionné, mais la cohérence Clerk Production ↔ Convex Production et le canary Production restent à prouver.
 - **Match Review** : le match est un indicateur d'attention utilisateur, pas un ATS; structured read reste advisory/shadow tant que la dogfood review ne valide pas les seuils.
 - **Motion** : la période terracotta est le seul loop ambient autorisé; l'IA doit prouver son travail par stages, diffs et settle.

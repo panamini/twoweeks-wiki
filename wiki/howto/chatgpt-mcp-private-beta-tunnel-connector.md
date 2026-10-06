@@ -3,7 +3,7 @@ title: "ChatGPT MCP Private Beta Tunnel Connector Runbook"
 category: howto
 tags: [chatgpt-app, mcp, cloudflare, tunnel, oauth, private-beta]
 created: 2026-07-04
-updated: 2026-08-05
+updated: 2026-10-05
 status: current
 type: runbook
 sources: [2026-07-13-pr313-pr317-mcp-private-beta-live-reproof-checkpoint, 2026-07-13-pr311-runsh-doctor-regression-closure-checkpoint, 2026-07-13-pr309-mcp-protocol-compatibility-checkpoint, 2026-07-12-pr308-mcp-private-beta-operational-smoke-checkpoint, 2026-07-12-pr307-runsh-collaborator-portability-checkpoint, 2026-07-05-pr305-durable-mcp-connector-proof-checkpoint, 2026-07-04-pr304-live-mcp-connector-smoke-checkpoint]
@@ -12,7 +12,7 @@ related: [[product/chatgpt-app-sdk-roadmap]]
 
 # ChatGPT MCP Private Beta Tunnel Connector Runbook
 
-Procedure reproductible pour demarrer le serveur MCP prive twoweeks, exposer son origine locale par le tunnel Cloudflare nomme, connecter ChatGPT avec un client OAuth confidentiel, puis prouver `tools/list` et un `tools/call` read-only.
+Procedure reproductible pour distinguer la qualification locale private-beta de la connexion au MCP de production. La stack locale historique utilise un client OAuth confidentiel; `mcp.twoweeks.ai` est maintenant configure pour le client CIMD gere par ChatGPT. Ne pas copier les identifiants du runbook local dans le connecteur de production.
 
 ## Etat verifie
 
@@ -37,12 +37,14 @@ Procedure reproductible pour demarrer le serveur MCP prive twoweeks, exposer son
 - Des appels read-only `search` et `fetch` ont reussi sans mutation ni erreur de reconnexion.
 - Un connecteur frais a affiche exactement six Actions et un appel `twoweeks.application_package.summarize` a reussi avec le resultat sur `no_data_available`, sans contenu prive capture.
 - La preuve d'echange OAuth est directe au niveau stockage : le nombre d'enregistrements de token est passe de 7 a 8 pendant la connexion V2. Aucune valeur de token n'a ete capturee ou documentee.
+- **Configuration de production verifiee en lecture seule (2026-10-05)** : sur la Lightsail, les deux listes de clients contiennent `https://chatgpt.com/oauth/client.json`, les deux resources valent `https://mcp.twoweeks.ai/mcp`, le redirect autorise est `https://chatgpt.com/connector_platform_oauth_redirect` et `MCP_LETTER_GENERATION_ENABLED=0`.
+- Le connecteur historique `twoweeks-mcp-private-beta-20260717-r2` a demande `client_id=local-chatgpt-client` et le redirect propre `https://chatgpt.com/connector/oauth/b7v_6OncLEsg` : ces deux valeurs ne correspondent pas a la configuration de production observee. Un nouveau connecteur `TwoWeeks production CIMD`, cree sans identifiant ni secret saisi, a d'abord echoue avec `OAuth authorization response issuer does not match the expected issuer` : le serveur annoncait `issuer=https://mcp.twoweeks.ai` mais renvoyait `iss=https://mcp.twoweeks.ai/` (slash final, RFC 9207 exige l'egalite exacte). Corrige par PR #623 et deploye sur la Lightsail le 2026-10-05 (image `twoweeks-mcp:419259701e2f2d15dded47913261cbd4e57402b4`, PR #626) ; `/oauth/authorize` avec les parametres CIMD reels renvoie desormais 303 vers `/sign-in`. La connexion complete et un resume read-only restent a prouver depuis ChatGPT ; garder `r2` jusque-la.
 
 Cette preuve est privee. Elle n'autorise ni lancement public, ni provider calls, ni write tools, ni refresh tokens, ni billing, ni expansion du cycle account-link, ni mutation de base production/shared.
 
 ## Configuration canonique
 
-Le fichier serveur canonique est la racine `.env.local`, ignoree par Git et en mode `600`. Les valeurs serveur y sont chargees sans etre affichees dans les logs. Les cles de configuration pertinentes incluent :
+Cette configuration concerne la stack de qualification locale private-beta, pas le serveur de production sur Lightsail. Le fichier serveur canonique local est la racine `.env.local`, ignoree par Git et en mode `600`. Les valeurs serveur y sont chargees sans etre affichees dans les logs. Les cles de configuration pertinentes incluent :
 
 ```dotenv
 MCP_OAUTH_PRODUCTION_RUNTIME=1
@@ -171,7 +173,9 @@ native Linux Docker Engine origin: http://127.0.0.1:5196 through --network host
 
 `Bot Fight Mode` et `AI Labyrinth` sont restes desactives apres la preuve. Cette session ne prouve pas qu'ils etaient la cause du blocage; utiliser un A/B separe avant toute reactivation sur ce hostname.
 
-## Configuration ChatGPT
+## Configuration ChatGPT — stack locale historique
+
+Le client defini par l'utilisateur ci-dessous reste utile pour les tests locaux historiques avec secret. Ne pas l'utiliser pour `mcp.twoweeks.ai` : le serveur de production autorise le client CIMD ChatGPT et le callback generique.
 
 | Champ | Valeur |
 | --- | --- |
@@ -192,9 +196,33 @@ Utiliser `URL du serveur`, pas `Tunnel`. L'identifiant OAuth n'est pas un email 
 
 Ne jamais utiliser de wildcard redirect. La seule URI autorisee pour cette preuve est la valeur complete et exacte indiquee plus haut.
 
-## Preuve ChatGPT minimale
+## Connexion au serveur de production (CIMD)
 
-Cette preuve a ete rejouee apres la migration et le deploiement de `MCP_OAUTH_PRODUCTION_PRIVATE_BETA_SUBJECT_DIGESTS`. Le connecteur V2 a atteint l'etat connecte, l'echange token a ete observe sans valeur sensible, exactement six tools ont ete listes et un appel read-only a reussi.
+Pour le connecteur de production, laisser ChatGPT decouvrir l'OAuth depuis l'URL du serveur et gerer son enregistrement de client CIMD. Ne saisir aucun client ID ni secret et ne remplacer ni le callback ni l'authorization server a la main.
+
+| Champ | Valeur attendue / regle |
+| --- | --- |
+| Connexion | URL du serveur |
+| URL MCP | `https://mcp.twoweeks.ai/mcp` |
+| Authentification | OAuth |
+| Enregistrement client | Gere par ChatGPT (CIMD) |
+| Client ID admis par le serveur | `https://chatgpt.com/oauth/client.json` |
+| Redirect URI admise | `https://chatgpt.com/connector_platform_oauth_redirect` |
+| Resource | `https://mcp.twoweeks.ai/mcp` |
+| Scope observe en lecture | `twoweeks:applications:read` |
+| Gate generation | `MCP_LETTER_GENERATION_ENABLED=0` ; ne pas demander de scope lettre |
+
+Etapes : creer un serveur MCP personnalise sur cette URL avec OAuth, laisser les parametres avances decouverts par ChatGPT, puis se connecter avec un compte Clerk de production autorise a la private beta. Si une erreur OAuth apparait, noter le message et l'URL `/oauth/authorize` en masquant `state` et `code_challenge`; ne pas declarer la connexion reussie, lancer de tool call ou supprimer `r2`. Le smoke public (`./run.sh mcp-smoke`) verifie ce contrat sans credential : issuer canonique, client public CIMD (`none`), PKCE S256, et refus 401 de toute requete MCP anonyme, decouverte comprise.
+
+### Deploiement du serveur de production
+
+Le serveur tourne en Docker Compose dans `/opt/twoweeks/mcp` (nginx `gateway` → `mcp:5196` en `vite preview`, tunnel `935a2064` dans son propre conteneur, distinct du tunnel parser). Depuis le 2026-10-05 la recette est versionnee dans `deploy/mcp/` (compose, Dockerfile, nginx, cloudflared, liste des NOMS de variables) et l'image est construite depuis un commit exact de `main`, taguee avec son sha complet. Procedure : sauvegarder `compose.yaml` et `secrets/mcp.env`, construire depuis une archive git du commit, basculer seulement le service `mcp`, verifier metadata/bridge/authorize, et revenir immediatement a l'image precedente au moindre echec. **Ne jamais patcher le serveur a la main** : un patch non versionne est efface par le prochain deploiement automatique de Convex (cas reel du bridge, ci-dessous).
+
+Le 2026-10-05, le nouveau connecteur `TwoWeeks production CIMD` a ete cree sans client ID ni secret saisi, mais ChatGPT a retourne cette erreur d'issuer. Le compte n'a donc pas atteint l'etat connecte et le resume read-only reste a prouver. L'ancien `r2` ne doit etre supprime qu'apres une connexion CIMD valide et un appel `twoweeks.application_package.summarize` read-only reussi.
+
+## Preuve ChatGPT locale historique
+
+Cette preuve locale a ete rejouee apres la migration et le deploiement de `MCP_OAUTH_PRODUCTION_PRIVATE_BETA_SUBJECT_DIGESTS`. Elle qualifie la stack et le client confidentiel historiques; elle ne prouve pas la connexion CIMD a la Lightsail de production. Le connecteur V2 a atteint l'etat connecte, l'echange token a ete observe sans valeur sensible, exactement six tools ont ete listes et un appel read-only a reussi.
 
 1. Recuperer le secret partage depuis Infisical et creer un connecteur frais avec le secret correspondant au digest local, sans documenter la valeur.
 2. Terminer le login twoweeks/Clerk.
@@ -207,10 +235,33 @@ Cette preuve a ete rejouee apres la migration et le deploiement de `MCP_OAUTH_PR
 
 Ne pas documenter le resultat prive retourne par l'outil. Documenter uniquement la forme de preuve, les statuts et les noms de tools publics.
 
+## Test isole sur un hostname dedie (depuis 2026-10-05)
+
+`mcp.twoweeks.ai` est aujourd'hui servi par un connecteur sur la Lightsail de production. Ne jamais lancer un stack local sur ce tunnel tant qu'un autre connecteur y est attache : Cloudflare repartirait les requetes entre les deux.
+
+Pour qualifier une branche, utiliser un tunnel et un hostname de test (ex. `mcp-letter-loop-test.twoweeks.ai`), avec les surcharges `run.sh` (commit `f8a50802`, valeurs par defaut inchangees) :
+
+- `MCP_PRIVATE_BETA_TUNNEL_ID`, `MCP_PRIVATE_BETA_TUNNEL_HOSTNAME`, `MCP_PRIVATE_BETA_TUNNEL_CREDENTIALS_FILE` ;
+- `MCP_PRIVATE_BETA_AUTHORIZATION_ORIGIN`, `MCP_PRIVATE_BETA_RESOURCE` (= origine + `/mcp`), `MCP_PRIVATE_BETA_CLIENT_ID`, `MCP_PRIVATE_BETA_REDIRECT_URI`.
+
+Les mettre dans un fichier d'exports ignore (mode 600) source avant CHAQUE commande `run.sh`, avec un `.env.local` coherent. Le doctor verifie la coherence (HTTPS, resource, hostname, callback ChatGPT, UUID) et echoue sans les exports : le prouver avant de demarrer. Verifier ensuite que le tunnel de test n'a qu'un connecteur et que le tunnel `935a2064` n'en a gagne aucun. Demonter apres le test : `run.sh down`, CNAME, tunnel, credentials, fichiers locaux, connecteur ChatGPT. Le conteneur cloudflared de `run.sh` a la politique `unless-stopped` : oublie, il revient a chaque demarrage de Docker (cas reel : conteneur du 2026-09-27 attache au tunnel de production, 502 publics, arrete le 2026-10-05).
+
+ChatGPT utilise desormais le callback generique `https://chatgpt.com/connector_platform_oauth_redirect`, accepte en correspondance exacte (commit `01fbf9f1`).
+
+Depuis PR #613 (`f151b1bc`), tous les appels lettre passent par le bridge signe `/mcp-oauth-storage`. Pour qualifier sans la cle de production : generer une paire P-256 locale, poser la cle publique SPKI en `MCP_OAUTH_BRIDGE_PUBLIC_KEY_SPKI_B64` sur le Convex **local** (honoree seulement si `CONVEX_CLOUD_URL` est en loopback ; ignoree par tout deploiement cloud) et la cle privee PKCS#8 en `MCP_OAUTH_BRIDGE_PRIVATE_KEY_B64` pour le seul serveur MCP local ; les retirer apres le test.
+
 ## Historique des blocages et diagnostic
 
 | Symptome | Cause ou conclusion prouvee | Correction durable |
 | --- | --- | --- |
+| Ancien `r2` refuse par la configuration actuelle | il envoie `local-chatgpt-client` et un callback propre au connecteur; la Lightsail autorise le client CIMD ChatGPT et le callback generique | creer un nouveau serveur MCP production avec OAuth gere par ChatGPT, sans saisir d'identifiants manuels |
+| `OAuth authorization response issuer does not match the expected issuer` sur le nouveau connecteur CIMD | le callback renvoyait `iss` avec un slash final alors que l'issuer publie n'en a pas | PR #623, deploye le 2026-10-05 |
+| `invalid_authorization_request` avec l'ancien connecteur `r2` | `r2` envoie `local-chatgpt-client` et son callback par-connecteur ; la production n'accepte que le client CIMD et le callback generique | creer un connecteur sans identifiant ni secret |
+| authorize/token/verification en echec en production | le bridge `/mcp-oauth-storage` n'existait que dans un patch manuel ; chaque deploiement automatique de Convex depuis `main` l'effacait (404) | PR #618 (bridge versionne), redeploye le 2026-10-05 |
+| build de l'image MCP en echec : `COPY shared/` | le `.dockerignore` racine (ecrit pour le parser) exclut `shared/` | PR #624 |
+| build de l'image MCP en echec : `convex/_generated/api` introuvable | fichiers generes ignores par Git ; `convex codegen` exige un deploiement | PR #626 : versionner seulement `api.js` et `server.js`, entierement generiques |
+| outils lettre en echec en production (prevu, avant activation) | la cle Convex du serveur n'a pas `deployment:functions:runInternalQueries` ; les lettres utilisaient le client admin et l'impersonation | PR #613 : six operations lettre sur le bridge signe, sans cle de deploiement complete sur la Lightsail (non deploye) |
+| 502 publics sur `mcp.twoweeks.ai` | conteneur cloudflared `run.sh` du test du 27/09 reste attache au tunnel de production (politique `unless-stopped`) | `run.sh down` dans son worktree, 2026-10-05 |
 | `invalid_authorization_request` | client, resource, scope ou redirect incoherent | utiliser les valeurs exactes ci-dessus; aucun wildcard |
 | `pre_auth_create_failed` | dependance Convex locale/config runtime indisponible | demarrer la stack par `run.sh` et faire passer `mcp-check` |
 | `owner_binding_failed` | retour Clerk incomplet ou session stale | correctifs login-return/StrictMode deja merges; cle Clerk derivee au demarrage |

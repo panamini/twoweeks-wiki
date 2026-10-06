@@ -3,14 +3,14 @@ title: "CV Parsing Pipeline"
 category: concept
 tags: [parser, cv, mistral, structured, canonical, sections, architecture]
 created: 2026-04-09
-updated: 2026-04-18
+updated: 2026-08-31
 status: current
 valid_from: 2026-04-09
 valid_until:
 superseded_by:
 horizon: present
 version: v1
-sources: [2026-04-09-decisions-cvforge-sprint, 2026-04-11-cv-parsing-poc-state, 2026-04-14-structured-parsing-canonical-truth, 2026-04-14-export-pipeline-brief-ocr-to-ats-styled-output, 2026-04-15-mistral-resume-v3-section-recovery-scratchpad, 2026-04-15-section-detection-future-note]
+sources: [2026-04-09-decisions-cvforge-sprint, 2026-04-11-cv-parsing-poc-state, 2026-04-14-structured-parsing-canonical-truth, 2026-04-14-export-pipeline-brief-ocr-to-ats-styled-output, 2026-04-15-mistral-resume-v3-section-recovery-scratchpad, 2026-04-15-section-detection-future-note, 2026-08-31-neyssan-jobs-mistral-ui-merge-checkpoint]
 related: [[concepts/cv-families]], [[tech/import-ocr-pipeline]], [[tech/export-pipeline]], [[entities/twoweeks]]
 ---
 
@@ -68,6 +68,8 @@ Le parser actif s'appuie désormais explicitement sur :
 5. retry OCR unique si contradiction persistante
 
 Le support Mistral V3 a précisé la surface effective des headings: alias exacts pour les variantes `work history`, `career history`, `professional background`, `relevant experience`, `career experience`, `industry experience` et équivalents ES/PT/FR/DE/IT, plus un split composé strict sur les séparateurs sûrs seulement.
+
+PR #419 est fusionnée à `fbe29ec8782f3f301c7c42e7af6cbc51ebe75c92`. Ce port sélectif durcit la confiance accordée aux sections normalisées substantielles et préserve leur autorité jusqu'aux mappings et exports, notamment pour les plages numériques d'éducation, les blocs représentatifs déterministes, les sections secondaires supportées et les détails d'éducation répétés. Ce checkpoint ne valide ni la qualité fournisseur en live, ni un nouveau déploiement parser, et ne réintroduit pas les anciennes branches Mistral larges #387/#389. Voir [[sources/2026-08-31-neyssan-jobs-mistral-ui-merge-checkpoint]].
 
 ---
 

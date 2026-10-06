@@ -2,7 +2,7 @@
 title: Index du Wiki — twoweeks
 category: overview
 sticker: emoji//1f9c6
-updated: 2026-09-28
+updated: 2026-10-06
 ---
 
 # Index du Wiki · twoweeks (v2)
@@ -18,7 +18,9 @@ Le contrôle opératoire du repo reste défini par `WIKI_SCHEMA.md` puis `CLAUDE
 |-------|----------------|------------|
 | Mémoire active LLM | [[hot]] | [[overview]], [[meta/llm-wiki-pattern]] |
 | État produit | [[overview]] | [[entities/twoweeks]], [[product/product-roadmap]], [[product/product-vision]] |
+| Essais et paiement / activation production | [[product/billing-launch-readiness]] | [[product/product-roadmap]], [[howto/local-parser-operations]] |
 | Planning IA shadow | [[product/ai-product-model]] | [[tech/proposal-ai-routing-and-inline-diff]], [[sources/2026-05-25-proposal-generation-truth-planner]] |
+| Lettres : carte des chemins (web, extension, ChatGPT/MCP), facturation, éligibilité | [[tech/letter-generation-pipeline]] | [[product/billing-launch-readiness]], [[product/chatgpt-app-sdk-roadmap]] |
 | Cover-letter quality | [[tasks/2026-06-22-cover-letter-quality-production-roadmap]] | [[sources/2026-06-24-cover-letter-mistral-v2-staging-green]], [[sources/2026-06-23-cover-letter-quality-pr249-staged-internal-gate]], [[sources/2026-06-23-release-orchestration-staging-pr87-8-checkpoint]], [[sources/2026-06-23-cover-letter-quality-pr248-merge-checkpoint]], [[sources/2026-06-23-cover-letter-quality-pr246-merge-checkpoint]] |
 | ChatGPT App roadmap | [[product/chatgpt-app-sdk-roadmap]] | [[sources/2026-07-15-mcp-current-head-authenticated-summary-reproof-checkpoint]], [[howto/chatgpt-mcp-private-beta-tunnel-connector]], [[sources/2026-07-13-pr322-mcp-public-catalog-url-checkpoint]], [[sources/2026-06-11-mcp-chatgpt-app-readiness-spec]], [[product/manual-application-handoff]] |
 | Infisical / proxy OpenAI / bindings Convex | [[howto/local-parser-operations]] | [[howto/chatgpt-mcp-private-beta-tunnel-connector]], [[product/chatgpt-app-sdk-roadmap]] |
@@ -27,6 +29,7 @@ Le contrôle opératoire du repo reste défini par `WIKI_SCHEMA.md` puis `CLAUDE
 | Jobs / match | [[product/job-library]] | [[product/job-match-review]] |
 | Neyssan post-merge Jobs smoke | [[sources/2026-08-05-neyssan-post-merge-jobs-smoke-checkpoint]] | [[product/product-roadmap]], [[product/job-library]] |
 | Neyssan identité / alignement production `83872148` | [[sources/2026-08-14-neyssan-auth-production-transition-checkpoint]] | [[tech/aws-production-industrialization]], [[strategy/us-first-cloud-region]], [[product/product-roadmap]] |
+| Neyssan Jobs / Mistral / UI merge checkpoint | [[sources/2026-08-31-neyssan-jobs-mistral-ui-merge-checkpoint]] | [[product/job-library]], [[concepts/cv-parsing-pipeline]], [[product/product-roadmap]] |
 | Export / pagination | [[tech/export-pipeline]] | [[tech/preview-to-print-pipeline]], [[tech/workshop-pagination]] |
 | Proposal Forge geometry | [[tech/proposal-forge-document-geometry]] | [[tech/proposal-style-layer]], [[design/document-token-contract]] |
 | Proposal signature/closing | [[tech/proposal-signature-closing-layer]] | [[tech/proposal-style-layer]], [[tech/proposal-forge-document-geometry]], [[tech/export-pipeline]] |
@@ -35,8 +38,9 @@ Le contrôle opératoire du repo reste défini par `WIKI_SCHEMA.md` puis `CLAUDE
 | Langue / localisation | [[strategy/language-localization]] | [[design/locale-typography-rules]], [[product/product-roadmap]] |
 | Cloud region / US-first | [[strategy/us-first-cloud-region]] | [[tech/local-vs-remote-parser-architecture]], [[strategy/language-localization]] |
 | Industrialisation AWS / sécurité / capacité | [[tech/aws-production-industrialization]] | [[strategy/us-first-cloud-region]], [[tech/local-vs-remote-parser-architecture]], [[howto/cloudflare-zero-trust-tunnel]] |
-| Opérations locales | [[howto/local-parser-operations]] | [[tech/local-vs-remote-parser-architecture]] |
 | Variables d'environnement Convex / deploy prod | [[howto/convex-environment-sync]] | [[howto/local-parser-operations]], [[tech/import-ocr-pipeline]] |
+| Opérations locales | [[howto/local-parser-operations]] | [[tech/local-vs-remote-parser-architecture]] |
+| Opérations de production (secrets, Convex prod, Lightsail, paliers) | [[howto/production-operations]] | [[tech/letter-generation-pipeline]], [[howto/chatgpt-mcp-private-beta-tunnel-connector]] |
 | Règles wiki | [[meta/llm-wiki-pattern]] | [[meta/temporal-management]], [[meta/codex-prompting-standards]] |
 
 Cette carte est un routeur de lecture pour agents LLM. Elle ne remplace pas les pages durables.
@@ -92,7 +96,8 @@ Cette carte est un routeur de lecture pour agents LLM. Elle ne remplace pas les 
 |------|--------|--------|------|
 | [[product/ai-product-model\|AI Product Model]] | 3 modes IA, rulebook, qualité writing, and Planner Agent shadow chain | current | ai, ux, modes |
 | [[product/ai-consistency-p0-editor-ai\|AI Consistency P0 — Closure Audit]] | Closure audit snapshot du rulebook AI editor, preview, telemetry et tailoring | current | ai, editor, rulebook |
-| [[product/chatgpt-app-sdk-roadmap\|ChatGPT/App SDK Roadmap]] | PR369 merged a controlled two-account four-tool proof with atomic concurrency coordination; commercial ChatGPT value, onboarding and private-beta cohort remain unproven | current | chatgpt-app, apps-sdk |
+| [[product/billing-launch-readiness\|Billing Launch Readiness]] | Activation production : readiness 23/23, essai vérifié, Checkout live ; achat payant manuel encore attendu ; décisions 2026-09-29 : prix 7,90 € TTC, correctif TVA, plafonds de coût, essais plafonnés à 50 | current | billing, stripe, trials, production |
+| [[product/chatgpt-app-sdk-roadmap\|ChatGPT/App SDK Roadmap]] | 2026-10-05: boucle lettre qualifiee (PR #613), appels lettre passes par le bridge signe (cle prod sans runInternalQueries); serveur MCP de production reproductible depuis Git (CIMD, issuer corrige); requalification du bridge lettres, connexion ChatGPT et resume read-only restent a prouver | current | chatgpt-app, apps-sdk |
 | [[product/job-library\|Job Library]] | Jobs sauvegardés, Job Brief editable et documents liés | current | jobs, library |
 | [[product/job-match-review\|Job Match Review]] | Match comme indicateur d'attention utilisateur et dogfood interne | current | jobs, match |
 | [[product/kpis\|KPIs]] | Métriques de succès produit | current | kpi, métriques |
@@ -240,6 +245,7 @@ Cover-letter quality has a merged PR249 staged internal Mistral V2 gate and a gr
 | [[sources/2026-07-15-mcp-current-head-authenticated-summary-reproof-checkpoint\|MCP Current-Head Authenticated Summary Reproof Checkpoint - V19]] | checkpoint | 2026-07-15 | Current-head transport/OAuth/six-tool proof; one protected call returned bounded `NO_DATA`, so commercial value remains to prove |
 | [[sources/2026-07-27-us-first-cloud-region\|US-First Cloud Region Decision]] | decision | 2026-07-27 | US-first cloud-region direction, local Convex boundary, provider gate, and migration implications |
 | [[sources/2026-08-14-neyssan-auth-production-transition-checkpoint\|Neyssan Auth / Production Transition Checkpoint]] | checkpoint | 2026-08-14 | Distinction code fusionné, Cloudflare Edge, Convex live, identité Clerk alignée et canary synthétique |
+| [[sources/2026-08-31-neyssan-jobs-mistral-ui-merge-checkpoint\|Neyssan Jobs, Mistral and UI Merge Checkpoint]] | checkpoint | 2026-08-31 | #420/#419/#421 fusionnées; backfill, déploiement et smoke production non exécutés |
 | [[sources/2026-06-24-cover-letter-mistral-v2-staging-green\|Cover Letter Mistral V2 Staging Green Checkpoint]] | analysis | 2026-06-24 | current |
 | [[sources/2026-06-23-twoweeks-mcp-chatgpt-app-sdk-roadmap-checkpoint\|Twoweeks MCP / ChatGPT App SDK Roadmap Checkpoint]] | analysis | 2026-06-23 | current |
 ---
@@ -250,6 +256,7 @@ Cover-letter quality has a merged PR249 staged internal Mistral V2 gate and a gr
 |------|--------|------|
 | [[tech/import-ocr-pipeline\|Import OCR Pipeline]] | Call path OCR/import et vérité canonique par sections | import, ocr, convex |
 | [[tech/aws-production-industrialization\|Industrialisation AWS — sécurité, scalabilité et exploitation]] | Cadre sécurité-first, SLO, volumétrie, seuils et trajectoire Lightsail → AWS managé | aws, security, scalability |
+| [[tech/letter-generation-pipeline\|Carte des chemins de génération de lettres]] | Chemin actif (facturé, premium/Terra), entrées web/extension/MCP, contrôle CV/offre, débit et idempotence, legacy inactif | cover-letter, billing, mcp, premium |
 | [[tech/export-pipeline\|Export Pipeline]] | Pipeline document final PDF/DOCX séparé du preview DOM | export, pdf, docx |
 | [[tech/local-vs-remote-parser-architecture\|Local vs Remote Parser Architecture]] | Séparation debug local / cloud / prod pour le parser | parser, env, production |
 | [[tech/preview-to-print-pipeline\|Preview-to-Print Pipeline]] | Parité preview -> print route -> PDF pour resume et proposal | preview, print, pdf |
@@ -276,6 +283,7 @@ Cover-letter quality has a merged PR249 staged internal Mistral V2 gate and a gr
 | [[howto/git-branch-hygiene|Git Branch Hygiene]] | Démarrer une tâche depuis `main` à jour avant branche courte | git, workflow |
 | [[howto/headless-workshop-preview-probe|Headless Workshop Preview Probe]] | Probe Playwright headless pour `/cv` workshop preview | playwright, workshop |
 | [[howto/local-parser-operations\|Local Parser Operations]] | Lancer la stack parser locale, utiliser le proxy OpenAI Infisical et retrouver les bindings Convex | parser, local, convex, infisical, openai, run.sh |
+| [[howto/production-operations\|Opérations de production]] | Secrets Infisical, Convex prod via CLI connectée, Lightsail MCP, lancement par paliers et idempotence | production, infisical, convex, lightsail |
 | [[howto/wiki-commands-and-llm-export|Wiki Commands and LLM Export]] | Commandes wiki, modes de retrieval et plan `wiki/llms.txt` | wiki, codex, retrieval |
 
 ---
@@ -307,14 +315,16 @@ Cover-letter quality has a merged PR249 staged internal Mistral V2 gate and a gr
 |------|-------------|----------------|
 | [[archive/concepts/parsing-poc-progress\|Parsing POC Progress]] | 2026-04-15 | [[concepts/cv-parsing-pipeline]] |
 | [[archive/entities/cv-forge\|CV Forge (ancienne entité)]] | 2026-04-12 | [[entities/twoweeks]] |
+| [[archive/outputs/2026-09-16-billing-launch-current-state\|Audit historique — lancement essais et paiement]] | 2026-09-24 | [[product/billing-launch-readiness]] |
+| [[archive/tasks/2026-09-16-billing-launch-qualification\|Plan historique — qualification du lancement]] | 2026-09-24 | [[product/billing-launch-readiness]] |
 
 ---
 
 ## Statistiques
 
-- **Pages `current` / `planned` détectées par frontmatter** : 189 (2 overview, 1 entité, 2 concepts, 8 design, 8 product, 4 strategy, 2 meta, 135 sources, 15 tech, 7 howto, 2 tasks, 2 `todo` legacy, 2 outputs)
+- **Pages `current` / `planned` détectées par frontmatter** : 195 (2 overview, 1 entité, 2 concepts, 8 design, 10 product, 4 strategy, 2 meta, 136 sources, 16 tech, 8 howto, 2 tasks, 2 `todo` legacy, 2 outputs)
 - **Note de comptage** : les fichiers système ou pages sans `status` ne sont pas comptés; les 2 pages de catégorie legacy `todo` sont signalées sans être reclassées dans cette mutation.
-- **Pages archivées** : 2
+- **Pages archivées** : 4
 - **Sources dans `raw/`** : 91
 - **Sources en attente dans `rawinput/`** : 0
-- **Dernière mise à jour** : 2026-08-14
+- **Dernière mise à jour** : 2026-10-06

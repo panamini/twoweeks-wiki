@@ -3,7 +3,7 @@ title: "ChatGPT/App SDK Roadmap"
 category: product
 tags: [chatgpt-app, apps-sdk, mcp, roadmap, safety]
 created: 2026-06-23
-updated: 2026-08-05
+updated: 2026-10-05
 status: current
 valid_from: 2026-06-12
 type: roadmap
@@ -17,7 +17,7 @@ Le transport MCP privé et la lecture utile sur données contrôlées sont déso
 
 ## Current state
 
-Statut : `PRIVATE_BETA_CONTROLLED_DATA_PROVEN` / `COMMERCIAL_USER_VALUE_NOT_YET_PROVEN`.
+Statut : `PRIVATE_BETA_CONTROLLED_DATA_PROVEN` / `COMMERCIAL_USER_VALUE_NOT_YET_PROVEN`. Mise à jour 2026-10-04 : la boucle lettre confirmée est prouvée en bêta privée ; voir la section « October 2026 scope decision ».
 
 V19 reste la preuve historique du transport, des metadata publiques, des deux versions MCP, du client OAuth confidentiel et d'un appel protégé `NO_DATA`.
 
@@ -26,6 +26,21 @@ Le 28 juillet 2026, la PR369 a été mergée sur `main` au commit `a3ea57da61387
 Cette preuve qualifie le rail opérationnel et l'isolation contrôlée, pas un parcours commercial dans ChatGPT. La surface actuelle expose exactement quatre tools read-only `summarize`. Elle ne sait pas encore chercher un emploi, ingérer une offre, créer une variante de CV ou générer une lettre.
 
 Le lancement public, les write tools, les provider/model calls déclenchés par le MCP, l'export et le live submit/apply restent bloqués.
+
+## October 2026 scope decision — the letter loop (2026-10-04)
+
+Cette section prime sur la décision V1 read-only ci-dessous, qui reste comme historique.
+
+- **Déjà prouvé (2026-09-27, stack privé local)** : une lettre confirmée de bout en bout depuis un vrai ChatGPT connecté — prepare gratuit, approbation dans l'app, génération via le générateur réel, lettre sauvegardée et relue dans la bibliothèque, exactement un crédit débité. Preuve : `docs/audits/2026-09-27-connected-chatgpt-runtime.md` dans le dépôt code.
+- **Principe produit** : ChatGPT demande et lit ; TwoWeeks valide et écrit. Toute action qui coûte un crédit ou modifie un document est approuvée dans TwoWeeks ; chaque résultat renvoie un lien vers l'app (édition, mise en page, export y restent).
+- **Point d'arrêt** : « voici une offre » → enregistrée → choix du CV → approbation 1 crédit → lettre dans la bibliothèque → ChatGPT la montre avec un lien.
+- **Catalogue retenu (5 outils lettre)** : `fetch(twoweeks.letter_sources)` désormais en lecture seule, `twoweeks.letter.prepare`, `twoweeks.letter.generate` (+ lien app), nouveaux `twoweeks.letter.get` (lecture) et `twoweeks.job.add` (offre collée, même chemin de création que le site, sans appel provider). Même scope `twoweeks:letters:write` et même gate ; aucun nouveau scope, table ni fonction Convex publique.
+- **Reporté au backlog (pas abandonné, décision et contrat dédiés à chaque fois)** : suggestions de modification de CV validées dans l'app (jamais d'écriture directe), création de CV, import PDF, recherche d'offres JobsPipe, dossiers de candidature sur `applicationPackages`, export comme outil. L'envoi de candidature reste hors périmètre tant qu'aucun flux confirmé par un fournisseur n'existe.
+- **Transition de consentement** : `job.add` et `letter.get` réutilisent le scope lettres ; ils restent masqués et refusés tant que `MCP_LETTER_LOOP_TOOLS_ENABLED` n'est pas à `1`. Activer au moins une heure après la mise en ligne du nouveau texte de consentement (jetons ≤ 1 h, sans refresh).
+- **Rejeté** : le prototype à 18 outils (`codex/mcp-public-app-management`, non commité) — écritures CV destructrices, lettres et dossiers dans des tables parallèles, catalogue non filtré par scope.
+- **État (2026-10-05)** : branche `codex/mcp-letter-loop` (non poussée, non déployée) **qualifiée de bout en bout** avec un vrai connecteur ChatGPT sur un stack local isolé (tunnel et hostname de test dédiés, production non touchée) : offre ajoutée puis dédupliquée, une lettre générée, exactement un crédit débité, idempotence sans second débit, `letter.get` et `openUrl` OK, approbation expirée refusée. Deux bugs runtime Convex trouvés et corrigés (`3cdd3791`). Détails : `docs/decisions/2026-10-04-mcp-letter-loop-scope.md`.
+- **Reste avant production (2026-10-05)** : le serveur de `mcp.twoweeks.ai` est desormais reproductible depuis Git (`deploy/mcp/`, PR #618, #623, #624, #626) et redeploye depuis `main` ; contrat CIMD (client `https://chatgpt.com/oauth/client.json`, callback generique), issuer corrige, gate lettres a `0`. Reste a prouver : connexion d'un connecteur ChatGPT neuf et un resume read-only (garder `r2` jusque-la). La branche lettre est rebasee et poussee (PR #613) avec un smoke aligne sur le contrat CIMD. Activation des lettres : decision produit, puis deploiement depuis `main`, attente >= 1 h, `MCP_LETTER_LOOP_TOOLS_ENABLED=1`.
+- **Clé Convex de production et bridge signé (2026-10-05)** : la clé Convex du serveur MCP de production n'a pas la permission `deployment:functions:runInternalQueries` (erreur exacte observée). Résumés, crédits et CV passent déjà par le bridge signé (PR #629, #631). Décision (option B) : **aucune clé de déploiement complète sur la Lightsail** ; les cinq outils lettre passent aussi par le bridge (PR #613, commits `f151b1bc`..`9e98397f`) : six opérations en liste blanche, propriétaire et client issus du jeton vérifié, plus aucune impersonation admin ; facturation inchangée (un débit par lettre, remboursement, idempotence par approbation), chemin web intact. Tests, smoke, typechecks et build Docker verts ; relecture sécurité sans constat critique/élevé/moyen. **Requalifié le 2026-10-05 au soir** sur le stack isolé avec un vrai connecteur ChatGPT CIMD : prepare → approbation → une génération, même `proposalId` au rejeu, `letter.get` et `openUrl` OK, registre local = exactement un débit ; production inchangée. `run.sh` accepte le client CIMD exact pour un hostname de test. PR #613 fusionnée (`13147625`, avec #633 dormante) et **serveur MCP de production déployé le 2026-10-05 à 20:16 UTC** (image `13147625`, sauvegardes `*.bak-20261005T201627Z`, retour arrière = `MCP_IMAGE_TAG=7df1c014…`) ; metadata 200, `/mcp` anonyme 401, authorize CIMD 303, scope lecture seule (lettres toujours à `0`). **Lettres activées le 2026-10-05 à 20:20 UTC** : `MCP_LETTER_GENERATION_ENABLED=1` sur Convex prod (et Infisical prod `/twoweeks`) ; dans `mcp.env` : gate, `BILLING_LAUNCH_MODE=enforced`, `PREMIUM_COVER_LETTER_BOUNDED_REQUESTS=1`, `COVER_LETTER_PREMIUM_WRITER_MODEL=gpt-5.6-terra`, clé OpenAI d'Infisical (sauvegarde `mcp.env.bak-20261005T202038Z`). Metadata annonce `twoweeks:letters:write`, smoke `--letters` PASS. La clé de déploiement Convex prod n'a pas `deployment:env:view` : lire/écrire les variables via la CLI connectée (`--prod`). **`MCP_LETTER_LOOP_TOOLS_ENABLED=1` le 2026-10-05 à 21:05 UTC** (sans attendre 1 h : avant 20:20 UTC le scope lettres n'était proposé à personne, donc aucun jeton d'ancien consentement ne le porte). **Reste** : vérifier les 10 outils depuis un connecteur ChatGPT de production.
 
 ## Commercial V1 product decision
 

@@ -1,7 +1,7 @@
 ---
 title: "Log — twoweeks Wiki"
 category: overview
-updated: 2026-09-28
+updated: 2026-09-29
 ---
 
 # Log du Wiki · twoweeks
@@ -12,6 +12,20 @@ Journal chronologique append-only de toutes les opérations sur le wiki.
 grep "^## \[" wiki/log.md | tail -5   # Dernières 5 entrées
 grep "^## \[" wiki/log.md | grep "ingest"  # Tous les ingests
 ```
+
+---
+
+## [2026-09-30] direct-update | export documents : relais Convex, Access Service Auth, URL frontend du worker
+
+**Agent** : Claude
+**Mode** : mise à jour directe de la page canonique
+**Pages modifiées** :
+- `wiki/tech/export-pipeline.md` (sections « Chemin de production », « Réglages requis », « Diagnostic », « Incident du 2026-09-30 »)
+- `wiki/index.md`, `wiki/hot.md`
+
+**Contenu** : panne « Le service d’export n’a pas répondu » sur tous les exports ; trois causes (URL parser absente du build, confinement Access, URL frontend absente du worker) ; corrections PR #541–#546 et réglages opérateur.
+
+**Vérification** : export réel CV + lettre (PDF, DOCX) en 200 depuis une session connectée ; aucune valeur secrète consignée ; index, hot cache et journal mis à jour.
 
 ---
 
@@ -39,6 +53,45 @@ grep "^## \[" wiki/log.md | grep "ingest"  # Tous les ingests
 **Pages mises à jour** :
 - `wiki/index.md`
 - `wiki/log.md`
+
+---
+
+## [2026-09-29] direct-update | décisions billing : correctif TVA, prix TTC, plafonds de coût, essais
+
+**Agent** : Claude
+**Mode** : mise à jour directe de la page canonique
+**Pages modifiées** :
+- `wiki/product/billing-launch-readiness.md` (section « Décisions du 2026-09-29 », Price courant, prix TTC)
+- `wiki/index.md`, `wiki/hot.md`
+
+**Contenu** : incident TVA Stripe et correctif (PR #531) ; Price inclusive, plafonds de coût, essais plafonnés à 50 et refus des e-mails jetables, changement d’interface (PR #534) ; économie unitaire estimée.
+
+**Vérification** : aucune valeur secrète consignée ; index, hot cache et journal mis à jour.
+
+---
+
+## [2026-09-26] ingest | archivage de l’audit et du plan billing du 16 septembre
+
+**Agent** : Codex
+**Mode** : ingest ciblé depuis deux documents projet
+**Sources** :
+- `docs/audits/2026-09-16-billing-launch-current-state.md`
+- `docs/plans/2026-09-16-billing-launch-qualification.md`
+
+**Pages créées** :
+- `wiki/archive/outputs/2026-09-16-billing-launch-current-state.md`
+- `wiki/archive/tasks/2026-09-16-billing-launch-qualification.md`
+
+**Routage** :
+- Les deux snapshots sont archivés et marqués superseded par
+  `wiki/product/billing-launch-readiness.md`, qui contient l’état canonique
+  plus récent du 24 septembre.
+- `wiki/index.md` et `wiki/hot.md` pointent vers les archives sans les
+  présenter comme des preuves de production actuelles.
+
+**Vérification** : frontmatter, liens, index, hot cache et journal mis à jour;
+aucune valeur secrète, aucun code et aucune configuration de production n’ont
+été modifiés.
 
 ---
 
@@ -2278,3 +2331,228 @@ Migration vers schema v2 : ajout rawinput/ (staging), gestion temporelle (status
 - Les deux domaines renvoient anonymement HTTP 302 vers Cloudflare Access. Les smokes des deux identités autorisées, l’isolation A/B post-déploiement et l’appel LLM anonyme restent non vérifiés.
 - Le repli source coordonné pré-#411 est identifié à `966890d9df580ca2c404faa8e1ed3da87f691ffd`, mais l’historique Convex instantané reste indisponible.
 - L’image parser `83872148` est construite/testée/publiée; Lightsail reste sur `408e428`. Aucun déploiement parser, changement de code, secret ou donnée utilisateur n’a été effectué pendant cette mise à jour wiki.
+
+## [2026-08-31] direct-update | Jobs, Mistral et remediation UI fusionnés
+
+**Agent** : Codex
+**Mode** : direct-update
+**Source** : états et commits GitHub vérifiés pour les PR #419, #420 et #421; audit read-only des PR encore ouvertes
+
+**Pages mises à jour** :
+- `wiki/sources/2026-08-31-neyssan-jobs-mistral-ui-merge-checkpoint.md`
+- `wiki/product/job-library.md`
+- `wiki/concepts/cv-parsing-pipeline.md`
+- `wiki/product/product-roadmap.md`
+- `wiki/overview.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**Points notables** :
+- #420 est fusionnée à `f30522427cf5f864ca930a06d8c78b3672eac08a`; le read-model Jobs, les fallbacks proposal/shadow bornés et la gate durable du backfill sont livrés. Le backfill n'a pas été exécuté.
+- #419 est fusionnée à `fbe29ec8782f3f301c7c42e7af6cbc51ebe75c92`; le port Mistral sélectif préserve les sections canoniques jusqu'aux mappings/exports sans réintroduire les anciennes branches larges.
+- #421 est fusionnée à `cab56d6873c2dd32f988a48899e035e61f519fce`; la remediation UI v1 active couvre recovery localisée, guards preview/query, tokens sémantiques et motion retenue, sans changer la géométrie/templates, parser, auth, billing ou export.
+- Ce checkpoint ne revendique aucun déploiement, smoke production, validation fournisseur live ou migration de données.
+- #418 est supersédée; #387/#389 ne doivent pas être fusionnées en bloc. #385, #396, #405 et #383 restent des décisions séparées.
+
+## [2026-09-16] direct-update | readiness essais/paiement et alignement production
+
+**Agent** : Codex
+**Mode** : direct-update
+**Source** : lecture directe read-only de Convex Dashboard/CLI, Infisical `prod /twoweeks`, Stripe live et JobsPipe dans Chrome; aucun secret consigné.
+
+**Pages créées** :
+- `wiki/product/billing-launch-readiness.md`
+
+**Pages mises à jour** :
+- `wiki/overview.md`
+- `wiki/index.md`
+- `wiki/hot.md`
+- `wiki/log.md`
+
+**Configuration non secrète alignée** :
+- Convex Production `prod:giddy-basilisk-88` reçoit `STRIPE_LAUNCH_PRICE_ID` avec le Price live existant; aucun produit Stripe supplémentaire n’a été créé.
+- Convex et Infisical `prod /twoweeks` portent `gpt-5.6-terra`, `PREMIUM_COVER_LETTER_BOUNDED_REQUESTS=1`, `STRIPE_LIVE_MODE_ENABLED=1` et `BILLING_METER_UNIT=off`.
+- `BILLING_LAUNCH_MODE` reste absent; essais et Checkout restent fermés.
+
+**Preuves observées** :
+- Stripe live : Twoweeks Pro actif, Price EUR 7,90 unique; webhook actif vers `/stripe/webhook`, quatre événements, 15 tentatives dont 10 échecs (67 %), tentatives récentes à 200.
+- JobsPipe : workspace `twoweeks`, plan Free, 990 crédits restants sur 1 000, 2 requêtes/seconde; preuve fonctionnelle manuelle acceptée, qualification économique non prouvée.
+- Readiness Convex : Price PASS; lettre, édition Mistral, parser OCR, sandbox, rétention, fiscalité et legacy BLOCK; `ready=false`, `trialReady=false`.
+
+**Limites et sécurité** :
+- Présence des secrets vérifiée sans valeur; `JOBSPIPE_API_KEY` est présent dans Convex mais absent d’Infisical et n’a pas été transféré.
+- Aucun code, commit, push, merge ou déploiement n’a été effectué. La branche locale d’audit et sa référence `origin/main` ne constituent pas une base Git fraîche pour une implémentation.
+
+## [2026-09-24] direct-update | activation essais et paiement en production après PR #481
+
+**Agent** : Codex
+**Mode** : direct-update
+**Source** : PR #481 et ses checkpoints de revue, déploiements Cloudflare Pages/Convex, configuration Infisical EU `prod /twoweeks`, readiness Production, smoke UI authentifié et événement Stripe live; aucune valeur secrète ni identité utilisateur consignée.
+
+**Pages mises à jour** :
+- `wiki/product/billing-launch-readiness.md`
+- `wiki/hot.md`
+- `wiki/index.md`
+- `wiki/log.md`
+
+**État de fusion et déploiement** :
+- [PR #481](https://github.com/panamini/neyssan/pull/481) a été fusionnée le 2026-09-24T20:56:39Z au commit `8513c35f234b11dc0f0cc00d11c36709ba08cbce`; tous les contrôles GitHub étaient verts. Codex Review s’est terminé sans nouveau finding sur le head `1dea6dd964be32282a0a54752b6675dfc56240b5`.
+- Cloudflare Pages et Convex Production `prod:giddy-basilisk-88` ont déployé avec succès l’arbre fusionné.
+- L’image parser immuable `ghcr.io/panamini/neyssan/cv-parser:sha-8513c35f234b11dc0f0cc00d11c36709ba08cbce`, digest `sha256:8a1ab27de73903d9f31a2e7b04a2e542479cc47bb8cb088c89bc44f9dfc5799c`, est déployée et saine derrière cloudflared, sans port applicatif public.
+- Aucun nouveau code n’a été écrit au checkpoint d’activation après la fusion.
+
+**Activation et preuves** :
+- `BILLING_LAUNCH_MODE=enforced` est aligné dans Convex Production et Infisical EU `prod /twoweeks`; une requête Production confirme `enabled=true`. Readiness : `ready=true`, `trialReady=true`, 23/23 contrôles réussis, aucun échec.
+- `BILLING_METER_UNIT=off` reste aligné dans les deux environnements : la branche `enforced` utilise le flux entitlement/wallet V2, et le smoke Checkout live confirme que `off` ne bloque pas l’activation.
+- Le smoke authentifié sur `/settings?tab=billing` a réussi : la réclamation d’essai a affiché 2 lettres et 4 optimisations; Checkout Stripe live s’est ouvert au Price `price_1UDtQfFkKSo5QGwIw7WQQSYs`, 7,90 € en paiement unique.
+- Aucun achat payant n’a été soumis par l’agent. La preuve d’un achat manuel par l’utilisateur reste la seule preuve utilisateur en attente.
+- L’offre reste `twoweeks_letters_25_optimizations_50_v1` (essai : 2 lettres, 4 optimisations, 5 pages OCR; pack : 25 lettres, 50 optimisations, 10 pages OCR, 5 recherches, 25 imports).
+- L’endpoint Stripe live `we_1UDu0QFkKSo5QGwITijUNltK` pointe vers `https://giddy-basilisk-88.convex.site/stripe/webhook` et est activé. La preuve de transport signée sans frais a produit `evt_1UJJqsFkKSo5QGwICqLvcgKS` (`checkout.session.expired`, `livemode=true`, `pending_webhooks=0`) à 2026-09-24T21:06:50.725Z; l’identifiant de session n’est pas consigné.
+- La qualification couvre Terra lettres en conservant la décision `gpt-5.6-terra`, Mistral édition/matching/extraction, contrat OCR v2 signé, JobsPipe recherche/import, identité Clerk vérifiée et parser déployé. Les valeurs de secrets et l’identité Clerk ne sont pas consignées.
+- Les checkpoints PR sont le [checkpoint d’activation](https://github.com/panamini/neyssan/pull/481#issuecomment-5813645723), [audit Luna](https://github.com/panamini/neyssan/pull/481#issuecomment-5813785120), [checkpoint pré-fusion](https://github.com/panamini/neyssan/pull/481#issuecomment-5813887408) et [activation finale](https://github.com/panamini/neyssan/pull/481#issuecomment-5822506871).
+
+## [2026-10-01] direct-update | serveur d'export Lightsail : déploiement manuel et piège Buffer Convex
+
+**Agent** : Claude Code (Opus)
+**Mode** : direct-update
+**Source** : débogage en production de l'image du CV absente du PDF (PR #576, #577), redéploiement du parser Lightsail ; aucune valeur secrète consignée.
+
+**Pages mises à jour** :
+- [[tech/export-pipeline]] : section « Serveur d'export Lightsail : mise à jour MANUELLE » (procédure, rollback, piège `Buffer`, piste d'automatisation).
+- [[hot]] : rappel court sur le déploiement manuel du parser.
+
+
+## [2026-10-04] direct-update | MCP : périmètre de la boucle lettre et rejet du prototype 18 outils
+
+**Agent** : Claude Code (Opus)
+**Mode** : direct-update
+**Source** : revue du prototype `codex/mcp-public-app-management`, lecture du parcours `mcpLetters` existant, implémentation sur `codex/mcp-letter-loop` (commit `46d7209d`, non poussé) et `docs/decisions/2026-10-04-mcp-letter-loop-scope.md` du dépôt code ; aucune valeur secrète consignée.
+
+**Pages mises à jour** :
+- [[product/chatgpt-app-sdk-roadmap]] : section « October 2026 scope decision » (principe, catalogue à 5 outils, écarts, état et requalification).
+- [[index]] : résumé de la page roadmap.
+- [[hot]] : fait actif sur le périmètre MCP.
+
+## [2026-10-04] direct-update | serveur d'export : disque plein et faux « denied » GHCR
+
+**Agent** : Claude Code (Opus)
+**Mode** : direct-update
+**Source** : déploiement Lightsail en échec, diagnostic sur l'hôte ; aucune valeur secrète consignée.
+
+**Pages mises à jour** :
+- [[tech/export-pipeline]] : diagnostic du disque plein et commande de nettoyage Docker.
+
+
+## [2026-10-04] direct-update | MCP : transition de consentement et backlog reporté
+
+**Agent** : Claude Code (Opus)
+**Mode** : direct-update
+**Source** : revue GPT du commit `46d7209d` ; correctif `9cea1c5e` sur `codex/mcp-letter-loop`.
+
+**Pages mises à jour** :
+- [[product/chatgpt-app-sdk-roadmap]] : interrupteur `MCP_LETTER_LOOP_TOOLS_ENABLED` et ordre d'activation ; « écarté » remplacé par « reporté au backlog ».
+- [[hot]] : référence de commit et interrupteur.
+
+## [2026-10-05] direct-update | MCP : boucle lettre qualifiée sur stack isolé
+
+**Agent** : Claude Code (Opus)
+**Mode** : direct-update
+**Source** : rapport de qualification Codex du 2026-10-05 et commits `f8a50802`, `01fbf9f1`, `3cdd3791`, `ddae1b3c` sur `codex/mcp-letter-loop` ; aucune valeur secrète consignée.
+
+**Pages mises à jour** :
+- [[product/chatgpt-app-sdk-roadmap]] : état qualifié, et ce qui reste avant la production (serveur MCP sur la Lightsail).
+- [[howto/chatgpt-mcp-private-beta-tunnel-connector]] : procédure de test sur un hostname dédié, nouveau callback ChatGPT.
+- [[index]] et [[hot]] : résumé et fait actif.
+
+## [2026-10-05] direct-update | MCP : conteneur tunnel oublié sur le tunnel de production
+
+**Agent** : Claude Code (Opus)
+**Mode** : direct-update
+**Source** : inventaire Cloudflare du tunnel `935a2064` (deux connecteurs), inspection Docker locale, échantillons HTTP publics avant/après arrêt.
+
+**Pages mises à jour** :
+- [[product/chatgpt-app-sdk-roadmap]], [[howto/chatgpt-mcp-private-beta-tunnel-connector]], [[hot]] : le second connecteur était le conteneur `run.sh` du 2026-09-27 sur le Mac (502 publics) ; arrêté ; la Lightsail seule répond 200 avec le scope lecture seule.
+
+## [2026-10-05] direct-update | MCP production : procédure CIMD et échec d'issuer
+
+**Agent** : Codex
+**Mode** : direct-update
+**Source** : lecture SSH en lecture seule des sept paramètres OAuth non secrets de `/opt/twoweeks/mcp/secrets/mcp.env` et vérification de la connexion depuis le profil ChatGPT TwoWeeks ; aucune valeur secrète ni donnée privée de candidature consignée.
+
+**Pages mises à jour** :
+- `wiki/howto/chatgpt-mcp-private-beta-tunnel-connector.md` : distinction entre client confidentiel local historique et CIMD de production ; valeurs admises, étapes de connexion et état observé.
+- `wiki/product/chatgpt-app-sdk-roadmap.md` : configuration de production confirmée et reconnexion/read-only toujours non prouvés.
+- `wiki/index.md` et `wiki/hot.md` : résumé et contexte actif.
+
+Le connecteur `twoweeks-mcp-private-beta-20260717-r2` ne correspond pas aux listes client/redirect de la Lightsail. Un nouveau connecteur CIMD créé sans identifiant ni secret manuel a échoué avec `OAuth authorization response issuer does not match the expected issuer`. `r2` a été conservé ; aucun appel MCP read-only n'a été lancé.
+
+## [2026-10-05] direct-update | MCP production : bridge, issuer et build reproductible
+
+**Agent** : Claude Code (Opus)
+**Mode** : direct-update
+**Source** : PR #618, #623, #624, #626 (panamini/neyssan) ; inspection Lightsail en lecture seule ; sondes HTTP publiques ; aucune valeur secrète consignée.
+
+**Pages mises à jour** :
+- [[howto/chatgpt-mcp-private-beta-tunnel-connector]] : cause et correctif de l'erreur d'issuer, procédure de déploiement depuis `deploy/mcp/`, historique des incidents (bridge effacé, `.dockerignore`, `_generated`, conteneur tunnel oublié), règle « jamais de patch manuel ».
+- [[product/chatgpt-app-sdk-roadmap]], [[hot]], [[index]] : état à jour.
+
+## [2026-10-05] direct-update | MCP lettres : tous les appels par le bridge signé
+
+**Agent** : Claude Code (Opus)
+**Mode** : direct-update
+**Source** : PR #613 (panamini/neyssan), commits `f151b1bc`, `78d07f62`, `e2cc1b30`, `7a25afdf`, `9e98397f` ; rapports de tests et de relecture sécurité ; aucune valeur secrète consignée.
+
+**Pages mises à jour** :
+- [[product/chatgpt-app-sdk-roadmap]] : clé Convex prod sans `runInternalQueries`, décision « option B », état de la PR et reste à faire.
+- [[howto/chatgpt-mcp-private-beta-tunnel-connector]] : qualification locale avec une paire de clés bridge locale ; ligne d'incident prévue.
+- [[index]] et [[hot]] : résumé et fait actif.
+
+## [2026-10-05] direct-update | MCP lettres : requalification du bridge signé
+
+**Agent** : Claude Code (Opus)
+**Mode** : direct-update
+**Source** : rapport de qualification ChatGPT du 2026-10-05, registre de crédits du Convex local, journaux du stack de test, commits `93cc0b8b`, `3fd01331`, `b3407c01` (PR #613) ; aucune valeur secrète consignée.
+
+**Pages mises à jour** :
+- [[product/chatgpt-app-sdk-roadmap]] et [[hot]] : chemin bridge requalifié de bout en bout, reste fusion/activation avec accord.
+
+## [2026-10-05] direct-update | MCP production : déploiement de main 13147625
+
+**Agent** : Claude Code (Opus)
+**Mode** : direct-update
+**Source** : déploiement Lightsail selon `deploy/mcp/` (archive git, build sur l'hôte, bascule du seul service `mcp`), sondes publiques ; aucune valeur secrète consignée.
+
+**Pages mises à jour** :
+- [[product/chatgpt-app-sdk-roadmap]] et [[hot]] : image `13147625` en production à 20:16 UTC, lettres toujours désactivées, retour arrière documenté.
+
+## [2026-10-05] direct-update | MCP production : lettres activées
+
+**Agent** : Claude Code (Opus)
+**Mode** : direct-update
+**Source** : variables Convex prod via CLI connectée, Infisical prod `/twoweeks`, `mcp.env` Lightsail, smoke de production ; aucune valeur secrète consignée.
+
+**Pages mises à jour** :
+- [[product/chatgpt-app-sdk-roadmap]] et [[hot]] : gate lettres ouvert côté Convex et serveur MCP ; outils de boucle encore fermés.
+
+## [2026-10-05] direct-update | MCP production : outils de boucle activés
+
+**Agent** : Claude Code (Opus)
+**Mode** : direct-update
+**Source** : `mcp.env` Lightsail, smoke de production ; aucune valeur secrète consignée.
+
+**Pages mises à jour** :
+- [[product/chatgpt-app-sdk-roadmap]] : `job.add` et `letter.get` ouverts, justification du délai.
+
+## [2026-10-06] direct-update | Carte des lettres et opérations de production
+
+**Agent** : Claude Code
+**Mode** : direct-update
+**Source** : code `origin/main` (`ffc385879`), lectures seules Convex prod et Lightsail ; aucune valeur secrète consignée.
+
+**Pages créées** :
+- [[tech/letter-generation-pipeline]] : chemin actif des lettres (facturé, premium/Terra), entrées, éligibilité, débit, legacy.
+- [[howto/production-operations]] : secrets, Convex prod, Lightsail, paliers, idempotence.
+
+**Pages mises à jour** : [[index]], [[hot]].
+
