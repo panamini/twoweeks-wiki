@@ -2622,3 +2622,11 @@ Mise à jour le même jour (soir) : décisions fondateur (prix USD accordé, fic
 **Source** : message du fondateur (histoire du nom) ; lecture de [[design/brand-voice]].
 
 **Pages mises à jour** : [[entities/twoweeks]] (origine du nom), [[strategy/growth-acquisition-plan]], [[hot]] (compressé sous 500 mots, ligne périmée sur les 50 essais retirée).
+
+## [2026-10-17] direct-update | Guides SEO publiés et maillage
+
+**Agent** : Claude Code
+**Mode** : direct-update
+**Source** : PR #677, #678 et #679 de `neyssan`, fusionnées ; contrôles locaux et CI verts.
+
+**Pages mises à jour** : [[strategy/growth-acquisition-plan]].

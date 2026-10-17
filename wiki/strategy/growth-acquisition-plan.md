@@ -58,6 +58,10 @@ Files in `neyssan/docs/plans/growth/`: content bank (English posts, scripts, thr
 
 "Two weeks" is the standard notice period: a job ends, by choice or layoff, and the app does the groundwork to find the next one in that window. Target sharpened to people whose job just ended or is ending. Content must follow [[design/brand-voice]] (Corporate Noir, staccato, no questions, no AI mention). Content bank rewritten around a 14-step series "Your two weeks"; four layoff-search guide drafts on branch `claude/seo-us-guides-batch-5`.
 
+## SEO guides published (2026-10-17)
+
+Six English-only US guides are live (neyssan PRs #677, #678, #679): how to write a cover letter, how to tailor a resume, and four layoff-search guides (job search, resume wording, cover letter, explaining being fired). Two published pages (`cover-letter-length`, `how-to-start-a-cover-letter`) gained format and greeting guidance in EN, FR and ES. The English resources hub now lists all six. Constraint: the 25 cover-letter pages are tested as an isolated family, so the examples hub cannot link outside it until those test fixtures are relaxed. FR and ES versions of the resources hub lag the EN additions by design (US target). Codex review was unavailable on #678 and #679 (usage limit).
+
 ## Sources
 
 - `neyssan` repository: `docs/plans/2026-10-17-zero-to-hero-acquisition.md`, `my-app/convex/lib/billingPolicy.ts`, `my-app/marketing/`, commits #654 (acquisition), #666–#670 (SEO), #671–#673 (extension), #648 (ChatGPT).
