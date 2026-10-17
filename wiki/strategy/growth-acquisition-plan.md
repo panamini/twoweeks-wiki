@@ -54,6 +54,10 @@ Operating model: a daily approval board (checkbox artifact) feeds a scheduled cl
 
 Files in `neyssan/docs/plans/growth/`: content bank (English posts, scripts, threads), launch kits (Product Hunt, directories, Chrome Web Store text), credit-saving runbook `local-session-prompt-2.md`. Four US SEO guide drafts on branch `claude/seo-us-guides-batch-4` (unpublished, no PR). Corrections: FAQ/Article/Breadcrumb structured data already exist in the marketing layout; Show HN excludes sign-up pages, so it needs a no-account demo. Models: Sonnet is enough for content and docs, Opus for the USD price rollout, Opus or Fable for billing-touching work such as referrals.
 
+## Name story and sharper target (2026-10-18)
+
+"Two weeks" is the standard notice period: a job ends, by choice or layoff, and the app does the groundwork to find the next one in that window. Target sharpened to people whose job just ended or is ending. Content must follow [[design/brand-voice]] (Corporate Noir, staccato, no questions, no AI mention). Content bank rewritten around a 14-step series "Your two weeks"; four layoff-search guide drafts on branch `claude/seo-us-guides-batch-5`.
+
 ## Sources
 
 - `neyssan` repository: `docs/plans/2026-10-17-zero-to-hero-acquisition.md`, `my-app/convex/lib/billingPolicy.ts`, `my-app/marketing/`, commits #654 (acquisition), #666–#670 (SEO), #671–#673 (extension), #648 (ChatGPT).

@@ -25,6 +25,8 @@ related: [[concepts/cv-parsing-pipeline]], [[concepts/cv-families]], [[overview]
 **Tagline**s : Finish. Faster. Just quit. One click. Two weeks. Done. 
 Grab your exit plan, just quit.// Job done. Just quit. 
 
+**Origine du nom** (fondateur, 2026-10-17) : two weeks est le préavis standard. Quand un emploi se termine, par départ ou licenciement, l'application fait le travail pour en trouver un autre dans ce délai. Ne jamais promettre un emploi en deux semaines ni affirmer que chacun dispose de deux semaines.
+
 **Positionnement** : outil "Anti-Work" pour les gens qui font un excellent travail et veulent aller plus vite sans subir la friction des outils RH mous.
 
 Voir [[design/brand-voice]] pour la voix et les règles de copie.

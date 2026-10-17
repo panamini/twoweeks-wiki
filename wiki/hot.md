@@ -18,7 +18,7 @@ provider qualification, and commercial launch evidence distinct.
 
 ## Key Active Facts
 
-- **Croissance (2026-10-17)** : cible US d'abord ; publication sociale déléguée à
+- **Croissance (2026-10-17)** : cible US d'abord, nom = préavis de deux semaines ([[entities/twoweeks]]), voix [[design/brand-voice]] ; publication sociale déléguée à
   l'assistant via une file d'approbation. Essais : plafond réel ≈ 374 en prod
   (ligne campagne à 343,62 $), 8 réclamés ; le « 50 » n'est que dans le code.
   Prix USD 8,90 : PR #675, **ne pas fusionner avant le Price live et
@@ -32,25 +32,10 @@ provider qualification, and commercial launch evidence distinct.
 - **Production** : secrets Infisical `prod /twoweeks`, Convex prod via CLI
   `--prod`, Lightsail MCP par paliers, aucun changement sans accord du
   fondateur : [[howto/production-operations]].
-- **Billing activation (2026-09-24)** : `BILLING_LAUNCH_MODE=enforced` ;
-  prix 7,90 € TTC, essais plafonnés à 50. [[product/billing-launch-readiness]].
+- **Billing (2026-09-24)** : `BILLING_LAUNCH_MODE=enforced`, offre `twoweeks_letters_25_optimizations_50_v1` à 7,90 € ; smoke authentifié réussi, aucun achat payant soumis par un agent. [[product/billing-launch-readiness]].
 - **Export documents** : relais Convex `/document-export/*` ; le serveur
   d'export Lightsail se déploie à la main (`deploy.sh`, tag `sha-<commit>`).
   [[tech/export-pipeline]].
-- The 2026-09-16 billing audit and qualification plan are preserved as
-  historical archives only: [[archive/outputs/2026-09-16-billing-launch-current-state]]
-  and [[archive/tasks/2026-09-16-billing-launch-qualification]]. Do not use
-  them as current production truth; the 2026-09-24 readiness page supersedes
-  them.
-- Authenticated billing smoke succeeded: trial claim showed 2 letters and 4
-  optimizations; live Checkout opened for €7.90. No paid purchase was submitted;
-  a user-completed paid purchase is the remaining user-owned proof.
-- Live offer is `twoweeks_letters_25_optimizations_50_v1`: €7.90 one-time.
-  Enabled webhook received the no-charge expired-session event; no session ID
-  is recorded.
-- PR #481 merge `8513c35f` is deployed to Cloudflare Pages and Convex.
-  Immutable parser image is healthy behind cloudflared with no public app
-  ports. No code was added after merge during activation.
 - Stable endpoint: `https://mcp.twoweeks.ai/mcp`; MCP proof remains
   operational evidence, not commercial value proof.
 - **MCP lettre (2026-10-05)** : PR #613 passe tous les appels lettre par le

@@ -2614,3 +2614,11 @@ Mise à jour le même jour (soir) : décisions fondateur (prix USD accordé, fic
 **Source** : livrables `neyssan/docs/plans/growth/` (banc de contenu, kits de lancement, runbook), lecture de `my-app/marketing/layouts/page.mjs` et des tests de contenu.
 
 **Pages mises à jour** : [[strategy/growth-acquisition-plan]].
+
+## [2026-10-18] direct-update | Origine du nom, voix de marque et cible affinée
+
+**Agent** : Claude Code
+**Mode** : direct-update
+**Source** : message du fondateur (histoire du nom) ; lecture de [[design/brand-voice]].
+
+**Pages mises à jour** : [[entities/twoweeks]] (origine du nom), [[strategy/growth-acquisition-plan]], [[hot]] (compressé sous 500 mots, ligne périmée sur les 50 essais retirée).
