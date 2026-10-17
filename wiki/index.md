@@ -112,6 +112,7 @@ Cette carte est un routeur de lecture pour agents LLM. Elle ne remplace pas les 
 | Page | Résumé | Status | Tags |
 |------|--------|--------|------|
 | [[strategy/benchmark-matrix\|Benchmark Matrix]] | Scorecard concurrentielle pondérée | current | benchmark, scoring |
+| [[strategy/growth-acquisition-plan\|Growth and Acquisition Plan]] | Commercial launch: US-first target, funnel targets, 50-trial cap and EUR-price constraints, channel priority, assistant operating model | current | growth, acquisition, launch |
 | [[strategy/gap-analysis\|Gap Analysis]] | Diagnostic concurrentiel avec gaps restants vs items déjà implémentés | current | gap, diagnostic |
 | [[strategy/language-localization\|Language Localization]] | Rollout language strategy: UI vs document vs market, promotion gates, RTL and release rules | current | i18n, localization |
 | [[strategy/us-first-cloud-region\|US-First Cloud Region]] | US East default for future Convex Cloud and first production parser; provider gate remains open | current | cloud, convex, parser, data-residency |

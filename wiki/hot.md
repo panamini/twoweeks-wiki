@@ -3,7 +3,7 @@ title: "Hot Cache - twoweeks"
 category: overview
 status: current
 created: 2026-05-02
-updated: 2026-10-06
+updated: 2026-10-17
 ---
 
 # Hot Cache
@@ -18,6 +18,10 @@ provider qualification, and commercial launch evidence distinct.
 
 ## Key Active Facts
 
+- **Croissance (2026-10-17)** : lancement commercial, cible US d'abord ; l'offre de
+  bienvenue est plafonnée à **50 essais** au total (`billingPolicy.ts`) et le prix
+  est en EUR (prix USD accordé le 17/10, scope dans `neyssan/docs/plans/2026-10-17-usd-launch-price.md`) ; le plafond reste à décider. Publication sociale entièrement déléguée à l'assistant via une file d'approbation. Plan et registre
+  dans `neyssan/docs/plans/`. [[strategy/growth-acquisition-plan]].
 - **Lettres (2026-10-06)** : un seul chemin actif (facturé, générateur « premium »
   = nom historique, rédacteur `gpt-5.6-terra`) ; tout autre chemin est refusé.
   Carte : [[tech/letter-generation-pipeline]]. Correctif accents FR + refus clair
