@@ -50,6 +50,10 @@ Operating model: a daily approval board (checkbox artifact) feeds a scheduled cl
 - New US SEO pages are blocked: `cover-letter-content.test.mjs` requires example letters to come from the real Twoweeks pipeline, which needs an AI provider access.
 - Local sessions are out of credit; routines run weekly (Monday) plus on demand, not daily.
 
+## Prepared for the local run of 2026-10-18
+
+Files in `neyssan/docs/plans/growth/`: content bank (English posts, scripts, threads), launch kits (Product Hunt, directories, Chrome Web Store text), credit-saving runbook `local-session-prompt-2.md`. Four US SEO guide drafts on branch `claude/seo-us-guides-batch-4` (unpublished, no PR). Corrections: FAQ/Article/Breadcrumb structured data already exist in the marketing layout; Show HN excludes sign-up pages, so it needs a no-account demo. Models: Sonnet is enough for content and docs, Opus for the USD price rollout, Opus or Fable for billing-touching work such as referrals.
+
 ## Sources
 
 - `neyssan` repository: `docs/plans/2026-10-17-zero-to-hero-acquisition.md`, `my-app/convex/lib/billingPolicy.ts`, `my-app/marketing/`, commits #654 (acquisition), #666–#670 (SEO), #671–#673 (extension), #648 (ChatGPT).

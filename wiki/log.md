@@ -2606,3 +2606,11 @@ Mise à jour le même jour (soir) : décisions fondateur (prix USD accordé, fic
 **Source** : message du fondateur (rescan OpenAI sans finding, refus de manipuler des clés, refus de Reddit) ; lecture de `cover-letter-content.test.mjs`.
 
 **Pages mises à jour** : [[strategy/growth-acquisition-plan]].
+
+## [2026-10-17] direct-update | Préparation de l'exécution locale du 18 octobre
+
+**Agent** : Claude Code
+**Mode** : direct-update
+**Source** : livrables `neyssan/docs/plans/growth/` (banc de contenu, kits de lancement, runbook), lecture de `my-app/marketing/layouts/page.mjs` et des tests de contenu.
+
+**Pages mises à jour** : [[strategy/growth-acquisition-plan]].
