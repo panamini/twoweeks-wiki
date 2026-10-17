@@ -2581,3 +2581,12 @@ Le connecteur `twoweeks-mcp-private-beta-20260717-r2` ne correspond pas aux list
 **Pages créées** : [[strategy/growth-acquisition-plan]]. **Pages mises à jour** : [[index]], [[hot]].
 
 Mise à jour le même jour (soir) : décisions fondateur (prix USD accordé, fiche Chrome Web Store publiée, app ChatGPT en revue OpenAI, mandat d'automatisation complet), modèle opératoire Postiz + Brevo, liste des secrets requis (noms seulement).
+
+## [2026-10-17] direct-update | Session locale : état vérifié de la production et des canaux
+
+**Agent** : Claude Code (Fable)
+**Mode** : direct-update
+**Source** : lectures seules Convex prod (`getLaunchMode`, `getTrialCampaignCapacity`, tables billingV2*, `acquisition:report`), OpenAI Platform, fiche publique Chrome Web Store, Google Search Console, Stripe test, vidéo `paper-boat.mp4` ; PR #675 (prix USD) et #676 (Umami) dans `neyssan` ; aucune valeur secrète consignée.
+
+**Pages mises à jour** : [[strategy/growth-acquisition-plan]] (plafond d'essais réel ≈ 374 en prod, chiffres du registre, état OpenAI/CWS/Search Console, verdict vidéo, accès cloud en attente), [[index]], [[hot]].
+

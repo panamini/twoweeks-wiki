@@ -22,6 +22,7 @@ provider qualification, and commercial launch evidence distinct.
   bienvenue est plafonnée à **50 essais** au total (`billingPolicy.ts`) et le prix
   est en EUR (prix USD accordé le 17/10, scope dans `neyssan/docs/plans/2026-10-17-usd-launch-price.md`) ; le plafond reste à décider. Publication sociale entièrement déléguée à l'assistant via une file d'approbation. Plan et registre
   dans `neyssan/docs/plans/`. [[strategy/growth-acquisition-plan]].
+- **Essais (2026-10-17, lecture prod)** : plafond réel ≈ 374 essais (ligne campagne à 343,62 $ créée le 24 sept., jamais mise à jour par le code), 8 réclamés ; le « 50 » n'est que dans le code. Prix USD 8,90 : PR #675 ; compteur Umami : PR #676 ; Search Console déjà connectée, sitemap lu le 14 oct. App ChatGPT « In review », MCPs « Needs attention ». [[strategy/growth-acquisition-plan]].
 - **Lettres (2026-10-06)** : un seul chemin actif (facturé, générateur « premium »
   = nom historique, rédacteur `gpt-5.6-terra`) ; tout autre chemin est refusé.
   Carte : [[tech/letter-generation-pipeline]]. Correctif accents FR + refus clair
