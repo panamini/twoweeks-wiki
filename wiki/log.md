@@ -2579,3 +2579,5 @@ Le connecteur `twoweeks-mcp-private-beta-20260717-r2` ne correspond pas aux list
 **Source** : plan `docs/plans/2026-10-17-zero-to-hero-acquisition.md` dans `neyssan` ; lecture de `billingPolicy.ts` (plafond de 50 essais), décisions du fondateur (cible US, Umami, pas de Bing).
 
 **Pages créées** : [[strategy/growth-acquisition-plan]]. **Pages mises à jour** : [[index]], [[hot]].
+
+Mise à jour le même jour (soir) : décisions fondateur (prix USD accordé, fiche Chrome Web Store publiée, app ChatGPT en revue OpenAI, mandat d'automatisation complet), modèle opératoire Postiz + Brevo, liste des secrets requis (noms seulement).

@@ -20,7 +20,7 @@ provider qualification, and commercial launch evidence distinct.
 
 - **Croissance (2026-10-17)** : lancement commercial, cible US d'abord ; l'offre de
   bienvenue est plafonnée à **50 essais** au total (`billingPolicy.ts`) et le prix
-  est en EUR : deux décisions fondateur avant tout lancement. Plan et registre
+  est en EUR (prix USD accordé le 17/10, scope dans `neyssan/docs/plans/2026-10-17-usd-launch-price.md`) ; le plafond reste à décider. Publication sociale entièrement déléguée à l'assistant via une file d'approbation. Plan et registre
   dans `neyssan/docs/plans/`. [[strategy/growth-acquisition-plan]].
 - **Lettres (2026-10-06)** : un seul chemin actif (facturé, générateur « premium »
   = nom historique, rédacteur `gpt-5.6-terra`) ; tout autre chemin est refusé.
