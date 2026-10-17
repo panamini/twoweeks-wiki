@@ -2590,3 +2590,11 @@ Mise à jour le même jour (soir) : décisions fondateur (prix USD accordé, fic
 
 **Pages mises à jour** : [[strategy/growth-acquisition-plan]] (plafond d'essais réel ≈ 374 en prod, chiffres du registre, état OpenAI/CWS/Search Console, verdict vidéo, accès cloud en attente), [[index]], [[hot]].
 
+
+## [2026-10-17] direct-update | Accès cloud : principe de moindre privilège
+
+**Agent** : Claude Code
+**Mode** : direct-update
+**Source** : captures du formulaire « Add secret » de l'environnement cloud ; PR #675 et #676 relues (CI verte, mergeables).
+
+**Pages mises à jour** : [[strategy/growth-acquisition-plan]] (secrets cloud réduits : clé Stripe restreinte et jeton de rapport Convex, pas d'Infisical ni de clé de déploiement), [[hot]] (bullets fusionnés, ordre de fusion de la PR #675).
