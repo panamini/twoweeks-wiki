@@ -42,6 +42,14 @@ Operating model: a daily approval board (checkbox artifact) feeds a scheduled cl
 - Video `paper-boat.mp4` (30 s, 1080p60): keep, rework the ending (replace the house with a desk in the grass, the opposite of "NO REPLY"); use on the landing (muted autoplay), as a 12–15 s vertical cut for TikTok/Shorts, and as the first Product Hunt gallery item.
 - Cloud-session access (Infisical machine identity, Convex prod deploy key, Stripe restricted key): nothing created yet; each creation waits for the founder's explicit confirmation and an Infisical login.
 
+## Founder decisions of 2026-10-17 (night)
+
+- OpenAI MCP rescan returned "No findings"; review continues on OpenAI's side, nothing to do.
+- No Stripe key, no Convex deploy key, no Infisical in the cloud; the founder wants zero key handling. Purchases and credits are already in Convex.
+- No Reddit, manual or automated: automated posting from a personal account breaks Reddit rules and risks a ban.
+- New US SEO pages are blocked: `cover-letter-content.test.mjs` requires example letters to come from the real Twoweeks pipeline, which needs an AI provider access.
+- Local sessions are out of credit; routines run weekly (Monday) plus on demand, not daily.
+
 ## Sources
 
 - `neyssan` repository: `docs/plans/2026-10-17-zero-to-hero-acquisition.md`, `my-app/convex/lib/billingPolicy.ts`, `my-app/marketing/`, commits #654 (acquisition), #666–#670 (SEO), #671–#673 (extension), #648 (ChatGPT).

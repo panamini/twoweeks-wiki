@@ -2598,3 +2598,11 @@ Mise à jour le même jour (soir) : décisions fondateur (prix USD accordé, fic
 **Source** : captures du formulaire « Add secret » de l'environnement cloud ; PR #675 et #676 relues (CI verte, mergeables).
 
 **Pages mises à jour** : [[strategy/growth-acquisition-plan]] (secrets cloud réduits : clé Stripe restreinte et jeton de rapport Convex, pas d'Infisical ni de clé de déploiement), [[hot]] (bullets fusionnés, ordre de fusion de la PR #675).
+
+## [2026-10-17] direct-update | Décisions fondateur : zéro clé, pas de Reddit
+
+**Agent** : Claude Code
+**Mode** : direct-update
+**Source** : message du fondateur (rescan OpenAI sans finding, refus de manipuler des clés, refus de Reddit) ; lecture de `cover-letter-content.test.mjs`.
+
+**Pages mises à jour** : [[strategy/growth-acquisition-plan]].
