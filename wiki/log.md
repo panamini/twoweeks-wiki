@@ -2639,3 +2639,11 @@ Mise à jour le même jour (soir) : décisions fondateur (prix USD accordé, fic
 
 **Pages mises à jour** : [[strategy/growth-acquisition-plan]] (prix USD et compteur Umami en production, chiffres Search Console, comparatif planificateurs, points en attente), [[hot]], [[index]].
 
+## [2026-10-18] direct-update | Buffer retenu, profils X/TikTok refaits, semaine 1 programmée
+
+**Agent** : Claude Code (Fable)
+**Mode** : direct-update
+**Source** : session Chrome du fondateur (X, TikTok, Buffer), `neyssan/docs/plans/growth/buffer-week-1.md` ; aucune valeur secrète consignée.
+
+**Pages mises à jour** : [[strategy/growth-acquisition-plan]], [[hot]].
+

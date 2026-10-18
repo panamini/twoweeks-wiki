@@ -24,7 +24,7 @@ provider qualification, and commercial launch evidence distinct.
   **Prix USD 8,90 en production depuis le 18 oct.** (Price live, variable prod,
   #675 fusionnée, backend déployé, Checkout vérifié). **Umami en ligne** (#676,
   id public `d6bc48fa…`). Search Console US : 449 impressions, 0 clic.
-  Planificateur : Buffer gratuit recommandé, choix fondateur en attente. App
+  Planificateur : **Buffer gratuit retenu**, 3 canaux connectés (LinkedIn page, X `@twoweeksai`, TikTok), semaine 1 programmée (L1–L5 + fil X1). App
   ChatGPT « In review » (scan MCP sans findings). [[strategy/growth-acquisition-plan]].
 - **Lettres (2026-10-06)** : un seul chemin actif (facturé, générateur « premium »
   = nom historique, rédacteur `gpt-5.6-terra`) ; tout autre chemin est refusé.

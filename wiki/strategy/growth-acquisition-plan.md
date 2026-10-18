@@ -65,7 +65,8 @@ Six English-only US guides are live (neyssan PRs #677, #678, #679): how to write
 ## Session of 2026-10-18 (local, founder approvals at each production step)
 
 - Done and verified: Umami counter live (PR #676), USD price live end to end (PR #675, Price, variable, deploy, Checkout smoke), Search Console US reading in the ledger, scheduler comparison (Buffer free recommended for the first 30 days; Publer excludes X on free; Postiz Cloud has no free tier).
-- Waiting for the founder: scheduler choice and week-1 scheduling (UTM links and New York morning slots prepared in the plan, §24); deletion of the unused Infisical machine identity `claude-growth` created before the "no cloud keys" decision was read; seven indexing requests to resend another day.
+- Scheduler decided and running (2026-10-18 evening): **Buffer free plan**, three channels connected (LinkedIn page `twoweeks.ai`, X `@twoweeksai`, TikTok `@solar.skytime`). Profiles redone from the founder's Chrome session: X renamed `Twoweeks` / `@twoweeksai` with bio, link, avatar and banner; TikTok bio and avatar updated (name and handle locked by TikTok until 2026-10-25 and 2026-11-17). Week 1 queued: LinkedIn L1–L5 Monday to Friday 09:00 New York, X thread X1 Tuesday 09:30 New York, UTM `d30-01…05`; TikTok waits for the videos. Details in `neyssan/docs/plans/growth/buffer-week-1.md`.
+- Waiting for the founder: deletion of the unused Infisical machine identity `claude-growth` (created before the "no cloud keys" decision was read); seven indexing requests to resend another day; manual deletion of the old posts on X (18) and TikTok (4).
 - Not done: Reddit (excluded by decision); Convex deploy key and Stripe restricted key (not created, per the same decision; the Convex key creation was also refused by the assistant's permission classifier).
 
 ## Sources
