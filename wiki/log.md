@@ -2647,3 +2647,4 @@ Mise à jour le même jour (soir) : décisions fondateur (prix USD accordé, fic
 
 **Pages mises à jour** : [[strategy/growth-acquisition-plan]], [[hot]].
 
+Mise à jour le même soir : identité Infisical `claude-growth` et secrets `CLOUD_*` supprimés (accord fondateur), [[strategy/growth-acquisition-plan]].
