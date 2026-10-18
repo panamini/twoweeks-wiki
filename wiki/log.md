@@ -2630,3 +2630,12 @@ Mise à jour le même jour (soir) : décisions fondateur (prix USD accordé, fic
 **Source** : PR #677, #678 et #679 de `neyssan`, fusionnées ; contrôles locaux et CI verts.
 
 **Pages mises à jour** : [[strategy/growth-acquisition-plan]].
+
+## [2026-10-18] direct-update | Umami et prix USD en production
+
+**Agent** : Claude Code (Fable)
+**Mode** : direct-update
+**Source** : PR #676 et #675 fusionnées dans `neyssan`, Stripe live (Price USD), Convex prod (`getLaunchMode`, readiness), Checkout live ouvert sans paiement, Google Search Console (États-Unis), pages tarifaires Buffer/Publer/Postiz ; aucune valeur secrète consignée.
+
+**Pages mises à jour** : [[strategy/growth-acquisition-plan]] (prix USD et compteur Umami en production, chiffres Search Console, comparatif planificateurs, points en attente), [[hot]], [[index]].
+

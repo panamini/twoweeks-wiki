@@ -21,10 +21,11 @@ provider qualification, and commercial launch evidence distinct.
 - **Croissance (2026-10-17)** : cible US d'abord, nom = préavis de deux semaines ([[entities/twoweeks]]), voix [[design/brand-voice]] ; publication sociale déléguée à
   l'assistant via une file d'approbation. Essais : plafond réel ≈ 374 en prod
   (ligne campagne à 343,62 $), 8 réclamés ; le « 50 » n'est que dans le code.
-  Prix USD 8,90 : PR #675, **ne pas fusionner avant le Price live et
-  `STRIPE_LAUNCH_PRICE_ID_USD`** (la landing afficherait $8.90 sans pouvoir
-  l'encaisser). Umami : PR #676 (id de site à créer). App ChatGPT « In review »,
-  MCPs « Needs attention » (Rescan). [[strategy/growth-acquisition-plan]].
+  **Prix USD 8,90 en production depuis le 18 oct.** (Price live, variable prod,
+  #675 fusionnée, backend déployé, Checkout vérifié). **Umami en ligne** (#676,
+  id public `d6bc48fa…`). Search Console US : 449 impressions, 0 clic.
+  Planificateur : Buffer gratuit recommandé, choix fondateur en attente. App
+  ChatGPT « In review » (scan MCP sans findings). [[strategy/growth-acquisition-plan]].
 - **Lettres (2026-10-06)** : un seul chemin actif (facturé, générateur « premium »
   = nom historique, rédacteur `gpt-5.6-terra`) ; tout autre chemin est refusé.
   Carte : [[tech/letter-generation-pipeline]]. Correctif accents FR + refus clair
