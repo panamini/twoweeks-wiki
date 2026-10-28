@@ -3,7 +3,7 @@ title: "Hot Cache - twoweeks"
 category: overview
 status: current
 created: 2026-05-02
-updated: 2026-10-17
+updated: 2026-10-28
 ---
 
 # Hot Cache
@@ -47,6 +47,9 @@ provider qualification, and commercial launch evidence distinct.
   lettres `0`. Bridge versionné (#618), issuer corrigé (#623), image construite
   depuis `main` via `deploy/mcp/` (#626). Ne JAMAIS patcher la Lightsail à la
   main. Reste : connexion + résumé read-only depuis un connecteur neuf ; garder `r2`. [[howto/chatgpt-mcp-private-beta-tunnel-connector]].
+- **UI et copie (2026-10-28)** : skills `twoweeks-ui` et `twoweeks-i18n-copy`
+  (`.claude/skills/`, PR #681) remplacent `twoweeks-app-skeleton`.
+  [[design/app-ui-and-copy-skills]].
 - Product truth is `twoweeks`; CVForge and ProposalForge are internal names.
 - Persistent wiki mutations require `wiki/index.md`, `wiki/log.md`, and
   `wiki/hot.md`.
@@ -60,4 +63,5 @@ provider qualification, and commercial launch evidence distinct.
 - Product/parser/export routing: [[overview]], [[concepts/cv-parsing-pipeline]], [[tech/export-pipeline]]
 - Jobs/Mistral/UI checkpoint: [[sources/2026-08-31-neyssan-jobs-mistral-ui-merge-checkpoint]], [[product/job-library]]
 - Cloud region / parser hosting: [[strategy/us-first-cloud-region]], [[tech/local-vs-remote-parser-architecture]]
+- App UI, tokens, nav, FR/EN/ES copy: [[design/app-ui-and-copy-skills]]
 - Wiki operations: [[meta/llm-wiki-pattern]], [[meta/temporal-management]]

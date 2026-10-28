@@ -2648,3 +2648,19 @@ Mise à jour le même jour (soir) : décisions fondateur (prix USD accordé, fic
 **Pages mises à jour** : [[strategy/growth-acquisition-plan]], [[hot]].
 
 Mise à jour le même soir : identité Infisical `claude-growth` et secrets `CLOUD_*` supprimés (accord fondateur), [[strategy/growth-acquisition-plan]].
+
+**Pages mises à jour** : [[product/chatgpt-app-sdk-roadmap]], [[hot]].
+
+## [2026-10-28] direct-update | Skills UI et copie FR/EN/ES ; skill app-skeleton remplacé
+
+**Agent** : Claude Code (Opus)
+**Mode** : direct-update (supersede)
+**Source** : code neyssan `origin/main` `91efe598e` ; skills ajoutés sur la branche `claude/twoweeks-skills` (PR neyssan #681, non fusionnée).
+
+**Pages créées** :
+- [[design/app-ui-and-copy-skills]] : pointe vers les skills `twoweeks-ui` et `twoweeks-i18n-copy` (`.claude/skills/`, symlinks `.agents/skills/`), décisions de nommage du 2026-10-28.
+
+**Pages archivées / déplacées** :
+- `wiki/sources/2026-04-30-two-weeks-app-skeleton-skill.md` → [[archive/sources/2026-04-30-two-weeks-app-skeleton-skill]] (`status: archived`, `valid_until: 2026-10-28`, `superseded_by: [[design/app-ui-and-copy-skills]]`).
+
+**Pages mises à jour** : [[index]] (carte de lecture, Design, Sources, Archive, statistiques), [[hot]].

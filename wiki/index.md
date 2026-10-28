@@ -2,7 +2,7 @@
 title: Index du Wiki — twoweeks
 category: overview
 sticker: emoji//1f9c6
-updated: 2026-10-06
+updated: 2026-10-28
 ---
 
 # Index du Wiki · twoweeks (v2)
@@ -34,6 +34,7 @@ Le contrôle opératoire du repo reste défini par `WIKI_SCHEMA.md` puis `CLAUDE
 | Proposal Forge geometry | [[tech/proposal-forge-document-geometry]] | [[tech/proposal-style-layer]], [[design/document-token-contract]] |
 | Proposal signature/closing | [[tech/proposal-signature-closing-layer]] | [[tech/proposal-style-layer]], [[tech/proposal-forge-document-geometry]], [[tech/export-pipeline]] |
 | Design / ATS / motion | [[design/ats-safety]] | [[design/document-token-contract]], [[design/motion-system]], [[design/brand-voice]] |
+| UI de l'app (tokens, nav, téléphone) et copie FR/EN/ES — skills agents | [[design/app-ui-and-copy-skills]] | [[design/brand-voice]], [[design/locale-typography-rules]] |
 | ATS scoring / health | [[tech/cv-ats-audit-heuristic]] | [[design/ats-safety]], [[concepts/cv-parsing-pipeline]] |
 | Langue / localisation | [[strategy/language-localization]] | [[design/locale-typography-rules]], [[product/product-roadmap]] |
 | Cloud region / US-first | [[strategy/us-first-cloud-region]] | [[tech/local-vs-remote-parser-architecture]], [[strategy/language-localization]] |
@@ -79,6 +80,7 @@ Cette carte est un routeur de lecture pour agents LLM. Elle ne remplace pas les 
 
 | Page | Résumé | Status | Tags |
 |------|--------|--------|------|
+| [[design/app-ui-and-copy-skills\|App UI and Copy Skills]] | Skills canoniques `twoweeks-ui` et `twoweeks-i18n-copy` (repo `.claude/skills/`), décisions de nommage 2026-10-28 ; remplace `twoweeks-app-skeleton` | current | ui, i18n, skills |
 | [[design/a4-layout-systems\|A4 Layout Systems]] | Canons A4 et grille Robial pour templates résumé/export | current | layout, a4 |
 | [[design/ats-safety\|ATS Safety]] | Règles parser-safe pour layouts, headings, exports et audits | current | ats, quality |
 | [[design/brand-voice\|Brand Voice]] | Voix staccato, Corporate Noir, règles de copie | current | brand, voice |
@@ -201,7 +203,6 @@ Cover-letter quality has a merged PR249 staged internal Mistral V2 gate and a gr
 | [[sources/2026-04-30-cv-forge-pr4-remaining-tasks|CV Forge PR4 Remaining Tasks]] | scratchpad | 2026-04-30 | current |
 | [[sources/2026-04-30-jobs-language-localization-scratchpad|Jobs Language Localization Scratchpad]] | scratchpad | 2026-04-30 | current |
 | [[sources/2026-04-30-refonte-wiki-claude-obsidian|Revue: refonte wiki claude-obsidian]] | decision | 2026-04-30 | current |
-| [[sources/2026-04-30-two-weeks-app-skeleton-skill|Twoweeks App Skeleton Skill Source]] | skill | 2026-04-30 | current |
 | [[sources/2026-05-25-proposal-generation-truth-planner\|Proposal Generation Truth Planner]] | source | 2026-05-25 | current |
 | [[sources/2026-05-25-two-weeks-theme-palette\|Two Weeks Theme Palette]] | source | 2026-05-25 | current |
 | [[sources/2026-05-21-cv-proposal-command-layer-unification-note|Command Layer Unification Note — CV & Proposal Toolbars]] | source | 2026-05-21 | current |
@@ -318,14 +319,15 @@ Cover-letter quality has a merged PR249 staged internal Mistral V2 gate and a gr
 | [[archive/entities/cv-forge\|CV Forge (ancienne entité)]] | 2026-04-12 | [[entities/twoweeks]] |
 | [[archive/outputs/2026-09-16-billing-launch-current-state\|Audit historique — lancement essais et paiement]] | 2026-09-24 | [[product/billing-launch-readiness]] |
 | [[archive/tasks/2026-09-16-billing-launch-qualification\|Plan historique — qualification du lancement]] | 2026-09-24 | [[product/billing-launch-readiness]] |
+| [[archive/sources/2026-04-30-two-weeks-app-skeleton-skill\|Twoweeks App Skeleton Skill Source]] | 2026-10-28 | [[design/app-ui-and-copy-skills]] |
 
 ---
 
 ## Statistiques
 
-- **Pages `current` / `planned` détectées par frontmatter** : 195 (2 overview, 1 entité, 2 concepts, 8 design, 10 product, 4 strategy, 2 meta, 136 sources, 16 tech, 8 howto, 2 tasks, 2 `todo` legacy, 2 outputs)
+- **Pages `current` / `planned` détectées par frontmatter** : 195 (2 overview, 1 entité, 2 concepts, 9 design, 10 product, 4 strategy, 2 meta, 135 sources, 16 tech, 8 howto, 2 tasks, 2 `todo` legacy, 2 outputs)
 - **Note de comptage** : les fichiers système ou pages sans `status` ne sont pas comptés; les 2 pages de catégorie legacy `todo` sont signalées sans être reclassées dans cette mutation.
-- **Pages archivées** : 4
+- **Pages archivées** : 5
 - **Sources dans `raw/`** : 91
 - **Sources en attente dans `rawinput/`** : 0
-- **Dernière mise à jour** : 2026-10-06
+- **Dernière mise à jour** : 2026-10-28
